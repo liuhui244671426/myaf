@@ -1,0 +1,3 @@
+13:53:33-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:18 'AuthPlugin::dispatchLoopStartup'
+13:53:33-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:19 7
+13:53:33-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:20 11

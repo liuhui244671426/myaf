@@ -1,0 +1,48 @@
+<div class="row">
+<div class="box col-md-12">
+<div class="box-inner">
+<div class="box-header well" data-original-title="">
+    <h2><i class="glyphicon glyphicon-user"></i> list</h2>
+</div>
+<div class="box-content">
+    <!--//table start-->
+    <table class="table table-bordered table-striped table-condensed">
+        <thead>
+        <tr>
+            <?php echo $th;?>
+        </tr>
+        </thead>
+        <tbody>
+            <?php echo $table;?>
+        </tbody>
+    </table>
+
+    <!--//table end-->
+
+    <!--//page start-->
+    <?php echo $page;?>
+    <!--//page end-->
+</div>
+</div>
+</div>
+<!--/span-->
+<!--//modal start-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h3>确认删除？</h3>
+            </div>
+            <div class="modal-body" style="display: none;">
+                <p>...</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-default" data-dismiss="modal">No</a>
+                <a href="#" class="btn btn-primary" data-dismiss="modal" id="del-y">Yes</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--//modal end-->
+</div><!--/row-->

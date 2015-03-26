@@ -1,0 +1,335 @@
+<?php exit;?>03-12 18:22:01 | code: 0 | msg: 
+exception 'Zend\Db\Adapter\Exception\InvalidArgumentException' with message 'The supplied or instantiated driver object does not implement Zend\Db\Adapter\Driver\DriverInterface' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php:82
+Stack trace:
+#0 /private/var/www/myaf3/app/application/models/Base.php(21): Zend\Db\Adapter\Adapter->__construct(Object(Yaf_Config_Ini))
+#1 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#2 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#3 [internal function]: helloController->worldAction()
+#4 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#5 {main}
+<?php exit;?>03-12 18:22:29 | code: 0 | msg: 
+exception 'Zend\Db\Adapter\Exception\InvalidArgumentException' with message 'The supplied or instantiated driver object does not implement Zend\Db\Adapter\Driver\DriverInterface' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php:82
+Stack trace:
+#0 /private/var/www/myaf3/app/application/models/Base.php(21): Zend\Db\Adapter\Adapter->__construct(Object(Yaf_Config_Ini))
+#1 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#2 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#3 [internal function]: helloController->worldAction()
+#4 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#5 {main}
+<?php exit;?>03-12 18:25:31 | code: 0 | msg: 
+exception 'Zend\Db\Adapter\Exception\InvalidArgumentException' with message 'The supplied or instantiated driver object does not implement Zend\Db\Adapter\Driver\DriverInterface' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php:82
+Stack trace:
+#0 /private/var/www/myaf3/app/application/models/Base.php(21): Zend\Db\Adapter\Adapter->__construct(Object(Yaf_Config_Ini))
+#1 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#2 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#3 [internal function]: helloController->worldAction()
+#4 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#5 {main}
+<?php exit;?>03-12 18:25:32 | code: 0 | msg: 
+exception 'Zend\Db\Adapter\Exception\InvalidArgumentException' with message 'The supplied or instantiated driver object does not implement Zend\Db\Adapter\Driver\DriverInterface' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php:82
+Stack trace:
+#0 /private/var/www/myaf3/app/application/models/Base.php(21): Zend\Db\Adapter\Adapter->__construct(Object(Yaf_Config_Ini))
+#1 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#2 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#3 [internal function]: helloController->worldAction()
+#4 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#5 {main}
+<?php exit;?>03-12 18:25:33 | code: 0 | msg: 
+exception 'Zend\Db\Adapter\Exception\InvalidArgumentException' with message 'The supplied or instantiated driver object does not implement Zend\Db\Adapter\Driver\DriverInterface' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php:82
+Stack trace:
+#0 /private/var/www/myaf3/app/application/models/Base.php(21): Zend\Db\Adapter\Adapter->__construct(Object(Yaf_Config_Ini))
+#1 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#2 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#3 [internal function]: helloController->worldAction()
+#4 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#5 {main}
+<?php exit;?>03-12 18:43:30 | code: 0 | msg: 
+exception 'Zend\Db\Adapter\Exception\InvalidArgumentException' with message 'The supplied or instantiated driver object does not implement Zend\Db\Adapter\Driver\DriverInterface' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php:82
+Stack trace:
+#0 /private/var/www/myaf3/app/application/models/Base.php(21): Zend\Db\Adapter\Adapter->__construct(Object(Yaf_Config_Ini))
+#1 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#2 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#3 [internal function]: helloController->worldAction()
+#4 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#5 {main}
+<?php exit;?>03-12 18:43:31 | code: 0 | msg: 
+exception 'Zend\Db\Adapter\Exception\InvalidArgumentException' with message 'The supplied or instantiated driver object does not implement Zend\Db\Adapter\Driver\DriverInterface' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php:82
+Stack trace:
+#0 /private/var/www/myaf3/app/application/models/Base.php(21): Zend\Db\Adapter\Adapter->__construct(Object(Yaf_Config_Ini))
+#1 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#2 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#3 [internal function]: helloController->worldAction()
+#4 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#5 {main}
+<?php exit;?>03-12 18:43:31 | code: 0 | msg: 
+exception 'Zend\Db\Adapter\Exception\InvalidArgumentException' with message 'The supplied or instantiated driver object does not implement Zend\Db\Adapter\Driver\DriverInterface' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php:82
+Stack trace:
+#0 /private/var/www/myaf3/app/application/models/Base.php(21): Zend\Db\Adapter\Adapter->__construct(Object(Yaf_Config_Ini))
+#1 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#2 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#3 [internal function]: helloController->worldAction()
+#4 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#5 {main}
+<?php exit;?>03-12 18:43:32 | code: 0 | msg: 
+exception 'Zend\Db\Adapter\Exception\InvalidArgumentException' with message 'The supplied or instantiated driver object does not implement Zend\Db\Adapter\Driver\DriverInterface' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php:82
+Stack trace:
+#0 /private/var/www/myaf3/app/application/models/Base.php(21): Zend\Db\Adapter\Adapter->__construct(Object(Yaf_Config_Ini))
+#1 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#2 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#3 [internal function]: helloController->worldAction()
+#4 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#5 {main}
+<?php exit;?>03-12 18:43:32 | code: 0 | msg: 
+exception 'Zend\Db\Adapter\Exception\InvalidArgumentException' with message 'The supplied or instantiated driver object does not implement Zend\Db\Adapter\Driver\DriverInterface' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php:82
+Stack trace:
+#0 /private/var/www/myaf3/app/application/models/Base.php(21): Zend\Db\Adapter\Adapter->__construct(Object(Yaf_Config_Ini))
+#1 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#2 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#3 [internal function]: helloController->worldAction()
+#4 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#5 {main}
+<?php exit;?>03-12 18:43:32 | code: 0 | msg: 
+exception 'Zend\Db\Adapter\Exception\InvalidArgumentException' with message 'The supplied or instantiated driver object does not implement Zend\Db\Adapter\Driver\DriverInterface' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php:82
+Stack trace:
+#0 /private/var/www/myaf3/app/application/models/Base.php(21): Zend\Db\Adapter\Adapter->__construct(Object(Yaf_Config_Ini))
+#1 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#2 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#3 [internal function]: helloController->worldAction()
+#4 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#5 {main}
+<?php exit;?>03-12 18:43:32 | code: 0 | msg: 
+exception 'Zend\Db\Adapter\Exception\InvalidArgumentException' with message 'The supplied or instantiated driver object does not implement Zend\Db\Adapter\Driver\DriverInterface' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php:82
+Stack trace:
+#0 /private/var/www/myaf3/app/application/models/Base.php(21): Zend\Db\Adapter\Adapter->__construct(Object(Yaf_Config_Ini))
+#1 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#2 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#3 [internal function]: helloController->worldAction()
+#4 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#5 {main}
+<?php exit;?>03-12 18:43:32 | code: 0 | msg: 
+exception 'Zend\Db\Adapter\Exception\InvalidArgumentException' with message 'The supplied or instantiated driver object does not implement Zend\Db\Adapter\Driver\DriverInterface' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php:82
+Stack trace:
+#0 /private/var/www/myaf3/app/application/models/Base.php(21): Zend\Db\Adapter\Adapter->__construct(Object(Yaf_Config_Ini))
+#1 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#2 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#3 [internal function]: helloController->worldAction()
+#4 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#5 {main}
+<?php exit;?>03-12 18:43:33 | code: 0 | msg: 
+exception 'Zend\Db\Adapter\Exception\InvalidArgumentException' with message 'The supplied or instantiated driver object does not implement Zend\Db\Adapter\Driver\DriverInterface' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php:82
+Stack trace:
+#0 /private/var/www/myaf3/app/application/models/Base.php(21): Zend\Db\Adapter\Adapter->__construct(Object(Yaf_Config_Ini))
+#1 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#2 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#3 [internal function]: helloController->worldAction()
+#4 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#5 {main}
+<?php exit;?>03-12 18:43:33 | code: 0 | msg: 
+exception 'Zend\Db\Adapter\Exception\InvalidArgumentException' with message 'The supplied or instantiated driver object does not implement Zend\Db\Adapter\Driver\DriverInterface' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php:82
+Stack trace:
+#0 /private/var/www/myaf3/app/application/models/Base.php(21): Zend\Db\Adapter\Adapter->__construct(Object(Yaf_Config_Ini))
+#1 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#2 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#3 [internal function]: helloController->worldAction()
+#4 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#5 {main}
+<?php exit;?>03-12 18:43:39 | code: 0 | msg: 
+exception 'Zend\Db\Adapter\Exception\InvalidArgumentException' with message 'The supplied or instantiated driver object does not implement Zend\Db\Adapter\Driver\DriverInterface' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php:82
+Stack trace:
+#0 /private/var/www/myaf3/app/application/models/Base.php(21): Zend\Db\Adapter\Adapter->__construct(Object(Yaf_Config_Ini))
+#1 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#2 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#3 [internal function]: helloController->worldAction()
+#4 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#5 {main}
+<?php exit;?>03-12 18:43:39 | code: 0 | msg: 
+exception 'Zend\Db\Adapter\Exception\InvalidArgumentException' with message 'The supplied or instantiated driver object does not implement Zend\Db\Adapter\Driver\DriverInterface' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php:82
+Stack trace:
+#0 /private/var/www/myaf3/app/application/models/Base.php(21): Zend\Db\Adapter\Adapter->__construct(Object(Yaf_Config_Ini))
+#1 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#2 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#3 [internal function]: helloController->worldAction()
+#4 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#5 {main}
+<?php exit;?>03-12 18:43:39 | code: 0 | msg: 
+exception 'Zend\Db\Adapter\Exception\InvalidArgumentException' with message 'The supplied or instantiated driver object does not implement Zend\Db\Adapter\Driver\DriverInterface' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php:82
+Stack trace:
+#0 /private/var/www/myaf3/app/application/models/Base.php(21): Zend\Db\Adapter\Adapter->__construct(Object(Yaf_Config_Ini))
+#1 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#2 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#3 [internal function]: helloController->worldAction()
+#4 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#5 {main}
+<?php exit;?>03-12 18:48:10 | code: 0 | msg: 
+exception 'Zend\Db\Adapter\Exception\InvalidArgumentException' with message 'The supplied or instantiated driver object does not implement Zend\Db\Adapter\Driver\DriverInterface' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php:82
+Stack trace:
+#0 /private/var/www/myaf3/app/application/models/Base.php(21): Zend\Db\Adapter\Adapter->__construct(Object(Yaf_Config_Ini))
+#1 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#2 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#3 [internal function]: helloController->worldAction()
+#4 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#5 {main}
+<?php exit;?>03-12 18:48:12 | code: 0 | msg: 
+exception 'Zend\Db\Adapter\Exception\InvalidArgumentException' with message 'The supplied or instantiated driver object does not implement Zend\Db\Adapter\Driver\DriverInterface' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php:82
+Stack trace:
+#0 /private/var/www/myaf3/app/application/models/Base.php(21): Zend\Db\Adapter\Adapter->__construct(Object(Yaf_Config_Ini))
+#1 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#2 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#3 [internal function]: helloController->worldAction()
+#4 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#5 {main}
+<?php exit;?>03-12 18:48:31 | code: 0 | msg: 
+exception 'Zend\Db\Adapter\Exception\InvalidArgumentException' with message 'The supplied or instantiated driver object does not implement Zend\Db\Adapter\Driver\DriverInterface' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php:82
+Stack trace:
+#0 /private/var/www/myaf3/app/application/models/Base.php(21): Zend\Db\Adapter\Adapter->__construct(Object(Yaf_Config_Ini))
+#1 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#2 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#3 [internal function]: helloController->worldAction()
+#4 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#5 {main}
+<?php exit;?>03-12 18:49:00 | code: 0 | msg: 
+exception 'Zend\Db\Adapter\Exception\InvalidArgumentException' with message 'The supplied or instantiated driver object does not implement Zend\Db\Adapter\Driver\DriverInterface' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php:82
+Stack trace:
+#0 /private/var/www/myaf3/app/application/models/Base.php(21): Zend\Db\Adapter\Adapter->__construct(Object(Yaf_Config_Ini))
+#1 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#2 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#3 [internal function]: helloController->worldAction()
+#4 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#5 {main}
+<?php exit;?>03-12 18:49:07 | code: 0 | msg: 
+exception 'Zend\Db\Adapter\Exception\InvalidArgumentException' with message 'The supplied or instantiated driver object does not implement Zend\Db\Adapter\Driver\DriverInterface' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php:82
+Stack trace:
+#0 /private/var/www/myaf3/app/application/models/Base.php(21): Zend\Db\Adapter\Adapter->__construct(Object(Yaf_Config_Ini))
+#1 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#2 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#3 [internal function]: helloController->worldAction()
+#4 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#5 {main}
+<?php exit;?>03-12 18:49:23 | code: 0 | msg: 
+exception 'Zend\Db\Adapter\Exception\InvalidArgumentException' with message 'The supplied or instantiated driver object does not implement Zend\Db\Adapter\Driver\DriverInterface' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php:82
+Stack trace:
+#0 /private/var/www/myaf3/app/application/models/Base.php(21): Zend\Db\Adapter\Adapter->__construct(Object(Yaf_Config_Ini))
+#1 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#2 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#3 [internal function]: helloController->worldAction()
+#4 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#5 {main}
+<?php exit;?>03-12 18:49:30 | code: 0 | msg: 
+exception 'Zend\Db\Adapter\Exception\InvalidArgumentException' with message 'The supplied or instantiated driver object does not implement Zend\Db\Adapter\Driver\DriverInterface' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php:82
+Stack trace:
+#0 /private/var/www/myaf3/app/application/models/Base.php(21): Zend\Db\Adapter\Adapter->__construct(Object(Yaf_Config_Ini))
+#1 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#2 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#3 [internal function]: helloController->worldAction()
+#4 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#5 {main}
+<?php exit;?>03-12 18:54:34 | code: 0 | msg: 
+exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''adm_users'' at line 1' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Driver/Pdo/Statement.php:239
+Stack trace:
+#0 /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Driver/Pdo/Statement.php(239): PDOStatement->execute()
+#1 /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php(185): Zend\Db\Adapter\Driver\Pdo\Statement->execute()
+#2 /private/var/www/myaf3/app/application/models/Base.php(22): Zend\Db\Adapter\Adapter->query('select * from ?', Array)
+#3 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#4 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#5 [internal function]: helloController->worldAction()
+#6 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#7 {main}
+
+Next exception 'Zend\Db\Adapter\Exception\InvalidQueryException' with message 'Statement could not be executed (42000 - 1064 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''adm_users'' at line 1)' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Driver/Pdo/Statement.php:244
+Stack trace:
+#0 /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php(185): Zend\Db\Adapter\Driver\Pdo\Statement->execute()
+#1 /private/var/www/myaf3/app/application/models/Base.php(22): Zend\Db\Adapter\Adapter->query('select * from ?', Array)
+#2 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#3 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#4 [internal function]: helloController->worldAction()
+#5 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#6 {main}
+<?php exit;?>03-12 18:55:01 | code: 0 | msg: 
+exception 'PDOException' with message 'SQLSTATE[42S02]: Base table or view not found: 1146 Table 'myaf.'adm_users'' doesn't exist' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Driver/Pdo/Statement.php:239
+Stack trace:
+#0 /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Driver/Pdo/Statement.php(239): PDOStatement->execute()
+#1 /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php(185): Zend\Db\Adapter\Driver\Pdo\Statement->execute()
+#2 /private/var/www/myaf3/app/application/models/Base.php(22): Zend\Db\Adapter\Adapter->query('select * from `...', Array)
+#3 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#4 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#5 [internal function]: helloController->worldAction()
+#6 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#7 {main}
+
+Next exception 'Zend\Db\Adapter\Exception\InvalidQueryException' with message 'Statement could not be executed (42S02 - 1146 - Table 'myaf.'adm_users'' doesn't exist)' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Driver/Pdo/Statement.php:244
+Stack trace:
+#0 /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php(185): Zend\Db\Adapter\Driver\Pdo\Statement->execute()
+#1 /private/var/www/myaf3/app/application/models/Base.php(22): Zend\Db\Adapter\Adapter->query('select * from `...', Array)
+#2 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#3 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#4 [internal function]: helloController->worldAction()
+#5 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#6 {main}
+<?php exit;?>03-12 18:55:15 | code: 0 | msg: 
+exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '`'`' at line 1' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Driver/Pdo/Statement.php:239
+Stack trace:
+#0 /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Driver/Pdo/Statement.php(239): PDOStatement->execute()
+#1 /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php(185): Zend\Db\Adapter\Driver\Pdo\Statement->execute()
+#2 /private/var/www/myaf3/app/application/models/Base.php(22): Zend\Db\Adapter\Adapter->query('select * from `...', Array)
+#3 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#4 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#5 [internal function]: helloController->worldAction()
+#6 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#7 {main}
+
+Next exception 'Zend\Db\Adapter\Exception\InvalidQueryException' with message 'Statement could not be executed (42000 - 1064 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '`'`' at line 1)' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Driver/Pdo/Statement.php:244
+Stack trace:
+#0 /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php(185): Zend\Db\Adapter\Driver\Pdo\Statement->execute()
+#1 /private/var/www/myaf3/app/application/models/Base.php(22): Zend\Db\Adapter\Adapter->query('select * from `...', Array)
+#2 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#3 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#4 [internal function]: helloController->worldAction()
+#5 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#6 {main}
+<?php exit;?>03-12 18:57:03 | code: 0 | msg: 
+exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''`adm_users`'' at line 1' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Driver/Pdo/Statement.php:239
+Stack trace:
+#0 /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Driver/Pdo/Statement.php(239): PDOStatement->execute()
+#1 /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php(185): Zend\Db\Adapter\Driver\Pdo\Statement->execute()
+#2 /private/var/www/myaf3/app/application/models/Base.php(22): Zend\Db\Adapter\Adapter->query('select * from ?', Array)
+#3 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#4 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#5 [internal function]: helloController->worldAction()
+#6 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#7 {main}
+
+Next exception 'Zend\Db\Adapter\Exception\InvalidQueryException' with message 'Statement could not be executed (42000 - 1064 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''`adm_users`'' at line 1)' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Driver/Pdo/Statement.php:244
+Stack trace:
+#0 /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php(185): Zend\Db\Adapter\Driver\Pdo\Statement->execute()
+#1 /private/var/www/myaf3/app/application/models/Base.php(22): Zend\Db\Adapter\Adapter->query('select * from ?', Array)
+#2 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#3 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#4 [internal function]: helloController->worldAction()
+#5 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#6 {main}
+<?php exit;?>03-12 18:57:48 | code: 0 | msg: 
+exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NULL' at line 1' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Driver/Pdo/Statement.php:239
+Stack trace:
+#0 /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Driver/Pdo/Statement.php(239): PDOStatement->execute()
+#1 /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php(185): Zend\Db\Adapter\Driver\Pdo\Statement->execute()
+#2 /private/var/www/myaf3/app/application/models/Base.php(22): Zend\Db\Adapter\Adapter->query('select * from ?', Array)
+#3 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#4 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#5 [internal function]: helloController->worldAction()
+#6 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#7 {main}
+
+Next exception 'Zend\Db\Adapter\Exception\InvalidQueryException' with message 'Statement could not be executed (42000 - 1064 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NULL' at line 1)' in /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Driver/Pdo/Statement.php:244
+Stack trace:
+#0 /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php(185): Zend\Db\Adapter\Driver\Pdo\Statement->execute()
+#1 /private/var/www/myaf3/app/application/models/Base.php(22): Zend\Db\Adapter\Adapter->query('select * from ?', Array)
+#2 /private/var/www/myaf3/app/application/models/Base.php(13): BaseModel->initMysql()
+#3 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): BaseModel->__construct()
+#4 [internal function]: helloController->worldAction()
+#5 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#6 {main}
+<?php exit;?>03-26 14:00:50 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Favicon.ico.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}

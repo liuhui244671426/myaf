@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>MojiWeather Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="MoJi weather life-index CMS Template">
+    <meta name="author" content="hui.liu">
+
+    <!-- The styles -->
+    <link id="bs-css" href="/statics/charisma/css/bootstrap-cerulean.min.css" rel="stylesheet">
+
+    <link href="/statics/charisma/css/charisma-app.css" rel="stylesheet">
+    <link href='/statics/charisma/components/fullcalendar/dist/fullcalendar.css' rel='stylesheet'>
+    <link href='/statics/charisma/components/fullcalendar/dist/fullcalendar.print.css' rel='stylesheet' media='print'>
+    <link href='/statics/charisma/components/chosen/chosen.min.css' rel='stylesheet'>
+    <link href='/statics/charisma/components/colorbox/example3/colorbox.css' rel='stylesheet'>
+    <link href='/statics/charisma/components/responsive-tables/responsive-tables.css' rel='stylesheet'>
+    <link href='/statics/charisma/components/bootstrap-tour/build/css/bootstrap-tour.min.css' rel='stylesheet'>
+    <link href='/statics/charisma/css/jquery.noty.css' rel='stylesheet'>
+    <link href='/statics/charisma/css/noty_theme_default.css' rel='stylesheet'>
+    <link href='/statics/charisma/css/elfinder.min.css' rel='stylesheet'>
+    <link href='/statics/charisma/css/elfinder.theme.css' rel='stylesheet'>
+    <link href='/statics/charisma/css/jquery.iphone.toggle.css' rel='stylesheet'>
+    <link href='/statics/charisma/css/uploadify.css' rel='stylesheet'>
+    <link href='/statics/charisma/css/animate.min.css' rel='stylesheet'>
+
+    <!-- jQuery -->
+    <script src="/statics/charisma/components/jquery/jquery-debug.js"></script>
+
+    <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- The fav icon -->
+    <link rel="shortcut icon" href="/statics/favicon.ico">
+
+</head>
+<body>
+<div class="ch-container">
+    <div class="row">
+
+        <div class="row">
+            <div class="col-md-12 center login-header">
+                <h2>Welcome to MojiWeather</h2>
+            </div>
+            <!--/span-->
+        </div><!--/row-->
+
+        <div class="row">
+            <div class="well col-md-5 center login-box">
+                <form class="form-horizontal" action="/admin/index/auth" method="post">
+                    <fieldset>
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user red"></i></span>
+                            <input type="text" class="form-control" placeholder="Username" name="user" />
+                        </div>
+                        <div class="clearfix"></div><br>
+
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock red"></i></span>
+                            <input type="password" class="form-control" placeholder="Password" name="pass" />
+                        </div>
+                        <div class="clearfix"></div>
+
+                        <div class="input-prepend">
+                            <label class="remember" for="remember"><input type="checkbox" id="remember" />Remember me</label>
+                        </div>
+                        <div class="clearfix"></div>
+
+                        <p class="center col-md-5">
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </p>
+                    </fieldset>
+                </form>
+            </div>
+            <!--/span-->
+        </div><!--/row-->
+    </div><!--/fluid-row-->
+
+</div><!--/.fluid-container-->
+</body>
+</html>

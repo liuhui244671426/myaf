@@ -1,0 +1,76 @@
+body {
+    min-width: 320px;
+    max-width: 640px;
+    height: 100%;
+    word-wrap: break-word;
+    word-break:break-all;
+    padding: 0;
+    margin: 0 auto;
+    color: #676767;
+    font: 15px/20px "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: #f4f4f4;
+    overflow-x: hidden;
+
+}
+html{
+    -webkit-text-size-adjust: none;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.03em;
+}
+.ta-c{
+    text-align: center;
+}
+.btn {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 0;
+    font-weight: bolder;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 18px;
+    color: #fff;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.btn-info{
+    background-color: #1898dd;
+    border-color:#1898dd ;
+}
+.error-404 .error-404-in {
+    padding:0 30px 30px;
+}
+.error-404 .e404{
+    background:url(../../../images/page/404.png) no-repeat center 95px;
+    background-size:245px 83px;
+    padding:220px 0 55px 0;
+    text-align: center;
+}
+.error-404 .e404 .img {
+    width: 248px;
+    height: 55px;
+    background: url(../../../images/page/404-text.png) no-repeat;
+    background-size: 248px auto;
+    margin: 0 auto 15px auto ;
+}
+
+.error-404-in .btn{
+    width: 200px;
+}

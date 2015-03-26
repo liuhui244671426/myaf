@@ -1,0 +1,16 @@
+[production]
+
+[test:production]
+
+[dev:production]
+
+mysql.m.host = 192.168.1.195
+mysql.m.user = root
+mysql.m.pass = root
+mysql.m.port = 3306
+mysql.m.dbname = myaf
+
+redis.m.host = 192.168.1.12
+redis.m.pass = 'mojichina'
+redis.m.port = 6379
+redis.m.timeout = 2000

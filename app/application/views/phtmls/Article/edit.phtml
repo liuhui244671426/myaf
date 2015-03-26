@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well">
+                <h2><i class="glyphicon glyphicon-info-sign"></i> Edit...</h2>
+            </div>
+            <div class="box-content">
+                <form role="form" action="/admin/articles/edit" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="inputTitle">title</label>
+                        <input type="text" class="form-control" id="inputTitle" placeholder="title" value="<?php echo $article['title'];?>" name="title">
+                        <input type="hidden" value="<?php echo $article['id'];?>" name="id">
+                    </div>
+                    <div class="form-group">
+                        <textarea id="kedit" name="content" class="form-control">
+                            <?php echo $article['content'];?>
+                        </textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputFile">File input</label>
+                        <input type="file" id="exampleInputFile" name="upload">
+                    </div>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
