@@ -13,5 +13,6 @@ class helloController extends BaseController{
 
     public function helloAction(){
         $db = new Hello\worldModel();
+        $db->getWord(1);
     }
 }
