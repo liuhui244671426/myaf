@@ -11,7 +11,7 @@ class helloController extends BaseController{
         echo 'ni hao PHP';
     }
 
-    public function worldAction(){
+    public function helloAction(){
         $db = new Hello\worldModel();
     }
 }

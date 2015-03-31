@@ -333,3 +333,13 @@ exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening con
 Stack trace:
 #0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
 #1 {main}
+<?php exit;?>03-31 16:04:06 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method helloAction in helloController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>03-31 16:04:09 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method helloAction in helloController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
