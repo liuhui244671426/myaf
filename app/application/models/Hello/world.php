@@ -13,13 +13,19 @@ use \DataCenter;
 class worldModel extends BaseModel{
 
     protected $_db;
+    protected $_db1;
+
     public function __construct(){
         $this->_db = DataCenter::getDb('myaf');
+        $this->_db1 = DataCenter::getDb('deydetail');
     }
 
     public function hello(){
         $sql = 'select * from `adm_users` where `id`=1;';
+        $sql1 = 'select * from `avatar_kind` where `kind_id`=1;';
         $result = $this->_db->get_row($sql);
+        $result1 = $this->_db1->get_row($sql1);
         dump($result);
+        dump($result1);
     }
 }

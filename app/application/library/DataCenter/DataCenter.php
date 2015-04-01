@@ -30,13 +30,12 @@ class DataCenter
         }
 
         $file = sprintf('%shalo/HaloPdo.php', LIBRARY_PATH);
-
         if(file_exists($file)){
             Yaf_Loader::import($file);
         } else {
             throw new Exception('HaloPdo.php is not found', -9999);
         }
-        
+
         $db = new HaloPdo(array('host'=>$dbConfig->host, 'port'=>$dbConfig->port, 'user'=>$dbConfig->user, 'pass'=>$dbConfig->pass, 'dbname'=>$dbConfig->dbname));
         return static::$connections['db'][$name] = $db;
     }
@@ -112,6 +111,13 @@ class DataCenter
         if (empty($redisConfig)) {
             throw new Exception(sprintf('config of redis %s is not found', $name), -9998);
         }
+        $file = sprintf('%shalo/HaloRedis.php', LIBRARY_PATH);
+        if(file_exists($file)){
+            Yaf_Loader::import($file);
+        } else {
+            throw new Exception('HaloRedis.php is not found', -9999);
+        }
+
         $redis = new HaloRedis($redisConfig->host,$redisConfig->port, $redisConfig->pass, $redisConfig->timeout);
         return static::$connections['redis'][$name] = $redis;
     }
@@ -135,7 +141,13 @@ class DataCenter
     	if (empty($memcachedConfig)) {
     		throw new Exception(sprintf('config of memcached %s is not found', $name), -9998);
     	}
-    	//$memcached->connect($memcachedConfig->host,$memcachedConfig->port);
+        $file = sprintf('%shalo/HaloMemcached.php', LIBRARY_PATH);
+        if(file_exists($file)){
+            Yaf_Loader::import($file);
+        } else {
+            throw new Exception('HaloMemcached.php is not found', -9999);
+        }
+
     	$memcached = new HaloMemcached($memcachedConfig->host,$memcachedConfig->port);
     	return static::$connections['memcached'][$name] = $memcached;
     }
