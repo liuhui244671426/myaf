@@ -4,6 +4,8 @@
  * file_name DataCenter.php
  * @desc Data base provider
  */
+namespace \DataCenter;
+
 class DataCenter
 {
     private static $connections = array('db'=>array(),'redis'=>array(),'mongo'=>array(), 'mc'=>array(), 'memcached'=>array());
