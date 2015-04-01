@@ -15,9 +15,13 @@ class worldModel extends BaseModel{
     protected $_db;
     protected $_db1;
 
+    protected $_rd;
+
     public function __construct(){
         $this->_db = DataCenter::getDb('myaf');
         $this->_db1 = DataCenter::getDb('deydetail');
+
+        $this->_rd = DataCenter::getRedis('dayDetail');
     }
 
     public function hello(){
@@ -27,5 +31,7 @@ class worldModel extends BaseModel{
         $result1 = $this->_db1->get_row($sql1);
         dump($result);
         dump($result1);
+
+
     }
 }

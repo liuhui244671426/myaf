@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by JetBrains PhpStorm.
  * User: fanlinlin
@@ -6,8 +7,8 @@
  * Time: 上午9:55
  * To change this template use File | Settings | File Templates.
  */
-
-class HaloRedis {
+class HaloRedis
+{
     //REDIS服务主机IP
     private $_HOST = null;
 
@@ -30,33 +31,36 @@ class HaloRedis {
     private $_TRANSCATION = null;
 
     /**
-    * @desc create redis instance
-    * @author yangzeqiang
-    * @createDate 2014-1-15
-    * @param $host server host
-    * @param $port server port 
-    * @param $passwd auth password
-    * @param $timeout connect time limit
-    * @param $dbname
-    * @param $type connect type 
-    * @return redis redis handle instance
-    */
-    public function __construct($host,$port,$passwd,$timeout=0,$dbname="",
-    		$type=1) {
+     * @desc create redis instance
+     * @param $host server host
+     * @param $port server port
+     * @param $passwd auth password
+     * @param $timeout connect time limit
+     * @param $dbname
+     * @param $type connect type
+     * @return redis redis handle instance
+     */
+    public function __construct($host, $port, $passwd, $timeout = 0, $dbname = "", $type = 1)
+    {
         if (!isset($this->_REDIS)) {
+
+            if(!class_exists('redis')){
+                throw new Exception('Class Redis not exists');
+            }
+
             $this->_REDIS = new redis();
-            $this->connect($host,$port,$timeout=0,$dbname,$type);
+            $this->connect($host, $port, $timeout = 0, $dbname, $type);
             if (isset($passwd)) {
-            	$this->_REDIS->auth($passwd);
+                $this->_REDIS->auth($passwd);
             }
         }
-        return  $this->_REDIS;
+        return $this->_REDIS;
     }
 
     /**
      * 连接redis服务器
      */
-    public function connect($host,$port,$timeout,$dbname,$type)
+    public function connect($host, $port, $timeout, $dbname, $type)
     {
         switch ($type) {
             case 1:
@@ -69,7 +73,7 @@ class HaloRedis {
                 break;
         }
     }
-    
+
     /**
      * 查看redis连接是否断开
      * @return $return bool true:连接未断开 false:连接已断开
@@ -88,7 +92,7 @@ class HaloRedis {
      * @param $option array 参数数组键值对
      * @return $return true/false
      */
-    public function setOption($option=array())
+    public function setOption($option = array())
     {
         return $this->_REDIS->setOption();
     }
@@ -97,7 +101,7 @@ class HaloRedis {
      * 获取redis模式参数
      * @param $option array 要获取的参数数组
      */
-    public function getOption($option=array())
+    public function getOption($option = array())
     {
         return $this->_REDIS->getOption();
     }
@@ -112,7 +116,7 @@ class HaloRedis {
      * @param $old int 1:返回旧的value 默认0
      * @return $return bool true:成功 flase:失败
      */
-    public function set($key,$value,$type=0,$repeat=0,$time=0,$old=0)
+    public function set($key, $value, $type = 0, $repeat = 0, $time = 0, $old = 0)
     {
         $return = null;
 
@@ -125,8 +129,8 @@ class HaloRedis {
                 if ($repeat) {
                     $return = $this->_REDIS->setnx($key, $value);
                 } else {
-                    if ($time && is_numeric($time)) $return = 
-                    		$this->_REDIS->setex($key, $time, $value);
+                    if ($time && is_numeric($time)) $return =
+                        $this->_REDIS->setex($key, $time, $value);
                     else $return = $this->_REDIS->set($key, $value);
                 }
             }
@@ -142,7 +146,7 @@ class HaloRedis {
      * @param $end int 字符串结束index
      * @return $return mixed 如果key存在则返回key值 如果不存在返回false
      */
-    public function get($key=null,$start=null,$end=null)
+    public function get($key = null, $start = null, $end = null)
     {
         $return = null;
 
@@ -150,7 +154,7 @@ class HaloRedis {
             $return = $this->_REDIS->getMultiple($key);
         } else {
             if (isset($start) && isset($end)) $return =
-            		$this->_REDIS->getRange($key,$start,$end);
+                $this->_REDIS->getRange($key, $start, $end);
             else
                 $return = $this->_REDIS->get($key);
         }
@@ -163,7 +167,7 @@ class HaloRedis {
      * @param $key array key数组
      * @return $return longint 删除成功的key的个数
      */
-    public function delete($key=array())
+    public function delete($key = array())
     {
         $return = null;
 
@@ -185,9 +189,10 @@ class HaloRedis {
         return $return;
     }
 
-    public function publish($channel,$msg){
+    public function publish($channel, $msg)
+    {
         $return = null;
-        $return = $this->_REDIS->publish($channel,$msg);
+        $return = $this->_REDIS->publish($channel, $msg);
         return $return;
     }
 
@@ -197,7 +202,7 @@ class HaloRedis {
      * @param $type int 0:自减 1:自增 默认为1
      * @param $n int 自增步长 默认为1
      */
-    public function deinc($key,$type=1,$n=1)
+    public function deinc($key, $type = 1, $n = 1)
     {
         $return = null;
         $n = (int)$n;
@@ -280,22 +285,22 @@ class HaloRedis {
      * @param $deriction int 0:数据入队列头(左) 1:数据入队列尾(右) 默认为0
      * @param $repeat int 判断value是否存在  0:不判断存在 1:判断存在 如果value存在则不入队列
      */
-    public function listPush($list,$value,$direction=0,$repeat=0)
+    public function listPush($list, $value, $direction = 0, $repeat = 0)
     {
         $return = null;
 
         switch ($direction) {
             case 0:
                 if ($repeat)
-                    $return = $this->_REDIS->lPushx($list,$value);
+                    $return = $this->_REDIS->lPushx($list, $value);
                 else
-                    $return = $this->_REDIS->lPush($list,$value);
+                    $return = $this->_REDIS->lPush($list, $value);
                 break;
             case 1:
                 if ($repeat)
-                    $return = $this->_REDIS->rPushx($list,$value);
+                    $return = $this->_REDIS->rPushx($list, $value);
                 else
-                    $return = $this->_REDIS->rPush($list,$value);
+                    $return = $this->_REDIS->rPush($list, $value);
                 break;
             default:
                 $return = false;
@@ -313,20 +318,20 @@ class HaloRedis {
      * @param $timeout int timeout为0:只获取list1队列的数据
      *        timeout>0:如果队列list1为空 则等待timeout秒 如果还是未获取到数据 则对list2队列执行pop操作
      */
-    public function listPop($list1,$deriction=0,$list2=null,$timeout=0)
+    public function listPop($list1, $deriction = 0, $list2 = null, $timeout = 0)
     {
         $return = null;
 
         switch ($deriction) {
             case 0:
                 if ($timeout && $list2)
-                    $return = $this->_REDIS->blPop($list1,$list2,$timeout);
+                    $return = $this->_REDIS->blPop($list1, $list2, $timeout);
                 else
                     $return = $this->_REDIS->lPop($list1);
                 break;
             case 1:
                 if ($timeout && $list2)
-                    $return = $this->_REDIS->brPop($list1,$list2,$timeout);
+                    $return = $this->_REDIS->brPop($list1, $list2, $timeout);
                 else
                     $return = $this->_REDIS->rPop($list1);
                 break;
@@ -357,7 +362,7 @@ class HaloRedis {
      * @param $index int 队列元素位置
      * @param $value mixed 元素值
      */
-    public function listSet($list,$index=0,$value=null)
+    public function listSet($list, $index = 0, $value = null)
     {
         $return = null;
 
@@ -372,7 +377,7 @@ class HaloRedis {
      * @param $index int 队列元素开始位置 默认0
      * @param $end int 队列元素结束位置 $index=0,$end=-1:返回队列所有元素
      */
-    public function listGet($list,$index=0,$end=null)
+    public function listGet($list, $index = 0, $end = null)
     {
         $return = null;
 
@@ -391,7 +396,7 @@ class HaloRedis {
      * @param $start int 开始位置
      * @param $end int 结束位置
      */
-    public function listTrim($list,$start=0,$end=-1)
+    public function listTrim($list, $start = 0, $end = -1)
     {
         $return = null;
 
@@ -406,7 +411,7 @@ class HaloRedis {
      * @param $value int 元素值
      * @param $count int 删除个数 0:删除所有 >0:从头部开始删除 <0:从尾部开始删除 默认为0删除所有
      */
-    public function listRemove($list,$value,$count=0)
+    public function listRemove($list, $value, $count = 0)
     {
         $return = null;
 
@@ -433,7 +438,7 @@ class HaloRedis {
      * @param null $valueN
      * @return int|null
      */
-    public function leftPush( $key, $value1, $value2 = null, $valueN = null )
+    public function leftPush($key, $value1, $value2 = null, $valueN = null)
     {
         $return = null;
         $return = $this->_REDIS->lPush($key, $value1);
@@ -460,10 +465,10 @@ class HaloRedis {
      * @param $end
      * @return array|null
      */
-    public function leftRange( $key, $start, $end)
+    public function leftRange($key, $start, $end)
     {
         $return = null;
-        $return = $this->_REDIS->lRange( $key, $start, $end);
+        $return = $this->_REDIS->lRange($key, $start, $end);
         return $return;
     }
 
@@ -474,12 +479,13 @@ class HaloRedis {
      * @param $value
      * @return int|null
      */
-    public function leftInsert( $key, $position, $pivot, $value)
+    public function leftInsert($key, $position, $pivot, $value)
     {
         $return = null;
-        $return = $this->_REDIS->lInsert( $key, $position, $pivot, $value);
+        $return = $this->_REDIS->lInsert($key, $position, $pivot, $value);
         return $return;
     }
+
     /**
      * 在list中值为$value1的元素前Redis::BEFORE或者后Redis::AFTER插入值为$value2的元素
      * 如果list不存在，不会插入，如果$value1不存在，return -1
@@ -488,7 +494,7 @@ class HaloRedis {
      * @param $value1 mixed 要查找的元素值
      * @param $value2 mixed 要插入的元素值
      */
-    public function listInsert($list,$location=0,$value1,$value2)
+    public function listInsert($list, $location = 0, $value1, $value2)
     {
         $return = null;
 
@@ -531,7 +537,7 @@ class HaloRedis {
      * @param $stype int 集合类型 0:无序集合 1:有序集和 默认0
      * @param $score int 元素排序值
      */
-    public function setAdd($set,$value=null,$stype=0,$score=null)
+    public function setAdd($set, $value = null, $stype = 0, $score = null)
     {
         $return = null;
 
@@ -551,10 +557,10 @@ class HaloRedis {
      * @param null $memberN
      * @return int|null
      */
-    public function setRem($key, $member1, $member2 = null, $memberN = null )
+    public function setRem($key, $member1, $member2 = null, $memberN = null)
     {
         $return = null;
-        $return = $this->_REDIS->sRem($key, $member1, $member2 = null, $memberN = null );
+        $return = $this->_REDIS->sRem($key, $member1, $member2 = null, $memberN = null);
         return $return;
     }
 
@@ -565,7 +571,7 @@ class HaloRedis {
      * @param $stype int 集合类型 0:无序集合 1:有序集和 默认0
      * @param $set2 string 集合名
      */
-    public function setMove($set1, $value=null, $stype=0, $set2=null)
+    public function setMove($set1, $value = null, $stype = 0, $set2 = null)
     {
         $return = null;
 
@@ -584,7 +590,7 @@ class HaloRedis {
      * @param $set string 集合名
      * @param $value mixed 值
      */
-    public function setSearch($set, $value=null)
+    public function setSearch($set, $value = null)
     {
         $return = null;
 
@@ -601,7 +607,7 @@ class HaloRedis {
      * @param $start int 开始index
      * @param $end int 结束index
      */
-    public function setSize($set,$stype=0,$start=0,$end=0)
+    public function setSize($set, $stype = 0, $start = 0, $end = 0)
     {
         $return = null;
 
@@ -620,7 +626,7 @@ class HaloRedis {
      * @param $set string 集合名
      * @param $isdel int 是否删除该元素 0:不删除 1:删除 默认为0
      */
-    public function setPop($set,$isdel=0)
+    public function setPop($set, $isdel = 0)
     {
         $return = null;
 
@@ -641,7 +647,7 @@ class HaloRedis {
      * @param $weight array 权重 执行function操作时要指定的每个集合的相同元素所占的权重 默认1
      * @param $function string 不同集合的相同元素的取值规则函数 SUM:取元素值的和 MAX:取最大值元素 MIN:取最小值元素
      */
-    public function setInter($set,$newset=null,$stype=0,$weight=array(1),$function='SUM')
+    public function setInter($set, $newset = null, $stype = 0, $weight = array(1), $function = 'SUM')
     {
         $return = array();
 
@@ -665,14 +671,14 @@ class HaloRedis {
      * @param $weight array 权重 执行function操作时要指定的每个集合的相同元素所占的权重 默认1
      * @param $function string 不同集合的相同元素的取值规则函数 SUM:取元素值的和 MAX:取最大值元素 MIN:取最小值元素
      */
-    public function setUnion($set,$newset=null,$stype=0,$weight=array(1),$function='SUM')
+    public function setUnion($set, $newset = null, $stype = 0, $weight = array(1), $function = 'SUM')
     {
         $return = array();
 
         if (is_array($set) && !empty($set)) {
             if ($newset) {
-                if ($stype) $return = $this->_REDIS->zUnion($newset, $set, 
-                		$weight, $function);
+                if ($stype) $return = $this->_REDIS->zUnion($newset, $set,
+                    $weight, $function);
                 else $return = $this->_REDIS->sUnionStore($newset, $set);
             } else {
                 $return = $this->_REDIS->sUnion($set);
@@ -687,7 +693,7 @@ class HaloRedis {
      * @param $set array 集合名数组
      * @param $newset string 要保存到的集合名 默认为null 即不保存交集到新集合
      */
-    public function setDiff($set,$newset=null)
+    public function setDiff($set, $newset = null)
     {
         $return = array();
 
@@ -720,14 +726,14 @@ class HaloRedis {
      * @param $set string 集合名
      * @param $option array 选项
      */
-    public function setSort($set,$option)
+    public function setSort($set, $option)
     {
         $return = null;
         $default_option = array(
-            'by'    => 'some_pattern_*', //要匹配的排序value值
+            'by' => 'some_pattern_*', //要匹配的排序value值
             'limit' => array(0, 1), //array(start,length)
-            'get'   => 'some_other_pattern_*', //多个匹配格式:array('some_other_pattern1_*','some_other_pattern2_*')
-            'sort'  => 'asc', // asc|desc 默认asc
+            'get' => 'some_other_pattern_*', //多个匹配格式:array('some_other_pattern1_*','some_other_pattern2_*')
+            'sort' => 'asc', // asc|desc 默认asc
             'alpha' => TRUE, //
             'store' => 'some_need_pattern_*' //永久性排序值
         );
@@ -750,7 +756,7 @@ class HaloRedis {
      * @param $order int 排序方式 0:从小到大排序 1:从大到小排序 默认0
      * @param $score bool 元素排序值 false:返回数据不带score true:返回数据带score 默认false
      */
-    public function setRange($set,$start,$end,$order=0,$score=false)
+    public function setRange($set, $start, $end, $order = 0, $score = false)
     {
         $return = null;
 
@@ -770,7 +776,7 @@ class HaloRedis {
      * @param $start int 开始score
      * @param $end int 结束score
      */
-    public function setDeleteRange($set,$start,$end)
+    public function setDeleteRange($set, $start, $end)
     {
         $return = null;
 
@@ -788,7 +794,7 @@ class HaloRedis {
      * @param $value mixed 元素值
      * @param $inc int 要给score增加的数值 默认是null 不执行score增加操作
      */
-    public function setScore($set,$value,$inc=null)
+    public function setScore($set, $value, $inc = null)
     {
         $return = null;
 
@@ -810,7 +816,7 @@ class HaloRedis {
      * @param $hash string 哈希表名
      * @param $data array 要写入的数据 array('key'=>'value')
      */
-    public function hashSet($hash,$data)
+    public function hashSet($hash, $data)
     {
         $return = null;
 
@@ -821,11 +827,11 @@ class HaloRedis {
     }
 
 
-    public function hashHSet($key,$field,$value)
+    public function hashHSet($key, $field, $value)
     {
         $return = null;
-        if(!empty($key)){
-            $return = $this->_REDIS->hSet($key,$field,$value);
+        if (!empty($key)) {
+            $return = $this->_REDIS->hSet($key, $field, $value);
         }
         return $return;
     }
@@ -836,15 +842,15 @@ class HaloRedis {
      * @param $key mixed 表中要存储的key名 默认为null 返回所有key>value
      * @param $type int 要获取的数据类型 0:返回所有key 1:返回所有value 2:返回所有key->value
      */
-    public function hashGet($hash,$key=array(),$type=0)
+    public function hashGet($hash, $key = array(), $type = 0)
     {
         $return = null;
 
         if ($key) {
             if (is_array($key) && !empty($key))
-                $return = $this->_REDIS->hMGet($hash,$key);
+                $return = $this->_REDIS->hMGet($hash, $key);
             else
-                $return = $this->_REDIS->hGet($hash,$key);
+                $return = $this->_REDIS->hGet($hash, $key);
         } else {
             switch ($type) {
                 case 0:
@@ -883,11 +889,11 @@ class HaloRedis {
      * @param $hash string 哈希表名
      * @param $key mixed 表中存储的key名
      */
-    public function hashDel($hash,$key)
+    public function hashDel($hash, $key)
     {
         $return = null;
 
-        $return = $this->_REDIS->hDel($hash,$key);
+        $return = $this->_REDIS->hDel($hash, $key);
 
         return $return;
     }
@@ -897,11 +903,11 @@ class HaloRedis {
      * @param $hash string 哈希表名
      * @param $key mixed 表中存储的key名
      */
-    public function hashExists($hash,$key)
+    public function hashExists($hash, $key)
     {
         $return = null;
 
-        $return = $this->_REDIS->hExists($hash,$key);
+        $return = $this->_REDIS->hExists($hash, $key);
 
         return $return;
     }
@@ -912,7 +918,7 @@ class HaloRedis {
      * @param $key mixed 表中存储的key名
      * @param $inc int 要增加的值
      */
-    public function hashInc($hash,$key,$inc)
+    public function hashInc($hash, $key, $inc)
     {
         $return = null;
 
@@ -941,7 +947,7 @@ class HaloRedis {
      * 获取满足给定pattern的所有key
      * @param $key regexp key匹配表达式 模式:user* 匹配以user开始的key
      */
-    public function getKeys($key=null)
+    public function getKeys($key = null)
     {
         $return = null;
 
@@ -955,7 +961,7 @@ class HaloRedis {
      * @param $type int 保存方式 0:同步 1:异步 默认0
      * @param $time int 是否要获取上次成功将数据保存到磁盘的Unix时戳 0:不返回时间 1:返回时间
      */
-    public function hwSave($type=0,$time=0)
+    public function hwSave($type = 0, $time = 0)
     {
         $return = null;
 

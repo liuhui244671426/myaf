@@ -6,6 +6,7 @@ class HaloPdo
     public $dbh;
     protected $transLevel = 0;
     public $error;
+
     /**
      * 初始化
      * */
