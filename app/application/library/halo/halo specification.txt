@@ -1,0 +1,62 @@
+﻿sql关键字大写
+能用单引号的地方不得使用双引号
+model接受的参数不得使用关联数组
+action中不得调用db
+该用sprintf的地方不能用.连接
+大括号对齐使用c++风格
+统一使用驼峰命名法
+不要出现YLX_XXX【禁止用拼音！】
+model类内部不允许出现$_SESSION，需要传uid的都通过参数传
+action中需要用model，不要require，必须使用loadModel
+‘与’运算符不许用AND，一律用&&，and的运算符优先级比&&和=低，易引起bug
+字符串查询，LIKIE查询等计算量大的查询条件在sql中要一律写到简单条件之后。
+发起请求者的UID，在model参数中一律命名为$uid，且排在参数的第一位
+加载语言资源时，调用loadLanguageResource加载，loadLanguageResource可以强制指定语言类型，如果不指定，则返回当前语言类型的资源
+语言资源命名使用下划线命名法，均加RESOURCE前缀，且必须大写
+strval可以转换字符串，不要用sprintf("%s",string);
+错误提示：你希望到这里程序就结束了，就suspendwitherror（int），如果你希望返回错误代码同时还返回正常的结果，就getOutputBuilder()->error
+Action中调用model，最好把参数从$param或$_SESSION中取出来再传（这样看着美观，且在多次使用一个参数时应该有一点点性能上的好处【关联数组的元素访问应该需要查找的】）；
+$_SESSION['Fuid']，在所有需要uid的method之前，已经有sidVerify函数进行过uid的合法化判断了，故不再需要进行合法化判断；
+Action中的checkList可以删除了，统一使用ensureList来代替checkList；
+Action中进行参数的合法化判断和错误提示，在model中进行和执行相关的错误返回（如在聚会中进行一条发言，‘聚会ID不合法’，‘发言内容为空’的错误提示应该在Action中完成，而‘聚会不存在’，‘用户没有发言权限’这样的错误应该由model返回）
+
+
+友联系错误码规范:
+
+错误码在function/YContactErrorCode.php中定义，统一大写并使用下划线命名法
+系统错误码使用SYS为前缀，例如SYS_SERVER_INTERNAL_ERROR
+服务错误码使用服务名字为前缀(一般是错误发生的Action的前缀)，如ACCOUNT_USERNAME_NULL或CARD_FRIEND_ALREADY
+
+错误码对应的提示在lang/'语言编码'/Error.php中使用关联数组进行定义（未来会切到数据库中）
+统一使用RESOURCE前缀和下划线命名法，命名统一为RESOURCE_‘错误类型’_ERROR_TEXT。
+每一类错误使用一个关联数组。
+在进行语言定义时，应先用中文进行自行定义，等开发完成后，再统一请产品人员对资源文件进行修改和翻译。
+如:
+
+$RESOURCE_SYS_ERROR_TEXT = array(
+		SYS_SERVER_INTERNAL_ERROR=>'服务器内部错误',
+		SYS_XML_ERROR=>'XML解析错误',
+		SYS_ADDR_ERROR=>'请求地址错误',
+		SYS_SID_ERROR=>'帐号未登录',
+		SYS_NAME_ERROR=>'请补全姓名',
+		SYS_BUILDER_ERROR=>'对应的Builder不存在',
+		SYS_UID_ERROR=>'对应的用户不存在',
+		SYS_USERCENTER_ERROR=>'用户中心内部错误',
+		SYS_PARAM_ERROR=>'参数错误',
+);
+
+$RESOURCE_ACTION_ERROR_TEXT = array(
+				
+		ACCOUNT_USERNAME_NULL=>'用户名不能为空',
+		ACCOUNT_NUMBER_ERROR=>'手机号不合法',
+		ACCOUNT_EMAIL_ERROR=>'邮箱不合法',
+		ACCOUNT_COUNTRY_ERROR=>'国家码不能为空',
+		ACCOUNT_PWD_NULL=>'密码不能为空',
+		ACCOUNT_ACCOUNT_ERROR=>'帐号或密码不正确',
+		ACCOUNT_ACCOUNT_YOULU_ERROR=>'帐号或密码不正确[请使用友录密码登录]',
+		ACCOUNT_ACCOUNT_DEL=>'账号已经被删除',
+		ACCOUNT_PASSWORD_ERROR=>'密码错误',
+		ACCOUNT_SAME_PASSWORD=>'新旧密码一致',
+		
+		ACCOUNT_ACCOUNT_NOT_EXISTS=>'帐号不存在',
+		);
