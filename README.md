@@ -1,6 +1,5 @@
 # myaf
 ==========================================================
-
-zend + yaf + charisma
+yaf + charisma
 nginx:
 

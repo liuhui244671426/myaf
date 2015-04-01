@@ -7,12 +7,19 @@
  */
 namespace Hello;
 
-
 use \BaseModel;
+use \DataCenter;
 
 class worldModel extends BaseModel{
 
-    public function getWord($pos){
+    protected $_db;
+    public function __construct(){
+        $this->_db = DataCenter::getDb('myaf');
+    }
 
+    public function hello(){
+        $sql = 'select * from `adm_users` where `id`=1;';
+        $result = $this->_db->get_row($sql);
+        dump($result);
     }
 }

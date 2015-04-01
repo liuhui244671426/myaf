@@ -1,0 +1,123 @@
+16:00:00-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:18 'AuthPlugin::dispatchLoopStartup'
+16:00:00-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:19 7
+16:00:00-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:20 -4
+16:01:28-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:18 'AuthPlugin::dispatchLoopStartup'
+16:01:28-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:19 7
+16:01:28-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:20 -4
+16:01:34-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:18 'AuthPlugin::dispatchLoopStartup'
+16:01:34-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:19 7
+16:01:34-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:20 -4
+16:10:15-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:18 'AuthPlugin::dispatchLoopStartup'
+16:10:15-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:19 7
+16:10:15-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:20 -4
+16:12:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:18 'AuthPlugin::dispatchLoopStartup'
+16:12:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:19 7
+16:12:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:20 -4
+16:12:02-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:491 'select * from `adm_users` where `id`=1;'
+16:12:02-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:492 array (
+  0 => '3D000',
+  1 => 1046,
+  2 => 'No database selected',
+)
+16:20:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:18 'AuthPlugin::dispatchLoopStartup'
+16:20:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:19 7
+16:20:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:20 -4
+16:20:02-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:448 'select * from `adm_users` where `id`=1;'
+16:20:02-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:449 array (
+  0 => '3D000',
+  1 => 1046,
+  2 => 'No database selected',
+)
+16:20:03-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:18 'AuthPlugin::dispatchLoopStartup'
+16:20:03-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:19 7
+16:20:03-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:20 -4
+16:20:03-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:448 'select * from `adm_users` where `id`=1;'
+16:20:03-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:449 array (
+  0 => '3D000',
+  1 => 1046,
+  2 => 'No database selected',
+)
+16:20:03-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:18 'AuthPlugin::dispatchLoopStartup'
+16:20:03-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:19 7
+16:20:03-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:20 -4
+16:20:03-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:448 'select * from `adm_users` where `id`=1;'
+16:20:03-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:449 array (
+  0 => '3D000',
+  1 => 1046,
+  2 => 'No database selected',
+)
+16:20:03-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:18 'AuthPlugin::dispatchLoopStartup'
+16:20:03-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:19 7
+16:20:03-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:20 -4
+16:20:03-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:448 'select * from `adm_users` where `id`=1;'
+16:20:03-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:449 array (
+  0 => '3D000',
+  1 => 1046,
+  2 => 'No database selected',
+)
+16:20:04-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:18 'AuthPlugin::dispatchLoopStartup'
+16:20:04-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:19 7
+16:20:04-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:20 -4
+16:20:04-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:448 'select * from `adm_users` where `id`=1;'
+16:20:04-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:449 array (
+  0 => '3D000',
+  1 => 1046,
+  2 => 'No database selected',
+)
+16:20:09-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:18 'AuthPlugin::dispatchLoopStartup'
+16:20:09-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:19 7
+16:20:09-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:20 -4
+16:20:09-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:448 'select * from `adm_users` where `id`=1;'
+16:20:09-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:449 array (
+  0 => '3D000',
+  1 => 1046,
+  2 => 'No database selected',
+)
+16:24:27-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:18 'AuthPlugin::dispatchLoopStartup'
+16:24:27-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:19 7
+16:24:27-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:20 -4
+16:24:27-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:447 'select * from `adm_users` where `id`=1;'
+16:24:27-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:448 array (
+  0 => '3D000',
+  1 => 1046,
+  2 => 'No database selected',
+)
+16:25:54-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:18 'AuthPlugin::dispatchLoopStartup'
+16:25:54-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:19 7
+16:25:54-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:20 -4
+16:25:54-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:447 'select * from `adm_users` where `id`=1;'
+16:25:54-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:449 array (
+  0 => '3D000',
+  1 => 1046,
+  2 => 'No database selected',
+)
+16:26:18-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:18 'AuthPlugin::dispatchLoopStartup'
+16:26:18-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:19 7
+16:26:18-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:20 -4
+16:26:18-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:447 'select * from `adm_users` where `id`=1;'
+16:26:18-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:449 array (
+  0 => '3D000',
+  1 => 1046,
+  2 => 'No database selected',
+)
+16:30:52-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:18 'AuthPlugin::dispatchLoopStartup'
+16:30:52-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:19 7
+16:30:52-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:20 -4
+16:30:52-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:447 'select * from `adm_users` where `id`=1;'
+16:30:52-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:449 array (
+  0 => '3D000',
+  1 => 1046,
+  2 => 'No database selected',
+)
+16:56:37-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:18 'AuthPlugin::dispatchLoopStartup'
+16:56:37-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:19 7
+16:56:37-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:20 -4
+16:56:37-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:447 'select * from `adm_users` where `id`=1;'
+16:56:37-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:449 array (
+  0 => '3D000',
+  1 => 1046,
+  2 => 'No database selected',
+)
+16:56:49-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:18 'AuthPlugin::dispatchLoopStartup'
+16:56:49-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:19 7
+16:56:49-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:20 -4

@@ -15,26 +15,11 @@ class Bootstrap extends Yaf_Bootstrap_Abstract {
      */
     public function _initConfig(Yaf_Dispatcher $dispatcher){
         header('content-type:text/html;charset=utf-8');
-
-        //Yaf_Session::getInstance()->start();
         session_start();
 
         Yaf_Loader::import('initConfig.php');
-        initConfig::init();
 
-        //$dispatcher->setErrorHandler('sysErrorHandler');
         set_error_handler('sysErrorHandler');
-    }
-
-    /**
-     * 连接数据库,设置数据库适配器
-     */
-    public function _initDefaultDbAdapter(){
-        $dbAdapter = new Zend\Db\Adapter\Adapter(
-            Yaf_Registry::get('config_db')->database->myaf->toArray()
-        );
-
-        Yaf_Registry::set("adapter", $dbAdapter);
     }
 
     public function _initNamespaces(){

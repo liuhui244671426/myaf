@@ -4,7 +4,7 @@
  * @Create Time: 14-9-11 下午5:39
  * @Desc : 初始化app
  */
-
+initConfig::init();
 
 class initConfig
 {
@@ -30,7 +30,7 @@ class initConfig
     static public function initLoad()
     {
         $libraryFiles = array(
-            'constant', 'status', 'functions', 'YafController',
+            'constant', 'status', 'functions', 'YafController', 'DataCenter/DataCenter'
         );
         foreach($libraryFiles as $file){
             $file = APPLICATION_PATH . '/application/library/'.$file.'.php';

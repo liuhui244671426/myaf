@@ -4,7 +4,6 @@
  * file_name DataCenter.php
  * @desc Data base provider
  */
-namespace \DataCenter;
 
 class DataCenter
 {
@@ -22,14 +21,23 @@ class DataCenter
             return static::$connections['db'][$name];
         }
 
-        $config = Yaf_Registry::get('config');
-        $dbConfig = $config->db->{$name};
+        $config = Yaf_Registry::get('config_db');
+        $dbConfig = $config->mysql->{$name};
+
         if (empty($dbConfig))
         {
             throw new Exception(sprintf('config of db %s is not found', $name), -9999);
         }
-        $db = new HaloPdo(array('host'=>$dbConfig->host, 'port'=>$dbConfig->port, 'user'=>$dbConfig->user, 'pass'=>$dbConfig->pass, 'dbname'=>$dbConfig->name));
-        //$db = new HaloDb(array('host'=>$dbConfig->host, 'user'=>$dbConfig->user, 'pass'=>$dbConfig->pass, 'dbname'=>$dbConfig->name));
+
+        $file = sprintf('%shalo/HaloPdo.php', LIBRARY_PATH);
+
+        if(file_exists($file)){
+            Yaf_Loader::import($file);
+        } else {
+            throw new Exception('HaloPdo.php is not found', -9999);
+        }
+        
+        $db = new HaloPdo(array('host'=>$dbConfig->host, 'port'=>$dbConfig->port, 'user'=>$dbConfig->user, 'pass'=>$dbConfig->pass, 'dbname'=>$dbConfig->dbname));
         return static::$connections['db'][$name] = $db;
     }
 
@@ -39,7 +47,7 @@ class DataCenter
      * @return HaloKVClient
      * @throws Exception
      */
-    public static function getMongo($name='web') {
+    public static function getMongo($name) {
         if (isset(static::$connections['mongo'][$name]))
         {
             return static::$connections['mongo'][$name];
@@ -66,7 +74,7 @@ class DataCenter
      * @return HaloMongo
      * @throws Exception
      */
-    public static function getMongodb($name='web') {
+    public static function getMongodb($name) {
         if (isset(static::$connections['mongo'][$name]))
         {
             return static::$connections['mongo'][$name];
@@ -93,7 +101,7 @@ class DataCenter
     * @createDate 2014-1-16
     * @return HaloRedis
     */
-    public static function getRedis($name='web') {
+    public static function getRedis($name) {
         if (isset(static::$connections['redis'][$name])){
             return static::$connections['redis'][$name];
         }
@@ -115,7 +123,7 @@ class DataCenter
     * @param $name
     * @return return_type
     */
-    public static function getMemcached($name='web'){
+    public static function getMemcached($name){
     	if (isset(static::$connections['memcached'][$name])){
     		return static::$connections['memcached'][$name];
     	}
@@ -138,7 +146,7 @@ class DataCenter
      * @return MemCacheBase
      * @throws Exception
      */
-    public static function getMc($name='web')
+    public static function getMc($name)
     {
         if (isset(static::$connections['mc'][$name]))
         {

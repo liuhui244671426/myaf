@@ -17,7 +17,10 @@
         </div>
         <div class="ta-c"><button class="btn btn-info"  onclick="javascript:history.back();">返回上一页</button><?php echo $code;?></div>
     </div>
-    <div style="display: none;"><?php echo $msg;?></div>
+    <?php
+        $isHide = in_array(MODE, array('dev', 'test'))?'':'display: none;';
+    ?>
+    <div style="<?php echo $isHide;?>"><?php echo $msg;?></div>
 </section>
 
 </body>
