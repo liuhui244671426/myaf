@@ -3,7 +3,6 @@
 /**
  * @desc memcahed  sinleton
  * @date 下午5:27:22
- * @modify
  * @instance
  * @todo:优化成memcached
  */
@@ -18,8 +17,10 @@ class HaloMemcached
         if (!class_exists('Memcache')) {
             throw new Exception('Class Memcache not exists');
         }
+
         $this->_memcache = new Memcache();
         if (self::$_connect_type == 'connect') {
+
             if (isset($timeout)) {
                 $this->_memcache->connect($host, $port, $timeout);
             } else {
