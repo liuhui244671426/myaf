@@ -1,0 +1,9 @@
+21:34:40-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:18 'AuthPlugin::dispatchLoopStartup'
+21:34:40-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:19 7
+21:34:40-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:20 -4
+21:34:41-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:18 'AuthPlugin::dispatchLoopStartup'
+21:34:41-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:19 7
+21:34:41-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:20 -4
+21:39:15-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:18 'AuthPlugin::dispatchLoopStartup'
+21:39:15-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:19 7
+21:39:15-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:20 -4
