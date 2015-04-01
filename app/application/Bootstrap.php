@@ -15,7 +15,7 @@ class Bootstrap extends Yaf_Bootstrap_Abstract {
      */
     public function _initConfig(Yaf_Dispatcher $dispatcher){
         header('content-type:text/html;charset=utf-8');
-        
+
         //Yaf_Session::getInstance()->start();
         session_start();
 
