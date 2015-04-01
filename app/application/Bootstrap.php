@@ -28,6 +28,17 @@ class Bootstrap extends Yaf_Bootstrap_Abstract {
         set_error_handler('sysErrorHandler');
     }
 
+    /**
+     * 连接数据库,设置数据库适配器
+     */
+    public function _initDefaultDbAdapter(){
+        $dbAdapter = new Zend\Db\Adapter\Adapter(
+            Yaf_Registry::get('config_db')->database->myaf->toArray()
+        );
+
+        Yaf_Registry::set("adapter", $dbAdapter);
+    }
+
     public function _initNamespaces(){
         //申明, 凡是以Zend,Local开头的类, 都是本地类
         Yaf_Loader::getInstance()->registerLocalNameSpace(array("Zend", "Local"));

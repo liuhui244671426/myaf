@@ -115,3 +115,66 @@
 <?php exit;?>2015-03-31 17:06:47 | code: 2 | msg: Yaf_Loader::autoload(): Failed opening script /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php: No such file or directory | file: /private/var/www/myaf3/app/application/models/Base.php | line: 21
 <?php exit;?>2015-03-31 17:06:47 | code: 2 | msg: Yaf_Loader::autoload(): Failed opening script /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php: No such file or directory | file: /private/var/www/myaf3/app/application/models/Base.php | line: 21
 <?php exit;?>2015-03-31 17:06:47 | code: 2 | msg: Yaf_Loader::autoload(): Failed opening script /private/var/www/myaf3/app/application/library/Zend/Db/Adapter/Adapter.php: No such file or directory | file: /private/var/www/myaf3/app/application/models/Base.php | line: 21
+<?php exit;?>2015-03-31 17:16:50 | code: 8 | msg: Undefined variable: dbAdapter                 | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 36
+<?php exit;?>2015-03-31 17:16:50 | code: 8 | msg: Undefined variable: dbParams                  | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 37
+<?php exit;?>2015-03-31 17:16:51 | code: 8 | msg: Undefined variable: dbAdapter                 | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 36
+<?php exit;?>2015-03-31 17:16:51 | code: 8 | msg: Undefined variable: dbParams                  | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 37
+<?php exit;?>2015-03-31 17:16:52 | code: 8 | msg: Undefined variable: dbAdapter                 | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 36
+<?php exit;?>2015-03-31 17:16:52 | code: 8 | msg: Undefined variable: dbParams                  | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 37
+<?php exit;?>2015-03-31 17:16:52 | code: 8 | msg: Undefined variable: dbAdapter                 | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 36
+<?php exit;?>2015-03-31 17:16:52 | code: 8 | msg: Undefined variable: dbParams                  | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 37
+<?php exit;?>2015-03-31 17:16:52 | code: 8 | msg: Undefined variable: dbAdapter                 | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 36
+<?php exit;?>2015-03-31 17:16:52 | code: 8 | msg: Undefined variable: dbParams                  | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 37
+<?php exit;?>2015-03-31 17:17:01 | code: 8 | msg: Undefined variable: dbAdapter                 | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 36
+<?php exit;?>2015-03-31 17:17:01 | code: 8 | msg: Undefined variable: dbParams                  | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 37
+<?php exit;?>2015-03-31 17:17:02 | code: 8 | msg: Undefined variable: dbAdapter                 | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 36
+<?php exit;?>2015-03-31 17:17:02 | code: 8 | msg: Undefined variable: dbParams                  | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 37
+<?php exit;?>2015-03-31 17:17:03 | code: 8 | msg: Undefined variable: dbAdapter                 | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 36
+<?php exit;?>2015-03-31 17:17:03 | code: 8 | msg: Undefined variable: dbParams                  | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 37
+<?php exit;?>2015-03-31 17:17:03 | code: 8 | msg: Undefined variable: dbAdapter                 | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 36
+<?php exit;?>2015-03-31 17:17:03 | code: 8 | msg: Undefined variable: dbParams                  | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 37
+<?php exit;?>2015-03-31 17:17:03 | code: 8 | msg: Undefined variable: dbAdapter                 | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 36
+<?php exit;?>2015-03-31 17:17:03 | code: 8 | msg: Undefined variable: dbParams                  | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 37
+<?php exit;?>2015-03-31 17:18:10 | code: 8 | msg: Undefined variable: dbAdapter                 | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 36
+<?php exit;?>2015-03-31 17:18:10 | code: 8 | msg: Undefined variable: dbParams                  | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 37
+<?php exit;?>2015-03-31 17:18:13 | code: 8 | msg: Undefined variable: dbAdapter                 | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 36
+<?php exit;?>2015-03-31 17:18:13 | code: 8 | msg: Undefined variable: dbParams                  | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 37
+<?php exit;?>2015-03-31 17:19:58 | code: 8 | msg: Undefined variable: dbParams                  | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 37
+<?php exit;?>2015-03-31 17:20:03 | code: 8 | msg: Undefined variable: dbParams                  | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 37
+<?php exit;?>2015-03-31 17:20:04 | code: 8 | msg: Undefined variable: dbParams                  | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 37
+<?php exit;?>2015-03-31 17:20:04 | code: 8 | msg: Undefined variable: dbParams                  | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 37
+<?php exit;?>2015-03-31 17:20:04 | code: 8 | msg: Undefined variable: dbParams                  | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 37
+<?php exit;?>2015-03-31 17:20:04 | code: 8 | msg: Undefined variable: dbParams                  | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 37
+<?php exit;?>2015-03-31 17:20:05 | code: 8 | msg: Undefined variable: dbParams                  | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 37
+<?php exit;?>2015-03-31 17:20:05 | code: 8 | msg: Undefined variable: dbParams                  | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 37
+<?php exit;?>2015-03-31 17:20:25 | code: 8 | msg: Undefined variable: dbParams                  | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 37
+<?php exit;?>2015-03-31 17:21:42 | code: 2 | msg: require_once(Zend/Db/Exception.php): failed to open stream: No such file or directory | file: /private/var/www/myaf3/app/application/library/Zend/Db.php | line: 238
+<?php exit;?>2015-03-31 17:26:24 | code: 2 | msg: require_once(Zend/Db/Exception.php): failed to open stream: No such file or directory | file: /private/var/www/myaf3/app/application/library/Zend/Db.php | line: 238
+<?php exit;?>2015-03-31 17:26:25 | code: 2 | msg: require_once(Zend/Db/Exception.php): failed to open stream: No such file or directory | file: /private/var/www/myaf3/app/application/library/Zend/Db.php | line: 238
+<?php exit;?>2015-03-31 17:26:26 | code: 2 | msg: require_once(Zend/Db/Exception.php): failed to open stream: No such file or directory | file: /private/var/www/myaf3/app/application/library/Zend/Db.php | line: 238
+<?php exit;?>2015-03-31 17:26:26 | code: 2 | msg: require_once(Zend/Db/Exception.php): failed to open stream: No such file or directory | file: /private/var/www/myaf3/app/application/library/Zend/Db.php | line: 238
+<?php exit;?>2015-03-31 17:27:53 | code: 2 | msg: require_once(Zend/Db/Exception.php): failed to open stream: No such file or directory | file: /private/var/www/myaf3/app/application/library/Zend/Db.php | line: 238
+<?php exit;?>2015-03-31 17:27:54 | code: 2 | msg: require_once(Zend/Db/Exception.php): failed to open stream: No such file or directory | file: /private/var/www/myaf3/app/application/library/Zend/Db.php | line: 238
+<?php exit;?>2015-03-31 17:27:54 | code: 2 | msg: require_once(Zend/Db/Exception.php): failed to open stream: No such file or directory | file: /private/var/www/myaf3/app/application/library/Zend/Db.php | line: 238
+<?php exit;?>2015-03-31 17:27:54 | code: 2 | msg: require_once(Zend/Db/Exception.php): failed to open stream: No such file or directory | file: /private/var/www/myaf3/app/application/library/Zend/Db.php | line: 238
+<?php exit;?>2015-03-31 17:27:55 | code: 2 | msg: require_once(Zend/Db/Exception.php): failed to open stream: No such file or directory | file: /private/var/www/myaf3/app/application/library/Zend/Db.php | line: 238
+<?php exit;?>2015-03-31 17:27:55 | code: 2 | msg: require_once(Zend/Db/Exception.php): failed to open stream: No such file or directory | file: /private/var/www/myaf3/app/application/library/Zend/Db.php | line: 238
+<?php exit;?>2015-03-31 17:27:55 | code: 2 | msg: require_once(Zend/Db/Exception.php): failed to open stream: No such file or directory | file: /private/var/www/myaf3/app/application/library/Zend/Db.php | line: 238
+<?php exit;?>2015-03-31 17:27:55 | code: 2 | msg: require_once(Zend/Db/Exception.php): failed to open stream: No such file or directory | file: /private/var/www/myaf3/app/application/library/Zend/Db.php | line: 238
+<?php exit;?>2015-03-31 17:37:06 | code: 8 | msg: Undefined property: Bootstrap::$_config       | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 36
+<?php exit;?>2015-03-31 17:37:06 | code: 8 | msg: Trying to get property of non-object          | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 36
+<?php exit;?>2015-03-31 17:37:06 | code: 8 | msg: Trying to get property of non-object          | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 36
+<?php exit;?>2015-03-31 17:37:32 | code: 2 | msg: Yaf_Loader::autoload(): You should not use 'Yaf_' as class name prefix | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 39
+<?php exit;?>2015-03-31 17:37:32 | code: 2 | msg: Yaf_Loader::autoload(): Failed opening script /private/var/www/myaf3/app/application/library/Yaf/Registry.php: No such file or directory | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 39
+<?php exit;?>2015-03-31 17:37:33 | code: 2 | msg: Yaf_Loader::autoload(): You should not use 'Yaf_' as class name prefix | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 39
+<?php exit;?>2015-03-31 17:37:33 | code: 2 | msg: Yaf_Loader::autoload(): Failed opening script /private/var/www/myaf3/app/application/library/Yaf/Registry.php: No such file or directory | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 39
+<?php exit;?>2015-03-31 17:37:34 | code: 2 | msg: Yaf_Loader::autoload(): You should not use 'Yaf_' as class name prefix | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 39
+<?php exit;?>2015-03-31 17:37:34 | code: 2 | msg: Yaf_Loader::autoload(): Failed opening script /private/var/www/myaf3/app/application/library/Yaf/Registry.php: No such file or directory | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 39
+<?php exit;?>2015-03-31 17:37:34 | code: 2 | msg: Yaf_Loader::autoload(): You should not use 'Yaf_' as class name prefix | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 39
+<?php exit;?>2015-03-31 17:37:34 | code: 2 | msg: Yaf_Loader::autoload(): Failed opening script /private/var/www/myaf3/app/application/library/Yaf/Registry.php: No such file or directory | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 39
+<?php exit;?>2015-03-31 17:37:34 | code: 2 | msg: Yaf_Loader::autoload(): You should not use 'Yaf_' as class name prefix | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 39
+<?php exit;?>2015-03-31 17:37:34 | code: 2 | msg: Yaf_Loader::autoload(): Failed opening script /private/var/www/myaf3/app/application/library/Yaf/Registry.php: No such file or directory | file: /private/var/www/myaf3/app/application/Bootstrap.php | line: 39
+<?php exit;?>2015-03-31 17:45:22 | code: 8 | msg: Undefined property: Zend\Db\ResultSet\ResultSet::$id | file: /private/var/www/myaf3/app/application/models/Hello/world.php | line: 19
+<?php exit;?>2015-03-31 17:53:56 | code: 2 | msg: Yaf_Loader::autoload(): Failed opening script /private/var/www/myaf3/app/application/library/Hello/ResultSet.php: No such file or directory | file: /private/var/www/myaf3/app/application/models/Hello/world.php | line: 22
+<?php exit;?>2015-03-31 17:55:04 | code: 2 | msg: Yaf_Loader::autoload(): Failed opening script /private/var/www/myaf3/app/application/library/Hello/Zend/Db/ResultSet.php: No such file or directory | file: /private/var/www/myaf3/app/application/models/Hello/world.php | line: 22
+<?php exit;?>2015-03-31 18:01:28 | code: 2 | msg: Yaf_Loader::autoload(): Failed opening script /private/var/www/myaf3/app/application/library/Hello/Zend/Db/Sql/Select.php: No such file or directory | file: /private/var/www/myaf3/app/application/models/Hello/world.php | line: 20

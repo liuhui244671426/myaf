@@ -9,14 +9,17 @@ namespace Hello;
 
 
 use \BaseModel;
+use Zend\Db\Sql\Select;
 
 class worldModel extends BaseModel{
 
     public function getWord($pos){
-        $arr = array(
-            'php', 'java', 'css', 'python', 'go'
-        );
-        return $arr[$pos];
+        $adapter = \Yaf_Registry::get('adapter');
+        $sql = 'select * from `adm_users`';
+
+        $select = new Select();
+        $res = $select->from('adm_users');
+        print_r($res);
     }
 
     public function select(){
