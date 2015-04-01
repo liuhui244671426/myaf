@@ -266,6 +266,7 @@ class HaloRedis
     /**
      * 获取某一key的value
      * @param $key string key名
+     * @return mixed
      */
     public function strlen($key)
     {

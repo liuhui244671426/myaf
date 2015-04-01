@@ -93,3 +93,6 @@
 <?php exit;?>2015-04-01 16:30:52 | code: 1024 | msg: No database selected                          | file: /private/var/www/myaf3/app/application/library/halo/HaloPdo.php | line: 448
 <?php exit;?>2015-04-01 16:56:37 | code: 2 | msg: PDOStatement::execute(): SQLSTATE[3D000]: Invalid catalog name: 1046 No database selected | file: /private/var/www/myaf3/app/application/library/halo/HaloPdo.php | line: 440
 <?php exit;?>2015-04-01 16:56:37 | code: 1024 | msg: No database selected                          | file: /private/var/www/myaf3/app/application/library/halo/HaloPdo.php | line: 448
+<?php exit;?>2015-04-01 17:58:36 | code: 2 | msg: PDOStatement::execute(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'where clause' | file: /private/var/www/myaf3/app/application/library/halo/HaloPdo.php | line: 440
+<?php exit;?>2015-04-01 17:58:36 | code: 1024 | msg: Unknown column 'id' in 'where clause'         | file: /private/var/www/myaf3/app/application/library/halo/HaloPdo.php | line: 448
+<?php exit;?>2015-04-01 19:59:59 | code: 8 | msg: Trying to get property of non-object          | file: /private/var/www/myaf3/app/application/library/DataCenter/DataCenter.php | line: 109

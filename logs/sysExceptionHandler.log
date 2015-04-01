@@ -22,3 +22,11 @@ Stack trace:
 #2 [internal function]: helloController->helloAction()
 #3 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
 #4 {main}
+<?php exit;?>04-01 19:59:59 | code: -9998 | msg: 
+exception 'Exception' with message 'config of redis dayDetail is not found' in /private/var/www/myaf3/app/application/library/DataCenter/DataCenter.php:112
+Stack trace:
+#0 /private/var/www/myaf3/app/application/models/Hello/world.php(24): DataCenter::getRedis('dayDetail')
+#1 /private/var/www/myaf3/app/application/modules/Hello/controllers/Hello.php(15): Hello\worldModel->__construct()
+#2 [internal function]: helloController->helloAction()
+#3 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#4 {main}

@@ -1,0 +1,12 @@
+17:57:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:18 'AuthPlugin::dispatchLoopStartup'
+17:57:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:19 7
+17:57:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:20 -4
+17:58:36-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:18 'AuthPlugin::dispatchLoopStartup'
+17:58:36-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:19 7
+17:58:36-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:20 -4
+17:58:36-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:447 'select * from `avatar_kind` where `id`=1;'
+17:58:36-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:449 array (
+  0 => '42S22',
+  1 => 1054,
+  2 => 'Unknown column \'id\' in \'where clause\'',
+)
