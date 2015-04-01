@@ -42,9 +42,6 @@ class Bootstrap extends Yaf_Bootstrap_Abstract {
         Yaf_Loader::getInstance()->registerLocalNameSpace(array("Zend", "Local"));
     }
 
-    public function _initDbAdapter(){
-
-    }
 	/**
 	 * 注册一个插件
 	 */

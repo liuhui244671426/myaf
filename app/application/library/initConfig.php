@@ -10,6 +10,9 @@ class initConfig
 {
     static public $_config;
 
+    /**
+     * 初始化
+     * */
     static public function init()
     {
         if(!Yaf_Registry::has('config'))
@@ -21,27 +24,13 @@ class initConfig
 
         spl_autoload_register(array(new self(), 'autoLoader'));
     }
-
+    /**
+     * 加载文件
+     */
     static public function initLoad()
     {
-        //Yaf_Loader::import(sprintf('%s/library/core/%s.php', ROOT_PATH, 'yafDebug'));
-        //Yaf_Loader::import(sprintf('%s/library/core/%s.php', ROOT_PATH, 'baseModel'));
-        //Yaf_Loader::import(sprintf('%s/library/core/%s.php', ROOT_PATH, 'pdoModel'));
-        //Yaf_Loader::import(sprintf('%s/library/core/%s.php', ROOT_PATH, 'redisModel'));
-        //Yaf_Loader::import(sprintf('%s/library/core/%s.php', ROOT_PATH, 'redisModel'));
-        //Yaf_Loader::import(sprintf('%s/library/core/%s.php', ROOT_PATH, 'memcachedModel'));
-        //Yaf_Loader::import(sprintf('%s/application/library/%s.php', APPLICATION_PATH, 'commonFunctions'));
-        //yafDebug::$_logLv = self::$_config['log']['level'];
-        //yafDebug::$_logPath = self::$_config['log']['path'];
-        //yafDebug::log(sprintf('已加载文件'));
-        //yafDebug::log(get_included_files());
-        //Yaf_Loader::import(APPLICATION_PATH . '/application/library/monolog/vendor/autoload.php');
-        //--------------
-
-        //--------------
-
         $libraryFiles = array(
-            'constant', 'status', 'functions', 'YafController', //'idiorm'
+            'constant', 'status', 'functions', 'YafController',
         );
         foreach($libraryFiles as $file){
             $file = APPLICATION_PATH . '/application/library/'.$file.'.php';
@@ -56,16 +45,19 @@ class initConfig
         if(strpos($class,'Model')) {
             $path = sprintf('%s/application/models/%s.php', APPLICATION_PATH, $class);
         } elseif(strpos($class, 'Util')) {
-            $path = sprintf('%s/library/util/%s.php', ROOT_PATH, $class);
+            //$path = sprintf('%s/library/util/%s.php', ROOT_PATH, $class);
         } elseif(strpos($class, 'Builder')) {
             $path = sprintf('%s/application/views/builders/%s.php', APPLICATION_PATH, $class);
         } else {
-            $path = sprintf('%s/library/util/%s.php', ROOT_PATH, $class);
+            //$path = sprintf('%s/library/util/%s.php', ROOT_PATH, $class);
         }
         //dump($class);
         Yaf_Loader::import($path);
     }
 
+    /**
+     * 设置配置文件
+     */
     static public function setConfig()
     {
         $appIni = new Yaf_Config_Ini(sprintf('%s/config/%s', ROOT_PATH, 'app.ini'), MODE);
