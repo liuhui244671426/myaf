@@ -60,3 +60,5 @@ $RESOURCE_ACTION_ERROR_TEXT = array(
 		
 		ACCOUNT_ACCOUNT_NOT_EXISTS=>'帐号不存在',
 		);
+
+models, controllers都支持下划线分割, 比如, 如果你是多个modules的不同model, 那么可以命名为 A_B_CModel 那么就会在models目录下的A目录的B目录里面找C

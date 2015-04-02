@@ -433,10 +433,13 @@ class HaloPdo
         $this->query($sql);
     }
 
+    /**
+     * 执行一条预处理语句
+     * @param string $sql exm:'select * from `adm_users` where `name`=? and `pass`=?'
+     * @param array $values exm:array('admin', 'pass');
+     * */
     public function query($sql, $values = null)
     {
-//        Logger::timeDebug('sql', $sql);
-
         $stmt = $this->dbh->prepare($sql);
         $stmt->execute($values);
         if ($stmt->errorCode() != PDO::ERR_NONE) {
@@ -450,7 +453,6 @@ class HaloPdo
             Yaflog($stmt->errorInfo());
         }
 
-//        Logger::timeDebug('sql', $sql);
         return $stmt;
     }
 
@@ -459,6 +461,10 @@ class HaloPdo
         return $this->query($sql, $values)->fetchColumn(0);
     }
 
+    /**
+     * @param string $sql
+     * @param array $values
+     * */
     public function get_row($sql, $values = null)
     {
         return $this->query($sql, $values)->fetch(PDO::FETCH_ASSOC);

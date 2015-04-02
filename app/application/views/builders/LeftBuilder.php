@@ -17,8 +17,8 @@ class LeftBuilder{
      **/
     static public function menuHtml(){
         //----
-        $db = new AclModel();
-        $db->getUserPrem($_SESSION['user']['roleid']);
+        /*$db = new AclModel();
+        $db->getUserPrem($_SESSION['user']['roleid']);*/
         //----
         $leftMenu = self::leftMenu();
 

@@ -111,9 +111,7 @@ abstract class Yaf_Controller_Abstract
      * @param array $args
      * @return void
      */
-    public function forward(
-        $module, $controller=null, $action=null, array $args = null
-    )
+    public function forward($module, $controller=null, $action=null, array $args = null)
     {
         $request = $this->getRequest();
         if (null !== $args) {

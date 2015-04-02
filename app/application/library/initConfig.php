@@ -42,7 +42,7 @@ class initConfig
 
     public function autoLoader($class)
     {
-        if(strpos($class,'Model')) {
+        /*if(strpos($class,'Model')) {
             $path = sprintf('%s/application/models/%s.php', APPLICATION_PATH, $class);
         } elseif(strpos($class, 'Util')) {
             //$path = sprintf('%s/library/util/%s.php', ROOT_PATH, $class);
@@ -50,6 +50,9 @@ class initConfig
             $path = sprintf('%s/application/views/builders/%s.php', APPLICATION_PATH, $class);
         } else {
             //$path = sprintf('%s/library/util/%s.php', ROOT_PATH, $class);
+        }*/
+        if(strpos($class,'Builder')){
+            $path = sprintf('%s/application/views/builders/%s.php', APPLICATION_PATH, $class);
         }
         //dump($class);
         Yaf_Loader::import($path);

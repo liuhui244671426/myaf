@@ -161,7 +161,7 @@ class layout implements Yaf_View_Interface
 
     /**
      * 设置路径
-     * @param string $path
+     * @param string $path exm:'Admin'
      * @author 刘辉
      */
     public function setLayoutPath($path)

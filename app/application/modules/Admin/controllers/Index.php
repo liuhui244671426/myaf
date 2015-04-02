@@ -34,19 +34,20 @@ class IndexController extends BaseController{
             $user = $this->getLegalParam('user', 'str');
             $pass = $this->getLegalParam('pass', 'str');
             $pass = md5($pass);
-            Yaflog($user);
-            Yaflog($pass);
 
-            //dump(get_include_path());
-            //dump(get_included_files());
-
-            $db = new IndexModel();
-            $isAccess = $db->access($user, $pass);
-
-            Yaflog($isAccess);
+            $db = new Admin_IndexModel();
+            $result = $db->checkUserPass($user, $pass);
+            if(empty($result)){
+                $isAccess = false;
+            } else {
+                $isAccess = true;
+            }
+            Yaflog('user: '.$user);
+            Yaflog('pass: '.$pass);
+            Yaflog('是否登陆: '.$isAccess);
 
             if($isAccess){
-                $_SESSION['isLogin'] = true;//login true
+                $_SESSION['isLogin'] = true;
 
                 $this->redirect('/admin/main/main');
             } else {
