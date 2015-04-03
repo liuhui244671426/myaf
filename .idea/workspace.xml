@@ -2,20 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7f621a10-563d-4eac-9a0a-18129916fd1f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/application/models/Base.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/application/models/Admin/Index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/application/modules/Admin/controllers/Main.php" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/app/application/models/Base/base.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/application/models/Hello/world.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/application/library/framework/Yaf/Controller/Abstract.php" afterPath="$PROJECT_DIR$/app/application/library/framework/Yaf/Controller/Abstract.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/application/views/phtmls/layouts/Admin.phtml" afterPath="$PROJECT_DIR$/app/application/views/phtmls/layouts/Admin.phtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/application/plugins/Auth.php" afterPath="$PROJECT_DIR$/app/application/plugins/Auth.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/application/library/halo/HaloPdo.php" afterPath="$PROJECT_DIR$/app/application/library/halo/HaloPdo.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/application/modules/Admin/controllers/Index.php" afterPath="$PROJECT_DIR$/app/application/modules/Admin/controllers/Index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/application/views/builders/LeftBuilder.php" afterPath="$PROJECT_DIR$/app/application/views/builders/LeftBuilder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/application/library/halo/halo specification.txt" afterPath="$PROJECT_DIR$/app/application/library/halo/halo specification.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/application/Bootstrap.php" afterPath="$PROJECT_DIR$/app/application/Bootstrap.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/application/configs/application.ini" afterPath="$PROJECT_DIR$/app/application/configs/application.ini" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/application/library/functions.php" afterPath="$PROJECT_DIR$/app/application/library/functions.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/application/library/initConfig.php" afterPath="$PROJECT_DIR$/app/application/library/initConfig.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/application/library/layout.php" afterPath="$PROJECT_DIR$/app/application/library/layout.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/application/views/phtmls/Admin/left.phtml" afterPath="$PROJECT_DIR$/app/application/views/phtmls/Admin/left.phtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/sysErrorHandler.log" afterPath="$PROJECT_DIR$/logs/sysErrorHandler.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/sysExceptionHandler.log" afterPath="$PROJECT_DIR$/logs/sysExceptionHandler.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -42,82 +35,74 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Bootstrap.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/application/Bootstrap.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.291666" vertical-offset="314" max-vertical-offset="1020">
-              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Main.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/application/modules/Admin/controllers/Main.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="225">
-              <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+            <state vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="225">
+              <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="halo specification.txt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/application/library/halo/halo specification.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9104478" vertical-offset="335" max-vertical-offset="1050">
-              <caret line="63" column="101" selection-start-line="63" selection-start-column="101" selection-end-line="63" selection-end-column="101" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Abstract.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/application/library/framework/Yaf/Controller/Abstract.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="9.583333" vertical-offset="740" max-vertical-offset="4725">
-              <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Admin.phtml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/application/views/phtmls/layouts/Admin.phtml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.125" vertical-offset="420" max-vertical-offset="2205">
-              <caret line="57" column="26" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LeftBuilder.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LeftBuilder.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/application/views/builders/LeftBuilder.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.875" vertical-offset="0" max-vertical-offset="1125">
-              <caret line="19" column="10" selection-start-line="19" selection-start-column="8" selection-end-line="20" selection-end-column="56" />
+            <state vertical-scroll-proportion="0.19626169" vertical-offset="0" max-vertical-offset="1125">
+              <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="layout.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/application/library/layout.php">
+      <file leaf-file-name="left.phtml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/application/views/phtmls/Admin/left.phtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="15.0" vertical-offset="930" max-vertical-offset="4725">
-              <caret line="38" column="33" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
+            <state vertical-scroll-proportion="-16.875" vertical-offset="0" max-vertical-offset="570">
+              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/application/models/Admin/Index.php">
+      <file leaf-file-name="application.ini" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/application/configs/application.ini">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.625" vertical-offset="0" max-vertical-offset="450">
-              <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
+              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="initConfig.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/application/library/initConfig.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-51.875" vertical-offset="0" max-vertical-offset="1935">
+              <caret line="83" column="17" selection-start-line="83" selection-start-column="17" selection-end-line="83" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Bootstrap.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/application/Bootstrap.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.375" vertical-offset="0" max-vertical-offset="1035">
+              <caret line="22" column="50" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="functions.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/application/library/functions.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.56" vertical-offset="4767" max-vertical-offset="6645">
+              <caret line="333" column="23" selection-start-line="333" selection-start-column="23" selection-end-line="333" selection-end-column="23" />
+              <folding>
+                <element signature="e#6#106#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -136,7 +121,6 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/app/application/models/Hello/worldModel.php" />
-        <option value="$PROJECT_DIR$/app/application/library/functions.php" />
         <option value="$PROJECT_DIR$/logs/sysExceptionHandler.log" />
         <option value="$PROJECT_DIR$/app/application/models/base.php" />
         <option value="$PROJECT_DIR$/app/application/library/constant.php" />
@@ -145,7 +129,6 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/config/db.ini" />
         <option value="$PROJECT_DIR$/app/application/library/data/DataCenter.php" />
-        <option value="$PROJECT_DIR$/app/application/Bootstrap.php" />
         <option value="$PROJECT_DIR$/config/app.ini" />
         <option value="$PROJECT_DIR$/app/application/views/phtmls/404.phtml" />
         <option value="$PROJECT_DIR$/app/application/modules/Hello/controllers/hello.php" />
@@ -156,8 +139,6 @@
         <option value="$PROJECT_DIR$/app/application/library/halo/HaloRedis.php" />
         <option value="$PROJECT_DIR$/logs/sysErrorHandler.log" />
         <option value="$PROJECT_DIR$/logs/2015-04-02/16.log" />
-        <option value="$PROJECT_DIR$/app/application/plugins/Auth.php" />
-        <option value="$PROJECT_DIR$/app/application/library/initConfig.php" />
         <option value="$PROJECT_DIR$/app/application/models/Base/base.php" />
         <option value="$PROJECT_DIR$/app/application/models/Base.php" />
         <option value="$PROJECT_DIR$/app/application/library/halo/HaloPdo.php" />
@@ -169,14 +150,21 @@
         <option value="$PROJECT_DIR$/app/application/views/builders/LeftBuilder.php" />
         <option value="$PROJECT_DIR$/app/application/modules/Admin/controllers/Main.php" />
         <option value="$PROJECT_DIR$/app/application/library/halo/halo specification.txt" />
+        <option value="$PROJECT_DIR$/app/application/plugins/Auth.php" />
+        <option value="$PROJECT_DIR$/app/application/configs/application.ini" />
+        <option value="$PROJECT_DIR$/app/application/library/functions.php" />
+        <option value="$PROJECT_DIR$/app/public/index_dev.php" />
+        <option value="$PROJECT_DIR$/app/application/views/phtmls/Admin/left.phtml" />
+        <option value="$PROJECT_DIR$/app/application/Bootstrap.php" />
+        <option value="$PROJECT_DIR$/app/application/library/initConfig.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="1756" />
-    <option name="y" value="129" />
-    <option name="width" value="1265" />
+    <option name="x" value="210" />
+    <option name="y" value="22" />
+    <option name="width" value="1179" />
     <option name="height" value="824" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -205,7 +193,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -248,11 +235,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="logs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="2015-04-02" />
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -267,6 +250,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -311,6 +298,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="phtmls" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myaf3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myaf3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="phtmls" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layouts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -506,16 +523,35 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="library" />
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myaf3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myaf3" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="halo" />
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="configs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -526,6 +562,7 @@
     <property name="FullScreen" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../live_index" />
     <property name="LayoutCode.rearrangeEntriesPHP" value="false" />
+    <property name="SearchEverywhereHistoryKey" value="func&#9;FILE&#9;file:///private/var/www/myaf3/app/application/library/functions.php" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -600,15 +637,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1756" y="129" width="1265" height="824" extended-state="0" />
+    <frame x="210" y="22" width="1179" height="824" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18119891" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18032786" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329235" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25482315" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22107081" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -649,41 +686,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/config.ini.default">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="706">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/application/controllers/Error.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.14349777" vertical-offset="96" max-vertical-offset="765">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/application/views/phtmls/404.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49327356" vertical-offset="0" max-vertical-offset="669">
-          <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/application/library/halo/Logger.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.332817" vertical-offset="6029" max-vertical-offset="6675">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/logs/2015-04-01/16.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.0179641" vertical-offset="1265" max-vertical-offset="1935">
-          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/application/library/halo/HaloService.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.70776254" vertical-offset="0" max-vertical-offset="1740">
@@ -702,13 +704,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.06849315" vertical-offset="0" max-vertical-offset="657">
           <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/application/configs/application.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21306819" vertical-offset="0" max-vertical-offset="704">
-          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -762,13 +757,6 @@
     <entry file="file://$PROJECT_DIR$/app/public/statics/images/dior.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/public/index_dev.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.21323529" vertical-offset="145" max-vertical-offset="825">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/public/.htaccess">
@@ -841,7 +829,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6586402" vertical-offset="0" max-vertical-offset="706">
           <caret line="31" column="10" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -849,7 +836,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="1335">
           <caret line="56" column="89" selection-start-line="56" selection-start-column="81" selection-end-line="56" selection-end-column="89" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -857,23 +843,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8484849" vertical-offset="1437" max-vertical-offset="2130">
           <caret line="135" column="68" selection-start-line="135" selection-start-column="64" selection-end-line="135" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/application/plugins/Auth.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.375" vertical-offset="0" max-vertical-offset="825">
-          <caret line="23" column="44" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/application/library/initConfig.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-21.666666" vertical-offset="260" max-vertical-offset="1890">
-          <caret line="52" column="11" selection-start-line="52" selection-start-column="11" selection-end-line="52" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -881,15 +850,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="150">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/application/controllers/Base.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7511381" vertical-offset="0" max-vertical-offset="659">
-          <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -897,7 +857,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="795">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -909,43 +868,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/application/modules/Admin/controllers/Index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.875" vertical-offset="300" max-vertical-offset="1095">
-          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/application/views/phtmls/layouts/Admin.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.125" vertical-offset="420" max-vertical-offset="2205">
-          <caret line="57" column="26" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/application/models/Admin/Index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.625" vertical-offset="0" max-vertical-offset="450">
-          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/application/Bootstrap.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.291666" vertical-offset="314" max-vertical-offset="1020">
-          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/logs/sysErrorHandler.log">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -953,7 +879,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.3656716" vertical-offset="2255" max-vertical-offset="2925">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -961,15 +886,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.074627" vertical-offset="6080" max-vertical-offset="6750">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/application/views/builders/LeftBuilder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.875" vertical-offset="0" max-vertical-offset="1125">
-          <caret line="19" column="10" selection-start-line="19" selection-start-column="8" selection-end-line="20" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -985,15 +901,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="683">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/application/library/framework/Yaf/Controller/Abstract.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="9.583333" vertical-offset="740" max-vertical-offset="4725">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1001,30 +908,156 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.70561457" vertical-offset="6150" max-vertical-offset="7740">
           <caret line="441" column="5" selection-start-line="441" selection-start-column="5" selection-end-line="441" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/application/library/halo/halo specification.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5555556" vertical-offset="335" max-vertical-offset="1050">
+          <caret line="48" column="16" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/application/library/framework/Yaf/Controller/Abstract.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.3372434" vertical-offset="740" max-vertical-offset="4725">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/application/models/Admin/Index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3739003" vertical-offset="0" max-vertical-offset="682">
+          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/application/library/layout.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="15.0" vertical-offset="930" max-vertical-offset="4725">
+        <state vertical-scroll-proportion="-0.5278592" vertical-offset="930" max-vertical-offset="4725">
           <caret line="38" column="33" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/application/controllers/Base.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.066176474" vertical-offset="0" max-vertical-offset="680">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/application/plugins/Auth.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8545727" vertical-offset="0" max-vertical-offset="825">
+          <caret line="38" column="9" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/application/modules/Admin/controllers/Index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0367647" vertical-offset="0" max-vertical-offset="1095">
+          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/application/views/phtmls/layouts/Admin.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.67466265" vertical-offset="1305" max-vertical-offset="2205">
+          <caret line="57" column="26" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/application/modules/Admin/controllers/Main.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="225">
-          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+        <state vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="225">
+          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/application/library/halo/halo specification.txt">
+    <entry file="file://$PROJECT_DIR$/app/application/controllers/Error.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9104478" vertical-offset="335" max-vertical-offset="1050">
-          <caret line="63" column="101" selection-start-line="63" selection-start-column="101" selection-end-line="63" selection-end-column="101" />
+        <state vertical-scroll-proportion="0.45127437" vertical-offset="74" max-vertical-offset="765">
+          <caret line="25" column="41" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/standard_4.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34472048" vertical-offset="4023" max-vertical-offset="16425">
+          <caret line="283" column="9" selection-start-line="283" selection-start-column="9" selection-end-line="283" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/public/index_dev.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06849315" vertical-offset="0" max-vertical-offset="825">
+          <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logs/sysShutdown.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8652695" vertical-offset="82" max-vertical-offset="750">
+          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/application/library/functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.56" vertical-offset="4767" max-vertical-offset="6645">
+          <caret line="333" column="23" selection-start-line="333" selection-start-column="23" selection-end-line="333" selection-end-column="23" />
+          <folding>
+            <element signature="e#6#106#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/application/Bootstrap.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.375" vertical-offset="0" max-vertical-offset="1035">
+          <caret line="22" column="50" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/application/library/initConfig.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-51.875" vertical-offset="0" max-vertical-offset="1935">
+          <caret line="83" column="17" selection-start-line="83" selection-start-column="17" selection-end-line="83" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/application/configs/application.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="270">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/application/views/phtmls/Admin/left.phtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.875" vertical-offset="0" max-vertical-offset="570">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/application/views/builders/LeftBuilder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19626169" vertical-offset="0" max-vertical-offset="1125">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
           <folding />
         </state>
       </provider>

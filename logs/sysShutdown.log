@@ -1,0 +1,209 @@
+<?php exit;?>2015-04-03 12:41:23 | code: 1 | msg: Uncaught exception 'LogicException' with message 'load builder file is not exists' in /private/var/www/myaf3/app/application/library/initConfig.php:53
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('LeftBuilder1')
+#1 /private/var/www/myaf3/app/application/views/phtmls/Admin/left.phtml(12): spl_autoload_call('LeftBuilder1')
+#2 /private/var/www/myaf3/app/application/views/phtmls/layouts/Admin.phtml(96): Yaf_View_Simple->display('Admin/left.phtm...')
+#3 /private/var/www/myaf3/app/application/library/layout.php(296): Yaf_View_Simple->render('/private/var/ww...', Array)
+#4 /private/var/www/myaf3/app/application/library/layout.php(308): layout->render('404.phtml', Array)
+#5 /private/var/www/myaf3/app/application/controllers/Error.php(41): layout->display('404.phtml', Array)
+#6 /private/var/www/myaf3/app/public/index_dev.php(0): ErrorController->errorAction(Object(LogicException))
+#7 {main}
+  thrown | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 53
+<?php exit;?>2015-04-03 12:43:04 | code: 1 | msg: Uncaught exception 'LogicException' with message 'load builder file is not exists' in /private/var/www/myaf3/app/application/library/initConfig.php:53
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('LeftBuilder1')
+#1 /private/var/www/myaf3/app/application/views/phtmls/Admin/left.phtml(12): spl_autoload_call('LeftBuilder1')
+#2 /private/var/www/myaf3/app/application/views/phtmls/layouts/Admin.phtml(96): Yaf_View_Simple->display('Admin/left.phtm...')
+#3 /private/var/www/myaf3/app/application/library/layout.php(296): Yaf_View_Simple->render('/private/var/ww...', Array)
+#4 /private/var/www/myaf3/app/application/library/layout.php(308): layout->render('404.phtml', Array)
+#5 /private/var/www/myaf3/app/application/controllers/Error.php(41): layout->display('404.phtml', Array)
+#6 /private/var/www/myaf3/app/public/index_dev.php(0): ErrorController->errorAction(Object(LogicException))
+#7 {main}
+  thrown | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 53
+<?php exit;?>2015-04-03 12:43:15 | code: 1 | msg: Uncaught exception 'LogicException' with message 'load builder file is not exists' in /private/var/www/myaf3/app/application/library/initConfig.php:53
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('LeftBuilder1')
+#1 /private/var/www/myaf3/app/application/views/phtmls/Admin/left.phtml(12): spl_autoload_call('LeftBuilder1')
+#2 /private/var/www/myaf3/app/application/views/phtmls/layouts/Admin.phtml(96): Yaf_View_Simple->display('Admin/left.phtm...')
+#3 /private/var/www/myaf3/app/application/library/layout.php(296): Yaf_View_Simple->render('/private/var/ww...', Array)
+#4 /private/var/www/myaf3/app/application/library/layout.php(308): layout->render('404.phtml', Array)
+#5 /private/var/www/myaf3/app/application/controllers/Error.php(41): layout->display('404.phtml', Array)
+#6 /private/var/www/myaf3/app/public/index_dev.php(0): ErrorController->errorAction(Object(LogicException))
+#7 {main}
+  thrown | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 53
+<?php exit;?>2015-04-03 12:43:19 | code: 1 | msg: Uncaught exception 'LogicException' with message 'load builder file is not exists' in /private/var/www/myaf3/app/application/library/initConfig.php:53
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('LeftBuilder1')
+#1 /private/var/www/myaf3/app/application/views/phtmls/Admin/left.phtml(12): spl_autoload_call('LeftBuilder1')
+#2 /private/var/www/myaf3/app/application/views/phtmls/layouts/Admin.phtml(96): Yaf_View_Simple->display('Admin/left.phtm...')
+#3 /private/var/www/myaf3/app/application/library/layout.php(296): Yaf_View_Simple->render('/private/var/ww...', Array)
+#4 /private/var/www/myaf3/app/application/library/layout.php(308): layout->render('404.phtml', Array)
+#5 /private/var/www/myaf3/app/application/controllers/Error.php(41): layout->display('404.phtml', Array)
+#6 /private/var/www/myaf3/app/public/index_dev.php(0): ErrorController->errorAction(Object(LogicException))
+#7 {main}
+  thrown | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 53
+<?php exit;?>2015-04-03 12:43:52 | code: 1 | msg: Uncaught exception 'LogicException' with message 'load builder file is not exists /private/var/www/myaf3/app/application/views/builders/LeftBuilder1.php' in /private/var/www/myaf3/app/application/library/initConfig.php:53
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('LeftBuilder1')
+#1 /private/var/www/myaf3/app/application/views/phtmls/Admin/left.phtml(12): spl_autoload_call('LeftBuilder1')
+#2 /private/var/www/myaf3/app/application/views/phtmls/layouts/Admin.phtml(96): Yaf_View_Simple->display('Admin/left.phtm...')
+#3 /private/var/www/myaf3/app/application/library/layout.php(296): Yaf_View_Simple->render('/private/var/ww...', Array)
+#4 /private/var/www/myaf3/app/application/library/layout.php(308): layout->render('404.phtml', Array)
+#5 /private/var/www/myaf3/app/application/controllers/Error.php(41): layout->display('404.phtml', Array)
+#6 /private/var/www/myaf3/app/public/index_dev.php(0): ErrorController->errorAction(Object(LogicException))
+#7 {main}
+  thrown | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 53
+<?php exit;?>2015-04-03 12:44:10 | code: 1 | msg: Uncaught exception 'LogicException' with message 'load builder file is not exists /private/var/www/myaf3/app/application/views/builders/LeftBuilder1.php' in /private/var/www/myaf3/app/application/library/initConfig.php:53
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('LeftBuilder1')
+#1 /private/var/www/myaf3/app/application/views/phtmls/Admin/left.phtml(12): spl_autoload_call('LeftBuilder1')
+#2 /private/var/www/myaf3/app/application/views/phtmls/layouts/Admin.phtml(96): Yaf_View_Simple->display('Admin/left.phtm...')
+#3 /private/var/www/myaf3/app/application/library/layout.php(296): Yaf_View_Simple->render('/private/var/ww...', Array)
+#4 /private/var/www/myaf3/app/application/library/layout.php(308): layout->render('404.phtml', Array)
+#5 /private/var/www/myaf3/app/application/controllers/Error.php(41): layout->display('404.phtml', Array)
+#6 /private/var/www/myaf3/app/public/index_dev.php(0): ErrorController->errorAction(Object(LogicException))
+#7 {main}
+  thrown | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 53
+<?php exit;?>2015-04-03 12:44:11 | code: 1 | msg: Uncaught exception 'LogicException' with message 'load builder file is not exists /private/var/www/myaf3/app/application/views/builders/LeftBuilder1.php' in /private/var/www/myaf3/app/application/library/initConfig.php:53
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('LeftBuilder1')
+#1 /private/var/www/myaf3/app/application/views/phtmls/Admin/left.phtml(12): spl_autoload_call('LeftBuilder1')
+#2 /private/var/www/myaf3/app/application/views/phtmls/layouts/Admin.phtml(96): Yaf_View_Simple->display('Admin/left.phtm...')
+#3 /private/var/www/myaf3/app/application/library/layout.php(296): Yaf_View_Simple->render('/private/var/ww...', Array)
+#4 /private/var/www/myaf3/app/application/library/layout.php(308): layout->render('404.phtml', Array)
+#5 /private/var/www/myaf3/app/application/controllers/Error.php(41): layout->display('404.phtml', Array)
+#6 /private/var/www/myaf3/app/public/index_dev.php(0): ErrorController->errorAction(Object(LogicException))
+#7 {main}
+  thrown | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 53
+<?php exit;?>2015-04-03 12:44:11 | code: 1 | msg: Uncaught exception 'LogicException' with message 'load builder file is not exists /private/var/www/myaf3/app/application/views/builders/LeftBuilder1.php' in /private/var/www/myaf3/app/application/library/initConfig.php:53
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('LeftBuilder1')
+#1 /private/var/www/myaf3/app/application/views/phtmls/Admin/left.phtml(12): spl_autoload_call('LeftBuilder1')
+#2 /private/var/www/myaf3/app/application/views/phtmls/layouts/Admin.phtml(96): Yaf_View_Simple->display('Admin/left.phtm...')
+#3 /private/var/www/myaf3/app/application/library/layout.php(296): Yaf_View_Simple->render('/private/var/ww...', Array)
+#4 /private/var/www/myaf3/app/application/library/layout.php(308): layout->render('404.phtml', Array)
+#5 /private/var/www/myaf3/app/application/controllers/Error.php(41): layout->display('404.phtml', Array)
+#6 /private/var/www/myaf3/app/public/index_dev.php(0): ErrorController->errorAction(Object(LogicException))
+#7 {main}
+  thrown | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 53
+<?php exit;?>2015-04-03 12:44:11 | code: 1 | msg: Uncaught exception 'LogicException' with message 'load builder file is not exists /private/var/www/myaf3/app/application/views/builders/LeftBuilder1.php' in /private/var/www/myaf3/app/application/library/initConfig.php:53
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('LeftBuilder1')
+#1 /private/var/www/myaf3/app/application/views/phtmls/Admin/left.phtml(12): spl_autoload_call('LeftBuilder1')
+#2 /private/var/www/myaf3/app/application/views/phtmls/layouts/Admin.phtml(96): Yaf_View_Simple->display('Admin/left.phtm...')
+#3 /private/var/www/myaf3/app/application/library/layout.php(296): Yaf_View_Simple->render('/private/var/ww...', Array)
+#4 /private/var/www/myaf3/app/application/library/layout.php(308): layout->render('404.phtml', Array)
+#5 /private/var/www/myaf3/app/application/controllers/Error.php(41): layout->display('404.phtml', Array)
+#6 /private/var/www/myaf3/app/public/index_dev.php(0): ErrorController->errorAction(Object(LogicException))
+#7 {main}
+  thrown | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 53
+<?php exit;?>2015-04-03 12:44:12 | code: 1 | msg: Uncaught exception 'LogicException' with message 'load builder file is not exists /private/var/www/myaf3/app/application/views/builders/LeftBuilder1.php' in /private/var/www/myaf3/app/application/library/initConfig.php:53
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('LeftBuilder1')
+#1 /private/var/www/myaf3/app/application/views/phtmls/Admin/left.phtml(12): spl_autoload_call('LeftBuilder1')
+#2 /private/var/www/myaf3/app/application/views/phtmls/layouts/Admin.phtml(96): Yaf_View_Simple->display('Admin/left.phtm...')
+#3 /private/var/www/myaf3/app/application/library/layout.php(296): Yaf_View_Simple->render('/private/var/ww...', Array)
+#4 /private/var/www/myaf3/app/application/library/layout.php(308): layout->render('404.phtml', Array)
+#5 /private/var/www/myaf3/app/application/controllers/Error.php(41): layout->display('404.phtml', Array)
+#6 /private/var/www/myaf3/app/public/index_dev.php(0): ErrorController->errorAction(Object(LogicException))
+#7 {main}
+  thrown | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 53
+<?php exit;?>2015-04-03 12:44:12 | code: 1 | msg: Uncaught exception 'LogicException' with message 'load builder file is not exists /private/var/www/myaf3/app/application/views/builders/LeftBuilder1.php' in /private/var/www/myaf3/app/application/library/initConfig.php:53
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('LeftBuilder1')
+#1 /private/var/www/myaf3/app/application/views/phtmls/Admin/left.phtml(12): spl_autoload_call('LeftBuilder1')
+#2 /private/var/www/myaf3/app/application/views/phtmls/layouts/Admin.phtml(96): Yaf_View_Simple->display('Admin/left.phtm...')
+#3 /private/var/www/myaf3/app/application/library/layout.php(296): Yaf_View_Simple->render('/private/var/ww...', Array)
+#4 /private/var/www/myaf3/app/application/library/layout.php(308): layout->render('404.phtml', Array)
+#5 /private/var/www/myaf3/app/application/controllers/Error.php(41): layout->display('404.phtml', Array)
+#6 /private/var/www/myaf3/app/public/index_dev.php(0): ErrorController->errorAction(Object(LogicException))
+#7 {main}
+  thrown | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 53
+<?php exit;?>2015-04-03 12:44:13 | code: 1 | msg: Uncaught exception 'LogicException' with message 'load builder file is not exists /private/var/www/myaf3/app/application/views/builders/LeftBuilder1.php' in /private/var/www/myaf3/app/application/library/initConfig.php:53
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('LeftBuilder1')
+#1 /private/var/www/myaf3/app/application/views/phtmls/Admin/left.phtml(12): spl_autoload_call('LeftBuilder1')
+#2 /private/var/www/myaf3/app/application/views/phtmls/layouts/Admin.phtml(96): Yaf_View_Simple->display('Admin/left.phtm...')
+#3 /private/var/www/myaf3/app/application/library/layout.php(296): Yaf_View_Simple->render('/private/var/ww...', Array)
+#4 /private/var/www/myaf3/app/application/library/layout.php(308): layout->render('404.phtml', Array)
+#5 /private/var/www/myaf3/app/application/controllers/Error.php(41): layout->display('404.phtml', Array)
+#6 /private/var/www/myaf3/app/public/index_dev.php(0): ErrorController->errorAction(Object(LogicException))
+#7 {main}
+  thrown | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 53
+<?php exit;?>2015-04-03 12:44:13 | code: 1 | msg: Uncaught exception 'LogicException' with message 'load builder file is not exists /private/var/www/myaf3/app/application/views/builders/LeftBuilder1.php' in /private/var/www/myaf3/app/application/library/initConfig.php:53
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('LeftBuilder1')
+#1 /private/var/www/myaf3/app/application/views/phtmls/Admin/left.phtml(12): spl_autoload_call('LeftBuilder1')
+#2 /private/var/www/myaf3/app/application/views/phtmls/layouts/Admin.phtml(96): Yaf_View_Simple->display('Admin/left.phtm...')
+#3 /private/var/www/myaf3/app/application/library/layout.php(296): Yaf_View_Simple->render('/private/var/ww...', Array)
+#4 /private/var/www/myaf3/app/application/library/layout.php(308): layout->render('404.phtml', Array)
+#5 /private/var/www/myaf3/app/application/controllers/Error.php(41): layout->display('404.phtml', Array)
+#6 /private/var/www/myaf3/app/public/index_dev.php(0): ErrorController->errorAction(Object(LogicException))
+#7 {main}
+  thrown | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 53
+<?php exit;?>2015-04-03 12:44:13 | code: 1 | msg: Uncaught exception 'LogicException' with message 'load builder file is not exists /private/var/www/myaf3/app/application/views/builders/LeftBuilder1.php' in /private/var/www/myaf3/app/application/library/initConfig.php:53
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('LeftBuilder1')
+#1 /private/var/www/myaf3/app/application/views/phtmls/Admin/left.phtml(12): spl_autoload_call('LeftBuilder1')
+#2 /private/var/www/myaf3/app/application/views/phtmls/layouts/Admin.phtml(96): Yaf_View_Simple->display('Admin/left.phtm...')
+#3 /private/var/www/myaf3/app/application/library/layout.php(296): Yaf_View_Simple->render('/private/var/ww...', Array)
+#4 /private/var/www/myaf3/app/application/library/layout.php(308): layout->render('404.phtml', Array)
+#5 /private/var/www/myaf3/app/application/controllers/Error.php(41): layout->display('404.phtml', Array)
+#6 /private/var/www/myaf3/app/public/index_dev.php(0): ErrorController->errorAction(Object(LogicException))
+#7 {main}
+  thrown | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 53
+<?php exit;?>2015-04-03 12:44:22 | code: 1 | msg: Class 'LeftBuilder1' not found                | file: /private/var/www/myaf3/app/application/views/phtmls/Admin/left.phtml | line: 12
+<?php exit;?>2015-04-03 12:44:24 | code: 1 | msg: Class 'LeftBuilder1' not found                | file: /private/var/www/myaf3/app/application/views/phtmls/Admin/left.phtml | line: 12
+<?php exit;?>2015-04-03 12:44:49 | code: 1 | msg: Uncaught exception 'LogicException' with message 'load builder file is not exists /private/var/www/myaf3/app/application/views/builders/LeftBuilder1.php' in /private/var/www/myaf3/app/application/library/initConfig.php:53
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('LeftBuilder1')
+#1 /private/var/www/myaf3/app/application/views/phtmls/Admin/left.phtml(12): spl_autoload_call('LeftBuilder1')
+#2 /private/var/www/myaf3/app/application/views/phtmls/layouts/Admin.phtml(96): Yaf_View_Simple->display('Admin/left.phtm...')
+#3 /private/var/www/myaf3/app/application/library/layout.php(296): Yaf_View_Simple->render('/private/var/ww...', Array)
+#4 /private/var/www/myaf3/app/application/library/layout.php(308): layout->render('404.phtml', Array)
+#5 /private/var/www/myaf3/app/application/controllers/Error.php(41): layout->display('404.phtml', Array)
+#6 /private/var/www/myaf3/app/public/index_dev.php(0): ErrorController->errorAction(Object(LogicException))
+#7 {main}
+  thrown | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 53
+<?php exit;?>2015-04-03 13:01:29 | code: 1 | msg: Uncaught exception 'LogicException' with message 'load builder file is not exists /private/var/www/myaf3/app/application/views/builders/LeftBuilder1.php' in /private/var/www/myaf3/app/application/library/initConfig.php:53
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('LeftBuilder1')
+#1 /private/var/www/myaf3/app/application/views/phtmls/Admin/left.phtml(12): spl_autoload_call('LeftBuilder1')
+#2 /private/var/www/myaf3/app/application/views/phtmls/layouts/Admin.phtml(96): Yaf_View_Simple->display('Admin/left.phtm...')
+#3 /private/var/www/myaf3/app/application/library/layout.php(296): Yaf_View_Simple->render('/private/var/ww...', Array)
+#4 /private/var/www/myaf3/app/application/library/layout.php(308): layout->render('404.phtml', Array)
+#5 /private/var/www/myaf3/app/application/controllers/Error.php(41): layout->display('404.phtml', Array)
+#6 /private/var/www/myaf3/app/public/index_dev.php(0): ErrorController->errorAction(Object(LogicException))
+#7 {main}
+  thrown | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 53
+<?php exit;?>2015-04-03 14:29:03 | code: 1 | msg: Uncaught exception 'LogicException' with message 'load builder file is not exists /private/var/www/myaf3/app/application/views/builders/LeftBuilder1.php' in /private/var/www/myaf3/app/application/library/initConfig.php:53
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('LeftBuilder1')
+#1 /private/var/www/myaf3/app/application/views/phtmls/Admin/left.phtml(12): spl_autoload_call('LeftBuilder1')
+#2 /private/var/www/myaf3/app/application/views/phtmls/layouts/Admin.phtml(96): Yaf_View_Simple->display('Admin/left.phtm...')
+#3 /private/var/www/myaf3/app/application/library/layout.php(296): Yaf_View_Simple->render('/private/var/ww...', Array)
+#4 /private/var/www/myaf3/app/application/library/layout.php(308): layout->render('404.phtml', Array)
+#5 /private/var/www/myaf3/app/application/controllers/Error.php(41): layout->display('404.phtml', Array)
+#6 /private/var/www/myaf3/app/public/index_dev.php(0): ErrorController->errorAction(Object(LogicException))
+#7 {main}
+  thrown | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 53
+<?php exit;?>2015-04-03 14:29:15 | code:  | msg:                                               | file:  | line: 
+<?php exit;?>2015-04-03 14:29:39 | code:  | msg:                                               | file:  | line: 
+<?php exit;?>2015-04-03 14:38:10 | code:  | msg:                                               | file:  | line: 
+<?php exit;?>2015-04-03 14:47:59 | code:  | msg:                                               | file:  | line: 
+<?php exit;?>2015-04-03 14:47:59 | code:  | msg:                                               | file:  | line: 
+<?php exit;?>2015-04-03 14:48:00 | code:  | msg:                                               | file:  | line: 
+<?php exit;?>2015-04-03 14:48:00 | code:  | msg:                                               | file:  | line: 
+<?php exit;?>2015-04-03 14:48:00 | code:  | msg:                                               | file:  | line: 
+<?php exit;?>2015-04-03 14:48:02 | code:  | msg:                                               | file:  | line: 
+<?php exit;?>2015-04-03 14:48:03 | code:  | msg:                                               | file:  | line: 
+<?php exit;?>2015-04-03 14:48:06 | code:  | msg:                                               | file:  | line: 
+<?php exit;?>2015-04-03 14:48:06 | code:  | msg:                                               | file:  | line: 
+<?php exit;?>2015-04-03 14:48:10 | code:  | msg:                                               | file:  | line: 
+<?php exit;?>2015-04-03 14:48:10 | code:  | msg:                                               | file:  | line: 
+<?php exit;?>2015-04-03 14:48:13 | code:  | msg:                                               | file:  | line: 
+<?php exit;?>2015-04-03 14:48:13 | code:  | msg:                                               | file:  | line: 
+<?php exit;?>2015-04-03 14:49:07 | code:  | msg:                                               | file:  | line: 
+<?php exit;?>2015-04-03 14:49:13 | code:  | msg:                                               | file:  | line: 
+<?php exit;?>2015-04-03 14:49:13 | code:  | msg:                                               | file:  | line: 
+<?php exit;?>2015-04-03 14:49:16 | code:  | msg:                                               | file:  | line: 

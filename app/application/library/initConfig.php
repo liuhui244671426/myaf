@@ -40,21 +40,18 @@ class initConfig
         }
     }
 
+    /**
+     * 触发异常而不是错误
+     * */
     public function autoLoader($class)
     {
-        /*if(strpos($class,'Model')) {
-            $path = sprintf('%s/application/models/%s.php', APPLICATION_PATH, $class);
-        } elseif(strpos($class, 'Util')) {
-            //$path = sprintf('%s/library/util/%s.php', ROOT_PATH, $class);
-        } elseif(strpos($class, 'Builder')) {
-            $path = sprintf('%s/application/views/builders/%s.php', APPLICATION_PATH, $class);
-        } else {
-            //$path = sprintf('%s/library/util/%s.php', ROOT_PATH, $class);
-        }*/
         if(strpos($class,'Builder')){
             $path = sprintf('%s/application/views/builders/%s.php', APPLICATION_PATH, $class);
         }
-        //dump($class);
+
+        if(!file_exists($path)){
+            throw new LogicException('load builder file is not exists '.$path);
+        }
         Yaf_Loader::import($path);
     }
 
@@ -74,23 +71,16 @@ class initConfig
      * */
     static public function setExtendConfig()
     {
-        $config = Yaf_Registry::get('config');
-        $option = $config->extend->config;
-
-        //扩展配置项 --非空
-        if(!empty($option))
+        $optionArr = self::getExtendConfigs();
+        if(!empty($optionArr))
         {
-            $optionArr = explode(',', $option);
-            if(!empty($optionArr))
+            foreach($optionArr as $k => $v)
             {
-                foreach($optionArr as $k => $v)
+                $v = trim($v);
+                if(!empty($v))//非空
                 {
-                    $v = trim($v);
-                    if(!empty($v))//非空
-                    {
-                        $extendIni = new Yaf_Config_Ini(sprintf('%s/config/%s.ini', ROOT_PATH, $v), MODE);
-                        Yaf_Registry::set(sprintf('config_%s', $v), $extendIni);
-                    }
+                    $extendIni = new Yaf_Config_Ini(sprintf('%s/config/%s.ini', ROOT_PATH, $v), MODE);
+                    Yaf_Registry::set(sprintf('config_%s', $v), $extendIni);
                 }
             }
         }
@@ -101,18 +91,31 @@ class initConfig
      * @param string $iniName(例如: twig)
      * */
     static public function isSupportExtendConfig($iniName){
-        $config = Yaf_Registry::get('config');
-        $option = $config->extend->config;
 
+        $optionArr = self::getExtendConfigs();
         //扩展配置项 --非空
-        if(!empty($option))
+        if(!empty($optionArr))
         {
-            $optionArr = explode(',', $option);
             if(!empty($optionArr) && in_array($iniName, $optionArr)) {
                 return true;
             } else {
                 return false;
             }
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * 获取扩展配置集合
+     * @return mixed array|false
+     * */
+    static public function getExtendConfigs(){
+        $config = Yaf_Registry::get('config');
+        $option = $config->extend->config;
+        if(!empty($option)){
+            $optionArr = explode(',', $option);
+            return $optionArr;
         } else {
             return false;
         }

@@ -331,6 +331,17 @@ function sysErrorHandler($errno, $errstr, $errfile, $errline)
     }
 }
 
+function sysShutdown(){
+    $err = error_get_last();
+    $errno = $err['type'];
+    $errstr = $err['message'];
+    $errfile = $err['file'];
+    $errline = $err['line'];
+    $errMsg = sprintf('<?php exit;?>%s | code: %s | msg: %s | file: %s | line: %s' . PHP_EOL,
+        date('Y-m-d H:i:s', TODAY), $errno, str_pad($errstr, 45), $errfile, $errline);
+    error_log($errMsg, 3, ROOT_PATH . '/logs/sysShutdown.log');
+}
+
 function getActions($class)
 {
     $reflection = new ReflectionClass($class);

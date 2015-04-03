@@ -41,3 +41,25 @@
 <?php exit;?>2015-04-02 18:54:56 | code: 2 | msg: Yaf_Loader::autoload(): Failed opening script /private/var/www/myaf3/app/application/library/LeftBuilder.php: No such file or directory | file: /private/var/www/myaf3/app/application/views/phtmls/Admin/left.phtml | line: 11
 <?php exit;?>2015-04-02 19:08:39 | code: 2 | msg: Yaf_Loader::autoload(): Failed opening script /private/var/www/myaf3/app/application/library/LeftBuilder.php: No such file or directory | file: /private/var/www/myaf3/app/application/views/phtmls/Admin/left.phtml | line: 11
 <?php exit;?>2015-04-02 19:10:53 | code: 2 | msg: Yaf_Loader::autoload(): Failed opening script /private/var/www/myaf3/app/application/library/LeftBuilder.php: No such file or directory | file: /private/var/www/myaf3/app/application/views/phtmls/Admin/left.phtml | line: 11
+<?php exit;?>2015-04-03 11:04:06 | code: 2 | msg: Yaf_Loader::autoload(): Failed opening script /private/var/www/myaf3/app/application/library/LeftBuilder.php: No such file or directory | file: /private/var/www/myaf3/app/application/views/phtmls/Admin/left.phtml | line: 11
+<?php exit;?>2015-04-03 11:18:54 | code: 2 | msg: Yaf_Loader::autoload(): Failed opening script /private/var/www/myaf3/app/application/library/LeftBuilder.php: No such file or directory | file: /private/var/www/myaf3/app/application/views/phtmls/Admin/left.phtml | line: 11
+<?php exit;?>2015-04-03 11:23:48 | code: 2 | msg: Yaf_Loader::autoload(): Failed opening script /private/var/www/myaf3/app/application/library/LeftBuilder.php: No such file or directory | file: /private/var/www/myaf3/app/application/views/phtmls/Admin/left.phtml | line: 13
+<?php exit;?>2015-04-03 11:24:00 | code: 2 | msg: Yaf_Loader::autoload(): Failed opening script /private/var/www/myaf3/app/application/library/LeftBuilder.php: No such file or directory | file: /private/var/www/myaf3/app/application/views/phtmls/Admin/left.phtml | line: 13
+<?php exit;?>2015-04-03 12:37:27 | code: 8 | msg: Undefined variable: errr                      | file: /private/var/www/myaf3/app/application/library/functions.php | line: 336
+<?php exit;?>2015-04-03 12:37:28 | code: 8 | msg: Undefined variable: errr                      | file: /private/var/www/myaf3/app/application/library/functions.php | line: 336
+<?php exit;?>2015-04-03 12:37:29 | code: 8 | msg: Undefined variable: errr                      | file: /private/var/www/myaf3/app/application/library/functions.php | line: 336
+<?php exit;?>2015-04-03 12:37:29 | code: 8 | msg: Undefined variable: errr                      | file: /private/var/www/myaf3/app/application/library/functions.php | line: 336
+<?php exit;?>2015-04-03 12:37:29 | code: 8 | msg: Undefined variable: errr                      | file: /private/var/www/myaf3/app/application/library/functions.php | line: 336
+<?php exit;?>2015-04-03 12:37:30 | code: 8 | msg: Undefined variable: errr                      | file: /private/var/www/myaf3/app/application/library/functions.php | line: 336
+<?php exit;?>2015-04-03 12:37:30 | code: 8 | msg: Undefined variable: errr                      | file: /private/var/www/myaf3/app/application/library/functions.php | line: 336
+<?php exit;?>2015-04-03 12:41:04 | code: 1 | msg: Uncaught exception 'LogicException' with message 'load builder file is not exists' in /private/var/www/myaf3/app/application/library/initConfig.php:53
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('LeftBuilder1')
+#1 /private/var/www/myaf3/app/application/views/phtmls/Admin/left.phtml(12): spl_autoload_call('LeftBuilder1')
+#2 /private/var/www/myaf3/app/application/views/phtmls/layouts/Admin.phtml(96): Yaf_View_Simple->display('Admin/left.phtm...')
+#3 /private/var/www/myaf3/app/application/library/layout.php(296): Yaf_View_Simple->render('/private/var/ww...', Array)
+#4 /private/var/www/myaf3/app/application/library/layout.php(308): layout->render('404.phtml', Array)
+#5 /private/var/www/myaf3/app/application/controllers/Error.php(41): layout->display('404.phtml', Array)
+#6 /private/var/www/myaf3/app/public/index_dev.php(0): ErrorController->errorAction(Object(LogicException))
+#7 {main}
+  thrown | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 53

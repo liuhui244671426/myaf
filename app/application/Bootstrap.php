@@ -20,6 +20,7 @@ class Bootstrap extends Yaf_Bootstrap_Abstract {
         Yaf_Loader::import('initConfig.php');
 
         set_error_handler('sysErrorHandler');
+        register_shutdown_function('sysShutdown');
     }
 
     public function _initNamespaces(){
