@@ -330,7 +330,10 @@ function sysErrorHandler($errno, $errstr, $errfile, $errline)
         error_log($errMsg, 3, ROOT_PATH . '/logs/sysErrorHandler.log');
     }
 }
-
+/**
+ * fatal error handler
+ * 记录fatal错误
+ * */
 function sysShutdown(){
     $err = error_get_last();
     $errno = $err['type'];
