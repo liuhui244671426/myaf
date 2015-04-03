@@ -47,12 +47,15 @@ class initConfig
     {
         if(strpos($class,'Builder')){
             $path = sprintf('%s/application/views/builders/%s.php', APPLICATION_PATH, $class);
+
+            if(!file_exists($path)){
+                $msg = 'load builder file is not exists '.$class;
+                throw new LogicException($msg);
+            }
+            Yaf_Loader::import($path);
         }
 
-        if(!file_exists($path)){
-            throw new LogicException('load builder file is not exists '.$path);
-        }
-        Yaf_Loader::import($path);
+
     }
 
     /**

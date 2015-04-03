@@ -63,3 +63,29 @@ Stack trace:
 #6 /private/var/www/myaf3/app/public/index_dev.php(0): ErrorController->errorAction(Object(LogicException))
 #7 {main}
   thrown | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 53
+<?php exit;?>2015-04-03 17:13:50 | code: 8 | msg: Undefined variable: path                      | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 52
+<?php exit;?>2015-04-03 17:13:50 | code: 8 | msg: Undefined variable: path                      | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 53
+<?php exit;?>2015-04-03 17:13:50 | code: 8 | msg: Undefined variable: path                      | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 52
+<?php exit;?>2015-04-03 17:13:50 | code: 8 | msg: Undefined variable: path                      | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 53
+<?php exit;?>2015-04-03 17:16:03 | code: 8 | msg: Undefined variable: path                      | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 52
+<?php exit;?>2015-04-03 17:16:03 | code: 8 | msg: Undefined variable: path                      | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 53
+<?php exit;?>2015-04-03 17:16:03 | code: 8 | msg: Undefined variable: path                      | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 52
+<?php exit;?>2015-04-03 17:16:03 | code: 8 | msg: Undefined variable: path                      | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 53
+<?php exit;?>2015-04-03 17:23:55 | code: 8 | msg: Undefined variable: path                      | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 52
+<?php exit;?>2015-04-03 17:23:55 | code: 8 | msg: Undefined variable: path                      | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 53
+<?php exit;?>2015-04-03 17:23:55 | code: 8 | msg: Undefined variable: path                      | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 52
+<?php exit;?>2015-04-03 17:23:55 | code: 8 | msg: Undefined variable: path                      | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 53
+<?php exit;?>2015-04-03 17:23:56 | code: 8 | msg: Undefined variable: path                      | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 52
+<?php exit;?>2015-04-03 17:23:56 | code: 8 | msg: Undefined variable: path                      | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 53
+<?php exit;?>2015-04-03 17:23:56 | code: 8 | msg: Undefined variable: path                      | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 52
+<?php exit;?>2015-04-03 17:23:56 | code: 8 | msg: Undefined variable: path                      | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 53
+<?php exit;?>2015-04-03 17:24:09 | code: 8 | msg: Undefined variable: path                      | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 52
+<?php exit;?>2015-04-03 17:24:09 | code: 8 | msg: Undefined variable: path                      | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 53
+<?php exit;?>2015-04-03 17:24:09 | code: 8 | msg: Undefined variable: path                      | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 52
+<?php exit;?>2015-04-03 17:24:09 | code: 8 | msg: Undefined variable: path                      | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 53
+<?php exit;?>2015-04-03 17:24:31 | code: 8 | msg: Undefined variable: path                      | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 52
+<?php exit;?>2015-04-03 17:24:31 | code: 8 | msg: Undefined variable: path                      | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 52
+<?php exit;?>2015-04-03 17:28:04 | code: 8 | msg: Undefined variable: path                      | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 52
+<?php exit;?>2015-04-03 17:28:04 | code: 8 | msg: Undefined variable: path                      | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 52
+<?php exit;?>2015-04-03 17:39:58 | code: 2 | msg: Yaf_Loader::autoload(): Failed opening script /private/var/www/myaf3/app/application/models/Base.php: No such file or directory | file: /private/var/www/myaf3/app/application/models/Admin/Index.php | line: 8
+<?php exit;?>2015-04-03 17:44:21 | code: 2 | msg: Yaf_Loader::autoload(): Failed opening script /private/var/www/myaf3/app/application/models/Base.php: No such file or directory | file: /private/var/www/myaf3/app/application/models/Admin/Index.php | line: 8

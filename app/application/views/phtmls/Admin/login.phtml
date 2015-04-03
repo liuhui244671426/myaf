@@ -2,83 +2,104 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>MojiWeather Admin</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="MoJi weather life-index CMS Template">
-    <meta name="author" content="hui.liu">
-
-    <!-- The styles -->
-    <link id="bs-css" href="/statics/charisma/css/bootstrap-cerulean.min.css" rel="stylesheet">
-
-    <link href="/statics/charisma/css/charisma-app.css" rel="stylesheet">
-    <link href='/statics/charisma/components/fullcalendar/dist/fullcalendar.css' rel='stylesheet'>
-    <link href='/statics/charisma/components/fullcalendar/dist/fullcalendar.print.css' rel='stylesheet' media='print'>
-    <link href='/statics/charisma/components/chosen/chosen.min.css' rel='stylesheet'>
-    <link href='/statics/charisma/components/colorbox/example3/colorbox.css' rel='stylesheet'>
-    <link href='/statics/charisma/components/responsive-tables/responsive-tables.css' rel='stylesheet'>
-    <link href='/statics/charisma/components/bootstrap-tour/build/css/bootstrap-tour.min.css' rel='stylesheet'>
-    <link href='/statics/charisma/css/jquery.noty.css' rel='stylesheet'>
-    <link href='/statics/charisma/css/noty_theme_default.css' rel='stylesheet'>
-    <link href='/statics/charisma/css/elfinder.min.css' rel='stylesheet'>
-    <link href='/statics/charisma/css/elfinder.theme.css' rel='stylesheet'>
-    <link href='/statics/charisma/css/jquery.iphone.toggle.css' rel='stylesheet'>
-    <link href='/statics/charisma/css/uploadify.css' rel='stylesheet'>
-    <link href='/statics/charisma/css/animate.min.css' rel='stylesheet'>
-
-    <!-- jQuery -->
-    <script src="/statics/charisma/components/jquery/jquery-debug.js"></script>
-
-    <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="/statics/favicon.png" type="image/png">
+    <title>墨迹天气</title>
+    <link href="/statics/bracket/css/style.default.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="/statics/bracket/js/html5shiv.js"></script>
+    <script src="/statics/bracket/js/respond.min.js"></script>
     <![endif]-->
-
-    <!-- The fav icon -->
-    <link rel="shortcut icon" href="/statics/favicon.ico">
-
 </head>
-<body>
-<div class="ch-container">
-    <div class="row">
+
+<body class="signin">
+<section>
+    <div class="signinpanel">
 
         <div class="row">
-            <div class="col-md-12 center login-header">
-                <h2>Welcome to MojiWeather</h2>
-            </div>
-            <!--/span-->
-        </div><!--/row-->
 
-        <div class="row">
-            <div class="well col-md-5 center login-box">
-                <form class="form-horizontal" action="/admin/index/auth" method="post">
-                    <fieldset>
-                        <div class="input-group input-group-lg">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-user red"></i></span>
-                            <input type="text" class="form-control" placeholder="Username" name="user" />
-                        </div>
-                        <div class="clearfix"></div><br>
+            <div class="col-md-7">
 
-                        <div class="input-group input-group-lg">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock red"></i></span>
-                            <input type="password" class="form-control" placeholder="Password" name="pass" />
-                        </div>
-                        <div class="clearfix"></div>
+                <div class="signin-info">
+                    <div class="logopanel">
+                        <h1><span>[</span> bracket <span>]</span></h1>
+                    </div><!-- logopanel -->
 
-                        <div class="input-prepend">
-                            <label class="remember" for="remember"><input type="checkbox" id="remember" />Remember me</label>
-                        </div>
-                        <div class="clearfix"></div>
+                    <div class="mb20"></div>
 
-                        <p class="center col-md-5">
-                            <button type="submit" class="btn btn-primary">Login</button>
-                        </p>
-                    </fieldset>
+                    <h5><strong>Welcome to Bracket Bootstrap 3 Template!</strong></h5>
+                    <ul>
+                        <li><i class="fa fa-arrow-circle-o-right mr5"></i> Fully Responsive Layout</li>
+                        <li><i class="fa fa-arrow-circle-o-right mr5"></i> HTML5/CSS3 Valid</li>
+                        <li><i class="fa fa-arrow-circle-o-right mr5"></i> Retina Ready</li>
+                        <li><i class="fa fa-arrow-circle-o-right mr5"></i> WYSIWYG CKEditor</li>
+                        <li><i class="fa fa-arrow-circle-o-right mr5"></i> and much more...</li>
+                    </ul>
+                    <div class="mb20"></div>
+                    <strong>Not a member? <a href="signup.html">Sign Up</a></strong>
+                </div><!-- signin0-info -->
+
+            </div><!-- col-sm-7 -->
+
+            <div class="col-md-5">
+
+                <form method="post" action="/admin/index/auth">
+                    <h4 class="nomargin">Sign In</h4>
+                    <p class="mt5 mb20">Login to access your account.</p>
+
+                    <input type="text" class="form-control uname" placeholder="Username" name="user"/>
+                    <input type="password" class="form-control pword" placeholder="Password" name="pass"/>
+                    <a href=""><small>Forgot Your Password?</small></a>
+                    <button class="btn btn-success btn-block">Sign In</button>
+
                 </form>
-            </div>
-            <!--/span-->
-        </div><!--/row-->
-    </div><!--/fluid-row-->
+            </div><!-- col-sm-5 -->
 
-</div><!--/.fluid-container-->
+        </div><!-- row -->
+
+        <div class="signup-footer">
+            <div class="pull-left">
+                &copy; 2014. All Rights Reserved. Bracket Bootstrap 3 Admin Template
+            </div>
+            <div class="pull-right">
+                Created By: <a href="http://themepixels.com/" target="_blank">ThemePixels</a>
+            </div>
+        </div>
+
+    </div><!-- signin -->
+
+</section>
+
+
+<script src="/statics/bracket/js/jquery-1.11.1.min.js"></script>
+<script src="/statics/bracket/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/statics/bracket/js/bootstrap.min.js"></script>
+<script src="/statics/bracket/js/modernizr.min.js"></script>
+<script src="/statics/bracket/js/jquery.sparkline.min.js"></script>
+<script src="/statics/bracket/js/jquery.cookies.js"></script>
+
+<script src="/statics/bracket/js/toggles.min.js"></script>
+<script src="/statics/bracket/js/retina.min.js"></script>
+
+<script src="/statics/bracket/js/custom.js"></script>
+<script>
+    jQuery(document).ready(function(){
+
+        // Please do not use the code below
+        // This is for demo purposes only
+        var c = jQuery.cookie('change-skin');
+        if (c && c == 'greyjoy') {
+            jQuery('.btn-success').addClass('btn-orange').removeClass('btn-success');
+        } else if(c && c == 'dodgerblue') {
+            jQuery('.btn-success').addClass('btn-primary').removeClass('btn-success');
+        } else if (c && c == 'katniss') {
+            jQuery('.btn-success').addClass('btn-primary').removeClass('btn-success');
+        }
+    });
+</script>
+
 </body>
 </html>

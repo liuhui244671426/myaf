@@ -796,3 +796,744 @@ exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening con
 Stack trace:
 #0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
 #1 {main}
+<?php exit;?>04-03 15:47:59 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 15:47:59 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 15:47:59 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 15:47:59 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 15:47:59 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 15:47:59 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 15:47:59 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 15:47:59 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 15:47:59 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 15:47:59 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 15:47:59 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 15:47:59 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 15:47:59 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 15:47:59 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 15:47:59 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 15:47:59 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 15:48:00 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 15:48:00 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 15:48:00 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 15:48:00 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 15:48:00 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 15:48:00 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 15:48:00 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 15:48:00 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 15:48:00 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 15:48:00 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 15:48:00 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 15:48:00 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 15:48:00 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 15:48:00 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 15:48:00 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 15:48:00 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:13:48 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:13:50 | code: 0 | msg: 
+exception 'LogicException' with message 'load builder file is not exists ' in /private/var/www/myaf3/app/application/library/initConfig.php:53
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('BaseModel')
+#1 /private/var/www/myaf3/app/application/models/Admin/Index.php(8): spl_autoload_call('BaseModel')
+#2 [internal function]: Yaf_Loader->autoload('Admin_IndexMode...')
+#3 /private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php(38): spl_autoload_call('Admin_IndexMode...')
+#4 [internal function]: IndexController->authAction()
+#5 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#6 {main}
+
+Next exception 'LogicException' with message 'load builder file is not exists ' in /private/var/www/myaf3/app/application/library/initConfig.php:53
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('Admin_IndexMode...')
+#1 /private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php(38): spl_autoload_call('Admin_IndexMode...')
+#2 [internal function]: IndexController->authAction()
+#3 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#4 {main}
+<?php exit;?>04-03 17:16:03 | code: 0 | msg: 
+exception 'LogicException' with message 'load builder file is not exists ' in /private/var/www/myaf3/app/application/library/initConfig.php:54
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('BaseModel')
+#1 /private/var/www/myaf3/app/application/models/Admin/Index.php(8): spl_autoload_call('BaseModel')
+#2 [internal function]: Yaf_Loader->autoload('Admin_IndexMode...')
+#3 /private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php(38): spl_autoload_call('Admin_IndexMode...')
+#4 [internal function]: IndexController->authAction()
+#5 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#6 {main}
+
+Next exception 'LogicException' with message 'load builder file is not exists ' in /private/var/www/myaf3/app/application/library/initConfig.php:54
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('Admin_IndexMode...')
+#1 /private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php(38): spl_autoload_call('Admin_IndexMode...')
+#2 [internal function]: IndexController->authAction()
+#3 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#4 {main}
+<?php exit;?>04-03 17:23:55 | code: 0 | msg: 
+exception 'LogicException' with message 'load builder file is not exists ' in /private/var/www/myaf3/app/application/library/initConfig.php:54
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('BaseModel')
+#1 /private/var/www/myaf3/app/application/models/Admin/Index.php(8): spl_autoload_call('BaseModel')
+#2 [internal function]: Yaf_Loader->autoload('Admin_IndexMode...')
+#3 /private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php(38): spl_autoload_call('Admin_IndexMode...')
+#4 [internal function]: IndexController->authAction()
+#5 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#6 {main}
+
+Next exception 'LogicException' with message 'load builder file is not exists ' in /private/var/www/myaf3/app/application/library/initConfig.php:54
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('Admin_IndexMode...')
+#1 /private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php(38): spl_autoload_call('Admin_IndexMode...')
+#2 [internal function]: IndexController->authAction()
+#3 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#4 {main}
+<?php exit;?>04-03 17:23:56 | code: 0 | msg: 
+exception 'LogicException' with message 'load builder file is not exists ' in /private/var/www/myaf3/app/application/library/initConfig.php:54
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('BaseModel')
+#1 /private/var/www/myaf3/app/application/models/Admin/Index.php(8): spl_autoload_call('BaseModel')
+#2 [internal function]: Yaf_Loader->autoload('Admin_IndexMode...')
+#3 /private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php(38): spl_autoload_call('Admin_IndexMode...')
+#4 [internal function]: IndexController->authAction()
+#5 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#6 {main}
+
+Next exception 'LogicException' with message 'load builder file is not exists ' in /private/var/www/myaf3/app/application/library/initConfig.php:54
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('Admin_IndexMode...')
+#1 /private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php(38): spl_autoload_call('Admin_IndexMode...')
+#2 [internal function]: IndexController->authAction()
+#3 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#4 {main}
+<?php exit;?>04-03 17:24:09 | code: 0 | msg: 
+exception 'LogicException' with message 'load builder file is not exists ' in /private/var/www/myaf3/app/application/library/initConfig.php:55
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('BaseModel')
+#1 /private/var/www/myaf3/app/application/models/Admin/Index.php(8): spl_autoload_call('BaseModel')
+#2 [internal function]: Yaf_Loader->autoload('Admin_IndexMode...')
+#3 /private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php(38): spl_autoload_call('Admin_IndexMode...')
+#4 [internal function]: IndexController->authAction()
+#5 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#6 {main}
+
+Next exception 'LogicException' with message 'load builder file is not exists ' in /private/var/www/myaf3/app/application/library/initConfig.php:55
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('Admin_IndexMode...')
+#1 /private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php(38): spl_autoload_call('Admin_IndexMode...')
+#2 [internal function]: IndexController->authAction()
+#3 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#4 {main}
+<?php exit;?>04-03 17:24:31 | code: 0 | msg: 
+exception 'LogicException' with message 'load builder file is not exists BaseModel' in /private/var/www/myaf3/app/application/library/initConfig.php:54
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('BaseModel')
+#1 /private/var/www/myaf3/app/application/models/Admin/Index.php(8): spl_autoload_call('BaseModel')
+#2 [internal function]: Yaf_Loader->autoload('Admin_IndexMode...')
+#3 /private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php(38): spl_autoload_call('Admin_IndexMode...')
+#4 [internal function]: IndexController->authAction()
+#5 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#6 {main}
+
+Next exception 'LogicException' with message 'load builder file is not exists Admin_IndexModel' in /private/var/www/myaf3/app/application/library/initConfig.php:54
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('Admin_IndexMode...')
+#1 /private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php(38): spl_autoload_call('Admin_IndexMode...')
+#2 [internal function]: IndexController->authAction()
+#3 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#4 {main}
+<?php exit;?>04-03 17:28:04 | code: 0 | msg: 
+exception 'LogicException' with message 'load builder file is not exists BaseModel' in /private/var/www/myaf3/app/application/library/initConfig.php:54
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('BaseModel')
+#1 /private/var/www/myaf3/app/application/models/Admin/Index.php(8): spl_autoload_call('BaseModel')
+#2 [internal function]: Yaf_Loader->autoload('Admin_IndexMode...')
+#3 /private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php(38): spl_autoload_call('Admin_IndexMode...')
+#4 [internal function]: IndexController->authAction()
+#5 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#6 {main}
+
+Next exception 'LogicException' with message 'load builder file is not exists Admin_IndexModel' in /private/var/www/myaf3/app/application/library/initConfig.php:54
+Stack trace:
+#0 [internal function]: initConfig->autoLoader('Admin_IndexMode...')
+#1 /private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php(38): spl_autoload_call('Admin_IndexMode...')
+#2 [internal function]: IndexController->authAction()
+#3 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#4 {main}
+<?php exit;?>04-03 17:45:06 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:45:06 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:45:06 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:45:06 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:45:06 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:45:06 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:45:06 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:45:06 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:45:06 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:45:06 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:45:06 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:45:07 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:45:27 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:45:27 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:45:27 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:45:28 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:45:28 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:45:28 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:45:28 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:45:28 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:45:28 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:45:28 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:45:28 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:46:01 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:46:01 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:46:01 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:46:01 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:46:01 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:46:01 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:46:01 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:46:01 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:46:01 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:46:01 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:46:01 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:46:55 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:46:55 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:46:55 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:46:55 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:46:55 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:46:55 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:46:55 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:46:55 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:46:55 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:46:55 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:46:55 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:48:32 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:48:32 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:48:32 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:48:32 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:48:32 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:48:32 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:48:32 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:48:32 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:48:32 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:48:32 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:48:32 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 17:51:50 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method icons.htmlAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:07:15 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method email.htmlAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:08:06 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:08:06 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:08:06 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:08:06 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:08:06 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:08:06 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:08:43 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:08:43 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:08:43 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:08:43 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:08:43 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:08:43 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:12:42 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method general-forms.htmlAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:12:46 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:12:46 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:12:46 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:12:46 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:12:46 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:12:46 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:13:16 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:13:16 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:13:16 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:13:16 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:13:16 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:13:16 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:14:13 | code: 516 | msg: 
+exception 'Yaf_Exception_LoadFailed_Controller' with message 'Failed opening controller script /private/var/www/myaf3/app/application/controllers/Statics.php: No such file or directory' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:16:23 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:16:23 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:16:23 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:16:23 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method imagesAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 18:41:18 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method buttons.htmlAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-03 19:04:36 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method maps.htmlAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
