@@ -33,7 +33,7 @@ class UniqueKey extends AbstractConstraint
     {
         $colCount = count($this->columns);
 
-        $values   = array();
+        $values = array();
         $values[] = ($this->name) ? $this->name : '';
 
         $newSpecTypes = array(self::TYPE_IDENTIFIER);

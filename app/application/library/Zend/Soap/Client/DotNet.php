@@ -70,12 +70,12 @@ class DotNet extends SOAPClient
     /**
      * Do request proxy method.
      *
-     * @param  CommonClient $client   Actual SOAP client.
-     * @param  string       $request  The request body.
-     * @param  string       $location The SOAP URI.
-     * @param  string       $action   The SOAP action to call.
-     * @param  int          $version  The SOAP version to use.
-     * @param  int          $oneWay  (Optional) The number 1 if a response is not expected.
+     * @param  CommonClient $client Actual SOAP client.
+     * @param  string $request The request body.
+     * @param  string $location The SOAP URI.
+     * @param  string $action The SOAP action to call.
+     * @param  int $version The SOAP version to use.
+     * @param  int $oneWay (Optional) The number 1 if a response is not expected.
      * @return string The XML SOAP response.
      */
     public function _doRequest(CommonClient $client, $request, $location, $action, $version, $oneWay = null)
@@ -87,19 +87,19 @@ class DotNet extends SOAPClient
         $curlClient = $this->getCurlClient();
 
         // @todo persistent connection ?
-        $headers    = array(
+        $headers = array(
             'Content-Type' => 'text/xml; charset=utf-8',
-            'Method'       => 'POST',
-            'SOAPAction'   => '"' . $action . '"',
-            'User-Agent'   => 'PHP-SOAP-CURL',
+            'Method' => 'POST',
+            'SOAPAction' => '"' . $action . '"',
+            'User-Agent' => 'PHP-SOAP-CURL',
         );
         $uri = new HttpUri($location);
 
         // @todo use parent set* options for ssl certificate authorization
         $curlClient->setCurlOption(CURLOPT_HTTPAUTH, CURLAUTH_NTLM)
-                   ->setCurlOption(CURLOPT_SSL_VERIFYHOST, false)
-                   ->setCurlOption(CURLOPT_SSL_VERIFYPEER, false)
-                   ->setCurlOption(CURLOPT_USERPWD, $this->options['login'] . ':' . $this->options['password']);
+            ->setCurlOption(CURLOPT_SSL_VERIFYHOST, false)
+            ->setCurlOption(CURLOPT_SSL_VERIFYPEER, false)
+            ->setCurlOption(CURLOPT_USERPWD, $this->options['login'] . ':' . $this->options['password']);
 
         // Perform the cURL request and get the response
         $curlClient->connect($uri->getHost(), $uri->getPort());
@@ -110,7 +110,7 @@ class DotNet extends SOAPClient
         $curlClient->close();
 
         // Save headers
-        $this->lastRequestHeaders  = $this->flattenHeaders($headers);
+        $this->lastRequestHeaders = $this->flattenHeaders($headers);
         $this->lastResponseHeaders = $response->getHeaders()->toString();
 
         // Return only the XML body
@@ -193,9 +193,9 @@ class DotNet extends SOAPClient
      */
     protected function _preProcessArguments($arguments)
     {
-        if (count($arguments) > 1  ||
-            (count($arguments) == 1  &&  !is_array(reset($arguments)))
-           ) {
+        if (count($arguments) > 1 ||
+            (count($arguments) == 1 && !is_array(reset($arguments)))
+        ) {
             throw new Exception\RuntimeException(
                 '.Net webservice arguments have to be grouped into array: array("a" => $a, "b" => $b, ...).'
             );

@@ -13,7 +13,7 @@ use DateTime;
 use Zend\Feed\Uri;
 
 /**
-*/
+ */
 class Entry
 {
     /**
@@ -274,10 +274,10 @@ class Entry
      */
     public function setCommentCount($count)
     {
-        if (!is_numeric($count) || (int) $count != $count || (int) $count < 0) {
+        if (!is_numeric($count) || (int)$count != $count || (int)$count < 0) {
             throw new Exception\InvalidArgumentException('Invalid parameter: "count" must be a positive integer number or zero');
         }
-        $this->data['commentCount'] = (int) $count;
+        $this->data['commentCount'] = (int)$count;
 
         return $this;
     }
@@ -313,7 +313,7 @@ class Entry
         }
         if (!isset($link['type']) || !in_array($link['type'], array('atom', 'rss', 'rdf'))) {
             throw new Exception\InvalidArgumentException('Invalid parameter: "type" must be one'
-            . ' of "atom", "rss" or "rdf"');
+                . ' of "atom", "rss" or "rdf"');
         }
         if (!isset($this->data['commentFeedLinks'])) {
             $this->data['commentFeedLinks'] = array();
@@ -539,8 +539,8 @@ class Entry
     {
         if (!isset($category['term'])) {
             throw new Exception\InvalidArgumentException('Each category must be an array and '
-            . 'contain at least a "term" element containing the machine '
-            . ' readable category name');
+                . 'contain at least a "term" element containing the machine '
+                . ' readable category name');
         }
         if (isset($category['scheme'])) {
             if (empty($category['scheme'])
@@ -548,7 +548,7 @@ class Entry
                 || !Uri::factory($category['scheme'])->isValid()
             ) {
                 throw new Exception\InvalidArgumentException('The Atom scheme or RSS domain of'
-                . ' a category must be a valid URI');
+                    . ' a category must be a valid URI');
             }
         }
         if (!isset($this->data['categories'])) {
@@ -754,9 +754,9 @@ class Entry
      */
     protected function _loadExtensions()
     {
-        $all     = Writer::getExtensions();
+        $all = Writer::getExtensions();
         $manager = Writer::getExtensionManager();
-        $exts    = $all['entry'];
+        $exts = $all['entry'];
         foreach ($exts as $ext) {
             $this->extensions[$ext] = $manager->get($ext);
             $this->extensions[$ext]->setEncoding($this->getEncoding());

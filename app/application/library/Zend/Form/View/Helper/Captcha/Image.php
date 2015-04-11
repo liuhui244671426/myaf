@@ -18,7 +18,7 @@ class Image extends AbstractWord
     /**
      * Render the captcha
      *
-     * @param  ElementInterface          $element
+     * @param  ElementInterface $element
      * @throws Exception\DomainException
      * @return string
      */
@@ -36,10 +36,10 @@ class Image extends AbstractWord
         $captcha->generate();
 
         $imgAttributes = array(
-            'width'  => $captcha->getWidth(),
+            'width' => $captcha->getWidth(),
             'height' => $captcha->getHeight(),
-            'alt'    => $captcha->getImgAlt(),
-            'src'    => $captcha->getImgUrl() . $captcha->getId() . $captcha->getSuffix(),
+            'alt' => $captcha->getImgAlt(),
+            'src' => $captcha->getImgUrl() . $captcha->getId() . $captcha->getSuffix(),
         );
 
         if ($element->hasAttribute('id')) {
@@ -53,8 +53,8 @@ class Image extends AbstractWord
             $closingBracket
         );
 
-        $position     = $this->getCaptchaPosition();
-        $separator    = $this->getSeparator();
+        $position = $this->getCaptchaPosition();
+        $separator = $this->getSeparator();
         $captchaInput = $this->renderCaptchaInputs($element);
 
         $pattern = '%s%s%s';

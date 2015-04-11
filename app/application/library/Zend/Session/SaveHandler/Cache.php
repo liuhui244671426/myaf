@@ -58,7 +58,7 @@ class Cache implements SaveHandlerInterface
     {
         // @todo figure out if we want to use these
         $this->sessionSavePath = $savePath;
-        $this->sessionName     = $name;
+        $this->sessionName = $name;
 
         return true;
     }

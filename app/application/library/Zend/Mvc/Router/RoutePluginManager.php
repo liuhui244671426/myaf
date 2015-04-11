@@ -35,9 +35,9 @@ class RoutePluginManager extends AbstractPluginManager
      * service name. This ensures that providing the FQCN does not trigger an
      * abstract factory later.
      *
-     * @param  string       $name
-     * @param  string       $invokableClass
-     * @param  null|bool    $shared
+     * @param  string $name
+     * @param  string $invokableClass
+     * @param  null|bool $shared
      * @return RoutePluginManager
      */
     public function setInvokableClass($name, $invokableClass, $shared = null)

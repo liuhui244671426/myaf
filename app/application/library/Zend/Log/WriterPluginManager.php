@@ -19,16 +19,16 @@ class WriterPluginManager extends AbstractPluginManager
      * @var array
      */
     protected $invokableClasses = array(
-        'chromephp'      => 'Zend\Log\Writer\ChromePhp',
-        'db'             => 'Zend\Log\Writer\Db',
+        'chromephp' => 'Zend\Log\Writer\ChromePhp',
+        'db' => 'Zend\Log\Writer\Db',
         'fingerscrossed' => 'Zend\Log\Writer\FingersCrossed',
-        'firephp'        => 'Zend\Log\Writer\FirePhp',
-        'mail'           => 'Zend\Log\Writer\Mail',
-        'mock'           => 'Zend\Log\Writer\Mock',
-        'null'           => 'Zend\Log\Writer\Null',
-        'stream'         => 'Zend\Log\Writer\Stream',
-        'syslog'         => 'Zend\Log\Writer\Syslog',
-        'zendmonitor'    => 'Zend\Log\Writer\ZendMonitor',
+        'firephp' => 'Zend\Log\Writer\FirePhp',
+        'mail' => 'Zend\Log\Writer\Mail',
+        'mock' => 'Zend\Log\Writer\Mock',
+        'null' => 'Zend\Log\Writer\Null',
+        'stream' => 'Zend\Log\Writer\Stream',
+        'syslog' => 'Zend\Log\Writer\Syslog',
+        'zendmonitor' => 'Zend\Log\Writer\ZendMonitor',
     );
 
     /**

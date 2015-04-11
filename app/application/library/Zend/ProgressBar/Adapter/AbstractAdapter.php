@@ -70,12 +70,12 @@ abstract class AbstractAdapter
     /**
      * Notify the adapter about an update
      *
-     * @param  float   $current       Current progress value
-     * @param  float   $max           Max progress value
-     * @param  float   $percent       Current percent value
-     * @param  int $timeTaken     Taken time in seconds
+     * @param  float $current Current progress value
+     * @param  float $max Max progress value
+     * @param  float $percent Current percent value
+     * @param  int $timeTaken Taken time in seconds
      * @param  int $timeRemaining Remaining time in seconds
-     * @param  string  $text          Status text
+     * @param  string $text Status text
      * @return void
      */
     abstract public function notify($current, $max, $percent, $timeTaken, $timeRemaining, $text);

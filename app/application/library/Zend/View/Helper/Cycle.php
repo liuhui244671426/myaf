@@ -28,7 +28,7 @@ class Cycle extends AbstractHelper implements Iterator
      *
      * @var array
      */
-    protected $data = array(self::DEFAULT_NAME=>array());
+    protected $data = array(self::DEFAULT_NAME => array());
 
     /**
      * Actual name of cycle
@@ -42,7 +42,7 @@ class Cycle extends AbstractHelper implements Iterator
      *
      * @var array
      */
-    protected $pointers = array(self::DEFAULT_NAME =>-1);
+    protected $pointers = array(self::DEFAULT_NAME => -1);
 
     /**
      * Add elements to alternate
@@ -78,7 +78,7 @@ class Cycle extends AbstractHelper implements Iterator
      */
     public function toString()
     {
-        return (string) $this->data[$this->name][$this->key()];
+        return (string)$this->data[$this->name][$this->key()];
     }
 
     /**

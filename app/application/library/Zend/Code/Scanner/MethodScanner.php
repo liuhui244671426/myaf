@@ -18,12 +18,12 @@ class MethodScanner implements ScannerInterface
     /**
      * @var bool
      */
-    protected $isScanned    = false;
+    protected $isScanned = false;
 
     /**
      * @var string
      */
-    protected $docComment   = null;
+    protected $docComment = null;
 
     /**
      * @var ClassScanner
@@ -33,22 +33,22 @@ class MethodScanner implements ScannerInterface
     /**
      * @var string
      */
-    protected $class        = null;
+    protected $class = null;
 
     /**
      * @var string
      */
-    protected $name         = null;
+    protected $name = null;
 
     /**
      * @var int
      */
-    protected $lineStart    = null;
+    protected $lineStart = null;
 
     /**
      * @var int
      */
-    protected $lineEnd      = null;
+    protected $lineEnd = null;
 
     /**
      * @var bool
@@ -106,7 +106,7 @@ class MethodScanner implements ScannerInterface
      */
     public function __construct(array $methodTokens, NameInformation $nameInformation = null)
     {
-        $this->tokens          = $methodTokens;
+        $this->tokens = $methodTokens;
         $this->nameInformation = $nameInformation;
     }
 
@@ -116,12 +116,12 @@ class MethodScanner implements ScannerInterface
      */
     public function setClass($class)
     {
-        $this->class = (string) $class;
+        $this->class = (string)$class;
         return $this;
     }
 
     /**
-     * @param  ClassScanner  $scannerClass
+     * @param  ClassScanner $scannerClass
      * @return MethodScanner
      */
     public function setScannerClass(ClassScanner $scannerClass)
@@ -359,15 +359,15 @@ class MethodScanner implements ScannerInterface
          * Variables & Setup
          */
 
-        $tokens       = &$this->tokens; // localize
-        $infos        = &$this->infos; // localize
-        $tokenIndex   = null;
-        $token        = null;
-        $tokenType    = null;
+        $tokens = &$this->tokens; // localize
+        $infos = &$this->infos; // localize
+        $tokenIndex = null;
+        $token = null;
+        $tokenType = null;
         $tokenContent = null;
-        $tokenLine    = null;
-        $infoIndex    = 0;
-        $parentCount  = 0;
+        $tokenLine = null;
+        $infoIndex = 0;
+        $parentCount = 0;
 
         /*
          * MACRO creation
@@ -376,41 +376,41 @@ class MethodScanner implements ScannerInterface
             static $lastTokenArray = null;
             $tokenIndex = ($tokenIndex === null) ? 0 : $tokenIndex + 1;
             if (!isset($tokens[$tokenIndex])) {
-                $token        = false;
+                $token = false;
                 $tokenContent = false;
-                $tokenType    = false;
-                $tokenLine    = false;
+                $tokenType = false;
+                $tokenLine = false;
 
                 return false;
             }
             $token = $tokens[$tokenIndex];
             if (is_string($token)) {
-                $tokenType    = null;
+                $tokenType = null;
                 $tokenContent = $token;
-                $tokenLine    = $tokenLine + substr_count(
-                    $lastTokenArray[1],
-                    "\n"
-                ); // adjust token line by last known newline count
+                $tokenLine = $tokenLine + substr_count(
+                        $lastTokenArray[1],
+                        "\n"
+                    ); // adjust token line by last known newline count
             } else {
                 list($tokenType, $tokenContent, $tokenLine) = $token;
             }
 
             return $tokenIndex;
         };
-        $MACRO_INFO_START    = function () use (&$infoIndex, &$infos, &$tokenIndex, &$tokenLine) {
+        $MACRO_INFO_START = function () use (&$infoIndex, &$infos, &$tokenIndex, &$tokenLine) {
             $infos[$infoIndex] = array(
-                'type'        => 'parameter',
-                'tokenStart'  => $tokenIndex,
-                'tokenEnd'    => null,
-                'lineStart'   => $tokenLine,
-                'lineEnd'     => $tokenLine,
-                'name'        => null,
-                'position'    => $infoIndex + 1, // position is +1 of infoIndex
+                'type' => 'parameter',
+                'tokenStart' => $tokenIndex,
+                'tokenEnd' => null,
+                'lineStart' => $tokenLine,
+                'lineEnd' => $tokenLine,
+                'name' => null,
+                'position' => $infoIndex + 1, // position is +1 of infoIndex
             );
         };
-        $MACRO_INFO_ADVANCE  = function () use (&$infoIndex, &$infos, &$tokenIndex, &$tokenLine) {
+        $MACRO_INFO_ADVANCE = function () use (&$infoIndex, &$infos, &$tokenIndex, &$tokenLine) {
             $infos[$infoIndex]['tokenEnd'] = $tokenIndex;
-            $infos[$infoIndex]['lineEnd']  = $tokenLine;
+            $infos[$infoIndex]['lineEnd'] = $tokenLine;
             $infoIndex++;
 
             return $infoIndex;
@@ -425,7 +425,7 @@ class MethodScanner implements ScannerInterface
 
         SCANNER_TOP:
 
-        $this->lineStart = ($this->lineStart) ? : $tokenLine;
+        $this->lineStart = ($this->lineStart) ?: $tokenLine;
 
         switch ($tokenType) {
             case T_DOC_COMMENT:
@@ -434,39 +434,39 @@ class MethodScanner implements ScannerInterface
                     $this->docComment = $tokenContent;
                 }
                 goto SCANNER_CONTINUE_SIGNATURE;
-                //goto (no break needed);
+            //goto (no break needed);
 
             case T_FINAL:
                 $this->isFinal = true;
                 goto SCANNER_CONTINUE_SIGNATURE;
-                //goto (no break needed);
+            //goto (no break needed);
 
             case T_ABSTRACT:
                 $this->isAbstract = true;
                 goto SCANNER_CONTINUE_SIGNATURE;
-                //goto (no break needed);
+            //goto (no break needed);
 
             case T_PUBLIC:
                 // use defaults
                 goto SCANNER_CONTINUE_SIGNATURE;
-                //goto (no break needed);
+            //goto (no break needed);
 
             case T_PROTECTED:
                 $this->isProtected = true;
-                $this->isPublic    = false;
+                $this->isPublic = false;
                 goto SCANNER_CONTINUE_SIGNATURE;
-                //goto (no break needed);
+            //goto (no break needed);
 
             case T_PRIVATE:
                 $this->isPrivate = true;
-                $this->isPublic  = false;
+                $this->isPublic = false;
                 goto SCANNER_CONTINUE_SIGNATURE;
-                //goto (no break needed);
+            //goto (no break needed);
 
             case T_STATIC:
                 $this->isStatic = true;
                 goto SCANNER_CONTINUE_SIGNATURE;
-                //goto (no break needed);
+            //goto (no break needed);
 
             case T_VARIABLE:
             case T_STRING:
@@ -485,7 +485,7 @@ class MethodScanner implements ScannerInterface
                 }
 
                 goto SCANNER_CONTINUE_SIGNATURE;
-                //goto (no break needed);
+            //goto (no break needed);
 
             case null:
 
@@ -495,11 +495,11 @@ class MethodScanner implements ScannerInterface
                             $MACRO_INFO_START();
                         }
                         goto SCANNER_CONTINUE_SIGNATURE;
-                        //goto (no break needed);
+                    //goto (no break needed);
                     case '(':
                         $parentCount++;
                         goto SCANNER_CONTINUE_SIGNATURE;
-                        //goto (no break needed);
+                    //goto (no break needed);
                     case ')':
                         $parentCount--;
                         if ($parentCount > 0) {
@@ -512,7 +512,7 @@ class MethodScanner implements ScannerInterface
                             $context = 'body';
                         }
                         goto SCANNER_CONTINUE_BODY;
-                        //goto (no break needed);
+                    //goto (no break needed);
                     case ',':
                         if ($parentCount === 1) {
                             $MACRO_INFO_ADVANCE();

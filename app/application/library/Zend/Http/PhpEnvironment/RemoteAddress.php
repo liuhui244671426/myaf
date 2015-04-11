@@ -47,7 +47,7 @@ class RemoteAddress
      * This must be static method, since validators are recovered automatically
      * at session read, so this is the only way to switch setting.
      *
-     * @param  bool  $useProxy Whether to check also proxied IP addresses.
+     * @param  bool $useProxy Whether to check also proxied IP addresses.
      * @return RemoteAddress
      */
     public function setUseProxy($useProxy = true)

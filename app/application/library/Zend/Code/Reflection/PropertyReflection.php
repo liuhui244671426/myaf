@@ -31,7 +31,7 @@ class PropertyReflection extends PhpReflectionProperty implements ReflectionInte
      */
     public function getDeclaringClass()
     {
-        $phpReflection  = parent::getDeclaringClass();
+        $phpReflection = parent::getDeclaringClass();
         $zendReflection = new ClassReflection($phpReflection->getName());
         unset($phpReflection);
 
@@ -76,15 +76,15 @@ class PropertyReflection extends PhpReflectionProperty implements ReflectionInte
             return false;
         }
 
-        $class              = $this->getDeclaringClass();
+        $class = $this->getDeclaringClass();
         $cachingFileScanner = $this->createFileScanner($class->getFileName());
-        $nameInformation    = $cachingFileScanner->getClassNameInformation($class->getName());
+        $nameInformation = $cachingFileScanner->getClassNameInformation($class->getName());
 
         if (!$nameInformation) {
             return false;
         }
 
-        $this->annotations  = new AnnotationScanner($annotationManager, $docComment, $nameInformation);
+        $this->annotations = new AnnotationScanner($annotationManager, $docComment, $nameInformation);
 
         return $this->annotations;
     }

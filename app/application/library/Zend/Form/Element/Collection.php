@@ -172,7 +172,7 @@ class Collection extends Fieldset
         }
 
         $this->object = $object;
-        $this->count  = count($object) > $this->count ? count($object) : $this->count;
+        $this->count = count($object) > $this->count ? count($object) : $this->count;
 
         return $this;
     }
@@ -349,7 +349,7 @@ class Collection extends Fieldset
      */
     public function setAllowAdd($allowAdd)
     {
-        $this->allowAdd = (bool) $allowAdd;
+        $this->allowAdd = (bool)$allowAdd;
         return $this;
     }
 
@@ -369,7 +369,7 @@ class Collection extends Fieldset
      */
     public function setAllowRemove($allowRemove)
     {
-        $this->allowRemove = (bool) $allowRemove;
+        $this->allowRemove = (bool)$allowRemove;
         return $this;
     }
 
@@ -389,7 +389,7 @@ class Collection extends Fieldset
      */
     public function setShouldCreateTemplate($shouldCreateTemplate)
     {
-        $this->shouldCreateTemplate = (bool) $shouldCreateTemplate;
+        $this->shouldCreateTemplate = (bool)$shouldCreateTemplate;
 
         return $this;
     }
@@ -435,7 +435,7 @@ class Collection extends Fieldset
      */
     public function setCreateNewObjects($createNewObjects)
     {
-        $this->createNewObjects = (bool) $createNewObjects;
+        $this->createNewObjects = (bool)$createNewObjects;
         return $this;
     }
 
@@ -516,11 +516,11 @@ class Collection extends Fieldset
                 $values[$key] = $this->hydrator->extract($value);
                 continue;
             }
-            
+
             // If the target element is a fieldset that can accept the provided value
             // we should clone it, inject the value and extract the data
-            if ( $this->targetElement instanceof FieldsetInterface ) {
-                if ( ! $this->targetElement->allowObjectBinding($value) ) {
+            if ($this->targetElement instanceof FieldsetInterface) {
+                if (!$this->targetElement->allowObjectBinding($value)) {
                     continue;
                 }
                 $targetElement = clone $this->targetElement;
@@ -531,9 +531,9 @@ class Collection extends Fieldset
                 }
                 continue;
             }
-            
+
             // If the target element is a non-fieldset element, just use the value
-            if ( $this->targetElement instanceof ElementInterface ) {
+            if ($this->targetElement instanceof ElementInterface) {
                 $values[$key] = $value;
                 if (!$this->createNewObjects() && $this->has($key)) {
                     $this->get($key)->setValue($value);

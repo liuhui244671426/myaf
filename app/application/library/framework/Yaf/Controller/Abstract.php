@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Yaf Controller Abstract
  */
@@ -73,12 +74,12 @@ abstract class Yaf_Controller_Abstract
      *
      * @see Yaf_Response_Abstract::appendBody()
      * @param  string|null $tpl Defaults to action registered in request object
-     * @param  array $parameters  add those variables to the view
+     * @param  array $parameters add those variables to the view
      * @return void
      */
     public function display($tpl = null, $parameters = array())
     {
-        $view   = $this->initView();
+        $view = $this->initView();
         $script = $this->getViewScript($tpl);
         $view->display($script, $parameters);
     }
@@ -111,7 +112,7 @@ abstract class Yaf_Controller_Abstract
      * @param array $args
      * @return void
      */
-    public function forward($module, $controller=null, $action=null, array $args = null)
+    public function forward($module, $controller = null, $action = null, array $args = null)
     {
         $request = $this->getRequest();
         if (null !== $args) {
@@ -139,7 +140,7 @@ abstract class Yaf_Controller_Abstract
 
 
         $request->setActionName($action)
-        ->setDispatched(false);
+            ->setDispatched(false);
     }
 
     /**
@@ -210,7 +211,7 @@ abstract class Yaf_Controller_Abstract
 
     public function getViewpath()
     {
-        $view  = $this->getView();
+        $view = $this->getView();
         return $view->getScriptPath();
     }
 
@@ -247,12 +248,12 @@ abstract class Yaf_Controller_Abstract
      *
      * @see Yaf_Response_Abstract::appendBody()
      * @param  string|null $tpl Defaults to action registered in request object
-     * @param  array $parameters  add those variables to the view
+     * @param  array $parameters add those variables to the view
      * @return void
      */
     public function render($tpl = null, $parameters = array())
     {
-        $view   = $this->initView();
+        $view = $this->initView();
         $script = $this->getViewScript($tpl);
         return $view->render($script, $parameters);
     }
@@ -271,7 +272,7 @@ abstract class Yaf_Controller_Abstract
 
     public function setViewpath($templateDir)
     {
-        $view  = $this->getView();
+        $view = $this->getView();
         $view->setScriptPath($templateDir);
     }
 
@@ -297,7 +298,7 @@ abstract class Yaf_Controller_Abstract
         $action = str_replace('_', DIRECTORY_SEPARATOR, strtolower($action));
         $script = $action . '.' . Yaf_G::get('view_ext');
         $controller = $request->getControllerName();
-        if ($controller!=null) {
+        if ($controller != null) {
             $controller = str_replace(
                 '_', DIRECTORY_SEPARATOR, strtolower($controller)
             );

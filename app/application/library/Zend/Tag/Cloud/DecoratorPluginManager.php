@@ -28,8 +28,8 @@ class DecoratorPluginManager extends AbstractPluginManager
      */
     protected $invokableClasses = array(
         'htmlcloud' => 'Zend\Tag\Cloud\Decorator\HtmlCloud',
-        'htmltag'   => 'Zend\Tag\Cloud\Decorator\HtmlTag',
-        'tag'       => 'Zend\Tag\Cloud\Decorator\HtmlTag',
+        'htmltag' => 'Zend\Tag\Cloud\Decorator\HtmlTag',
+        'tag' => 'Zend\Tag\Cloud\Decorator\HtmlTag',
     );
 
     /**

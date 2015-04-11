@@ -27,10 +27,10 @@ interface TranslatorInterface
     /**
      * Translate a plural message.
      *
-     * @param  string      $singular
-     * @param  string      $plural
-     * @param  int         $number
-     * @param  string      $textDomain
+     * @param  string $singular
+     * @param  string $plural
+     * @param  int $number
+     * @param  string $textDomain
      * @param  string|null $locale
      * @return string
      */

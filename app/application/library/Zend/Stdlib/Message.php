@@ -108,8 +108,8 @@ class Message implements MessageInterface
         foreach ($this->getMetadata() as $key => $value) {
             $request .= sprintf(
                 "%s: %s\r\n",
-                (string) $key,
-                (string) $value
+                (string)$key,
+                (string)$value
             );
         }
         $request .= "\r\n" . $this->getContent();

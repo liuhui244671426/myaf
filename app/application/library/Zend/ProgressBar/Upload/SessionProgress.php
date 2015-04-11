@@ -35,15 +35,15 @@ class SessionProgress extends AbstractUploadHandler
             return false;
         }
 
-        $status  = array(
-            'total'    => 0,
-            'current'  => 0,
-            'rate'     => 0,
-            'message'  => '',
-            'done'     => false,
+        $status = array(
+            'total' => 0,
+            'current' => 0,
+            'rate' => 0,
+            'message' => '',
+            'done' => false,
         );
         $status = $uploadInfo + $status;
-        $status['total']   = $status['content_length'];
+        $status['total'] = $status['content_length'];
         $status['current'] = $status['bytes_processed'];
 
         $time = time() - $status['start_time'];
@@ -64,6 +64,6 @@ class SessionProgress extends AbstractUploadHandler
      */
     public function isSessionUploadProgressAvailable()
     {
-        return (bool) ini_get('session.upload_progress.enabled');
+        return (bool)ini_get('session.upload_progress.enabled');
     }
 }

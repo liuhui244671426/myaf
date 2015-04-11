@@ -14,8 +14,8 @@ interface WriterInterface
     /**
      * Write a config object to a file.
      *
-     * @param  string  $filename
-     * @param  mixed   $config
+     * @param  string $filename
+     * @param  mixed $config
      * @param  bool $exclusiveLock
      * @return void
      */

@@ -17,7 +17,7 @@ interface ServiceLocatorInterface
     /**
      * Retrieve a registered instance
      *
-     * @param  string  $name
+     * @param  string $name
      * @throws Exception\ServiceNotFoundException
      * @return object|array
      */
@@ -26,7 +26,7 @@ interface ServiceLocatorInterface
     /**
      * Check for a registered instance
      *
-     * @param  string|array  $name
+     * @param  string|array $name
      * @return bool
      */
     public function has($name);

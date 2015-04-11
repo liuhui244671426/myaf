@@ -18,7 +18,7 @@ class Identical extends AbstractValidator
      * Error codes
      * @const string
      */
-    const NOT_SAME      = 'notSame';
+    const NOT_SAME = 'notSame';
     const MISSING_TOKEN = 'missingToken';
 
     /**
@@ -26,7 +26,7 @@ class Identical extends AbstractValidator
      * @var array
      */
     protected $messageTemplates = array(
-        self::NOT_SAME      => "The two given tokens do not match",
+        self::NOT_SAME => "The two given tokens do not match",
         self::MISSING_TOKEN => 'No token was provided to match against',
     );
 
@@ -43,7 +43,7 @@ class Identical extends AbstractValidator
      */
     protected $tokenString;
     protected $token;
-    protected $strict  = true;
+    protected $strict = true;
     protected $literal = false;
 
     /**
@@ -92,8 +92,8 @@ class Identical extends AbstractValidator
      */
     public function setToken($token)
     {
-        $this->tokenString = (is_array($token) ? var_export($token, true) : (string) $token);
-        $this->token       = $token;
+        $this->tokenString = (is_array($token) ? var_export($token, true) : (string)$token);
+        $this->token = $token;
         return $this;
     }
 
@@ -115,7 +115,7 @@ class Identical extends AbstractValidator
      */
     public function setStrict($strict)
     {
-        $this->strict = (bool) $strict;
+        $this->strict = (bool)$strict;
         return $this;
     }
 
@@ -137,7 +137,7 @@ class Identical extends AbstractValidator
      */
     public function setLiteral($literal)
     {
-        $this->literal = (bool) $literal;
+        $this->literal = (bool)$literal;
         return $this;
     }
 
@@ -164,7 +164,7 @@ class Identical extends AbstractValidator
                         break;
                     }
                     $context = $context[$key];
-                    $token   = $token[$key];
+                    $token = $token[$key];
                 }
             }
 

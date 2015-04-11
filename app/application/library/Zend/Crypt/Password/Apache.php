@@ -19,7 +19,7 @@ use Zend\Math\Rand;
  */
 class Apache implements PasswordInterface
 {
-    const BASE64  = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+    const BASE64 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
     const ALPHA64 = './0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 
     /**
@@ -108,7 +108,7 @@ class Apache implements PasswordInterface
                         'You must specify UserName and AuthName (realm) to generate the digest'
                     );
                 }
-                $hash = md5($this->userName . ':' . $this->authName . ':' .$password);
+                $hash = md5($this->userName . ':' . $this->authName . ':' . $password);
                 break;
         }
 
@@ -118,8 +118,8 @@ class Apache implements PasswordInterface
     /**
      * Verify if a password is correct against a hash value
      *
-     * @param  string  $password
-     * @param  string  $hash
+     * @param  string $password
+     * @param  string $hash
      * @return bool
      */
     public function verify($password, $hash)
@@ -144,7 +144,7 @@ class Apache implements PasswordInterface
                     'You must specify UserName and AuthName (realm) to verify the digest'
                 );
             }
-            $hash2 = md5($this->userName . ':' . $this->authName . ':' .$password);
+            $hash2 = md5($this->userName . ':' . $this->authName . ':' . $password);
             return ($hash === $hash2);
         }
         return (crypt($password, $hash) === $hash);
@@ -242,7 +242,7 @@ class Apache implements PasswordInterface
     /**
      * APR1 MD5 algorithm
      *
-     * @param  string      $password
+     * @param  string $password
      * @param  null|string $salt
      * @return string
      */
@@ -264,9 +264,9 @@ class Apache implements PasswordInterface
                 }
             }
         }
-        $len  = strlen($password);
+        $len = strlen($password);
         $text = $password . '$apr1$' . $salt;
-        $bin  = pack("H32", md5($password . $salt . $password));
+        $bin = pack("H32", md5($password . $salt . $password));
         for ($i = $len; $i > 0; $i -= 16) {
             $text .= substr($bin, 0, min(16, $i));
         }

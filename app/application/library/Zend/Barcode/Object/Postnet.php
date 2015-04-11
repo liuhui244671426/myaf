@@ -52,10 +52,10 @@ class Postnet extends AbstractObject
      */
     protected function calculateBarcodeWidth()
     {
-        $quietZone       = $this->getQuietZone();
-        $startCharacter  = (2 * $this->barThinWidth) * $this->factor;
-        $stopCharacter   = (1 * $this->barThinWidth) * $this->factor;
-        $encodedData     = (10 * $this->barThinWidth) * $this->factor * strlen($this->getText());
+        $quietZone = $this->getQuietZone();
+        $startCharacter = (2 * $this->barThinWidth) * $this->factor;
+        $stopCharacter = (1 * $this->barThinWidth) * $this->factor;
+        $encodedData = (10 * $this->barThinWidth) * $this->factor * strlen($this->getText());
         return $quietZone + $startCharacter + $encodedData + $stopCharacter + $quietZone;
     }
 

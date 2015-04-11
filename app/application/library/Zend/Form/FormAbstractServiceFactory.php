@@ -23,7 +23,7 @@ class FormAbstractServiceFactory implements AbstractFactoryInterface
     /**
      * @var string Top-level configuration key indicating forms configuration
      */
-    protected $configKey     = 'forms';
+    protected $configKey = 'forms';
 
     /**
      * @var Factory Form factory used to create forms
@@ -58,8 +58,8 @@ class FormAbstractServiceFactory implements AbstractFactoryInterface
      */
     public function createServiceWithName(ServiceLocatorInterface $serviceLocator, $name, $requestedName)
     {
-        $config  = $this->getConfig($serviceLocator);
-        $config  = $config[$requestedName];
+        $config = $this->getConfig($serviceLocator);
+        $config = $config[$requestedName];
         $factory = $this->getFormFactory($serviceLocator);
 
         $this->marshalInputFilter($config, $serviceLocator, $factory);

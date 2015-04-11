@@ -14,7 +14,7 @@ use Zend\Stdlib\ArrayUtils;
 
 class GreaterThan extends AbstractValidator
 {
-    const NOT_GREATER           = 'notGreaterThan';
+    const NOT_GREATER = 'notGreaterThan';
     const NOT_GREATER_INCLUSIVE = 'notGreaterThanInclusive';
 
     /**
@@ -82,7 +82,7 @@ class GreaterThan extends AbstractValidator
         }
 
         $this->setMin($options['min'])
-             ->setInclusive($options['inclusive']);
+            ->setInclusive($options['inclusive']);
 
         parent::__construct($options);
     }

@@ -1,4 +1,7 @@
 <?php
-class UserModel {
+
+class UserModel
+{
 }
+
 ?>

@@ -37,11 +37,11 @@ class Method implements RouteInterface
      * Create a new method route.
      *
      * @param  string $verb
-     * @param  array  $defaults
+     * @param  array $defaults
      */
     public function __construct($verb, array $defaults = array())
     {
-        $this->verb     = $verb;
+        $this->verb = $verb;
         $this->defaults = $defaults;
     }
 
@@ -86,8 +86,8 @@ class Method implements RouteInterface
         }
 
         $requestVerb = strtoupper($request->getMethod());
-        $matchVerbs  = explode(',', strtoupper($this->verb));
-        $matchVerbs  = array_map('trim', $matchVerbs);
+        $matchVerbs = explode(',', strtoupper($this->verb));
+        $matchVerbs = array_map('trim', $matchVerbs);
 
         if (in_array($requestVerb, $matchVerbs)) {
             return new RouteMatch($this->defaults);

@@ -75,7 +75,7 @@ class ExceptionEvent extends PostEvent
      */
     public function setThrowException($flag)
     {
-        $this->throwException = (bool) $flag;
+        $this->throwException = (bool)$flag;
         return $this;
     }
 

@@ -24,14 +24,14 @@ class Json
      * so that it is a boolean true value, allowing it to be used with
      * ext/json's functions.
      */
-    const TYPE_ARRAY  = 1;
+    const TYPE_ARRAY = 1;
     const TYPE_OBJECT = 0;
 
-     /**
-      * To check the allowed nesting depth of the XML tree during xml2json conversion.
-      *
-      * @var int
-      */
+    /**
+     * To check the allowed nesting depth of the XML tree during xml2json conversion.
+     *
+     * @var int
+     */
     public static $maxRecursionDepthAllowed = 25;
 
     /**
@@ -53,7 +53,7 @@ class Json
      */
     public static function decode($encodedValue, $objectDecodeType = self::TYPE_OBJECT)
     {
-        $encodedValue = (string) $encodedValue;
+        $encodedValue = (string)$encodedValue;
         if (function_exists('json_decode') && static::$useBuiltinEncoderDecoder !== true) {
             $decode = json_decode($encodedValue, $objectDecodeType);
 
@@ -109,7 +109,7 @@ class Json
         // Pre-encoding look for Zend\Json\Expr objects and replacing by tmp ids
         $javascriptExpressions = array();
         if (isset($options['enableJsonExprFinder'])
-           && ($options['enableJsonExprFinder'] == true)
+            && ($options['enableJsonExprFinder'] == true)
         ) {
             $valueToEncode = static::_recursiveJsonExprFinder($valueToEncode, $javascriptExpressions);
         }
@@ -129,10 +129,10 @@ class Json
             $count = count($javascriptExpressions);
             for ($i = 0; $i < $count; $i++) {
                 $magicKey = $javascriptExpressions[$i]['magicKey'];
-                $value    = $javascriptExpressions[$i]['value'];
+                $value = $javascriptExpressions[$i]['value'];
 
                 $encodedResult = str_replace(
-                    //instead of replacing "key:magicKey", we replace directly magicKey by value because "key" never changes.
+                //instead of replacing "key:magicKey", we replace directly magicKey by value because "key" never changes.
                     '"' . $magicKey . '"',
                     $value,
                     $encodedResult
@@ -163,7 +163,8 @@ class Json
         &$value,
         array &$javascriptExpressions,
         $currentKey = null
-    ) {
+    )
+    {
         if ($value instanceof Expr) {
             // TODO: Optimize with ascii keys, if performance is bad
             $magicKey = "____" . $currentKey . "_" . (count($javascriptExpressions));
@@ -171,7 +172,7 @@ class Json
 
                 //if currentKey is integer, encodeUnicodeString call is not required.
                 "magicKey" => (is_int($currentKey)) ? $magicKey : Encoder::encodeUnicodeString($magicKey),
-                "value"    => $value->__toString(),
+                "value" => $value->__toString(),
             );
             $value = $magicKey;
         } elseif (is_array($value)) {
@@ -185,6 +186,7 @@ class Json
         }
         return $value;
     }
+
     /**
      * Return the value of an XML attribute text or the text between
      * the XML tags
@@ -198,9 +200,9 @@ class Json
      */
     protected static function _getXmlValue($simpleXmlElementObject)
     {
-        $pattern   = '/^[\s]*new Zend[_\\]Json[_\\]Expr[\s]*\([\s]*[\"\']{1}(.*)[\"\']{1}[\s]*\)[\s]*$/';
+        $pattern = '/^[\s]*new Zend[_\\]Json[_\\]Expr[\s]*\([\s]*[\"\']{1}(.*)[\"\']{1}[\s]*\)[\s]*$/';
         $matchings = array();
-        $match     = preg_match($pattern, $simpleXmlElementObject, $matchings);
+        $match = preg_match($pattern, $simpleXmlElementObject, $matchings);
         if ($match) {
             return new Expr($matchings[1]);
         }
@@ -234,14 +236,14 @@ class Json
             // XML tree is too deep. Exit now by throwing an exception.
             throw new RecursionException(
                 "Function _processXml exceeded the allowed recursion depth of "
-                .  static::$maxRecursionDepthAllowed
+                . static::$maxRecursionDepthAllowed
             );
         }
 
-        $children   = $simpleXmlElementObject->children();
-        $name       = $simpleXmlElementObject->getName();
-        $value      = static::_getXmlValue($simpleXmlElementObject);
-        $attributes = (array) $simpleXmlElementObject->attributes();
+        $children = $simpleXmlElementObject->children();
+        $name = $simpleXmlElementObject->getName();
+        $value = static::_getXmlValue($simpleXmlElementObject);
+        $attributes = (array)$simpleXmlElementObject->attributes();
 
         if (!count($children)) {
             if (!empty($attributes) && !$ignoreXmlAttributes) {
@@ -260,11 +262,11 @@ class Json
         $childArray = array();
         foreach ($children as $child) {
             $childname = $child->getName();
-            $element   = static::_processXml($child, $ignoreXmlAttributes, $recursionDepth + 1);
+            $element = static::_processXml($child, $ignoreXmlAttributes, $recursionDepth + 1);
             if (array_key_exists($childname, $childArray)) {
                 if (empty($subChild[$childname])) {
                     $childArray[$childname] = array($childArray[$childname]);
-                    $subChild[$childname]   = true;
+                    $subChild[$childname] = true;
                 }
                 $childArray[$childname][] = $element[$childname];
             } else {
@@ -330,7 +332,7 @@ class Json
         // Convert the PHP array to JSON using Zend\Json\Json encode method.
         // It is just that simple.
         $jsonStringOutput = static::encode($resultArray);
-        return($jsonStringOutput);
+        return ($jsonStringOutput);
     }
 
     /**
@@ -362,7 +364,7 @@ class Json
             $prefix = str_repeat($ind, $indent);
             if (!$inLiteral && ($token == "{" || $token == "[")) {
                 $indent++;
-                if ($result != "" && $result[strlen($result)-1] == "\n") {
+                if ($result != "" && $result[strlen($result) - 1] == "\n") {
                     $result .= $prefix;
                 }
                 $result .= "$token\n";
@@ -373,14 +375,14 @@ class Json
             } elseif (!$inLiteral && $token == ",") {
                 $result .= "$token\n";
             } else {
-                $result .= ($inLiteral ?  '' : $prefix) . $token;
+                $result .= ($inLiteral ? '' : $prefix) . $token;
 
                 //remove escaped backslash sequences causing false positives in next check
                 $token = str_replace('\\', '', $token);
                 // Count # of unescaped double-quotes in token, subtract # of
                 // escaped double-quotes and if the result is odd then we are
                 // inside a string literal
-                if ((substr_count($token, '"')-substr_count($token, '\\"')) % 2 != 0) {
+                if ((substr_count($token, '"') - substr_count($token, '\\"')) % 2 != 0) {
                     $inLiteral = !$inLiteral;
                 }
             }

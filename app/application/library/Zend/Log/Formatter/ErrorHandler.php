@@ -52,11 +52,11 @@ class ErrorHandler extends Simple
             if ($value === null) {
                 continue;
             }
-            if (! is_array($value)) {
+            if (!is_array($value)) {
                 if ($key === null) {
                     $result[$nextIndex] = $value;
                 } else {
-                    if (! is_object($value) || method_exists($value, "__toString")) {
+                    if (!is_object($value) || method_exists($value, "__toString")) {
                         $result[$nextIndex] = $value;
                     }
                 }

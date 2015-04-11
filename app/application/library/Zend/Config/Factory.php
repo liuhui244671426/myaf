@@ -34,11 +34,11 @@ class Factory
      * @var array
      */
     protected static $extensions = array(
-        'ini'         => 'ini',
-        'json'        => 'json',
-        'xml'         => 'xml',
-        'yaml'        => 'yaml',
-        'properties'  => 'javaproperties',
+        'ini' => 'ini',
+        'json' => 'json',
+        'xml' => 'xml',
+        'yaml' => 'yaml',
+        'properties' => 'javaproperties',
     );
 
     /**
@@ -48,17 +48,17 @@ class Factory
      * @var array
      */
     protected static $writerExtensions = array(
-        'php'  => 'php',
-        'ini'  => 'ini',
+        'php' => 'php',
+        'ini' => 'ini',
         'json' => 'json',
-        'xml'  => 'xml',
+        'xml' => 'xml',
         'yaml' => 'yaml',
     );
 
     /**
      * Read a config from a file.
      *
-     * @param  string  $filename
+     * @param  string $filename
      * @param  bool $returnConfigObject
      * @param  bool $useIncludePath
      * @return array|Config
@@ -114,7 +114,7 @@ class Factory
                 static::$extensions[$extension] = $reader;
             }
 
-            /** @var Reader\ReaderInterface $reader  */
+            /** @var Reader\ReaderInterface $reader */
             $config = $reader->fromFile($filepath);
         } else {
             throw new Exception\RuntimeException(sprintf(
@@ -129,7 +129,7 @@ class Factory
     /**
      * Read configuration from multiple files and merge them.
      *
-     * @param  array   $files
+     * @param  array $files
      * @param  bool $returnConfigObject
      * @param  bool $useIncludePath
      * @return array|Config
@@ -161,7 +161,7 @@ class Factory
             (!is_object($config) && !is_array($config))
         ) {
             throw new Exception\InvalidArgumentException(
-                __METHOD__." \$config should be an array or instance of Zend\\Config\\Config"
+                __METHOD__ . " \$config should be an array or instance of Zend\\Config\\Config"
             );
         }
 
@@ -198,7 +198,7 @@ class Factory
 
         $content = $writer->processConfig($config);
 
-        return (bool) (file_put_contents($filename, $content) !== false);
+        return (bool)(file_put_contents($filename, $content) !== false);
     }
 
     /**

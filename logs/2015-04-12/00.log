@@ -340,3 +340,171 @@
 ))
 00:34:30-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:30 '$isLogin: '
 00:34:30-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:31 true
+00:39:34-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:20 'AuthPlugin::dispatchLoopStartup'
+00:39:34-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:21 'Admin'
+00:39:34-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:22 'getallmembers'
+00:39:34-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 '$request: '
+00:39:34-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:29 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Member',
+   'action' => 'getallmembers',
+   'method' => 'GET',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/member/getAllMembers',
+   'dispatched' => false,
+   'routed' => true,
+))
+00:39:34-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:30 '$isLogin: '
+00:39:34-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:31 true
+00:39:43-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:20 'AuthPlugin::dispatchLoopStartup'
+00:39:43-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:21 'Admin'
+00:39:43-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:22 'getallmembers'
+00:39:43-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 '$request: '
+00:39:43-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:29 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Member',
+   'action' => 'getallmembers',
+   'method' => 'GET',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/member/getAllMembers',
+   'dispatched' => false,
+   'routed' => true,
+))
+00:39:43-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:30 '$isLogin: '
+00:39:43-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:31 true
+00:39:53-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:20 'AuthPlugin::dispatchLoopStartup'
+00:39:53-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:21 'Admin'
+00:39:53-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:22 'main'
+00:39:53-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 '$request: '
+00:39:53-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:29 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Main',
+   'action' => 'main',
+   'method' => 'GET',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/main/main',
+   'dispatched' => false,
+   'routed' => true,
+))
+00:39:53-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:30 '$isLogin: '
+00:39:53-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:31 true
+00:41:42-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:20 'AuthPlugin::dispatchLoopStartup'
+00:41:42-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:21 'Admin'
+00:41:42-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:22 'main'
+00:41:42-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 '$request: '
+00:41:42-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:29 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Main',
+   'action' => 'main',
+   'method' => 'GET',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/main/main',
+   'dispatched' => false,
+   'routed' => true,
+))
+00:41:42-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:30 '$isLogin: '
+00:41:42-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:31 true
+00:41:47-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:20 'AuthPlugin::dispatchLoopStartup'
+00:41:47-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:21 'Admin'
+00:41:47-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:22 'getallmembers'
+00:41:47-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 '$request: '
+00:41:47-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:29 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Member',
+   'action' => 'getallmembers',
+   'method' => 'GET',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/member/getAllMembers',
+   'dispatched' => false,
+   'routed' => true,
+))
+00:41:47-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:30 '$isLogin: '
+00:41:47-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:31 true
+00:43:29-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:20 'AuthPlugin::dispatchLoopStartup'
+00:43:29-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:21 'Admin'
+00:43:29-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:22 'getallmembers'
+00:43:29-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 '$request: '
+00:43:29-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:29 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Member',
+   'action' => 'getallmembers',
+   'method' => 'GET',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/member/getAllMembers',
+   'dispatched' => false,
+   'routed' => true,
+))
+00:43:29-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:30 '$isLogin: '
+00:43:29-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:31 true
+00:50:54-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+00:50:54-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+00:50:54-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'getallmembers'
+00:50:54-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:33 '$request: '
+00:50:54-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:34 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Member',
+   'action' => 'getallmembers',
+   'method' => 'GET',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/member/getAllMembers',
+   'dispatched' => false,
+   'routed' => true,
+))
+00:50:54-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:35 '$isLogin: '
+00:50:54-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:36 true
+00:50:57-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+00:50:57-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+00:50:57-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'main'
+00:50:57-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:33 '$request: '
+00:50:57-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:34 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Main',
+   'action' => 'main',
+   'method' => 'GET',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/main/main',
+   'dispatched' => false,
+   'routed' => true,
+))
+00:50:57-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:35 '$isLogin: '
+00:50:57-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:36 true

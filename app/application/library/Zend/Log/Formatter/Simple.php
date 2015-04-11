@@ -38,8 +38,8 @@ class Simple extends Base
         }
 
         if (is_array($format)) {
-            $dateTimeFormat = isset($format['dateTimeFormat'])? $format['dateTimeFormat'] : null;
-            $format         = isset($format['format'])? $format['format'] : null;
+            $dateTimeFormat = isset($format['dateTimeFormat']) ? $format['dateTimeFormat'] : null;
+            $format = isset($format['format']) ? $format['format'] : null;
         }
 
         if (isset($format) && !is_string($format)) {

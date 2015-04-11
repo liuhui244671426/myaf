@@ -38,7 +38,7 @@ class SequenceFeature extends AbstractFeature
     public function __construct($primaryKeyField, $sequenceName)
     {
         $this->primaryKeyField = $primaryKeyField;
-        $this->sequenceName    = $sequenceName;
+        $this->sequenceName = $sequenceName;
     }
 
     /**
@@ -60,7 +60,7 @@ class SequenceFeature extends AbstractFeature
             return $insert;
         }
 
-        $insert->values(array($this->primaryKeyField => $this->sequenceValue),  Insert::VALUES_MERGE);
+        $insert->values(array($this->primaryKeyField => $this->sequenceValue), Insert::VALUES_MERGE);
         return $insert;
     }
 

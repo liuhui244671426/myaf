@@ -225,7 +225,7 @@ class Statement implements StatementInterface, Profiler\ProfilerAwareInterface
             $this->profiler->profilerStart($this);
         }
 
-        $resultResource = pg_execute($this->pgsql, $this->statementName, (array) $parameters);
+        $resultResource = pg_execute($this->pgsql, $this->statementName, (array)$parameters);
 
         if ($this->profiler) {
             $this->profiler->profilerFinish();

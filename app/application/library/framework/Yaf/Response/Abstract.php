@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Yaf_Response_Abstract
  *
@@ -33,7 +34,7 @@ abstract class Yaf_Response_Abstract
      */
     public function appendBody($body)
     {
-        $this->_body .= (string) $body;
+        $this->_body .= (string)$body;
         return $this;
     }
 
@@ -71,6 +72,7 @@ abstract class Yaf_Response_Abstract
     public function __destruct()
     {
     }
+
     /**
      * Return the body content
      *
@@ -80,6 +82,7 @@ abstract class Yaf_Response_Abstract
     {
         return $this->_body;
     }
+
     /**
      * Return array of headers; see {@link $_headers} for format
      *
@@ -89,6 +92,7 @@ abstract class Yaf_Response_Abstract
     {
         return $this->_headers;
     }
+
     /**
      * Prepend content the body
      *
@@ -100,6 +104,7 @@ abstract class Yaf_Response_Abstract
         $this->_body = $body . $this->_body;
         return $this;
     }
+
     /**
      * Send the response, including all headers
      *
@@ -117,6 +122,7 @@ abstract class Yaf_Response_Abstract
     {
         //did not found what should this do
     }
+
     /**
      * Set body content
      *
@@ -125,7 +131,7 @@ abstract class Yaf_Response_Abstract
      */
     public function setBody($body)
     {
-        $this->_body = (string) $body;
+        $this->_body = (string)$body;
         return $this;
     }
 
@@ -142,8 +148,8 @@ abstract class Yaf_Response_Abstract
      */
     public function setHeader($name, $value, $replace = false)
     {
-        $name  = $this->_normalizeHeader($name);
-        $value = (string) $value;
+        $name = $this->_normalizeHeader($name);
+        $value = (string)$value;
 
         if ($replace) {
             foreach ($this->_headers as $key => $header) {
@@ -154,8 +160,8 @@ abstract class Yaf_Response_Abstract
         }
 
         $this->_headers[] = array(
-            'name'    => $name,
-            'value'   => $value,
+            'name' => $name,
+            'value' => $value,
             'replace' => $replace
         );
 
@@ -194,7 +200,7 @@ abstract class Yaf_Response_Abstract
 
 
 //method added to be possible
-  /**
+    /**
      * Normalize a header name
      *
      * Normalizes a header name to X-Capitalized-Names
@@ -204,13 +210,13 @@ abstract class Yaf_Response_Abstract
      */
     protected function _normalizeHeader($name)
     {
-        $filtered = str_replace(array('-', '_'), ' ', (string) $name);
+        $filtered = str_replace(array('-', '_'), ' ', (string)$name);
         $filtered = ucwords(strtolower($filtered));
         $filtered = str_replace(' ', '-', $filtered);
         return $filtered;
     }
 
-   /**
+    /**
      * Send all headers
      *
      * Sends any headers specified.

@@ -21,7 +21,7 @@ class Size extends AbstractValidator
     /**
      * @const string Error constants
      */
-    const TOO_BIG   = 'fileSizeTooBig';
+    const TOO_BIG = 'fileSizeTooBig';
     const TOO_SMALL = 'fileSizeTooSmall';
     const NOT_FOUND = 'fileSizeNotFound';
 
@@ -29,7 +29,7 @@ class Size extends AbstractValidator
      * @var array Error message templates
      */
     protected $messageTemplates = array(
-        self::TOO_BIG   => "Maximum allowed size for file is '%max%' but '%size%' detected",
+        self::TOO_BIG => "Maximum allowed size for file is '%max%' but '%size%' detected",
         self::TOO_SMALL => "Minimum expected size for file is '%min%' but '%size%' detected",
         self::NOT_FOUND => "File is not readable or does not exist",
     );
@@ -38,8 +38,8 @@ class Size extends AbstractValidator
      * @var array Error message template variables
      */
     protected $messageVariables = array(
-        'min'  => array('options' => 'min'),
-        'max'  => array('options' => 'max'),
+        'min' => array('options' => 'min'),
+        'max' => array('options' => 'max'),
         'size' => 'size',
     );
 
@@ -56,8 +56,8 @@ class Size extends AbstractValidator
      * @var array
      */
     protected $options = array(
-        'min'           => null, // Minimum file size, if null there is no minimum
-        'max'           => null, // Maximum file size, if null there is no maximum
+        'min' => null, // Minimum file size, if null there is no minimum
+        'max' => null, // Maximum file size, if null there is no maximum
         'useByteString' => true, // Use byte string?
     );
 
@@ -98,7 +98,7 @@ class Size extends AbstractValidator
      */
     public function useByteString($byteString = true)
     {
-        $this->options['useByteString'] = (bool) $byteString;
+        $this->options['useByteString'] = (bool)$byteString;
         return $this;
     }
 
@@ -145,7 +145,7 @@ class Size extends AbstractValidator
             throw new Exception\InvalidArgumentException('Invalid options to validator provided');
         }
 
-        $min = (int) $this->fromByteString($min);
+        $min = (int)$this->fromByteString($min);
         $max = $this->getMax(true);
         if (($max !== null) && ($min > $max)) {
             throw new Exception\InvalidArgumentException(
@@ -190,7 +190,7 @@ class Size extends AbstractValidator
             throw new Exception\InvalidArgumentException('Invalid options to validator provided');
         }
 
-        $max = (int) $this->fromByteString($max);
+        $max = (int)$this->fromByteString($max);
         $min = $this->getMin(true);
         if (($min !== null) && ($max < $min)) {
             throw new Exception\InvalidArgumentException(
@@ -229,7 +229,7 @@ class Size extends AbstractValidator
      * not bigger than max (when max is not null).
      *
      * @param  string|array $value File to check for size
-     * @param  array        $file  File data from \Zend\File\Transfer\Transfer (optional)
+     * @param  array $file File data from \Zend\File\Transfer\Transfer (optional)
      * @return bool
      */
     public function isValid($value, $file = null)
@@ -237,17 +237,17 @@ class Size extends AbstractValidator
         if (is_string($value) && is_array($file)) {
             // Legacy Zend\Transfer API support
             $filename = $file['name'];
-            $file     = $file['tmp_name'];
+            $file = $file['tmp_name'];
         } elseif (is_array($value)) {
             if (!isset($value['tmp_name']) || !isset($value['name'])) {
                 throw new Exception\InvalidArgumentException(
                     'Value array must be in $_FILES format'
                 );
             }
-            $file     = $value['tmp_name'];
+            $file = $value['tmp_name'];
             $filename = $value['name'];
         } else {
-            $file     = $value;
+            $file = $value;
             $filename = basename($file);
         }
         $this->setValue($filename);
@@ -270,10 +270,10 @@ class Size extends AbstractValidator
         if (($min !== null) && ($size < $min)) {
             if ($this->getByteString()) {
                 $this->options['min'] = $this->toByteString($min);
-                $this->size          = $this->toByteString($size);
+                $this->size = $this->toByteString($size);
                 $this->error(self::TOO_SMALL);
                 $this->options['min'] = $min;
-                $this->size          = $size;
+                $this->size = $size;
             } else {
                 $this->error(self::TOO_SMALL);
             }
@@ -283,10 +283,10 @@ class Size extends AbstractValidator
         if (($max !== null) && ($max < $size)) {
             if ($this->getByteString()) {
                 $this->options['max'] = $this->toByteString($max);
-                $this->size          = $this->toByteString($size);
+                $this->size = $this->toByteString($size);
                 $this->error(self::TOO_BIG);
                 $this->options['max'] = $max;
-                $this->size          = $size;
+                $this->size = $size;
             } else {
                 $this->error(self::TOO_BIG);
             }
@@ -308,7 +308,7 @@ class Size extends AbstractValidator
     protected function toByteString($size)
     {
         $sizes = array('B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
-        for ($i=0; $size >= 1024 && $i < 9; $i++) {
+        for ($i = 0; $size >= 1024 && $i < 9; $i++) {
             $size /= 1024;
         }
 
@@ -324,10 +324,10 @@ class Size extends AbstractValidator
     protected function fromByteString($size)
     {
         if (is_numeric($size)) {
-            return (int) $size;
+            return (int)$size;
         }
 
-        $type  = trim(substr($size, -2, 1));
+        $type = trim(substr($size, -2, 1));
 
         $value = substr($size, 0, -1);
         if (!is_numeric($value)) {

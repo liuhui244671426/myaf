@@ -68,7 +68,7 @@ class Subscription extends AbstractModel implements SubscriptionPersistenceInter
     {
         if (empty($key) || !is_string($key)) {
             throw new PubSubHubbub\Exception\InvalidArgumentException('Invalid parameter "key"'
-                .' of "' . $key . '" must be a non-empty string');
+                . ' of "' . $key . '" must be a non-empty string');
         }
         $result = $this->db->select(array('id' => $key));
         if (count($result)) {
@@ -88,7 +88,7 @@ class Subscription extends AbstractModel implements SubscriptionPersistenceInter
     {
         if (empty($key) || !is_string($key)) {
             throw new PubSubHubbub\Exception\InvalidArgumentException('Invalid parameter "key"'
-                .' of "' . $key . '" must be a non-empty string');
+                . ' of "' . $key . '" must be a non-empty string');
         }
         $result = $this->db->select(array('id' => $key));
         if (count($result)) {

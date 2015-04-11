@@ -13,7 +13,7 @@ use Countable;
 use Iterator;
 
 /**
-*/
+ */
 interface FeedInterface extends Iterator, Countable
 {
     /**

@@ -81,7 +81,7 @@ class HeadMeta extends Placeholder\Container\AbstractStandalone
      * @param  string $content
      * @param  string $keyValue
      * @param  string $keyType
-     * @param  array  $modifiers
+     * @param  array $modifiers
      * @param  string $placement
      * @return HeadMeta
      */
@@ -91,9 +91,10 @@ class HeadMeta extends Placeholder\Container\AbstractStandalone
         $keyType = 'name',
         $modifiers = array(),
         $placement = Placeholder\Container\AbstractContainer::APPEND
-    ) {
+    )
+    {
         if ((null !== $content) && (null !== $keyValue)) {
-            $item   = $this->createData($keyType, $keyValue, $content, $modifiers);
+            $item = $this->createData($keyType, $keyValue, $content, $modifiers);
             $action = strtolower($placement);
             switch ($action) {
                 case 'append':
@@ -114,7 +115,7 @@ class HeadMeta extends Placeholder\Container\AbstractStandalone
      * Overload method access
      *
      * @param  string $method
-     * @param  array  $args
+     * @param  array $args
      * @throws Exception\BadMethodCallException
      * @return HeadMeta
      */
@@ -122,9 +123,9 @@ class HeadMeta extends Placeholder\Container\AbstractStandalone
     {
         if (preg_match('/^(?P<action>set|(pre|ap)pend|offsetSet)(?P<type>Name|HttpEquiv|Property|Itemprop)$/', $method, $matches)) {
             $action = $matches['action'];
-            $type   = $this->normalizeType($matches['type']);
-            $argc   = count($args);
-            $index  = null;
+            $type = $this->normalizeType($matches['type']);
+            $argc = count($args);
+            $index = null;
 
             if ('offsetSet' == $action) {
                 if (0 < $argc) {
@@ -143,7 +144,7 @@ class HeadMeta extends Placeholder\Container\AbstractStandalone
                 $args[] = array();
             }
 
-            $item  = $this->createData($type, $args[0], $args[1], $args[2]);
+            $item = $this->createData($type, $args[0], $args[1], $args[2]);
 
             if ('offsetSet' == $action) {
                 return $this->offsetSet($index, $item);
@@ -190,15 +191,15 @@ class HeadMeta extends Placeholder\Container\AbstractStandalone
      * @param  string $type
      * @param  string $typeValue
      * @param  string $content
-     * @param  array  $modifiers
+     * @param  array $modifiers
      * @return stdClass
      */
     public function createData($type, $typeValue, $content, array $modifiers)
     {
-        $data            = new stdClass;
-        $data->type      = $type;
-        $data->$type     = $typeValue;
-        $data->content   = $content;
+        $data = new stdClass;
+        $data->type = $type;
+        $data->$type = $typeValue;
+        $data->content = $content;
         $data->modifiers = $modifiers;
 
         return $data;
@@ -322,14 +323,14 @@ class HeadMeta extends Placeholder\Container\AbstractStandalone
         }
 
         if (!isset($item->content)
-            && (! $this->view->plugin('doctype')->isHtml5()
-            || (! $this->view->plugin('doctype')->isHtml5() && $item->type !== 'charset'))
+            && (!$this->view->plugin('doctype')->isHtml5()
+                || (!$this->view->plugin('doctype')->isHtml5() && $item->type !== 'charset'))
         ) {
             return false;
         }
 
         // <meta itemprop= ... /> is only supported with doctype html
-        if (! $this->view->plugin('doctype')->isHtml5()
+        if (!$this->view->plugin('doctype')->isHtml5()
             && $item->type === 'itemprop'
         ) {
             return false;
@@ -367,7 +368,7 @@ class HeadMeta extends Placeholder\Container\AbstractStandalone
      * OffsetSet
      *
      * @param  string|int $index
-     * @param  string     $value
+     * @param  string $value
      * @throws Exception\InvalidArgumentException
      * @return void
      */

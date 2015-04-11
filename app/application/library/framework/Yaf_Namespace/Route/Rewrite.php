@@ -45,13 +45,13 @@ class Rewrite implements \Yaf\Route_Interface
                 'Expects an array as the second parameter'
             );
         }
-        if ($verify!=null && !is_array($verify)) {
+        if ($verify != null && !is_array($verify)) {
             throw new \Yaf\Exception\TypeError(
                 'Expects an array as third parameter'
             );
         }
         $this->_route = $match;
-        $this->_default = (array) $route;
+        $this->_default = (array)$route;
         $this->_verify = $verify;
     }
 
@@ -67,9 +67,9 @@ class Rewrite implements \Yaf\Route_Interface
         $requestUri = $request->getRequestUri();
         $baseuri = $request->getBaseUri();
         if (
-            $requestUri!=''
-            && $baseuri!=''
-            && stripos($requestUri, $baseuri)!==false
+            $requestUri != ''
+            && $baseuri != ''
+            && stripos($requestUri, $baseuri) !== false
         ) {
             $path = substr($requestUri, strlen($baseuri));
         } else {
@@ -108,8 +108,8 @@ class Rewrite implements \Yaf\Route_Interface
     {
         $staticCount = 0;
         $pathStaticCount = 0;
-        $values          = array();
-        $matchedPath     = '';
+        $values = array();
+        $matchedPath = '';
         $parts = array();
         $variables = array();
         $wildcardData = array();
@@ -156,7 +156,7 @@ class Rewrite implements \Yaf\Route_Interface
                 // wildcard data and stop matching
                 if ($parts[$pos] == '*') {
                     $count = count($pathMatch);
-                    for ($i = $pos; $i < $count; $i+=2) {
+                    for ($i = $pos; $i < $count; $i += 2) {
                         $var = urldecode($pathMatch[$i]);
                         if (
                             !isset($wildcardData[$var])
@@ -164,9 +164,9 @@ class Rewrite implements \Yaf\Route_Interface
                             && !isset($values[$var])
                         ) {
                             $wildcardData[$var] =
-                                (isset($pathMatch[$i+1])) ?
-                                urldecode($pathMatch[$i+1]) :
-                                null;
+                                (isset($pathMatch[$i + 1])) ?
+                                    urldecode($pathMatch[$i + 1]) :
+                                    null;
                         }
                     }
 
@@ -176,7 +176,7 @@ class Rewrite implements \Yaf\Route_Interface
                     break;
                 }
 
-                $name     = isset($variables[$pos]) ? $variables[$pos] : null;
+                $name = isset($variables[$pos]) ? $variables[$pos] : null;
                 $pathPart = urldecode($pathPart);
 
                 $part = $parts[$pos];
@@ -224,7 +224,7 @@ class Rewrite implements \Yaf\Route_Interface
                 $return[$var] = $this->_default[$var];
             }
         }
-        if ($values == null && $wildcardData == null && $staticCount!=0) {
+        if ($values == null && $wildcardData == null && $staticCount != 0) {
             $return = $return + $this->_default;
         }
         return $return;

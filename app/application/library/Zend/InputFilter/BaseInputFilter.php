@@ -56,7 +56,7 @@ class BaseInputFilter implements
      * Add an input to the input filter
      *
      * @param  InputInterface|InputFilterInterface $input
-     * @param  null|string                         $name Name used to retrieve this input
+     * @param  null|string $name Name used to retrieve this input
      * @throws Exception\InvalidArgumentException
      * @return InputFilterInterface
      */
@@ -92,7 +92,7 @@ class BaseInputFilter implements
      * Replace a named input
      *
      * @param  InputInterface|InputFilterInterface $input
-     * @param  string                              $name Name of the input to replace
+     * @param  string $name Name of the input to replace
      * @throws Exception\InvalidArgumentException
      * @return self
      */
@@ -220,12 +220,12 @@ class BaseInputFilter implements
             $data = $this->getRawValues();
         }
 
-        $this->validInputs   = array();
+        $this->validInputs = array();
         $this->invalidInputs = array();
-        $valid               = true;
+        $valid = true;
 
         foreach ($inputs as $name) {
-            $input      = $this->inputs[$name];
+            $input = $this->inputs[$name];
             $dataExists = array_key_exists($name, $data);
 
             // key doesn't exist, but input is not required; valid
@@ -630,9 +630,9 @@ class BaseInputFilter implements
             ));
         }
 
-        $data   = array_keys($this->data);
+        $data = array_keys($this->data);
         $inputs = array_keys($this->inputs);
-        $diff   = array_diff($data, $inputs);
+        $diff = array_diff($data, $inputs);
         if (!empty($diff)) {
             return count(array_intersect($diff, $inputs)) == 0;
         }
@@ -655,12 +655,12 @@ class BaseInputFilter implements
             ));
         }
 
-        $data   = array_keys($this->data);
+        $data = array_keys($this->data);
         $inputs = array_keys($this->inputs);
-        $diff   = array_diff($data, $inputs);
+        $diff = array_diff($data, $inputs);
 
         $unknownInputs = array();
-        $intersect     = array_intersect($diff, $data);
+        $intersect = array_intersect($diff, $data);
         if (!empty($intersect)) {
             foreach ($intersect as $key) {
                 $unknownInputs[$key] = $this->data[$key];

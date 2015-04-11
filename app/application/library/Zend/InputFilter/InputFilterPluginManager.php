@@ -28,7 +28,7 @@ class InputFilterPluginManager extends AbstractPluginManager
      */
     protected $invokableClasses = array(
         'inputfilter' => 'Zend\InputFilter\InputFilter',
-        'collection'  => 'Zend\InputFilter\CollectionInputFilter',
+        'collection' => 'Zend\InputFilter\CollectionInputFilter',
     );
 
     /**

@@ -68,10 +68,10 @@ class Royalmail extends AbstractObject
      */
     protected function calculateBarcodeWidth()
     {
-        $quietZone       = $this->getQuietZone();
-        $startCharacter  = (2 * $this->barThinWidth) * $this->factor;
-        $stopCharacter   = (1 * $this->barThinWidth) * $this->factor;
-        $encodedData     = (8 * $this->barThinWidth) * $this->factor * strlen($this->getText());
+        $quietZone = $this->getQuietZone();
+        $startCharacter = (2 * $this->barThinWidth) * $this->factor;
+        $stopCharacter = (1 * $this->barThinWidth) * $this->factor;
+        $encodedData = (8 * $this->barThinWidth) * $this->factor * strlen($this->getText());
         return $quietZone + $startCharacter + $encodedData + $stopCharacter + $quietZone;
     }
 
@@ -92,7 +92,7 @@ class Royalmail extends AbstractObject
         $barcodeTable = array();
 
         // Start character (1)
-        $barcodeTable[] = array(1, $this->barThinWidth, 0, 5/8);
+        $barcodeTable[] = array(1, $this->barThinWidth, 0, 5 / 8);
         $barcodeTable[] = array(0, $this->barThinWidth, 0, 1);
 
         // Text to encode
@@ -100,7 +100,7 @@ class Royalmail extends AbstractObject
         foreach ($textTable as $char) {
             $bars = str_split($this->codingMap[$char]);
             foreach ($bars as $b) {
-                $barcodeTable[] = array(1, $this->barThinWidth, ($b > 1 ? 3/8 : 0), ($b % 2 ? 5/8 : 1));
+                $barcodeTable[] = array(1, $this->barThinWidth, ($b > 1 ? 3 / 8 : 0), ($b % 2 ? 5 / 8 : 1));
                 $barcodeTable[] = array(0, $this->barThinWidth, 0, 1);
             }
         }
@@ -119,7 +119,7 @@ class Royalmail extends AbstractObject
     public function getChecksum($text)
     {
         $this->checkText($text);
-        $values   = str_split($text);
+        $values = str_split($text);
         $rowvalue = 0;
         $colvalue = 0;
         foreach ($values as $row) {

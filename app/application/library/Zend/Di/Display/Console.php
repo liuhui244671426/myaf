@@ -29,7 +29,7 @@ class Console
     /**
      * Export
      *
-     * @param  Di    $di
+     * @param  Di $di
      * @param  array $runtimeClasses
      * @return void
      */
@@ -81,7 +81,7 @@ class Console
                 $this->renderClassDefinition($definition, $class);
             }
             if (count($definition->getClasses()) == 0) {
-                echo PHP_EOL .'    No Classes Found' . PHP_EOL . PHP_EOL;
+                echo PHP_EOL . '    No Classes Found' . PHP_EOL . PHP_EOL;
             }
         }
 
@@ -156,7 +156,7 @@ class Console
 
     /**
      * @param \Zend\Di\Definition\DefinitionInterface $definition
-     * @param string                                  $class
+     * @param string $class
      */
     protected function renderClassDefinition($definition, $class)
     {

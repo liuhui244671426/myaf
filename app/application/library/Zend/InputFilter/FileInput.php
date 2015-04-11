@@ -92,15 +92,15 @@ class FileInput extends Input
         $this->injectUploadValidator();
         $validator = $this->getValidatorChain();
         //$value   = $this->getValue(); // Do not run the filters yet for File uploads (see getValue())
-        $rawValue  = $this->getRawValue();
+        $rawValue = $this->getRawValue();
         if (!is_array($rawValue)) {
             // This can happen in an AJAX POST, where the input comes across as a string
             $rawValue = array(
                 'tmp_name' => $rawValue,
-                'name'     => $rawValue,
-                'size'     => 0,
-                'type'     => '',
-                'error'    => UPLOAD_ERR_NO_FILE,
+                'name' => $rawValue,
+                'size' => 0,
+                'type' => '',
+                'error' => UPLOAD_ERR_NO_FILE,
             );
         }
         if (is_array($rawValue) && isset($rawValue['tmp_name'])) {

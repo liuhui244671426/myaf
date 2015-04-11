@@ -91,7 +91,7 @@ abstract class AbstractItem implements ArrayAccess, Countable
      * This method is needed for a full implementation of ArrayAccess
      *
      * @param  string $name
-     * @param  mixed  $value
+     * @param  mixed $value
      * @throws \Zend\Ldap\Exception\BadMethodCallException
      */
     public function offsetSet($name, $value)

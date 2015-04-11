@@ -13,25 +13,25 @@ use Traversable;
 
 class Null extends AbstractFilter
 {
-    const TYPE_BOOLEAN      = 1;
-    const TYPE_INTEGER      = 2;
-    const TYPE_EMPTY_ARRAY  = 4;
-    const TYPE_STRING       = 8;
-    const TYPE_ZERO_STRING  = 16;
-    const TYPE_FLOAT        = 32;
-    const TYPE_ALL          = 63;
+    const TYPE_BOOLEAN = 1;
+    const TYPE_INTEGER = 2;
+    const TYPE_EMPTY_ARRAY = 4;
+    const TYPE_STRING = 8;
+    const TYPE_ZERO_STRING = 16;
+    const TYPE_FLOAT = 32;
+    const TYPE_ALL = 63;
 
     /**
      * @var array
      */
     protected $constants = array(
-        self::TYPE_BOOLEAN     => 'boolean',
-        self::TYPE_INTEGER     => 'integer',
+        self::TYPE_BOOLEAN => 'boolean',
+        self::TYPE_INTEGER => 'integer',
         self::TYPE_EMPTY_ARRAY => 'array',
-        self::TYPE_STRING      => 'string',
+        self::TYPE_STRING => 'string',
         self::TYPE_ZERO_STRING => 'zero',
-        self::TYPE_FLOAT       => 'float',
-        self::TYPE_ALL         => 'all',
+        self::TYPE_FLOAT => 'float',
+        self::TYPE_ALL => 'all',
     );
 
     /**

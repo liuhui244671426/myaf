@@ -25,17 +25,22 @@ interface StorageInterface extends Traversable, ArrayAccess, Serializable, Count
     public function getRequestAccessTime();
 
     public function lock($key = null);
+
     public function isLocked($key = null);
+
     public function unlock($key = null);
 
     public function markImmutable();
+
     public function isImmutable();
 
     public function setMetadata($key, $value, $overwriteArray = false);
+
     public function getMetadata($key = null);
 
     public function clear($key = null);
 
     public function fromArray(array $array);
+
     public function toArray($metaData = false);
 }

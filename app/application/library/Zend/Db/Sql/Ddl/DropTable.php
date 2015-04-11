@@ -46,7 +46,7 @@ class DropTable extends AbstractSql implements SqlInterface
         // get platform, or create default
         $adapterPlatform = ($adapterPlatform) ?: new AdapterSql92Platform;
 
-        $sqls       = array();
+        $sqls = array();
         $parameters = array();
 
         foreach ($this->specifications as $name => $specification) {

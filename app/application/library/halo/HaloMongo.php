@@ -15,18 +15,20 @@
 /**
  * Class HaloMongo
  */
-class HaloMongo{
+class HaloMongo
+{
     private $config = null;
     private $connection = null;
     private $collection = null;
+
     public function __construct($config)
     {
         $this->config = $config;
     }
+
     public function __destruct()
     {
-        if($this->connection)
-        {
+        if ($this->connection) {
             $this->connection->close();
         }
     }
@@ -36,28 +38,22 @@ class HaloMongo{
      */
     public function connect()
     {
-        try
-        {
-            if(isEmptyString($this->config['username'])||isEmptyString($this->config['password']))
-            {
+        try {
+            if (isEmptyString($this->config['username']) || isEmptyString($this->config['password'])) {
                 $this->connection = new MongoClient(sprintf('mongodb://%s:%d', $this->config['host'], $this->config['port']));
-            }
-            else
-            {
+            } else {
                 $this->connection = new MongoClient(sprintf('mongodb://%s:%d', $this->config['host'], $this->config['port']),
                     array(
-                        'username'=>$this->config['username'],
-                        'password'=>$this->config['password'],
-                        'db' =>$this->config['db'],
+                        'username' => $this->config['username'],
+                        'password' => $this->config['password'],
+                        'db' => $this->config['db'],
                     ));
             }
-            $this->connection->setReadPreference(MongoClient::RP_SECONDARY_PREFERRED,array());
-        }
-        catch (Exception $e)
-        {
+            $this->connection->setReadPreference(MongoClient::RP_SECONDARY_PREFERRED, array());
+        } catch (Exception $e) {
             $this->collection = null;
             $this->connection = null;
-            Logger::ERROR('Connect mongodb error ['.$e->getMessage().']',__FILE__,__LINE__,ERROR_LOG_FILE);
+            Logger::ERROR('Connect mongodb error [' . $e->getMessage() . ']', __FILE__, __LINE__, ERROR_LOG_FILE);
         }
     }
 
@@ -75,20 +71,19 @@ class HaloMongo{
      */
     public function disconnect()
     {
-        if($this->connection)
-        {
+        if ($this->connection) {
             $this->connection->close();
         }
     }
-    
+
 
     /**
-    * @brief  获取$db下所有集合
-    *
-    * @params $db
-    *
-    * @return MongoCollection objects
-    */
+     * @brief  获取$db下所有集合
+     *
+     * @params $db
+     *
+     * @return MongoCollection objects
+     */
     public function listCollections($db)
     {
         $db = $this->connection->selectDB($db);
@@ -97,12 +92,12 @@ class HaloMongo{
     }
 
     /**
-    * @brief 获取$db下所有集合  
-    *
-    * @params $db
-    *
-    * @return names of the all the collections
-    */
+     * @brief 获取$db下所有集合
+     *
+     * @params $db
+     *
+     * @return names of the all the collections
+     */
     public function getCollectionNames($db)
     {
         $collections = $this->connection->selectDB($db)->getCollectionNames();
@@ -115,41 +110,39 @@ class HaloMongo{
      * @param $collection
      * @return null
      */
-    public function setDBCollection($db,$collection)
+    public function setDBCollection($db, $collection)
     {
-        if (!$this->isConnected())
-        {
+        if (!$this->isConnected()) {
             list($usec, $sec) = explode(" ", microtime());
             $begin = ((float)$usec + (float)$sec);
             $this->connect();
             list($usec, $sec) = explode(" ", microtime());
             $end = ((float)$usec + (float)$sec);
 
-            if ($end - $begin >= 0.2)
-            {
-                Logger::traceUser(0,3002, array('time'=>($end - $begin)*1000, 'host'=>$this->config['host']));
+            if ($end - $begin >= 0.2) {
+                Logger::traceUser(0, 3002, array('time' => ($end - $begin) * 1000, 'host' => $this->config['host']));
             }
         }
-        if($this->connection)
-        {
-            $this->collection =  $this->connection->$db->$collection;
+        if ($this->connection) {
+            $this->collection = $this->connection->$db->$collection;
             return $this->collection;
         }
-        return ;
+        return;
     }
 
     public function count(array $query = array(), $limit = 0, $skip = 0)
     {
         return $this->collection->count($query, $limit, $skip);
     }
+
     /**
      * @param array $query
      * @param array $fields
      * @return MongoCursor
      */
-    public function find(array $query=array(),array $fields = array())
+    public function find(array $query = array(), array $fields = array())
     {
-        $cursor = $this->collection->find($query,$fields);
+        $cursor = $this->collection->find($query, $fields);
         return $cursor;
     }
 
@@ -160,7 +153,7 @@ class HaloMongo{
      */
     public function findOne(array $query = array(), array $fields = array())
     {
-        $cursor = $this->collection->findOne($query,$fields);
+        $cursor = $this->collection->findOne($query, $fields);
         return $cursor;
     }
 
@@ -171,7 +164,7 @@ class HaloMongo{
      */
     public function Save($a, array $options = array())
     {
-        $result = $this->collection->save($a,$options);
+        $result = $this->collection->save($a, $options);
         return $result;
     }
 

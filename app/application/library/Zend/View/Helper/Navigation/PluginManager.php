@@ -28,9 +28,9 @@ class PluginManager extends HelperPluginManager
      */
     protected $invokableClasses = array(
         'breadcrumbs' => 'Zend\View\Helper\Navigation\Breadcrumbs',
-        'links'       => 'Zend\View\Helper\Navigation\Links',
-        'menu'        => 'Zend\View\Helper\Navigation\Menu',
-        'sitemap'     => 'Zend\View\Helper\Navigation\Sitemap',
+        'links' => 'Zend\View\Helper\Navigation\Links',
+        'menu' => 'Zend\View\Helper\Navigation\Menu',
+        'sitemap' => 'Zend\View\Helper\Navigation\Sitemap',
     );
 
     /**

@@ -62,7 +62,7 @@ class MethodReflection extends PhpReflectionMethod implements ReflectionInterfac
         }
 
         $cachingFileScanner = $this->createFileScanner($this->getFileName());
-        $nameInformation    = $cachingFileScanner->getClassNameInformation($this->getDeclaringClass()->getName());
+        $nameInformation = $cachingFileScanner->getClassNameInformation($this->getDeclaringClass()->getName());
 
         if (!$nameInformation) {
             return false;
@@ -97,7 +97,7 @@ class MethodReflection extends PhpReflectionMethod implements ReflectionInterfac
      */
     public function getDeclaringClass()
     {
-        $phpReflection  = parent::getDeclaringClass();
+        $phpReflection = parent::getDeclaringClass();
         $zendReflection = new ClassReflection($phpReflection->getName());
         unset($phpReflection);
 
@@ -121,21 +121,21 @@ class MethodReflection extends PhpReflectionMethod implements ReflectionInterfac
 
         $declaringClass = $this->getDeclaringClass();
         $prototype = array(
-            'namespace'  => $declaringClass->getNamespaceName(),
-            'class'      => substr($declaringClass->getName(), strlen($declaringClass->getNamespaceName()) + 1),
-            'name'       => $this->getName(),
+            'namespace' => $declaringClass->getNamespaceName(),
+            'class' => substr($declaringClass->getName(), strlen($declaringClass->getNamespaceName()) + 1),
+            'name' => $this->getName(),
             'visibility' => ($this->isPublic() ? 'public' : ($this->isPrivate() ? 'private' : 'protected')),
-            'return'     => $returnType,
-            'arguments'  => array(),
+            'return' => $returnType,
+            'arguments' => array(),
         );
 
         $parameters = $this->getParameters();
         foreach ($parameters as $parameter) {
             $prototype['arguments'][$parameter->getName()] = array(
-                'type'     => $parameter->getType(),
+                'type' => $parameter->getType(),
                 'required' => !$parameter->isOptional(),
-                'by_ref'   => $parameter->isPassedByReference(),
-                'default'  => $parameter->isDefaultValueAvailable() ? $parameter->getDefaultValue() : null,
+                'by_ref' => $parameter->isPassedByReference(),
+                'default' => $parameter->isDefaultValueAvailable() ? $parameter->getDefaultValue() : null,
             );
         }
 
@@ -165,7 +165,7 @@ class MethodReflection extends PhpReflectionMethod implements ReflectionInterfac
      */
     public function getParameters()
     {
-        $phpReflections  = parent::getParameters();
+        $phpReflections = parent::getParameters();
         $zendReflections = array();
         while ($phpReflections && ($phpReflection = array_shift($phpReflections))) {
             $instance = new ParameterReflection(
@@ -189,7 +189,7 @@ class MethodReflection extends PhpReflectionMethod implements ReflectionInterfac
     public function getContents($includeDocBlock = true)
     {
         $docComment = $this->getDocComment();
-        $content  = ($includeDocBlock && !empty($docComment)) ? $docComment . "\n" : '';
+        $content = ($includeDocBlock && !empty($docComment)) ? $docComment . "\n" : '';
         $content .= $this->extractMethodContents();
 
         return $content;
@@ -215,7 +215,7 @@ class MethodReflection extends PhpReflectionMethod implements ReflectionInterfac
     {
         $fileName = $this->getDeclaringClass()->getFileName();
 
-        if ((class_exists($this->class) && false === $fileName) || ! file_exists($fileName)) {
+        if ((class_exists($this->class) && false === $fileName) || !file_exists($fileName)) {
             return '';
         }
 
@@ -227,7 +227,7 @@ class MethodReflection extends PhpReflectionMethod implements ReflectionInterfac
         );
 
         $functionLine = implode("\n", $lines);
-        $tokens = token_get_all("<?php ". $functionLine);
+        $tokens = token_get_all("<?php " . $functionLine);
 
         //remove first entry which is php open tag
         array_shift($tokens);
@@ -241,7 +241,7 @@ class MethodReflection extends PhpReflectionMethod implements ReflectionInterfac
         $body = '';
 
         foreach ($tokens as $key => $token) {
-            $tokenType  = (is_array($token)) ? token_name($token[0]) : $token;
+            $tokenType = (is_array($token)) ? token_name($token[0]) : $token;
             $tokenValue = (is_array($token)) ? $token[1] : $token;
 
             switch ($tokenType) {
@@ -339,11 +339,11 @@ class MethodReflection extends PhpReflectionMethod implements ReflectionInterfac
     {
         $content = '';
         $count = count($haystack);
-        if ($position+1 == $count) {
+        if ($position + 1 == $count) {
             return $content;
         }
 
-        for ($i = $position-1;$i >= 0;$i--) {
+        for ($i = $position - 1; $i >= 0; $i--) {
             $tokenType = (is_array($haystack[$i])) ? token_name($haystack[$i][0]) : $haystack[$i];
             $tokenValue = (is_array($haystack[$i])) ? $haystack[$i][1] : $haystack[$i];
 
@@ -370,13 +370,13 @@ class MethodReflection extends PhpReflectionMethod implements ReflectionInterfac
         $count = count($haystack);
 
         //advance one position
-        $position = $position+1;
+        $position = $position + 1;
 
         if ($position == $count) {
             return true;
         }
 
-        for ($i = $position;$i < $count; $i++) {
+        for ($i = $position; $i < $count; $i++) {
             $tokenType = (is_array($haystack[$i])) ? token_name($haystack[$i][0]) : $haystack[$i];
             switch ($tokenType) {
                 case "T_FINAL":
@@ -438,7 +438,7 @@ class MethodReflection extends PhpReflectionMethod implements ReflectionInterfac
     {
         $isValid = false;
         $count = count($haystack);
-        for ($i = $position+1; $i < $count; $i++) {
+        for ($i = $position + 1; $i < $count; $i++) {
             $tokenType = (is_array($haystack[$i])) ? token_name($haystack[$i][0]) : $haystack[$i];
             $tokenValue = (is_array($haystack[$i])) ? $haystack[$i][1] : $haystack[$i];
 

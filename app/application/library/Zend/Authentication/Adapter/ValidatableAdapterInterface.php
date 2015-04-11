@@ -22,7 +22,7 @@ interface ValidatableAdapterInterface extends AdapterInterface
     /**
      * Sets the identity for binding
      *
-     * @param  mixed                       $identity
+     * @param  mixed $identity
      * @return ValidatableAdapterInterface
      */
     public function setIdentity($identity);
@@ -38,7 +38,7 @@ interface ValidatableAdapterInterface extends AdapterInterface
     /**
      * Sets the credential for binding
      *
-     * @param  mixed                       $credential
+     * @param  mixed $credential
      * @return ValidatableAdapterInterface
      */
     public function setCredential($credential);

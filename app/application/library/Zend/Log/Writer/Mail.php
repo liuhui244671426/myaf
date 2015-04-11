@@ -85,7 +85,7 @@ class Mail extends AbstractWriter
                 $this->setSubjectPrependText($mail['subject_prepend_text']);
             }
             $transport = isset($mail['transport']) ? $mail['transport'] : null;
-            $mail      = isset($mail['mail']) ? $mail['mail'] : null;
+            $mail = isset($mail['mail']) ? $mail['mail'] : null;
         }
 
         // Ensure we have a valid mail message
@@ -158,7 +158,7 @@ class Mail extends AbstractWriter
      */
     public function setSubjectPrependText($subject)
     {
-        $this->subjectPrependText = (string) $subject;
+        $this->subjectPrependText = (string)$subject;
         return $this;
     }
 

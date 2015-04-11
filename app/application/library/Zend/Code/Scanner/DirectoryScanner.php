@@ -162,7 +162,7 @@ class DirectoryScanner implements ScannerInterface
     }
 
     /**
-     * @param  bool  $returnDerivedScannerClass
+     * @param  bool $returnDerivedScannerClass
      * @return array
      */
     public function getClasses($returnDerivedScannerClass = false)
@@ -219,7 +219,7 @@ class DirectoryScanner implements ScannerInterface
         }
 
         /** @var FileScanner $fs */
-        $fs          = $this->fileScanners[$this->classToFileScanner[$class]];
+        $fs = $this->fileScanners[$this->classToFileScanner[$class]];
         $returnClass = $fs->getClass($class);
 
         if (($returnClass instanceof ClassScanner) && $returnDerivedScannerClass) {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Yaf_Response_Http
  *
@@ -10,7 +11,7 @@ class Yaf_Response_Http extends Yaf_Response_Abstract
     protected $_sendheader = true;
     protected $_responseCode = 200;
 
-   /**
+    /**
      * Set HTTP response code to use with headers
      *
      * @param int $code
@@ -83,7 +84,7 @@ class Yaf_Response_Http extends Yaf_Response_Abstract
     public function setRedirect($url)
     {
         $this->setHeader('Location', $url, true)
-        ->setResponseCode(302);
+            ->setResponseCode(302);
         return $this;
     }
 }

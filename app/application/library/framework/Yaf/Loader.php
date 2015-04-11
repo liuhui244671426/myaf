@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Yaf loader
  * @todo
@@ -10,21 +11,20 @@ class Yaf_Loader
 {
     const YAF_LOADER_RESERVERD = 'Yaf_';
 
-    const YAF_LOADER_CONTROLLER	= 'Controller';
+    const YAF_LOADER_CONTROLLER = 'Controller';
     const YAF_LOADER_MODEL = 'Model';
-    const YAF_LOADER_PLUGIN	= 'Plugin';
+    const YAF_LOADER_PLUGIN = 'Plugin';
     //not used yet
-    const YAF_LOADER_DAO	= 'Dao_';
-    const YAF_LOADER_SERVICE	= 'Service_';
+    const YAF_LOADER_DAO = 'Dao_';
+    const YAF_LOADER_SERVICE = 'Service_';
 
     const YAF_LIBRARY_DIRECTORY_NAME = 'library';
-    const YAF_CONTROLLER_DIRECTORY_NAME= 'controllers';
-    const YAF_PLUGIN_DIRECTORY_NAME= 'plugins';
-    const YAF_MODULE_DIRECTORY_NAME= 'modules';
-    const YAF_VIEW_DIRECTORY_NAME= 'views';
-    const YAF_MODEL_DIRECTORY_NAME= 'models';
+    const YAF_CONTROLLER_DIRECTORY_NAME = 'controllers';
+    const YAF_PLUGIN_DIRECTORY_NAME = 'plugins';
+    const YAF_MODULE_DIRECTORY_NAME = 'modules';
+    const YAF_VIEW_DIRECTORY_NAME = 'views';
+    const YAF_MODEL_DIRECTORY_NAME = 'models';
     const YAF_DEFAULT_VIEW_EXT = 'phtml';
-
 
 
     /**
@@ -43,12 +43,12 @@ class Yaf_Loader
     /**
      * @var string Namespace of classes within this resource
      */
-    protected $_localNamespace='';
+    protected $_localNamespace = '';
 
     public function internal_autoload($class, $dirs = null)
     {
         if (class_exists($class, false) || interface_exists($class, false)) {
-            return ;
+            return;
         }
 
         if ((null !== $dirs) && !is_string($dirs)) {
@@ -96,7 +96,7 @@ class Yaf_Loader
         }
         if (strpos($class, self::YAF_LOADER_RESERVERD) === 0) {
             throw new Yaf_Exception(
-                'You should not use '.self::YAF_LOADER_RESERVERD.
+                'You should not use ' . self::YAF_LOADER_RESERVERD .
                 ' as class name prefix'
             );
         }
@@ -114,16 +114,16 @@ class Yaf_Loader
         } else if ($this->isCategoryType($class, self::YAF_LOADER_PLUGIN)) {
             //this is a plugin
             $directory = $appDir .
-                DIRECTORY_SEPARATOR .self::YAF_PLUGIN_DIRECTORY_NAME;
+                DIRECTORY_SEPARATOR . self::YAF_PLUGIN_DIRECTORY_NAME;
             $class = $this->resolveCategory(
                 $class, self::YAF_LOADER_PLUGIN
             );
         } else if (
-            $this->isCategoryType($class, self::YAF_LOADER_CONTROLLER)
+        $this->isCategoryType($class, self::YAF_LOADER_CONTROLLER)
         ) {
             //this is a controller
             $directory = $appDir .
-                DIRECTORY_SEPARATOR .self::YAF_CONTROLLER_DIRECTORY_NAME;
+                DIRECTORY_SEPARATOR . self::YAF_CONTROLLER_DIRECTORY_NAME;
             $class = $this->resolveCategory(
                 $class, self::YAF_LOADER_CONTROLLER
             );
@@ -134,11 +134,11 @@ class Yaf_Loader
         ) {
             //this is used internally
             $directory = $appDir .
-                DIRECTORY_SEPARATOR .self::YAF_MODEL_DIRECTORY_NAME;
+                DIRECTORY_SEPARATOR . self::YAF_MODEL_DIRECTORY_NAME;
         }
-        if ($directory!='' && $appDir=='') {
+        if ($directory != '' && $appDir == '') {
             Yaf_Exception::trigger_error(
-                'Couldn\'t load a framework MVC class without an '.
+                'Couldn\'t load a framework MVC class without an ' .
                 'Yaf_Application initializing ',
                 E_USER_WARNING
             );
@@ -152,7 +152,7 @@ class Yaf_Loader
             ) {
                 if ($splAutoLoadIni == false) {
                     Yaf_Exception::trigger_error(
-                        'Could not find class '.$className.' in '.$directory,
+                        'Could not find class ' . $className . ' in ' . $directory,
                         E_USER_ERROR
                     );
                 } else {
@@ -162,9 +162,9 @@ class Yaf_Loader
         } else {
             if ($splAutoLoadIni == false) {
                 Yaf_Exception::trigger_error(
-                    'Could not find script '.
-                    ($directory!=''?$directory:$this->resolveDirectory($class)).
-                    DIRECTORY_SEPARATOR.$this->resolveClass($class),
+                    'Could not find script ' .
+                    ($directory != '' ? $directory : $this->resolveDirectory($class)) .
+                    DIRECTORY_SEPARATOR . $this->resolveClass($class),
                     E_USER_WARNING
                 );
             } else {
@@ -182,7 +182,7 @@ class Yaf_Loader
             if (
                 $category == substr(
                     $className,
-                    strlen($className)-strlen($category),
+                    strlen($className) - strlen($category),
                     strlen($category)
                 )
             ) {
@@ -191,7 +191,7 @@ class Yaf_Loader
                     ||
                     substr(
                         $className,
-                        strlen($className)-strlen($category)-
+                        strlen($className) - strlen($category) -
                         strlen($nameSeparator),
                         strlen($nameSeparator)
                     ) == $nameSeparator
@@ -231,14 +231,14 @@ class Yaf_Loader
             return substr(
                 $className,
                 0,
-                strlen($className)-strlen($category)-
+                strlen($className) - strlen($category) -
                 strlen($nameSeparator)
             );
         } else {
             //we should remove from the start of the classname
             return substr(
                 $className,
-                strlen($category)-strlen($nameSeparator),
+                strlen($category) - strlen($nameSeparator),
                 strlen($className)
             );
         }
@@ -253,7 +253,7 @@ class Yaf_Loader
         }
         if ($directory == '') {
             Yaf_Exception::trigger_error(
-                'Yaf_Loader requires Yaf_Application'.
+                'Yaf_Loader requires Yaf_Application' .
                 '(which set the library_directory) to be initialized first',
                 E_USER_WARNING
             );
@@ -268,19 +268,19 @@ class Yaf_Loader
         // Framework Interop Group reference implementation:
         // http://groups.google.com/group/php-standards/web/psr-0-final-proposal
         $className = ltrim($class, '\\');
-        $file      = '';
+        $file = '';
         $namespace = '';
-        if (($lastNsPos = strripos($className, '\\'))!==false) {
+        if (($lastNsPos = strripos($className, '\\')) !== false) {
             $namespace = substr($className, 0, $lastNsPos);
             $className = substr($className, $lastNsPos + 1);
-            $file      = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) .
-            DIRECTORY_SEPARATOR;
+            $file = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) .
+                DIRECTORY_SEPARATOR;
         }
         if (Yaf_G::iniGet('yaf.lowcase_path') == true) {
             $file = strtolower($file);
             $segments = explode('_', $className);
-            foreach ($segments as $key=>&$value) {
-                if ($key != (count($segments)-1)) {
+            foreach ($segments as $key => &$value) {
+                if ($key != (count($segments) - 1)) {
                     $value = strtolower($value);
                 }
             }
@@ -309,8 +309,8 @@ class Yaf_Loader
      * it will attempt to load it from PHP's include_path.
      *
      *
-     * @param  string        $filename
-     * @param  string|array  $dirs - OPTIONAL either a path or array of paths
+     * @param  string $filename
+     * @param  string|array $dirs - OPTIONAL either a path or array of paths
      *                       to search.
      * @return boolean
      */
@@ -371,6 +371,7 @@ class Yaf_Loader
     {
         $this->_localNamespace = '';
     }
+
     /**
      * not possible to clone
      */
@@ -398,13 +399,13 @@ class Yaf_Loader
         if (null === self::$_instance) {
             self::$_instance = new self();
             $instance = self::$_instance;
-            if ($library!=null) {
+            if ($library != null) {
                 $instance->setLibraryPath($library, false);
             }
-            if ($globalLibrary!=null) {
+            if ($globalLibrary != null) {
                 $instance->setLibraryPath($globalLibrary, true);
             } else {
-                if ($library!=null) {
+                if ($library != null) {
                     $instance->setLibraryPath($library, true);
                 }
             }
@@ -419,10 +420,10 @@ class Yaf_Loader
             }
         } else {
             $instance = self::$_instance;
-            if ($library!=null) {
+            if ($library != null) {
                 $instance->setLibraryPath($library, false);
             }
-            if ($globalLibrary!=null) {
+            if ($globalLibrary != null) {
                 $instance->setLibraryPath($globalLibrary, true);
             }
         }
@@ -435,7 +436,7 @@ class Yaf_Loader
      *
      * @return string
      */
-    public function getLibraryPath($isGlobal=false)
+    public function getLibraryPath($isGlobal = false)
     {
         if ($isGlobal == true) {
             return $this->_globalLibrary;
@@ -462,10 +463,10 @@ class Yaf_Loader
         }
         $className = ltrim($className, '\\');
         $prefix = '';
-        if (($pos = strpos($className, '_'))!==false) {
+        if (($pos = strpos($className, '_')) !== false) {
             $prefix = substr($className, 0, $pos);
             $class = substr($className, $pos + 1);
-        } else if (($pos = strpos($className, '\\'))!==false) {
+        } else if (($pos = strpos($className, '\\')) !== false) {
             $prefix = substr($className, 0, $pos);
             $class = substr($className, $pos + 1);
         }
@@ -478,6 +479,7 @@ class Yaf_Loader
         }
         return false;
     }
+
     /**
      * register a namespace for the loader
      *
@@ -496,17 +498,16 @@ class Yaf_Loader
             if ($this->_localNamespace == '') {
                 $this->_localNamespace .= $directorySeparator;
             }
-            $this->_localNamespace .= (string) $namespace . $directorySeparator;
+            $this->_localNamespace .= (string)$namespace . $directorySeparator;
         } elseif (is_array($namespace)) {
             if ($this->_localNamespace == '') {
                 $this->_localNamespace .= $directorySeparator;
             }
             foreach ($namespace as $value) {
-                $this->_localNamespace .= (string) $value . $directorySeparator;
+                $this->_localNamespace .= (string)$value . $directorySeparator;
             }
         }
     }
-
 
 
     /**
@@ -515,12 +516,12 @@ class Yaf_Loader
      * @param  string $path
      * @return void
      */
-    public function setLibraryPath($path, $isGlobal=false)
+    public function setLibraryPath($path, $isGlobal = false)
     {
         if ($isGlobal == true) {
-            $this->_globalLibrary = (string) $path;
+            $this->_globalLibrary = (string)$path;
         } else {
-            $this->_library = (string) $path;
+            $this->_library = (string)$path;
         }
     }
 

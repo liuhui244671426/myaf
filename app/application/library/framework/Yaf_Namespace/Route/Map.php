@@ -10,24 +10,26 @@ namespace Yaf\Route;
 
 class Map implements \Yaf\Route_Interface
 {
-    protected $_ctlPrefer=false;
-    protected $_delimiter='';
+    protected $_ctlPrefer = false;
+    protected $_delimiter = '';
+
     /**
      * Class constructor
      * @param string $module
      * @param string $controller
      * @param string $action
      */
-    public function __construct($controller_prefer=false, $delimiter='#!')
+    public function __construct($controller_prefer = false, $delimiter = '#!')
     {
         if (is_bool($controller_prefer)) {
             $this->_ctlPrefer = $controller_prefer;
         }
-        if (is_string($delimiter) && $delimiter!='') {
+        if (is_string($delimiter) && $delimiter != '') {
             $this->_delimiter = $delimiter;
         }
 
     }
+
     /**
      * Processes a request and sets its controller and action.  If
      * no route was possible, default route is set.
@@ -41,9 +43,9 @@ class Map implements \Yaf\Route_Interface
         $requestUri = $request->getRequestUri();
         $baseuri = $request->getBaseUri();
         if (
-            $requestUri!=''
-            && $baseuri!=''
-            && stripos($requestUri, $baseuri)===0
+            $requestUri != ''
+            && $baseuri != ''
+            && stripos($requestUri, $baseuri) === 0
         ) {
             $path = substr($requestUri, strlen($baseuri));
         } else {
@@ -51,12 +53,12 @@ class Map implements \Yaf\Route_Interface
         }
         $path = trim(urldecode($path), \Yaf\Router::URI_DELIMITER);
         $rest = '';
-        if (is_string($this->_delimiter) && $this->_delimiter!='') {
-            if (($queryStringPos = strpos($path, $this->_delimiter))!==false) {
+        if (is_string($this->_delimiter) && $this->_delimiter != '') {
+            if (($queryStringPos = strpos($path, $this->_delimiter)) !== false) {
                 $rest = substr(
                     $path,
-                    $queryStringPos+strlen($this->_delimiter),
-                    strlen($path)-1
+                    $queryStringPos + strlen($this->_delimiter),
+                    strlen($path) - 1
                 );
                 $path = substr(
                     $path,
@@ -66,14 +68,14 @@ class Map implements \Yaf\Route_Interface
             }
         }
         $route = '';
-        if ($path != '' && $path!='/') {
+        if ($path != '' && $path != '/') {
             $route = str_replace(
                 \Yaf\Router::URI_DELIMITER,
                 '_',
                 trim($path, \Yaf\Router::URI_DELIMITER)
             );
         }
-        if ($route!='') {
+        if ($route != '') {
             if ($this->_ctlPrefer == true) {
                 $request->setControllerName($route);
             } else {
@@ -81,18 +83,18 @@ class Map implements \Yaf\Route_Interface
             }
         }
         $params = array();
-        if ($rest!=null && trim($rest)!='') {
+        if ($rest != null && trim($rest) != '') {
             $path = explode(
                 \Yaf\Router::URI_DELIMITER,
                 trim($rest, \Yaf\Router::URI_DELIMITER)
             );
-            if (($numSegs = count($path))!=0) {
+            if (($numSegs = count($path)) != 0) {
                 for ($i = 0; $i < $numSegs; $i = $i + 2) {
                     $key = urldecode($path[$i]);
                     $val = isset($path[$i + 1]) ?
                         urldecode($path[$i + 1]) : null;
                     $params[$key] = (isset($params[$key])
-                        ? (array_merge((array) $params[$key], array($val)))
+                        ? (array_merge((array)$params[$key], array($val)))
                         : $val);
                 }
             }
@@ -101,6 +103,7 @@ class Map implements \Yaf\Route_Interface
 
         return true;
     }
+
     /**
      * used to create routes on the fly from config
      *

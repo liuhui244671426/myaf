@@ -71,14 +71,14 @@ abstract class AbstractContainer extends ArrayObject
      *
      * @var string
      */
-    protected $postfix   = '';
+    protected $postfix = '';
 
     /**
      * What text to prefix the placeholder with when rendering
      *
      * @var string
      */
-    protected $prefix    = '';
+    protected $prefix = '';
 
     /**
      * What string to use between individual items in the placeholder when rendering
@@ -117,7 +117,7 @@ abstract class AbstractContainer extends ArrayObject
             ? $this->getWhitespace($indent)
             : $this->getIndent();
 
-        $items  = $this->getArrayCopy();
+        $items = $this->getArrayCopy();
         $return = $indent
             . $this->getPrefix()
             . implode($this->getSeparator(), $items)
@@ -131,7 +131,7 @@ abstract class AbstractContainer extends ArrayObject
      * Start capturing content to push into placeholder
      *
      * @param  string $type How to capture content into placeholder; append, prepend, or set
-     * @param  mixed  $key  Key to which to capture content
+     * @param  mixed $key Key to which to capture content
      * @throws Exception\RuntimeException if nested captures detected
      * @return void
      */
@@ -146,7 +146,7 @@ abstract class AbstractContainer extends ArrayObject
         $this->captureLock = true;
         $this->captureType = $type;
         if ((null !== $key) && is_scalar($key)) {
-            $this->captureKey = (string) $key;
+            $this->captureKey = (string)$key;
         }
         ob_start();
     }
@@ -158,8 +158,8 @@ abstract class AbstractContainer extends ArrayObject
      */
     public function captureEnd()
     {
-        $data               = ob_get_clean();
-        $key                = null;
+        $data = ob_get_clean();
+        $key = null;
         $this->captureLock = false;
         if (null !== $this->captureKey) {
             $key = $this->captureKey;
@@ -174,9 +174,9 @@ abstract class AbstractContainer extends ArrayObject
                 break;
             case self::PREPEND:
                 if (null !== $key) {
-                    $array  = array($key => $data);
+                    $array = array($key => $data);
                     $values = $this->getArrayCopy();
-                    $final  = $array + $values;
+                    $final = $array + $values;
                     $this->exchangeArray($final);
                 } else {
                     $this->prepend($data);
@@ -221,7 +221,7 @@ abstract class AbstractContainer extends ArrayObject
     {
         if (1 == count($this)) {
             $keys = $this->getKeys();
-            $key  = array_shift($keys);
+            $key = array_shift($keys);
             return $this[$key];
         }
 
@@ -240,7 +240,7 @@ abstract class AbstractContainer extends ArrayObject
             $indent = str_repeat(' ', $indent);
         }
 
-        return (string) $indent;
+        return (string)$indent;
     }
 
     /**
@@ -329,7 +329,7 @@ abstract class AbstractContainer extends ArrayObject
      */
     public function setPostfix($postfix)
     {
-        $this->postfix = (string) $postfix;
+        $this->postfix = (string)$postfix;
         return $this;
     }
 
@@ -351,7 +351,7 @@ abstract class AbstractContainer extends ArrayObject
      */
     public function setPrefix($prefix)
     {
-        $this->prefix = (string) $prefix;
+        $this->prefix = (string)$prefix;
         return $this;
     }
 
@@ -375,7 +375,7 @@ abstract class AbstractContainer extends ArrayObject
      */
     public function setSeparator($separator)
     {
-        $this->separator = (string) $separator;
+        $this->separator = (string)$separator;
         return $this;
     }
 

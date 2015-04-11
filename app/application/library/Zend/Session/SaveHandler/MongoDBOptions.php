@@ -90,7 +90,7 @@ class MongoDBOptions extends AbstractOptions
      */
     public function setDatabase($database)
     {
-        $database = (string) $database;
+        $database = (string)$database;
         if (strlen($database) === 0) {
             throw new InvalidArgumentException('$database must be a non-empty string');
         }
@@ -117,7 +117,7 @@ class MongoDBOptions extends AbstractOptions
      */
     public function setCollection($collection)
     {
-        $collection = (string) $collection;
+        $collection = (string)$collection;
         if (strlen($collection) === 0) {
             throw new InvalidArgumentException('$collection must be a non-empty string');
         }
@@ -167,7 +167,7 @@ class MongoDBOptions extends AbstractOptions
      */
     public function setNameField($nameField)
     {
-        $nameField = (string) $nameField;
+        $nameField = (string)$nameField;
         if (strlen($nameField) === 0) {
             throw new InvalidArgumentException('$nameField must be a non-empty string');
         }
@@ -194,7 +194,7 @@ class MongoDBOptions extends AbstractOptions
      */
     public function setDataField($dataField)
     {
-        $dataField = (string) $dataField;
+        $dataField = (string)$dataField;
         if (strlen($dataField) === 0) {
             throw new InvalidArgumentException('$dataField must be a non-empty string');
         }
@@ -221,7 +221,7 @@ class MongoDBOptions extends AbstractOptions
      */
     public function setLifetimeField($lifetimeField)
     {
-        $lifetimeField = (string) $lifetimeField;
+        $lifetimeField = (string)$lifetimeField;
         if (strlen($lifetimeField) === 0) {
             throw new InvalidArgumentException('$lifetimeField must be a non-empty string');
         }
@@ -248,7 +248,7 @@ class MongoDBOptions extends AbstractOptions
      */
     public function setModifiedField($modifiedField)
     {
-        $modifiedField = (string) $modifiedField;
+        $modifiedField = (string)$modifiedField;
         if (strlen($modifiedField) === 0) {
             throw new InvalidArgumentException('$modifiedField must be a non-empty string');
         }

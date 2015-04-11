@@ -23,7 +23,7 @@ abstract class Factory
 
     /**
      * Create adapter from items if necessary, and return paginator
-     * @param Traversable/array $items
+     * @param Traversable /array $items
      * @return Paginator
      */
     protected static function createAdapterFromItems($items)

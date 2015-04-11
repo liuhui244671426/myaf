@@ -28,7 +28,7 @@ class StringTrim extends AbstractFilter
     public function __construct($charlistOrOptions = null)
     {
         if ($charlistOrOptions !== null) {
-            if (!is_array($charlistOrOptions) && !$charlistOrOptions  instanceof Traversable) {
+            if (!is_array($charlistOrOptions) && !$charlistOrOptions instanceof Traversable) {
                 $this->setCharList($charlistOrOptions);
             } else {
                 $this->setOptions($charlistOrOptions);
@@ -44,7 +44,7 @@ class StringTrim extends AbstractFilter
      */
     public function setCharList($charList)
     {
-        if (! strlen($charList)) {
+        if (!strlen($charList)) {
             $charList = null;
         }
 
@@ -76,7 +76,7 @@ class StringTrim extends AbstractFilter
         if (!is_string($value)) {
             return $value;
         }
-        $value = (string) $value;
+        $value = (string)$value;
 
         if (null === $this->options['charlist']) {
             return $this->unicodeTrim($value);

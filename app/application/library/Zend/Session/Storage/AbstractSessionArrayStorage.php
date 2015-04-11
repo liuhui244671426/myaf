@@ -46,7 +46,7 @@ abstract class AbstractSessionArrayStorage implements
         if ((null === $input) && isset($_SESSION)) {
             $input = $_SESSION;
             if (is_object($input) && !$_SESSION instanceof \ArrayObject) {
-                $input = (array) $input;
+                $input = (array)$input;
             }
         } elseif (null === $input) {
             $input = array();
@@ -81,7 +81,7 @@ abstract class AbstractSessionArrayStorage implements
     /**
      * Isset Offset
      *
-     * @param  mixed   $key
+     * @param  mixed $key
      * @return bool
      */
     public function __isset($key)
@@ -107,13 +107,13 @@ abstract class AbstractSessionArrayStorage implements
      */
     public function __destruct()
     {
-        return ;
+        return;
     }
 
     /**
      * Offset Exists
      *
-     * @param  mixed   $key
+     * @param  mixed $key
      * @return bool
      */
     public function offsetExists($key)
@@ -205,7 +205,7 @@ abstract class AbstractSessionArrayStorage implements
      *
      * Ensures $_SESSION is set to an instance of the object when complete.
      *
-     * @param  array          $array
+     * @param  array $array
      * @return SessionStorage
      */
     public function fromArray(array $array)
@@ -277,7 +277,7 @@ abstract class AbstractSessionArrayStorage implements
             return $this->getMetadata('_READONLY');
         }
 
-        $locks    = $this->getMetadata('_LOCKS');
+        $locks = $this->getMetadata('_LOCKS');
         $readOnly = $this->getMetadata('_READONLY');
 
         if ($readOnly && !$locks) {
@@ -318,7 +318,7 @@ abstract class AbstractSessionArrayStorage implements
                 return $this;
             }
             $array = $this->toArray();
-            $keys  = array_keys($array);
+            $keys = array_keys($array);
             $locks = array_flip($keys);
             unset($array, $keys);
         }
@@ -341,9 +341,9 @@ abstract class AbstractSessionArrayStorage implements
      * - localizing session storage
      * - etc.
      *
-     * @param  string                     $key
-     * @param  mixed                      $value
-     * @param  bool                       $overwriteArray Whether to overwrite or merge array values; by default, merges
+     * @param  string $key
+     * @param  mixed $value
+     * @param  bool $overwriteArray Whether to overwrite or merge array values; by default, merges
      * @return ArrayStorage
      * @throws Exception\RuntimeException
      */
@@ -407,7 +407,7 @@ abstract class AbstractSessionArrayStorage implements
     /**
      * Clear the storage object or a subkey of the object
      *
-     * @param  null|int|string            $key
+     * @param  null|int|string $key
      * @return ArrayStorage
      * @throws Exception\RuntimeException
      */
@@ -431,7 +431,7 @@ abstract class AbstractSessionArrayStorage implements
 
         // Clear key metadata
         $this->setMetadata($key, null)
-             ->unlock($key);
+            ->unlock($key);
 
         return $this;
     }
@@ -449,7 +449,7 @@ abstract class AbstractSessionArrayStorage implements
     /**
      * Set the request access time
      *
-     * @param  float        $time
+     * @param  float $time
      * @return ArrayStorage
      */
     protected function setRequestAccessTime($time)

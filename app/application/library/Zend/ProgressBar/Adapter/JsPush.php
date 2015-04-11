@@ -60,28 +60,28 @@ class JsPush extends AbstractAdapter
     /**
      * Defined by Zend\ProgressBar\Adapter\AbstractAdapter
      *
-     * @param  float   $current       Current progress value
-     * @param  float   $max           Max progress value
-     * @param  float   $percent       Current percent value
-     * @param  int $timeTaken     Taken time in seconds
+     * @param  float $current Current progress value
+     * @param  float $max Max progress value
+     * @param  float $percent Current percent value
+     * @param  int $timeTaken Taken time in seconds
      * @param  int $timeRemaining Remaining time in seconds
-     * @param  string  $text          Status text
+     * @param  string $text Status text
      * @return void
      */
     public function notify($current, $max, $percent, $timeTaken, $timeRemaining, $text)
     {
         $arguments = array(
-            'current'       => $current,
-            'max'           => $max,
-            'percent'       => ($percent * 100),
-            'timeTaken'     => $timeTaken,
+            'current' => $current,
+            'max' => $max,
+            'percent' => ($percent * 100),
+            'timeTaken' => $timeTaken,
             'timeRemaining' => $timeRemaining,
-            'text'          => $text
+            'text' => $text
         );
 
         $data = '<script type="text/javascript">'
-              . 'parent.' . $this->updateMethodName . '(' . Json::encode($arguments) . ');'
-              . '</script>';
+            . 'parent.' . $this->updateMethodName . '(' . Json::encode($arguments) . ');'
+            . '</script>';
 
         // Output the data
         $this->_outputData($data);
@@ -99,8 +99,8 @@ class JsPush extends AbstractAdapter
         }
 
         $data = '<script type="text/javascript">'
-              . 'parent.' . $this->finishMethodName . '();'
-              . '</script>';
+            . 'parent.' . $this->finishMethodName . '();'
+            . '</script>';
 
         $this->_outputData($data);
     }

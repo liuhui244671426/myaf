@@ -128,7 +128,7 @@ class ModuleManager implements ModuleManagerInterface
     /**
      * Load a specific module by name.
      *
-     * @param  string|array               $module
+     * @param  string|array $module
      * @throws Exception\RuntimeException
      * @triggers loadModule.resolve
      * @triggers loadModule
@@ -204,7 +204,7 @@ class ModuleManager implements ModuleManagerInterface
     /**
      * Get an array of the loaded modules.
      *
-     * @param  bool  $loadModules If true, load modules if they're not already
+     * @param  bool $loadModules If true, load modules if they're not already
      * @return array An array of Module objects, keyed by module name
      */
     public function getLoadedModules($loadModules = false)

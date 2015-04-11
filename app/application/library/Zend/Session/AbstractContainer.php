@@ -57,8 +57,8 @@ abstract class AbstractContainer extends ArrayObject
      *
      * Provide a name ('Default' if none provided) and a ManagerInterface instance.
      *
-     * @param  null|string                        $name
-     * @param  Manager                            $manager
+     * @param  null|string $name
+     * @param  Manager $manager
      * @throws Exception\InvalidArgumentException
      */
     public function __construct($name = 'Default', Manager $manager = null)
@@ -125,7 +125,7 @@ abstract class AbstractContainer extends ArrayObject
     /**
      * Set session manager
      *
-     * @param  null|Manager                       $manager
+     * @param  null|Manager $manager
      * @return Container
      * @throws Exception\InvalidArgumentException
      */
@@ -184,14 +184,14 @@ abstract class AbstractContainer extends ArrayObject
      * If not, it raises an exception; otherwise, it returns the Storage
      * object.
      *
-     * @param  bool                       $createContainer Whether or not to create the container for the namespace
+     * @param  bool $createContainer Whether or not to create the container for the namespace
      * @return Storage|null               Returns null only if $createContainer is false
      * @throws Exception\RuntimeException
      */
     protected function verifyNamespace($createContainer = true)
     {
         $storage = $this->getStorage();
-        $name    = $this->getName();
+        $name = $this->getName();
         if (!isset($storage[$name])) {
             if (!$createContainer) {
                 return;
@@ -216,7 +216,7 @@ abstract class AbstractContainer extends ArrayObject
     protected function expireKeys($key = null)
     {
         $storage = $this->verifyNamespace();
-        $name    = $this->getName();
+        $name = $this->getName();
 
         // Return early if key not found
         if ((null !== $key) && !isset($storage[$name][$key])) {
@@ -241,8 +241,8 @@ abstract class AbstractContainer extends ArrayObject
      * or the individual key.
      *
      * @param  Storage $storage
-     * @param  string  $name    Container name
-     * @param  string  $key     Key in container to check
+     * @param  string $name Container name
+     * @param  string $key Key in container to check
      * @return bool
      */
     protected function expireByExpiryTime(Storage $storage, $name, $key)
@@ -303,13 +303,13 @@ abstract class AbstractContainer extends ArrayObject
      * expired based on session hops
      *
      * @param  Storage $storage
-     * @param  string  $name
-     * @param  string  $key
+     * @param  string $name
+     * @param  string $key
      * @return bool
      */
     protected function expireByHops(Storage $storage, $name, $key)
     {
-        $ts       = $storage->getRequestAccessTime();
+        $ts = $storage->getRequestAccessTime();
         $metadata = $storage->getMetadata($name);
 
         // Global container expiry
@@ -381,14 +381,14 @@ abstract class AbstractContainer extends ArrayObject
      * Store a value within the container
      *
      * @param  string $key
-     * @param  mixed  $value
+     * @param  mixed $value
      * @return void
      */
     public function offsetSet($key, $value)
     {
         $this->expireKeys($key);
         $storage = $this->verifyNamespace();
-        $name    = $this->getName();
+        $name = $this->getName();
         $storage[$name][$key] = $value;
     }
 
@@ -445,7 +445,7 @@ abstract class AbstractContainer extends ArrayObject
             return;
         }
         $storage = $this->getStorage();
-        $name    = $this->getName();
+        $name = $this->getName();
         unset($storage[$name][$key]);
     }
 
@@ -463,11 +463,11 @@ abstract class AbstractContainer extends ArrayObject
             $input = $input->getArrayCopy();
         }
         if (!is_array($input)) {
-            $input = (array) $input;
+            $input = (array)$input;
         }
 
         $storage = $this->verifyNamespace();
-        $name    = $this->getName();
+        $name = $this->getName();
 
         $old = $storage[$name];
         $storage[$name] = $input;
@@ -486,7 +486,7 @@ abstract class AbstractContainer extends ArrayObject
     public function getIterator()
     {
         $this->expireKeys();
-        $storage   = $this->getStorage();
+        $storage = $this->getStorage();
         $container = $storage[$this->getName()];
 
         if ($container instanceof Traversable) {
@@ -501,17 +501,17 @@ abstract class AbstractContainer extends ArrayObject
      *
      * Set the TTL for the entire container, a single key, or a set of keys.
      *
-     * @param  int                                $ttl  TTL in seconds
-     * @param  string|array|null                  $vars
+     * @param  int $ttl TTL in seconds
+     * @param  string|array|null $vars
      * @return Container
      * @throws Exception\InvalidArgumentException
      */
     public function setExpirationSeconds($ttl, $vars = null)
     {
         $storage = $this->getStorage();
-        $ts      = $_SERVER['REQUEST_TIME'] + $ttl;
+        $ts = $_SERVER['REQUEST_TIME'] + $ttl;
         if (is_scalar($vars) && null !== $vars) {
-            $vars = (array) $vars;
+            $vars = (array)$vars;
         }
 
         if (null === $vars) {
@@ -522,13 +522,13 @@ abstract class AbstractContainer extends ArrayObject
             $container = $this;
 
             // Filter out any items not in our container
-            $expires   = array_filter($vars, function ($value) use ($container) {
+            $expires = array_filter($vars, function ($value) use ($container) {
                 return $container->offsetExists($value);
             });
 
             // Map item keys => timestamp
-            $expires   = array_flip($expires);
-            $expires   = array_map(function ($value) use ($ts) {
+            $expires = array_flip($expires);
+            $expires = array_map(function ($value) use ($ts) {
                 return $ts;
             }, $expires);
 
@@ -551,18 +551,18 @@ abstract class AbstractContainer extends ArrayObject
     /**
      * Set expiration hops for the container, a single key, or set of keys
      *
-     * @param  int                                $hops
-     * @param  null|string|array                  $vars
+     * @param  int $hops
+     * @param  null|string|array $vars
      * @throws Exception\InvalidArgumentException
      * @return Container
      */
     public function setExpirationHops($hops, $vars = null)
     {
         $storage = $this->getStorage();
-        $ts      = $storage->getRequestAccessTime();
+        $ts = $storage->getRequestAccessTime();
 
         if (is_scalar($vars) && (null !== $vars)) {
-            $vars = (array) $vars;
+            $vars = (array)$vars;
         }
 
         if (null === $vars) {
@@ -573,13 +573,13 @@ abstract class AbstractContainer extends ArrayObject
             $container = $this;
 
             // FilterInterface out any items not in our container
-            $expires   = array_filter($vars, function ($value) use ($container) {
+            $expires = array_filter($vars, function ($value) use ($container) {
                 return $container->offsetExists($value);
             });
 
             // Map item keys => timestamp
-            $expires   = array_flip($expires);
-            $expires   = array_map(function ($value) use ($hops, $ts) {
+            $expires = array_flip($expires);
+            $expires = array_map(function ($value) use ($hops, $ts) {
                 return array('hops' => $hops, 'ts' => $ts);
             }, $expires);
 
@@ -606,7 +606,7 @@ abstract class AbstractContainer extends ArrayObject
      */
     public function getArrayCopy()
     {
-        $storage   = $this->verifyNamespace();
+        $storage = $this->verifyNamespace();
         $container = $storage[$this->getName()];
 
         return $container instanceof ArrayObject ? $container->getArrayCopy() : $container;

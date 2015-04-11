@@ -149,20 +149,20 @@ class ViewModel implements ModelInterface, ClearableModelInterface, RetrievableC
      */
     public function setOption($name, $value)
     {
-        $this->options[(string) $name] = $value;
+        $this->options[(string)$name] = $value;
         return $this;
     }
 
     /**
      * Get a single option
      *
-     * @param  string       $name           The option to get.
-     * @param  mixed|null   $default        (optional) A default value if the option is not yet set.
+     * @param  string $name The option to get.
+     * @param  mixed|null $default (optional) A default value if the option is not yet set.
      * @return mixed
      */
     public function getOption($name, $default = null)
     {
-        $name = (string) $name;
+        $name = (string)$name;
         return array_key_exists($name, $this->options) ? $this->options[$name] : $default;
     }
 
@@ -217,13 +217,13 @@ class ViewModel implements ModelInterface, ClearableModelInterface, RetrievableC
     /**
      * Get a single view variable
      *
-     * @param  string       $name
-     * @param  mixed|null   $default (optional) default value if the variable is not present.
+     * @param  string $name
+     * @param  mixed|null $default (optional) default value if the variable is not present.
      * @return mixed
      */
     public function getVariable($name, $default = null)
     {
-        $name = (string) $name;
+        $name = (string)$name;
         if (array_key_exists($name, $this->variables)) {
             return $this->variables[$name];
         }
@@ -240,7 +240,7 @@ class ViewModel implements ModelInterface, ClearableModelInterface, RetrievableC
      */
     public function setVariable($name, $value)
     {
-        $this->variables[(string) $name] = $value;
+        $this->variables[(string)$name] = $value;
         return $this;
     }
 
@@ -311,7 +311,7 @@ class ViewModel implements ModelInterface, ClearableModelInterface, RetrievableC
      */
     public function setTemplate($template)
     {
-        $this->template = (string) $template;
+        $this->template = (string)$template;
         return $this;
     }
 
@@ -411,7 +411,7 @@ class ViewModel implements ModelInterface, ClearableModelInterface, RetrievableC
      */
     public function setCaptureTo($capture)
     {
-        $this->captureTo = (string) $capture;
+        $this->captureTo = (string)$capture;
         return $this;
     }
 
@@ -433,7 +433,7 @@ class ViewModel implements ModelInterface, ClearableModelInterface, RetrievableC
      */
     public function setTerminal($terminate)
     {
-        $this->terminate = (bool) $terminate;
+        $this->terminate = (bool)$terminate;
         return $this;
     }
 
@@ -455,7 +455,7 @@ class ViewModel implements ModelInterface, ClearableModelInterface, RetrievableC
      */
     public function setAppend($append)
     {
-        $this->append = (bool) $append;
+        $this->append = (bool)$append;
         return $this;
     }
 

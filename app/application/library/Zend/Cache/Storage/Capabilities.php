@@ -150,9 +150,9 @@ class Capabilities
     /**
      * Constructor
      *
-     * @param StorageInterface  $storage
-     * @param stdClass          $marker
-     * @param array             $capabilities
+     * @param StorageInterface $storage
+     * @param stdClass $marker
+     * @param array $capabilities
      * @param null|Capabilities $baseCapabilities
      */
     public function __construct(
@@ -160,9 +160,10 @@ class Capabilities
         stdClass $marker,
         array $capabilities = array(),
         Capabilities $baseCapabilities = null
-    ) {
+    )
+    {
         $this->storage = $storage;
-        $this->marker  = $marker;
+        $this->marker = $marker;
         $this->baseCapabilities = $baseCapabilities;
 
         foreach ($capabilities as $name => $value) {
@@ -188,13 +189,13 @@ class Capabilities
     public function getSupportedDatatypes()
     {
         return $this->getCapability('supportedDatatypes', array(
-            'NULL'     => false,
-            'boolean'  => false,
-            'integer'  => false,
-            'double'   => false,
-            'string'   => true,
-            'array'    => false,
-            'object'   => false,
+            'NULL' => false,
+            'boolean' => false,
+            'integer' => false,
+            'double' => false,
+            'string' => true,
+            'array' => false,
+            'object' => false,
             'resource' => false,
         ));
     }
@@ -232,7 +233,7 @@ class Capabilities
                     throw new Exception\InvalidArgumentException("Unknown datatype '{$toType}'");
                 }
             } else {
-                $toType = (bool) $toType;
+                $toType = (bool)$toType;
             }
         }
 
@@ -293,7 +294,7 @@ class Capabilities
      */
     public function setMinTtl(stdClass $marker, $minTtl)
     {
-        $minTtl = (int) $minTtl;
+        $minTtl = (int)$minTtl;
         if ($minTtl < 0) {
             throw new Exception\InvalidArgumentException('$minTtl must be greater or equal 0');
         }
@@ -320,7 +321,7 @@ class Capabilities
      */
     public function setMaxTtl(stdClass $marker, $maxTtl)
     {
-        $maxTtl = (int) $maxTtl;
+        $maxTtl = (int)$maxTtl;
         if ($maxTtl < 0) {
             throw new Exception\InvalidArgumentException('$maxTtl must be greater or equal 0');
         }
@@ -347,7 +348,7 @@ class Capabilities
      */
     public function setStaticTtl(stdClass $marker, $flag)
     {
-        return $this->setCapability($marker, 'staticTtl', (bool) $flag);
+        return $this->setCapability($marker, 'staticTtl', (bool)$flag);
     }
 
     /**
@@ -370,7 +371,7 @@ class Capabilities
      */
     public function setTtlPrecision(stdClass $marker, $ttlPrecision)
     {
-        $ttlPrecision = (float) $ttlPrecision;
+        $ttlPrecision = (float)$ttlPrecision;
         if ($ttlPrecision <= 0) {
             throw new Exception\InvalidArgumentException('$ttlPrecision must be greater than 0');
         }
@@ -396,7 +397,7 @@ class Capabilities
      */
     public function setUseRequestTime(stdClass $marker, $flag)
     {
-        return $this->setCapability($marker, 'useRequestTime', (bool) $flag);
+        return $this->setCapability($marker, 'useRequestTime', (bool)$flag);
     }
 
     /**
@@ -418,7 +419,7 @@ class Capabilities
      */
     public function setExpiredRead(stdClass $marker, $flag)
     {
-        return $this->setCapability($marker, 'expiredRead', (bool) $flag);
+        return $this->setCapability($marker, 'expiredRead', (bool)$flag);
     }
 
     /**
@@ -441,7 +442,7 @@ class Capabilities
      */
     public function setMaxKeyLength(stdClass $marker, $maxKeyLength)
     {
-        $maxKeyLength = (int) $maxKeyLength;
+        $maxKeyLength = (int)$maxKeyLength;
         if ($maxKeyLength < -1) {
             throw new Exception\InvalidArgumentException('$maxKeyLength must be greater or equal than -1');
         }
@@ -467,7 +468,7 @@ class Capabilities
      */
     public function setNamespaceIsPrefix(stdClass $marker, $flag)
     {
-        return $this->setCapability($marker, 'namespaceIsPrefix', (bool) $flag);
+        return $this->setCapability($marker, 'namespaceIsPrefix', (bool)$flag);
     }
 
     /**
@@ -489,7 +490,7 @@ class Capabilities
      */
     public function setNamespaceSeparator(stdClass $marker, $separator)
     {
-        return $this->setCapability($marker, 'namespaceSeparator', (string) $separator);
+        return $this->setCapability($marker, 'namespaceSeparator', (string)$separator);
     }
 
     /**

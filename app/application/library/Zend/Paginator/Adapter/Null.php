@@ -41,7 +41,7 @@ class Null implements AdapterInterface
             return array();
         }
 
-        $remainItemCount  = $this->count() - $offset;
+        $remainItemCount = $this->count() - $offset;
         $currentItemCount = $remainItemCount > $itemCountPerPage ? $itemCountPerPage : $remainItemCount;
 
         return array_fill(0, $currentItemCount, null);

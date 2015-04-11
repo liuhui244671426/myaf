@@ -198,7 +198,7 @@ abstract class AbstractPluginManager extends ServiceManager implements ServiceLo
      */
     protected function createFromFactory($canonicalName, $requestedName)
     {
-        $factory            = $this->factories[$canonicalName];
+        $factory = $this->factories[$canonicalName];
         $hasCreationOptions = !(null === $this->creationOptions || (is_array($this->creationOptions) && empty($this->creationOptions)));
 
         if (is_string($factory) && class_exists($factory, true)) {
@@ -232,8 +232,8 @@ abstract class AbstractPluginManager extends ServiceManager implements ServiceLo
      * Create service via callback
      *
      * @param  callable $callable
-     * @param  string   $cName
-     * @param  string   $rName
+     * @param  string $cName
+     * @param  string $rName
      * @throws Exception\ServiceNotCreatedException
      * @throws Exception\ServiceNotFoundException
      * @throws Exception\CircularDependencyFoundException

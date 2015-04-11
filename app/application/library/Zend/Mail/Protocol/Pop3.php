@@ -39,9 +39,9 @@ class Pop3
     /**
      * Public constructor
      *
-     * @param  string      $host  hostname or IP address of POP3 server, if given connect() is called
-     * @param  int|null    $port  port of POP3 server, null for default (110 or 995 for ssl)
-     * @param  bool|string $ssl   use ssl? 'SSL', 'TLS' or false
+     * @param  string $host hostname or IP address of POP3 server, if given connect() is called
+     * @param  int|null $port port of POP3 server, null for default (110 or 995 for ssl)
+     * @param  bool|string $ssl use ssl? 'SSL', 'TLS' or false
      */
     public function __construct($host = '', $port = null, $ssl = false)
     {
@@ -61,9 +61,9 @@ class Pop3
     /**
      * Open connection to POP3 server
      *
-     * @param  string      $host  hostname or IP address of POP3 server
-     * @param  int|null    $port  of POP3 server, default is 110 (995 for ssl)
-     * @param  string|bool $ssl   use 'SSL', 'TLS' or false
+     * @param  string $host hostname or IP address of POP3 server
+     * @param  int|null $port of POP3 server, default is 110 (995 for ssl)
+     * @param  string|bool $ssl use 'SSL', 'TLS' or false
      * @throws Exception\RuntimeException
      * @return string welcome message
      */
@@ -84,7 +84,7 @@ class Pop3
                 break;
             case 'tls':
                 $isTls = true;
-                // break intentionally omitted
+            // break intentionally omitted
             default:
                 if (!$port) {
                     $port = 110;
@@ -132,7 +132,7 @@ class Pop3
     {
         ErrorHandler::start();
         $result = fputs($this->socket, $request . "\r\n");
-        $error  = ErrorHandler::stop();
+        $error = ErrorHandler::stop();
         if (!$result) {
             throw new Exception\RuntimeException('send failed - connection closed?', 0, $error);
         }
@@ -149,7 +149,7 @@ class Pop3
     {
         ErrorHandler::start();
         $result = fgets($this->socket);
-        $error  = ErrorHandler::stop();
+        $error = ErrorHandler::stop();
         if (!is_string($result)) {
             throw new Exception\RuntimeException('read failed - connection closed?', 0, $error);
         }
@@ -186,8 +186,8 @@ class Pop3
      *
      * @see sendRequest()
      * @see readResponse()
-     * @param  string $request    request
-     * @param  bool   $multiline  multiline response?
+     * @param  string $request request
+     * @param  bool $multiline multiline response?
      * @return string             result from readResponse()
      */
     public function request($request, $multiline = false)
@@ -229,9 +229,9 @@ class Pop3
     /**
      * Login to POP3 server. Can use APOP
      *
-     * @param  string $user     username
+     * @param  string $user username
      * @param  string $password password
-     * @param  bool   $tryApop  should APOP be tried?
+     * @param  bool $tryApop should APOP be tried?
      */
     public function login($user, $password, $tryApop = true)
     {
@@ -252,8 +252,8 @@ class Pop3
     /**
      * Make STAT call for message count and size sum
      *
-     * @param  int $messages  out parameter with count of messages
-     * @param  int $octets    out parameter with size in octets of messages
+     * @param  int $messages out parameter with count of messages
+     * @param  int $octets out parameter with size in octets of messages
      */
     public function status(&$messages, &$octets)
     {
@@ -277,7 +277,7 @@ class Pop3
             $result = $this->request("LIST $msgno");
 
             list(, $result) = explode(' ', $result);
-            return (int) $result;
+            return (int)$result;
         }
 
         $result = $this->request('LIST', true);
@@ -285,7 +285,7 @@ class Pop3
         $line = strtok($result, "\n");
         while ($line) {
             list($no, $size) = explode(' ', trim($line));
-            $messages[(int) $no] = (int) $size;
+            $messages[(int)$no] = (int)$size;
             $line = strtok("\n");
         }
 
@@ -317,7 +317,7 @@ class Pop3
                 continue;
             }
             list($no, $id) = explode(' ', trim($line), 2);
-            $messages[(int) $no] = $id;
+            $messages[(int)$no] = $id;
         }
 
         return $messages;
@@ -331,8 +331,8 @@ class Pop3
      * The fallback makes normal RETR call, which retrieves the whole message. Additional
      * lines are not removed.
      *
-     * @param  int  $msgno    number of message
-     * @param  int  $lines    number of wanted body lines (empty line is inserted after header lines)
+     * @param  int $msgno number of message
+     * @param  int $lines number of wanted body lines (empty line is inserted after header lines)
      * @param  bool $fallback fallback with full retrieve if top is not supported
      * @throws Exception\RuntimeException
      * @throws Exception\ExceptionInterface
@@ -349,7 +349,7 @@ class Pop3
         }
         $this->hasTop = true;
 
-        $lines = (!$lines || $lines < 1) ? 0 : (int) $lines;
+        $lines = (!$lines || $lines < 1) ? 0 : (int)$lines;
 
         try {
             $result = $this->request("TOP $msgno $lines", true);
@@ -368,7 +368,7 @@ class Pop3
     /**
      * Make a RETR call for retrieving a full message with headers and body
      *
-     * @param  int $msgno  message number
+     * @param  int $msgno message number
      * @return string message
      */
     public function retrieve($msgno)

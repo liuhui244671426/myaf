@@ -20,12 +20,12 @@ class FormReset extends FormInput
      * @var array
      */
     protected $validTagAttributes = array(
-        'name'           => true,
-        'autofocus'      => true,
-        'disabled'       => true,
-        'form'           => true,
-        'type'           => true,
-        'value'          => true,
+        'name' => true,
+        'autofocus' => true,
+        'disabled' => true,
+        'form' => true,
+        'type' => true,
+        'value' => true,
     );
 
     /**

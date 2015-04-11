@@ -108,7 +108,7 @@ class AbstractFeed
     /**
      * Set the copyright entry
      *
-     * @param  string      $copyright
+     * @param  string $copyright
      * @throws Exception\InvalidArgumentException
      * @return AbstractFeed
      */
@@ -137,7 +137,7 @@ class AbstractFeed
             $date = new DateTime('@' . $date);
         } elseif (!$date instanceof DateTime) {
             throw new Exception\InvalidArgumentException('Invalid DateTime object or UNIX Timestamp'
-                                                         . ' passed as parameter');
+                . ' passed as parameter');
         }
         $this->data['dateCreated'] = $date;
 
@@ -159,7 +159,7 @@ class AbstractFeed
             $date = new DateTime('@' . $date);
         } elseif (!$date instanceof DateTime) {
             throw new Exception\InvalidArgumentException('Invalid DateTime object or UNIX Timestamp'
-                                                         . ' passed as parameter');
+                . ' passed as parameter');
         }
         $this->data['dateModified'] = $date;
 
@@ -181,7 +181,7 @@ class AbstractFeed
             $date = new DateTime('@' . $date);
         } elseif (!$date instanceof DateTime) {
             throw new Exception\InvalidArgumentException('Invalid DateTime object or UNIX Timestamp'
-                                                         . ' passed as parameter');
+                . ' passed as parameter');
         }
         $this->data['lastBuildDate'] = $date;
 
@@ -323,7 +323,7 @@ class AbstractFeed
             || !Uri::factory($data['uri'])->isValid()
         ) {
             throw new Exception\InvalidArgumentException('Invalid parameter: parameter \'uri\''
-            . ' must be a non-empty string and valid URI/IRI');
+                . ' must be a non-empty string and valid URI/IRI');
         }
         $this->data['image'] = $data;
 
@@ -430,7 +430,7 @@ class AbstractFeed
     {
         if (empty($url) || !is_string($url) || !Uri::factory($url)->isValid()) {
             throw new Exception\InvalidArgumentException('Invalid parameter: "url" array value'
-            . ' must be a non-empty string and valid URI/IRI');
+                . ' must be a non-empty string and valid URI/IRI');
         }
         $this->data['baseUrl'] = $url;
 
@@ -448,7 +448,7 @@ class AbstractFeed
     {
         if (empty($url) || !is_string($url) || !Uri::factory($url)->isValid()) {
             throw new Exception\InvalidArgumentException('Invalid parameter: "url" array value'
-            . ' must be a non-empty string and valid URI/IRI');
+                . ' must be a non-empty string and valid URI/IRI');
         }
         if (!isset($this->data['hubs'])) {
             $this->data['hubs'] = array();
@@ -484,8 +484,8 @@ class AbstractFeed
     {
         if (!isset($category['term'])) {
             throw new Exception\InvalidArgumentException('Each category must be an array and '
-            . 'contain at least a "term" element containing the machine '
-            . ' readable category name');
+                . 'contain at least a "term" element containing the machine '
+                . ' readable category name');
         }
         if (isset($category['scheme'])) {
             if (empty($category['scheme'])
@@ -493,7 +493,7 @@ class AbstractFeed
                 || !Uri::factory($category['scheme'])->isValid()
             ) {
                 throw new Exception\InvalidArgumentException('The Atom scheme or RSS domain of'
-                . ' a category must be a valid URI');
+                    . ' a category must be a valid URI');
             }
         }
         if (!isset($this->data['categories'])) {
@@ -832,9 +832,9 @@ class AbstractFeed
      */
     protected function _loadExtensions()
     {
-        $all     = Writer::getExtensions();
+        $all = Writer::getExtensions();
         $manager = Writer::getExtensionManager();
-        $exts    = $all['feed'];
+        $exts = $all['feed'];
         foreach ($exts as $ext) {
             if (!$manager->has($ext)) {
                 throw new Exception\RuntimeException(sprintf('Unable to load extension "%s"; could not resolve to class', $ext));

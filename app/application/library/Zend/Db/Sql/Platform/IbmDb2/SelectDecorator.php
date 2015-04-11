@@ -22,7 +22,7 @@ class SelectDecorator extends Select implements PlatformDecoratorInterface
     /**
      * @var bool
      */
-    protected $isSelectContainDistinct= false;
+    protected $isSelectContainDistinct = false;
 
     /**
      * @var Select
@@ -62,7 +62,7 @@ class SelectDecorator extends Select implements PlatformDecoratorInterface
     }
 
     /**
-     * @param AdapterInterface            $adapter
+     * @param AdapterInterface $adapter
      * @param StatementContainerInterface $statementContainer
      */
     public function prepareStatement(AdapterInterface $adapter, StatementContainerInterface $statementContainer)
@@ -98,11 +98,11 @@ class SelectDecorator extends Select implements PlatformDecoratorInterface
     }
 
     /**
-     * @param  PlatformInterface  $platform
-     * @param  DriverInterface    $driver
+     * @param  PlatformInterface $platform
+     * @param  DriverInterface $driver
      * @param  ParameterContainer $parameterContainer
-     * @param  array              $sqls
-     * @param  array              $parameters
+     * @param  array $sqls
+     * @param  array $parameters
      */
     protected function processLimitOffset(PlatformInterface $platform, DriverInterface $driver = null, ParameterContainer $parameterContainer = null, &$sqls, &$parameters)
     {
@@ -140,8 +140,8 @@ class SelectDecorator extends Select implements PlatformDecoratorInterface
 
         if ($parameterContainer) {
             // create bottom part of query, with offset and limit using row_number
-            $limitParamName        = $driver->formatParameterName('limit');
-            $offsetParamName       = $driver->formatParameterName('offset');
+            $limitParamName = $driver->formatParameterName('limit');
+            $offsetParamName = $driver->formatParameterName('offset');
 
             array_push($sqls, sprintf(
                 ") AS ZEND_IBMDB2_SERVER_LIMIT_OFFSET_EMULATION WHERE ZEND_IBMDB2_SERVER_LIMIT_OFFSET_EMULATION.ZEND_DB_ROWNUM BETWEEN %s AND %s",
@@ -149,24 +149,24 @@ class SelectDecorator extends Select implements PlatformDecoratorInterface
                 $limitParamName
             ));
 
-            if ((int) $this->offset > 0) {
-                $parameterContainer->offsetSet('offset', (int) $this->offset + 1);
+            if ((int)$this->offset > 0) {
+                $parameterContainer->offsetSet('offset', (int)$this->offset + 1);
             } else {
-                $parameterContainer->offsetSet('offset', (int) $this->offset);
+                $parameterContainer->offsetSet('offset', (int)$this->offset);
             }
 
-            $parameterContainer->offsetSet('limit', (int) $this->limit + (int) $this->offset);
+            $parameterContainer->offsetSet('limit', (int)$this->limit + (int)$this->offset);
         } else {
-            if ((int) $this->offset > 0) {
-                $offset = (int) $this->offset + 1;
+            if ((int)$this->offset > 0) {
+                $offset = (int)$this->offset + 1;
             } else {
-                $offset = (int) $this->offset;
+                $offset = (int)$this->offset;
             }
 
             array_push($sqls, sprintf(
                 ") AS ZEND_IBMDB2_SERVER_LIMIT_OFFSET_EMULATION WHERE ZEND_IBMDB2_SERVER_LIMIT_OFFSET_EMULATION.ZEND_DB_ROWNUM BETWEEN %d AND %d",
                 $offset,
-                (int) $this->limit + (int) $this->offset
+                (int)$this->limit + (int)$this->offset
             ));
         }
 

@@ -43,7 +43,7 @@ class DateTime extends AbstractScalar
         if ($value instanceof \DateTime) {
             $this->value = $value->format($this->phpFormatString);
         } elseif (is_numeric($value)) { // The value is numeric, we make sure it is an integer
-            $this->value = date($this->phpFormatString, (int) $value);
+            $this->value = date($this->phpFormatString, (int)$value);
         } else {
             try {
                 $dateTime = new \DateTime($value);

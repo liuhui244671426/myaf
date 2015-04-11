@@ -17,7 +17,7 @@ use Zend\Feed\Writer\Renderer;
 use Zend\Feed\Writer\Version;
 
 /**
-*/
+ */
 class AbstractAtom extends Renderer\AbstractRenderer
 {
     /**
@@ -57,7 +57,7 @@ class AbstractAtom extends Renderer\AbstractRenderer
     {
         if (!$this->getDataContainer()->getTitle()) {
             $message = 'Atom 1.0 feed elements MUST contain exactly one'
-            . ' atom:title element but a title has not been set';
+                . ' atom:title element but a title has not been set';
             $exception = new Writer\Exception\InvalidArgumentException($message);
             if (!$this->ignoreExceptions) {
                 throw $exception;
@@ -105,7 +105,7 @@ class AbstractAtom extends Renderer\AbstractRenderer
     {
         if (!$this->getDataContainer()->getDateModified()) {
             $message = 'Atom 1.0 feed elements MUST contain exactly one'
-            . ' atom:updated element but a modification date has not been set';
+                . ' atom:updated element but a modification date has not been set';
             $exception = new Writer\Exception\InvalidArgumentException($message);
             if (!$this->ignoreExceptions) {
                 throw $exception;
@@ -182,9 +182,9 @@ class AbstractAtom extends Renderer\AbstractRenderer
         $flinks = $this->getDataContainer()->getFeedLinks();
         if (!$flinks || !array_key_exists('atom', $flinks)) {
             $message = 'Atom 1.0 feed elements SHOULD contain one atom:link '
-            . 'element with a rel attribute value of "self".  This is the '
-            . 'preferred URI for retrieving Atom Feed Documents representing '
-            . 'this Atom feed but a feed link has not been set';
+                . 'element with a rel attribute value of "self".  This is the '
+                . 'preferred URI for retrieving Atom Feed Documents representing '
+                . 'this Atom feed but a feed link has not been set';
             $exception = new Writer\Exception\InvalidArgumentException($message);
             if (!$this->ignoreExceptions) {
                 throw $exception;
@@ -255,11 +255,12 @@ class AbstractAtom extends Renderer\AbstractRenderer
     protected function _setId(DOMDocument $dom, DOMElement $root)
     {
         if (!$this->getDataContainer()->getId()
-        && !$this->getDataContainer()->getLink()) {
+            && !$this->getDataContainer()->getLink()
+        ) {
             $message = 'Atom 1.0 feed elements MUST contain exactly one '
-            . 'atom:id element, or as an alternative, we can use the same '
-            . 'value as atom:link however neither a suitable link nor an '
-            . 'id have been set';
+                . 'atom:id element, or as an alternative, we can use the same '
+                . 'value as atom:link however neither a suitable link nor an '
+                . 'id have been set';
             $exception = new Writer\Exception\InvalidArgumentException($message);
             if (!$this->ignoreExceptions) {
                 throw $exception;

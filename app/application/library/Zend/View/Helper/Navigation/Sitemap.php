@@ -118,7 +118,7 @@ class Sitemap extends AbstractHelper
     /**
      * Returns a DOMDocument containing the Sitemap XML for the given container
      *
-     * @param  AbstractContainer                 $container  [optional] container to get
+     * @param  AbstractContainer $container [optional] container to get
      *                                               breadcrumbs from, defaults
      *                                               to what is registered in the
      *                                               helper
@@ -143,10 +143,10 @@ class Sitemap extends AbstractHelper
         // check if we should validate using our own validators
         if ($this->getUseSitemapValidators()) {
             // create validators
-            $locValidator        = new \Zend\Validator\Sitemap\Loc();
-            $lastmodValidator    = new \Zend\Validator\Sitemap\Lastmod();
+            $locValidator = new \Zend\Validator\Sitemap\Loc();
+            $lastmodValidator = new \Zend\Validator\Sitemap\Lastmod();
             $changefreqValidator = new \Zend\Validator\Sitemap\Changefreq();
-            $priorityValidator   = new \Zend\Validator\Sitemap\Priority();
+            $priorityValidator = new \Zend\Validator\Sitemap\Priority();
         }
 
         // create document
@@ -201,7 +201,7 @@ class Sitemap extends AbstractHelper
 
             // add 'lastmod' element if a valid lastmod is set in page
             if (isset($page->lastmod)) {
-                $lastmod = strtotime((string) $page->lastmod);
+                $lastmod = strtotime((string)$page->lastmod);
 
                 // prevent 1970-01-01...
                 if ($lastmod !== false) {
@@ -209,7 +209,8 @@ class Sitemap extends AbstractHelper
                 }
 
                 if (!$this->getUseSitemapValidators() ||
-                    $lastmodValidator->isValid($lastmod)) {
+                    $lastmodValidator->isValid($lastmod)
+                ) {
                     $urlNode->appendChild(
                         $dom->createElementNS(self::SITEMAP_NS, 'lastmod', $lastmod)
                     );
@@ -220,7 +221,8 @@ class Sitemap extends AbstractHelper
             if (isset($page->changefreq)) {
                 $changefreq = $page->changefreq;
                 if (!$this->getUseSitemapValidators() ||
-                    $changefreqValidator->isValid($changefreq)) {
+                    $changefreqValidator->isValid($changefreq)
+                ) {
                     $urlNode->appendChild(
                         $dom->createElementNS(self::SITEMAP_NS, 'changefreq', $changefreq)
                     );
@@ -231,7 +233,8 @@ class Sitemap extends AbstractHelper
             if (isset($page->priority)) {
                 $priority = $page->priority;
                 if (!$this->getUseSitemapValidators() ||
-                    $priorityValidator->isValid($priority)) {
+                    $priorityValidator->isValid($priority)
+                ) {
                     $urlNode->appendChild(
                         $dom->createElementNS(self::SITEMAP_NS, 'priority', $priority)
                     );
@@ -242,7 +245,7 @@ class Sitemap extends AbstractHelper
         // validate using schema if specified
         if ($this->getUseSchemaValidation()) {
             ErrorHandler::start();
-            $test  = $dom->schemaValidate(self::SITEMAP_XSD);
+            $test = $dom->schemaValidate(self::SITEMAP_XSD);
             $error = ErrorHandler::stop();
             if (!$test) {
                 throw new Exception\RuntimeException(sprintf(
@@ -271,20 +274,20 @@ class Sitemap extends AbstractHelper
         } elseif ($href{0} == '/') {
             // href is relative to root; use serverUrl helper
             $url = $this->getServerUrl() . $href;
-        } elseif (preg_match('/^[a-z]+:/im', (string) $href)) {
+        } elseif (preg_match('/^[a-z]+:/im', (string)$href)) {
             // scheme is given in href; assume absolute URL already
-            $url = (string) $href;
+            $url = (string)$href;
         } else {
             // href is relative to current document; use url helpers
             $basePathHelper = $this->getView()->plugin('basepath');
-            $curDoc         = $basePathHelper();
-            $curDoc         = ('/' == $curDoc) ? '' : trim($curDoc, '/');
-            $url            = rtrim($this->getServerUrl(), '/') . '/'
-                                                                . $curDoc
-                                                                . (empty($curDoc) ? '' : '/') . $href;
+            $curDoc = $basePathHelper();
+            $curDoc = ('/' == $curDoc) ? '' : trim($curDoc, '/');
+            $url = rtrim($this->getServerUrl(), '/') . '/'
+                . $curDoc
+                . (empty($curDoc) ? '' : '/') . $href;
         }
 
-        if (! in_array($url, $this->urls)) {
+        if (!in_array($url, $this->urls)) {
             $this->urls[] = $url;
             return $this->xmlEscape($url);
         }
@@ -312,7 +315,7 @@ class Sitemap extends AbstractHelper
      */
     public function setFormatOutput($formatOutput = true)
     {
-        $this->formatOutput = (bool) $formatOutput;
+        $this->formatOutput = (bool)$formatOutput;
         return $this;
     }
 
@@ -362,7 +365,7 @@ class Sitemap extends AbstractHelper
     public function getServerUrl()
     {
         if (!isset($this->serverUrl)) {
-            $serverUrlHelper  = $this->getView()->plugin('serverUrl');
+            $serverUrlHelper = $this->getView()->plugin('serverUrl');
             $this->serverUrl = $serverUrlHelper();
         }
 
@@ -377,7 +380,7 @@ class Sitemap extends AbstractHelper
      */
     public function setUseSitemapValidators($useSitemapValidators)
     {
-        $this->useSitemapValidators = (bool) $useSitemapValidators;
+        $this->useSitemapValidators = (bool)$useSitemapValidators;
         return $this;
     }
 
@@ -399,7 +402,7 @@ class Sitemap extends AbstractHelper
      */
     public function setUseSchemaValidation($schemaValidation)
     {
-        $this->useSchemaValidation = (bool) $schemaValidation;
+        $this->useSchemaValidation = (bool)$schemaValidation;
         return $this;
     }
 
@@ -421,7 +424,7 @@ class Sitemap extends AbstractHelper
      */
     public function setUseXmlDeclaration($useXmlDecl)
     {
-        $this->useXmlDeclaration = (bool) $useXmlDecl;
+        $this->useXmlDeclaration = (bool)$useXmlDecl;
         return $this;
     }
 

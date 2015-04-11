@@ -33,9 +33,9 @@ class HydratorPluginManager extends AbstractPluginManager
      */
     protected $invokableClasses = array(
         'arrayserializable' => 'Zend\Stdlib\Hydrator\ArraySerializable',
-        'classmethods'      => 'Zend\Stdlib\Hydrator\ClassMethods',
-        'objectproperty'    => 'Zend\Stdlib\Hydrator\ObjectProperty',
-        'reflection'        => 'Zend\Stdlib\Hydrator\Reflection'
+        'classmethods' => 'Zend\Stdlib\Hydrator\ClassMethods',
+        'objectproperty' => 'Zend\Stdlib\Hydrator\ObjectProperty',
+        'reflection' => 'Zend\Stdlib\Hydrator\Reflection'
     );
 
     /**

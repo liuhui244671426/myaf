@@ -22,18 +22,18 @@ class RouterFactory implements FactoryInterface
      * to instantiate the router. Uses the TreeRouteStack implementation by
      * default.
      *
-     * @param  ServiceLocatorInterface        $serviceLocator
-     * @param  string|null                     $cName
-     * @param  string|null                     $rName
+     * @param  ServiceLocatorInterface $serviceLocator
+     * @param  string|null $cName
+     * @param  string|null $rName
      * @return \Zend\Mvc\Router\RouteStackInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator, $cName = null, $rName = null)
     {
-        $config             = $serviceLocator->has('Config') ? $serviceLocator->get('Config') : array();
+        $config = $serviceLocator->has('Config') ? $serviceLocator->get('Config') : array();
 
         // Defaults
-        $routerClass        = 'Zend\Mvc\Router\Http\TreeRouteStack';
-        $routerConfig       = isset($config['router']) ? $config['router'] : array();
+        $routerClass = 'Zend\Mvc\Router\Http\TreeRouteStack';
+        $routerConfig = isset($config['router']) ? $config['router'] : array();
 
         // Console environment?
         if ($rName === 'ConsoleRouter'                       // force console router

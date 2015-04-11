@@ -122,7 +122,7 @@ class Client implements ServerClient
         $headers = $httpRequest->getHeaders();
         $headers->addHeaders(array(
             'Content-Type' => 'application/json',
-            'Accept'       => 'application/json',
+            'Accept' => 'application/json',
         ));
 
         if (!$headers->get('User-Agent')) {

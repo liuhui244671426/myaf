@@ -20,7 +20,7 @@ class SeparatorToSeparator extends AbstractFilter
     /**
      * Constructor
      *
-     * @param  string $searchSeparator      Separator to search for
+     * @param  string $searchSeparator Separator to search for
      * @param  string $replacementSeparator Separator to replace with
      */
     public function __construct($searchSeparator = ' ', $replacementSeparator = '-')

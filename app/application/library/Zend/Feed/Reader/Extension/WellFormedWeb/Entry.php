@@ -12,7 +12,7 @@ namespace Zend\Feed\Reader\Extension\WellFormedWeb;
 use Zend\Feed\Reader\Extension;
 
 /**
-*/
+ */
 class Entry extends Extension\AbstractEntry
 {
     /**

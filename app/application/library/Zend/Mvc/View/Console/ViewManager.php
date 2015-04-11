@@ -30,24 +30,24 @@ class ViewManager extends BaseViewManager
      */
     public function onBootstrap($event)
     {
-        $application  = $event->getApplication();
-        $services     = $application->getServiceManager();
-        $config       = $services->get('Config');
-        $events       = $application->getEventManager();
+        $application = $event->getApplication();
+        $services = $application->getServiceManager();
+        $config = $services->get('Config');
+        $events = $application->getEventManager();
         $sharedEvents = $events->getSharedManager();
 
-        $this->config   = isset($config['view_manager']) && (is_array($config['view_manager']) || $config['view_manager'] instanceof ArrayAccess)
-                        ? $config['view_manager']
-                        : array();
+        $this->config = isset($config['view_manager']) && (is_array($config['view_manager']) || $config['view_manager'] instanceof ArrayAccess)
+            ? $config['view_manager']
+            : array();
         $this->services = $services;
-        $this->event    = $event;
+        $this->event = $event;
 
-        $routeNotFoundStrategy   = $this->getRouteNotFoundStrategy();
-        $exceptionStrategy       = $this->getExceptionStrategy();
-        $mvcRenderingStrategy    = $this->getMvcRenderingStrategy();
+        $routeNotFoundStrategy = $this->getRouteNotFoundStrategy();
+        $exceptionStrategy = $this->getExceptionStrategy();
+        $mvcRenderingStrategy = $this->getMvcRenderingStrategy();
         $createViewModelListener = new CreateViewModelListener();
         $injectViewModelListener = new InjectViewModelListener();
-        $injectParamsListener    = new InjectNamedConsoleParamsListener();
+        $injectParamsListener = new InjectNamedConsoleParamsListener();
 
         $this->registerMvcRenderingStrategies($events);
         $this->registerViewStrategies();
@@ -58,7 +58,7 @@ class ViewManager extends BaseViewManager
         $events->attach(MvcEvent::EVENT_RENDER_ERROR, array($injectViewModelListener, 'injectViewModel'), -100);
         $events->attach($mvcRenderingStrategy);
 
-        $sharedEvents->attach('Zend\Stdlib\DispatchableInterface', MvcEvent::EVENT_DISPATCH, array($injectParamsListener,  'injectNamedParams'), 1000);
+        $sharedEvents->attach('Zend\Stdlib\DispatchableInterface', MvcEvent::EVENT_DISPATCH, array($injectParamsListener, 'injectNamedParams'), 1000);
         $sharedEvents->attach('Zend\Stdlib\DispatchableInterface', MvcEvent::EVENT_DISPATCH, array($createViewModelListener, 'createViewModelFromArray'), -80);
         $sharedEvents->attach('Zend\Stdlib\DispatchableInterface', MvcEvent::EVENT_DISPATCH, array($createViewModelListener, 'createViewModelFromString'), -80);
         $sharedEvents->attach('Zend\Stdlib\DispatchableInterface', MvcEvent::EVENT_DISPATCH, array($createViewModelListener, 'createViewModelFromNull'), -80);

@@ -52,7 +52,7 @@ class Plural extends AbstractHelper
      * otherwise), this picks the right string according to plural rules of the locale
      *
      * @param  array|string $strings
-     * @param  int          $number
+     * @param  int $number
      * @throws Exception\InvalidArgumentException
      * @return string
      */
@@ -65,7 +65,7 @@ class Plural extends AbstractHelper
         }
 
         if (!is_array($strings)) {
-            $strings = (array) $strings;
+            $strings = (array)$strings;
         }
 
         $pluralIndex = $this->getPluralRule()->evaluate($number);

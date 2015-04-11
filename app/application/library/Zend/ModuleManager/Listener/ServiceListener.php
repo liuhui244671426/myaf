@@ -59,16 +59,16 @@ class ServiceListener implements ServiceListenerInterface
      */
     public function setDefaultServiceConfig($configuration)
     {
-        $this->defaultServiceConfig  = $configuration;
+        $this->defaultServiceConfig = $configuration;
 
         return $this;
     }
 
     /**
-     * @param  ServiceManager|string $serviceManager  Service Manager instance or name
-     * @param  string                $key             Configuration key
-     * @param  string                $moduleInterface FQCN as string
-     * @param  string                $method          Method name
+     * @param  ServiceManager|string $serviceManager Service Manager instance or name
+     * @param  string $key Configuration key
+     * @param  string $moduleInterface FQCN as string
+     * @param  string $method Method name
      * @throws Exception\RuntimeException
      * @return ServiceListener
      */
@@ -81,16 +81,16 @@ class ServiceListener implements ServiceListenerInterface
         } else {
             throw new Exception\RuntimeException(sprintf(
                 'Invalid service manager provided, expected ServiceManager or string, %s provided',
-                (string) $serviceManager
+                (string)$serviceManager
             ));
         }
 
         $this->serviceManagers[$smKey] = array(
-            'service_manager'        => $serviceManager,
-            'config_key'             => $key,
+            'service_manager' => $serviceManager,
+            'config_key' => $key,
             'module_class_interface' => $moduleInterface,
-            'module_class_method'    => $method,
-            'configuration'          => array(),
+            'module_class_method' => $method,
+            'configuration' => array(),
         );
 
         if ($key === 'service_manager' && $this->defaultServiceConfig) {
@@ -187,7 +187,7 @@ class ServiceListener implements ServiceListenerInterface
     public function onLoadModulesPost(ModuleEvent $e)
     {
         $configListener = $e->getConfigListener();
-        $config         = $configListener->getMergedConfig(false);
+        $config = $configListener->getMergedConfig(false);
 
         foreach ($this->serviceManagers as $key => $sm) {
             if (isset($config[$sm['config_key']])
@@ -236,7 +236,7 @@ class ServiceListener implements ServiceListenerInterface
     protected function serviceConfigToArray($config)
     {
         if (is_string($config) && class_exists($config)) {
-            $class  = $config;
+            $class = $config;
             $config = new $class;
         }
 
@@ -249,12 +249,12 @@ class ServiceListener implements ServiceListenerInterface
 
         return array(
             'abstract_factories' => $config->getAbstractFactories(),
-            'aliases'            => $config->getAliases(),
-            'initializers'       => $config->getInitializers(),
-            'factories'          => $config->getFactories(),
-            'invokables'         => $config->getInvokables(),
-            'services'           => $config->getServices(),
-            'shared'             => $config->getShared(),
+            'aliases' => $config->getAliases(),
+            'initializers' => $config->getInitializers(),
+            'factories' => $config->getFactories(),
+            'invokables' => $config->getInvokables(),
+            'services' => $config->getServices(),
+            'shared' => $config->getShared(),
         );
     }
 }

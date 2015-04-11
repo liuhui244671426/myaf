@@ -32,8 +32,8 @@ class ArrayValue extends AbstractCollection
     {
         $generator = $this->getGenerator();
         $generator->openElement('value')
-                  ->openElement('array')
-                  ->openElement('data');
+            ->openElement('array')
+            ->openElement('data');
 
         if (is_array($this->value)) {
             foreach ($this->value as $val) {
@@ -41,7 +41,7 @@ class ArrayValue extends AbstractCollection
             }
         }
         $generator->closeElement('data')
-                  ->closeElement('array')
-                  ->closeElement('value');
+            ->closeElement('array')
+            ->closeElement('value');
     }
 }

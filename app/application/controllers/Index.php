@@ -1,13 +1,15 @@
 <?php
+
 /**
  * @Create Author : huiliu//刘辉
  * @Create Time: 14-8-18 下午7:01
- * @Desc : 
+ * @Desc :
  */
-
 class IndexController extends BaseController
 {
-    public function doInit(){}
+    public function doInit()
+    {
+    }
 
     public function IndexAction()
     {

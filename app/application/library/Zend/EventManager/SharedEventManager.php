@@ -61,7 +61,7 @@ class SharedEventManager implements
      */
     public function attach($id, $event, $callback, $priority = 1)
     {
-        $ids = (array) $id;
+        $ids = (array)$id;
         $listeners = array();
         foreach ($ids as $id) {
             if (!array_key_exists($id, $this->identifiers)) {

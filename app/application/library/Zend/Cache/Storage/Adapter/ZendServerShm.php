@@ -58,7 +58,7 @@ class ZendServerShm extends AbstractZendServer implements
      */
     public function clearByNamespace($namespace)
     {
-        $namespace = (string) $namespace;
+        $namespace = (string)$namespace;
         if ($namespace === '') {
             throw new Exception\InvalidArgumentException('No namespace given');
         }
@@ -75,7 +75,7 @@ class ZendServerShm extends AbstractZendServer implements
      */
     public function getTotalSpace()
     {
-        return (int) ini_get('zend_datacache.shm.memory_cache_size') * 1048576;
+        return (int)ini_get('zend_datacache.shm.memory_cache_size') * 1048576;
     }
 
     /* internal */
@@ -84,8 +84,8 @@ class ZendServerShm extends AbstractZendServer implements
      * Store data into Zend Data SHM Cache
      *
      * @param  string $internalKey
-     * @param  mixed  $value
-     * @param  int    $ttl
+     * @param  mixed $value
+     * @param  int $ttl
      * @return void
      * @throws Exception\RuntimeException
      */
@@ -108,7 +108,7 @@ class ZendServerShm extends AbstractZendServer implements
      */
     protected function zdcFetch($internalKey)
     {
-        return zend_shm_cache_fetch((string) $internalKey);
+        return zend_shm_cache_fetch((string)$internalKey);
     }
 
     /**

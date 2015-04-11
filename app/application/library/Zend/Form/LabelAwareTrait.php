@@ -113,7 +113,7 @@ trait LabelAwareTrait
      * Set a single label optionn
      *
      * @param  string $key
-     * @param  mixed  $value
+     * @param  mixed $value
      * @return Element|ElementInterface
      */
     public function setLabelOption($key, $value)

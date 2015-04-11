@@ -45,13 +45,13 @@ class ApcIterator implements IteratorInterface
     /**
      * Constructor
      *
-     * @param Apc             $storage
+     * @param Apc $storage
      * @param BaseApcIterator $baseIterator
-     * @param string          $prefix
+     * @param string $prefix
      */
     public function __construct(Apc $storage, BaseApcIterator $baseIterator, $prefix)
     {
-        $this->storage      = $storage;
+        $this->storage = $storage;
         $this->baseIterator = $baseIterator;
         $this->prefixLength = strlen($prefix);
     }
@@ -84,7 +84,7 @@ class ApcIterator implements IteratorInterface
      */
     public function setMode($mode)
     {
-        $this->mode = (int) $mode;
+        $this->mode = (int)$mode;
         return $this;
     }
 

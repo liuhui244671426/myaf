@@ -103,8 +103,8 @@ class Request extends Message implements RequestInterface
      * Return a single parameter.
      * Shortcut for $request->params()->get()
      *
-     * @param string    $name       Parameter name
-     * @param string    $default    (optional) default value in case the parameter does not exist
+     * @param string $name Parameter name
+     * @param string $default (optional) default value in case the parameter does not exist
      * @return mixed
      */
     public function getParam($name, $default = null)
@@ -138,8 +138,8 @@ class Request extends Message implements RequestInterface
     /**
      * Return a single parameter container responsible for env parameters
      *
-     * @param string    $name       Parameter name
-     * @param string    $default    (optional) default value in case the parameter does not exist
+     * @param string $name Parameter name
+     * @param string $default (optional) default value in case the parameter does not exist
      * @return \Zend\Stdlib\Parameters
      */
     public function getEnv($name, $default = null)

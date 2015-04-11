@@ -46,7 +46,7 @@ class ServerUrl extends AbstractHelper
      * View helper entry point:
      * Returns the current host's URL like http://site.com
      *
-     * @param  string|bool $requestUri  [optional] if true, the request URI
+     * @param  string|bool $requestUri [optional] if true, the request URI
      *                                     found in $_SERVER will be appended
      *                                     as a path. If a string is given, it
      *                                     will be appended as a path. Default
@@ -81,8 +81,8 @@ class ServerUrl extends AbstractHelper
             // Detect if the port is set in SERVER_PORT and included in HTTP_HOST
             if (isset($_SERVER['SERVER_PORT'])) {
                 $portStr = ':' . $_SERVER['SERVER_PORT'];
-                if (substr($_SERVER['HTTP_HOST'], 0-strlen($portStr), strlen($portStr)) == $portStr) {
-                    $this->setHost(substr($_SERVER['HTTP_HOST'], 0, 0-strlen($portStr)));
+                if (substr($_SERVER['HTTP_HOST'], 0 - strlen($portStr), strlen($portStr)) == $portStr) {
+                    $this->setHost(substr($_SERVER['HTTP_HOST'], 0, 0 - strlen($portStr)));
                     return;
                 }
             }
@@ -232,7 +232,7 @@ class ServerUrl extends AbstractHelper
      */
     public function setHost($host)
     {
-        $port   = $this->getPort();
+        $port = $this->getPort();
         $scheme = $this->getScheme();
 
         if (($scheme == 'http' && (null === $port || $port == 80))
@@ -269,7 +269,7 @@ class ServerUrl extends AbstractHelper
      */
     public function setPort($port)
     {
-        $this->port = (int) $port;
+        $this->port = (int)$port;
 
         return $this;
     }
@@ -323,7 +323,7 @@ class ServerUrl extends AbstractHelper
      */
     public function setUseProxy($useProxy = false)
     {
-        $this->useProxy = (bool) $useProxy;
+        $this->useProxy = (bool)$useProxy;
 
         return $this;
     }

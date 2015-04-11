@@ -32,14 +32,14 @@ interface DefinitionInterface
      * Return the supertypes for this class
      *
      * @abstract
-     * @param  string   $class
+     * @param  string $class
      * @return string[]
      */
     public function getClassSupertypes($class);
 
     /**
      * @abstract
-     * @param  string       $class
+     * @param  string $class
      * @return string|array
      */
     public function getInstantiator($class);
@@ -57,7 +57,7 @@ interface DefinitionInterface
      * Return an array of the injection methods for a given class
      *
      * @abstract
-     * @param  string   $class
+     * @param  string $class
      * @return string[]
      */
     public function getMethods($class);

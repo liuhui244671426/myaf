@@ -77,7 +77,7 @@ class Publisher
 
         if (!is_array($options)) {
             throw new Exception\InvalidArgumentException('Array or Traversable object'
-                                . 'expected, got ' . gettype($options));
+                . 'expected, got ' . gettype($options));
         }
         if (array_key_exists('hubUrls', $options)) {
             $this->addHubUrls($options['hubUrls']);
@@ -249,7 +249,7 @@ class Publisher
     public function notifyAll()
     {
         $client = $this->_getHttpClient();
-        $hubs   = $this->getHubUrls();
+        $hubs = $this->getHubUrls();
         if (empty($hubs)) {
             throw new Exception\RuntimeException('No Hub Server URLs'
                 . ' have been set so no notifications can be sent');
@@ -376,9 +376,9 @@ class Publisher
         $client->setOptions(array(
             'useragent' => 'Zend_Feed_Pubsubhubbub_Publisher/' . Version::VERSION,
         ));
-        $params   = array();
+        $params = array();
         $params[] = 'hub.mode=publish';
-        $topics   = $this->getUpdatedTopicUrls();
+        $topics = $this->getUpdatedTopicUrls();
         if (empty($topics)) {
             throw new Exception\RuntimeException('No updated topic URLs'
                 . ' have been set');

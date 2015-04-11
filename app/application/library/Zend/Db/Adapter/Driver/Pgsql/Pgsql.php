@@ -206,7 +206,7 @@ class Pgsql implements DriverInterface, Profiler\ProfilerAwareInterface
      * Format parameter name
      *
      * @param string $name
-     * @param mixed  $type
+     * @param mixed $type
      * @return string
      */
     public function formatParameterName($name, $type = null)

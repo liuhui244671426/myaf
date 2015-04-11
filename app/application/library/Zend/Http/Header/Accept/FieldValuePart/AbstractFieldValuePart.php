@@ -82,7 +82,7 @@ abstract class AbstractFieldValuePart
      */
     public function getPriority()
     {
-        return (float) $this->getInternalValues()->priority;
+        return (float)$this->getInternalValues()->priority;
     }
 
     /**
@@ -90,7 +90,7 @@ abstract class AbstractFieldValuePart
      */
     public function getParams()
     {
-        return (object) $this->getInternalValues()->params;
+        return (object)$this->getInternalValues()->params;
     }
 
     /**

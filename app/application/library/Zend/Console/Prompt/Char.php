@@ -39,11 +39,11 @@ class Char extends AbstractPrompt
     /**
      * Ask the user for a single key stroke
      *
-     * @param string $promptText   The prompt text to display in console
+     * @param string $promptText The prompt text to display in console
      * @param string $allowedChars A list of allowed chars (i.e. "abc12345")
-     * @param bool   $ignoreCase   If true, case will be ignored and prompt will always return lower-cased response
-     * @param bool   $allowEmpty   Is empty response allowed?
-     * @param bool   $echo         Display the selection after user presses key
+     * @param bool $ignoreCase If true, case will be ignored and prompt will always return lower-cased response
+     * @param bool $allowEmpty Is empty response allowed?
+     * @param bool $echo Display the selection after user presses key
      */
     public function __construct(
         $promptText = 'Please hit a key',
@@ -51,7 +51,8 @@ class Char extends AbstractPrompt
         $ignoreCase = true,
         $allowEmpty = false,
         $echo = true
-    ) {
+    )
+    {
         $this->setPromptText($promptText);
         $this->setAllowEmpty($allowEmpty);
         $this->setIgnoreCase($ignoreCase);
@@ -94,7 +95,7 @@ class Char extends AbstractPrompt
         $char = $this->getConsole()->readChar($mask);
 
         if ($this->echo) {
-            echo trim($char)."\n";
+            echo trim($char) . "\n";
         } else {
             if ($this->promptText) {
                 echo "\n";  // skip to next line but only if we had any prompt text
@@ -109,7 +110,7 @@ class Char extends AbstractPrompt
      */
     public function setAllowEmpty($allowEmpty)
     {
-        $this->allowEmpty = (bool) $allowEmpty;
+        $this->allowEmpty = (bool)$allowEmpty;
     }
 
     /**
@@ -157,7 +158,7 @@ class Char extends AbstractPrompt
      */
     public function setIgnoreCase($ignoreCase)
     {
-        $this->ignoreCase = (bool) $ignoreCase;
+        $this->ignoreCase = (bool)$ignoreCase;
     }
 
     /**
@@ -173,7 +174,7 @@ class Char extends AbstractPrompt
      */
     public function setEcho($echo)
     {
-        $this->echo = (bool) $echo;
+        $this->echo = (bool)$echo;
     }
 
     /**

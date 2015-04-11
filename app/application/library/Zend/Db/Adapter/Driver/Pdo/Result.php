@@ -17,7 +17,7 @@ use Zend\Db\Adapter\Exception;
 class Result implements Iterator, ResultInterface
 {
     const STATEMENT_MODE_SCROLLABLE = 'scrollable';
-    const STATEMENT_MODE_FORWARD    = 'forward';
+    const STATEMENT_MODE_FORWARD = 'forward';
 
     /**
      *
@@ -68,7 +68,7 @@ class Result implements Iterator, ResultInterface
      *
      * @param  PDOStatement $resource
      * @param               $generatedValue
-     * @param  int          $rowCount
+     * @param  int $rowCount
      * @return Result
      */
     public function initialize(PDOStatement $resource, $generatedValue, $rowCount = null)
@@ -181,9 +181,9 @@ class Result implements Iterator, ResultInterface
             return $this->rowCount;
         }
         if ($this->rowCount instanceof \Closure) {
-            $this->rowCount = (int) call_user_func($this->rowCount);
+            $this->rowCount = (int)call_user_func($this->rowCount);
         } else {
-            $this->rowCount = (int) $this->resource->rowCount();
+            $this->rowCount = (int)$this->resource->rowCount();
         }
         return $this->rowCount;
     }

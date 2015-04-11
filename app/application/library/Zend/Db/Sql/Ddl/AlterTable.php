@@ -15,12 +15,12 @@ use Zend\Db\Sql\AbstractSql;
 
 class AlterTable extends AbstractSql implements SqlInterface
 {
-    const ADD_COLUMNS      = 'addColumns';
-    const ADD_CONSTRAINTS  = 'addConstraints';
-    const CHANGE_COLUMNS   = 'changeColumns';
-    const DROP_COLUMNS     = 'dropColumns';
+    const ADD_COLUMNS = 'addColumns';
+    const ADD_CONSTRAINTS = 'addConstraints';
+    const CHANGE_COLUMNS = 'changeColumns';
+    const DROP_COLUMNS = 'dropColumns';
     const DROP_CONSTRAINTS = 'dropConstraints';
-    const TABLE            = 'table';
+    const TABLE = 'table';
 
     /**
      * @var array
@@ -53,27 +53,27 @@ class AlterTable extends AbstractSql implements SqlInterface
      */
     protected $specifications = array(
         self::TABLE => "ALTER TABLE %1\$s\n",
-        self::ADD_COLUMNS  => array(
+        self::ADD_COLUMNS => array(
             "%1\$s" => array(
                 array(1 => 'ADD COLUMN %1$s', 'combinedby' => ",\n")
             )
         ),
-        self::CHANGE_COLUMNS  => array(
+        self::CHANGE_COLUMNS => array(
             "%1\$s" => array(
                 array(2 => 'CHANGE COLUMN %1$s %2$s', 'combinedby' => ",\n"),
             )
         ),
-        self::DROP_COLUMNS  => array(
+        self::DROP_COLUMNS => array(
             "%1\$s" => array(
                 array(1 => 'DROP COLUMN %1$s', 'combinedby' => ",\n"),
             )
         ),
-        self::ADD_CONSTRAINTS  => array(
+        self::ADD_CONSTRAINTS => array(
             "%1\$s" => array(
                 array(1 => 'ADD %1$s', 'combinedby' => ",\n"),
             )
         ),
-        self::DROP_CONSTRAINTS  => array(
+        self::DROP_CONSTRAINTS => array(
             "%1\$s" => array(
                 array(1 => 'DROP CONSTRAINT %1$s', 'combinedby' => ",\n"),
             )

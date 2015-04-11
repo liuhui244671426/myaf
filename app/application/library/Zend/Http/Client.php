@@ -24,23 +24,23 @@ class Client implements Stdlib\DispatchableInterface
     /**
      * @const string Supported HTTP Authentication methods
      */
-    const AUTH_BASIC  = 'basic';
+    const AUTH_BASIC = 'basic';
     const AUTH_DIGEST = 'digest';  // not implemented yet
 
     /**
      * @const string POST data encoding methods
      */
     const ENC_URLENCODED = 'application/x-www-form-urlencoded';
-    const ENC_FORMDATA   = 'multipart/form-data';
+    const ENC_FORMDATA = 'multipart/form-data';
 
     /**
      * @const string DIGEST Authentication
      */
-    const DIGEST_REALM  = 'realm';
-    const DIGEST_QOP    = 'qop';
-    const DIGEST_NONCE  = 'nonce';
+    const DIGEST_REALM = 'realm';
+    const DIGEST_QOP = 'qop';
+    const DIGEST_NONCE = 'nonce';
     const DIGEST_OPAQUE = 'opaque';
-    const DIGEST_NC     = 'nc';
+    const DIGEST_NC = 'nc';
     const DIGEST_CNONCE = 'cnonce';
 
     /**
@@ -99,18 +99,18 @@ class Client implements Stdlib\DispatchableInterface
      * @var array
      */
     protected $config = array(
-        'maxredirects'    => 5,
+        'maxredirects' => 5,
         'strictredirects' => false,
-        'useragent'       => 'Zend\Http\Client',
-        'timeout'         => 10,
-        'adapter'         => 'Zend\Http\Client\Adapter\Socket',
-        'httpversion'     => Request::VERSION_11,
-        'storeresponse'   => true,
-        'keepalive'       => false,
-        'outputstream'    => false,
-        'encodecookies'   => true,
-        'argseparator'    => null,
-        'rfc3986strict'   => false
+        'useragent' => 'Zend\Http\Client',
+        'timeout' => 10,
+        'adapter' => 'Zend\Http\Client\Adapter\Socket',
+        'httpversion' => Request::VERSION_11,
+        'storeresponse' => true,
+        'keepalive' => false,
+        'outputstream' => false,
+        'encodecookies' => true,
+        'argseparator' => null,
+        'rfc3986strict' => false
     );
 
     /**
@@ -187,7 +187,7 @@ class Client implements Stdlib\DispatchableInterface
             $adapter = new $adapter;
         }
 
-        if (! $adapter instanceof Client\Adapter\AdapterInterface) {
+        if (!$adapter instanceof Client\Adapter\AdapterInterface) {
             throw new Client\Exception\InvalidArgumentException('Passed adapter is not a HTTP connection adapter');
         }
 
@@ -205,7 +205,7 @@ class Client implements Stdlib\DispatchableInterface
      */
     public function getAdapter()
     {
-        if (! $this->adapter) {
+        if (!$this->adapter) {
             $this->setAdapter($this->config['adapter']);
         }
 
@@ -319,7 +319,7 @@ class Client implements Stdlib\DispatchableInterface
             }
 
             // We have no ports, set the defaults
-            if (! $this->getUri()->getPort()) {
+            if (!$this->getUri()->getPort()) {
                 $this->getUri()->setPort(($this->getUri()->getScheme() == 'https' ? 443 : 80));
             }
         }
@@ -470,8 +470,8 @@ class Client implements Stdlib\DispatchableInterface
     /**
      * Reset all the HTTP parameters (request, response, etc)
      *
-     * @param  bool   $clearCookies  Also clear all valid cookies? (defaults to false)
-     * @param  bool   $clearAuth     Also clear http authentication? (defaults to true)
+     * @param  bool $clearCookies Also clear all valid cookies? (defaults to false)
+     * @param  bool $clearAuth Also clear http authentication? (defaults to true)
      * @return Client
      */
     public function resetParameters($clearCookies = false /*, $clearAuth = true */)
@@ -483,11 +483,11 @@ class Client implements Stdlib\DispatchableInterface
 
         $uri = $this->getUri();
 
-        $this->streamName      = null;
-        $this->encType         = null;
-        $this->request         = null;
-        $this->response        = null;
-        $this->lastRawRequest  = null;
+        $this->streamName = null;
+        $this->encType = null;
+        $this->request = null;
+        $this->response = null;
+        $this->lastRawRequest = null;
         $this->lastRawResponse = null;
 
         $this->setUri($uri);
@@ -531,14 +531,14 @@ class Client implements Stdlib\DispatchableInterface
      * Add a cookie
      *
      * @param array|ArrayIterator|Header\SetCookie|string $cookie
-     * @param string  $value
-     * @param string  $expire
-     * @param string  $path
-     * @param string  $domain
+     * @param string $value
+     * @param string $expire
+     * @param string $path
+     * @param string $domain
      * @param  bool $secure
      * @param  bool $httponly
-     * @param string  $maxAge
-     * @param string  $version
+     * @param string $maxAge
+     * @param string $version
      * @throws Exception\InvalidArgumentException
      * @return Client
      */
@@ -691,7 +691,7 @@ class Client implements Stdlib\DispatchableInterface
         }
 
         ErrorHandler::start();
-        $fp    = fopen($this->streamName, "w+b");
+        $fp = fopen($this->streamName, "w+b");
         $error = ErrorHandler::stop();
         if (false === $fp) {
             if ($this->adapter instanceof Client\Adapter\AdapterInterface) {
@@ -722,10 +722,10 @@ class Client implements Stdlib\DispatchableInterface
             throw new Exception\InvalidArgumentException("The username cannot be empty");
         }
 
-        $this->auth = array (
-            'user'     => $user,
+        $this->auth = array(
+            'user' => $user,
             'password' => $password,
-            'type'     => $type
+            'type' => $type
 
         );
 
@@ -788,7 +788,7 @@ class Client implements Stdlib\DispatchableInterface
                     $response = md5($ha1 . ':' . $digest['nonce'] . ':' . $ha2);
                 } else {
                     $response = md5($ha1 . ':' . $digest['nonce'] . ':' . $digest['nc']
-                                    . ':' . $digest['cnonce'] . ':' . $digest['qoc'] . ':' . $ha2);
+                        . ':' . $digest['cnonce'] . ':' . $digest['qoc'] . ':' . $ha2);
                 }
                 break;
         }
@@ -889,7 +889,7 @@ class Client implements Stdlib\DispatchableInterface
             // to wrap the interaction with the adapter
             $response = $this->doRequest($uri, $method, $secure, $headers, $body);
 
-            if (! $response) {
+            if (!$response) {
                 throw new Exception\RuntimeException('Unable to read response, or response is empty');
             }
 
@@ -935,15 +935,17 @@ class Client implements Stdlib\DispatchableInterface
                 // Check whether we send the exact same request again, or drop the parameters
                 // and send a GET request
                 if ($response->getStatusCode() == 303 ||
-                   ((! $this->config['strictredirects']) && ($response->getStatusCode() == 302 ||
-                       $response->getStatusCode() == 301))) {
+                    ((!$this->config['strictredirects']) && ($response->getStatusCode() == 302 ||
+                            $response->getStatusCode() == 301))
+                ) {
                     $this->resetParameters(false, false);
                     $this->setMethod(Request::METHOD_GET);
                 }
 
                 // If we got a well formed absolute URI
                 if (($scheme = substr($location, 0, 6)) &&
-                        ($scheme == 'http:/' || $scheme == 'https:')) {
+                    ($scheme == 'http:/' || $scheme == 'https:')
+                ) {
                     // setURI() clears parameters if host changed, see #4215
                     $this->setUri($location);
                 } else {
@@ -1015,7 +1017,7 @@ class Client implements Stdlib\DispatchableInterface
     {
         if ($data === null) {
             ErrorHandler::start();
-            $data  = file_get_contents($filename);
+            $data = file_get_contents($filename);
             $error = ErrorHandler::stop();
             if ($data === false) {
                 throw new Exception\RuntimeException("Unable to read file '{$filename}' for upload", 0, $error);
@@ -1100,7 +1102,8 @@ class Client implements Stdlib\DispatchableInterface
             $host = $uri->getHost();
             // If the port is not default, add it
             if (!(($uri->getScheme() == 'http' && $uri->getPort() == 80) ||
-                ($uri->getScheme() == 'https' && $uri->getPort() == 443))) {
+                ($uri->getScheme() == 'https' && $uri->getPort() == 443))
+            ) {
                 $host .= ':' . $uri->getPort();
             }
 
@@ -1264,7 +1267,7 @@ class Client implements Stdlib\DispatchableInterface
         }
 
         // Fallback to the default application/octet-stream
-        if (! $type) {
+        if (!$type) {
             $type = 'application/octet-stream';
         }
 
@@ -1407,10 +1410,10 @@ class Client implements Stdlib\DispatchableInterface
                 break;
 
             //case self::AUTH_DIGEST:
-                /**
-                * @todo Implement digest authentication
-                */
-                //    break;
+            /**
+             * @todo Implement digest authentication
+             */
+            //    break;
 
             default:
                 throw new Client\Exception\InvalidArgumentException("Not a supported HTTP authentication type: '$type'");

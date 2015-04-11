@@ -177,7 +177,7 @@ class Response
      */
     public function setVersion($version)
     {
-        $version = (string) $version;
+        $version = (string)$version;
         if ('2.0' == $version) {
             $this->version = '2.0';
         } else {
@@ -206,13 +206,13 @@ class Response
     {
         if ($this->isError()) {
             $response = array(
-                'error'  => $this->getError()->toArray(),
-                'id'     => $this->getId(),
+                'error' => $this->getError()->toArray(),
+                'id' => $this->getId(),
             );
         } else {
             $response = array(
                 'result' => $this->getResult(),
-                'id'     => $this->getId(),
+                'id' => $this->getId(),
             );
         }
 

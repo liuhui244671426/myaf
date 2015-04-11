@@ -60,18 +60,18 @@ abstract class AbstractValue
     /**
      * All the XML-RPC native types
      */
-    const XMLRPC_TYPE_I4        = 'i4';
-    const XMLRPC_TYPE_INTEGER   = 'int';
-    const XMLRPC_TYPE_I8        = 'i8';
-    const XMLRPC_TYPE_APACHEI8  = 'ex:i8';
-    const XMLRPC_TYPE_DOUBLE    = 'double';
-    const XMLRPC_TYPE_BOOLEAN   = 'boolean';
-    const XMLRPC_TYPE_STRING    = 'string';
-    const XMLRPC_TYPE_DATETIME  = 'dateTime.iso8601';
-    const XMLRPC_TYPE_BASE64    = 'base64';
-    const XMLRPC_TYPE_ARRAY     = 'array';
-    const XMLRPC_TYPE_STRUCT    = 'struct';
-    const XMLRPC_TYPE_NIL       = 'nil';
+    const XMLRPC_TYPE_I4 = 'i4';
+    const XMLRPC_TYPE_INTEGER = 'int';
+    const XMLRPC_TYPE_I8 = 'i8';
+    const XMLRPC_TYPE_APACHEI8 = 'ex:i8';
+    const XMLRPC_TYPE_DOUBLE = 'double';
+    const XMLRPC_TYPE_BOOLEAN = 'boolean';
+    const XMLRPC_TYPE_STRING = 'string';
+    const XMLRPC_TYPE_DATETIME = 'dateTime.iso8601';
+    const XMLRPC_TYPE_BASE64 = 'base64';
+    const XMLRPC_TYPE_ARRAY = 'array';
+    const XMLRPC_TYPE_STRUCT = 'struct';
+    const XMLRPC_TYPE_NIL = 'nil';
     const XMLRPC_TYPE_APACHENIL = 'ex:nil';
 
     /**
@@ -121,7 +121,7 @@ abstract class AbstractValue
      */
     public static function setEncoding($encoding)
     {
-        $generator    = static::getGenerator();
+        $generator = static::getGenerator();
         $newGenerator = new $generator($encoding);
         static::setGenerator($newGenerator);
     }
@@ -143,7 +143,7 @@ abstract class AbstractValue
     {
         if (!$this->xml) {
             $this->generateXml();
-            $this->xml = (string) $this->getGenerator();
+            $this->xml = (string)$this->getGenerator();
         }
         return $this->xml;
     }
@@ -221,7 +221,7 @@ abstract class AbstractValue
                 return new Value\Struct($value);
 
             default:
-                throw new Exception\ValueException('Given type is not a '. __CLASS__ .' constant');
+                throw new Exception\ValueException('Given type is not a ' . __CLASS__ . ' constant');
         }
     }
 
@@ -396,7 +396,7 @@ abstract class AbstractValue
                         continue;
                         //throw new Value_Exception('Member of the '. self::XMLRPC_TYPE_STRUCT .' XML-RPC native type must contain a VALUE tag');
                     }
-                    $values[(string) $member->name] = static::_xmlStringToNativeXmlRpc($member->value);
+                    $values[(string)$member->name] = static::_xmlStringToNativeXmlRpc($member->value);
                 }
                 $xmlrpcValue = new Value\Struct($values);
                 break;

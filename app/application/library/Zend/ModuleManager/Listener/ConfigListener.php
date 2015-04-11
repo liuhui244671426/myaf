@@ -27,7 +27,7 @@ class ConfigListener extends AbstractListener implements
     ListenerAggregateInterface
 {
     const STATIC_PATH = 'static_path';
-    const GLOB_PATH   = 'glob_path';
+    const GLOB_PATH = 'glob_path';
 
     /**
      * @var array

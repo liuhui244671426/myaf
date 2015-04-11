@@ -31,7 +31,7 @@ class PythonPickleOptions extends AdapterOptions
      */
     public function setProtocol($protocol)
     {
-        $protocol = (int) $protocol;
+        $protocol = (int)$protocol;
         if ($protocol < 0 || $protocol > 3) {
             throw new Exception\InvalidArgumentException(
                 "Invalid or unknown protocol version '{$protocol}'"

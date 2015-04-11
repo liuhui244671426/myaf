@@ -70,9 +70,9 @@ class FeedRenderer implements RendererInterface
             // Use case 1: View Model provided
             // Non-FeedModel: cast to FeedModel
             if (!$nameOrModel instanceof FeedModel) {
-                $vars    = $nameOrModel->getVariables();
+                $vars = $nameOrModel->getVariables();
                 $options = $nameOrModel->getOptions();
-                $type    = $this->getFeedType();
+                $type = $this->getFeedType();
                 if (isset($options['feed_type'])) {
                     $type = $options['feed_type'];
                 } else {
@@ -82,7 +82,7 @@ class FeedRenderer implements RendererInterface
             }
         } elseif (is_string($nameOrModel)) {
             // Use case 2: string $nameOrModel + array|Traversable|Feed $values
-            $nameOrModel = new FeedModel($values, (array) $nameOrModel);
+            $nameOrModel = new FeedModel($values, (array)$nameOrModel);
         } else {
             // Use case 3: failure
             throw new Exception\InvalidArgumentException(sprintf(

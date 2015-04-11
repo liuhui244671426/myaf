@@ -47,8 +47,8 @@ class ContentType implements HeaderInterface
             throw new Exception\InvalidArgumentException('Invalid header line for Content-Type string: "' . $name . '"');
         }
 
-        $parts             = explode(';', $value);
-        $mediaType         = array_shift($parts);
+        $parts = explode(';', $value);
+        $mediaType = array_shift($parts);
         $header = new static($value, trim($mediaType));
 
         if (count($parts) > 0) {
@@ -85,7 +85,7 @@ class ContentType implements HeaderInterface
         }
 
         $mediaType = $this->getMediaType();
-        $left      = $this->getMediaTypeObjectFromString($mediaType);
+        $left = $this->getMediaTypeObjectFromString($mediaType);
 
         foreach ($matchAgainst as $matchType) {
             $matchType = strtolower($matchType);
@@ -156,7 +156,7 @@ class ContentType implements HeaderInterface
     public function setMediaType($mediaType)
     {
         $this->mediaType = strtolower($mediaType);
-        $this->value     = null;
+        $this->value = null;
         return $this;
     }
 
@@ -179,7 +179,7 @@ class ContentType implements HeaderInterface
     public function setParameters(array $parameters)
     {
         $this->parameters = array_merge($this->parameters, $parameters);
-        $this->value      = null;
+        $this->value = null;
         return $this;
     }
 
@@ -285,19 +285,19 @@ class ContentType implements HeaderInterface
             ));
         }
 
-        $type    = array_shift($parts);
+        $type = array_shift($parts);
         $subtype = array_shift($parts);
-        $format  = $subtype;
+        $format = $subtype;
         if (strstr($subtype, '+')) {
-            $parts   = explode('+', $subtype, 2);
+            $parts = explode('+', $subtype, 2);
             $subtype = array_shift($parts);
-            $format  = array_shift($parts);
+            $format = array_shift($parts);
         }
 
-        $mediaType = (object) array(
-            'type'    => $type,
+        $mediaType = (object)array(
+            'type' => $type,
             'subtype' => $subtype,
-            'format'  => $format,
+            'format' => $format,
         );
 
         return $mediaType;

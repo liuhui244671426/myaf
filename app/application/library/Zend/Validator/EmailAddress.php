@@ -11,36 +11,36 @@ namespace Zend\Validator;
 
 class EmailAddress extends AbstractValidator
 {
-    const INVALID            = 'emailAddressInvalid';
-    const INVALID_FORMAT     = 'emailAddressInvalidFormat';
-    const INVALID_HOSTNAME   = 'emailAddressInvalidHostname';
-    const INVALID_MX_RECORD  = 'emailAddressInvalidMxRecord';
-    const INVALID_SEGMENT    = 'emailAddressInvalidSegment';
-    const DOT_ATOM           = 'emailAddressDotAtom';
-    const QUOTED_STRING      = 'emailAddressQuotedString';
+    const INVALID = 'emailAddressInvalid';
+    const INVALID_FORMAT = 'emailAddressInvalidFormat';
+    const INVALID_HOSTNAME = 'emailAddressInvalidHostname';
+    const INVALID_MX_RECORD = 'emailAddressInvalidMxRecord';
+    const INVALID_SEGMENT = 'emailAddressInvalidSegment';
+    const DOT_ATOM = 'emailAddressDotAtom';
+    const QUOTED_STRING = 'emailAddressQuotedString';
     const INVALID_LOCAL_PART = 'emailAddressInvalidLocalPart';
-    const LENGTH_EXCEEDED    = 'emailAddressLengthExceeded';
+    const LENGTH_EXCEEDED = 'emailAddressLengthExceeded';
 
     /**
      * @var array
      */
     protected $messageTemplates = array(
-        self::INVALID            => "Invalid type given. String expected",
-        self::INVALID_FORMAT     => "The input is not a valid email address. Use the basic format local-part@hostname",
-        self::INVALID_HOSTNAME   => "'%hostname%' is not a valid hostname for the email address",
-        self::INVALID_MX_RECORD  => "'%hostname%' does not appear to have any valid MX or A records for the email address",
-        self::INVALID_SEGMENT    => "'%hostname%' is not in a routable network segment. The email address should not be resolved from public network",
-        self::DOT_ATOM           => "'%localPart%' can not be matched against dot-atom format",
-        self::QUOTED_STRING      => "'%localPart%' can not be matched against quoted-string format",
+        self::INVALID => "Invalid type given. String expected",
+        self::INVALID_FORMAT => "The input is not a valid email address. Use the basic format local-part@hostname",
+        self::INVALID_HOSTNAME => "'%hostname%' is not a valid hostname for the email address",
+        self::INVALID_MX_RECORD => "'%hostname%' does not appear to have any valid MX or A records for the email address",
+        self::INVALID_SEGMENT => "'%hostname%' is not in a routable network segment. The email address should not be resolved from public network",
+        self::DOT_ATOM => "'%localPart%' can not be matched against dot-atom format",
+        self::QUOTED_STRING => "'%localPart%' can not be matched against quoted-string format",
         self::INVALID_LOCAL_PART => "'%localPart%' is not a valid local part for the email address",
-        self::LENGTH_EXCEEDED    => "The input exceeds the allowed length",
+        self::LENGTH_EXCEEDED => "The input exceeds the allowed length",
     );
 
     /**
      * @var array
      */
     protected $messageVariables = array(
-        'hostname'  => 'hostname',
+        'hostname' => 'hostname',
         'localPart' => 'localPart'
     );
 
@@ -65,10 +65,10 @@ class EmailAddress extends AbstractValidator
      * Internal options array
      */
     protected $options = array(
-        'useMxCheck'        => false,
-        'useDeepMxCheck'    => false,
-        'useDomainCheck'    => true,
-        'allow'             => Hostname::ALLOW_DNS,
+        'useMxCheck' => false,
+        'useDeepMxCheck' => false,
+        'useDomainCheck' => true,
+        'allow' => Hostname::ALLOW_DNS,
         'hostnameValidator' => null,
     );
 
@@ -107,7 +107,7 @@ class EmailAddress extends AbstractValidator
      * Adds the ability to set messages to the attached hostname validator
      *
      * @param  string $messageString
-     * @param  string $messageKey     OPTIONAL
+     * @param  string $messageKey OPTIONAL
      * @return AbstractValidator Provides a fluent interface
      */
     public function setMessage($messageString, $messageKey = null)
@@ -210,7 +210,7 @@ class EmailAddress extends AbstractValidator
      */
     public function useMxCheck($mx)
     {
-        $this->options['useMxCheck'] = (bool) $mx;
+        $this->options['useMxCheck'] = (bool)$mx;
         return $this;
     }
 
@@ -232,7 +232,7 @@ class EmailAddress extends AbstractValidator
      */
     public function useDeepMxCheck($deep)
     {
-        $this->options['useDeepMxCheck'] = (bool) $deep;
+        $this->options['useDeepMxCheck'] = (bool)$deep;
         return $this;
     }
 
@@ -255,7 +255,7 @@ class EmailAddress extends AbstractValidator
      */
     public function useDomainCheck($domain = true)
     {
-        $this->options['useDomainCheck'] = (bool) $domain;
+        $this->options['useDomainCheck'] = (bool)$domain;
         return $this;
     }
 
@@ -340,9 +340,9 @@ class EmailAddress extends AbstractValidator
             // Try quoted string format (RFC 5321 Chapter 4.1.2)
 
             // Quoted-string characters are: DQUOTE *(qtext/quoted-pair) DQUOTE
-            $qtext      = '\x20-\x21\x23-\x5b\x5d-\x7e'; // %d32-33 / %d35-91 / %d93-126
+            $qtext = '\x20-\x21\x23-\x5b\x5d-\x7e'; // %d32-33 / %d35-91 / %d93-126
             $quotedPair = '\x20-\x7e'; // %d92 %d32-126
-            if (preg_match('/^"(['. $qtext .']|\x5c[' . $quotedPair . '])*"$/', $this->localPart)) {
+            if (preg_match('/^"([' . $qtext . ']|\x5c[' . $quotedPair . '])*"$/', $this->localPart)) {
                 $result = true;
             } else {
                 $this->error(self::DOT_ATOM);
@@ -372,7 +372,7 @@ class EmailAddress extends AbstractValidator
     protected function validateMXRecords()
     {
         $mxHosts = array();
-        $weight  = array();
+        $weight = array();
         $result = getmxrr($this->hostname, $mxHosts, $weight);
         if (!empty($mxHosts) && !empty($weight)) {
             $this->mxRecord = array_combine($mxHosts, $weight);
@@ -400,7 +400,7 @@ class EmailAddress extends AbstractValidator
         }
 
         $validAddress = false;
-        $reserved     = true;
+        $reserved = true;
         foreach ($this->mxRecord as $hostname => $weight) {
             $res = $this->isReserved($hostname);
             if (!$res) {
@@ -409,8 +409,8 @@ class EmailAddress extends AbstractValidator
 
             if (!$res
                 && (checkdnsrr($hostname, "A")
-                || checkdnsrr($hostname, "AAAA")
-                || checkdnsrr($hostname, "A6"))
+                    || checkdnsrr($hostname, "AAAA")
+                    || checkdnsrr($hostname, "A6"))
             ) {
                 $validAddress = true;
                 break;
@@ -419,7 +419,7 @@ class EmailAddress extends AbstractValidator
 
         if (!$validAddress) {
             $result = false;
-            $error  = ($reserved) ? self::INVALID_SEGMENT : self::INVALID_MX_RECORD;
+            $error = ($reserved) ? self::INVALID_SEGMENT : self::INVALID_MX_RECORD;
             $this->error($error);
         }
 
@@ -434,7 +434,7 @@ class EmailAddress extends AbstractValidator
     protected function validateHostnamePart()
     {
         $hostname = $this->getHostnameValidator()->setTranslator($this->getTranslator())
-                         ->isValid($this->hostname);
+            ->isValid($this->hostname);
         if (!$hostname) {
             $this->error(self::INVALID_HOSTNAME);
             // Get messages and errors from hostnameValidator
@@ -459,12 +459,13 @@ class EmailAddress extends AbstractValidator
     {
         // Split email address up and disallow '..'
         if ((strpos($value, '..') !== false) or
-            (!preg_match('/^(.+)@([^@]+)$/', $value, $matches))) {
+            (!preg_match('/^(.+)@([^@]+)$/', $value, $matches))
+        ) {
             return false;
         }
 
         $this->localPart = $matches[1];
-        $this->hostname  = $matches[2];
+        $this->hostname = $matches[2];
 
         return true;
     }
@@ -487,7 +488,7 @@ class EmailAddress extends AbstractValidator
             return false;
         }
 
-        $length  = true;
+        $length = true;
         $this->setValue($value);
 
         // Split email address up and disallow '..'

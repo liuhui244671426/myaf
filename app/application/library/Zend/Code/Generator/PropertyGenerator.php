@@ -158,13 +158,13 @@ class PropertyGenerator extends AbstractMemberGenerator
      */
     public function isConst()
     {
-        return (bool) ($this->flags & self::FLAG_CONSTANT);
+        return (bool)($this->flags & self::FLAG_CONSTANT);
     }
 
     /**
      * @param PropertyValueGenerator|mixed $defaultValue
-     * @param string                       $defaultValueType
-     * @param string                       $defaultValueOutputMode
+     * @param string $defaultValueType
+     * @param string $defaultValueOutputMode
      *
      * @return PropertyGenerator
      */
@@ -193,7 +193,7 @@ class PropertyGenerator extends AbstractMemberGenerator
      */
     public function generate()
     {
-        $name         = $this->getName();
+        $name = $this->getName();
         $defaultValue = $this->getDefaultValue();
 
         $output = '';

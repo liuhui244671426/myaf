@@ -21,7 +21,7 @@ class FirePhp implements FormatterInterface
     {
         $label = null;
         if (!empty($event['extra'])) {
-            $line  = $event['extra'];
+            $line = $event['extra'];
             $label = $event['message'];
         } else {
             $line = $event['message'];
@@ -43,7 +43,7 @@ class FirePhp implements FormatterInterface
     /**
      * This method is implemented for FormatterInterface but not used.
      *
-     * @param  string             $dateTimeFormat
+     * @param  string $dateTimeFormat
      * @return FormatterInterface
      */
     public function setDateTimeFormat($dateTimeFormat)

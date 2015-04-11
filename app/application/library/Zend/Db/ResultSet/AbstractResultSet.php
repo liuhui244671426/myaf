@@ -156,7 +156,7 @@ abstract class AbstractResultSet implements Iterator, ResultSetInterface
             return $this->fieldCount;
         }
 
-        $row = (array) $row;
+        $row = (array)$row;
         $this->fieldCount = count($row);
         return $this->fieldCount;
     }

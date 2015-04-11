@@ -18,10 +18,10 @@ abstract class Factory
      * @var array Known transport types
      */
     protected static $classMap = array(
-        'file'      => 'Zend\Mail\Transport\File',
-        'null'      => 'Zend\Mail\Transport\Null',
-        'sendmail'  => 'Zend\Mail\Transport\Sendmail',
-        'smtp'      => 'Zend\Mail\Transport\Smtp',
+        'file' => 'Zend\Mail\Transport\File',
+        'null' => 'Zend\Mail\Transport\Null',
+        'sendmail' => 'Zend\Mail\Transport\Sendmail',
+        'smtp' => 'Zend\Mail\Transport\Smtp',
     );
 
     /**
@@ -36,7 +36,7 @@ abstract class Factory
             $spec = ArrayUtils::iteratorToArray($spec);
         }
 
-        if (! is_array($spec)) {
+        if (!is_array($spec)) {
             throw new Exception\InvalidArgumentException(sprintf(
                 '%s expects an array or Traversable argument; received "%s"',
                 __METHOD__,
@@ -52,7 +52,7 @@ abstract class Factory
             $type = static::$classMap[$normalizedType];
         }
 
-        if (! class_exists($type)) {
+        if (!class_exists($type)) {
             throw new Exception\DomainException(sprintf(
                 '%s expects the "type" attribute to resolve to an existing class; received "%s"',
                 __METHOD__,
@@ -62,7 +62,7 @@ abstract class Factory
 
         $transport = new $type;
 
-        if (! $transport instanceof TransportInterface) {
+        if (!$transport instanceof TransportInterface) {
             throw new Exception\DomainException(sprintf(
                 '%s expects the "type" attribute to resolve to a valid Zend\Mail\Transport\TransportInterface instance; received "%s"',
                 __METHOD__,

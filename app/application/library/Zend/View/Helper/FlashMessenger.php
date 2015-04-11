@@ -37,8 +37,8 @@ class FlashMessenger extends AbstractTranslatorHelper implements ServiceLocatorA
      *
      * @var string
      */
-    protected $messageCloseString     = '</li></ul>';
-    protected $messageOpenFormat      = '<ul%s><li>';
+    protected $messageCloseString = '</li></ul>';
+    protected $messageOpenFormat = '<ul%s><li>';
     protected $messageSeparatorString = '</li><li>';
 
     /**
@@ -82,7 +82,7 @@ class FlashMessenger extends AbstractTranslatorHelper implements ServiceLocatorA
      * Proxy the flash messenger plugin controller
      *
      * @param  string $method
-     * @param  array  $argv
+     * @param  array $argv
      * @return mixed
      */
     public function __call($method, $argv)
@@ -95,7 +95,7 @@ class FlashMessenger extends AbstractTranslatorHelper implements ServiceLocatorA
      * Render Messages
      *
      * @param  string $namespace
-     * @param  array  $classes
+     * @param  array $classes
      * @return string
      */
     public function render($namespace = PluginFlashMessenger::NAMESPACE_DEFAULT, array $classes = array())
@@ -109,7 +109,7 @@ class FlashMessenger extends AbstractTranslatorHelper implements ServiceLocatorA
      * Render Current Messages
      *
      * @param  string $namespace
-     * @param  array  $classes
+     * @param  array $classes
      * @return string
      */
     public function renderCurrent($namespace = PluginFlashMessenger::NAMESPACE_DEFAULT, array $classes = array())
@@ -130,7 +130,8 @@ class FlashMessenger extends AbstractTranslatorHelper implements ServiceLocatorA
         $namespace = PluginFlashMessenger::NAMESPACE_DEFAULT,
         array $messages = array(),
         array $classes = array()
-    ) {
+    )
+    {
         // Prepare classes for opening tag
         if (empty($classes)) {
             if (isset($this->classMessages[$namespace])) {
@@ -141,7 +142,7 @@ class FlashMessenger extends AbstractTranslatorHelper implements ServiceLocatorA
             $classes = array($classes);
         }
         // Flatten message array
-        $escapeHtml      = $this->getEscapeHtmlHelper();
+        $escapeHtml = $this->getEscapeHtmlHelper();
         $messagesToPrint = array();
         $translator = $this->getTranslator();
         $translatorTextDomain = $this->getTranslatorTextDomain();
@@ -161,7 +162,7 @@ class FlashMessenger extends AbstractTranslatorHelper implements ServiceLocatorA
             return '';
         }
         // Generate markup
-        $markup  = sprintf($this->getMessageOpenFormat(), ' class="' . implode(' ', $classes) . '"');
+        $markup = sprintf($this->getMessageOpenFormat(), ' class="' . implode(' ', $classes) . '"');
         $markup .= implode(
             sprintf($this->getMessageSeparatorString(), ' class="' . implode(' ', $classes) . '"'),
             $messagesToPrint
@@ -178,7 +179,7 @@ class FlashMessenger extends AbstractTranslatorHelper implements ServiceLocatorA
      */
     public function setMessageCloseString($messageCloseString)
     {
-        $this->messageCloseString = (string) $messageCloseString;
+        $this->messageCloseString = (string)$messageCloseString;
         return $this;
     }
 
@@ -200,7 +201,7 @@ class FlashMessenger extends AbstractTranslatorHelper implements ServiceLocatorA
      */
     public function setMessageOpenFormat($messageOpenFormat)
     {
-        $this->messageOpenFormat = (string) $messageOpenFormat;
+        $this->messageOpenFormat = (string)$messageOpenFormat;
         return $this;
     }
 
@@ -222,7 +223,7 @@ class FlashMessenger extends AbstractTranslatorHelper implements ServiceLocatorA
      */
     public function setMessageSeparatorString($messageSeparatorString)
     {
-        $this->messageSeparatorString = (string) $messageSeparatorString;
+        $this->messageSeparatorString = (string)$messageSeparatorString;
         return $this;
     }
 

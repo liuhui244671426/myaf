@@ -35,7 +35,7 @@ class NodeList implements Iterator, Countable, ArrayAccess
     /**
      * Constructor
      *
-     * @param DOMNodeList  $list
+     * @param DOMNodeList $list
      */
     public function __construct(DOMNodeList $list)
     {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Yaf Request Http
  */
@@ -8,7 +9,7 @@ class Yaf_Request_Http extends Yaf_Request_Abstract
      * Scheme for http
      *
      */
-    const SCHEME_HTTP  = 'http';
+    const SCHEME_HTTP = 'http';
 
     /**
      * Scheme for https
@@ -31,7 +32,7 @@ class Yaf_Request_Http extends Yaf_Request_Abstract
      * @param string $baseUri
      * @return void
      */
-    public function __construct($requestUri = null, $baseUri=null)
+    public function __construct($requestUri = null, $baseUri = null)
     {
         if (null !== $requestUri) {
             $this->_requestUri = $requestUri;
@@ -62,14 +63,14 @@ class Yaf_Request_Http extends Yaf_Request_Abstract
         return $this->get($name);
     }
 
-   /**
+    /**
      * Access values contained in the superglobals as public members
      * Order of precedence: 1. GET, 2. POST, 3. COOKIE, 4. SERVER, 5. ENV
      *
      * @param string $name
      * @return mixed
      */
-    public function get($name, $default=null)
+    public function get($name, $default = null)
     {
         switch (true) {
             case isset($this->_params[$name]):
@@ -194,6 +195,7 @@ class Yaf_Request_Http extends Yaf_Request_Abstract
         }
         return (isset($_FILES[$name])) ? $_FILES[$name] : $default;
     }
+
     /**
      * Retrieve a member of the $_REQUEST superglobal
      *
@@ -271,7 +273,7 @@ class Yaf_Request_Http extends Yaf_Request_Abstract
 
         if ($baseUri === null) {
             $filename = (isset($_SERVER['SCRIPT_FILENAME']))
-            ? basename($_SERVER['SCRIPT_FILENAME']) : '';
+                ? basename($_SERVER['SCRIPT_FILENAME']) : '';
 
             if (
                 isset($_SERVER['SCRIPT_NAME'])
@@ -292,17 +294,17 @@ class Yaf_Request_Http extends Yaf_Request_Abstract
             } else {
                 // Backtrack up the script_filename to find the portion matching
                 // php_self
-                $path    = isset($_SERVER['PHP_SELF'])
+                $path = isset($_SERVER['PHP_SELF'])
                     ? $_SERVER['PHP_SELF'] : '';
-                $file    = isset($_SERVER['SCRIPT_FILENAME'])
+                $file = isset($_SERVER['SCRIPT_FILENAME'])
                     ? $_SERVER['SCRIPT_FILENAME'] : '';
-                $segs    = explode('/', trim($file, '/'));
-                $segs    = array_reverse($segs);
-                $index   = 0;
-                $last    = count($segs);
+                $segs = explode('/', trim($file, '/'));
+                $segs = array_reverse($segs);
+                $index = 0;
+                $last = count($segs);
                 $baseUri = '';
                 do {
-                    $seg     = $segs[$index];
+                    $seg = $segs[$index];
                     $baseUri = '/' . $seg . $baseUri;
                     ++$index;
                 } while (
@@ -345,7 +347,7 @@ class Yaf_Request_Http extends Yaf_Request_Abstract
             if (
                 (strlen($requestUri) >= strlen($baseUri))
                 && ((false !== ($pos = strpos($requestUri, $baseUri)))
-                && ($pos !== 0))
+                    && ($pos !== 0))
             ) {
                 $baseUri = substr($requestUri, 0, $pos + strlen($baseUri));
             }
@@ -378,7 +380,7 @@ class Yaf_Request_Http extends Yaf_Request_Abstract
                 && $_SERVER['IIS_WasUrlRewritten'] == '1'
                 && isset($_SERVER['UNENCODED_URL'])
                 && $_SERVER['UNENCODED_URL'] != ''
-                ) {
+            ) {
                 $requestUri = $_SERVER['UNENCODED_URL'];
             } elseif (isset($_SERVER['REQUEST_URI'])) {
                 $requestUri = $_SERVER['REQUEST_URI'];
@@ -421,6 +423,7 @@ class Yaf_Request_Http extends Yaf_Request_Abstract
         return ($this->getServer('HTTPS') == 'on') ?
             self::SCHEME_HTTPS : self::SCHEME_HTTP;
     }
+
     /**
      * Get the HTTP host.
      *
@@ -438,8 +441,8 @@ class Yaf_Request_Http extends Yaf_Request_Abstract
         }
 
         $scheme = $this->getScheme();
-        $name   = $this->getServer('SERVER_NAME');
-        $port   = $this->getServer('SERVER_PORT');
+        $name = $this->getServer('SERVER_NAME');
+        $port = $this->getServer('SERVER_PORT');
 
         if (null === $name) {
             return '';

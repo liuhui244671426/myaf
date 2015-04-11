@@ -32,15 +32,15 @@ class Ean8 extends Ean13
      */
     protected function calculateBarcodeWidth()
     {
-        $quietZone       = $this->getQuietZone();
-        $startCharacter  = (3 * $this->barThinWidth) * $this->factor;
+        $quietZone = $this->getQuietZone();
+        $startCharacter = (3 * $this->barThinWidth) * $this->factor;
         $middleCharacter = (5 * $this->barThinWidth) * $this->factor;
-        $stopCharacter   = (3 * $this->barThinWidth) * $this->factor;
-        $encodedData     = (7 * $this->barThinWidth) * $this->factor * 8;
+        $stopCharacter = (3 * $this->barThinWidth) * $this->factor;
+        $encodedData = (7 * $this->barThinWidth) * $this->factor * 8;
         return $quietZone + $startCharacter + $middleCharacter + $encodedData + $stopCharacter + $quietZone;
     }
 
-        /**
+    /**
      * Prepare array to draw barcode
      * @return array
      */
@@ -96,18 +96,18 @@ class Ean8 extends Ean13
             $text = $this->getTextToDisplay();
             $characterWidth = (7 * $this->barThinWidth) * $this->factor;
             $leftPosition = $this->getQuietZone() + (3 * $this->barThinWidth) * $this->factor;
-            for ($i = 0; $i < $this->barcodeLength; $i ++) {
+            for ($i = 0; $i < $this->barcodeLength; $i++) {
                 $this->addText(
                     $text{$i},
                     $this->fontSize * $this->factor,
                     $this->rotate(
                         $leftPosition,
-                        (int) $this->withBorder * 2 + $this->factor * ($this->barHeight + $this->fontSize) + 1
+                        (int)$this->withBorder * 2 + $this->factor * ($this->barHeight + $this->fontSize) + 1
                     ),
                     $this->font,
                     $this->foreColor,
                     'left',
-                    - $this->orientation
+                    -$this->orientation
                 );
                 switch ($i) {
                     case 3:
@@ -126,13 +126,13 @@ class Ean8 extends Ean13
      * (to suppress checksum character substitution)
      *
      * @param string $value
-     * @param array  $options
+     * @param array $options
      * @throws Exception\BarcodeValidationException
      */
     protected function validateSpecificText($value, $options = array())
     {
         $validator = new BarcodeValidator(array(
-            'adapter'  => 'ean8',
+            'adapter' => 'ean8',
             'checksum' => false,
         ));
 

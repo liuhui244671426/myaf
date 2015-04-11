@@ -33,14 +33,14 @@ class Sample implements FilterInterface
      */
     public function __construct($sampleRate = 1)
     {
-        if (! is_numeric($sampleRate)) {
+        if (!is_numeric($sampleRate)) {
             throw new Exception\InvalidArgumentException(sprintf(
                 'Sample rate must be numeric, received "%s"',
                 gettype($sampleRate)
             ));
         }
 
-        $this->sampleRate = (float) $sampleRate;
+        $this->sampleRate = (float)$sampleRate;
     }
 
     /**

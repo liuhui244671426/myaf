@@ -19,7 +19,7 @@ class Dispatcher
      * View object
      * @var Yaf_View_Interface
      */
-    protected $_view=null;
+    protected $_view = null;
     /**
      * Instance of Yaf_Request_Abstract
      * @var Yaf_Request_Abstract
@@ -40,7 +40,7 @@ class Dispatcher
      * Whether or not to enable view.
      * @var boolean
      */
-    protected $_auto_render=true;
+    protected $_auto_render = true;
     /**
      * Whether or not to return the response prior to rendering output while in
      * {@link dispatch()}; default is to send headers and render output.
@@ -56,7 +56,7 @@ class Dispatcher
     public function autoRender($flag)
     {
         if (!is_bool($flag)) {
-            return ;
+            return;
         } else {
             $this->_auto_render = $flag;
         }
@@ -82,7 +82,7 @@ class Dispatcher
     public function catchException($flag = null)
     {
         if ($flag !== null) {
-            G::set('catchException', (bool) $flag);
+            G::set('catchException', (bool)$flag);
             return $this;
         }
 
@@ -114,7 +114,6 @@ class Dispatcher
     {
         $this->_auto_render = false;
     }
-
 
 
     /**
@@ -157,7 +156,7 @@ class Dispatcher
             try {
                 //@todo here seems there is 2 type of routes
                 $router->route($request);
-            }  catch (\Exception $e) {
+            } catch (\Exception $e) {
                 if ($this->throwException() == true) {
                     throw $e;
                 }
@@ -204,7 +203,7 @@ class Dispatcher
                     $plugin->postDispatch($request, $response);
                 }
                 $nested--;
-            } while (!$request->isDispatched() && $nested>0);
+            } while (!$request->isDispatched() && $nested > 0);
             /**
              * Notify plugins of dispatch loop completion
              */
@@ -221,7 +220,7 @@ class Dispatcher
 
         if ($nested == 0 && !$request->isDispatched()) {
             throw new Exception\DispatchFailed(
-                'The max dispatch nesting '.G::iniGet('yaf.forward_limit').
+                'The max dispatch nesting ' . G::iniGet('yaf.forward_limit') .
                 ' was reached'
             );
         }
@@ -243,8 +242,8 @@ class Dispatcher
         $appDir = $app->getAppDirectory();
         if ($appDir == '') {
             throw new Exception\StartupError(
-                'Yaf_Dispatcher requires '.
-                'Yaf_Application(which set the application.directory) '.
+                'Yaf_Dispatcher requires ' .
+                'Yaf_Application(which set the application.directory) ' .
                 'to be initialized first.'
             );
         }
@@ -281,7 +280,7 @@ class Dispatcher
             $templateDir = '';
             if ($this->_default_module == $module) {
                 $templateDir = $appDir . DIRECTORY_SEPARATOR .
-                Loader::YAF_VIEW_DIRECTORY_NAME;
+                    Loader::YAF_VIEW_DIRECTORY_NAME;
             } else {
                 $templateDir = $appDir . DIRECTORY_SEPARATOR .
                     Loader::YAF_MODULE_DIRECTORY_NAME .
@@ -291,8 +290,8 @@ class Dispatcher
             $view->setScriptPath($templateDir);
             unset($templateDir);
         }
-        $action  = $request->getActionName();
-        $actionMethod  = $action.'Action';
+        $action = $request->getActionName();
+        $actionMethod = $action . 'Action';
         if (method_exists($controller, $actionMethod)) {
             //Get all action method parameters
             $methodParams = $this->getActionParams($className, $actionMethod);
@@ -336,8 +335,8 @@ class Dispatcher
                 }
             } else {
                 throw new Exception\LoadFailed\Action(
-                    'There is no method '.$actionMethod.' in '.
-                    get_class($controller).'::$actions'
+                    'There is no method ' . $actionMethod . ' in ' .
+                    get_class($controller) . '::$actions'
                 );
             }
         } else {
@@ -361,10 +360,10 @@ class Dispatcher
     {
         $nameSeparator = G::iniGet('yaf.name_separator');
         if (isset($controller->actions[$action])) {
-            $actionPath = $appDir.DIRECTORY_SEPARATOR.
+            $actionPath = $appDir . DIRECTORY_SEPARATOR .
                 $controller->actions[$action];
             if (Loader::import($actionPath)) {
-                $actionMethod  = $action.'Action';
+                $actionMethod = $action . 'Action';
                 if (G::iniGet('yaf.name_suffix') == true) {
                     $classname = $controller . $nameSeparator . 'Action';
                 } else {
@@ -372,30 +371,30 @@ class Dispatcher
                 }
                 if (!class_exists($classname, false)) {
                     throw new Exception\LoadFailed\Action(
-                        'Could not find action '.$classname.
-                        ' in '.$actionPath
+                        'Could not find action ' . $classname .
+                        ' in ' . $actionPath
                     );
                 }
                 $object = new $classname();
                 if (!($object instanceof Action_Abstract)) {
                     throw new Exception\TypeError(
-                        'Action '.$classname.
+                        'Action ' . $classname .
                         ' must extends from Yaf_Action_Abstract'
                     );
                 }
                 return $object;
             } else {
                 throw new Exception\LoadFailed\Action(
-                    'Could not find action script '.$actionPath
+                    'Could not find action script ' . $actionPath
                 );
             }
         } else {
             $actionrDir = '';
             if ($this->_default_module == $module) {
-                $actionrDir = $appDir.DIRECTORY_SEPARATOR.'actions';
+                $actionrDir = $appDir . DIRECTORY_SEPARATOR . 'actions';
             } else {
-                $actionrDir = $appDir.DIRECTORY_SEPARATOR.'modules'.
-                DIRECTORY_SEPARATOR.$module.DIRECTORY_SEPARATOR.'actions';
+                $actionrDir = $appDir . DIRECTORY_SEPARATOR . 'modules' .
+                    DIRECTORY_SEPARATOR . $module . DIRECTORY_SEPARATOR . 'actions';
             }
             if (G::iniGet('yaf.name_suffix') == true) {
                 $classname = $controller . $nameSeparator . 'Action';
@@ -404,19 +403,19 @@ class Dispatcher
             }
             if (!class_exists($classname, false)) {
                 if (
-                    !Loader::getInstance()->internal_autoload(
-                        $classname, $actionrDir
-                    )
+                !Loader::getInstance()->internal_autoload(
+                    $classname, $actionrDir
+                )
                 ) {
                     throw new Exception\LoadFailed\Action(
-                        'Could not find action script '. $actionrDir
+                        'Could not find action script ' . $actionrDir
                     );
                 }
             }
             if (!class_exists($classname, false)) {
                 throw new Exception\LoadFailed\LoadFailed(
-                    'Could not find class '.$classname.
-                    ' in action script '.$actionrDir
+                    'Could not find class ' . $classname .
+                    ' in action script ' . $actionrDir
                 );
             }
             $object = new $classname();
@@ -439,13 +438,13 @@ class Dispatcher
             if ($param->isOptional()) {
                 // If there is no data to send, use the default
                 $data[$name] =
-                !empty($params[$name])
-                ?$params[$name]
-                :$param->getDefaultValue();
+                    !empty($params[$name])
+                        ? $params[$name]
+                        : $param->getDefaultValue();
             } elseif (empty($params[$name])) {
                 // The parameter cannot be empty as defined
                 throw new Exception(
-                    'Parameter: '.$name.' cannot be empty'
+                    'Parameter: ' . $name . ' cannot be empty'
                 );
             } else {
                 $data[$name] = $params[$name];
@@ -465,12 +464,12 @@ class Dispatcher
     {
         $controllerDir = '';
         if ($this->_default_module == $module) {
-            $controllerDir = $appDir.DIRECTORY_SEPARATOR.
+            $controllerDir = $appDir . DIRECTORY_SEPARATOR .
                 Loader::YAF_CONTROLLER_DIRECTORY_NAME;
         } else {
-            $controllerDir = $appDir.DIRECTORY_SEPARATOR.
-                Loader::YAF_MODULE_DIRECTORY_NAME.DIRECTORY_SEPARATOR.
-                $module.DIRECTORY_SEPARATOR.
+            $controllerDir = $appDir . DIRECTORY_SEPARATOR .
+                Loader::YAF_MODULE_DIRECTORY_NAME . DIRECTORY_SEPARATOR .
+                $module . DIRECTORY_SEPARATOR .
                 Loader::YAF_CONTROLLER_DIRECTORY_NAME;
         }
         $nameSeparator = G::iniGet('yaf.name_separator');
@@ -481,21 +480,21 @@ class Dispatcher
         }
         if (!@class_exists($classname, false)) {
             if (
-                !Loader::getInstance()->internal_autoload(
-                    $controller, $controllerDir
-                )
+            !Loader::getInstance()->internal_autoload(
+                $controller, $controllerDir
+            )
             ) {
                 throw new Exception\LoadFailed\Controller(
-                    'Could not find controller script '.
-                    $controllerDir.DIRECTORY_SEPARATOR.$controller.
-                    '.'.G::get('ext')
+                    'Could not find controller script ' .
+                    $controllerDir . DIRECTORY_SEPARATOR . $controller .
+                    '.' . G::get('ext')
                 );
             }
         }
         if (!class_exists($classname, false)) {
             throw new Exception\LoadFailed\LoadFailed(
-                'Could not find class '.$classname.
-                ' in controller script '.$controllerDir
+                'Could not find class ' . $classname .
+                ' in controller script ' . $controllerDir
             );
         }
         return $classname;
@@ -527,7 +526,7 @@ class Dispatcher
     {
         // we have namespace
         $segments = explode('\\', $unformatted);
-        if ($segments!=null) {
+        if ($segments != null) {
             foreach ($segments as $key => $segment) {
                 $segment = preg_replace(
                     '/[^a-z0-9 ]/', '', strtolower($segment)
@@ -538,7 +537,7 @@ class Dispatcher
         }
         //we have _
         $segments = explode('_', $unformatted);
-        if ($segments!=null) {
+        if ($segments != null) {
             foreach ($segments as $key => $segment) {
                 $segment = preg_replace(
                     '/[^a-z0-9 ]/', '', strtolower($segment)
@@ -549,7 +548,7 @@ class Dispatcher
         }
     }
 
-    public function enableView ()
+    public function enableView()
     {
         $this->_auto_render = true;
     }
@@ -557,7 +556,7 @@ class Dispatcher
     public function flushInstantly($flag)
     {
         if (!is_bool($flag)) {
-            return ;
+            return;
         } else {
             $this->_instantly_flush = $flag;
         }
@@ -614,7 +613,7 @@ class Dispatcher
         return $this->_router;
     }
 
-    public function initView($templates_dir=null, $options = array())
+    public function initView($templates_dir = null, $options = array())
     {
         if ($this->_view == null) {
             $this->_view = new View\Simple($templates_dir, $options);
@@ -663,7 +662,7 @@ class Dispatcher
      */
     public function setDefaultAction($action)
     {
-        $this->_default_action = (string) $action;
+        $this->_default_action = (string)$action;
         return $this;
     }
 
@@ -676,7 +675,7 @@ class Dispatcher
      */
     public function setDefaultController($controller)
     {
-        $this->_default_controller = ucfirst((string) $controller);
+        $this->_default_controller = ucfirst((string)$controller);
         return $this;
     }
 
@@ -691,14 +690,14 @@ class Dispatcher
         if (
             Application::isModuleName($module)
             ||
-            strtolower($module)=='index'
+            strtolower($module) == 'index'
         ) {
-            $this->_default_module = ucfirst((string) $module);
+            $this->_default_module = ucfirst((string)$module);
         }
         return $this;
     }
 
-    public function setErrorHandler($callback , $error_types=E_ALL)
+    public function setErrorHandler($callback, $error_types = E_ALL)
     {
         set_error_handler($callback, $error_types);
     }
@@ -755,7 +754,7 @@ class Dispatcher
     public function throwException($flag = null)
     {
         if ($flag !== null) {
-            G::set('throwException', (bool) $flag);
+            G::set('throwException', (bool)$flag);
             return $this;
         }
 

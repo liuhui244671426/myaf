@@ -284,7 +284,7 @@ class Statement implements StatementInterface, Profiler\ProfilerAwareInterface
                     case ParameterContainer::TYPE_INTEGER:
                         $type = SQLT_INT;
                         if (is_string($value)) {
-                            $value = (int) $value;
+                            $value = (int)$value;
                         }
                         break;
                     case ParameterContainer::TYPE_BINARY:

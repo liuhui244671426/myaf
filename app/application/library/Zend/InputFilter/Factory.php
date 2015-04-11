@@ -39,7 +39,7 @@ class Factory
      */
     public function __construct(InputFilterPluginManager $inputFilterManager = null)
     {
-        $this->defaultFilterChain    = new FilterChain();
+        $this->defaultFilterChain = new FilterChain();
         $this->defaultValidatorChain = new ValidatorChain();
 
         if ($inputFilterManager) {
@@ -330,7 +330,7 @@ class Factory
     }
 
     /**
-     * @param  FilterChain       $chain
+     * @param  FilterChain $chain
      * @param  array|Traversable $filters
      * @throws Exception\RuntimeException
      * @return void
@@ -366,7 +366,7 @@ class Factory
     }
 
     /**
-     * @param  ValidatorChain    $chain
+     * @param  ValidatorChain $chain
      * @param  array|Traversable $validators
      * @throws Exception\RuntimeException
      * @return void
@@ -385,7 +385,7 @@ class Factory
                         'Invalid validator specification provided; does not include "name" key'
                     );
                 }
-                $name    = $validator['name'];
+                $name = $validator['name'];
                 $options = array();
                 if (isset($validator['options'])) {
                     $options = $validator['options'];

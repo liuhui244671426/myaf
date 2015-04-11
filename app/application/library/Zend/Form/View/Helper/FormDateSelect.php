@@ -44,15 +44,15 @@ class FormDateSelect extends FormMonthSelectHelper
         }
 
         $selectHelper = $this->getSelectElementHelper();
-        $pattern      = $this->parsePattern($element->shouldRenderDelimiters());
+        $pattern = $this->parsePattern($element->shouldRenderDelimiters());
 
-        $daysOptions   = $this->getDaysOptions($pattern['day']);
+        $daysOptions = $this->getDaysOptions($pattern['day']);
         $monthsOptions = $this->getMonthsOptions($pattern['month']);
-        $yearOptions   = $this->getYearsOptions($element->getMinYear(), $element->getMaxYear());
+        $yearOptions = $this->getYearsOptions($element->getMinYear(), $element->getMaxYear());
 
-        $dayElement   = $element->getDayElement()->setValueOptions($daysOptions);
+        $dayElement = $element->getDayElement()->setValueOptions($daysOptions);
         $monthElement = $element->getMonthElement()->setValueOptions($monthsOptions);
-        $yearElement  = $element->getYearElement()->setValueOptions($yearOptions);
+        $yearElement = $element->getYearElement()->setValueOptions($yearOptions);
 
         if ($element->shouldCreateEmptyOption()) {
             $dayElement->setEmptyOption('');
@@ -61,9 +61,9 @@ class FormDateSelect extends FormMonthSelectHelper
         }
 
         $data = array();
-        $data[$pattern['day']]   = $selectHelper->render($dayElement);
+        $data[$pattern['day']] = $selectHelper->render($dayElement);
         $data[$pattern['month']] = $selectHelper->render($monthElement);
-        $data[$pattern['year']]  = $selectHelper->render($yearElement);
+        $data[$pattern['year']] = $selectHelper->render($yearElement);
 
         $markup = '';
         foreach ($pattern as $key => $value) {
@@ -86,13 +86,13 @@ class FormDateSelect extends FormMonthSelectHelper
      */
     protected function getDaysOptions($pattern)
     {
-        $keyFormatter   = new IntlDateFormatter($this->getLocale(), null, null, null, null, 'dd');
+        $keyFormatter = new IntlDateFormatter($this->getLocale(), null, null, null, null, 'dd');
         $valueFormatter = new IntlDateFormatter($this->getLocale(), null, null, null, null, $pattern);
-        $date           = new DateTime('1970-01-01');
+        $date = new DateTime('1970-01-01');
 
         $result = array();
         for ($day = 1; $day <= 31; $day++) {
-            $key   = $keyFormatter->format($date->getTimestamp());
+            $key = $keyFormatter->format($date->getTimestamp());
             $value = $valueFormatter->format($date->getTimestamp());
             $result[$key] = $value;
 

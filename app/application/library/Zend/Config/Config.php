@@ -58,12 +58,12 @@ class Config implements Countable, Iterator, ArrayAccess
      * Data is read-only unless $allowModifications is set to true
      * on construction.
      *
-     * @param  array   $array
+     * @param  array $array
      * @param  bool $allowModifications
      */
     public function __construct(array $array, $allowModifications = false)
     {
-        $this->allowModifications = (bool) $allowModifications;
+        $this->allowModifications = (bool)$allowModifications;
 
         foreach ($array as $key => $value) {
             if (is_array($value)) {
@@ -80,7 +80,7 @@ class Config implements Countable, Iterator, ArrayAccess
      * Retrieve a value and return $default if there is no element set.
      *
      * @param  string $name
-     * @param  mixed  $default
+     * @param  mixed $default
      * @return mixed
      */
     public function get($name, $default = null)
@@ -110,7 +110,7 @@ class Config implements Countable, Iterator, ArrayAccess
      * on construction. Otherwise, throw an exception.
      *
      * @param  string $name
-     * @param  mixed  $value
+     * @param  mixed $value
      * @return void
      * @throws Exception\RuntimeException
      */
@@ -162,7 +162,7 @@ class Config implements Countable, Iterator, ArrayAccess
     public function toArray()
     {
         $array = array();
-        $data  = $this->data;
+        $data = $this->data;
 
         /** @var self $value */
         foreach ($data as $key => $value) {

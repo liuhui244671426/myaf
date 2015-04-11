@@ -60,7 +60,7 @@ class Session implements StorageInterface
         if ($member !== null) {
             $this->member = $member;
         }
-        $this->session   = new SessionContainer($this->namespace, $manager);
+        $this->session = new SessionContainer($this->namespace, $manager);
     }
 
     /**

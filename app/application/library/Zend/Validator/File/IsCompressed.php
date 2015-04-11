@@ -20,7 +20,7 @@ class IsCompressed extends MimeType
     /**
      * @const string Error constants
      */
-    const FALSE_TYPE   = 'fileIsCompressedFalseType';
+    const FALSE_TYPE = 'fileIsCompressedFalseType';
     const NOT_DETECTED = 'fileIsCompressedNotDetected';
     const NOT_READABLE = 'fileIsCompressedNotReadable';
 
@@ -28,7 +28,7 @@ class IsCompressed extends MimeType
      * @var array Error message templates
      */
     protected $messageTemplates = array(
-        self::FALSE_TYPE   => "File is not compressed, '%type%' detected",
+        self::FALSE_TYPE => "File is not compressed, '%type%' detected",
         self::NOT_DETECTED => "The mimetype could not be detected from the file",
         self::NOT_READABLE => "File is not readable or does not exist",
     );

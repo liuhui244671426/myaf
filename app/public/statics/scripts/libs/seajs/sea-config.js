@@ -3,7 +3,7 @@
  * @Des: seajs config
  */
 seajs.config({
-    base: "/scripts/" ,
+    base: "/scripts/",
     alias: {
         'jquery': "libs/jquery/jquery-seajs.js",
         '$': "libs/jquery/jquery-seajs.js",

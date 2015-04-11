@@ -105,15 +105,15 @@ class Accept extends AbstractAccept
 
         $aggregated = array(
             'typeString' => trim($fieldValuePart),
-            'type'       => $type,
-            'subtype'    => $subtype,
+            'type' => $type,
+            'subtype' => $subtype,
             'subtypeRaw' => $subtypeWhole,
-            'format'     => $format,
-            'priority'   => isset($params['q']) ? $params['q'] : 1,
-            'params'     => $params,
-            'raw'        => trim($raw),
+            'format' => $format,
+            'priority' => isset($params['q']) ? $params['q'] : 1,
+            'params' => $params,
+            'raw' => trim($raw),
         );
 
-        return new FieldValuePart\AcceptFieldValuePart((object) $aggregated);
+        return new FieldValuePart\AcceptFieldValuePart((object)$aggregated);
     }
 }

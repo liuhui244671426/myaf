@@ -33,7 +33,7 @@ class HeadScript extends Placeholder\Container\AbstractStandalone
      *
      * @const string
      */
-    const FILE   = 'FILE';
+    const FILE = 'FILE';
     const SCRIPT = 'SCRIPT';
 
     /**
@@ -124,11 +124,11 @@ class HeadScript extends Placeholder\Container\AbstractStandalone
      * Returns headScript helper object; optionally, allows specifying a script
      * or script file to include.
      *
-     * @param  string $mode      Script or file
-     * @param  string $spec      Script/url
+     * @param  string $mode Script or file
+     * @param  string $spec Script/url
      * @param  string $placement Append, prepend, or set
-     * @param  array  $attrs     Array of script attributes
-     * @param  string $type      Script type and/or array of script attributes
+     * @param  array $attrs Array of script attributes
+     * @param  string $type Script type and/or array of script attributes
      * @return HeadScript
      */
     public function __invoke(
@@ -137,9 +137,10 @@ class HeadScript extends Placeholder\Container\AbstractStandalone
         $placement = 'APPEND',
         array $attrs = array(),
         $type = 'text/javascript'
-    ) {
+    )
+    {
         if ((null !== $spec) && is_string($spec)) {
-            $action    = ucfirst(strtolower($mode));
+            $action = ucfirst(strtolower($mode));
             $placement = strtolower($placement);
             switch ($placement) {
                 case 'set':
@@ -161,7 +162,7 @@ class HeadScript extends Placeholder\Container\AbstractStandalone
      * Overload method access
      *
      * @param  string $method Method to call
-     * @param  array  $args   Arguments of method
+     * @param  array $args Arguments of method
      * @throws Exception\BadMethodCallException if too few arguments or invalid method
      * @return HeadScript
      */
@@ -175,10 +176,10 @@ class HeadScript extends Placeholder\Container\AbstractStandalone
                 ));
             }
 
-            $action  = $matches['action'];
-            $mode    = strtolower($matches['mode']);
-            $type    = 'text/javascript';
-            $attrs   = array();
+            $action = $matches['action'];
+            $mode = strtolower($matches['mode']);
+            $type = 'text/javascript';
+            $attrs = array();
 
             if ('offsetSet' == $action) {
                 $index = array_shift($args);
@@ -193,10 +194,10 @@ class HeadScript extends Placeholder\Container\AbstractStandalone
             $content = $args[0];
 
             if (isset($args[1])) {
-                $type = (string) $args[1];
+                $type = (string)$args[1];
             }
             if (isset($args[2])) {
-                $attrs = (array) $args[2];
+                $attrs = (array)$args[2];
             }
 
             switch ($mode) {
@@ -247,7 +248,7 @@ class HeadScript extends Placeholder\Container\AbstractStandalone
         }
 
         $escapeStart = ($useCdata) ? '//<![CDATA[' : '//<!--';
-        $escapeEnd   = ($useCdata) ? '//]]>' : '//-->';
+        $escapeEnd = ($useCdata) ? '//]]>' : '//-->';
 
         $items = array();
         $this->getContainer()->ksort();
@@ -265,9 +266,9 @@ class HeadScript extends Placeholder\Container\AbstractStandalone
     /**
      * Start capture action
      *
-     * @param  mixed  $captureType Type of capture
-     * @param  string $type        Type of script
-     * @param  array  $attrs       Attributes of capture
+     * @param  mixed $captureType Type of capture
+     * @param  string $type Type of script
+     * @param  array $attrs Attributes of capture
      * @throws Exception\RuntimeException
      * @return void
      */
@@ -275,14 +276,15 @@ class HeadScript extends Placeholder\Container\AbstractStandalone
         $captureType = Placeholder\Container\AbstractContainer::APPEND,
         $type = 'text/javascript',
         $attrs = array()
-    ) {
+    )
+    {
         if ($this->captureLock) {
             throw new Exception\RuntimeException('Cannot nest headScript captures');
         }
 
-        $this->captureLock        = true;
-        $this->captureType        = $captureType;
-        $this->captureScriptType  = $type;
+        $this->captureLock = true;
+        $this->captureType = $captureType;
+        $this->captureScriptType = $type;
         $this->captureScriptAttrs = $attrs;
         ob_start();
     }
@@ -294,12 +296,12 @@ class HeadScript extends Placeholder\Container\AbstractStandalone
      */
     public function captureEnd()
     {
-        $content                  = ob_get_clean();
-        $type                     = $this->captureScriptType;
-        $attrs                    = $this->captureScriptAttrs;
-        $this->captureScriptType  = null;
+        $content = ob_get_clean();
+        $type = $this->captureScriptType;
+        $attrs = $this->captureScriptAttrs;
+        $this->captureScriptType = null;
         $this->captureScriptAttrs = null;
-        $this->captureLock        = false;
+        $this->captureLock = false;
 
         switch ($this->captureType) {
             case Placeholder\Container\AbstractContainer::SET:
@@ -318,17 +320,17 @@ class HeadScript extends Placeholder\Container\AbstractStandalone
     /**
      * Create data item containing all necessary components of script
      *
-     * @param  string $type       Type of data
-     * @param  array  $attributes Attributes of data
-     * @param  string $content    Content of data
+     * @param  string $type Type of data
+     * @param  array $attributes Attributes of data
+     * @param  string $content Content of data
      * @return stdClass
      */
     public function createData($type, array $attributes, $content = null)
     {
-        $data             = new stdClass();
-        $data->type       = $type;
+        $data = new stdClass();
+        $data->type = $type;
         $data->attributes = $attributes;
-        $data->source     = $content;
+        $data->source = $content;
 
         return $data;
     }
@@ -356,7 +358,7 @@ class HeadScript extends Placeholder\Container\AbstractStandalone
     /**
      * Is the script provided valid?
      *
-     * @param  mixed  $value  Is the given script valid?
+     * @param  mixed $value Is the given script valid?
      * @return bool
      */
     protected function isValid($value)
@@ -375,10 +377,10 @@ class HeadScript extends Placeholder\Container\AbstractStandalone
     /**
      * Create script HTML
      *
-     * @param  mixed  $item        Item to convert
-     * @param  string $indent      String to add before the item
+     * @param  mixed $item Item to convert
+     * @param  string $indent String to add before the item
      * @param  string $escapeStart Starting sequence
-     * @param  string $escapeEnd   Ending sequence
+     * @param  string $escapeEnd Ending sequence
      * @return string
      */
     public function itemToString($item, $indent, $escapeStart, $escapeEnd)
@@ -387,7 +389,8 @@ class HeadScript extends Placeholder\Container\AbstractStandalone
         if (!empty($item->attributes)) {
             foreach ($item->attributes as $key => $value) {
                 if ((!$this->arbitraryAttributesAllowed() && !in_array($key, $this->optionalAttributes))
-                    || in_array($key, array('conditional', 'noescape'))) {
+                    || in_array($key, array('conditional', 'noescape'))
+                ) {
                     continue;
                 }
                 if ('defer' == $key) {
@@ -495,7 +498,7 @@ class HeadScript extends Placeholder\Container\AbstractStandalone
      * Override offsetSet
      *
      * @param  string|int $index Set script of file offset
-     * @param  mixed      $value
+     * @param  mixed $value
      * @throws Exception\InvalidArgumentException
      * @return void
      */
@@ -519,7 +522,7 @@ class HeadScript extends Placeholder\Container\AbstractStandalone
      */
     public function setAllowArbitraryAttributes($flag)
     {
-        $this->arbitraryAttributes = (bool) $flag;
+        $this->arbitraryAttributes = (bool)$flag;
         return $this;
     }
 

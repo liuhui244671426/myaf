@@ -41,9 +41,9 @@ class Movable extends AbstractContainer
     private $value;
 
     /** Value states */
-    const LOADED   = 1;
-    const SWAPPED  = 2;
-    const LOCKED   = 4;
+    const LOADED = 1;
+    const SWAPPED = 2;
+    const LOCKED = 4;
 
     /**
      * Value state (LOADED/SWAPPED/LOCKED)
@@ -62,7 +62,7 @@ class Movable extends AbstractContainer
     public function __construct(Memory\MemoryManager $memoryManager, $id, $value)
     {
         $this->memManager = $memoryManager;
-        $this->id    = $id;
+        $this->id = $id;
         $this->state = self::LOADED;
         $this->value = new Memory\Value($value, $this);
     }
@@ -261,6 +261,7 @@ class Movable extends AbstractContainer
     {
         return $this->id;
     }
+
     /**
      * Destroy memory container and remove it from memory manager list
      *

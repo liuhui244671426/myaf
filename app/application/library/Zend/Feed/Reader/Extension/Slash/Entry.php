@@ -12,7 +12,7 @@ namespace Zend\Feed\Reader\Extension\Slash;
 use Zend\Feed\Reader\Extension;
 
 /**
-*/
+ */
 class Entry extends Extension\AbstractEntry
 {
     /**
@@ -49,7 +49,7 @@ class Entry extends Extension\AbstractEntry
         }
 
         $stringParade = $this->getData($name);
-        $hitParade    = array();
+        $hitParade = array();
 
         if (!empty($stringParade)) {
             $stringParade = explode(',', $stringParade);

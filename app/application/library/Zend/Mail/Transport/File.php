@@ -70,10 +70,10 @@ class File implements TransportInterface
      */
     public function send(Message $message)
     {
-        $options  = $this->options;
+        $options = $this->options;
         $filename = call_user_func($options->getCallback(), $this);
-        $file     = $options->getPath() . DIRECTORY_SEPARATOR . $filename;
-        $email    = $message->toString();
+        $file = $options->getPath() . DIRECTORY_SEPARATOR . $filename;
+        $email = $message->toString();
 
         if (false === file_put_contents($file, $email)) {
             throw new Exception\RuntimeException(sprintf(

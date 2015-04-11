@@ -14,9 +14,9 @@ use Iterator;
 
 class PriorityList implements Iterator, Countable
 {
-    const EXTR_DATA     = 0x00000001;
+    const EXTR_DATA = 0x00000001;
     const EXTR_PRIORITY = 0x00000002;
-    const EXTR_BOTH     = 0x00000003;
+    const EXTR_BOTH = 0x00000003;
     /**
      * Internal list of all items.
      *
@@ -54,9 +54,9 @@ class PriorityList implements Iterator, Countable
     /**
      * Insert a new item.
      *
-     * @param  string  $name
-     * @param  mixed   $value
-     * @param  int     $priority
+     * @param  string $name
+     * @param  mixed $value
+     * @param  int $priority
      *
      * @return void
      */
@@ -66,15 +66,15 @@ class PriorityList implements Iterator, Countable
         $this->count++;
 
         $this->items[$name] = array(
-            'data'     => $value,
-            'priority' => (int) $priority,
-            'serial'   => $this->serial++,
+            'data' => $value,
+            'priority' => (int)$priority,
+            'serial' => $this->serial++,
         );
     }
 
     /**
      * @param string $name
-     * @param int    $priority
+     * @param int $priority
      *
      * @return $this
      *
@@ -86,8 +86,8 @@ class PriorityList implements Iterator, Countable
             throw new \Exception("item $name not found");
         }
 
-        $this->items[$name]['priority'] = (int) $priority;
-        $this->sorted                   = false;
+        $this->items[$name]['priority'] = (int)$priority;
+        $this->sorted = false;
 
         return $this;
     }
@@ -114,9 +114,9 @@ class PriorityList implements Iterator, Countable
      */
     public function clear()
     {
-        $this->items  = array();
+        $this->items = array();
         $this->serial = 0;
-        $this->count  = 0;
+        $this->count = 0;
         $this->sorted = false;
     }
 
@@ -151,14 +151,14 @@ class PriorityList implements Iterator, Countable
     /**
      * Compare the priority of two items.
      *
-     * @param  array $item1,
+     * @param  array $item1 ,
      * @param  array $item2
      * @return int
      */
     protected function compare(array $item1, array $item2)
     {
         return ($item1['priority'] === $item2['priority'])
-            ? ($item1['serial']   > $item2['serial']   ? -1 : 1) * $this->isLIFO
+            ? ($item1['serial'] > $item2['serial'] ? -1 : 1) * $this->isLIFO
             : ($item1['priority'] > $item2['priority'] ? -1 : 1);
     }
 

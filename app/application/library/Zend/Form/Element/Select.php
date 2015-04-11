@@ -153,7 +153,7 @@ class Select extends Element implements InputProviderInterface
      * Set a single element attribute
      *
      * @param  string $key
-     * @param  mixed  $value
+     * @param  mixed $value
      * @return Select|ElementInterface
      */
     public function setAttribute($key, $value)
@@ -175,7 +175,7 @@ class Select extends Element implements InputProviderInterface
      */
     public function setDisableInArrayValidator($disableOption)
     {
-        $this->disableInArrayValidator = (bool) $disableOption;
+        $this->disableInArrayValidator = (bool)$disableOption;
         return $this;
     }
 
@@ -221,12 +221,12 @@ class Select extends Element implements InputProviderInterface
         if (null === $this->validator && !$this->disableInArrayValidator()) {
             $validator = new InArrayValidator(array(
                 'haystack' => $this->getValueOptionsValues(),
-                'strict'   => false
+                'strict' => false
             ));
 
             if ($this->isMultiple()) {
                 $validator = new ExplodeValidator(array(
-                    'validator'      => $validator,
+                    'validator' => $validator,
                     'valueDelimiter' => null, // skip explode if only one value
                 ));
             }
@@ -244,7 +244,7 @@ class Select extends Element implements InputProviderInterface
      */
     public function setUseHiddenElement($useHiddenElement)
     {
-        $this->useHiddenElement = (bool) $useHiddenElement;
+        $this->useHiddenElement = (bool)$useHiddenElement;
         return $this;
     }
 
@@ -266,7 +266,7 @@ class Select extends Element implements InputProviderInterface
      */
     public function setUnselectedValue($unselectedValue)
     {
-        $this->unselectedValue = (string) $unselectedValue;
+        $this->unselectedValue = (string)$unselectedValue;
         return $this;
     }
 
@@ -298,7 +298,7 @@ class Select extends Element implements InputProviderInterface
             $spec['allow_empty'] = true;
             $spec['continue_if_empty'] = true;
             $spec['filters'] = array(array(
-                'name'    => 'Callback',
+                'name' => 'Callback',
                 'options' => array(
                     'callback' => function ($value) use ($unselectedValue) {
                         if ($value === $unselectedValue) {
@@ -326,7 +326,7 @@ class Select extends Element implements InputProviderInterface
      */
     protected function getValueOptionsValues()
     {
-        $values  = array();
+        $values = array();
         $options = $this->getValueOptions();
         foreach ($options as $key => $optionSpec) {
             if (is_array($optionSpec) && array_key_exists('options', $optionSpec)) {
@@ -354,6 +354,6 @@ class Select extends Element implements InputProviderInterface
     public function isMultiple()
     {
         return isset($this->attributes['multiple'])
-            && ($this->attributes['multiple'] === true || $this->attributes['multiple'] === 'multiple');
+        && ($this->attributes['multiple'] === true || $this->attributes['multiple'] === 'multiple');
     }
 }

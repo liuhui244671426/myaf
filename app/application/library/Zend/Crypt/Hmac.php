@@ -29,9 +29,9 @@ class Hmac
      * algorithm, the data to compute MAC of, and an output format of String,
      * or Binary.
      *
-     * @param  string  $key
-     * @param  string  $hash
-     * @param  string  $data
+     * @param  string $key
+     * @param  string $hash
+     * @param  string $data
      * @param  bool $output
      * @throws Exception\InvalidArgumentException
      * @return string
@@ -54,7 +54,7 @@ class Hmac
     /**
      * Get the output size according to the hash algorithm and the output format
      *
-     * @param  string  $hash
+     * @param  string $hash
      * @param  bool $output
      * @return int
      */

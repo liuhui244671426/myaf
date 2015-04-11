@@ -16,5 +16,6 @@ interface ProfilerInterface
      * @return mixed
      */
     public function profilerStart($target);
+
     public function profilerFinish();
 }

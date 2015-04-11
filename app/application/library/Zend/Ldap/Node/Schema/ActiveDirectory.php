@@ -34,7 +34,7 @@ class ActiveDirectory extends Node\Schema
     /**
      * Parses the schema
      *
-     * @param \Zend\Ldap\Dn   $dn
+     * @param \Zend\Ldap\Dn $dn
      * @param \Zend\Ldap\Ldap $ldap
      * @return ActiveDirectory Provides a fluid interface
      */
@@ -45,14 +45,14 @@ class ActiveDirectory extends Node\Schema
             '(objectClass=classSchema)', $dn,
             Ldap\Ldap::SEARCH_SCOPE_ONE
         ) as $node) {
-            $val                                  = new ObjectClass\ActiveDirectory($node);
+            $val = new ObjectClass\ActiveDirectory($node);
             $this->objectClasses[$val->getName()] = $val;
         }
         foreach ($ldap->search(
             '(objectClass=attributeSchema)', $dn,
             Ldap\Ldap::SEARCH_SCOPE_ONE
         ) as $node) {
-            $val                                   = new AttributeType\ActiveDirectory($node);
+            $val = new AttributeType\ActiveDirectory($node);
             $this->attributeTypes[$val->getName()] = $val;
         }
 

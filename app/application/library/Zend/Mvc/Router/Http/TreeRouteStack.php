@@ -82,17 +82,17 @@ class TreeRouteStack extends SimpleRouteStack
 
         $routes = $this->routePluginManager;
         foreach (array(
-                'chain'    => __NAMESPACE__ . '\Chain',
-                'hostname' => __NAMESPACE__ . '\Hostname',
-                'literal'  => __NAMESPACE__ . '\Literal',
-                'method'   => __NAMESPACE__ . '\Method',
-                'part'     => __NAMESPACE__ . '\Part',
-                'query'    => __NAMESPACE__ . '\Query',
-                'regex'    => __NAMESPACE__ . '\Regex',
-                'scheme'   => __NAMESPACE__ . '\Scheme',
-                'segment'  => __NAMESPACE__ . '\Segment',
-                'wildcard' => __NAMESPACE__ . '\Wildcard',
-            ) as $name => $class
+                     'chain' => __NAMESPACE__ . '\Chain',
+                     'hostname' => __NAMESPACE__ . '\Hostname',
+                     'literal' => __NAMESPACE__ . '\Literal',
+                     'method' => __NAMESPACE__ . '\Method',
+                     'part' => __NAMESPACE__ . '\Part',
+                     'query' => __NAMESPACE__ . '\Query',
+                     'regex' => __NAMESPACE__ . '\Regex',
+                     'scheme' => __NAMESPACE__ . '\Scheme',
+                     'segment' => __NAMESPACE__ . '\Segment',
+                     'wildcard' => __NAMESPACE__ . '\Wildcard',
+                 ) as $name => $class
         ) {
             $routes->setInvokableClass($name, $class);
         };
@@ -102,8 +102,8 @@ class TreeRouteStack extends SimpleRouteStack
      * addRoute(): defined by RouteStackInterface interface.
      *
      * @see    RouteStackInterface::addRoute()
-     * @param  string  $name
-     * @param  mixed   $route
+     * @param  string $name
+     * @param  mixed $route
      * @param  int $priority
      * @return TreeRouteStack
      */
@@ -153,9 +153,9 @@ class TreeRouteStack extends SimpleRouteStack
             }
 
             $options = array(
-                'routes'        => $chainRoutes,
+                'routes' => $chainRoutes,
                 'route_plugins' => $this->routePluginManager,
-                'prototypes'    => $this->prototypes,
+                'prototypes' => $this->prototypes,
             );
 
             $route = $this->routePluginManager->get('chain', $options);
@@ -169,11 +169,11 @@ class TreeRouteStack extends SimpleRouteStack
 
         if (isset($specs['child_routes'])) {
             $options = array(
-                'route'         => $route,
+                'route' => $route,
                 'may_terminate' => (isset($specs['may_terminate']) && $specs['may_terminate']),
-                'child_routes'  => $specs['child_routes'],
+                'child_routes' => $specs['child_routes'],
                 'route_plugins' => $this->routePluginManager,
-                'prototypes'    => $this->prototypes,
+                'prototypes' => $this->prototypes,
             );
 
             $priority = (isset($route->priority) ? $route->priority : null);
@@ -209,7 +209,7 @@ class TreeRouteStack extends SimpleRouteStack
      * Add a prototype.
      *
      * @param  string $name
-     * @param  mixed  $route
+     * @param  mixed $route
      * @return TreeRouteStack
      */
     public function addPrototype($name, $route)
@@ -242,9 +242,9 @@ class TreeRouteStack extends SimpleRouteStack
      * match(): defined by \Zend\Mvc\Router\RouteInterface
      *
      * @see    \Zend\Mvc\Router\RouteInterface::match()
-     * @param  Request      $request
+     * @param  Request $request
      * @param  integer|null $pathOffset
-     * @param  array        $options
+     * @param  array $options
      * @return RouteMatch|null
      */
     public function match(Request $request, $pathOffset = null, array $options = array())
@@ -257,7 +257,7 @@ class TreeRouteStack extends SimpleRouteStack
             $this->setBaseUrl($request->getBaseUrl());
         }
 
-        $uri           = $request->getUri();
+        $uri = $request->getUri();
         $baseUrlLength = strlen($this->baseUrl) ?: null;
 
         if ($pathOffset !== null) {

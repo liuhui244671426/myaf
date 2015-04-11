@@ -15,8 +15,7 @@ class initConfig
      * */
     static public function init()
     {
-        if(!Yaf_Registry::has('config'))
-        {
+        if (!Yaf_Registry::has('config')) {
             self::setConfig();
         }
         self::$_config = Yaf_Registry::get('config');
@@ -24,6 +23,7 @@ class initConfig
 
         spl_autoload_register(array(new self(), 'autoLoader'));
     }
+
     /**
      * 加载文件
      */
@@ -32,9 +32,9 @@ class initConfig
         $libraryFiles = array(
             'constant', 'status', 'functions', 'YafController', 'DataCenter/DataCenter'
         );
-        foreach($libraryFiles as $file){
-            $file = APPLICATION_PATH . '/application/library/'.$file.'.php';
-            if(file_exists($file)){
+        foreach ($libraryFiles as $file) {
+            $file = APPLICATION_PATH . '/application/library/' . $file . '.php';
+            if (file_exists($file)) {
                 Yaf_Loader::import($file);
             }
         }
@@ -45,11 +45,11 @@ class initConfig
      * */
     public function autoLoader($class)
     {
-        if(strpos($class,'Builder')){
+        if (strpos($class, 'Builder')) {
             $path = sprintf('%s/application/views/builders/%s.php', APPLICATION_PATH, $class);
 
-            if(!file_exists($path)){
-                $msg = 'load builder file is not exists '.$class;
+            if (!file_exists($path)) {
+                $msg = 'load builder file is not exists ' . $class;
                 throw new LogicException($msg);
             }
             Yaf_Loader::import($path);
@@ -75,12 +75,10 @@ class initConfig
     static public function setExtendConfig()
     {
         $optionArr = self::getExtendConfigs();
-        if(!empty($optionArr))
-        {
-            foreach($optionArr as $k => $v)
-            {
+        if (!empty($optionArr)) {
+            foreach ($optionArr as $k => $v) {
                 $v = trim($v);
-                if(!empty($v))//非空
+                if (!empty($v))//非空
                 {
                     $extendIni = new Yaf_Config_Ini(sprintf('%s/config/%s.ini', ROOT_PATH, $v), MODE);
                     Yaf_Registry::set(sprintf('config_%s', $v), $extendIni);
@@ -91,15 +89,15 @@ class initConfig
 
     /**
      * 是否存在某项扩展配置
-     * @param string $iniName(例如: twig)
+     * @param string $iniName (例如: twig)
      * */
-    static public function isSupportExtendConfig($iniName){
+    static public function isSupportExtendConfig($iniName)
+    {
 
         $optionArr = self::getExtendConfigs();
         //扩展配置项 --非空
-        if(!empty($optionArr))
-        {
-            if(!empty($optionArr) && in_array($iniName, $optionArr)) {
+        if (!empty($optionArr)) {
+            if (!empty($optionArr) && in_array($iniName, $optionArr)) {
                 return true;
             } else {
                 return false;
@@ -113,10 +111,11 @@ class initConfig
      * 获取扩展配置集合
      * @return mixed array|false
      * */
-    static public function getExtendConfigs(){
+    static public function getExtendConfigs()
+    {
         $config = Yaf_Registry::get('config');
         $option = $config->extend->config;
-        if(!empty($option)){
+        if (!empty($option)) {
             $optionArr = explode(',', $option);
             return $optionArr;
         } else {

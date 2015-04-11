@@ -30,7 +30,7 @@ abstract class AbstractFileLoader implements FileLoaderInterface
      */
     public function setUseIncludePath($flag = true)
     {
-        $this->useIncludePath = (bool) $flag;
+        $this->useIncludePath = (bool)$flag;
         return $this;
     }
 

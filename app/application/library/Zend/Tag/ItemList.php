@@ -72,8 +72,8 @@ class ItemList implements Countable, SeekableIterator, ArrayAccess
             }
 
             // Calculate the thresholds
-            $steps      = count($values);
-            $delta      = ($maxWeight - $minWeight) / ($steps - 1);
+            $steps = count($values);
+            $delta = ($maxWeight - $minWeight) / ($steps - 1);
             $thresholds = array();
 
             for ($i = 0; $i < $steps; $i++) {
@@ -191,7 +191,7 @@ class ItemList implements Countable, SeekableIterator, ArrayAccess
     /**
      * Append a new item
      *
-     * @param  mixed          $offset
+     * @param  mixed $offset
      * @param  TaggableInterface $item
      * @throws OutOfBoundsException When item does not implement Zend\Tag\TaggableInterface
      * @return void

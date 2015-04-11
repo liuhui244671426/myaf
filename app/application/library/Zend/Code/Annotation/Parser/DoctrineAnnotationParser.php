@@ -40,7 +40,7 @@ class DoctrineAnnotationParser implements ParserInterface
     {
         // Hack to ensure an attempt to autoload an annotation class is made
         AnnotationRegistry::registerLoader(function ($class) {
-            return (bool) class_exists($class);
+            return (bool)class_exists($class);
         });
     }
 
@@ -100,7 +100,7 @@ class DoctrineAnnotationParser implements ParserInterface
         // class correctly.
         $annotationString = preg_replace('/^(@)/', '$1\\', $annotationString);
 
-        $parser      = $this->getDocParser();
+        $parser = $this->getDocParser();
         $annotations = $parser->parse($annotationString);
         if (empty($annotations)) {
             return false;

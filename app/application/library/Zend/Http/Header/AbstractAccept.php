@@ -90,7 +90,7 @@ abstract class AbstractAccept implements HeaderInterface
     /**
      * Parse the Field Value Parts represented by a header line
      *
-     * @param string  $headerLine
+     * @param string $headerLine
      * @throws Exception\InvalidArgumentException If header is invalid
      * @return array
      */
@@ -98,7 +98,7 @@ abstract class AbstractAccept implements HeaderInterface
     {
         // process multiple accept values, they may be between quotes
         if (!preg_match_all('/(?:[^,"]|"(?:[^\\\"]|\\\.)*")+/', $headerLine, $values)
-                || !isset($values[0])
+            || !isset($values[0])
         ) {
             throw new Exception\InvalidArgumentException(
                 'Invalid header line for ' . $this->getFieldName() . ' header string'
@@ -137,15 +137,15 @@ abstract class AbstractAccept implements HeaderInterface
         $format = '*';
         $subtype = '*';
 
-        return (object) array(
-                            'typeString' => trim($fieldValuePart),
-                            'type'       => $type,
-                            'subtype'    => $subtype,
-                            'subtypeRaw' => $subtypeWhole,
-                            'format'     => $format,
-                            'priority'   => isset($params['q']) ? $params['q'] : 1,
-                            'params'     => $params,
-                            'raw'        => trim($raw)
+        return (object)array(
+            'typeString' => trim($fieldValuePart),
+            'type' => $type,
+            'subtype' => $subtype,
+            'subtypeRaw' => $subtypeWhole,
+            'format' => $format,
+            'priority' => isset($params['q']) ? $params['q'] : 1,
+            'params' => $params,
+            'raw' => trim($raw)
         );
     }
 
@@ -214,7 +214,7 @@ abstract class AbstractAccept implements HeaderInterface
     protected function assembleAcceptParam(&$value, $key)
     {
         $separators = array('(', ')', '<', '>', '@', ',', ';', ':',
-                            '/', '[', ']', '?', '=', '{', '}',  ' ',  "\t");
+            '/', '[', ']', '?', '=', '{', '}', ' ', "\t");
 
         $escaped = preg_replace_callback(
             '/[[:cntrl:]"\\\\]/', // escape cntrl, ", \
@@ -248,7 +248,7 @@ abstract class AbstractAccept implements HeaderInterface
             throw new Exception\InvalidArgumentException(sprintf(
                 '%s expects a valid type; received "%s"',
                 __METHOD__,
-                (string) $type
+                (string)$type
             ));
         }
 
@@ -258,7 +258,7 @@ abstract class AbstractAccept implements HeaderInterface
             throw new Exception\InvalidArgumentException(sprintf(
                 '%s expects a numeric priority; received %s',
                 __METHOD__,
-                (string) $priority
+                (string)$priority
             ));
         }
 
@@ -267,7 +267,7 @@ abstract class AbstractAccept implements HeaderInterface
         }
 
         $assembledString = $this->getFieldValue(
-            array((object) array('typeString' => $type, 'params' => $params))
+            array((object)array('typeString' => $type, 'params' => $params))
         );
 
         $value = $this->parseFieldValuePart($assembledString);
@@ -283,7 +283,7 @@ abstract class AbstractAccept implements HeaderInterface
      */
     protected function hasType($matchAgainst)
     {
-        return (bool) $this->match($matchAgainst);
+        return (bool)$this->match($matchAgainst);
     }
 
     /**
@@ -344,8 +344,8 @@ abstract class AbstractAccept implements HeaderInterface
                     );
 
                     if (count($pieces) == 3 &&
-                        (version_compare($pieces[1], $match1->params[$key], '<=')  xor
-                         version_compare($pieces[2], $match1->params[$key], '>=')
+                        (version_compare($pieces[1], $match1->params[$key], '<=') xor
+                            version_compare($pieces[2], $match1->params[$key], '>=')
                         )
                     ) {
                         return false;

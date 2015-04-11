@@ -35,7 +35,7 @@ class Base implements FormatterInterface
         }
 
         if (is_array($dateTimeFormat)) {
-            $dateTimeFormat = isset($dateTimeFormat['dateTimeFormat'])? $dateTimeFormat['dateTimeFormat'] : null;
+            $dateTimeFormat = isset($dateTimeFormat['dateTimeFormat']) ? $dateTimeFormat['dateTimeFormat'] : null;
         }
 
         if (null !== $dateTimeFormat) {
@@ -102,7 +102,7 @@ class Base implements FormatterInterface
             $value = gettype($value);
         }
 
-        return (string) $value;
+        return (string)$value;
     }
 
     /**
@@ -118,7 +118,7 @@ class Base implements FormatterInterface
      */
     public function setDateTimeFormat($dateTimeFormat)
     {
-        $this->dateTimeFormat = (string) $dateTimeFormat;
+        $this->dateTimeFormat = (string)$dateTimeFormat;
         return $this;
     }
 }

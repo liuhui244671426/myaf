@@ -54,12 +54,12 @@ class Regex implements RouteInterface
      *
      * @param  string $regex
      * @param  string $spec
-     * @param  array  $defaults
+     * @param  array $defaults
      */
     public function __construct($regex, $spec, array $defaults = array())
     {
-        $this->regex    = $regex;
-        $this->spec     = $spec;
+        $this->regex = $regex;
+        $this->spec = $spec;
         $this->defaults = $defaults;
     }
 
@@ -107,7 +107,7 @@ class Regex implements RouteInterface
             return null;
         }
 
-        $uri  = $request->getUri();
+        $uri = $request->getUri();
         $path = $uri->getPath();
 
         if ($pathOffset !== null) {
@@ -143,8 +143,8 @@ class Regex implements RouteInterface
      */
     public function assemble(array $params = array(), array $options = array())
     {
-        $url                   = $this->spec;
-        $mergedParams          = array_merge($this->defaults, $params);
+        $url = $this->spec;
+        $mergedParams = array_merge($this->defaults, $params);
         $this->assembledParams = array();
 
         foreach ($mergedParams as $key => $value) {

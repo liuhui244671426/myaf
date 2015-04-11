@@ -20,20 +20,20 @@ class FormImage extends FormInput
      * @var array
      */
     protected $validTagAttributes = array(
-        'name'           => true,
-        'alt'            => true,
-        'autofocus'      => true,
-        'disabled'       => true,
-        'form'           => true,
-        'formaction'     => true,
-        'formenctype'    => true,
-        'formmethod'     => true,
+        'name' => true,
+        'alt' => true,
+        'autofocus' => true,
+        'disabled' => true,
+        'form' => true,
+        'formaction' => true,
+        'formenctype' => true,
+        'formmethod' => true,
         'formnovalidate' => true,
-        'formtarget'     => true,
-        'height'         => true,
-        'src'            => true,
-        'type'           => true,
-        'width'          => true,
+        'formtarget' => true,
+        'height' => true,
+        'src' => true,
+        'type' => true,
+        'width' => true,
     );
 
     /**

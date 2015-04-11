@@ -17,10 +17,10 @@ use Zend\Stdlib\ArrayUtils;
  */
 class Iban extends AbstractValidator
 {
-    const NOTSUPPORTED     = 'ibanNotSupported';
+    const NOTSUPPORTED = 'ibanNotSupported';
     const SEPANOTSUPPORTED = 'ibanSepaNotSupported';
-    const FALSEFORMAT      = 'ibanFalseFormat';
-    const CHECKFAILED      = 'ibanCheckFailed';
+    const FALSEFORMAT = 'ibanFalseFormat';
+    const CHECKFAILED = 'ibanCheckFailed';
 
     /**
      * Validation failure message template definitions
@@ -28,10 +28,10 @@ class Iban extends AbstractValidator
      * @var array
      */
     protected $messageTemplates = array(
-        self::NOTSUPPORTED     => "Unknown country within the IBAN",
+        self::NOTSUPPORTED => "Unknown country within the IBAN",
         self::SEPANOTSUPPORTED => "Countries outside the Single Euro Payments Area (SEPA) are not supported",
-        self::FALSEFORMAT      => "The input has a false IBAN format",
-        self::CHECKFAILED      => "The input has failed the IBAN check",
+        self::FALSEFORMAT => "The input has a false IBAN format",
+        self::CHECKFAILED => "The input has failed the IBAN check",
     );
 
     /**
@@ -173,7 +173,7 @@ class Iban extends AbstractValidator
     public function setCountryCode($countryCode = null)
     {
         if ($countryCode !== null) {
-            $countryCode = (string) $countryCode;
+            $countryCode = (string)$countryCode;
 
             if (!isset(static::$ibanRegex[$countryCode])) {
                 throw new Exception\InvalidArgumentException(
@@ -204,7 +204,7 @@ class Iban extends AbstractValidator
      */
     public function setAllowNonSepa($allowNonSepa)
     {
-        $this->allowNonSepa = (bool) $allowNonSepa;
+        $this->allowNonSepa = (bool)$allowNonSepa;
         return $this;
     }
 
@@ -248,15 +248,15 @@ class Iban extends AbstractValidator
 
         $format = substr($value, 4) . substr($value, 0, 4);
         $format = str_replace(
-            array('A',  'B',  'C',  'D',  'E',  'F',  'G',  'H',  'I',  'J',  'K',  'L',  'M',
-                  'N',  'O',  'P',  'Q',  'R',  'S',  'T',  'U',  'V',  'W',  'X',  'Y',  'Z'),
+            array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+                'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'),
             array('10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22',
-                  '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35'),
+                '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35'),
             $format
         );
 
         $temp = intval(substr($format, 0, 1));
-        $len  = strlen($format);
+        $len = strlen($format);
         for ($x = 1; $x < $len; ++$x) {
             $temp *= 10;
             $temp += intval(substr($format, $x, 1));

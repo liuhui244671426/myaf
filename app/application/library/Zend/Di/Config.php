@@ -27,7 +27,7 @@ class Config
     /**
      * Constructor
      *
-     * @param  array|Traversable                  $options
+     * @param  array|Traversable $options
      * @throws Exception\InvalidArgumentException
      */
     public function __construct($options)
@@ -47,7 +47,7 @@ class Config
     /**
      * Configure
      *
-     * @param  Di   $di
+     * @param  Di $di
      * @return void
      */
     public function configure(Di $di)
@@ -61,7 +61,7 @@ class Config
     }
 
     /**
-     * @param Di    $di
+     * @param Di $di
      * @param array $definition
      */
     public function configureDefinition(Di $di, $definition)

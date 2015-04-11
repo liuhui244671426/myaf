@@ -26,7 +26,7 @@ class ReCaptcha extends AbstractAdapter
      * @var string
      */
     protected $CHALLENGE = 'recaptcha_challenge_field';
-    protected $RESPONSE  = 'recaptcha_response_field';
+    protected $RESPONSE = 'recaptcha_response_field';
     /**@-*/
 
     /**
@@ -54,8 +54,8 @@ class ReCaptcha extends AbstractAdapter
      * Error codes
      */
     const MISSING_VALUE = 'missingValue';
-    const ERR_CAPTCHA   = 'errCaptcha';
-    const BAD_CAPTCHA   = 'badCaptcha';
+    const ERR_CAPTCHA = 'errCaptcha';
+    const BAD_CAPTCHA = 'badCaptcha';
     /**#@-*/
 
     /**
@@ -64,8 +64,8 @@ class ReCaptcha extends AbstractAdapter
      */
     protected $messageTemplates = array(
         self::MISSING_VALUE => 'Missing captcha fields',
-        self::ERR_CAPTCHA   => 'Failed to validate captcha',
-        self::BAD_CAPTCHA   => 'Captcha value is wrong: %value%',
+        self::ERR_CAPTCHA => 'Failed to validate captcha',
+        self::BAD_CAPTCHA => 'Captcha value is wrong: %value%',
     );
 
     /**
@@ -120,7 +120,7 @@ class ReCaptcha extends AbstractAdapter
     public function __construct($options = null)
     {
         $this->setService(new ReCaptchaService());
-        $this->serviceParams  = $this->getService()->getParams();
+        $this->serviceParams = $this->getService()->getParams();
         $this->serviceOptions = $this->getService()->getOptions();
 
         parent::__construct($options);

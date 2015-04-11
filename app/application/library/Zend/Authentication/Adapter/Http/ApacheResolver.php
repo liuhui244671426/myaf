@@ -92,7 +92,7 @@ class ApacheResolver implements ResolverInterface
      *
      *
      * @param  string $username Username
-     * @param  string $realm    Authentication Realm
+     * @param  string $realm Authentication Realm
      * @param  string $password The password to authenticate
      * @return AuthResult
      * @throws Exception\ExceptionInterface
@@ -121,7 +121,7 @@ class ApacheResolver implements ResolverInterface
 
         // Open file, read through looking for matching credentials
         ErrorHandler::start(E_WARNING);
-        $fp    = fopen($this->file, 'r');
+        $fp = fopen($this->file, 'r');
         $error = ErrorHandler::stop();
         if (!$fp) {
             throw new Exception\RuntimeException('Unable to open password file: ' . $this->file, 0, $error);

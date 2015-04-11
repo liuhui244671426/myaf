@@ -23,8 +23,8 @@ class DiStrictAbstractServiceFactory extends Di implements AbstractFactoryInterf
      * constants
      */
     const USE_SL_BEFORE_DI = 'before';
-    const USE_SL_AFTER_DI  = 'after';
-    const USE_SL_NONE      = 'none';
+    const USE_SL_AFTER_DI = 'after';
+    const USE_SL_NONE = 'none';
     /**@#-*/
 
     /**
@@ -55,8 +55,8 @@ class DiStrictAbstractServiceFactory extends Di implements AbstractFactoryInterf
     {
         $this->useServiceLocator = $useServiceLocator;
         // since we are using this in a proxy-fashion, localize state
-        $this->di              = $di;
-        $this->definitions     = $this->di->definitions;
+        $this->di = $di;
+        $this->definitions = $this->di->definitions;
         $this->instanceManager = $this->di->instanceManager;
     }
 

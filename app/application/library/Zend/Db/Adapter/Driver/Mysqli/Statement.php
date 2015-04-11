@@ -65,7 +65,7 @@ class Statement implements StatementInterface, Profiler\ProfilerAwareInterface
      */
     public function __construct($bufferResults = false)
     {
-        $this->bufferResults = (bool) $bufferResults;
+        $this->bufferResults = (bool)$bufferResults;
     }
 
     /**

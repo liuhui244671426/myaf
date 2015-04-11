@@ -16,9 +16,9 @@ abstract class AbstractAdapter implements AdapterInterface
      * @var array
      */
     protected $options = array(
-        'length'     => null,   // Allowed barcode lengths, integer, array, string
+        'length' => null,   // Allowed barcode lengths, integer, array, string
         'characters' => null,   // Allowed barcode characters
-        'checksum'   => null,   // Callback to checksum function
+        'checksum' => null,   // Callback to checksum function
         'useChecksum' => true,  // Is a checksum value included?, boolean
     );
 
@@ -34,8 +34,8 @@ abstract class AbstractAdapter implements AdapterInterface
             return false;
         }
 
-        $fixum  = strlen($value);
-        $found  = false;
+        $fixum = strlen($value);
+        $found = false;
         $length = $this->getLength();
         if (is_array($length)) {
             foreach ($length as $value) {
@@ -164,7 +164,7 @@ abstract class AbstractAdapter implements AdapterInterface
             return $this->options['useChecksum'];
         }
 
-        $this->options['useChecksum'] = (bool) $check;
+        $this->options['useChecksum'] = (bool)$check;
         return $this;
     }
 
@@ -202,8 +202,8 @@ abstract class AbstractAdapter implements AdapterInterface
     protected function gtin($value)
     {
         $barcode = substr($value, 0, -1);
-        $sum     = 0;
-        $length  = strlen($barcode) - 1;
+        $sum = 0;
+        $length = strlen($barcode) - 1;
 
         for ($i = 0; $i <= $length; $i++) {
             if (($i % 2) === 0) {
@@ -213,7 +213,7 @@ abstract class AbstractAdapter implements AdapterInterface
             }
         }
 
-        $calc     = $sum % 10;
+        $calc = $sum % 10;
         $checksum = ($calc === 0) ? 0 : (10 - $calc);
         if ($value[$length + 1] != $checksum) {
             return false;
@@ -232,8 +232,8 @@ abstract class AbstractAdapter implements AdapterInterface
     protected function identcode($value)
     {
         $barcode = substr($value, 0, -1);
-        $sum     = 0;
-        $length  = strlen($value) - 2;
+        $sum = 0;
+        $length = strlen($value) - 2;
 
         for ($i = 0; $i <= $length; $i++) {
             if (($i % 2) === 0) {
@@ -243,7 +243,7 @@ abstract class AbstractAdapter implements AdapterInterface
             }
         }
 
-        $calc     = $sum % 10;
+        $calc = $sum % 10;
         $checksum = ($calc === 0) ? 0 : (10 - $calc);
         if ($value[$length + 1] != $checksum) {
             return false;
@@ -262,8 +262,8 @@ abstract class AbstractAdapter implements AdapterInterface
     protected function code25($value)
     {
         $barcode = substr($value, 0, -1);
-        $sum     = 0;
-        $length  = strlen($barcode) - 1;
+        $sum = 0;
+        $length = strlen($barcode) - 1;
 
         for ($i = 0; $i <= $length; $i++) {
             if (($i % 2) === 0) {
@@ -273,7 +273,7 @@ abstract class AbstractAdapter implements AdapterInterface
             }
         }
 
-        $calc     = $sum % 10;
+        $calc = $sum % 10;
         $checksum = ($calc === 0) ? 0 : (10 - $calc);
         if ($value[$length + 1] != $checksum) {
             return false;
@@ -292,7 +292,7 @@ abstract class AbstractAdapter implements AdapterInterface
     protected function postnet($value)
     {
         $checksum = substr($value, -1, 1);
-        $values   = str_split(substr($value, 0, -1));
+        $values = str_split(substr($value, 0, -1));
 
         $check = 0;
         foreach ($values as $row) {

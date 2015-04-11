@@ -103,7 +103,7 @@ class Callback
      */
     public function setFunction($function)
     {
-        $this->function = (string) $function;
+        $this->function = (string)$function;
         $this->setType('function');
         return $this;
     }
@@ -180,7 +180,7 @@ class Callback
         if ('function' == $type) {
             $array['function'] = $this->getFunction();
         } else {
-            $array['class']  = $this->getClass();
+            $array['class'] = $this->getClass();
             $array['method'] = $this->getMethod();
         }
         return $array;

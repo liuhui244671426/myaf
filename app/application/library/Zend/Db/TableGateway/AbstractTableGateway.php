@@ -221,7 +221,8 @@ abstract class AbstractTableGateway implements TableGatewayInterface
         }
 
         if ($selectState['columns'] == array(Select::SQL_STAR)
-            && $this->columns !== array()) {
+            && $this->columns !== array()
+        ) {
             $select->columns($this->columns);
         }
 

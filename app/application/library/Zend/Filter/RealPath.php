@@ -47,7 +47,7 @@ class RealPath extends AbstractFilter
      */
     public function setExists($flag = true)
     {
-        $this->options['exists'] = (bool) $flag;
+        $this->options['exists'] = (bool)$flag;
         return $this;
     }
 
@@ -76,7 +76,7 @@ class RealPath extends AbstractFilter
         if (!is_string($value)) {
             return $value;
         }
-        $path = (string) $value;
+        $path = (string)$value;
 
         if ($this->options['exists']) {
             return realpath($path);
@@ -95,7 +95,7 @@ class RealPath extends AbstractFilter
             if (preg_match('/([a-zA-Z]\:)(.*)/', $path, $matches)) {
                 list(, $drive, $path) = $matches;
             } else {
-                $cwd   = getcwd();
+                $cwd = getcwd();
                 $drive = substr($cwd, 0, 2);
                 if (substr($path, 0, 1) != DIRECTORY_SEPARATOR) {
                     $path = substr($cwd, 3) . DIRECTORY_SEPARATOR . $path;

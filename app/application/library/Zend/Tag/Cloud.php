@@ -299,7 +299,7 @@ class Cloud
             return '';
         }
 
-        $tagsResult  = $this->getTagDecorator()->render($tags);
+        $tagsResult = $this->getTagDecorator()->render($tags);
         $cloudResult = $this->getCloudDecorator()->render($tagsResult);
 
         return $cloudResult;
@@ -317,7 +317,7 @@ class Cloud
             return $result;
         } catch (\Exception $e) {
             $message = "Exception caught by tag cloud: " . $e->getMessage()
-                     . "\nStack Trace:\n" . $e->getTraceAsString();
+                . "\nStack Trace:\n" . $e->getTraceAsString();
             trigger_error($message, E_USER_WARNING);
             return '';
         }

@@ -91,7 +91,7 @@ class Uri extends AbstractValidator
             $this->uriHandler = new $this->uriHandler;
         }
 
-        if (! $this->uriHandler instanceof UriHandler) {
+        if (!$this->uriHandler instanceof UriHandler) {
             throw new InvalidArgumentException('URI handler is expected to be a Zend\Uri\Uri object');
         }
 
@@ -105,7 +105,7 @@ class Uri extends AbstractValidator
      */
     public function setUriHandler($uriHandler)
     {
-        if (! is_subclass_of($uriHandler, 'Zend\Uri\Uri')) {
+        if (!is_subclass_of($uriHandler, 'Zend\Uri\Uri')) {
             throw new InvalidArgumentException('Expecting a subclass name or instance of Zend\Uri\Uri as $uriHandler');
         }
 
@@ -131,7 +131,7 @@ class Uri extends AbstractValidator
      */
     public function setAllowAbsolute($allowAbsolute)
     {
-        $this->allowAbsolute = (bool) $allowAbsolute;
+        $this->allowAbsolute = (bool)$allowAbsolute;
         return $this;
     }
 
@@ -153,7 +153,7 @@ class Uri extends AbstractValidator
      */
     public function setAllowRelative($allowRelative)
     {
-        $this->allowRelative = (bool) $allowRelative;
+        $this->allowRelative = (bool)$allowRelative;
         return $this;
     }
 

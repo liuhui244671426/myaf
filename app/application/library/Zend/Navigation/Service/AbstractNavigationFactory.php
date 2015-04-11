@@ -64,7 +64,7 @@ abstract class AbstractNavigationFactory implements FactoryInterface
                 ));
             }
 
-            $pages       = $this->getPagesFromConfig($configuration['navigation'][$this->getName()]);
+            $pages = $this->getPagesFromConfig($configuration['navigation'][$this->getName()]);
             $this->pages = $this->preparePages($serviceLocator, $pages);
         }
         return $this->pages;
@@ -78,9 +78,9 @@ abstract class AbstractNavigationFactory implements FactoryInterface
     protected function preparePages(ServiceLocatorInterface $serviceLocator, $pages)
     {
         $application = $serviceLocator->get('Application');
-        $routeMatch  = $application->getMvcEvent()->getRouteMatch();
-        $router      = $application->getMvcEvent()->getRouter();
-        $request     = $application->getMvcEvent()->getRequest();
+        $routeMatch = $application->getMvcEvent()->getRouteMatch();
+        $router = $application->getMvcEvent()->getRouter();
+        $request = $application->getMvcEvent()->getRequest();
 
         // HTTP request is the only one that may be injected
         if (!$request instanceof Request) {

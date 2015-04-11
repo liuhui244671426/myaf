@@ -24,7 +24,7 @@ class PrivateKey extends AbstractKey
     /**
      * Create private key instance from PEM formatted key file
      *
-     * @param  string      $pemFile
+     * @param  string $pemFile
      * @param  string|null $passPhrase
      * @return PrivateKey
      * @throws Exception\InvalidArgumentException
@@ -56,9 +56,9 @@ class PrivateKey extends AbstractKey
             );
         }
 
-        $this->pemString          = $pemString;
+        $this->pemString = $pemString;
         $this->opensslKeyResource = $result;
-        $this->details            = openssl_pkey_get_details($this->opensslKeyResource);
+        $this->details = openssl_pkey_get_details($this->opensslKeyResource);
     }
 
     /**

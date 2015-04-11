@@ -1,4 +1,5 @@
 <?php
+
 /**
  *
  * Handle request object ...
@@ -118,6 +119,7 @@ abstract class Yaf_Request_Abstract
     {
         return $this->_exception;
     }
+
     /**
      * Retrieve the language
      * @return string
@@ -169,12 +171,13 @@ abstract class Yaf_Request_Abstract
      */
     public function getParam($name, $default = null)
     {
-        $name = (string) $name;
+        $name = (string)$name;
         if (isset($this->params[$name])) {
             return $this->params[$name];
         }
         return $default;
     }
+
     /*
      * mothed: get
      * author: liuhui
@@ -183,6 +186,7 @@ abstract class Yaf_Request_Abstract
     {
 
     }
+
     /*
      * mothed: post
      * author: liuhui
@@ -191,6 +195,7 @@ abstract class Yaf_Request_Abstract
     {
 
     }
+
     /*
      * mothed: post
      * author: liuhui
@@ -209,9 +214,11 @@ abstract class Yaf_Request_Abstract
     {
         return $this->params;
     }
+
     public function getRequestUri()
     {
     }
+
     /**
      * Retrieve a member of the $_SERVER superglobal
      *
@@ -236,6 +243,7 @@ abstract class Yaf_Request_Abstract
         }
         return false;
     }
+
     /**
      * Determine if the request has been dispatched
      *
@@ -300,7 +308,7 @@ abstract class Yaf_Request_Abstract
         return false;
     }
 
-   /**
+    /**
      * Was the request made by PUT?
      *
      * @return boolean
@@ -340,7 +348,7 @@ abstract class Yaf_Request_Abstract
         return (strcasecmp(
             $this->getServer('HTTP_X_REQUESTED_WITH'),
             'XMLHttpRequest'
-        )==0?true:false);
+        ) == 0 ? true : false);
     }
 
     /**
@@ -370,9 +378,11 @@ abstract class Yaf_Request_Abstract
         }
         return $this;
     }
+
     public function setBaseUri($baseUri = null)
     {
     }
+
     /**
      * Set the controller name to use
      *
@@ -388,7 +398,7 @@ abstract class Yaf_Request_Abstract
         return $this;
     }
 
-    public function setDispatched($dispatched=true)
+    public function setDispatched($dispatched = true)
     {
         $this->dispatched = $dispatched;
     }
@@ -417,10 +427,10 @@ abstract class Yaf_Request_Abstract
      * @param mixed $value
      * @return Yaf_Request_Abstract
      */
-    public function setParam($name, $value=null)
+    public function setParam($name, $value = null)
     {
         if (is_array($name)) {
-            $this->params = $this->params + (array) $name;
+            $this->params = $this->params + (array)$name;
 
             /*foreach ($name as $key => $value) {
                 if (null === $value) {
@@ -428,7 +438,7 @@ abstract class Yaf_Request_Abstract
                 }
             }*/
         } else {
-            $name = (string) $name;
+            $name = (string)$name;
 
             /*if ((null === $value) && isset($this->_params[$name])) {
                 unset($this->_params[$name]);
@@ -450,9 +460,11 @@ abstract class Yaf_Request_Abstract
         $this->params = array();
         return $this;
     }
+
     public function setRequestUri($requestUri = null)
     {
     }
+
     /**
      * Set flag indicating whether or not request has been dispatched
      *

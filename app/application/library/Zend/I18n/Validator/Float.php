@@ -22,14 +22,14 @@ use Zend\Validator\Exception;
 
 class Float extends AbstractValidator
 {
-    const INVALID   = 'floatInvalid';
+    const INVALID = 'floatInvalid';
     const NOT_FLOAT = 'notFloat';
 
     /**
      * @var array
      */
     protected $messageTemplates = array(
-        self::INVALID   => "Invalid type given. String, integer or float expected",
+        self::INVALID => "Invalid type given. String, integer or float expected",
         self::NOT_FLOAT => "The input does not appear to be a float",
     );
 
@@ -148,7 +148,7 @@ class Float extends AbstractValidator
          *       official unicode chracter. We need to replace those with the real thing - or remove it.
          */
         $groupSeparator = $formatter->getSymbol(NumberFormatter::GROUPING_SEPARATOR_SYMBOL);
-        $decSeparator   = $formatter->getSymbol(NumberFormatter::DECIMAL_SEPARATOR_SYMBOL);
+        $decSeparator = $formatter->getSymbol(NumberFormatter::DECIMAL_SEPARATOR_SYMBOL);
 
         //NO-BREAK SPACE and ARABIC THOUSANDS SEPARATOR
         if ($groupSeparator == "\xC2\xA0") {
@@ -163,7 +163,7 @@ class Float extends AbstractValidator
         }
 
         $groupSeparatorPosition = $this->wrapper->strpos($value, $groupSeparator);
-        $decSeparatorPosition   = $this->wrapper->strpos($value, $decSeparator);
+        $decSeparatorPosition = $this->wrapper->strpos($value, $decSeparator);
 
         //We have seperators, and they are flipped. i.e. 2.000,000 for en-US
         if ($groupSeparatorPosition && $decSeparatorPosition && $groupSeparatorPosition > $decSeparatorPosition) {
@@ -173,33 +173,33 @@ class Float extends AbstractValidator
         }
 
         //If we have Unicode support, we can use the real graphemes, otherwise, just the ASCII characters
-        $decimal     = '['. preg_quote($decSeparator, '/') . ']';
-        $prefix      = '[+-]';
-        $exp         = $exponentialSymbols;
+        $decimal = '[' . preg_quote($decSeparator, '/') . ']';
+        $prefix = '[+-]';
+        $exp = $exponentialSymbols;
         $numberRange = '0-9';
-        $useUnicode  = '';
-        $suffix      = '';
+        $useUnicode = '';
+        $suffix = '';
 
         if (StringUtils::hasPcreUnicodeSupport()) {
             $prefix = '['
-                .  preg_quote(
+                . preg_quote(
                     $formatter->getTextAttribute(NumberFormatter::POSITIVE_PREFIX)
-                    .  $formatter->getTextAttribute(NumberFormatter::NEGATIVE_PREFIX)
-                    .  $formatter->getSymbol(NumberFormatter::PLUS_SIGN_SYMBOL)
-                    .  $formatter->getSymbol(NumberFormatter::MINUS_SIGN_SYMBOL),
+                    . $formatter->getTextAttribute(NumberFormatter::NEGATIVE_PREFIX)
+                    . $formatter->getSymbol(NumberFormatter::PLUS_SIGN_SYMBOL)
+                    . $formatter->getSymbol(NumberFormatter::MINUS_SIGN_SYMBOL),
                     '/'
                 )
                 . ']{0,3}';
             $suffix = ($formatter->getTextAttribute(NumberFormatter::NEGATIVE_SUFFIX))
                 ? '['
-                    .  preg_quote(
-                        $formatter->getTextAttribute(NumberFormatter::POSITIVE_SUFFIX)
-                        .  $formatter->getTextAttribute(NumberFormatter::NEGATIVE_SUFFIX)
-                        .  $formatter->getSymbol(NumberFormatter::PLUS_SIGN_SYMBOL)
-                        .  $formatter->getSymbol(NumberFormatter::MINUS_SIGN_SYMBOL),
-                        '/'
-                    )
-                    . ']{0,3}'
+                . preg_quote(
+                    $formatter->getTextAttribute(NumberFormatter::POSITIVE_SUFFIX)
+                    . $formatter->getTextAttribute(NumberFormatter::NEGATIVE_SUFFIX)
+                    . $formatter->getSymbol(NumberFormatter::PLUS_SIGN_SYMBOL)
+                    . $formatter->getSymbol(NumberFormatter::MINUS_SIGN_SYMBOL),
+                    '/'
+                )
+                . ']{0,3}'
                 : '';
             $numberRange = '\p{N}';
             $useUnicode = 'u';
@@ -216,17 +216,17 @@ class Float extends AbstractValidator
          * @see http://www.php.net/float
          */
 
-        $lnum    = '[' . $numberRange . ']+';
-        $dnum    = '(([' . $numberRange . ']*' . $decimal . $lnum . ')|(' . $lnum . $decimal . '[' . $numberRange . ']*))';
+        $lnum = '[' . $numberRange . ']+';
+        $dnum = '(([' . $numberRange . ']*' . $decimal . $lnum . ')|(' . $lnum . $decimal . '[' . $numberRange . ']*))';
         $expDnum = '((' . $prefix . '((' . $lnum . '|' . $dnum . ')' . $exp . $prefix . $lnum . ')' . $suffix . ')|'
             . '(' . $suffix . '(' . $lnum . $prefix . $exp . '(' . $dnum . '|' . $lnum . '))' . $prefix . '))';
 
         // LEFT-TO-RIGHT MARK (U+200E) is messing up everything for the handful
         // of locales that have it
-        $lnumSearch     = str_replace("\xE2\x80\x8E", '', '/^' .$prefix . $lnum . $suffix . '$/' . $useUnicode);
-        $dnumSearch     = str_replace("\xE2\x80\x8E", '', '/^' .$prefix . $dnum . $suffix . '$/' . $useUnicode);
-        $expDnumSearch  = str_replace("\xE2\x80\x8E", '', '/^' . $expDnum . '$/' . $useUnicode);
-        $value          = str_replace("\xE2\x80\x8E", '', $value);
+        $lnumSearch = str_replace("\xE2\x80\x8E", '', '/^' . $prefix . $lnum . $suffix . '$/' . $useUnicode);
+        $dnumSearch = str_replace("\xE2\x80\x8E", '', '/^' . $prefix . $dnum . $suffix . '$/' . $useUnicode);
+        $expDnumSearch = str_replace("\xE2\x80\x8E", '', '/^' . $expDnum . '$/' . $useUnicode);
+        $value = str_replace("\xE2\x80\x8E", '', $value);
         $unGroupedValue = str_replace($groupSeparator, '', $value);
 
         // No strrpos() in wrappers yet. ICU 4.x doesn't have grouping size for
@@ -237,8 +237,8 @@ class Float extends AbstractValidator
         $lastStringGroup = $this->wrapper->substr($value, -$groupSize);
 
         if ((preg_match($lnumSearch, $unGroupedValue)
-            || preg_match($dnumSearch, $unGroupedValue)
-            || preg_match($expDnumSearch, $unGroupedValue))
+                || preg_match($dnumSearch, $unGroupedValue)
+                || preg_match($expDnumSearch, $unGroupedValue))
             && false === $this->wrapper->strpos($lastStringGroup, $groupSeparator)
         ) {
             return true;

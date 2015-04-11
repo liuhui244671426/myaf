@@ -35,7 +35,7 @@ class Db implements FormatterInterface
         }
 
         if (is_array($dateTimeFormat)) {
-            $dateTimeFormat = isset($dateTimeFormat['dateTimeFormat'])? $dateTimeFormat['dateTimeFormat'] : null;
+            $dateTimeFormat = isset($dateTimeFormat['dateTimeFormat']) ? $dateTimeFormat['dateTimeFormat'] : null;
         }
 
         if (null !== $dateTimeFormat) {
@@ -74,7 +74,7 @@ class Db implements FormatterInterface
      */
     public function setDateTimeFormat($dateTimeFormat)
     {
-        $this->dateTimeFormat = (string) $dateTimeFormat;
+        $this->dateTimeFormat = (string)$dateTimeFormat;
         return $this;
     }
 }

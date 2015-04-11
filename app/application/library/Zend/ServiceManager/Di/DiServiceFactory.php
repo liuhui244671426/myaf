@@ -21,8 +21,8 @@ class DiServiceFactory extends Di implements FactoryInterface
      * constants
      */
     const USE_SL_BEFORE_DI = 'before';
-    const USE_SL_AFTER_DI  = 'after';
-    const USE_SL_NONE      = 'none';
+    const USE_SL_AFTER_DI = 'after';
+    const USE_SL_NONE = 'none';
     /**@#-*/
 
     /**

@@ -266,14 +266,16 @@ class Pdo implements DriverInterface, DriverFeatureInterface, Profiler\ProfilerA
         // special feature, sqlite PDO counter
         if ($this->connection->getDriverName() == 'sqlite'
             && ($sqliteRowCounter = $this->getFeature('SqliteRowCounter'))
-            && $resource->columnCount() > 0) {
+            && $resource->columnCount() > 0
+        ) {
             $rowCount = $sqliteRowCounter->getRowCountClosure($context);
         }
 
         // special feature, oracle PDO counter
         if ($this->connection->getDriverName() == 'oci'
             && ($oracleRowCounter = $this->getFeature('OracleRowCounter'))
-            && $resource->columnCount() > 0) {
+            && $resource->columnCount() > 0
+        ) {
             $rowCount = $oracleRowCounter->getRowCountClosure($context);
         }
 

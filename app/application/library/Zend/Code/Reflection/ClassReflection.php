@@ -76,8 +76,8 @@ class ClassReflection extends ReflectionClass implements ReflectionInterface
             return $this->annotations;
         }
 
-        $fileScanner       = $this->createFileScanner($this->getFileName());
-        $nameInformation   = $fileScanner->getClassNameInformation($this->getName());
+        $fileScanner = $this->createFileScanner($this->getFileName());
+        $nameInformation = $fileScanner->getClassNameInformation($this->getName());
 
         if (!$nameInformation) {
             return false;
@@ -113,17 +113,17 @@ class ClassReflection extends ReflectionClass implements ReflectionInterface
     {
         $fileName = $this->getFileName();
 
-        if (false === $fileName || ! file_exists($fileName)) {
+        if (false === $fileName || !file_exists($fileName)) {
             return '';
         }
 
         $filelines = file($fileName);
-        $startnum  = $this->getStartLine($includeDocBlock);
-        $endnum    = $this->getEndLine() - $this->getStartLine();
+        $startnum = $this->getStartLine($includeDocBlock);
+        $endnum = $this->getEndLine() - $this->getStartLine();
 
         // Ensure we get between the open and close braces
         $lines = array_slice($filelines, $startnum, $endnum);
-        array_unshift($lines, $filelines[$startnum-1]);
+        array_unshift($lines, $filelines[$startnum - 1]);
 
         return strstr(implode('', $lines), '{');
     }
@@ -135,10 +135,10 @@ class ClassReflection extends ReflectionClass implements ReflectionInterface
      */
     public function getInterfaces()
     {
-        $phpReflections  = parent::getInterfaces();
+        $phpReflections = parent::getInterfaces();
         $zendReflections = array();
         while ($phpReflections && ($phpReflection = array_shift($phpReflections))) {
-            $instance          = new ClassReflection($phpReflection->getName());
+            $instance = new ClassReflection($phpReflection->getName());
             $zendReflections[] = $instance;
             unset($phpReflection);
         }
@@ -170,7 +170,7 @@ class ClassReflection extends ReflectionClass implements ReflectionInterface
     {
         $methods = array();
         foreach (parent::getMethods($filter) as $method) {
-            $instance  = new MethodReflection($this->getName(), $method->getName());
+            $instance = new MethodReflection($this->getName(), $method->getName());
             $methods[] = $instance;
         }
 
@@ -203,7 +203,7 @@ class ClassReflection extends ReflectionClass implements ReflectionInterface
      */
     public function getProperty($name)
     {
-        $phpReflection  = parent::getProperty($name);
+        $phpReflection = parent::getProperty($name);
         $zendReflection = new PropertyReflection($this->getName(), $phpReflection->getName());
         unset($phpReflection);
 
@@ -218,10 +218,10 @@ class ClassReflection extends ReflectionClass implements ReflectionInterface
      */
     public function getProperties($filter = -1)
     {
-        $phpReflections  = parent::getProperties($filter);
+        $phpReflections = parent::getProperties($filter);
         $zendReflections = array();
         while ($phpReflections && ($phpReflection = array_shift($phpReflections))) {
-            $instance          = new PropertyReflection($this->getName(), $phpReflection->getName());
+            $instance = new PropertyReflection($this->getName(), $phpReflection->getName());
             $zendReflections[] = $instance;
             unset($phpReflection);
         }

@@ -45,7 +45,7 @@ class OptionalParametersFilter implements FilterInterface
         $mandatoryParameters = array_filter(
             $reflectionMethod->getParameters(),
             function (ReflectionParameter $parameter) {
-                return ! $parameter->isOptional();
+                return !$parameter->isOptional();
             }
         );
 

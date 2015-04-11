@@ -38,7 +38,7 @@ class Session implements \Iterator, \ArrayAccess, \Countable
      *
      * @return int
      */
-    public function count ()
+    public function count()
     {
         return count($this->session);
     }
@@ -48,7 +48,7 @@ class Session implements \Iterator, \ArrayAccess, \Countable
      *
      * @return mixed
      */
-    public function current ()
+    public function current()
     {
         return current($this->session);
     }
@@ -69,7 +69,7 @@ class Session implements \Iterator, \ArrayAccess, \Countable
      * @param string $name
      * @return mixed
      */
-    public function __get ($name)
+    public function __get($name)
     {
         $result = null;
         if ($name == null) {
@@ -108,9 +108,9 @@ class Session implements \Iterator, \ArrayAccess, \Countable
      * @param string $name
      * @return boolean
      */
-    public function __isset ($name)
+    public function __isset($name)
     {
-        return (isset($this->session[$name])?true:isset($_SESSION[$name]));
+        return (isset($this->session[$name]) ? true : isset($_SESSION[$name]));
     }
 
     /**
@@ -118,15 +118,16 @@ class Session implements \Iterator, \ArrayAccess, \Countable
      *
      * @return mixed
      */
-    public function key ()
+    public function key()
     {
         return key($this->session);
     }
+
     /**
      * Defined by Iterator interface
      *
      */
-    public function next ()
+    public function next()
     {
         next($this->session);
     }
@@ -137,36 +138,39 @@ class Session implements \Iterator, \ArrayAccess, \Countable
      * @param string $name
      * @return boolean
      */
-    public function offsetExists ($name)
+    public function offsetExists($name)
     {
         return $this->__isset($name);
     }
+
     /**
      * Return a session value specified by name
      * @param  string $name
      * @return mixed
      */
-    public function offsetGet ($name)
+    public function offsetGet($name)
     {
         return $this->__get($name);
     }
+
     /**
      * Set a key of the session with value
      * @param  string $name
      * @param  string $value
      * @return void
      */
-    public function offsetSet ($name, $value)
+    public function offsetSet($name, $value)
     {
         return $this->__set($name, $value);
     }
+
     /**
      * Support unset() overloading on PHP 5.1
      *
      * @param  string $name
      * @return void
      */
-    public function offsetUnset ($name)
+    public function offsetUnset($name)
     {
         unset($this->session[$name]);
         unset($_SESSION[$name]);
@@ -176,20 +180,21 @@ class Session implements \Iterator, \ArrayAccess, \Countable
      * Defined by Iterator interface
      *
      */
-    public function rewind ()
+    public function rewind()
     {
         reset($this->session);
     }
+
     /**
      * Allow setting of a session variable.
      * Throw an exception if the name is not string.
      *
      * @param  string $name
-     * @param  mixed  $value
+     * @param  mixed $value
      * @throws Yaf_Exception
      * @return void
      */
-    public function __set ($name, $value)
+    public function __set($name, $value)
     {
         if (is_string($name)) {
             $this->session[$name] = $value;
@@ -218,6 +223,7 @@ class Session implements \Iterator, \ArrayAccess, \Countable
             $session->session = $_SESSION;
         }
     }
+
     /**
      * Support unset() overloading on PHP 5.1
      *
@@ -228,15 +234,16 @@ class Session implements \Iterator, \ArrayAccess, \Countable
     {
         unset($this->session[$name]);
     }
+
     /**
      * Defined by Iterator interface
      *
      * @return boolean
      */
-    public function valid ()
+    public function valid()
     {
         $key = key($this->session);
-        return ($key == null || $key == false) ? false: true;
+        return ($key == null || $key == false) ? false : true;
     }
 
     protected function __wakeup()

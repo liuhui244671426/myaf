@@ -40,9 +40,9 @@ abstract class AbstractTranslatorHelper extends AbstractHelper implements
     /**
      * Sets translator to use in helper
      *
-     * @param  Translator $translator  [optional] translator.
+     * @param  Translator $translator [optional] translator.
      *                                 Default is null, which sets no translator.
-     * @param  string     $textDomain  [optional] text domain
+     * @param  string $textDomain [optional] text domain
      *                                 Default is null, which skips setTranslatorTextDomain
      * @return AbstractTranslatorHelper
      */
@@ -63,7 +63,7 @@ abstract class AbstractTranslatorHelper extends AbstractHelper implements
      */
     public function getTranslator()
     {
-        if (! $this->isTranslatorEnabled()) {
+        if (!$this->isTranslatorEnabled()) {
             return null;
         }
 
@@ -77,7 +77,7 @@ abstract class AbstractTranslatorHelper extends AbstractHelper implements
      */
     public function hasTranslator()
     {
-        return (bool) $this->getTranslator();
+        return (bool)$this->getTranslator();
     }
 
     /**
@@ -88,7 +88,7 @@ abstract class AbstractTranslatorHelper extends AbstractHelper implements
      */
     public function setTranslatorEnabled($enabled = true)
     {
-        $this->translatorEnabled = (bool) $enabled;
+        $this->translatorEnabled = (bool)$enabled;
         return $this;
     }
 

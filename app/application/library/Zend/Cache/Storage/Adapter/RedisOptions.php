@@ -47,7 +47,7 @@ class RedisOptions extends AdapterOptions
      */
     public function setNamespace($namespace)
     {
-        $namespace = (string) $namespace;
+        $namespace = (string)$namespace;
 
         if (128 < strlen($namespace)) {
             throw new Exception\InvalidArgumentException(sprintf(
@@ -67,7 +67,7 @@ class RedisOptions extends AdapterOptions
      */
     public function setNamespaceSeparator($namespaceSeparator)
     {
-        $namespaceSeparator = (string) $namespaceSeparator;
+        $namespaceSeparator = (string)$namespaceSeparator;
         if ($this->namespaceSeparator !== $namespaceSeparator) {
             $this->triggerOptionEvent('namespace_separator', $namespaceSeparator);
             $this->namespaceSeparator = $namespaceSeparator;
@@ -131,7 +131,7 @@ class RedisOptions extends AdapterOptions
      */
     public function setResourceId($resourceId)
     {
-        $resourceId = (string) $resourceId;
+        $resourceId = (string)$resourceId;
         if ($this->resourceId !== $resourceId) {
             $this->triggerOptionEvent('resource_id', $resourceId);
             $this->resourceId = $resourceId;
@@ -162,13 +162,13 @@ class RedisOptions extends AdapterOptions
         return $this;
     }
 
-     /**
-    * Set redis options
-    *
-    * @param array $libOptions
-    * @return RedisOptions
-    * @link http://github.com/nicolasff/phpredis#setoption
-    */
+    /**
+     * Set redis options
+     *
+     * @param array $libOptions
+     * @return RedisOptions
+     * @link http://github.com/nicolasff/phpredis#setoption
+     */
     public function setLibOptions(array $libOptions)
     {
         $this->triggerOptionEvent('lib_option', $libOptions);

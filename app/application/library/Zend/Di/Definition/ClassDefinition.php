@@ -73,7 +73,7 @@ class ClassDefinition implements DefinitionInterface, PartialMarker
     }
 
     /**
-     * @param  string    $method
+     * @param  string $method
      * @param  mixed|bool|null $isRequired
      * @return self
      */
@@ -97,7 +97,7 @@ class ClassDefinition implements DefinitionInterface, PartialMarker
     /**
      * @param $method
      * @param $parameterName
-     * @param  array           $parameterInfo (keys: required, type)
+     * @param  array $parameterInfo (keys: required, type)
      * @return ClassDefinition
      */
     public function addMethodParameter($method, $parameterName, array $parameterInfo)
@@ -114,9 +114,9 @@ class ClassDefinition implements DefinitionInterface, PartialMarker
             $this->methodParameters[$method] = array();
         }
 
-        $type     = (isset($parameterInfo['type'])) ? $parameterInfo['type'] : null;
-        $required = (isset($parameterInfo['required'])) ? (bool) $parameterInfo['required'] : false;
-        $default  = (isset($parameterInfo['default'])) ? $parameterInfo['default'] : null;
+        $type = (isset($parameterInfo['type'])) ? $parameterInfo['type'] : null;
+        $required = (isset($parameterInfo['required'])) ? (bool)$parameterInfo['required'] : false;
+        $default = (isset($parameterInfo['default'])) ? $parameterInfo['default'] : null;
 
         $fqName = $this->class . '::' . $method . ':' . $parameterName;
         $this->methodParameters[$method][$fqName] = array(

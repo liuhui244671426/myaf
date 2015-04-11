@@ -27,7 +27,7 @@ class AssertionManager extends AbstractPluginManager
      */
     public function validatePlugin($plugin)
     {
-        if (! $plugin instanceof AssertionInterface) {
+        if (!$plugin instanceof AssertionInterface) {
             throw new InvalidArgumentException(
                 sprintf(
                     'Plugin of type %s is invalid; must implement Zend\Permissions\Acl\Assertion\AssertionInterface',

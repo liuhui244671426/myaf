@@ -26,8 +26,8 @@ class DecoratorManager extends AbstractPluginManager
      * @var array
      */
     protected $invokableClasses = array(
-        'ascii'   => 'Zend\Text\Table\Decorator\Ascii',
-        'blank'   => 'Zend\Text\Table\Decorator\Blank',
+        'ascii' => 'Zend\Text\Table\Decorator\Ascii',
+        'blank' => 'Zend\Text\Table\Decorator\Blank',
         'unicode' => 'Zend\Text\Table\Decorator\Unicode',
     );
 

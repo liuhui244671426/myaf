@@ -133,7 +133,7 @@ class PluginOptions extends AbstractOptions
      */
     public function setExitOnAbort($exitOnAbort)
     {
-        $this->exitOnAbort = (bool) $exitOnAbort;
+        $this->exitOnAbort = (bool)$exitOnAbort;
         return $this;
     }
 
@@ -213,7 +213,7 @@ class PluginOptions extends AbstractOptions
             // use default serializer
             if (!$this->serializer) {
                 $this->setSerializer(SerializerFactory::getDefaultAdapter());
-            // instantiate by class name + serializer_options
+                // instantiate by class name + serializer_options
             } else {
                 $options = $this->getSerializerOptions();
                 $this->setSerializer(SerializerFactory::factory($this->serializer, $options));
@@ -261,7 +261,7 @@ class PluginOptions extends AbstractOptions
      */
     public function setThrowExceptions($throwExceptions)
     {
-        $this->throwExceptions = (bool) $throwExceptions;
+        $this->throwExceptions = (bool)$throwExceptions;
         return $this;
     }
 
@@ -289,7 +289,7 @@ class PluginOptions extends AbstractOptions
      */
     protected function normalizeFactor($factor)
     {
-        $factor = (int) $factor;
+        $factor = (int)$factor;
         if ($factor < 0) {
             throw new Exception\InvalidArgumentException(
                 "Invalid factor '{$factor}': must be greater or equal 0"

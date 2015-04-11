@@ -35,7 +35,7 @@ class Sliding implements ScrollingStyleInterface
         }
 
         $pageNumber = $paginator->getCurrentPageNumber();
-        $pageCount  = count($paginator);
+        $pageCount = count($paginator);
 
         if ($pageRange > $pageCount) {
             $pageRange = $pageCount;
@@ -51,7 +51,7 @@ class Sliding implements ScrollingStyleInterface
                 $delta = $pageNumber;
             }
 
-            $offset     = $pageNumber - $delta;
+            $offset = $pageNumber - $delta;
             $lowerBound = $offset + 1;
             $upperBound = $offset + $pageRange;
         }

@@ -16,7 +16,7 @@ abstract class AbstractIterator implements RecursiveIterator
     /**
      * @var int
      */
-    protected $index    = 0;
+    protected $index = 0;
     /**
      * @var array
      */

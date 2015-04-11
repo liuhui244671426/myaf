@@ -22,9 +22,9 @@ class Constant extends Token implements ProcessorInterface
      * Constant Processor walks through a Config structure and replaces all
      * PHP constants with their respective values
      *
-     * @param bool   $userOnly              True to process only user-defined constants, false to process all PHP constants
-     * @param string $prefix                Optional prefix
-     * @param string $suffix                Optional suffix
+     * @param bool $userOnly True to process only user-defined constants, false to process all PHP constants
+     * @param string $prefix Optional prefix
+     * @param string $suffix Optional suffix
      * @return \Zend\Config\Processor\Constant
      */
     public function __construct($userOnly = true, $prefix = '', $suffix = '')
@@ -52,7 +52,7 @@ class Constant extends Token implements ProcessorInterface
      */
     public function setUserOnly($userOnly)
     {
-        $this->userOnly = (bool) $userOnly;
+        $this->userOnly = (bool)$userOnly;
         return $this;
     }
 

@@ -1,10 +1,10 @@
 <?php
+
 /**
  * @Create Author : huiliu//刘辉
  * @Create Time: 14-8-18 下午7:01
  * @Desc :
  */
-
 class IndexController extends BaseController
 {
     public function doInit()
@@ -31,7 +31,8 @@ class IndexController extends BaseController
         $log->addError('logger error');
     }
 
-    public function TestTwigAction(){
+    public function TestTwigAction()
+    {
         $a = 'hello';
         $b = 'world';
         $c = APP_NAME;
@@ -40,15 +41,16 @@ class IndexController extends BaseController
         $this->getView()->display('TestTwig.phtml', array('a' => $a, 'b' => $b, 'c' => $c));
     }
 
-    public function clearCacheAction(){
+    public function clearCacheAction()
+    {
 
         $handle = opendir(CACHE_PATH);
-        while(($file = readdir($handle)) !== false){
-            if($file != '.' && $file != '..') {
+        while (($file = readdir($handle)) !== false) {
+            if ($file != '.' && $file != '..') {
                 print_r($file);
 
-                if(rmdir(CACHE_PATH . $file . '/')){
-                    echo 'delete file:'.$file.' success!' . PHP_EOL;
+                if (rmdir(CACHE_PATH . $file . '/')) {
+                    echo 'delete file:' . $file . ' success!' . PHP_EOL;
                 } else {
                     throw new RuntimeException('Delete Directory but not empty', '1');
                 }
@@ -57,7 +59,8 @@ class IndexController extends BaseController
         closedir($handle);
     }
 
-    public function curlAction(){
+    public function curlAction()
+    {
 
         $curl = new Buzz\Browser();
 
@@ -71,20 +74,24 @@ class IndexController extends BaseController
         dump($headers);
     }
 
-    public function trigger_errorAction(){
+    public function trigger_errorAction()
+    {
         trigger_error('liuhui trigger_error', E_USER_ERROR);
         echo 111;
     }
 
-    public function jsonAction(){
+    public function jsonAction()
+    {
         formatData(0, $_SERVER);
     }
 
-    public function testAction(){
+    public function testAction()
+    {
         echo 111111;
     }
 
-    public function spotAction(){
+    public function spotAction()
+    {
 
         $mysqlCfg = Yaf_Registry::get('config_db');
 
@@ -99,22 +106,24 @@ class IndexController extends BaseController
 
         $spot = new \Spot\Locator($cfg);
 
-        try{
+        try {
             $mapper = $spot->mapper('Entity\Post');
-        } catch(Exception $e){
+        } catch (Exception $e) {
             dump($e->toString());
         }
         //$id = $mapper->mostRecentPostsForSidebar();
     }
 
-    public function liveAction(){
+    public function liveAction()
+    {
         $db = new indexModel();
 
         $result = $db->liveIndex();
         dump($result);
     }
 
-    public function avatarAction(){
+    public function avatarAction()
+    {
         $db = new indexModel();
         $result = $db->deyDetail();
         dump($result);

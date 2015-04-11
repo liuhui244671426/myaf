@@ -25,14 +25,14 @@ class Syslog extends AbstractWriter
      * @var array
      */
     protected $priorities = array(
-        Logger::EMERG  => LOG_EMERG,
-        Logger::ALERT  => LOG_ALERT,
-        Logger::CRIT   => LOG_CRIT,
-        Logger::ERR    => LOG_ERR,
-        Logger::WARN   => LOG_WARNING,
+        Logger::EMERG => LOG_EMERG,
+        Logger::ALERT => LOG_ALERT,
+        Logger::CRIT => LOG_CRIT,
+        Logger::ERR => LOG_ERR,
+        Logger::WARN => LOG_WARNING,
         Logger::NOTICE => LOG_NOTICE,
-        Logger::INFO   => LOG_INFO,
-        Logger::DEBUG  => LOG_DEBUG,
+        Logger::INFO => LOG_INFO,
+        Logger::DEBUG => LOG_DEBUG,
     );
 
     /**
@@ -157,7 +157,7 @@ class Syslog extends AbstractWriter
     protected function initializeSyslog()
     {
         static::$lastApplication = $this->appName;
-        static::$lastFacility    = $this->facility;
+        static::$lastFacility = $this->facility;
         openlog($this->appName, LOG_PID, $this->facility);
     }
 

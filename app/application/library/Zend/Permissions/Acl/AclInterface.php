@@ -42,9 +42,9 @@ interface AclInterface
      * and its respective parents are checked similarly before the lower-priority parents of
      * the Role are checked.
      *
-     * @param  Role\RoleInterface|string            $role
-     * @param  Resource\ResourceInterface|string    $resource
-     * @param  string                               $privilege
+     * @param  Role\RoleInterface|string $role
+     * @param  Resource\ResourceInterface|string $resource
+     * @param  string $privilege
      * @return bool
      */
     public function isAllowed($role = null, $resource = null, $privilege = null);

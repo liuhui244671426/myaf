@@ -60,6 +60,7 @@ class Simple implements \Yaf\View_Interface
         }
         return $this;
     }
+
     /**
      * Assigns by reference a variable to the view script.
      *
@@ -81,6 +82,7 @@ class Simple implements \Yaf\View_Interface
         }
         return $this;
     }
+
     /**
      * Set the path to find the view script used by render()
      *
@@ -105,9 +107,9 @@ class Simple implements \Yaf\View_Interface
         return $this->_tpl_dir;
     }
 
-    public function clear($name='')
+    public function clear($name = '')
     {
-        if ($name!='') {
+        if ($name != '') {
             if (isset($this->_tpl_vars[$name])) {
                 unset($this->_tpl_vars[$name]);
             }
@@ -136,7 +138,7 @@ class Simple implements \Yaf\View_Interface
      * @param string $tpl_vars The variables to use in the view.
      * @return string The script output.
      */
-    public function display($tpl, $tplVars=array())
+    public function display($tpl, $tplVars = array())
     {
         if (!is_string($tpl) || $tpl == null) {
             return false;
@@ -146,6 +148,7 @@ class Simple implements \Yaf\View_Interface
         echo $this->_run($template, $tplVars);
         return true;
     }
+
     /**
      * Processes a view script and returns the output.
      *
@@ -153,7 +156,7 @@ class Simple implements \Yaf\View_Interface
      * @param string $tpl_vars The variables to use in the view.
      * @return string The script output.
      */
-    public function evaluate($tpl_content, $vars=array())
+    public function evaluate($tpl_content, $vars = array())
     {
         if (!is_string($tpl_content) || $tpl_content == null) {
             return false;
@@ -167,9 +170,9 @@ class Simple implements \Yaf\View_Interface
      * @param  string $name
      * @return null
      */
-    public function get($name='')
+    public function get($name = '')
     {
-        if ($name!='') {
+        if ($name != '') {
             if (isset($this->_tpl_vars[$name])) {
                 return $this->_tpl_vars[$name];
             }
@@ -229,7 +232,6 @@ class Simple implements \Yaf\View_Interface
     }
 
 
-
     /**
      * Processes a view script and returns the output.
      *
@@ -237,7 +239,7 @@ class Simple implements \Yaf\View_Interface
      * @param string $tpl_vars The variables to use in the view.
      * @return string The script output.
      */
-    public function render($tpl, $tplVars=array())
+    public function render($tpl, $tplVars = array())
     {
         if (!is_string($tpl) || $tpl == null) {
             return false;
@@ -246,8 +248,6 @@ class Simple implements \Yaf\View_Interface
         $template = $this->_script($tpl);
         return $this->_run($template, $tplVars);
     }
-
-
 
 
     /**
@@ -260,13 +260,13 @@ class Simple implements \Yaf\View_Interface
     {
         if (preg_match('#\.\.[\\\/]#', $name)) {
             throw new \Yaf\Exception(
-                'Requested scripts may not include parent '.
+                'Requested scripts may not include parent ' .
                 'directory traversal ("../", "..\\" notation)'
             );
         }
         if ($this->_tpl_dir == '') {
             throw new \Yaf\Exception\LoadFailed\View(
-                'Could not determine the view script path, '.
+                'Could not determine the view script path, ' .
                 'you should call Yaf_View_Simple::setScriptPath to specific it'
             );
         }
@@ -283,17 +283,17 @@ class Simple implements \Yaf\View_Interface
 
     protected function _run($template, $vars, $useEval = false)
     {
-        if ($vars == null && count($this->_tpl_vars)>0) {
+        if ($vars == null && count($this->_tpl_vars) > 0) {
             $vars = $this->_tpl_vars;
         } else {
             $vars = array_merge($vars, $this->_tpl_vars);
         }
-        if ($vars!=null) {
+        if ($vars != null) {
             extract($vars);
         }
         ob_start();
         if ($useEval == true) {
-            eval('?>'.$template.'<?');
+            eval('?>' . $template . '<?');
         } else {
             include($template);
         }

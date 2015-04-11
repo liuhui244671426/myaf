@@ -26,8 +26,8 @@ class Int extends AbstractFilter
         if (!is_scalar($value)) {
             return $value;
         }
-        $value = (string) $value;
+        $value = (string)$value;
 
-        return (int) $value;
+        return (int)$value;
     }
 }

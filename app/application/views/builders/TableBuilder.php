@@ -1,18 +1,21 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: liuhui
  * Date: 15-2-13
  * Time: 下午6:06
  */
-class TableBuilder{
+class TableBuilder
+{
 
     /**
      * 管理员列表
      * @param array $data
      * @return string html
      * */
-    public static function allMemberHtml(array $data){
+    public static function allMemberHtml(array $data)
+    {
         $tr = '';
         foreach ($data as $k => $v) {
             $tr .= sprintf('<tr>
@@ -40,9 +43,10 @@ class TableBuilder{
      * @param array $thead
      * @return string html
      * */
-    public static function thHtml(array $thead){
+    public static function thHtml(array $thead)
+    {
         $th = '';
-        foreach($thead as $k){
+        foreach ($thead as $k) {
             $th .= sprintf('<th>%s</th>', $k);
         }
         return '<tr>' . $th . '</tr>';
@@ -55,28 +59,29 @@ class TableBuilder{
      * @param integer $currentPage 当前页码数
      * @return string html
      * */
-    public static function pageHtml($link, $maxPage, $currentPage){
+    public static function pageHtml($link, $maxPage, $currentPage)
+    {
         //dump($maxPage);
         //dump($currentPage);
 
         $lis = $class = '';
         $li = '<li><a href="%s" class="%s">%s</a></li>';
-        $aPrev = $link.'0';
-        $aNext = $link.$maxPage;
+        $aPrev = $link . '0';
+        $aNext = $link . $maxPage;
         $pagePrev = sprintf($li, $aPrev, '', 'Prev');
-        if($maxPage >= 10){
+        if ($maxPage >= 10) {
             $p = 10;
         } else {
             $p = $maxPage;
         }
-        for($i = 0;$i < $p; $i++){
-            if($currentPage == $i){
+        for ($i = 0; $i < $p; $i++) {
+            if ($currentPage == $i) {
                 $class = 'active';
                 $num = 'Curr';
             } else {
                 $num = $i;
             }
-            $a = $link.$i;
+            $a = $link . $i;
             $lis .= sprintf($li, $a, $class, $num);
         }
         $pageNext = sprintf($li, $aNext, '', 'Next');

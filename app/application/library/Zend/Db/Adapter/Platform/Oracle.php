@@ -23,7 +23,7 @@ class Oracle implements PlatformInterface
     {
         if (isset($options['quote_identifiers'])
             && ($options['quote_identifiers'] == false
-            || $options['quote_identifiers'] === 'false')
+                || $options['quote_identifiers'] === 'false')
         ) {
             $this->quoteIdentifiers = false;
         }
@@ -101,7 +101,7 @@ class Oracle implements PlatformInterface
     {
         trigger_error(
             'Attempting to quote a value in ' . __CLASS__ . ' without extension/driver support '
-                . 'can introduce security vulnerabilities in a production environment.'
+            . 'can introduce security vulnerabilities in a production environment.'
         );
         return '\'' . addcslashes($value, "\x00\n\r\\'\"\x1a") . '\'';
     }

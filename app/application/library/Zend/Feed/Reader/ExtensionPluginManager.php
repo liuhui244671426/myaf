@@ -26,19 +26,19 @@ class ExtensionPluginManager extends AbstractPluginManager
      * @var array
      */
     protected $invokableClasses = array(
-        'atomentry'            => 'Zend\Feed\Reader\Extension\Atom\Entry',
-        'atomfeed'             => 'Zend\Feed\Reader\Extension\Atom\Feed',
-        'contententry'         => 'Zend\Feed\Reader\Extension\Content\Entry',
+        'atomentry' => 'Zend\Feed\Reader\Extension\Atom\Entry',
+        'atomfeed' => 'Zend\Feed\Reader\Extension\Atom\Feed',
+        'contententry' => 'Zend\Feed\Reader\Extension\Content\Entry',
         'creativecommonsentry' => 'Zend\Feed\Reader\Extension\CreativeCommons\Entry',
-        'creativecommonsfeed'  => 'Zend\Feed\Reader\Extension\CreativeCommons\Feed',
-        'dublincoreentry'      => 'Zend\Feed\Reader\Extension\DublinCore\Entry',
-        'dublincorefeed'       => 'Zend\Feed\Reader\Extension\DublinCore\Feed',
-        'podcastentry'         => 'Zend\Feed\Reader\Extension\Podcast\Entry',
-        'podcastfeed'          => 'Zend\Feed\Reader\Extension\Podcast\Feed',
-        'slashentry'           => 'Zend\Feed\Reader\Extension\Slash\Entry',
-        'syndicationfeed'      => 'Zend\Feed\Reader\Extension\Syndication\Feed',
-        'threadentry'          => 'Zend\Feed\Reader\Extension\Thread\Entry',
-        'wellformedwebentry'   => 'Zend\Feed\Reader\Extension\WellFormedWeb\Entry',
+        'creativecommonsfeed' => 'Zend\Feed\Reader\Extension\CreativeCommons\Feed',
+        'dublincoreentry' => 'Zend\Feed\Reader\Extension\DublinCore\Entry',
+        'dublincorefeed' => 'Zend\Feed\Reader\Extension\DublinCore\Feed',
+        'podcastentry' => 'Zend\Feed\Reader\Extension\Podcast\Entry',
+        'podcastfeed' => 'Zend\Feed\Reader\Extension\Podcast\Feed',
+        'slashentry' => 'Zend\Feed\Reader\Extension\Slash\Entry',
+        'syndicationfeed' => 'Zend\Feed\Reader\Extension\Syndication\Feed',
+        'threadentry' => 'Zend\Feed\Reader\Extension\Thread\Entry',
+        'wellformedwebentry' => 'Zend\Feed\Reader\Extension\WellFormedWeb\Entry',
     );
 
     /**

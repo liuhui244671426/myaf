@@ -20,7 +20,7 @@ class Supervar implements \Yaf\Route_Interface
      */
     public function __construct($varName)
     {
-        if (!is_string($varName) || $varName=='') {
+        if (!is_string($varName) || $varName == '') {
             throw new \Yaf\Exception\TypeError(
                 'Expects a string super var name'
             );
@@ -30,7 +30,7 @@ class Supervar implements \Yaf\Route_Interface
     }
 
 
-     /**
+    /**
      * Processes a request and sets its controller and action based on a
      * supervar value.
      *
@@ -40,7 +40,7 @@ class Supervar implements \Yaf\Route_Interface
     public function route(\Yaf\Request_Abstract $request)
     {
         $requestUri = $request->getQuery($this->_varName);
-        if ($requestUri==null || $requestUri=='') {
+        if ($requestUri == null || $requestUri == '') {
             return false;
         }
         $module = null;
@@ -48,7 +48,7 @@ class Supervar implements \Yaf\Route_Interface
         $action = null;
         $rest = null;
         $path = trim($requestUri, \Yaf\Router::URI_DELIMITER);
-        if ($path != '' && $path!='/') {
+        if ($path != '' && $path != '/') {
             $path = explode(\Yaf\Router::URI_DELIMITER, $path);
             if (\Yaf\Application::isModuleName($path[0])) {
                 $module = $path[0];
@@ -108,15 +108,15 @@ class Supervar implements \Yaf\Route_Interface
                 $request->setActionName($action);
             }
             $params = array();
-            if ($rest!=null && trim($rest)!='') {
+            if ($rest != null && trim($rest) != '') {
                 $path = explode(\Yaf\Router::URI_DELIMITER, $rest);
-                if (($numSegs = count($path))!=0) {
+                if (($numSegs = count($path)) != 0) {
                     for ($i = 0; $i < $numSegs; $i = $i + 2) {
                         $key = urldecode($path[$i]);
                         $val = isset($path[$i + 1]) ?
                             urldecode($path[$i + 1]) : null;
                         $params[$key] = (isset($params[$key])
-                            ? (array_merge((array) $params[$key], array($val)))
+                            ? (array_merge((array)$params[$key], array($val)))
                             : $val);
                     }
                 }
@@ -134,7 +134,7 @@ class Supervar implements \Yaf\Route_Interface
      */
     public static function getInstance(array $config)
     {
-        if (!is_string($config['varname']) || $config['varname']=='') {
+        if (!is_string($config['varname']) || $config['varname'] == '') {
             return null;
         }
         return new self($config['varname']);

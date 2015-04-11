@@ -149,7 +149,7 @@ class Http implements AdapterInterface
      */
     public function __construct(array $config)
     {
-        $this->request  = null;
+        $this->request = null;
         $this->response = null;
         $this->ieNoOpaque = false;
 
@@ -171,7 +171,8 @@ class Http implements AdapterInterface
         if (empty($config['realm']) ||
             !ctype_print($config['realm']) ||
             strpos($config['realm'], ':') !== false ||
-            strpos($config['realm'], '"') !== false) {
+            strpos($config['realm'], '"') !== false
+        ) {
             throw new Exception\InvalidArgumentException(
                 'Config key \'realm\' is required, and must contain only printable characters,'
                 . 'excluding quotation marks and colons'
@@ -183,7 +184,8 @@ class Http implements AdapterInterface
         if (in_array('digest', $this->acceptSchemes)) {
             if (empty($config['digest_domains']) ||
                 !ctype_print($config['digest_domains']) ||
-                strpos($config['digest_domains'], '"') !== false) {
+                strpos($config['digest_domains'], '"') !== false
+            ) {
                 throw new Exception\InvalidArgumentException(
                     'Config key \'digest_domains\' is required, and must contain '
                     . 'only printable characters, excluding quotation marks'
@@ -193,16 +195,17 @@ class Http implements AdapterInterface
             }
 
             if (empty($config['nonce_timeout']) ||
-                !is_numeric($config['nonce_timeout'])) {
+                !is_numeric($config['nonce_timeout'])
+            ) {
                 throw new Exception\InvalidArgumentException(
                     'Config key \'nonce_timeout\' is required, and must be an integer'
                 );
             } else {
-                $this->nonceTimeout = (int) $config['nonce_timeout'];
+                $this->nonceTimeout = (int)$config['nonce_timeout'];
             }
 
             // We use the opaque value unless explicitly told not to
-            if (isset($config['use_opaque']) && false == (bool) $config['use_opaque']) {
+            if (isset($config['use_opaque']) && false == (bool)$config['use_opaque']) {
                 $this->useOpaque = false;
             } else {
                 $this->useOpaque = true;
@@ -216,7 +219,7 @@ class Http implements AdapterInterface
         }
 
         // Don't be a proxy unless explicitly told to do so
-        if (isset($config['proxy_auth']) && true == (bool) $config['proxy_auth']) {
+        if (isset($config['proxy_auth']) && true == (bool)$config['proxy_auth']) {
             $this->imaProxy = true;  // I'm a Proxy
         } else {
             $this->imaProxy = false;
@@ -454,11 +457,11 @@ class Http implements AdapterInterface
     protected function _digestHeader()
     {
         $wwwauth = 'Digest realm="' . $this->realm . '", '
-                 . 'domain="' . $this->domains . '", '
-                 . 'nonce="' . $this->_calcNonce() . '", '
-                 . ($this->useOpaque ? 'opaque="' . $this->_calcOpaque() . '", ' : '')
-                 . 'algorithm="' . $this->algo . '", '
-                 . 'qop="' . implode(',', $this->supportedQops) . '"';
+            . 'domain="' . $this->domains . '", '
+            . 'nonce="' . $this->_calcNonce() . '", '
+            . ($this->useOpaque ? 'opaque="' . $this->_calcOpaque() . '", ' : '')
+            . 'algorithm="' . $this->algo . '", '
+            . 'qop="' . implode(',', $this->supportedQops) . '"';
 
         return $wwwauth;
     }
@@ -596,7 +599,7 @@ class Http implements AdapterInterface
         // Calculate the server's version of the request-digest. This must
         // match $data['response']. See RFC 2617, section 3.2.2.1
         $message = $data['nonce'] . ':' . $data['nc'] . ':' . $data['cnonce'] . ':' . $data['qop'] . ':' . $ha2;
-        $digest  = hash('md5', $ha1 . ':' . $message);
+        $digest = hash('md5', $ha1 . ':' . $message);
 
         // If our digest matches the client's let them in, otherwise return
         // a 401 code and exit to prevent access to the protected resource.
@@ -671,8 +674,9 @@ class Http implements AdapterInterface
         // 400 code.
         $ret = preg_match('/username="([^"]+)"/', $header, $temp);
         if (!$ret || empty($temp[1])
-                  || !ctype_print($temp[1])
-                  || strpos($temp[1], ':') !== false) {
+            || !ctype_print($temp[1])
+            || strpos($temp[1], ':') !== false
+        ) {
             $data['username'] = '::invalid::';
         } else {
             $data['username'] = $temp[1];
@@ -739,7 +743,8 @@ class Http implements AdapterInterface
         // if it can easily be overridden by the client?
         $ret = preg_match('/algorithm="?(' . $this->algo . ')"?/', $header, $temp);
         if ($ret && !empty($temp[1])
-                 && in_array($temp[1], $this->supportedAlgos)) {
+            && in_array($temp[1], $this->supportedAlgos)
+        ) {
             $data['algorithm'] = $temp[1];
         } else {
             $data['algorithm'] = 'MD5';  // = $this->algo; ?
@@ -778,7 +783,8 @@ class Http implements AdapterInterface
 
             // This implementation only sends MD5 hex strings in the opaque value
             if (!$this->ieNoOpaque &&
-                (32 != strlen($temp[1]) || !ctype_xdigit($temp[1]))) {
+                (32 != strlen($temp[1]) || !ctype_xdigit($temp[1]))
+            ) {
                 return false;
             }
 

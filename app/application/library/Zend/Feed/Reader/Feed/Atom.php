@@ -13,7 +13,7 @@ use DOMDocument;
 use Zend\Feed\Reader;
 
 /**
-*/
+ */
 class Atom extends AbstractFeed
 {
     /**
@@ -381,7 +381,8 @@ class Atom extends AbstractFeed
     protected function indexEntries()
     {
         if ($this->getType() == Reader\Reader::TYPE_ATOM_10 ||
-            $this->getType() == Reader\Reader::TYPE_ATOM_03) {
+            $this->getType() == Reader\Reader::TYPE_ATOM_03
+        ) {
             $entries = $this->xpath->evaluate('//atom:entry');
 
             foreach ($entries as $index => $entry) {

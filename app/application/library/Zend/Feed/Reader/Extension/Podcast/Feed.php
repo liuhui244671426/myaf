@@ -13,7 +13,7 @@ use DOMText;
 use Zend\Feed\Reader\Extension;
 
 /**
-*/
+ */
 class Feed extends Extension\AbstractFeed
 {
     /**
@@ -204,7 +204,7 @@ class Feed extends Extension\AbstractFeed
         $owner = null;
 
         $email = $this->xpath->evaluate('string(' . $this->getXpathPrefix() . '/itunes:owner/itunes:email)');
-        $name  = $this->xpath->evaluate('string(' . $this->getXpathPrefix() . '/itunes:owner/itunes:name)');
+        $name = $this->xpath->evaluate('string(' . $this->getXpathPrefix() . '/itunes:owner/itunes:name)');
 
         if (!empty($email)) {
             $owner = $email . (empty($name) ? '' : ' (' . $name . ')');

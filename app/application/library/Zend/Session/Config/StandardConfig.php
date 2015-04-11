@@ -142,7 +142,7 @@ class StandardConfig implements ConfigInterface
      */
     public function setOption($option, $value)
     {
-        $option                 = strtolower($option);
+        $option = strtolower($option);
         $this->options[$option] = $value;
         $this->setStorageOption($option, $value);
         return $this;
@@ -259,7 +259,7 @@ class StandardConfig implements ConfigInterface
      */
     public function setName($name)
     {
-        $this->name = (string) $name;
+        $this->name = (string)$name;
         if (empty($this->name)) {
             throw new Exception\InvalidArgumentException('Invalid session name; cannot be empty');
         }
@@ -292,7 +292,7 @@ class StandardConfig implements ConfigInterface
         if (!is_numeric($gcProbability)) {
             throw new Exception\InvalidArgumentException('Invalid gc_probability; must be numeric');
         }
-        $gcProbability = (int) $gcProbability;
+        $gcProbability = (int)$gcProbability;
         if (0 > $gcProbability || 100 < $gcProbability) {
             throw new Exception\InvalidArgumentException('Invalid gc_probability; must be a percentage');
         }
@@ -327,7 +327,7 @@ class StandardConfig implements ConfigInterface
         if (!is_numeric($gcDivisor)) {
             throw new Exception\InvalidArgumentException('Invalid gc_divisor; must be numeric');
         }
-        $gcDivisor = (int) $gcDivisor;
+        $gcDivisor = (int)$gcDivisor;
         if (1 > $gcDivisor) {
             throw new Exception\InvalidArgumentException('Invalid gc_divisor; must be a positive integer');
         }
@@ -363,7 +363,7 @@ class StandardConfig implements ConfigInterface
             throw new Exception\InvalidArgumentException('Invalid gc_maxlifetime; must be numeric');
         }
 
-        $gcMaxlifetime = (int) $gcMaxlifetime;
+        $gcMaxlifetime = (int)$gcMaxlifetime;
         if (1 > $gcMaxlifetime) {
             throw new Exception\InvalidArgumentException('Invalid gc_maxlifetime; must be a positive integer');
         }
@@ -405,7 +405,7 @@ class StandardConfig implements ConfigInterface
             );
         }
 
-        $this->cookieLifetime = (int) $cookieLifetime;
+        $this->cookieLifetime = (int)$cookieLifetime;
         $this->setStorageOption('cookie_lifetime', $this->cookieLifetime);
         return $this;
     }
@@ -432,7 +432,7 @@ class StandardConfig implements ConfigInterface
      */
     public function setCookiePath($cookiePath)
     {
-        $cookiePath = (string) $cookiePath;
+        $cookiePath = (string)$cookiePath;
 
         $test = parse_url($cookiePath, PHP_URL_PATH);
         if ($test != $cookiePath || '/' != $test[0]) {
@@ -504,7 +504,7 @@ class StandardConfig implements ConfigInterface
      */
     public function setCookieSecure($cookieSecure)
     {
-        $this->cookieSecure = (bool) $cookieSecure;
+        $this->cookieSecure = (bool)$cookieSecure;
         $this->setStorageOption('cookie_secure', $this->cookieSecure);
         return $this;
     }
@@ -533,7 +533,7 @@ class StandardConfig implements ConfigInterface
      */
     public function setCookieHttpOnly($cookieHttpOnly)
     {
-        $this->cookieHttpOnly = (bool) $cookieHttpOnly;
+        $this->cookieHttpOnly = (bool)$cookieHttpOnly;
         $this->setStorageOption('cookie_httponly', $this->cookieHttpOnly);
         return $this;
     }
@@ -559,7 +559,7 @@ class StandardConfig implements ConfigInterface
      */
     public function setUseCookies($useCookies)
     {
-        $this->useCookies = (bool) $useCookies;
+        $this->useCookies = (bool)$useCookies;
         $this->setStorageOption('use_cookies', $this->useCookies);
         return $this;
     }
@@ -660,7 +660,7 @@ class StandardConfig implements ConfigInterface
             throw new Exception\InvalidArgumentException('Invalid cache_expire; must be numeric');
         }
 
-        $cacheExpire = (int) $cacheExpire;
+        $cacheExpire = (int)$cacheExpire;
         if (1 > $cacheExpire) {
             throw new Exception\InvalidArgumentException('Invalid cache_expire; must be a positive integer');
         }
@@ -696,7 +696,7 @@ class StandardConfig implements ConfigInterface
         if (!is_numeric($hashBitsPerCharacter)) {
             throw new Exception\InvalidArgumentException('Invalid hash bits per character provided');
         }
-        $hashBitsPerCharacter = (int) $hashBitsPerCharacter;
+        $hashBitsPerCharacter = (int)$hashBitsPerCharacter;
         $this->setOption('hash_bits_per_character', $hashBitsPerCharacter);
         $this->setStorageOption('hash_bits_per_character', $hashBitsPerCharacter);
         return $this;
@@ -729,7 +729,7 @@ class StandardConfig implements ConfigInterface
             throw new Exception\InvalidArgumentException('Invalid remember_me_seconds; must be numeric');
         }
 
-        $rememberMeSeconds = (int) $rememberMeSeconds;
+        $rememberMeSeconds = (int)$rememberMeSeconds;
         if (1 > $rememberMeSeconds) {
             throw new Exception\InvalidArgumentException('Invalid remember_me_seconds; must be a positive integer');
         }
@@ -760,15 +760,15 @@ class StandardConfig implements ConfigInterface
     public function toArray()
     {
         $extraOpts = array(
-            'cookie_domain'       => $this->getCookieDomain(),
-            'cookie_httponly'     => $this->getCookieHttpOnly(),
-            'cookie_lifetime'     => $this->getCookieLifetime(),
-            'cookie_path'         => $this->getCookiePath(),
-            'cookie_secure'       => $this->getCookieSecure(),
-            'name'                => $this->getName(),
+            'cookie_domain' => $this->getCookieDomain(),
+            'cookie_httponly' => $this->getCookieHttpOnly(),
+            'cookie_lifetime' => $this->getCookieLifetime(),
+            'cookie_path' => $this->getCookiePath(),
+            'cookie_secure' => $this->getCookieSecure(),
+            'name' => $this->getName(),
             'remember_me_seconds' => $this->getRememberMeSeconds(),
-            'save_path'           => $this->getSavePath(),
-            'use_cookies'         => $this->getUseCookies(),
+            'save_path' => $this->getSavePath(),
+            'use_cookies' => $this->getUseCookies(),
         );
         return array_merge($this->options, $extraOpts);
     }
@@ -788,10 +788,10 @@ class StandardConfig implements ConfigInterface
     {
         $prefix = substr($method, 0, 3);
         $option = substr($method, 3);
-        $key    = strtolower(preg_replace('#(?<=[a-z])([A-Z])#', '_\1', $option));
+        $key = strtolower(preg_replace('#(?<=[a-z])([A-Z])#', '_\1', $option));
 
         if ($prefix === 'set') {
-            $value  = array_shift($args);
+            $value = array_shift($args);
             return $this->setOption($key, $value);
         } elseif ($prefix === 'get') {
             return $this->getOption($key);

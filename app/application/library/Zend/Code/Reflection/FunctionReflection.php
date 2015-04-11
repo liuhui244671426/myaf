@@ -63,7 +63,7 @@ class FunctionReflection extends ReflectionFunction implements ReflectionInterfa
     /**
      * Get contents of function
      *
-     * @param  bool   $includeDocBlock
+     * @param  bool $includeDocBlock
      * @return string
      */
     public function getContents($includeDocBlock = true)
@@ -98,7 +98,7 @@ class FunctionReflection extends ReflectionFunction implements ReflectionInterfa
                 $content = $matches[0];
             }
         } else {
-            $name = substr($this->getName(), strrpos($this->getName(), '\\')+1);
+            $name = substr($this->getName(), strrpos($this->getName(), '\\') + 1);
             preg_match('#function\s+' . preg_quote($name) . '\s*\([^\)]*\)\s*{([^{}]+({[^}]+})*[^}]+)?}#', $functionLine, $matches);
             if (isset($matches[0])) {
                 $content = $matches[0];
@@ -127,18 +127,18 @@ class FunctionReflection extends ReflectionFunction implements ReflectionInterfa
 
         $prototype = array(
             'namespace' => $this->getNamespaceName(),
-            'name'      => substr($this->getName(), strlen($this->getNamespaceName()) + 1),
-            'return'    => $returnType,
+            'name' => substr($this->getName(), strlen($this->getNamespaceName()) + 1),
+            'return' => $returnType,
             'arguments' => array(),
         );
 
         $parameters = $this->getParameters();
         foreach ($parameters as $parameter) {
             $prototype['arguments'][$parameter->getName()] = array(
-                'type'     => $parameter->getType(),
+                'type' => $parameter->getType(),
                 'required' => !$parameter->isOptional(),
-                'by_ref'   => $parameter->isPassedByReference(),
-                'default'  => $parameter->isDefaultValueAvailable() ? $parameter->getDefaultValue() : null,
+                'by_ref' => $parameter->isPassedByReference(),
+                'default' => $parameter->isDefaultValueAvailable() ? $parameter->getDefaultValue() : null,
             );
         }
 
@@ -168,10 +168,10 @@ class FunctionReflection extends ReflectionFunction implements ReflectionInterfa
      */
     public function getParameters()
     {
-        $phpReflections  = parent::getParameters();
+        $phpReflections = parent::getParameters();
         $zendReflections = array();
         while ($phpReflections && ($phpReflection = array_shift($phpReflections))) {
-            $instance          = new ParameterReflection($this->getName(), $phpReflection->getName());
+            $instance = new ParameterReflection($this->getName(), $phpReflection->getName());
             $zendReflections[] = $instance;
             unset($phpReflection);
         }
@@ -195,7 +195,7 @@ class FunctionReflection extends ReflectionFunction implements ReflectionInterfa
             );
         }
 
-        $tag    = $docBlock->getTag('return');
+        $tag = $docBlock->getTag('return');
 
         return new DocBlockReflection('@return ' . $tag->getDescription());
     }
@@ -239,7 +239,7 @@ class FunctionReflection extends ReflectionFunction implements ReflectionInterfa
                 $body = $matches[2];
             }
         } else {
-            $name = substr($this->getName(), strrpos($this->getName(), '\\')+1);
+            $name = substr($this->getName(), strrpos($this->getName(), '\\') + 1);
             preg_match('#function\s+' . $name . '\s*\([^\)]*\)\s*{([^{}]+({[^}]+})*[^}]+)}#', $functionLine, $matches);
             if (isset($matches[1])) {
                 $body = $matches[1];

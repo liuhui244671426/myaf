@@ -60,7 +60,7 @@ class CompilerDefinition implements DefinitionInterface
      */
     public function setAllowReflectionExceptions($allowReflectionExceptions = true)
     {
-        $this->allowReflectionExceptions = (bool) $allowReflectionExceptions;
+        $this->allowReflectionExceptions = (bool)$allowReflectionExceptions;
     }
 
     /**
@@ -131,7 +131,7 @@ class CompilerDefinition implements DefinitionInterface
     }
 
     /**
-     * @param  string               $class
+     * @param  string $class
      * @throws \ReflectionException
      */
     protected function processClass($class)
@@ -152,10 +152,10 @@ class CompilerDefinition implements DefinitionInterface
 
         // setup the key in classes
         $this->classes[$className] = array(
-            'supertypes'   => array(),
+            'supertypes' => array(),
             'instantiator' => null,
-            'methods'      => array(),
-            'parameters'   => array()
+            'methods' => array(),
+            'parameters' => array()
         );
 
         $def = &$this->classes[$className]; // localize for brevity
@@ -265,8 +265,8 @@ class CompilerDefinition implements DefinitionInterface
     }
 
     /**
-     * @param array                                  $def
-     * @param \Zend\Code\Reflection\ClassReflection  $rClass
+     * @param array $def
+     * @param \Zend\Code\Reflection\ClassReflection $rClass
      * @param \Zend\Code\Reflection\MethodReflection $rMethod
      */
     protected function processParams(&$def, Reflection\ClassReflection $rClass, Reflection\MethodReflection $rMethod)
@@ -282,7 +282,7 @@ class CompilerDefinition implements DefinitionInterface
         $def['parameters'][$methodName] = array();
 
         foreach ($rMethod->getParameters() as $p) {
-            /** @var $p \ReflectionParameter  */
+            /** @var $p \ReflectionParameter */
             $actualParamName = $p->getName();
             $fqName = $rClass->getName() . '::' . $rMethod->getName() . ':' . $p->getPosition();
             $def['parameters'][$methodName][$fqName] = array();
@@ -290,7 +290,7 @@ class CompilerDefinition implements DefinitionInterface
             // set the class name, if it exists
             $def['parameters'][$methodName][$fqName][] = $actualParamName;
             $def['parameters'][$methodName][$fqName][] = ($p->getClass() !== null) ? $p->getClass()->getName() : null;
-            $def['parameters'][$methodName][$fqName][] = !($optional =$p->isOptional());
+            $def['parameters'][$methodName][$fqName][] = !($optional = $p->isOptional());
             $def['parameters'][$methodName][$fqName][] = $optional && $p->isDefaultValueAvailable() ? $p->getDefaultValue() : null;
         }
     }

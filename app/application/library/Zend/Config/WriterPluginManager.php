@@ -14,11 +14,11 @@ use Zend\ServiceManager\AbstractPluginManager;
 class WriterPluginManager extends AbstractPluginManager
 {
     protected $invokableClasses = array(
-        'ini'  => 'Zend\Config\Writer\Ini',
+        'ini' => 'Zend\Config\Writer\Ini',
         'json' => 'Zend\Config\Writer\Json',
-        'php'  => 'Zend\Config\Writer\PhpArray',
+        'php' => 'Zend\Config\Writer\PhpArray',
         'yaml' => 'Zend\Config\Writer\Yaml',
-        'xml'  => 'Zend\Config\Writer\Xml',
+        'xml' => 'Zend\Config\Writer\Xml',
     );
 
     public function validatePlugin($plugin)
@@ -30,7 +30,7 @@ class WriterPluginManager extends AbstractPluginManager
         $type = is_object($plugin) ? get_class($plugin) : gettype($plugin);
 
         throw new Exception\InvalidArgumentException(
-            "Plugin of type {$type} is invalid. Plugin must extend ".  __NAMESPACE__ . '\Writer\AbstractWriter'
+            "Plugin of type {$type} is invalid. Plugin must extend " . __NAMESPACE__ . '\Writer\AbstractWriter'
         );
     }
 }

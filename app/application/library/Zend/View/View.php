@@ -167,9 +167,9 @@ class View implements EventManagerAwareInterface
      */
     public function render(Model $model)
     {
-        $event   = $this->getEvent();
+        $event = $this->getEvent();
         $event->setModel($model);
-        $events  = $this->getEventManager();
+        $events = $this->getEventManager();
         $results = $events->trigger(ViewEvent::EVENT_RENDERER, $event, function ($result) {
             return ($result instanceof Renderer);
         });
@@ -186,7 +186,7 @@ class View implements EventManagerAwareInterface
 
         // If EVENT_RENDERER or EVENT_RENDERER_POST changed the model, make sure
         // we use this new model instead of the current $model
-        $model   = $event->getModel();
+        $model = $event->getModel();
 
         // If we have children, render them first, but only if:
         // a) the renderer does not implement TreeRendererInterface, or
@@ -230,12 +230,12 @@ class View implements EventManagerAwareInterface
                 throw new Exception\DomainException('Inconsistent state; child view model is marked as terminal');
             }
             $child->setOption('has_parent', true);
-            $result  = $this->render($child);
+            $result = $this->render($child);
             $child->setOption('has_parent', null);
             $capture = $child->captureTo();
             if (!empty($capture)) {
                 if ($child->isAppend()) {
-                    $oldResult=$model->{$capture};
+                    $oldResult = $model->{$capture};
                     $model->setVariable($capture, $oldResult . $result);
                 } else {
                     $model->setVariable($capture, $result);

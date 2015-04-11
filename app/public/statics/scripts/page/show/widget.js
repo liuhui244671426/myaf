@@ -9,17 +9,16 @@ define(function (require, exports) {
     var $ = require('jquery'), setColor = require('/scripts/page/show/setBackgroundColor.js').setColor, codeid = $('#codeid').html();
 
     $(document).ready(function () {
-        if(codeid == 28)
-        {
+        if (codeid == 28) {
             require('jqTransit');
             console.log(codeid);
             var totateDeg = 0;
-            setInterval(function(){
+            setInterval(function () {
                 totateDeg = 22.5 + totateDeg;
                 $(".f-wrap").transition({
-                    rotate: totateDeg+'deg'
+                    rotate: totateDeg + 'deg'
                 });
-            },3000);
+            }, 3000);
         }
         //---------------
 //        if(navigator.onLine)
@@ -33,8 +32,7 @@ define(function (require, exports) {
         //---------------
         var showNum = $('#showNum').text();
         console.log(showNum);
-        if(showNum == 3)
-        {
+        if (showNum == 3) {
             $("#tabDiv").Tab({
                 currentIndex: 0,
                 onclass: "active",
@@ -45,7 +43,8 @@ define(function (require, exports) {
 
     });
 
-    ;(function ($) {
+    ;
+    (function ($) {
         $.fn.Tab = function (option) {
             var opt = {
                 currentIndex: 0,

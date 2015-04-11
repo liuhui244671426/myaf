@@ -10,9 +10,10 @@ namespace Yaf\Route;
 
 class Simple implements \Yaf\Route_Interface
 {
-    protected $_module=null;
-    protected $_controller=null;
-    protected $_action=null;
+    protected $_module = null;
+    protected $_controller = null;
+    protected $_action = null;
+
     /**
      * Class constructor
      * @param string $module
@@ -33,6 +34,7 @@ class Simple implements \Yaf\Route_Interface
             $this->_action = $action;
         }
     }
+
     /**
      * Processes a request and sets its controller and action.  If
      * no route was possible, default route is set.
@@ -44,26 +46,27 @@ class Simple implements \Yaf\Route_Interface
     public function route(\Yaf\Request_Abstract $request)
     {
         $module = isset($_GET[$this->_module])
-            ?$_GET[$this->_module]:null;
+            ? $_GET[$this->_module] : null;
         $controller = isset($_GET[$this->_controller])
-            ?$_GET[$this->_controller]:null;
+            ? $_GET[$this->_controller] : null;
         $action = isset($_GET[$this->_action])
-            ?$_GET[$this->_action]:null;
+            ? $_GET[$this->_action] : null;
         if ($module == null && $controller == null && $action == null) {
             return false;
         } else {
-            if ($module!=null) {
+            if ($module != null) {
                 $request->setModuleName($module);
             }
-            if ($controller!=null) {
+            if ($controller != null) {
                 $request->setControllerName($controller);
             }
-            if ($action!=null) {
+            if ($action != null) {
                 $request->setActionName($action);
             }
         }
         return true;
     }
+
     /**
      * used to create routes on the fly from config
      *

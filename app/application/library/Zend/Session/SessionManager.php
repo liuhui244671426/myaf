@@ -25,7 +25,7 @@ class SessionManager extends AbstractManager
      */
     protected $defaultDestroyOptions = array(
         'send_expire_cookie' => true,
-        'clear_storage'      => false,
+        'clear_storage' => false,
     );
 
     /**
@@ -76,7 +76,7 @@ class SessionManager extends AbstractManager
      * {@link isValid()} once session_start() is called, and raises an
      * exception if validation fails.
      *
-     * @param bool $preserveStorage        If set to true, current session storage will not be overwritten by the
+     * @param bool $preserveStorage If set to true, current session storage will not be overwritten by the
      *                                     contents of $_SESSION.
      * @return void
      * @throws Exception\RuntimeException
@@ -101,7 +101,7 @@ class SessionManager extends AbstractManager
         session_start();
 
         if ($oldSessionData instanceof \Traversable
-            || (! empty($oldSessionData) && is_array($oldSessionData))
+            || (!empty($oldSessionData) && is_array($oldSessionData))
         ) {
             $_SESSION = ArrayUtils::merge($oldSessionData, $_SESSION, true);
         }
@@ -172,7 +172,7 @@ class SessionManager extends AbstractManager
         // session_write_close() operation, no changes made to it will be
         // flushed to the session handler. As such, we now mark the storage
         // object isImmutable.
-        $storage  = $this->getStorage();
+        $storage = $this->getStorage();
         if (!$storage->isImmutable()) {
             $_SESSION = $storage->toArray(true);
             session_write_close();
@@ -269,7 +269,7 @@ class SessionManager extends AbstractManager
      */
     public function regenerateId($deleteOldSession = true)
     {
-        session_regenerate_id((bool) $deleteOldSession);
+        session_regenerate_id((bool)$deleteOldSession);
         return $this;
     }
 

@@ -14,7 +14,7 @@ use Zend\Feed\Writer;
 use Zend\Feed\Writer\Renderer;
 
 /**
-*/
+ */
 class Atom extends AbstractAtom implements Renderer\RendererInterface
 {
     /**

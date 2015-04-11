@@ -73,7 +73,7 @@ class Column implements ColumnInterface
      */
     public function setNullable($nullable)
     {
-        $this->isNullable = (bool) $nullable;
+        $this->isNullable = (bool)$nullable;
         return $this;
     }
 
@@ -139,7 +139,7 @@ class Column implements ColumnInterface
     {
         $spec = $this->specification;
 
-        $params   = array();
+        $params = array();
         $params[] = $this->name;
         $params[] = $this->type;
 
@@ -150,9 +150,9 @@ class Column implements ColumnInterface
         }
 
         if ($this->default !== null) {
-            $spec    .= ' DEFAULT %s';
+            $spec .= ' DEFAULT %s';
             $params[] = $this->default;
-            $types[]  = self::TYPE_VALUE;
+            $types[] = self::TYPE_VALUE;
         }
 
         return array(array(

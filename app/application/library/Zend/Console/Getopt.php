@@ -74,19 +74,19 @@ class Getopt
      * modeGnu is for traditional 'ab:c:' style getopt format.
      * modeZend is for a more structured format.
      */
-    const MODE_ZEND                         = 'zend';
-    const MODE_GNU                          = 'gnu';
+    const MODE_ZEND = 'zend';
+    const MODE_GNU = 'gnu';
 
     /**
      * Constant tokens for various symbols used in the mode_zend
      * rule format.
      */
-    const PARAM_REQUIRED                    = '=';
-    const PARAM_OPTIONAL                    = '-';
-    const TYPE_STRING                       = 's';
-    const TYPE_WORD                         = 'w';
-    const TYPE_INTEGER                      = 'i';
-    const TYPE_NUMERIC_FLAG                 = '#';
+    const PARAM_REQUIRED = '=';
+    const PARAM_OPTIONAL = '-';
+    const TYPE_STRING = 's';
+    const TYPE_WORD = 'w';
+    const TYPE_INTEGER = 'i';
+    const TYPE_NUMERIC_FLAG = '#';
 
     /**
      * These are constants for optional behavior of this class.
@@ -96,15 +96,15 @@ class Getopt
      * parseAll is true if all options on the command line should be parsed, regardless of
      * whether an argument appears before them.
      */
-    const CONFIG_RULEMODE                   = 'ruleMode';
-    const CONFIG_DASHDASH                   = 'dashDash';
-    const CONFIG_IGNORECASE                 = 'ignoreCase';
-    const CONFIG_PARSEALL                   = 'parseAll';
-    const CONFIG_CUMULATIVE_PARAMETERS      = 'cumulativeParameters';
-    const CONFIG_CUMULATIVE_FLAGS           = 'cumulativeFlags';
-    const CONFIG_PARAMETER_SEPARATOR        = 'parameterSeparator';
-    const CONFIG_FREEFORM_FLAGS             = 'freeformFlags';
-    const CONFIG_NUMERIC_FLAGS              = 'numericFlags';
+    const CONFIG_RULEMODE = 'ruleMode';
+    const CONFIG_DASHDASH = 'dashDash';
+    const CONFIG_IGNORECASE = 'ignoreCase';
+    const CONFIG_PARSEALL = 'parseAll';
+    const CONFIG_CUMULATIVE_PARAMETERS = 'cumulativeParameters';
+    const CONFIG_CUMULATIVE_FLAGS = 'cumulativeFlags';
+    const CONFIG_PARAMETER_SEPARATOR = 'parameterSeparator';
+    const CONFIG_FREEFORM_FLAGS = 'freeformFlags';
+    const CONFIG_NUMERIC_FLAGS = 'numericFlags';
 
     /**
      * Defaults for getopt configuration are:
@@ -118,15 +118,15 @@ class Getopt
      * freeform flags are disable.
      */
     protected $getoptConfig = array(
-        self::CONFIG_RULEMODE                => self::MODE_ZEND,
-        self::CONFIG_DASHDASH                => true,
-        self::CONFIG_IGNORECASE              => false,
-        self::CONFIG_PARSEALL                => true,
-        self::CONFIG_CUMULATIVE_PARAMETERS   => false,
-        self::CONFIG_CUMULATIVE_FLAGS        => false,
-        self::CONFIG_PARAMETER_SEPARATOR     => null,
-        self::CONFIG_FREEFORM_FLAGS          => false,
-        self::CONFIG_NUMERIC_FLAGS           => false
+        self::CONFIG_RULEMODE => self::MODE_ZEND,
+        self::CONFIG_DASHDASH => true,
+        self::CONFIG_IGNORECASE => false,
+        self::CONFIG_PARSEALL => true,
+        self::CONFIG_CUMULATIVE_PARAMETERS => false,
+        self::CONFIG_CUMULATIVE_FLAGS => false,
+        self::CONFIG_PARAMETER_SEPARATOR => null,
+        self::CONFIG_FREEFORM_FLAGS => false,
+        self::CONFIG_NUMERIC_FLAGS => false
     );
 
     /**
@@ -219,7 +219,7 @@ class Getopt
             $argv = array_slice($_SERVER['argv'], 1);
         }
         if (isset($argv)) {
-            $this->addArguments((array) $argv);
+            $this->addArguments((array)$argv);
         }
     }
 
@@ -672,7 +672,7 @@ class Getopt
             }
             if (substr($argv[0], 0, 2) == '--') {
                 $this->_parseLongOption($argv);
-            } elseif (substr($argv[0], 0, 1) == '-' && ('-' != $argv[0] || count($argv) >1)) {
+            } elseif (substr($argv[0], 0, 1) == '-' && ('-' != $argv[0] || count($argv) > 1)) {
                 $this->_parseShortOptionCluster($argv);
             } elseif ($this->getoptConfig[self::CONFIG_PARSEALL]) {
                 $this->remainingArgs[] = array_shift($argv);
@@ -694,7 +694,7 @@ class Getopt
     }
 
     /**
-     * @param string   $option   The name of the property which, if present, will call the passed
+     * @param string $option The name of the property which, if present, will call the passed
      *                           callback with the value of this parameter.
      * @param callable $callback The callback that will be called for this option. The first
      *                           parameter will be the value of getOption($option), the second
@@ -770,7 +770,7 @@ class Getopt
      * Parse command-line arguments for a single option.
      *
      * @param  string $flag
-     * @param  mixed  $argv
+     * @param  mixed $argv
      * @throws Exception\ExceptionInterface
      */
     protected function _parseSingleOption($flag, &$argv)
@@ -797,7 +797,7 @@ class Getopt
             $this->ruleMap[$flag] = $flag;
             $realFlag = $flag;
             $this->rules[$realFlag] = array(
-                'param'          => 'optional',
+                'param' => 'optional',
                 'isFreeformFlag' => true
             );
         } else {
@@ -881,7 +881,7 @@ class Getopt
         if (!array_key_exists($flag, $this->options)) {
             $this->options[$flag] = $value;
         } elseif ($this->getoptConfig[self::CONFIG_CUMULATIVE_PARAMETERS]) {
-            $this->options[$flag] = (array) $this->options[$flag];
+            $this->options[$flag] = (array)$this->options[$flag];
             array_push($this->options[$flag], $value);
         } else {
             $this->options[$flag] = $value;
@@ -897,7 +897,7 @@ class Getopt
     protected function _setBooleanFlagValue($flag)
     {
         $this->options[$flag] = array_key_exists($flag, $this->options)
-            ? (int) $this->options[$flag] + 1
+            ? (int)$this->options[$flag] + 1
             : true;
     }
 
@@ -987,7 +987,7 @@ class Getopt
             // are any complaints that =string will not work (even though that use
             // case is not documented)
             if (in_array(substr($ruleCode, -2, 1), array('-', '='))) {
-                $flagList  = substr($ruleCode, 0, -2);
+                $flagList = substr($ruleCode, 0, -2);
                 $delimiter = substr($ruleCode, -2, 1);
                 $paramType = substr($ruleCode, -1);
             } else {

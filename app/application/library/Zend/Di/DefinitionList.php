@@ -33,7 +33,7 @@ class DefinitionList extends SplDoublyLinkedList implements Definition\Definitio
      * Add definitions
      *
      * @param  Definition\DefinitionInterface $definition
-     * @param  bool                           $addToBackOfList
+     * @param  bool $addToBackOfList
      * @return void
      */
     public function addDefinition(Definition\DefinitionInterface $definition, $addToBackOfList = true)
@@ -46,7 +46,7 @@ class DefinitionList extends SplDoublyLinkedList implements Definition\Definitio
     }
 
     /**
-     * @param  string       $type
+     * @param  string $type
      * @return Definition\DefinitionInterface[]
      */
     public function getDefinitionsByType($type)
@@ -64,7 +64,7 @@ class DefinitionList extends SplDoublyLinkedList implements Definition\Definitio
     /**
      * Get definition by type
      *
-     * @param  string                         $type
+     * @param  string $type
      * @return Definition\DefinitionInterface
      */
     public function getDefinitionByType($type)
@@ -79,7 +79,7 @@ class DefinitionList extends SplDoublyLinkedList implements Definition\Definitio
     }
 
     /**
-     * @param  string                              $class
+     * @param  string $class
      * @return bool|Definition\DefinitionInterface
      */
     public function getDefinitionForClass($class)
@@ -95,7 +95,7 @@ class DefinitionList extends SplDoublyLinkedList implements Definition\Definitio
     }
 
     /**
-     * @param  string                              $class
+     * @param  string $class
      * @return bool|Definition\DefinitionInterface
      */
     public function forClass($class)

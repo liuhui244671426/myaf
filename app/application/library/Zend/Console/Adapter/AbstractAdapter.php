@@ -47,7 +47,7 @@ abstract class AbstractAdapter implements AdapterInterface
     /**
      * Write a chunk of text to console.
      *
-     * @param string   $text
+     * @param string $text
      * @param null|int $color
      * @param null|int $bgColor
      */
@@ -66,7 +66,7 @@ abstract class AbstractAdapter implements AdapterInterface
     /**
      * Alias for write()
      *
-     * @param string   $text
+     * @param string $text
      * @param null|int $color
      * @param null|int $bgColor
      */
@@ -78,7 +78,7 @@ abstract class AbstractAdapter implements AdapterInterface
     /**
      * Write a single line of text to console and advance cursor to the next line.
      *
-     * @param string   $text
+     * @param string $text
      * @param null|int $color
      * @param null|int $bgColor
      */
@@ -91,9 +91,9 @@ abstract class AbstractAdapter implements AdapterInterface
      * Write a piece of text at the coordinates of $x and $y
      *
      *
-     * @param string   $text    Text to write
-     * @param int      $x       Console X coordinate (column)
-     * @param int      $y       Console Y coordinate (row)
+     * @param string $text Text to write
+     * @param int $x Console X coordinate (column)
+     * @param int $y Console Y coordinate (row)
      * @param null|int $color
      * @param null|int $bgColor
      */
@@ -108,16 +108,16 @@ abstract class AbstractAdapter implements AdapterInterface
      * If X or Y coordinate value is negative, it will be calculated as the distance from far right or bottom edge
      * of the console (respectively).
      *
-     * @param int      $x1           Top-left corner X coordinate (column)
-     * @param int      $y1           Top-left corner Y coordinate (row)
-     * @param int      $x2           Bottom-right corner X coordinate (column)
-     * @param int      $y2           Bottom-right corner Y coordinate (row)
-     * @param int      $lineStyle    (optional) Box border style.
-     * @param int      $fillStyle    (optional) Box fill style or a single character to fill it with.
-     * @param int      $color        (optional) Foreground color
-     * @param int      $bgColor      (optional) Background color
-     * @param null|int $fillColor    (optional) Foreground color of box fill
-     * @param null|int $fillBgColor  (optional) Background color of box fill
+     * @param int $x1 Top-left corner X coordinate (column)
+     * @param int $y1 Top-left corner Y coordinate (row)
+     * @param int $x2 Bottom-right corner X coordinate (column)
+     * @param int $y2 Bottom-right corner Y coordinate (row)
+     * @param int $lineStyle (optional) Box border style.
+     * @param int $fillStyle (optional) Box fill style or a single character to fill it with.
+     * @param int $color (optional) Foreground color
+     * @param int $bgColor (optional) Background color
+     * @param null|int $fillColor (optional) Foreground color of box fill
+     * @param null|int $fillBgColor (optional) Background color of box fill
      * @throws Exception\BadMethodCallException if coordinates are invalid
      */
     public function writeBox(
@@ -131,12 +131,13 @@ abstract class AbstractAdapter implements AdapterInterface
         $bgColor = null,
         $fillColor = null,
         $fillBgColor = null
-    ) {
+    )
+    {
         // Sanitize coordinates
-        $x1 = (int) $x1;
-        $y1 = (int) $y1;
-        $x2 = (int) $x2;
-        $y2 = (int) $y2;
+        $x1 = (int)$x1;
+        $y1 = (int)$y1;
+        $x2 = (int)$x2;
+        $y2 = (int)$y2;
 
         // Translate negative coordinates
         if ($x2 < 0) {
@@ -152,14 +153,14 @@ abstract class AbstractAdapter implements AdapterInterface
             || $y1 < 0
             || $x2 < $x1
             || $y2 < $y1
-       ) {
+        ) {
             throw new Exception\BadMethodCallException('Supplied X,Y coordinates are invalid.');
         }
 
         // Determine charset and dimensions
         $charset = $this->getCharset();
-        $width   = $x2 - $x1 + 1;
-        $height  = $y2 - $y1 + 1;
+        $width = $x2 - $x1 + 1;
+        $height = $y2 - $y1 + 1;
 
         if ($width <= 2) {
             $lineStyle = static::LINE_NONE;
@@ -193,7 +194,8 @@ abstract class AbstractAdapter implements AdapterInterface
 
         // Draw vertical lines and fill
         if (is_numeric($fillStyle)
-            && $fillStyle !== static::FILL_NONE) {
+            && $fillStyle !== static::FILL_NONE
+        ) {
             switch ($fillStyle) {
                 case static::FILL_SHADE_LIGHT:
                     $fillChar = $charset::SHADE_LIGHT;
@@ -278,12 +280,12 @@ abstract class AbstractAdapter implements AdapterInterface
      * In case a line of text does not fit desired width, it will be wrapped to the next line.
      * In case the whole text does not fit in desired height, it will be truncated.
      *
-     * @param string   $text    Text to write
-     * @param int      $width   Maximum block width. Negative value means distance from right edge.
-     * @param int|null $height  Maximum block height. Negative value means distance from bottom edge.
-     * @param int      $x       Block X coordinate (column)
-     * @param int      $y       Block Y coordinate (row)
-     * @param null|int $color   (optional) Text color
+     * @param string $text Text to write
+     * @param int $width Maximum block width. Negative value means distance from right edge.
+     * @param int|null $height Maximum block height. Negative value means distance from bottom edge.
+     * @param int $x Block X coordinate (column)
+     * @param int $y Block Y coordinate (row)
+     * @param null|int $color (optional) Text color
      * @param null|int $bgColor (optional) Text background color
      * @throws Exception\InvalidArgumentException
      */
@@ -295,7 +297,8 @@ abstract class AbstractAdapter implements AdapterInterface
         $y = 0,
         $color = null,
         $bgColor = null
-    ) {
+    )
+    {
         if ($x < 0 || $y < 0) {
             throw new Exception\InvalidArgumentException('Supplied X,Y coordinates are invalid.');
         }
@@ -415,8 +418,8 @@ abstract class AbstractAdapter implements AdapterInterface
     /**
      * Prepare a string that will be rendered in color.
      *
-     * @param  string   $string
-     * @param  int      $color
+     * @param  string $string
+     * @param  int $color
      * @param  null|int $bgColor
      * @return string
      */
@@ -509,12 +512,12 @@ abstract class AbstractAdapter implements AdapterInterface
     /**
      * Read a single line from the console input
      *
-     * @param int $maxLength        Maximum response length
+     * @param int $maxLength Maximum response length
      * @return string
      */
     public function readLine($maxLength = 2048)
     {
-        $f    = fopen('php://stdin', 'r');
+        $f = fopen('php://stdin', 'r');
         $line = stream_get_line($f, $maxLength, PHP_EOL);
         fclose($f);
         return rtrim($line, "\n\r");
@@ -523,7 +526,7 @@ abstract class AbstractAdapter implements AdapterInterface
     /**
      * Read a single character from the console input
      *
-     * @param string|null   $mask   A list of allowed chars
+     * @param string|null $mask A list of allowed chars
      * @return string
      */
     public function readChar($mask = null)

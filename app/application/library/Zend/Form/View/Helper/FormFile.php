@@ -20,14 +20,14 @@ class FormFile extends FormInput
      * @var array
      */
     protected $validTagAttributes = array(
-        'name'           => true,
-        'accept'         => true,
-        'autofocus'      => true,
-        'disabled'       => true,
-        'form'           => true,
-        'multiple'       => true,
-        'required'       => true,
-        'type'           => true,
+        'name' => true,
+        'accept' => true,
+        'autofocus' => true,
+        'disabled' => true,
+        'form' => true,
+        'multiple' => true,
+        'required' => true,
+        'type' => true,
     );
 
     /**
@@ -47,9 +47,9 @@ class FormFile extends FormInput
             ));
         }
 
-        $attributes          = $element->getAttributes();
-        $attributes['type']  = $this->getType($element);
-        $attributes['name']  = $name;
+        $attributes = $element->getAttributes();
+        $attributes['type'] = $this->getType($element);
+        $attributes['name'] = $name;
         if (array_key_exists('multiple', $attributes) && $attributes['multiple']) {
             $attributes['name'] .= '[]';
         }

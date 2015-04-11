@@ -102,7 +102,7 @@ class DocumentLiteralWrapper
         $this->_assertServiceDelegateHasMethod($method);
 
         $delegateArgs = $this->_parseArguments($method, $args[0]);
-        $ret          = call_user_func_array(array($this->object, $method), $delegateArgs);
+        $ret = call_user_func_array(array($this->object, $method), $delegateArgs);
         return $this->_getResultMessage($method, $ret);
     }
 

@@ -27,7 +27,7 @@ class PluginManager extends AbstractPluginManager
      * @var array
      */
     protected $factories = array(
-        'forward'  => 'Zend\Mvc\Controller\Plugin\Service\ForwardFactory',
+        'forward' => 'Zend\Mvc\Controller\Plugin\Service\ForwardFactory',
         'identity' => 'Zend\Mvc\Controller\Plugin\Service\IdentityFactory',
     );
 
@@ -38,13 +38,13 @@ class PluginManager extends AbstractPluginManager
      */
     protected $invokableClasses = array(
         'acceptableviewmodelselector' => 'Zend\Mvc\Controller\Plugin\AcceptableViewModelSelector',
-        'filepostredirectget'         => 'Zend\Mvc\Controller\Plugin\FilePostRedirectGet',
-        'flashmessenger'              => 'Zend\Mvc\Controller\Plugin\FlashMessenger',
-        'layout'                      => 'Zend\Mvc\Controller\Plugin\Layout',
-        'params'                      => 'Zend\Mvc\Controller\Plugin\Params',
-        'postredirectget'             => 'Zend\Mvc\Controller\Plugin\PostRedirectGet',
-        'redirect'                    => 'Zend\Mvc\Controller\Plugin\Redirect',
-        'url'                         => 'Zend\Mvc\Controller\Plugin\Url',
+        'filepostredirectget' => 'Zend\Mvc\Controller\Plugin\FilePostRedirectGet',
+        'flashmessenger' => 'Zend\Mvc\Controller\Plugin\FlashMessenger',
+        'layout' => 'Zend\Mvc\Controller\Plugin\Layout',
+        'params' => 'Zend\Mvc\Controller\Plugin\Params',
+        'postredirectget' => 'Zend\Mvc\Controller\Plugin\PostRedirectGet',
+        'redirect' => 'Zend\Mvc\Controller\Plugin\Redirect',
+        'url' => 'Zend\Mvc\Controller\Plugin\Url',
     );
 
     /**
@@ -53,7 +53,7 @@ class PluginManager extends AbstractPluginManager
      * @var array
      */
     protected $aliases = array(
-        'prg'     => 'postredirectget',
+        'prg' => 'postredirectget',
         'fileprg' => 'filepostredirectget',
     );
 
@@ -73,8 +73,8 @@ class PluginManager extends AbstractPluginManager
      * plugin is lost.
      *
      * @param  string $name
-     * @param  mixed  $options
-     * @param  bool   $usePeeringServiceManagers
+     * @param  mixed $options
+     * @param  bool $usePeeringServiceManagers
      * @return mixed
      */
     public function get($name, $options = array(), $usePeeringServiceManagers = true)
@@ -136,7 +136,7 @@ class PluginManager extends AbstractPluginManager
      *
      * Any plugin is considered valid in this context.
      *
-     * @param  mixed                            $plugin
+     * @param  mixed $plugin
      * @return void
      * @throws Exception\InvalidPluginException
      */

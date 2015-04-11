@@ -24,7 +24,7 @@ class Dir extends AbstractFilter
         if (!is_scalar($value)) {
             return $value;
         }
-        $value = (string) $value;
+        $value = (string)$value;
 
         return dirname($value);
     }

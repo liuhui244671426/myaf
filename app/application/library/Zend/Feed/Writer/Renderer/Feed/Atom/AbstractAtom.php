@@ -252,7 +252,8 @@ class AbstractAtom extends Feed\Writer\Renderer\AbstractRenderer
     protected function _setId(DOMDocument $dom, DOMElement $root)
     {
         if (!$this->getDataContainer()->getId()
-        && !$this->getDataContainer()->getLink()) {
+            && !$this->getDataContainer()->getLink()
+        ) {
             $message = 'Atom 1.0 feed elements MUST contain exactly one '
                 . 'atom:id element, or as an alternative, we can use the same '
                 . 'value as atom:link however neither a suitable link nor an '
@@ -294,6 +295,7 @@ class AbstractAtom extends Feed\Writer\Renderer\AbstractRenderer
         $text = $dom->createTextNode($copyright);
         $copy->appendChild($text);
     }
+
     /**
      * Set feed level logo (image)
      *

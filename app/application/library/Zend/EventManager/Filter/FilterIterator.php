@@ -52,7 +52,7 @@ class FilterIterator extends SplPriorityQueue
 
         // Iterate and remove any matches
         $removed = false;
-        $items   = array();
+        $items = array();
         $this->rewind();
         while (!$this->isEmpty()) {
             $item = $this->extract();

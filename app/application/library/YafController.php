@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * @User: liuhui
@@ -6,112 +7,92 @@
  * @Time: 下午6:55
  * @Desc: BaseController->YafController->Yaf_Controller_Abstract
  */
-class YafController extends Yaf_Controller_Abstract{
+class YafController extends Yaf_Controller_Abstract
+{
 
     /**
      * 获取合法参数
      * @param string $tag 字段名
-     * @param string $legalType('eid'|'id'|'time'|'int'|'str'|'trim_spec_str'|'enum'|'array'|'json'|'raw') 字段类型
+     * @param string $legalType ('eid'|'id'|'time'|'int'|'str'|'trim_spec_str'|'enum'|'array'|'json'|'raw') 字段类型
      * @param array $legalList
      * @param mixed $default 字段默认值
      * @return mixed
      * */
-    protected function getLegalParam($tag,$legalType,$legalList=array(),$default=null)
+    protected function getLegalParam($tag, $legalType, $legalList = array(), $default = null)
     {
-        $param = $this->getRequest()->get($tag,$default);
-        if($param!==null)
-        {
-            switch($legalType)
-            {
+        $param = $this->getRequest()->get($tag, $default);
+        if ($param !== null) {
+            switch ($legalType) {
                 case 'eid': //encrypted id
                 {
-                    if($param)
+                    if ($param)
                         return aesDecrypt(hex2bin($param), AES_MJ_KEY);
                     else
                         return null;
                     break;
                 }
-                case 'id':
-                {
-                    if (preg_match ('/^\d{1,20}$/', strval($param) ))
-                    {
+                case 'id': {
+                    if (preg_match('/^\d{1,20}$/', strval($param))) {
                         return strval($param);
                     }
                     break;
                 }
-                case 'time':
-                {
+                case 'time': {
                     return intval($param);
                     break;
                 }
-                case 'int':
-                {
+                case 'int': {
                     $val = intval($param);
 
-                    if(count($legalList)==2)
-                    {
-                        if($val>=$legalList[0] && $val<=$legalList[1])
+                    if (count($legalList) == 2) {
+                        if ($val >= $legalList[0] && $val <= $legalList[1])
                             return $val;
-                    }
-                    else
+                    } else
                         return $val;
                     break;
                 }
-                case 'str':
-                {
+                case 'str': {
                     $val = strval($param);
-                    if(count($legalList)==2)
-                    {
-                        if(strlen($val)>=$legalList[0] && strlen($val)<=$legalList[1])
+                    if (count($legalList) == 2) {
+                        if (strlen($val) >= $legalList[0] && strlen($val) <= $legalList[1])
                             return $val;
-                    }
-                    else
+                    } else
                         return $val;
                     break;
                 }
-                case 'trim_spec_str':
-                {
+                case 'trim_spec_str': {
                     $val = trim(strval($param));
-                    if(!preg_match("/['.,:;*?~`!@#$%^&+=)(<>{}]|\]|\[|\/|\\\|\"|\|/",$val))
-                    {
-                        if(count($legalList)==2)
-                        {
-                            if(strlen($val)>=$legalList[0] && strlen($val)<=$legalList[1])
+                    if (!preg_match("/['.,:;*?~`!@#$%^&+=)(<>{}]|\]|\[|\/|\\\|\"|\|/", $val)) {
+                        if (count($legalList) == 2) {
+                            if (strlen($val) >= $legalList[0] && strlen($val) <= $legalList[1])
                                 return $val;
-                        }
-                        else
+                        } else
                             return $val;
                     }
                     break;
                 }
-                case 'enum':
-                {
-                    if(in_array($param,$legalList))
-                    {
+                case 'enum': {
+                    if (in_array($param, $legalList)) {
                         return $param;
                     }
                     break;
                 }
-                case 'array':
-                {
-                    if(count($legalList)>0)
-                        return explode($legalList[0],strval($param));
-                    else
-                    {
+                case 'array': {
+                    if (count($legalList) > 0)
+                        return explode($legalList[0], strval($param));
+                    else {
                         if (empty($param))
                             return array();
-                        return explode(',',strval($param));
+                        return explode(',', strval($param));
                     }
 
                     break;
                 }
-                case 'json':
-                {
-                    return json_decode(strval($param),true);
+                case 'json': {
+                    return json_decode(strval($param), true);
                     break;
                 }
-                case 'raw':
-                {
+                case 'raw': {
                     return $param;
                     break;
                 }
@@ -134,7 +115,7 @@ class YafController extends Yaf_Controller_Abstract{
     {
         $url = $_SERVER['REQUEST_URI'];
         $idx = stripos($url, "#");
-        if($idx === false)
+        if ($idx === false)
             return array();
         $param = array();
         $paramstr = substr($url, $idx);
@@ -174,14 +155,13 @@ class YafController extends Yaf_Controller_Abstract{
     protected function getLegalParamArray($fields)
     {
         $params = array();
-        foreach($fields as $f => $type)
-        {
+        foreach ($fields as $f => $type) {
             $params[$f] = $this->getLegalParam($f, $type);
         }
         return $params;
     }
 
-    protected function getRequestDate($year='year', $month='month', $day='day')
+    protected function getRequestDate($year = 'year', $month = 'month', $day = 'day')
     {
         $y = $this->getLegalParam($year, 'int');
         $m = $this->getLegalParam($month, 'int');
@@ -189,25 +169,25 @@ class YafController extends Yaf_Controller_Abstract{
         return mktime(0, 0, 0, $m, $d, $y);
     }
 
-    protected function inputIdResult($result,$model)
+    protected function inputIdResult($result, $model)
     {
-        if($result<0)
+        if ($result < 0)
             $this->inputErrorResult($result, $model);
         else
-            $this->inputResult(array('id'=>$result));
+            $this->inputResult(array('id' => $result));
     }
 
-    protected function inputStateResult($result,$model)
+    protected function inputStateResult($result, $model)
     {
-        if($result<0)
+        if ($result < 0)
             $this->inputErrorResult($result, $model);
         else
-            $this->inputResult(array('state'=>$result));
+            $this->inputResult(array('state' => $result));
     }
 
-    protected function inputNullResult($result,$model)
+    protected function inputNullResult($result, $model)
     {
-        if($result<0)
+        if ($result < 0)
             $this->inputErrorResult($result, $model);
         else
             $this->inputResult();
@@ -216,11 +196,11 @@ class YafController extends Yaf_Controller_Abstract{
     protected function inputUpgradeResult($result, $model)
     {
         $desc = $model->getErrorText($result['code']);
-        echo json_encode(array('data'=>$result,'code'=>$result['code'], 'desc'=>$desc));
+        echo json_encode(array('data' => $result, 'code' => $result['code'], 'desc' => $desc));
         Yaf_Dispatcher::getInstance()->autoRender(FALSE);
     }
 
-    protected function inputResult($data=null)
+    protected function inputResult($data = null)
     {
 // 		if (isset($data['html']))
 // 			$data['html'] = $this->filterHtml($data['html']);
@@ -236,7 +216,7 @@ class YafController extends Yaf_Controller_Abstract{
 // 		{
 //        MojiLoger::mojilog($data,"inputResult data");
 
-        echo json_encode(array('data'=>$data,'code'=>0));
+        echo json_encode(array('data' => $data, 'code' => 0));
 // 		}
 
         Yaf_Dispatcher::getInstance()->autoRender(FALSE);

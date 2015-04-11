@@ -32,7 +32,7 @@ class Chain implements StorageInterface
 
     /**
      * @param StorageInterface $storage
-     * @param int          $priority
+     * @param int $priority
      */
     public function add(StorageInterface $storage, $priority = 1)
     {

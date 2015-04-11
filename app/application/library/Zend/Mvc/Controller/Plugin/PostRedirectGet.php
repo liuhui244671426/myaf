@@ -38,14 +38,14 @@ class PostRedirectGet extends AbstractPlugin
      * boolean false.
      *
      * @param  null|string $redirect
-     * @param  bool        $redirectToUrl
+     * @param  bool $redirectToUrl
      * @return \Zend\Http\Response|array|\Traversable|false
      */
     public function __invoke($redirect = null, $redirectToUrl = false)
     {
         $controller = $this->getController();
-        $request    = $controller->getRequest();
-        $container  = $this->getSessionContainer();
+        $request = $controller->getRequest();
+        $container = $this->getSessionContainer();
 
         if ($request->isPost()) {
             $container->setExpirationHops(1, 'post');
@@ -86,16 +86,16 @@ class PostRedirectGet extends AbstractPlugin
     /**
      * TODO: Good candidate for traits method in PHP 5.4 with FilePostRedirectGet plugin
      *
-     * @param  string  $redirect
-     * @param  bool    $redirectToUrl
+     * @param  string $redirect
+     * @param  bool $redirectToUrl
      * @return \Zend\Http\Response
      * @throws \Zend\Mvc\Exception\RuntimeException
      */
     protected function redirect($redirect, $redirectToUrl)
     {
-        $controller         = $this->getController();
-        $params             = array();
-        $options            = array('query' => $controller->params()->fromQuery());
+        $controller = $this->getController();
+        $params = array();
+        $options = array('query' => $controller->params()->fromQuery());
         $reuseMatchedParams = false;
 
         if (null === $redirect) {

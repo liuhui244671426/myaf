@@ -193,7 +193,7 @@ class Sqlsrv implements DriverInterface, Profiler\ProfilerAwareInterface
 
     /**
      * @param string $name
-     * @param mixed  $type
+     * @param mixed $type
      * @return string
      */
     public function formatParameterName($name, $type = null)

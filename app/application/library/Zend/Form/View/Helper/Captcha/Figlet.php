@@ -40,8 +40,8 @@ class Figlet extends AbstractWord
             $captcha->getFiglet()->render($captcha->getWord())
         );
 
-        $position     = $this->getCaptchaPosition();
-        $separator    = $this->getSeparator();
+        $position = $this->getCaptchaPosition();
+        $separator = $this->getSeparator();
         $captchaInput = $this->renderCaptchaInputs($element);
 
         $pattern = '%s%s%s';

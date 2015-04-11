@@ -52,7 +52,7 @@ abstract class AbstractFilter
      */
     public function addAnd($filter)
     {
-        $fa   = func_get_args();
+        $fa = func_get_args();
         $args = array_merge(array($this), $fa);
         return new AndFilter($args);
     }
@@ -65,7 +65,7 @@ abstract class AbstractFilter
      */
     public function addOr($filter)
     {
-        $fa   = func_get_args();
+        $fa = func_get_args();
         $args = array_merge(array($this), $fa);
         return new OrFilter($args);
     }

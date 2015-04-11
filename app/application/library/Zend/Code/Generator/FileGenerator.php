@@ -216,7 +216,7 @@ class FileGenerator extends AbstractGenerator
      */
     public function setNamespace($namespace)
     {
-        $this->namespace = (string) $namespace;
+        $this->namespace = (string)$namespace;
         return $this;
     }
 
@@ -255,15 +255,15 @@ class FileGenerator extends AbstractGenerator
     public function setUses(array $uses)
     {
         foreach ($uses as $use) {
-            $use = (array) $use;
+            $use = (array)$use;
             if (array_key_exists('use', $use) && array_key_exists('as', $use)) {
                 $import = $use['use'];
-                $alias  = $use['as'];
+                $alias = $use['as'];
             } elseif (count($use) == 2) {
                 list($import, $alias) = $use;
             } else {
                 $import = current($use);
-                $alias  = null;
+                $alias = null;
             }
             $this->setUse($import, $alias);
         }
@@ -308,7 +308,7 @@ class FileGenerator extends AbstractGenerator
             return current($this->classes);
         }
 
-        return $this->classes[(string) $name];
+        return $this->classes[(string)$name];
     }
 
     /**
@@ -331,7 +331,7 @@ class FileGenerator extends AbstractGenerator
         }
 
         // @todo check for dup here
-        $className                 = $class->getName();
+        $className = $class->getName();
         $this->classes[$className] = $class;
 
         return $this;
@@ -343,7 +343,7 @@ class FileGenerator extends AbstractGenerator
      */
     public function setFilename($filename)
     {
-        $this->filename = (string) $filename;
+        $this->filename = (string)$filename;
         return $this;
     }
 
@@ -369,7 +369,7 @@ class FileGenerator extends AbstractGenerator
      */
     public function setBody($body)
     {
-        $this->body = (string) $body;
+        $this->body = (string)$body;
         return $this;
     }
 
@@ -500,7 +500,7 @@ class FileGenerator extends AbstractGenerator
 
                 //don't duplicate use statements
                 if (!in_array($tempOutput, $classUses)) {
-                    $useOutput .= "use ". $tempOutput .";";
+                    $useOutput .= "use " . $tempOutput . ";";
                     $useOutput .= self::LINE_FEED;
                 }
             }

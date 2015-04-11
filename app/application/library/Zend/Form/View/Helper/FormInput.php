@@ -20,36 +20,36 @@ class FormInput extends AbstractHelper
      * @var array
      */
     protected $validTagAttributes = array(
-        'name'           => true,
-        'accept'         => true,
-        'alt'            => true,
-        'autocomplete'   => true,
-        'autofocus'      => true,
-        'checked'        => true,
-        'dirname'        => true,
-        'disabled'       => true,
-        'form'           => true,
-        'formaction'     => true,
-        'formenctype'    => true,
-        'formmethod'     => true,
+        'name' => true,
+        'accept' => true,
+        'alt' => true,
+        'autocomplete' => true,
+        'autofocus' => true,
+        'checked' => true,
+        'dirname' => true,
+        'disabled' => true,
+        'form' => true,
+        'formaction' => true,
+        'formenctype' => true,
+        'formmethod' => true,
         'formnovalidate' => true,
-        'formtarget'     => true,
-        'height'         => true,
-        'list'           => true,
-        'max'            => true,
-        'maxlength'      => true,
-        'min'            => true,
-        'multiple'       => true,
-        'pattern'        => true,
-        'placeholder'    => true,
-        'readonly'       => true,
-        'required'       => true,
-        'size'           => true,
-        'src'            => true,
-        'step'           => true,
-        'type'           => true,
-        'value'          => true,
-        'width'          => true,
+        'formtarget' => true,
+        'height' => true,
+        'list' => true,
+        'max' => true,
+        'maxlength' => true,
+        'min' => true,
+        'multiple' => true,
+        'pattern' => true,
+        'placeholder' => true,
+        'readonly' => true,
+        'required' => true,
+        'size' => true,
+        'src' => true,
+        'step' => true,
+        'type' => true,
+        'value' => true,
+        'width' => true,
     );
 
     /**
@@ -58,30 +58,30 @@ class FormInput extends AbstractHelper
      * @var array
      */
     protected $validTypes = array(
-        'text'           => true,
-        'button'         => true,
-        'checkbox'       => true,
-        'file'           => true,
-        'hidden'         => true,
-        'image'          => true,
-        'password'       => true,
-        'radio'          => true,
-        'reset'          => true,
-        'select'         => true,
-        'submit'         => true,
-        'color'          => true,
-        'date'           => true,
-        'datetime'       => true,
+        'text' => true,
+        'button' => true,
+        'checkbox' => true,
+        'file' => true,
+        'hidden' => true,
+        'image' => true,
+        'password' => true,
+        'radio' => true,
+        'reset' => true,
+        'select' => true,
+        'submit' => true,
+        'color' => true,
+        'date' => true,
+        'datetime' => true,
         'datetime-local' => true,
-        'email'          => true,
-        'month'          => true,
-        'number'         => true,
-        'range'          => true,
-        'search'         => true,
-        'tel'            => true,
-        'time'           => true,
-        'url'            => true,
-        'week'           => true,
+        'email' => true,
+        'month' => true,
+        'number' => true,
+        'range' => true,
+        'search' => true,
+        'tel' => true,
+        'time' => true,
+        'url' => true,
+        'week' => true,
     );
 
     /**
@@ -118,9 +118,9 @@ class FormInput extends AbstractHelper
             ));
         }
 
-        $attributes          = $element->getAttributes();
-        $attributes['name']  = $name;
-        $attributes['type']  = $this->getType($element);
+        $attributes = $element->getAttributes();
+        $attributes['name'] = $name;
+        $attributes['type'] = $this->getType($element);
         $attributes['value'] = $element->getValue();
 
         return sprintf(

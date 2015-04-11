@@ -20,16 +20,16 @@ class Sha1 extends Hash
      * @const string Error constants
      */
     const DOES_NOT_MATCH = 'fileSha1DoesNotMatch';
-    const NOT_DETECTED   = 'fileSha1NotDetected';
-    const NOT_FOUND      = 'fileSha1NotFound';
+    const NOT_DETECTED = 'fileSha1NotDetected';
+    const NOT_FOUND = 'fileSha1NotFound';
 
     /**
      * @var array Error message templates
      */
     protected $messageTemplates = array(
         self::DOES_NOT_MATCH => "File does not match the given sha1 hashes",
-        self::NOT_DETECTED   => "A sha1 hash could not be evaluated for the given file",
-        self::NOT_FOUND      => "File is not readable or does not exist",
+        self::NOT_DETECTED => "A sha1 hash could not be evaluated for the given file",
+        self::NOT_FOUND => "File is not readable or does not exist",
     );
 
     /**
@@ -39,7 +39,7 @@ class Sha1 extends Hash
      */
     protected $options = array(
         'algorithm' => 'sha1',
-        'hash'      => null,
+        'hash' => null,
     );
 
     /**
@@ -79,8 +79,8 @@ class Sha1 extends Hash
     /**
      * Returns true if and only if the given file confirms the set hash
      *
-     * @param  string $value|array Filename to check for hash
-     * @param  array        $file  File data from \Zend\File\Transfer\Transfer (optional)
+     * @param  string $value |array Filename to check for hash
+     * @param  array $file File data from \Zend\File\Transfer\Transfer (optional)
      * @return bool
      */
     public function isValid($value, $file = null)
@@ -88,17 +88,17 @@ class Sha1 extends Hash
         if (is_string($value) && is_array($file)) {
             // Legacy Zend\Transfer API support
             $filename = $file['name'];
-            $file     = $file['tmp_name'];
+            $file = $file['tmp_name'];
         } elseif (is_array($value)) {
             if (!isset($value['tmp_name']) || !isset($value['name'])) {
                 throw new Exception\InvalidArgumentException(
                     'Value array must be in $_FILES format'
                 );
             }
-            $file     = $value['tmp_name'];
+            $file = $value['tmp_name'];
             $filename = $value['name'];
         } else {
-            $file     = $value;
+            $file = $value;
             $filename = basename($file);
         }
         $this->setValue($filename);

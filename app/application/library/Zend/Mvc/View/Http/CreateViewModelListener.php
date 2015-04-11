@@ -22,8 +22,8 @@ class CreateViewModelListener extends AbstractListenerAggregate
      */
     public function attach(Events $events)
     {
-        $this->listeners[] = $events->attach(MvcEvent::EVENT_DISPATCH, array($this, 'createViewModelFromArray'),  -80);
-        $this->listeners[] = $events->attach(MvcEvent::EVENT_DISPATCH, array($this, 'createViewModelFromNull'),   -80);
+        $this->listeners[] = $events->attach(MvcEvent::EVENT_DISPATCH, array($this, 'createViewModelFromArray'), -80);
+        $this->listeners[] = $events->attach(MvcEvent::EVENT_DISPATCH, array($this, 'createViewModelFromNull'), -80);
     }
 
     /**
@@ -48,7 +48,7 @@ class CreateViewModelListener extends AbstractListenerAggregate
      *
      * @param MvcEvent $e
      * @return void
-    */
+     */
     public function createViewModelFromNull(MvcEvent $e)
     {
         $result = $e->getResult();

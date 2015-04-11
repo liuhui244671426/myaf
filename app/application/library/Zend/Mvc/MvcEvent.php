@@ -20,13 +20,13 @@ class MvcEvent extends Event
     /**#@+
      * Mvc events triggered by eventmanager
      */
-    const EVENT_BOOTSTRAP      = 'bootstrap';
-    const EVENT_DISPATCH       = 'dispatch';
+    const EVENT_BOOTSTRAP = 'bootstrap';
+    const EVENT_DISPATCH = 'dispatch';
     const EVENT_DISPATCH_ERROR = 'dispatch.error';
-    const EVENT_FINISH         = 'finish';
-    const EVENT_RENDER         = 'render';
-    const EVENT_RENDER_ERROR   = 'render.error';
-    const EVENT_ROUTE          = 'route';
+    const EVENT_FINISH = 'finish';
+    const EVENT_RENDER = 'render';
+    const EVENT_RENDER_ERROR = 'render.error';
+    const EVENT_ROUTE = 'route';
     /**#@-*/
 
     protected $application;
@@ -231,7 +231,7 @@ class MvcEvent extends Event
      */
     public function isError()
     {
-        return (bool) $this->getParam('error', false);
+        return (bool)$this->getParam('error', false);
     }
 
     /**

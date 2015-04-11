@@ -98,9 +98,9 @@ class DocBlockReflection implements ReflectionInterface
             $this->docComment = $commentOrReflector->getDocComment();
 
             // determine line numbers
-            $lineCount       = substr_count($this->docComment, "\n");
+            $lineCount = substr_count($this->docComment, "\n");
             $this->startLine = $this->reflector->getStartLine() - $lineCount - 1;
-            $this->endLine   = $this->reflector->getStartLine() - 1;
+            $this->endLine = $this->reflector->getStartLine() - 1;
         } elseif (is_string($commentOrReflector)) {
             $this->docComment = $commentOrReflector;
         } else {
@@ -253,9 +253,9 @@ class DocBlockReflection implements ReflectionInterface
         $this->cleanDocComment = preg_replace("#[ \t]*(?:/\*\*|\*/|\*)[ ]{0,1}(.*)?#", '$1', $docComment);
         $this->cleanDocComment = ltrim($this->cleanDocComment, "\r\n"); // @todo should be changed to remove first and last empty line
 
-        $scanner                = new DocBlockScanner($docComment);
+        $scanner = new DocBlockScanner($docComment);
         $this->shortDescription = ltrim($scanner->getShortDescription());
-        $this->longDescription  = ltrim($scanner->getLongDescription());
+        $this->longDescription = ltrim($scanner->getLongDescription());
 
         foreach ($scanner->getTags() as $tag) {
             $this->tags[] = $this->tagManager->createTag(ltrim($tag['name'], '@'), ltrim($tag['value']));

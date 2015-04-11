@@ -74,7 +74,7 @@ class Client implements ServerClient
     /**
      * @var array
      */
-    protected $typemap              = null;
+    protected $typemap = null;
 
     /**
      * WSDL used to access server
@@ -86,29 +86,29 @@ class Client implements ServerClient
     /**#@+
      * @var string
      */
-    protected $connectionTimeout    = null;
-    protected $localCert            = null;
-    protected $location             = null;
-    protected $login                = null;
-    protected $passphrase           = null;
-    protected $password             = null;
-    protected $proxyHost            = null;
-    protected $proxyLogin           = null;
-    protected $proxyPassword        = null;
-    protected $proxyPort            = null;
-    protected $streamContext        = null;
-    protected $style                = null;
-    protected $uri                  = null;
-    protected $use                  = null;
-    protected $userAgent            = null;
+    protected $connectionTimeout = null;
+    protected $localCert = null;
+    protected $location = null;
+    protected $login = null;
+    protected $passphrase = null;
+    protected $password = null;
+    protected $proxyHost = null;
+    protected $proxyLogin = null;
+    protected $proxyPassword = null;
+    protected $proxyPort = null;
+    protected $streamContext = null;
+    protected $style = null;
+    protected $uri = null;
+    protected $use = null;
+    protected $userAgent = null;
     /**#@-*/
 
     /**#@+
      * @var int
      */
-    protected $cacheWsdl            = null;
-    protected $compression          = null;
-    protected $features             = null;
+    protected $cacheWsdl = null;
+    protected $compression = null;
+    protected $features = null;
     /**#@-*/
 
     /**
@@ -293,29 +293,29 @@ class Client implements ServerClient
     {
         $options = array();
 
-        $options['classmap']       = $this->getClassmap();
-        $options['typemap']        = $this->getTypemap();
-        $options['encoding']       = $this->getEncoding();
-        $options['soap_version']   = $this->getSoapVersion();
-        $options['wsdl']           = $this->getWSDL();
-        $options['uri']            = $this->getUri();
-        $options['location']       = $this->getLocation();
-        $options['style']          = $this->getStyle();
-        $options['use']            = $this->getEncodingMethod();
-        $options['login']          = $this->getHttpLogin();
-        $options['password']       = $this->getHttpPassword();
-        $options['proxy_host']     = $this->getProxyHost();
-        $options['proxy_port']     = $this->getProxyPort();
-        $options['proxy_login']    = $this->getProxyLogin();
+        $options['classmap'] = $this->getClassmap();
+        $options['typemap'] = $this->getTypemap();
+        $options['encoding'] = $this->getEncoding();
+        $options['soap_version'] = $this->getSoapVersion();
+        $options['wsdl'] = $this->getWSDL();
+        $options['uri'] = $this->getUri();
+        $options['location'] = $this->getLocation();
+        $options['style'] = $this->getStyle();
+        $options['use'] = $this->getEncodingMethod();
+        $options['login'] = $this->getHttpLogin();
+        $options['password'] = $this->getHttpPassword();
+        $options['proxy_host'] = $this->getProxyHost();
+        $options['proxy_port'] = $this->getProxyPort();
+        $options['proxy_login'] = $this->getProxyLogin();
         $options['proxy_password'] = $this->getProxyPassword();
-        $options['local_cert']     = $this->getHttpsCertificate();
-        $options['passphrase']     = $this->getHttpsCertPassphrase();
-        $options['compression']    = $this->getCompressionOptions();
+        $options['local_cert'] = $this->getHttpsCertificate();
+        $options['passphrase'] = $this->getHttpsCertPassphrase();
+        $options['compression'] = $this->getCompressionOptions();
         //$options['connection_timeout'] = $this->connectionTimeout;
         $options['stream_context'] = $this->getStreamContext();
-        $options['cache_wsdl']     = $this->getWSDLCache();
-        $options['features']       = $this->getSoapFeatures();
-        $options['user_agent']     = $this->getUserAgent();
+        $options['cache_wsdl'] = $this->getWSDLCache();
+        $options['features'] = $this->getSoapFeatures();
+        $options['user_agent'] = $this->getUserAgent();
 
         foreach ($options as $key => $value) {
             /*
@@ -352,7 +352,7 @@ class Client implements ServerClient
         }
 
         $this->soapVersion = $version;
-        $this->soapClient  = null;
+        $this->soapClient = null;
         return $this;
     }
 
@@ -381,7 +381,7 @@ class Client implements ServerClient
             }
         }
 
-        $this->classmap   = $classmap;
+        $this->classmap = $classmap;
         $this->soapClient = null;
         return $this;
     }
@@ -414,7 +414,7 @@ class Client implements ServerClient
             }
         }
 
-        $this->typemap   = $typeMap;
+        $this->typemap = $typeMap;
         $this->soapClient = null;
         return $this;
     }
@@ -442,7 +442,7 @@ class Client implements ServerClient
             throw new Exception\InvalidArgumentException('Invalid encoding specified');
         }
 
-        $this->encoding   = $encoding;
+        $this->encoding = $encoding;
         $this->soapClient = null;
         return $this;
     }
@@ -485,7 +485,7 @@ class Client implements ServerClient
     public function setUri($uri)
     {
         $this->validateUrn($uri);
-        $this->uri        = $uri;
+        $this->uri = $uri;
         $this->soapClient = null;
         return $this;
     }
@@ -512,7 +512,7 @@ class Client implements ServerClient
     public function setLocation($location)
     {
         $this->validateUrn($location);
-        $this->location   = $location;
+        $this->location = $location;
         $this->soapClient = null;
         return $this;
     }
@@ -542,7 +542,7 @@ class Client implements ServerClient
             );
         }
 
-        $this->style      = $style;
+        $this->style = $style;
         $this->soapClient = null;
         return $this;
     }
@@ -572,7 +572,7 @@ class Client implements ServerClient
             );
         }
 
-        $this->use        = $use;
+        $this->use = $use;
         $this->soapClient = null;
         return $this;
     }
@@ -595,7 +595,7 @@ class Client implements ServerClient
      */
     public function setHttpLogin($login)
     {
-        $this->login      = $login;
+        $this->login = $login;
         $this->soapClient = null;
         return $this;
     }
@@ -618,7 +618,7 @@ class Client implements ServerClient
      */
     public function setHttpPassword($password)
     {
-        $this->password   = $password;
+        $this->password = $password;
         $this->soapClient = null;
         return $this;
     }
@@ -641,7 +641,7 @@ class Client implements ServerClient
      */
     public function setProxyHost($proxyHost)
     {
-        $this->proxyHost  = $proxyHost;
+        $this->proxyHost = $proxyHost;
         $this->soapClient = null;
         return $this;
     }
@@ -664,7 +664,7 @@ class Client implements ServerClient
      */
     public function setProxyPort($proxyPort)
     {
-        $this->proxyPort  = (int) $proxyPort;
+        $this->proxyPort = (int)$proxyPort;
         $this->soapClient = null;
         return $this;
     }
@@ -711,7 +711,7 @@ class Client implements ServerClient
     public function setProxyPassword($proxyPassword)
     {
         $this->proxyPassword = $proxyPassword;
-        $this->soapClient    = null;
+        $this->soapClient = null;
         return $this;
     }
 
@@ -728,7 +728,7 @@ class Client implements ServerClient
             throw new Exception\InvalidArgumentException('Invalid HTTPS client certificate path.');
         }
 
-        $this->localCert  = $localCert;
+        $this->localCert = $localCert;
         $this->soapClient = null;
         return $this;
     }
@@ -777,7 +777,7 @@ class Client implements ServerClient
         if ($compressionOptions === null) {
             $this->compression = null;
         } else {
-            $this->compression = (int) $compressionOptions;
+            $this->compression = (int)$compressionOptions;
         }
         $this->soapClient = null;
 
@@ -839,7 +839,7 @@ class Client implements ServerClient
      */
     public function setSoapFeatures($feature)
     {
-        $this->features   = $feature;
+        $this->features = $feature;
         $this->soapClient = null;
         return $this;
     }
@@ -866,7 +866,7 @@ class Client implements ServerClient
         if ($caching === null) {
             $this->cacheWsdl = null;
         } else {
-            $this->cacheWsdl = (int) $caching;
+            $this->cacheWsdl = (int)$caching;
         }
 
         return $this;
@@ -893,7 +893,7 @@ class Client implements ServerClient
         if ($userAgent === null) {
             $this->userAgent = null;
         } else {
-            $this->userAgent = (string) $userAgent;
+            $this->userAgent = (string)$userAgent;
         }
 
         return $this;
@@ -981,11 +981,11 @@ class Client implements ServerClient
      * @param  string $request
      * @param  string $location
      * @param  string $action
-     * @param  int    $version
-     * @param  int    $oneWay
+     * @param  int $version
+     * @param  int $oneWay
      * @return mixed
      */
-    public function _doRequest(Client\Common $client, $request, $location,$action, $version, $oneWay = null)
+    public function _doRequest(Client\Common $client, $request, $location, $action, $version, $oneWay = null)
     {
         // Perform request as is
         if ($oneWay === null) {
@@ -1078,7 +1078,7 @@ class Client implements ServerClient
     public function resetSoapInputHeaders()
     {
         $this->permanentSoapInputHeaders = array();
-        $this->soapInputHeaders          = array();
+        $this->soapInputHeaders = array();
         return $this;
     }
 
@@ -1096,7 +1096,7 @@ class Client implements ServerClient
      * Perform a SOAP call
      *
      * @param  string $name
-     * @param  array  $arguments
+     * @param  array $arguments
      * @return mixed
      */
     public function __call($name, $arguments)
@@ -1113,7 +1113,7 @@ class Client implements ServerClient
             $name,
             $this->_preProcessArguments($arguments),
             null, /* Options are already set to the SOAP client object */
-            (count($soapHeaders) > 0)? $soapHeaders : null,
+            (count($soapHeaders) > 0) ? $soapHeaders : null,
             $this->soapOutputHeaders
         );
 
@@ -1205,7 +1205,7 @@ class Client implements ServerClient
      * @param  string $cookieValue
      * @return self
      */
-    public function setCookie($cookieName, $cookieValue=null)
+    public function setCookie($cookieName, $cookieValue = null)
     {
         $soapClient = $this->getSoapClient();
         $soapClient->__setCookie($cookieName, $cookieValue);

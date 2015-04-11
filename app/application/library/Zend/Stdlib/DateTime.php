@@ -27,7 +27,7 @@ class DateTime extends \DateTime
      * not allow for fractions of a second. This function better handles ISO8601
      * formatted date strings.
      *
-     * @param  string       $time
+     * @param  string $time
      * @param  DateTimeZone $timezone
      * @return mixed
      */

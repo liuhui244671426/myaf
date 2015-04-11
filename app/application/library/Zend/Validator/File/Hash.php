@@ -21,16 +21,16 @@ class Hash extends AbstractValidator
      * @const string Error constants
      */
     const DOES_NOT_MATCH = 'fileHashDoesNotMatch';
-    const NOT_DETECTED   = 'fileHashHashNotDetected';
-    const NOT_FOUND      = 'fileHashNotFound';
+    const NOT_DETECTED = 'fileHashHashNotDetected';
+    const NOT_FOUND = 'fileHashNotFound';
 
     /**
      * @var array Error message templates
      */
     protected $messageTemplates = array(
         self::DOES_NOT_MATCH => "File does not match the given hashes",
-        self::NOT_DETECTED   => "A hash could not be evaluated for the given file",
-        self::NOT_FOUND      => "File is not readable or does not exist"
+        self::NOT_DETECTED => "A hash could not be evaluated for the given file",
+        self::NOT_FOUND => "File is not readable or does not exist"
     );
 
     /**
@@ -40,7 +40,7 @@ class Hash extends AbstractValidator
      */
     protected $options = array(
         'algorithm' => 'crc32',
-        'hash'      => null,
+        'hash' => null,
     );
 
     /**
@@ -51,7 +51,8 @@ class Hash extends AbstractValidator
     public function __construct($options = null)
     {
         if (is_scalar($options) ||
-            (is_array($options) && !array_key_exists('hash', $options))) {
+            (is_array($options) && !array_key_exists('hash', $options))
+        ) {
             $options = array('hash' => $options);
         }
 
@@ -124,7 +125,7 @@ class Hash extends AbstractValidator
      * Returns true if and only if the given file confirms the set hash
      *
      * @param  string|array $value File to check for hash
-     * @param  array        $file  File data from \Zend\File\Transfer\Transfer (optional)
+     * @param  array $file File data from \Zend\File\Transfer\Transfer (optional)
      * @return bool
      */
     public function isValid($value, $file = null)
@@ -132,17 +133,17 @@ class Hash extends AbstractValidator
         if (is_string($value) && is_array($file)) {
             // Legacy Zend\Transfer API support
             $filename = $file['name'];
-            $file     = $file['tmp_name'];
+            $file = $file['tmp_name'];
         } elseif (is_array($value)) {
             if (!isset($value['tmp_name']) || !isset($value['name'])) {
                 throw new Exception\InvalidArgumentException(
                     'Value array must be in $_FILES format'
                 );
             }
-            $file     = $value['tmp_name'];
+            $file = $value['tmp_name'];
             $filename = $value['name'];
         } else {
-            $file     = $value;
+            $file = $value;
             $filename = basename($file);
         }
         $this->setValue($filename);
@@ -153,7 +154,7 @@ class Hash extends AbstractValidator
             return false;
         }
 
-        $algos  = array_unique(array_values($this->getHash()));
+        $algos = array_unique(array_values($this->getHash()));
         $hashes = array_unique(array_keys($this->getHash()));
         foreach ($algos as $algorithm) {
             $filehash = hash_file($algorithm, $file);

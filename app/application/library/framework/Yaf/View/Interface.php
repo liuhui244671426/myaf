@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Yaf View Interface
  */
@@ -44,13 +45,14 @@ interface Yaf_View_Interface
      * @param array $tplVars The script variables.
      * @return string The script output.
      */
-    public function render($tpl, $tplVars=array());
-   /**
+    public function render($tpl, $tplVars = array());
+
+    /**
      * Processes a view script and displays the output.
      *
      * @param string $tpl The script name to process.
      * @param array $tplVars The script variables.
      * @return void
      */
-    public function display($tpl, $tplVars=array());
+    public function display($tpl, $tplVars = array());
 }

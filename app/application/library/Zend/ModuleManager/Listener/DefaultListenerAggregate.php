@@ -38,8 +38,8 @@ class DefaultListenerAggregate extends AbstractListener implements
      */
     public function attach(EventManagerInterface $events)
     {
-        $options                     = $this->getOptions();
-        $configListener              = $this->getConfigListener();
+        $options = $this->getOptions();
+        $configListener = $this->getConfigListener();
         $locatorRegistrationListener = new LocatorRegistrationListener($options);
 
         // High priority, we assume module autoloading (for FooNamespace\Module classes) should be available before anything else

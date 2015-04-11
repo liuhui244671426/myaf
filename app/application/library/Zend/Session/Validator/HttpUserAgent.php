@@ -28,8 +28,8 @@ class HttpUserAgent implements ValidatorInterface
     {
         if (empty($data)) {
             $data = isset($_SERVER['HTTP_USER_AGENT'])
-                  ? $_SERVER['HTTP_USER_AGENT']
-                  : null;
+                ? $_SERVER['HTTP_USER_AGENT']
+                : null;
         }
         $this->data = $data;
     }
@@ -43,8 +43,8 @@ class HttpUserAgent implements ValidatorInterface
     public function isValid()
     {
         $userAgent = isset($_SERVER['HTTP_USER_AGENT'])
-                   ? $_SERVER['HTTP_USER_AGENT']
-                   : null;
+            ? $_SERVER['HTTP_USER_AGENT']
+            : null;
 
         return ($userAgent === $this->getData());
     }

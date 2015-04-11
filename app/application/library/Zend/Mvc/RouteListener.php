@@ -58,9 +58,9 @@ class RouteListener implements ListenerAggregateInterface
      */
     public function onRoute($e)
     {
-        $target     = $e->getTarget();
-        $request    = $e->getRequest();
-        $router     = $e->getRouter();
+        $target = $e->getTarget();
+        $request = $e->getRequest();
+        $router = $e->getRouter();
         $routeMatch = $router->match($request);
 
         if (!$routeMatch instanceof Router\RouteMatch) {

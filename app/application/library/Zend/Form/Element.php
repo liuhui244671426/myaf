@@ -57,8 +57,8 @@ class Element implements
     protected $value;
 
     /**
-     * @param  null|int|string  $name    Optional name for the element
-     * @param  array            $options Optional options for the element
+     * @param  null|int|string $name Optional name for the element
+     * @param  array $options Optional options for the element
      * @throws Exception\InvalidArgumentException
      */
     public function __construct($name = null, $options = array())
@@ -183,7 +183,7 @@ class Element implements
      * Set a single element attribute
      *
      * @param  string $key
-     * @param  mixed  $value
+     * @param  mixed $value
      * @return Element|ElementInterface
      */
     public function setAttribute($key, $value)
@@ -428,7 +428,7 @@ class Element implements
      * Set a single label optionn
      *
      * @param  string $key
-     * @param  mixed  $value
+     * @param  mixed $value
      * @return Element|ElementInterface
      */
     public function setLabelOption($key, $value)

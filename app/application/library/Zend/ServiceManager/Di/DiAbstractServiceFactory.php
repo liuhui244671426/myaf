@@ -59,7 +59,7 @@ class DiAbstractServiceFactory extends DiServiceFactory implements AbstractFacto
             return true;
         }
 
-        if (! $this->definitions->hasClass($requestedName) || interface_exists($requestedName)) {
+        if (!$this->definitions->hasClass($requestedName) || interface_exists($requestedName)) {
             return false;
         }
 

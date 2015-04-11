@@ -14,49 +14,49 @@ use Zend\Stdlib\ArrayUtils;
 
 class Boolean extends AbstractFilter
 {
-    const TYPE_BOOLEAN        = 1;
-    const TYPE_INTEGER        = 2;
-    const TYPE_FLOAT          = 4;
-    const TYPE_STRING         = 8;
-    const TYPE_ZERO_STRING    = 16;
-    const TYPE_EMPTY_ARRAY    = 32;
-    const TYPE_NULL           = 64;
-    const TYPE_PHP            = 127;
-    const TYPE_FALSE_STRING   = 128;
-    const TYPE_LOCALIZED      = 256;
-    const TYPE_ALL            = 511;
+    const TYPE_BOOLEAN = 1;
+    const TYPE_INTEGER = 2;
+    const TYPE_FLOAT = 4;
+    const TYPE_STRING = 8;
+    const TYPE_ZERO_STRING = 16;
+    const TYPE_EMPTY_ARRAY = 32;
+    const TYPE_NULL = 64;
+    const TYPE_PHP = 127;
+    const TYPE_FALSE_STRING = 128;
+    const TYPE_LOCALIZED = 256;
+    const TYPE_ALL = 511;
 
     /**
      * @var array
      */
     protected $constants = array(
-        self::TYPE_BOOLEAN       => 'boolean',
-        self::TYPE_INTEGER       => 'integer',
-        self::TYPE_FLOAT         => 'float',
-        self::TYPE_STRING        => 'string',
-        self::TYPE_ZERO_STRING   => 'zero',
-        self::TYPE_EMPTY_ARRAY   => 'array',
-        self::TYPE_NULL          => 'null',
-        self::TYPE_PHP           => 'php',
-        self::TYPE_FALSE_STRING  => 'false',
-        self::TYPE_LOCALIZED     => 'localized',
-        self::TYPE_ALL           => 'all',
+        self::TYPE_BOOLEAN => 'boolean',
+        self::TYPE_INTEGER => 'integer',
+        self::TYPE_FLOAT => 'float',
+        self::TYPE_STRING => 'string',
+        self::TYPE_ZERO_STRING => 'zero',
+        self::TYPE_EMPTY_ARRAY => 'array',
+        self::TYPE_NULL => 'null',
+        self::TYPE_PHP => 'php',
+        self::TYPE_FALSE_STRING => 'false',
+        self::TYPE_LOCALIZED => 'localized',
+        self::TYPE_ALL => 'all',
     );
 
     /**
      * @var array
      */
     protected $options = array(
-        'type'         => self::TYPE_PHP,
-        'casting'      => true,
+        'type' => self::TYPE_PHP,
+        'casting' => true,
         'translations' => array(),
     );
 
     /**
      * Constructor
      *
-     * @param array|Traversable|int|null  $typeOrOptions
-     * @param bool  $casting
+     * @param array|Traversable|int|null $typeOrOptions
+     * @param bool $casting
      * @param array $translations
      */
     public function __construct($typeOrOptions = null, $casting = true, $translations = array())
@@ -138,7 +138,7 @@ class Boolean extends AbstractFilter
      */
     public function setCasting($flag = true)
     {
-        $this->options['casting'] = (bool) $flag;
+        $this->options['casting'] = (bool)$flag;
         return $this;
     }
 
@@ -168,7 +168,7 @@ class Boolean extends AbstractFilter
         }
 
         foreach ($translations as $message => $flag) {
-            $this->options['translations'][$message] = (bool) $flag;
+            $this->options['translations'][$message] = (bool)$flag;
         }
 
         return $this;
@@ -192,7 +192,7 @@ class Boolean extends AbstractFilter
      */
     public function filter($value)
     {
-        $type    = $this->getType();
+        $type = $this->getType();
         $casting = $this->getCasting();
 
         // LOCALIZED
@@ -200,7 +200,7 @@ class Boolean extends AbstractFilter
             $type -= self::TYPE_LOCALIZED;
             if (is_string($value)) {
                 if (isset($this->options['translations'][$value])) {
-                    return (bool) $this->options['translations'][$value];
+                    return (bool)$this->options['translations'][$value];
                 }
             }
         }

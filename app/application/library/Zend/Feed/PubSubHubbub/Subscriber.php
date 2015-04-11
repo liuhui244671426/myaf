@@ -149,7 +149,7 @@ class Subscriber
 
         if (!is_array($options)) {
             throw new Exception\InvalidArgumentException('Array or Traversable object'
-                                . 'expected, got ' . gettype($options));
+                . 'expected, got ' . gettype($options));
         }
         if (array_key_exists('hubUrls', $options)) {
             $this->addHubUrls($options['hubUrls']);
@@ -195,8 +195,8 @@ class Subscriber
     {
         if (empty($url) || !is_string($url) || !Uri::factory($url)->isValid()) {
             throw new Exception\InvalidArgumentException('Invalid parameter "url"'
-                .' of "' . $url . '" must be a non-empty string and a valid'
-                .' URL');
+                . ' of "' . $url . '" must be a non-empty string and a valid'
+                . ' URL');
         }
         $this->topicUrl = $url;
         return $this;
@@ -605,7 +605,7 @@ class Subscriber
     protected function _doRequest($mode)
     {
         $client = $this->_getHttpClient();
-        $hubs   = $this->getHubUrls();
+        $hubs = $this->getHubUrls();
         if (empty($hubs)) {
             throw new Exception\RuntimeException('No Hub Server URLs'
                 . ' have been set so no subscriptions can be attempted');
@@ -625,19 +625,19 @@ class Subscriber
             ) {
                 $this->errors[] = array(
                     'response' => $response,
-                    'hubUrl'   => $url,
+                    'hubUrl' => $url,
                 );
-            /**
-             * At first I thought it was needed, but the backend storage will
-             * allow tracking async without any user interference. It's left
-             * here in case the user is interested in knowing what Hubs
-             * are using async verification modes so they may update Models and
-             * move these to asynchronous processes.
-             */
+                /**
+                 * At first I thought it was needed, but the backend storage will
+                 * allow tracking async without any user interference. It's left
+                 * here in case the user is interested in knowing what Hubs
+                 * are using async verification modes so they may update Models and
+                 * move these to asynchronous processes.
+                 */
             } elseif ($response->getStatusCode() == 202) {
                 $this->asyncHubs[] = array(
                     'response' => $response,
-                    'hubUrl'   => $url,
+                    'hubUrl' => $url,
                 );
             }
         }
@@ -674,12 +674,12 @@ class Subscriber
         }
 
         $params = array(
-            'hub.mode'  => $mode,
+            'hub.mode' => $mode,
             'hub.topic' => $this->getTopicUrl(),
         );
 
         if ($this->getPreferredVerificationMode()
-                == PubSubHubbub::VERIFICATION_MODE_SYNC
+            == PubSubHubbub::VERIFICATION_MODE_SYNC
         ) {
             $vmodes = array(
                 PubSubHubbub::VERIFICATION_MODE_SYNC,
@@ -700,7 +700,7 @@ class Subscriber
          * Establish a persistent verify_token and attach key to callback
          * URL's path/query_string
          */
-        $key   = $this->_generateSubscriptionKey($params, $hubUrl);
+        $key = $this->_generateSubscriptionKey($params, $hubUrl);
         $token = $this->_generateVerifyToken();
         $params['hub.verify_token'] = $token;
 
@@ -730,15 +730,15 @@ class Subscriber
                 ->format('Y-m-d H:i:s');
         }
         $data = array(
-            'id'                 => $key,
-            'topic_url'          => $params['hub.topic'],
-            'hub_url'            => $hubUrl,
-            'created_time'       => $now->format('Y-m-d H:i:s'),
-            'lease_seconds'      => $params['hub.lease_seconds'],
-            'verify_token'       => hash('sha256', $params['hub.verify_token']),
-            'secret'             => null,
-            'expiration_time'    => $expires,
-            'subscription_state' => ($mode == 'unsubscribe')? PubSubHubbub::SUBSCRIPTION_TODELETE : PubSubHubbub::SUBSCRIPTION_NOTVERIFIED,
+            'id' => $key,
+            'topic_url' => $params['hub.topic'],
+            'hub_url' => $hubUrl,
+            'created_time' => $now->format('Y-m-d H:i:s'),
+            'lease_seconds' => $params['hub.lease_seconds'],
+            'verify_token' => hash('sha256', $params['hub.verify_token']),
+            'secret' => null,
+            'expiration_time' => $expires,
+            'subscription_state' => ($mode == 'unsubscribe') ? PubSubHubbub::SUBSCRIPTION_TODELETE : PubSubHubbub::SUBSCRIPTION_NOTVERIFIED,
         );
         $this->getStorage()->setSubscription($data);
 
@@ -766,14 +766,14 @@ class Subscriber
      * Simple helper to generate a verification token used in (un)subscribe
      * requests to a Hub Server.
      *
-     * @param array   $params
+     * @param array $params
      * @param string $hubUrl The Hub Server URL for which this token will apply
      * @return string
      */
     protected function _generateSubscriptionKey(array $params, $hubUrl)
     {
         $keyBase = $params['hub.topic'] . $hubUrl;
-        $key     = md5($keyBase);
+        $key = md5($keyBase);
 
         return $key;
     }
@@ -832,6 +832,6 @@ class Subscriber
 
     final public function setTestStaticToken($token)
     {
-        $this->testStaticToken = (string) $token;
+        $this->testStaticToken = (string)$token;
     }
 }

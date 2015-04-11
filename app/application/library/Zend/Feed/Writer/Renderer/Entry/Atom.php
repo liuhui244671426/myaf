@@ -75,7 +75,7 @@ class Atom extends Renderer\AbstractRenderer implements Renderer\RendererInterfa
     {
         if (!$this->getDataContainer()->getTitle()) {
             $message = 'Atom 1.0 entry elements MUST contain exactly one'
-            . ' atom:title element but a title has not been set';
+                . ' atom:title element but a title has not been set';
             $exception = new Writer\Exception\InvalidArgumentException($message);
             if (!$this->ignoreExceptions) {
                 throw $exception;
@@ -124,7 +124,7 @@ class Atom extends Renderer\AbstractRenderer implements Renderer\RendererInterfa
     {
         if (!$this->getDataContainer()->getDateModified()) {
             $message = 'Atom 1.0 entry elements MUST contain exactly one'
-            . ' atom:updated element but a modification date has not been set';
+                . ' atom:updated element but a modification date has not been set';
             $exception = new Writer\Exception\InvalidArgumentException($message);
             if (!$this->ignoreExceptions) {
                 throw $exception;
@@ -249,11 +249,12 @@ class Atom extends Renderer\AbstractRenderer implements Renderer\RendererInterfa
     protected function _setId(DOMDocument $dom, DOMElement $root)
     {
         if (!$this->getDataContainer()->getId()
-        && !$this->getDataContainer()->getLink()) {
+            && !$this->getDataContainer()->getLink()
+        ) {
             $message = 'Atom 1.0 entry elements MUST contain exactly one '
-            . 'atom:id element, or as an alternative, we can use the same '
-            . 'value as atom:link however neither a suitable link nor an '
-            . 'id have been set';
+                . 'atom:id element, or as an alternative, we can use the same '
+                . 'value as atom:link however neither a suitable link nor an '
+                . 'id have been set';
             $exception = new Writer\Exception\InvalidArgumentException($message);
             if (!$this->ignoreExceptions) {
                 throw $exception;
@@ -324,9 +325,9 @@ class Atom extends Renderer\AbstractRenderer implements Renderer\RendererInterfa
         $content = $this->getDataContainer()->getContent();
         if (!$content && !$this->getDataContainer()->getLink()) {
             $message = 'Atom 1.0 entry elements MUST contain exactly one '
-            . 'atom:content element, or as an alternative, at least one link '
-            . 'with a rel attribute of "alternate" to indicate an alternate '
-            . 'method to consume the content.';
+                . 'atom:content element, or as an alternative, at least one link '
+                . 'with a rel attribute of "alternate" to indicate an alternate '
+                . 'method to consume the content.';
             $exception = new Writer\Exception\InvalidArgumentException($message);
             if (!$this->ignoreExceptions) {
                 throw $exception;
@@ -361,7 +362,7 @@ class Atom extends Renderer\AbstractRenderer implements Renderer\RendererInterfa
             $encoding = str_replace('-', '', $this->getEncoding());
             $tidy->parseString($content, $config, $encoding);
             $tidy->cleanRepair();
-            $xhtml = (string) $tidy;
+            $xhtml = (string)$tidy;
         } else {
             $xhtml = $content;
         }

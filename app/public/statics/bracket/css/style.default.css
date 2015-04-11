@@ -51,14 +51,8 @@
  *  18. MEDIA QUERIES
  *  
  */
-
-
-
-
-
 /********** 1. FILE IMPORTS **********/
 /*************************************/
-
 @import url('bootstrap.min.css');
 @import url('bootstrap-override.css');
 @import url('weather-icons.min.css');
@@ -70,7 +64,6 @@
 @import url('select2.css');
 @import url('lato.css');
 @import url('roboto.css');
-
 
 /********** 2. RESET STYLES **********/
 /*************************************/
@@ -87,14 +80,16 @@ body.signin {
     background: #e4e7ea;
 }
 
-input,select,textarea {
+input, select, textarea {
     font-family: 'LatoRegular', 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, sans-serif !important;
     color: #636e7b;
 }
 
-a:focus, a:active { outline: none; }
+a:focus, a:active {
+    outline: none;
+}
 
-h1,h2,h3,h4,h5 {
+h1, h2, h3, h4, h5 {
     font-family: 'LatoRegular', 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, sans-serif;
 }
 
@@ -110,25 +105,22 @@ strong {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #e4e7ea; 
-    z-index: 10000; 
+    background-color: #e4e7ea;
+    z-index: 10000;
 }
 
 #status {
     width: 30px;
     height: 30px;
     position: absolute;
-    left: 50%; 
+    left: 50%;
     top: 50%;
     margin: -15px 0 0 -15px;
     font-size: 32px;
 }
 
-
-
 /********** 3. HEADER PANEL **********/
 /*************************************/
-
 
 .headerbar {
     border-left: 1px solid #eee;
@@ -140,7 +132,6 @@ strong {
     display: block;
     content: '';
 }
-
 
 /***** 3.1 HEADER LEFT *****/
 
@@ -202,8 +193,6 @@ strong {
 .header-left {
     float: left;
 }
-
-
 
 /***** 3.2 HEADER RIGHT *****/
 
@@ -272,9 +261,9 @@ strong {
     -moz-border-radius: 2px 0 2px 2px;
     -webkit-border-radius: 2px 0 2px 2px;
     border-radius: 2px 0 2px 2px;
-    -moz-box-shadow: 3px 3px 0 rgba(12,12,12,0.05);
-    -webkit-box-shadow: 3px 3px 0 rgba(12,12,12,0.05);
-    box-shadow: 3px 3px 0 rgba(12,12,12,0.05);
+    -moz-box-shadow: 3px 3px 0 rgba(12, 12, 12, 0.05);
+    -webkit-box-shadow: 3px 3px 0 rgba(12, 12, 12, 0.05);
+    box-shadow: 3px 3px 0 rgba(12, 12, 12, 0.05);
     padding: 5px;
 }
 
@@ -437,7 +426,7 @@ strong {
 
 .gen-list li .name {
     font-size: 13px;
-    font-family: 'LatoBold','Lucida Grande', 'Lucida Sans Unicode', Helvetica, sans-serif;
+    font-family: 'LatoBold', 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, sans-serif;
     line-height: 21px;
     display: block;
 }
@@ -448,9 +437,6 @@ strong {
     color: #999;
     display: block;
 }
-
-
-
 
 /********** 4. LEFT PANEL **********/
 /***********************************/
@@ -516,7 +502,7 @@ strong {
     padding: 0;
     padding-bottom: 15px;
     margin-bottom: 15px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     display: none;
 }
 
@@ -547,10 +533,7 @@ strong {
     opacity: 0.5;
 }
 
-
-
 /***** 4.1 NAVIGATION STYLES *****/
-
 
 .sidebartitle {
     font-size: 11px;
@@ -573,13 +556,13 @@ strong {
 .nav-bracket > li > a:focus {
     background-color: #fff;
     color: #1d2939;
-    -moz-box-shadow: 0 3px 0 rgba(0,0,0,0.2);
-    -webkit-box-shadow: 0 3px 0 rgba(0,0,0,0.2);
-    box-shadow: 0 3px 0 rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 3px 0 rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 3px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.2);
 }
 
 .nav-bracket > li.nav-parent > a {
-    background: transparent url(../images/plus-white.png) no-repeat 92% center; 
+    background: transparent url(../images/plus-white.png) no-repeat 92% center;
 }
 
 .nav-bracket > li.nav-parent > a:focus {
@@ -601,9 +584,9 @@ strong {
     background-color: #fff;
     background-image: url(../images/minus.png);
     color: #1d2939;
-    -moz-box-shadow: 0 3px 0 rgba(0,0,0,0.2);
-    -webkit-box-shadow: 0 3px 0 rgba(0,0,0,0.2);
-    box-shadow: 0 3px 0 rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 3px 0 rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 3px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.2);
 }
 
 .nav-bracket > li.nav-active > a:hover {
@@ -623,21 +606,21 @@ strong {
 }
 
 .nav-bracket > li.active > a {
-    -moz-box-shadow: 0 3px 0 rgba(0,0,0,0.2);
-    -webkit-box-shadow: 0 3px 0 rgba(0,0,0,0.2);
-    box-shadow: 0 3px 0 rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 3px 0 rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 3px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.2);
 }
 
 .nav-bracket > li.nav-parent.active > a {
-    background-image: url(../images/plus.png); 
+    background-image: url(../images/plus.png);
 }
 
 .nav-bracket > li.nav-active.active > a {
-    background-image: url(../images/minus.png); 
+    background-image: url(../images/minus.png);
 }
 
 .nav-bracket > li.nav-active.active > a:hover {
-    background-image: url(../images/minus.png); 
+    background-image: url(../images/minus.png);
 }
 
 .nav-bracket li .fa,
@@ -699,10 +682,7 @@ strong {
     border: 0;
 }
 
-
-
 /***** 4.2 INFO SUMMARY *****/
-
 
 .infosummary {
     margin: 30px 0;
@@ -712,12 +692,12 @@ strong {
     padding: 0;
     margin: 20px 0 0;
     list-style: none;
-    border-top: 1px solid rgba(255,255,255,0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .infosummary li {
     padding: 10px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .infosummary li:after {
@@ -752,15 +732,13 @@ strong {
     opacity: 0.6;
 }
 
-
-
 /********** 5. MAIN PANEL **********/
 /***********************************/
 
 .mainpanel {
     margin-left: 240px;
     background: #e4e7ea;
-    min-height: 1000px;
+    /*min-height: 1000px;*/
 }
 
 .pageheader {
@@ -806,7 +784,7 @@ strong {
 }
 
 .pageheader .fa-file-text {
-    padding: 6px 10px;`
+    padding: 6px 10px;
 }
 
 .pageheader .fa-map-marker {
@@ -910,10 +888,7 @@ p {
     margin-bottom: 10px;
 }
 
-
-
 /***** 5.1. DASHBOARD ******/
-
 
 .panel-stat {
     background: none;
@@ -984,12 +959,8 @@ p {
     width: 100% !important;
 }
 
-
-
 /********** 6. FORM STYLES **********/
 /************************************/
-
-
 
 .ckbox,
 .rdio {
@@ -1023,15 +994,15 @@ p {
     background: #fff;
 }
 
-.ckbox input[type="checkbox"]:disabled + label  {
+.ckbox input[type="checkbox"]:disabled + label {
     color: #999;
 }
 
-.ckbox input[type="checkbox"]:disabled + label:before  {
+.ckbox input[type="checkbox"]:disabled + label:before {
     background-color: #eee;
 }
 
-.ckbox input[type="checkbox"]:checked + label::after  {
+.ckbox input[type="checkbox"]:checked + label::after {
     font-family: 'FontAwesome';
     content: "\F00C";
     position: absolute;
@@ -1087,15 +1058,15 @@ p {
     background: #fff;
 }
 
-.rdio input[type="radio"]:disabled + label  {
+.rdio input[type="radio"]:disabled + label {
     color: #999;
 }
 
-.rdio input[type="radio"]:disabled + label:before  {
+.rdio input[type="radio"]:disabled + label:before {
     background-color: #eee;
 }
 
-.rdio input[type="radio"]:checked + label::after  {
+.rdio input[type="radio"]:checked + label::after {
     content: '';
     position: absolute;
     top: 5px;
@@ -1146,7 +1117,6 @@ p {
     background-color: #D9534F;
 }
 
-
 pre {
     font-size: 12px;
     color: #C7254E;
@@ -1164,9 +1134,8 @@ label.error {
 }
 
 label.error:empty {
-    display: none !important;    
+    display: none !important;
 }
-
 
 .asterisk {
     color: #D9534F;
@@ -1245,10 +1214,7 @@ div.error label.error:before {
     font-weight: normal;
 }
 
-
-
 /***** 6.1 FORM WIZARD STYLES *****/
-
 
 .basic-wizard .nav li a {
     background: #e4e7ea;
@@ -1349,12 +1315,8 @@ div.error label.error:before {
     content: '';
 }
 
-
-
-
 /********** 7. UI ELEMENTS **********/
 /*********************************/
-
 
 .btn-demo::after {
     clear: both;
@@ -1400,7 +1362,7 @@ div.error label.error:before {
 }
 
 .tooltipflot {
-    background-color: rgba(0,0,0,0.75);
+    background-color: rgba(0, 0, 0, 0.75);
     font-size: 11px;
     color: #fff;
     padding: 3px 10px;
@@ -1409,7 +1371,7 @@ div.error label.error:before {
     border-radius: 2px;
 }
 
-.jqstooltip{ 
+.jqstooltip {
     min-height: 25px;
     border: 0;
     min-width: 30px;
@@ -1529,6 +1491,7 @@ div.error label.error:before {
     color: #fff;
     opacity: 1;
 }
+
 .widget-today .today,
 .widget-time .today {
     line-height: normal;
@@ -1733,7 +1696,7 @@ div.error label.error:before {
 
 .widget-profile .row > div > span {
     display: block;
-    border-right: 1px solid rgba(255,255,255,0.15);
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
     font-size: 14px;
     padding: 15px 10px;
     text-transform: uppercase;
@@ -1778,7 +1741,7 @@ div.error label.error:before {
 }
 
 .widget-todo .todo-list .todo-form {
-    padding-bottom: 15px;   
+    padding-bottom: 15px;
 }
 
 .widget-todo .todo-list li .btn {
@@ -1823,13 +1786,8 @@ div.error label.error:before {
     width: auto;
 }
 
-
-
-
 /********** 8. EMAIL **********/
 /******************************/
-
-
 
 .btn-compose-email {
     padding: 10px 0;
@@ -1841,7 +1799,7 @@ div.error label.error:before {
 }
 
 .nav-email > li > a {
-    color: #444;   
+    color: #444;
 }
 
 .nav-email > li > a > i {
@@ -1958,13 +1916,8 @@ div.error label.error:before {
     color: #333;
 }
 
-
-
-
 /********** 9. TABLES **********/
 /*******************************/
-
-
 
 .dataTables_length .chosen-container {
     min-width: 75px;
@@ -2039,14 +1992,11 @@ div.error label.error:before {
 .table-bordered.table-danger thead tr th,
 .table-bordered.table-info thead tr th,
 .table-bordered.table-dark thead tr th {
-    border-color: rgba(255,255,255,0.2);
+    border-color: rgba(255, 255, 255, 0.2);
 }
-
-
 
 /********** 10. PAGES **********/
 /*******************************/
-
 
 /***** 10.1 CALENDAR *****/
 
@@ -2061,7 +2011,6 @@ div.error label.error:before {
     border-radius: 3px;
 }
 
-
 /***** 10.2 MEDIA MANAGER *****/
 
 .filemanager-options {
@@ -2073,9 +2022,9 @@ div.error label.error:before {
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px;
-    -moz-box-shadow: 0 3px 0 rgba(12,12,12,0.03);
-    -webkit-box-shadow: 0 3px 0 rgba(12,12,12,0.03);
-    box-shadow: 0 3px 0 rgba(12,12,12,0.03);
+    -moz-box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
+    -webkit-box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
+    box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
 }
 
 .filemanager-options li {
@@ -2142,9 +2091,9 @@ div.error label.error:before {
     padding: 10px;
     margin-bottom: 20px;
     position: relative;
-    -moz-box-shadow: 0 3px 0 rgba(12,12,12,0.03);
-    -webkit-box-shadow: 0 3px 0 rgba(12,12,12,0.03);
-    box-shadow: 0 3px 0 rgba(12,12,12,0.03);
+    -moz-box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
+    -webkit-box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
+    box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
 }
 
 .filemanager .thmb.checked {
@@ -2286,9 +2235,7 @@ div.error label.error:before {
     background: #428BCA;
 }
 
-
 /****** 10.3 PROFILE *****/
-
 
 .profile-name {
     margin: 0;
@@ -2472,9 +2419,7 @@ div.error label.error:before {
     line-height: normal;
 }
 
-
 /****** 10.4 BLOG LIST ******/
-
 
 .blog-item {
     background: #fcfcfc;
@@ -2482,9 +2427,9 @@ div.error label.error:before {
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px;
-    -moz-box-shadow: 0 3px 0 rgba(12,12,12,0.03);
-    -webkit-box-shadow: 0 3px 0 rgba(12,12,12,0.03);
-    box-shadow: 0 3px 0 rgba(12,12,12,0.03);
+    -moz-box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
+    -webkit-box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
+    box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
     position: relative;
 }
 
@@ -2629,13 +2574,10 @@ div.error label.error:before {
     background-color: #D43F3A;
 }
 
-
-
 /***** 10.5 BLOG SINGLE *****/
 
-
 .panel-blog .blog-img img {
-    width: 100%;	
+    width: 100%;
 }
 
 .blogsingle-title {
@@ -2741,17 +2683,15 @@ div.error label.error:before {
     border-bottom: 0;
 }
 
-
 /****** 10.6 PEOPLE DIRECTORY ******/
-
 
 .letter-list {
     list-style: none;
     padding: 0;
     margin: 0;
-    -moz-box-shadow: 0 3px 0 rgba(12,12,12,0.03);
-    -webkit-box-shadow: 0 3px 0 rgba(12,12,12,0.03);
-    box-shadow: 0 3px 0 rgba(12,12,12,0.03);
+    -moz-box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
+    -webkit-box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
+    box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
 }
 
 .letter-list li {
@@ -2803,9 +2743,9 @@ div.error label.error:before {
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px;
-    -moz-box-shadow: 0 3px 0 rgba(12,12,12,0.03);
-    -webkit-box-shadow: 0 3px 0 rgba(12,12,12,0.03);
-    box-shadow: 0 3px 0 rgba(12,12,12,0.03);
+    -moz-box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
+    -webkit-box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
+    box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
     margin-bottom: 20px;
 }
 
@@ -2872,9 +2812,7 @@ div.error label.error:before {
     margin-right: 0;
 }
 
-
 /***** 10.7 NOT FOUND PAGE *****/
-
 
 .notfoundpanel {
     text-align: center;
@@ -2910,12 +2848,10 @@ div.error label.error:before {
     float: left;
 }
 
-
 /***** 10.8 SEARCH RESULTS *****/
 
-
 .nav-sr li {
-    border-bottom: 1px solid #ddd;  
+    border-bottom: 1px solid #ddd;
 }
 
 .nav-sr li a {
@@ -2950,10 +2886,7 @@ div.error label.error:before {
     line-height: 18px;
 }
 
-
-
 /***** 10.9 INVOICE *****/
-
 
 .table-invoice {
     -moz-box-shadow: none;
@@ -3002,10 +2935,7 @@ div.error label.error:before {
     color: #333;
 }
 
-
-
 /****** 10.10. TIMELINE ******/
-
 
 .timeline-post .panel-body {
     padding: 0;
@@ -3054,7 +2984,7 @@ div.error label.error:before {
 }
 
 .panel-timeline .panel-body {
-    padding: 0 10px;   
+    padding: 0 10px;
 }
 
 .panel-timeline .panel-heading .media {
@@ -3128,10 +3058,7 @@ div.error label.error:before {
     left: 0;
 }
 
-
-
 /***** 10.11 LOCKED SCREEN *****/
-
 
 .lockedpanel {
     width: 250px;
@@ -3147,7 +3074,7 @@ div.error label.error:before {
     -moz-border-radius: 100px;
     -webkit-border-radius: 100px;
     border-radius: 100px;
-    background: rgba(255,255,255,0.4);
+    background: rgba(255, 255, 255, 0.4);
     padding: 5px;
 }
 
@@ -3175,10 +3102,7 @@ div.error label.error:before {
     margin-top: 10px;
 }
 
-
-
 /***** 10.12 SIGN IN *****/
-
 
 .signinpanel {
     width: 780px;
@@ -3204,11 +3128,11 @@ div.error label.error:before {
 }
 
 .signinpanel .uname {
-    background: #fff url(../images/user.png) no-repeat 95% center; 
+    background: #fff url(../images/user.png) no-repeat 95% center;
 }
 
 .signinpanel .pword {
-    background: #fff url(../images/locked.png) no-repeat 95% center; 
+    background: #fff url(../images/locked.png) no-repeat 95% center;
 }
 
 .signinpanel .btn {
@@ -3216,11 +3140,11 @@ div.error label.error:before {
 }
 
 .signinpanel form {
-    background: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
     border: 1px solid #ccc;
-    -moz-box-shadow: 0 3px 0 rgba(12,12,12,0.03);
-    -webkit-box-shadow: 0 3px 0 rgba(12,12,12,0.03);
-    box-shadow: 0 3px 0 rgba(12,12,12,0.03);
+    -moz-box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
+    -webkit-box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
+    box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px;
@@ -3231,9 +3155,7 @@ div.error label.error:before {
     color: #666;
 }
 
-
 /***** 10.13 SIGN UP *****/
-
 
 .signuppanel {
     margin: 5% auto 0 auto;
@@ -3265,11 +3187,11 @@ div.error label.error:before {
 }
 
 .signuppanel form {
-    background: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
     border: 1px solid #ccc;
-    -moz-box-shadow: 0 3px 0 rgba(12,12,12,0.03);
-    -webkit-box-shadow: 0 3px 0 rgba(12,12,12,0.03);
-    box-shadow: 0 3px 0 rgba(12,12,12,0.03);
+    -moz-box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
+    -webkit-box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
+    box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px;
@@ -3306,13 +3228,8 @@ div.error label.error:before {
     font-size: 12px;
 }
 
-
-
-
 /********** 11. LEFT PANEL COLLAPSED **********/
 /**********************************************/
-
-
 
 .leftpanel-collapsed .logopanel {
     display: none;
@@ -3336,7 +3253,7 @@ div.error label.error:before {
 }
 
 .leftpanel-collapsed .nav-bracket {
-    margin: 5px;   
+    margin: 5px;
 }
 
 .leftpanel-collapsed .nav-bracket li a {
@@ -3366,9 +3283,9 @@ div.error label.error:before {
     text-align: left;
     z-index: 100;
     display: none;
-    -moz-box-shadow: 0 3px 0 rgba(12,12,12,0.03);
-    -webkit-box-shadow: 0 3px 0 rgba(12,12,12,0.03);
-    box-shadow: 0 3px 0 rgba(12,12,12,0.03);
+    -moz-box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
+    -webkit-box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
+    box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
     -moz-border-radius: 0 2px 2px 0;
     -webkit-border-radius: 0 2px 2px 0;
     border-radius: 0 2px 2px 0;
@@ -3451,12 +3368,8 @@ div.error label.error:before {
     display: none;
 }
 
-
-
-
 /********** 12. RIGHT PANEL STYLES **********/
 /********************************************/
-
 
 .chat-view {
     margin-right: 240px;
@@ -3511,7 +3424,7 @@ div.error label.error:before {
     -moz-border-radius: 0;
     -webkit-border-radius: 0;
     border-radius: 0;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .rightpanel .nav-tabs > .active > a,
@@ -3532,11 +3445,11 @@ div.error label.error:before {
 .chatuserlist {
     list-style: none;
     padding: 0;
-    border-bottom: 1px dotted rgba(255,255,255,0.05);
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.05);
 }
 
 .chatuserlist li {
-    border-top: 1px dotted rgba(255,255,255,0.05);
+    border-top: 1px dotted rgba(255, 255, 255, 0.05);
 }
 
 .chatuserlist .media-thumb {
@@ -3589,13 +3502,11 @@ div.error label.error:before {
     font-size: 13px;
 }
 
-
 /********** 13. HORIZONTAL MENU **********/
 /*****************************************/
 
-
 .horizontal-menu {
-    margin: 0;   
+    margin: 0;
 }
 
 .horizontal-menu .menutoggle {
@@ -3691,13 +3602,8 @@ div.error label.error:before {
     display: none;
 }
 
-
-
-
 /********** 14. FIXED WIDTH **********/
 /*************************************/
-
-
 
 .fixed {
     background: #c9cccf;
@@ -3734,11 +3640,8 @@ div.error label.error:before {
     display: none;
 }
 
-
-
 /********** 15. MODALS **********/
 /********************************/
-
 
 .bs-example-modal-panel .modal-content {
     background: none;
@@ -3827,8 +3730,6 @@ div.error label.error:before {
     background: none;
 }
 
-
-
 /********** 16. BUG TRACKER **********/
 /*************************************/
 
@@ -3850,7 +3751,7 @@ div.error label.error:before {
 }
 
 .table-buglist .fa {
-    cursor: pointer;    
+    cursor: pointer;
 }
 
 .table-buglist .fa-bug {
@@ -3879,11 +3780,8 @@ div.error label.error:before {
     margin-bottom: 5px;
 }
 
-
-
 /********** 17. ADDITIONAL STYLES **********/
 /*******************************************/
-
 
 /***** 17.1 DROPDOWN *****/
 
@@ -3900,9 +3798,7 @@ div.error label.error:before {
     margin: 0;
 }
 
-
 /***** 17.2 ICON *****/
-
 
 .tp-icon {
     padding: 10px 20px;
@@ -3925,9 +3821,7 @@ div.error label.error:before {
     padding: 2px 5px;
 }
 
-
 /***** 17.3 TIME PICKER *****/
-
 
 .bootstrap-timepicker-widget.dropdown-menu {
     width: 230px;
@@ -3972,7 +3866,7 @@ div.error label.error:before {
     left: 240px;
     width: 100%;
     z-index: 100;
-    box-shadow: 0 1px rgba(0,0,0,0.05);
+    box-shadow: 0 1px rgba(0, 0, 0, 0.05);
 }
 
 .stickyheader .mainpanel {
@@ -3984,7 +3878,7 @@ div.error label.error:before {
 }
 
 .stickyheader.leftpanel-collapsed .headerbar {
-    left: 50px;   
+    left: 50px;
 }
 
 .stickyheader.leftpanel-collapsed .header-right {
@@ -3995,7 +3889,6 @@ div.error label.error:before {
     right: 240px;
     width: auto;
 }
-
 
 /***** 17.6 CUSTOM STYLES *****/
 
@@ -4109,11 +4002,8 @@ div.error label.error:before {
     display: inline-block;
 }
 
-
-
 /********** 18. MEDIA QUERIES **********/
 /***************************************/
-
 
 @media screen and (max-width: 1024px) {
 

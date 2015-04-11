@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @Created by PhpStorm.
  * @User: liuhui
@@ -6,17 +7,22 @@
  * @Time: 下午3:30
  * @Desc: 登录
  */
-class IndexController extends BaseController{
+class IndexController extends BaseController
+{
 
-    public function doInit(){
+    public function doInit()
+    {
     }
 
-    public function indexAction(){}
+    public function indexAction()
+    {
+    }
 
     /**
      * 登陆入口页面
      */
-    public function loginAction(){
+    public function loginAction()
+    {
         $this->_view->display('Admin/login.phtml', array());
     }
 
@@ -28,8 +34,9 @@ class IndexController extends BaseController{
      *
      * @return redirect
      */
-    public function authAction(){
-        if($this->_request->isPost()){
+    public function authAction()
+    {
+        if ($this->_request->isPost()) {
 
             $user = $this->getLegalParam('user', 'str');
             $pass = $this->getLegalParam('pass', 'str');
@@ -37,15 +44,15 @@ class IndexController extends BaseController{
 
             $db = new Admin_IndexModel();
             $uid = $db->checkUserPass($user, $pass);
-            if(empty($uid)){
+            if (empty($uid)) {
                 $this->redirect('/admin/index/login');
                 exit;
             }
-            Yaflog('user: '.$user);
-            Yaflog('pass: '.$pass);
-            Yaflog('uis: '.$uid);
+            Yaflog('user: ' . $user);
+            Yaflog('pass: ' . $pass);
+            Yaflog('uis: ' . $uid);
 
-            if($uid >= 1){
+            if ($uid >= 1) {
                 //---------
                 $_SESSION['user']['uid'] = $uid;
                 $_SESSION['user']['uname'] = $user;
@@ -60,7 +67,8 @@ class IndexController extends BaseController{
     /**
      * 注销登陆,删除session的东东
      */
-    public function logoutAction(){
+    public function logoutAction()
+    {
         unset($_SESSION['user']);
         $this->redirect('/admin/index/login');
     }

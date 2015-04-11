@@ -41,8 +41,8 @@ class Dumb extends AbstractWord
             strrev($captcha->getWord())
         );
 
-        $position     = $this->getCaptchaPosition();
-        $separator    = $this->getSeparator();
+        $position = $this->getCaptchaPosition();
+        $separator = $this->getSeparator();
         $captchaInput = $this->renderCaptchaInputs($element);
 
         $pattern = '%s%s%s';

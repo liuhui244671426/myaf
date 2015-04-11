@@ -36,7 +36,7 @@ class Router
     public function __construct()
     {
         $defaultRoute = G::get('default_route');
-        if ($defaultRoute!=null) {
+        if ($defaultRoute != null) {
             $this->addRoute(
                 '_default',
                 $this->_getRouteFromArray($defaultRoute)
@@ -74,7 +74,7 @@ class Router
      * $router = new Yaf_Router();
      * $router->addConfig($config);
      *
-     * @param  array|Yaf_Config $config  Configuration object
+     * @param  array|Yaf_Config $config Configuration object
      * @throws Yaf_Router_Exception
      * @return Yaf_Router
      */
@@ -92,7 +92,7 @@ class Router
         $name = key($config);
         foreach ($config as $entry) {
             $route = $this->_getRouteFromArray($entry);
-            if ($route!=null) {
+            if ($route != null) {
                 if ($route instanceof Route_Interface) {
                     $this->addRoute($name, $route);
                 } else {
@@ -101,11 +101,11 @@ class Router
             } else {
                 if (is_string($name)) {
                     throw new Exception\RouterFailed(
-                        'Unable to initialize route named '.$name
+                        'Unable to initialize route named ' . $name
                     );
                 } else {
                     throw new Exception\RouterFailed(
-                        'Unable to initialize route at index '.$name
+                        'Unable to initialize route at index ' . $name
                     );
                 }
             }
@@ -144,11 +144,11 @@ class Router
         $useNamespace = G::iniGet('yaf.use_namespace');
         if ($useNamespace) {
             $class = (isset($info['type']))
-                ? '\\Yaf\\Route\\'.ucfirst($info['type'])
+                ? '\\Yaf\\Route\\' . ucfirst($info['type'])
                 : '\\Yaf\\Route\\Static';
         } else {
             $class = (isset($info['type']))
-                ? 'Yaf_Route_'.ucfirst($info['type'])
+                ? 'Yaf_Route_' . ucfirst($info['type'])
                 : 'Yaf_Route_Static';
         }
         try {
@@ -170,11 +170,11 @@ class Router
         $useNamespace = G::iniGet('yaf.use_namespace');
         if ($useNamespace) {
             $class = (isset($info['type']))
-                ? '\\Yaf\\Route\\'.ucfirst($info['type'])
+                ? '\\Yaf\\Route\\' . ucfirst($info['type'])
                 : '\\Yaf\\Route\\Static';
         } else {
             $class = (isset($info['type']))
-                ? 'Yaf_Route_'.ucfirst($info['type'])
+                ? 'Yaf_Route_' . ucfirst($info['type'])
                 : 'Yaf_Route_Static';
         }
         try {
@@ -236,19 +236,19 @@ class Router
         $routeMatched = false;
 
         foreach (array_reverse($this->_routes, true) as $name => $route) {
-            if (($ret = $route->route($request))!=false) {
+            if (($ret = $route->route($request)) != false) {
                 $this->_current = $name;
-                $routeMatched   = true;
+                $routeMatched = true;
                 break;
             }
         }
 
-         if (!$routeMatched) {
-             return false;
-         } else {
-             $request->setRouted(true);
-             return true;
-         }
-         return false;
+        if (!$routeMatched) {
+            return false;
+        } else {
+            $request->setRouted(true);
+            return true;
+        }
+        return false;
     }
 }

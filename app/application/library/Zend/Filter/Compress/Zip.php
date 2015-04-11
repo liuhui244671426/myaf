@@ -29,7 +29,7 @@ class Zip extends AbstractCompressionAlgorithm
      */
     protected $options = array(
         'archive' => null,
-        'target'  => null,
+        'target' => null,
     );
 
     /**
@@ -64,7 +64,7 @@ class Zip extends AbstractCompressionAlgorithm
      */
     public function setArchive($archive)
     {
-        $archive = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, (string) $archive);
+        $archive = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, (string)$archive);
         $this->options['archive'] = $archive;
 
         return $this;
@@ -93,7 +93,7 @@ class Zip extends AbstractCompressionAlgorithm
             throw new Exception\InvalidArgumentException("The directory '$target' does not exist");
         }
 
-        $target = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, (string) $target);
+        $target = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, (string)$target);
         $this->options['target'] = $target;
         return $this;
     }
@@ -115,15 +115,15 @@ class Zip extends AbstractCompressionAlgorithm
         }
 
         if (file_exists($content)) {
-            $content  = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, realpath($content));
+            $content = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, realpath($content));
             $basename = substr($content, strrpos($content, DIRECTORY_SEPARATOR) + 1);
             if (is_dir($content)) {
-                $index    = strrpos($content, DIRECTORY_SEPARATOR) + 1;
+                $index = strrpos($content, DIRECTORY_SEPARATOR) + 1;
                 $content .= DIRECTORY_SEPARATOR;
-                $stack    = array($content);
+                $stack = array($content);
                 while (!empty($stack)) {
                     $current = array_pop($stack);
-                    $files   = array();
+                    $files = array();
 
                     $dir = dir($current);
                     while (false !== ($node = $dir->read())) {
@@ -190,8 +190,8 @@ class Zip extends AbstractCompressionAlgorithm
             throw new Exception\RuntimeException('ZIP Archive not found');
         }
 
-        $zip     = new ZipArchive();
-        $res     = $zip->open($archive);
+        $zip = new ZipArchive();
+        $res = $zip->open($archive);
 
         $target = $this->getTarget();
         if (!empty($target) && !is_dir($target)) {

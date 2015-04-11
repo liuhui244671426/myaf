@@ -47,7 +47,7 @@ class Generator
     /**
      * Set the class name for the generated service locator container
      *
-     * @param  string    $name
+     * @param  string $name
      * @return Generator
      */
     public function setContainerClass($name)
@@ -60,7 +60,7 @@ class Generator
     /**
      * Set the namespace to use for the generated class file
      *
-     * @param  string    $namespace
+     * @param  string $namespace
      * @return Generator
      */
     public function setNamespace($namespace)
@@ -76,25 +76,25 @@ class Generator
      * Creates a Zend\Code\Generator\FileGenerator object that has
      * created the specified class and service locator methods.
      *
-     * @param  null|string                         $filename
+     * @param  null|string $filename
      * @throws \Zend\Di\Exception\RuntimeException
      * @return FileGenerator
      */
     public function getCodeGenerator($filename = null)
     {
-        $injector       = $this->injector;
-        $im             = $injector->instanceManager();
-        $indent         = '    ';
-        $aliases        = $this->reduceAliases($im->getAliases());
+        $injector = $this->injector;
+        $im = $injector->instanceManager();
+        $indent = '    ';
+        $aliases = $this->reduceAliases($im->getAliases());
         $caseStatements = array();
-        $getters        = array();
-        $definitions    = $injector->definitions();
+        $getters = array();
+        $definitions = $injector->definitions();
 
         $fetched = array_unique(array_merge($definitions->getClasses(), $im->getAliases()));
 
         foreach ($fetched as $name) {
             $getter = $this->normalizeAlias($name);
-            $meta   = $injector->get($name);
+            $meta = $injector->get($name);
             $params = $meta->getParams();
 
             // Build parameter list for instantiation
@@ -149,7 +149,7 @@ class Generator
                 if (!isset($methodData['name']) && !isset($methodData['method'])) {
                     continue;
                 }
-                $methodName   = isset($methodData['name']) ? $methodData['name'] : $methodData['method'];
+                $methodName = isset($methodData['name']) ? $methodData['name'] : $methodData['method'];
                 $methodParams = $methodData['params'];
 
                 // Create method parameter representation
@@ -228,17 +228,17 @@ class Generator
         }
 
         // Build switch statement
-        $switch  = sprintf("switch (%s) {\n%s\n", '$name', implode("\n", $caseStatements));
+        $switch = sprintf("switch (%s) {\n%s\n", '$name', implode("\n", $caseStatements));
         $switch .= sprintf("%sdefault:\n%sreturn parent::get(%s, %s);\n", $indent, str_repeat($indent, 2), '$name', '$params');
         $switch .= "}\n\n";
 
         // Build get() method
-        $nameParam   = new ParameterGenerator();
+        $nameParam = new ParameterGenerator();
         $nameParam->setName('name');
         $paramsParam = new ParameterGenerator();
         $paramsParam->setName('params')
-                    ->setType('array')
-                    ->setDefaultValue(array());
+            ->setType('array')
+            ->setDefaultValue(array());
 
         $get = new MethodGenerator();
         $get->setName('get');
@@ -259,15 +259,15 @@ class Generator
         // Create class code generation object
         $container = new ClassGenerator();
         $container->setName($this->containerClass)
-                  ->setExtendedClass('ServiceLocator')
-                  ->addMethodFromGenerator($get)
-                  ->addMethods($getters)
-                  ->addMethods($aliasMethods);
+            ->setExtendedClass('ServiceLocator')
+            ->addMethodFromGenerator($get)
+            ->addMethods($getters)
+            ->addMethods($aliasMethods);
 
         // Create PHP file code generation object
         $classFile = new FileGenerator();
         $classFile->setUse('Zend\Di\ServiceLocator')
-                  ->setClass($container);
+            ->setClass($container);
 
         if (null !== $this->namespace) {
             $classFile->setNamespace($this->namespace);
@@ -312,8 +312,8 @@ class Generator
     /**
      * Create a PhpMethod code generation object named after a given alias
      *
-     * @param  string          $alias
-     * @param  string          $class Class to which alias refers
+     * @param  string $alias
+     * @param  string $class Class to which alias refers
      * @return MethodGenerator
      */
     protected function getCodeGenMethodFromAlias($alias, $class)

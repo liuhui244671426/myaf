@@ -34,7 +34,7 @@ abstract class AbstractDate implements HeaderInterface
      */
     const DATE_RFC1123 = 0;
     const DATE_RFC1036 = 1;
-    const DATE_ANSIC   = 2;
+    const DATE_ANSIC = 2;
 
     /**
      * Date instance for this header
@@ -60,7 +60,7 @@ abstract class AbstractDate implements HeaderInterface
     protected static $dateFormats = array(
         self::DATE_RFC1123 => 'D, d M Y H:i:s \G\M\T',
         self::DATE_RFC1036 => 'D, d M y H:i:s \G\M\T',
-        self::DATE_ANSIC   => 'D M j H:i:s Y',
+        self::DATE_ANSIC => 'D M j H:i:s Y',
     );
 
     /**
@@ -129,7 +129,7 @@ abstract class AbstractDate implements HeaderInterface
                 $date = new DateTime($date, new DateTimeZone('GMT'));
             } catch (\Exception $e) {
                 throw new Exception\InvalidArgumentException(
-                    sprintf('Invalid date passed as string (%s)', (string) $date),
+                    sprintf('Invalid date passed as string (%s)', (string)$date),
                     $e->getCode(),
                     $e
                 );
@@ -183,7 +183,7 @@ abstract class AbstractDate implements HeaderInterface
                 $date = new DateTime($date, new DateTimeZone('GMT'));
             } catch (\Exception $e) {
                 throw new Exception\InvalidArgumentException(
-                    sprintf('Invalid Date passed as string (%s)', (string) $date),
+                    sprintf('Invalid Date passed as string (%s)', (string)$date),
                     $e->getCode(),
                     $e
                 );

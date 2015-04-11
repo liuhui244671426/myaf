@@ -57,8 +57,8 @@ class ContainerAbstractServiceFactory implements AbstractFactoryInterface
 
     /**
      * @param  ServiceLocatorInterface $services
-     * @param  string                  $name
-     * @param  string                  $requestedName
+     * @param  string $name
+     * @param  string $requestedName
      * @return bool
      */
     public function canCreateServiceWithName(ServiceLocatorInterface $services, $name, $requestedName)
@@ -74,8 +74,8 @@ class ContainerAbstractServiceFactory implements AbstractFactoryInterface
 
     /**
      * @param  ServiceLocatorInterface $services
-     * @param  string                  $name
-     * @param  string                  $requestedName
+     * @param  string $name
+     * @param  string $requestedName
      * @return Container
      */
     public function createServiceWithName(ServiceLocatorInterface $services, $name, $requestedName)

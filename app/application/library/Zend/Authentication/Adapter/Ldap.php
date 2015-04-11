@@ -40,8 +40,8 @@ class Ldap extends AbstractAdapter
     /**
      * Constructor
      *
-     * @param  array  $options    An array of arrays of Zend\Ldap\Ldap options
-     * @param  string $identity   The username of the account being authenticated
+     * @param  array $options An array of arrays of Zend\Ldap\Ldap options
+     * @param  string $identity The username of the account being authenticated
      * @param  string $credential The password of the account being authenticated
      */
     public function __construct(array $options = array(), $identity = null, $credential = null)
@@ -301,7 +301,7 @@ class Ldap extends AbstractAdapter
                     $line = $zle->getLine();
                     $messages[] = $zle->getFile() . "($line): " . $zle->getMessage();
                     $messages[] = preg_replace(
-                        '/\b'.preg_quote(substr($password, 0, 15), '/').'\b/',
+                        '/\b' . preg_quote(substr($password, 0, 15), '/') . '\b/',
                         '*****',
                         $zle->getTraceAsString()
                     );
@@ -321,19 +321,19 @@ class Ldap extends AbstractAdapter
      * Sets the LDAP specific options on the Zend\Ldap\Ldap instance
      *
      * @param  ZendLdap\Ldap $ldap
-     * @param  array         $options
+     * @param  array $options
      * @return array of auth-adapter specific options
      */
     protected function prepareOptions(ZendLdap\Ldap $ldap, array $options)
     {
         $adapterOptions = array(
-            'group'       => null,
-            'groupDn'     => $ldap->getBaseDn(),
-            'groupScope'  => ZendLdap\Ldap::SEARCH_SCOPE_SUB,
-            'groupAttr'   => 'cn',
+            'group' => null,
+            'groupDn' => $ldap->getBaseDn(),
+            'groupScope' => ZendLdap\Ldap::SEARCH_SCOPE_SUB,
+            'groupAttr' => 'cn',
             'groupFilter' => 'objectClass=groupOfUniqueNames',
-            'memberAttr'  => 'uniqueMember',
-            'memberIsDn'  => true
+            'memberAttr' => 'uniqueMember',
+            'memberIsDn' => true
         );
         foreach ($adapterOptions as $key => $value) {
             if (array_key_exists($key, $options)) {
@@ -341,7 +341,7 @@ class Ldap extends AbstractAdapter
                 unset($options[$key]);
                 switch ($key) {
                     case 'groupScope':
-                        $value = (int) $value;
+                        $value = (int)$value;
                         if (in_array(
                             $value,
                             array(
@@ -356,7 +356,7 @@ class Ldap extends AbstractAdapter
                         break;
                     case 'memberIsDn':
                         $adapterOptions[$key] = ($value === true ||
-                                $value === '1' || strcasecmp($value, 'true') == 0);
+                            $value === '1' || strcasecmp($value, 'true') == 0);
                         break;
                     default:
                         $adapterOptions[$key] = trim($value);
@@ -372,9 +372,9 @@ class Ldap extends AbstractAdapter
      * Checks the group membership of the bound user
      *
      * @param  ZendLdap\Ldap $ldap
-     * @param  string        $canonicalName
-     * @param  string        $dn
-     * @param  array         $adapterOptions
+     * @param  string $canonicalName
+     * @param  string $dn
+     * @param  array $adapterOptions
      * @return string|true
      */
     protected function checkGroupMembership(ZendLdap\Ldap $ldap, $canonicalName, $dn, array $adapterOptions)
@@ -389,9 +389,9 @@ class Ldap extends AbstractAdapter
             $user = $dn;
         }
 
-        $groupName   = ZendLdap\Filter::equals($adapterOptions['groupAttr'], $adapterOptions['group']);
-        $membership  = ZendLdap\Filter::equals($adapterOptions['memberAttr'], $user);
-        $group       = ZendLdap\Filter::andFilter($groupName, $membership);
+        $groupName = ZendLdap\Filter::equals($adapterOptions['groupAttr'], $adapterOptions['group']);
+        $membership = ZendLdap\Filter::equals($adapterOptions['memberAttr'], $user);
+        $group = ZendLdap\Filter::andFilter($groupName, $membership);
         $groupFilter = $adapterOptions['groupFilter'];
         if (!empty($groupFilter)) {
             $group = $group->addAnd($groupFilter);
@@ -425,7 +425,7 @@ class Ldap extends AbstractAdapter
         $returnObject = new stdClass();
 
         $returnAttribs = array_map('strtolower', $returnAttribs);
-        $omitAttribs   = array_map('strtolower', $omitAttribs);
+        $omitAttribs = array_map('strtolower', $omitAttribs);
         $returnAttribs = array_diff($returnAttribs, $omitAttribs);
 
         $entry = $this->getLdap()->getEntry($this->authenticatedDn, $returnAttribs, true);

@@ -91,7 +91,7 @@ class Xml implements FormatterInterface
         $this->setEncoding($options['encoding']);
 
         if (array_key_exists('elementMap', $options)) {
-            $this->elementMap  = $options['elementMap'];
+            $this->elementMap = $options['elementMap'];
         }
 
         if (array_key_exists('dateTimeFormat', $options)) {
@@ -117,7 +117,7 @@ class Xml implements FormatterInterface
      */
     public function setEncoding($value)
     {
-        $this->encoding = (string) $value;
+        $this->encoding = (string)$value;
         return $this;
     }
 
@@ -169,10 +169,10 @@ class Xml implements FormatterInterface
             }
         }
 
-        $enc     = $this->getEncoding();
+        $enc = $this->getEncoding();
         $escaper = $this->getEscaper();
-        $dom     = new DOMDocument('1.0', $enc);
-        $elt     = $dom->appendChild(new DOMElement($this->rootElement));
+        $dom = new DOMDocument('1.0', $enc);
+        $elt = $dom->appendChild(new DOMElement($this->rootElement));
 
         foreach ($dataToInsert as $key => $value) {
             if (empty($value)
@@ -184,7 +184,7 @@ class Xml implements FormatterInterface
                 } elseif ($key == "extra" && empty($value)) {
                     continue;
                 }
-                $elt->appendChild(new DOMElement($key, (string) $value));
+                $elt->appendChild(new DOMElement($key, (string)$value));
             }
         }
 
@@ -207,7 +207,7 @@ class Xml implements FormatterInterface
      */
     public function setDateTimeFormat($dateTimeFormat)
     {
-        $this->dateTimeFormat = (string) $dateTimeFormat;
+        $this->dateTimeFormat = (string)$dateTimeFormat;
         return $this;
     }
 }

@@ -48,7 +48,7 @@ class MemcachedOptions extends AdapterOptions
      */
     public function setNamespace($namespace)
     {
-        $namespace = (string) $namespace;
+        $namespace = (string)$namespace;
 
         if (128 < strlen($namespace)) {
             throw new Exception\InvalidArgumentException(sprintf(
@@ -68,7 +68,7 @@ class MemcachedOptions extends AdapterOptions
      */
     public function setNamespaceSeparator($namespaceSeparator)
     {
-        $namespaceSeparator = (string) $namespaceSeparator;
+        $namespaceSeparator = (string)$namespaceSeparator;
         if ($this->namespaceSeparator !== $namespaceSeparator) {
             $this->triggerOptionEvent('namespace_separator', $namespaceSeparator);
             $this->namespaceSeparator = $namespaceSeparator;
@@ -104,7 +104,7 @@ class MemcachedOptions extends AdapterOptions
         if ($memcachedResource !== null) {
             $this->triggerOptionEvent('memcached_resource', $memcachedResource);
             $resourceManager = $this->getResourceManager();
-            $resourceId      = $this->getResourceId();
+            $resourceId = $this->getResourceId();
             $resourceManager->setResource($resourceId, $memcachedResource);
         }
         return $this;
@@ -173,7 +173,7 @@ class MemcachedOptions extends AdapterOptions
      */
     public function setResourceId($resourceId)
     {
-        $resourceId = (string) $resourceId;
+        $resourceId = (string)$resourceId;
         if ($this->resourceId !== $resourceId) {
             $this->triggerOptionEvent('resource_id', $resourceId);
             $this->resourceId = $resourceId;
@@ -222,8 +222,8 @@ class MemcachedOptions extends AdapterOptions
         );
 
         $this->getResourceManager()->addServer($this->getResourceId(), array(
-            'host'   => $host,
-            'port'   => $port,
+            'host' => $host,
+            'port' => $port,
             'weight' => $weight
         ));
 
@@ -231,12 +231,12 @@ class MemcachedOptions extends AdapterOptions
     }
 
     /**
-    * Set a list of memcached servers to add on initialize
-    *
-    * @param string|array $servers list of servers
-    * @return MemcachedOptions
-    * @throws Exception\InvalidArgumentException
-    */
+     * Set a list of memcached servers to add on initialize
+     *
+     * @param string|array $servers list of servers
+     * @return MemcachedOptions
+     * @throws Exception\InvalidArgumentException
+     */
     public function setServers($servers)
     {
         $this->getResourceManager()->setServers($this->getResourceId(), $servers);
@@ -254,12 +254,12 @@ class MemcachedOptions extends AdapterOptions
     }
 
     /**
-    * Set libmemcached options
-    *
-    * @param array $libOptions
-    * @return MemcachedOptions
-    * @link http://php.net/manual/memcached.constants.php
-    */
+     * Set libmemcached options
+     *
+     * @param array $libOptions
+     * @return MemcachedOptions
+     * @link http://php.net/manual/memcached.constants.php
+     */
     public function setLibOptions(array $libOptions)
     {
         $this->getResourceManager()->setLibOptions($this->getResourceId(), $libOptions);
@@ -299,13 +299,13 @@ class MemcachedOptions extends AdapterOptions
     }
 
     /**
-    * Get libmemcached option
-    *
-    * @param string|int $key
-    * @return mixed
-    * @link http://php.net/manual/memcached.constants.php
-    * @deprecated Please use lib_options or the resource manager instead
-    */
+     * Get libmemcached option
+     *
+     * @param string|int $key
+     * @return mixed
+     * @link http://php.net/manual/memcached.constants.php
+     * @deprecated Please use lib_options or the resource manager instead
+     */
     public function getLibOption($key)
     {
         trigger_error(

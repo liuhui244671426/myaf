@@ -85,7 +85,7 @@ abstract class AbstractHydrator implements
     public function hasStrategy($name)
     {
         return array_key_exists($name, $this->strategies)
-               || array_key_exists('*', $this->strategies);
+        || array_key_exists('*', $this->strategies);
     }
 
     /**
@@ -116,9 +116,9 @@ abstract class AbstractHydrator implements
     /**
      * Converts a value for extraction. If no strategy exists the plain value is returned.
      *
-     * @param  string $name  The name of the strategy to use.
-     * @param  mixed  $value  The value that should be converted.
-     * @param  mixed  $object The object is optionally provided as context.
+     * @param  string $name The name of the strategy to use.
+     * @param  mixed $value The value that should be converted.
+     * @param  mixed $object The object is optionally provided as context.
      * @return mixed
      */
     public function extractValue($name, $value, $object = null)
@@ -150,8 +150,8 @@ abstract class AbstractHydrator implements
     /**
      * Convert a name for extraction. If no naming strategy exists, the plain value is returned.
      *
-     * @param string $name    The name to convert.
-     * @param null   $object  The object is optionally provided as context.
+     * @param string $name The name to convert.
+     * @param null $object The object is optionally provided as context.
      * @return mixed
      */
     public function extractName($name, $object = null)
@@ -165,8 +165,8 @@ abstract class AbstractHydrator implements
     /**
      * Converts a value for hydration. If no naming strategy exists, the plain value is returned.
      *
-     * @param string $name  The name to convert.
-     * @param array  $data  The whole data is optionally provided as context.
+     * @param string $name The name to convert.
+     * @param array $data The whole data is optionally provided as context.
      * @return mixed
      */
     public function hydrateName($name, $data = null)

@@ -26,7 +26,7 @@ class Http extends Uri
      * @see Uri::$defaultPorts
      */
     protected static $defaultPorts = array(
-        'http'  => 80,
+        'http' => 80,
         'https' => 443,
     );
 
@@ -121,7 +121,7 @@ class Http extends Uri
      * This overrides the common URI validation method with a DNS or IP only
      * default. Users may still enforce allowing other host types.
      *
-     * @param  string  $host
+     * @param  string $host
      * @param  int $allowed
      * @return bool
      */

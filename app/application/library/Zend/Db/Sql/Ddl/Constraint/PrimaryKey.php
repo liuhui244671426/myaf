@@ -21,7 +21,7 @@ class PrimaryKey extends AbstractConstraint
      */
     public function getExpressionData()
     {
-        $colCount     = count($this->columns);
+        $colCount = count($this->columns);
         $newSpecParts = array_fill(0, $colCount, '%s');
         $newSpecTypes = array_fill(0, $colCount, self::TYPE_IDENTIFIER);
 

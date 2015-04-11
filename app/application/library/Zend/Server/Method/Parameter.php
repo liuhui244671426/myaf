@@ -108,7 +108,7 @@ class Parameter
      */
     public function setDescription($description)
     {
-        $this->description = (string) $description;
+        $this->description = (string)$description;
         return $this;
     }
 
@@ -130,7 +130,7 @@ class Parameter
      */
     public function setName($name)
     {
-        $this->name = (string) $name;
+        $this->name = (string)$name;
         return $this;
     }
 
@@ -152,7 +152,7 @@ class Parameter
      */
     public function setOptional($flag)
     {
-        $this->optional = (bool) $flag;
+        $this->optional = (bool)$flag;
         return $this;
     }
 
@@ -174,7 +174,7 @@ class Parameter
      */
     public function setType($type)
     {
-        $this->type = (string) $type;
+        $this->type = (string)$type;
         return $this;
     }
 
@@ -196,11 +196,11 @@ class Parameter
     public function toArray()
     {
         return array(
-            'type'         => $this->getType(),
-            'name'         => $this->getName(),
-            'optional'     => $this->isOptional(),
+            'type' => $this->getType(),
+            'name' => $this->getName(),
+            'optional' => $this->isOptional(),
             'defaultValue' => $this->getDefaultValue(),
-            'description'  => $this->getDescription(),
+            'description' => $this->getDescription(),
         );
     }
 }

@@ -53,7 +53,7 @@ class SelectDecorator extends Select implements PlatformDecoratorInterface
 
         //set statement cursor type
         if ($statementContainer instanceof Statement) {
-            $statementContainer->setPrepareOptions(array('Scrollable'=>\SQLSRV_CURSOR_STATIC));
+            $statementContainer->setPrepareOptions(array('Scrollable' => \SQLSRV_CURSOR_STATIC));
         }
     }
 
@@ -122,8 +122,8 @@ class SelectDecorator extends Select implements PlatformDecoratorInterface
             $parameterContainer->offsetSetReference('offsetForSum', 'offset');
         } else {
             array_push($sqls, ') AS [ZEND_SQL_SERVER_LIMIT_OFFSET_EMULATION] WHERE [ZEND_SQL_SERVER_LIMIT_OFFSET_EMULATION].[__ZEND_ROW_NUMBER] BETWEEN '
-                . (int) $this->offset . '+1 AND '
-                . (int) $this->limit . '+' . (int) $this->offset
+                . (int)$this->offset . '+1 AND '
+                . (int)$this->limit . '+' . (int)$this->offset
             );
         }
 

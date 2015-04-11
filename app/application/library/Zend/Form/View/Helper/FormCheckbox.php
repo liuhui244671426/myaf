@@ -40,11 +40,11 @@ class FormCheckbox extends FormInput
             ));
         }
 
-        $attributes            = $element->getAttributes();
-        $attributes['name']    = $name;
-        $attributes['type']    = $this->getInputType();
-        $attributes['value']   = $element->getCheckedValue();
-        $closingBracket        = $this->getInlineClosingBracket();
+        $attributes = $element->getAttributes();
+        $attributes['name'] = $name;
+        $attributes['type'] = $this->getInputType();
+        $attributes['value'] = $element->getCheckedValue();
+        $closingBracket = $this->getInlineClosingBracket();
 
         if ($element->isChecked()) {
             $attributes['checked'] = 'checked';
@@ -58,15 +58,15 @@ class FormCheckbox extends FormInput
 
         if ($element->useHiddenElement()) {
             $hiddenAttributes = array(
-                'name'  => $attributes['name'],
+                'name' => $attributes['name'],
                 'value' => $element->getUncheckedValue(),
             );
 
             $rendered = sprintf(
-                '<input type="hidden" %s%s',
-                $this->createAttributesString($hiddenAttributes),
-                $closingBracket
-            ) . $rendered;
+                    '<input type="hidden" %s%s',
+                    $this->createAttributesString($hiddenAttributes),
+                    $closingBracket
+                ) . $rendered;
         }
 
         return $rendered;

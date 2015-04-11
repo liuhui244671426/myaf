@@ -16,7 +16,7 @@ namespace Zend\Http\Header;
  */
 class Connection implements HeaderInterface
 {
-    const CONNECTION_CLOSE      = 'close';
+    const CONNECTION_CLOSE = 'close';
     const CONNECTION_KEEP_ALIVE = 'keep-alive';
 
     /**
@@ -55,7 +55,7 @@ class Connection implements HeaderInterface
      */
     public function setPersistent($flag)
     {
-        if ((bool) $flag === true) {
+        if ((bool)$flag === true) {
             $this->value = self::CONNECTION_KEEP_ALIVE;
         } else {
             $this->value = self::CONNECTION_CLOSE;

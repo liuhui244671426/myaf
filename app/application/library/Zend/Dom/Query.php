@@ -21,8 +21,8 @@ class Query
     /**#@+
      * Document types
      */
-    const DOC_XML   = 'docXml';
-    const DOC_HTML  = 'docHtml';
+    const DOC_XML = 'docXml';
+    const DOC_HTML = 'docHtml';
     const DOC_XHTML = 'docXhtml';
     /**#@-*/
 
@@ -81,7 +81,7 @@ class Query
      */
     public function setEncoding($encoding)
     {
-        $this->encoding = (null === $encoding) ? null : (string) $encoding;
+        $this->encoding = (null === $encoding) ? null : (string)$encoding;
         return $this;
     }
 
@@ -130,8 +130,8 @@ class Query
      */
     public function setDocumentHtml($document, $encoding = null)
     {
-        $this->document = (string) $document;
-        $this->docType  = self::DOC_HTML;
+        $this->document = (string)$document;
+        $this->docType = self::DOC_HTML;
         if (null !== $encoding) {
             $this->setEncoding($encoding);
         }
@@ -147,8 +147,8 @@ class Query
      */
     public function setDocumentXhtml($document, $encoding = null)
     {
-        $this->document = (string) $document;
-        $this->docType  = self::DOC_XHTML;
+        $this->document = (string)$document;
+        $this->docType = self::DOC_XHTML;
         if (null !== $encoding) {
             $this->setEncoding($encoding);
         }
@@ -164,8 +164,8 @@ class Query
      */
     public function setDocumentXml($document, $encoding = null)
     {
-        $this->document = (string) $document;
-        $this->docType  = self::DOC_XML;
+        $this->document = (string)$document;
+        $this->docType = self::DOC_XML;
         if (null !== $encoding) {
             $this->setEncoding($encoding);
         }
@@ -218,7 +218,7 @@ class Query
      * Perform an XPath query
      *
      * @param  string|array $xpathQuery
-     * @param  string|null  $query      CSS selector query
+     * @param  string|null $query CSS selector query
      * @throws Exception\RuntimeException
      * @return NodeList
      */
@@ -236,7 +236,7 @@ class Query
         } else {
             $domDoc = new DOMDocument('1.0', $encoding);
         }
-        $type   = $this->getDocumentType();
+        $type = $this->getDocumentType();
         switch ($type) {
             case self::DOC_XML:
                 $success = $domDoc->loadXML($document);
@@ -266,7 +266,7 @@ class Query
             throw new Exception\RuntimeException(sprintf('Error parsing document (type == %s)', $type));
         }
 
-        $nodeList   = $this->getNodeList($domDoc, $xpathQuery);
+        $nodeList = $this->getNodeList($domDoc, $xpathQuery);
         return new NodeList($query, $xpathQuery, $domDoc, $nodeList);
     }
 
@@ -302,7 +302,7 @@ class Query
      */
     protected function getNodeList($document, $xpathQuery)
     {
-        $xpath      = new DOMXPath($document);
+        $xpath = new DOMXPath($document);
         foreach ($this->xpathNamespaces as $prefix => $namespaceUri) {
             $xpath->registerNamespace($prefix, $namespaceUri);
         }
@@ -312,7 +312,7 @@ class Query
                 $xpath->registerPHPFunctions()
                 : $xpath->registerPHPFunctions($this->xpathPhpFunctions);
         }
-        $xpathQuery = (string) $xpathQuery;
+        $xpathQuery = (string)$xpathQuery;
 
         $nodeList = $xpath->queryWithErrorException($xpathQuery);
         return $nodeList;

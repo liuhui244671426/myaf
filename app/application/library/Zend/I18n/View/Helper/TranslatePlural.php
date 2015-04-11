@@ -19,11 +19,11 @@ class TranslatePlural extends AbstractTranslatorHelper
     /**
      * Translate a plural message
      *
-     * @param  string  $singular
-     * @param  string  $plural
+     * @param  string $singular
+     * @param  string $plural
      * @param  int $number
-     * @param  string  $textDomain
-     * @param  string  $locale
+     * @param  string $textDomain
+     * @param  string $locale
      * @throws Exception\RuntimeException
      * @return string
      */
@@ -33,7 +33,8 @@ class TranslatePlural extends AbstractTranslatorHelper
         $number,
         $textDomain = null,
         $locale = null
-    ) {
+    )
+    {
         $translator = $this->getTranslator();
         if (null === $translator) {
             throw new Exception\RuntimeException('Translator has not been set');

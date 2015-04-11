@@ -47,7 +47,7 @@ class Expr
      */
     public function __construct($expression)
     {
-        $this->expression = (string) $expression;
+        $this->expression = (string)$expression;
     }
 
     /**

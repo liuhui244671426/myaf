@@ -25,7 +25,7 @@ class GenericRole implements RoleInterface
      */
     public function __construct($roleId)
     {
-        $this->roleId = (string) $roleId;
+        $this->roleId = (string)$roleId;
     }
 
     /**

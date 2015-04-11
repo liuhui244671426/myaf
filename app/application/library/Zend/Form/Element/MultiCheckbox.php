@@ -116,7 +116,7 @@ class MultiCheckbox extends Checkbox
      * Set a single element attribute
      *
      * @param  string $key
-     * @param  mixed  $value
+     * @param  mixed $value
      * @return MultiCheckbox|ElementInterface
      */
     public function setAttribute($key, $value)
@@ -138,7 +138,7 @@ class MultiCheckbox extends Checkbox
      */
     public function setDisableInArrayValidator($disableOption)
     {
-        $this->disableInArrayValidator = (bool) $disableOption;
+        $this->disableInArrayValidator = (bool)$disableOption;
         return $this;
     }
 
@@ -161,11 +161,11 @@ class MultiCheckbox extends Checkbox
     {
         if (null === $this->validator && !$this->disableInArrayValidator()) {
             $inArrayValidator = new InArrayValidator(array(
-                'haystack'  => $this->getValueOptionsValues(),
-                'strict'    => false,
+                'haystack' => $this->getValueOptionsValues(),
+                'strict' => false,
             ));
             $this->validator = new ExplodeValidator(array(
-                'validator'      => $inArrayValidator,
+                'validator' => $inArrayValidator,
                 'valueDelimiter' => null, // skip explode if only one value
             ));
         }

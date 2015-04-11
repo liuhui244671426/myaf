@@ -44,14 +44,14 @@ class FeedModel extends ViewModel
         }
 
         if (!$this->type) {
-            $options   = $this->getOptions();
+            $options = $this->getOptions();
             if (isset($options['feed_type'])) {
                 $this->type = $options['feed_type'];
             }
         }
 
         $variables = $this->getVariables();
-        $feed      = FeedFactory::factory($variables);
+        $feed = FeedFactory::factory($variables);
         $this->setFeed($feed);
 
         return $this->feed;
@@ -80,7 +80,7 @@ class FeedModel extends ViewModel
             return $this->type;
         }
 
-        $options   = $this->getOptions();
+        $options = $this->getOptions();
         if (isset($options['feed_type'])) {
             $this->type = $options['feed_type'];
         }

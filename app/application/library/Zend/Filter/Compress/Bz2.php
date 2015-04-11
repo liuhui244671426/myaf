@@ -27,7 +27,7 @@ class Bz2 extends AbstractCompressionAlgorithm
      */
     protected $options = array(
         'blocksize' => 4,
-        'archive'   => null,
+        'archive' => null,
     );
 
     /**
@@ -67,7 +67,7 @@ class Bz2 extends AbstractCompressionAlgorithm
             throw new Exception\InvalidArgumentException('Blocksize must be between 0 and 9');
         }
 
-        $this->options['blocksize'] = (int) $blocksize;
+        $this->options['blocksize'] = (int)$blocksize;
         return $this;
     }
 
@@ -89,7 +89,7 @@ class Bz2 extends AbstractCompressionAlgorithm
      */
     public function setArchive($archive)
     {
-        $this->options['archive'] = (string) $archive;
+        $this->options['archive'] = (string)$archive;
         return $this;
     }
 

@@ -46,11 +46,11 @@ class Part extends TreeRouteStack implements RouteInterface
     /**
      * Create a new part route.
      *
-     * @param  mixed              $route
-     * @param  bool               $mayTerminate
+     * @param  mixed $route
+     * @param  bool $mayTerminate
      * @param  RoutePluginManager $routePlugins
-     * @param  array|null         $childRoutes
-     * @param  ArrayObject|null   $prototypes
+     * @param  array|null $childRoutes
+     * @param  ArrayObject|null $prototypes
      * @throws Exception\InvalidArgumentException
      */
     public function __construct($route, $mayTerminate, RoutePluginManager $routePlugins, array $childRoutes = null, ArrayObject $prototypes = null)
@@ -65,11 +65,11 @@ class Part extends TreeRouteStack implements RouteInterface
             throw new Exception\InvalidArgumentException('Base route may not be a part route');
         }
 
-        $this->route        = $route;
+        $this->route = $route;
         $this->mayTerminate = $mayTerminate;
-        $this->childRoutes  = $childRoutes;
-        $this->prototypes   = $prototypes;
-        $this->routes       = new PriorityList();
+        $this->childRoutes = $childRoutes;
+        $this->prototypes = $prototypes;
+        $this->routes = new PriorityList();
     }
 
     /**
@@ -125,9 +125,9 @@ class Part extends TreeRouteStack implements RouteInterface
      * match(): defined by RouteInterface interface.
      *
      * @see    \Zend\Mvc\Router\RouteInterface::match()
-     * @param  Request      $request
+     * @param  Request $request
      * @param  integer|null $pathOffset
-     * @param  array        $options
+     * @param  array $options
      * @return RouteMatch|null
      */
     public function match(Request $request, $pathOffset = null, array $options = array())
@@ -146,7 +146,7 @@ class Part extends TreeRouteStack implements RouteInterface
 
             $nextOffset = $pathOffset + $match->getLength();
 
-            $uri        = $request->getUri();
+            $uri = $request->getUri();
             $pathLength = strlen($uri->getPath());
 
             if ($this->mayTerminate && $nextOffset === $pathLength) {
@@ -194,7 +194,7 @@ class Part extends TreeRouteStack implements RouteInterface
             $options['locale'] = $params['locale'];
         }
 
-        $path   = $this->route->assemble($params, $options);
+        $path = $this->route->assemble($params, $options);
         $params = array_diff_key($params, array_flip($this->route->getAssembledParams()));
 
         if (!isset($options['name'])) {

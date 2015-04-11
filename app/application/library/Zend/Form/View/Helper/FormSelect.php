@@ -32,14 +32,14 @@ class FormSelect extends AbstractHelper
      * @var array
      */
     protected $validSelectAttributes = array(
-        'name'         => true,
+        'name' => true,
         'autocomplete' => true,
-        'autofocus'    => true,
-        'disabled'     => true,
-        'form'         => true,
-        'multiple'     => true,
-        'required'     => true,
-        'size'         => true
+        'autofocus' => true,
+        'disabled' => true,
+        'form' => true,
+        'multiple' => true,
+        'required' => true,
+        'size' => true
     );
 
     /**
@@ -50,8 +50,8 @@ class FormSelect extends AbstractHelper
     protected $validOptionAttributes = array(
         'disabled' => true,
         'selected' => true,
-        'label'    => true,
-        'value'    => true,
+        'label' => true,
+        'value' => true,
     );
 
     /**
@@ -61,7 +61,7 @@ class FormSelect extends AbstractHelper
      */
     protected $validOptgroupAttributes = array(
         'disabled' => true,
-        'label'    => true,
+        'label' => true,
     );
 
     protected $translatableAttributes = array(
@@ -107,7 +107,7 @@ class FormSelect extends AbstractHelper
             ));
         }
 
-        $name   = $element->getName();
+        $name = $element->getName();
         if (empty($name) && $name !== 0) {
             throw new Exception\DomainException(sprintf(
                 '%s requires that the element has an assigned name; none discovered',
@@ -122,7 +122,7 @@ class FormSelect extends AbstractHelper
         }
 
         $attributes = $element->getAttributes();
-        $value      = $this->validateMultiValue($element->getValue(), $attributes);
+        $value = $this->validateMultiValue($element->getValue(), $attributes);
 
         $attributes['name'] = $name;
         if (array_key_exists('multiple', $attributes) && $attributes['multiple']) {
@@ -168,13 +168,13 @@ class FormSelect extends AbstractHelper
      */
     public function renderOptions(array $options, array $selectedOptions = array())
     {
-        $template      = '<option %s>%s</option>';
+        $template = '<option %s>%s</option>';
         $optionStrings = array();
-        $escapeHtml    = $this->getEscapeHtmlHelper();
+        $escapeHtml = $this->getEscapeHtmlHelper();
 
         foreach ($options as $key => $optionSpec) {
-            $value    = '';
-            $label    = '';
+            $value = '';
+            $label = '';
             $selected = false;
             $disabled = false;
 
@@ -285,7 +285,7 @@ class FormSelect extends AbstractHelper
         }
 
         if (!is_array($value)) {
-            return (array) $value;
+            return (array)$value;
         }
 
         if (!isset($attributes['multiple']) || !$attributes['multiple']) {

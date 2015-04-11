@@ -21,31 +21,31 @@ class Upload extends AbstractValidator
     /**
      * @const string Error constants
      */
-    const INI_SIZE       = 'fileUploadErrorIniSize';
-    const FORM_SIZE      = 'fileUploadErrorFormSize';
-    const PARTIAL        = 'fileUploadErrorPartial';
-    const NO_FILE        = 'fileUploadErrorNoFile';
-    const NO_TMP_DIR     = 'fileUploadErrorNoTmpDir';
-    const CANT_WRITE     = 'fileUploadErrorCantWrite';
-    const EXTENSION      = 'fileUploadErrorExtension';
-    const ATTACK         = 'fileUploadErrorAttack';
+    const INI_SIZE = 'fileUploadErrorIniSize';
+    const FORM_SIZE = 'fileUploadErrorFormSize';
+    const PARTIAL = 'fileUploadErrorPartial';
+    const NO_FILE = 'fileUploadErrorNoFile';
+    const NO_TMP_DIR = 'fileUploadErrorNoTmpDir';
+    const CANT_WRITE = 'fileUploadErrorCantWrite';
+    const EXTENSION = 'fileUploadErrorExtension';
+    const ATTACK = 'fileUploadErrorAttack';
     const FILE_NOT_FOUND = 'fileUploadErrorFileNotFound';
-    const UNKNOWN        = 'fileUploadErrorUnknown';
+    const UNKNOWN = 'fileUploadErrorUnknown';
 
     /**
      * @var array Error message templates
      */
     protected $messageTemplates = array(
-        self::INI_SIZE       => "File '%value%' exceeds the defined ini size",
-        self::FORM_SIZE      => "File '%value%' exceeds the defined form size",
-        self::PARTIAL        => "File '%value%' was only partially uploaded",
-        self::NO_FILE        => "File '%value%' was not uploaded",
-        self::NO_TMP_DIR     => "No temporary directory was found for file '%value%'",
-        self::CANT_WRITE     => "File '%value%' can't be written",
-        self::EXTENSION      => "A PHP extension returned an error while uploading the file '%value%'",
-        self::ATTACK         => "File '%value%' was illegally uploaded. This could be a possible attack",
+        self::INI_SIZE => "File '%value%' exceeds the defined ini size",
+        self::FORM_SIZE => "File '%value%' exceeds the defined form size",
+        self::PARTIAL => "File '%value%' was only partially uploaded",
+        self::NO_FILE => "File '%value%' was not uploaded",
+        self::NO_TMP_DIR => "No temporary directory was found for file '%value%'",
+        self::CANT_WRITE => "File '%value%' can't be written",
+        self::EXTENSION => "A PHP extension returned an error while uploading the file '%value%'",
+        self::ATTACK => "File '%value%' was illegally uploaded. This could be a possible attack",
         self::FILE_NOT_FOUND => "File '%value%' was not found",
-        self::UNKNOWN        => "Unknown error while uploading file '%value%'"
+        self::UNKNOWN => "Unknown error while uploading file '%value%'"
     );
 
     protected $options = array(
@@ -133,7 +133,7 @@ class Upload extends AbstractValidator
      *
      * @param  string $value Single file to check for upload errors, when giving null the $_FILES array
      *                       from initialization will be used
-     * @param  mixed  $file
+     * @param  mixed $file
      * @return bool
      */
     public function isValid($value, $file = null)

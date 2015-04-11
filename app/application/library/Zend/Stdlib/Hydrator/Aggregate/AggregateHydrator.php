@@ -30,7 +30,7 @@ class AggregateHydrator implements HydratorInterface, EventManagerAwareInterface
      * Attaches the provided hydrator to the list of hydrators to be used while hydrating/extracting data
      *
      * @param \Zend\Stdlib\Hydrator\HydratorInterface $hydrator
-     * @param int                                     $priority
+     * @param int $priority
      */
     public function add(HydratorInterface $hydrator, $priority = self::DEFAULT_PRIORITY)
     {

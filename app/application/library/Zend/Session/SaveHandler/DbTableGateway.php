@@ -57,7 +57,7 @@ class DbTableGateway implements SaveHandlerInterface
     public function __construct(TableGateway $tableGateway, DbTableGatewayOptions $options)
     {
         $this->tableGateway = $tableGateway;
-        $this->options      = $options;
+        $this->options = $options;
     }
 
     /**
@@ -70,8 +70,8 @@ class DbTableGateway implements SaveHandlerInterface
     public function open($savePath, $name)
     {
         $this->sessionSavePath = $savePath;
-        $this->sessionName     = $name;
-        $this->lifetime        = ini_get('session.gc_maxlifetime');
+        $this->sessionName = $name;
+        $this->lifetime = ini_get('session.gc_maxlifetime');
 
         return true;
     }
@@ -95,13 +95,14 @@ class DbTableGateway implements SaveHandlerInterface
     public function read($id)
     {
         $rows = $this->tableGateway->select(array(
-            $this->options->getIdColumn()   => $id,
+            $this->options->getIdColumn() => $id,
             $this->options->getNameColumn() => $this->sessionName,
         ));
 
         if ($row = $rows->current()) {
             if ($row->{$this->options->getModifiedColumn()} +
-                $row->{$this->options->getLifetimeColumn()} > time()) {
+                $row->{$this->options->getLifetimeColumn()} > time()
+            ) {
                 return $row->{$this->options->getDataColumn()};
             }
             $this->destroy($id);
@@ -120,25 +121,25 @@ class DbTableGateway implements SaveHandlerInterface
     {
         $data = array(
             $this->options->getModifiedColumn() => time(),
-            $this->options->getDataColumn()     => (string) $data,
+            $this->options->getDataColumn() => (string)$data,
         );
 
         $rows = $this->tableGateway->select(array(
-            $this->options->getIdColumn()   => $id,
+            $this->options->getIdColumn() => $id,
             $this->options->getNameColumn() => $this->sessionName,
         ));
 
         if ($row = $rows->current()) {
-            return (bool) $this->tableGateway->update($data, array(
-                $this->options->getIdColumn()   => $id,
+            return (bool)$this->tableGateway->update($data, array(
+                $this->options->getIdColumn() => $id,
                 $this->options->getNameColumn() => $this->sessionName,
             ));
         }
         $data[$this->options->getLifetimeColumn()] = $this->lifetime;
-        $data[$this->options->getIdColumn()]       = $id;
-        $data[$this->options->getNameColumn()]     = $this->sessionName;
+        $data[$this->options->getIdColumn()] = $id;
+        $data[$this->options->getNameColumn()] = $this->sessionName;
 
-        return (bool) $this->tableGateway->insert($data);
+        return (bool)$this->tableGateway->insert($data);
     }
 
     /**
@@ -149,8 +150,8 @@ class DbTableGateway implements SaveHandlerInterface
      */
     public function destroy($id)
     {
-        return (bool) $this->tableGateway->delete(array(
-            $this->options->getIdColumn()   => $id,
+        return (bool)$this->tableGateway->delete(array(
+            $this->options->getIdColumn() => $id,
             $this->options->getNameColumn() => $this->sessionName,
         ));
     }
@@ -164,7 +165,7 @@ class DbTableGateway implements SaveHandlerInterface
     public function gc($maxlifetime)
     {
         $platform = $this->tableGateway->getAdapter()->getPlatform();
-        return (bool) $this->tableGateway->delete(
+        return (bool)$this->tableGateway->delete(
             sprintf(
                 '%s < %d',
                 $platform->quoteIdentifier($this->options->getModifiedColumn()),

@@ -81,7 +81,7 @@ class ZendMonitor extends AbstractWriter
     protected function doWrite(array $event)
     {
         $priority = $event['priority'];
-        $message  = $event['message'];
+        $message = $event['message'];
         unset($event['priority'], $event['message']);
 
         if (!empty($event)) {

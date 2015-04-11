@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Yaf Config Ini
  */
@@ -30,8 +31,8 @@ class Yaf_Config_Ini extends Yaf_Config_Simple
      *      $data->hostname === "staging"
      *      $data->db->connection === "database"
      *
-     * @param  string        $filename
-     * @param  mixed         $section
+     * @param  string $filename
+     * @param  mixed $section
      * @param  boolean $readonly
      * @throws Yaf_Config_Exception
      * @return void
@@ -40,7 +41,7 @@ class Yaf_Config_Ini extends Yaf_Config_Simple
     {
         if (empty($filename)) {
             Yaf_Exception::trigger_error(
-                'Unable to find config file '.$filename, E_USER_ERROR
+                'Unable to find config file ' . $filename, E_USER_ERROR
             );
             //throw new Yaf_Config_Exception('Filename is not set');
         }
@@ -48,44 +49,44 @@ class Yaf_Config_Ini extends Yaf_Config_Simple
             $this->_config = $filename;
         } elseif (is_string($filename)) {
 
-        $iniArray = $this->_loadIniFile($filename);
+            $iniArray = $this->_loadIniFile($filename);
 
-        if (null === $section) {
-            // Load entire file
-            $dataArray = array();
-            foreach ($iniArray as $sectionName => $sectionData) {
-                if (!is_array($sectionData)) {
-                    $dataArray =
-                        $this->_arrayMergeRecursive(
-                            $dataArray, $this->_processKey(
-                                array(), $sectionName, $sectionData
-                            )
+            if (null === $section) {
+                // Load entire file
+                $dataArray = array();
+                foreach ($iniArray as $sectionName => $sectionData) {
+                    if (!is_array($sectionData)) {
+                        $dataArray =
+                            $this->_arrayMergeRecursive(
+                                $dataArray, $this->_processKey(
+                                    array(), $sectionName, $sectionData
+                                )
+                            );
+                    } else {
+                        $dataArray[$sectionName] = $this->_processSection(
+                            $iniArray, $sectionName
                         );
-                } else {
-                    $dataArray[$sectionName] = $this->_processSection(
-                        $iniArray, $sectionName
+                    }
+                }
+                parent::__construct($dataArray, true);
+            } else {
+                // Load one or more sections
+                if (!is_array($section)) {
+                    $section = array($section);
+                }
+                $dataArray = array();
+                foreach ($section as $sectionName) {
+                    if (!isset($iniArray[$sectionName])) {
+                        throw new Yaf_Config_Exception(
+                            "There is no section '$sectionName' in '$filename'"
+                        );
+                    }
+                    $dataArray = $this->_arrayMergeRecursive(
+                        $this->_processSection($iniArray, $sectionName), $dataArray
                     );
                 }
+                parent::__construct($dataArray, true);
             }
-            parent::__construct($dataArray, true);
-        } else {
-            // Load one or more sections
-            if (!is_array($section)) {
-                $section = array($section);
-            }
-            $dataArray = array();
-            foreach ($section as $sectionName) {
-                if (!isset($iniArray[$sectionName])) {
-                    throw new Yaf_Config_Exception(
-                        "There is no section '$sectionName' in '$filename'"
-                    );
-                }
-                $dataArray = $this->_arrayMergeRecursive(
-                    $this->_processSection($iniArray, $sectionName), $dataArray
-                );
-            }
-            parent::__construct($dataArray, true);
-        }
         } else {
             throw new Yaf_Exception_TypeError(
                 'Invalid parameters provided, must be path of ini file'
@@ -100,7 +101,7 @@ class Yaf_Config_Ini extends Yaf_Config_Simple
      * @param mixed $default
      * @return mixed
      */
-    public function get ($name)
+    public function get($name)
     {
         if ($name == null) {
             return false;
@@ -117,7 +118,6 @@ class Yaf_Config_Ini extends Yaf_Config_Simple
 
     /**
      * Load the INI file from disk using parse_ini_file().
-
      * @param string $filename
      * @return array
      */
@@ -162,13 +162,13 @@ class Yaf_Config_Ini extends Yaf_Config_Simple
                 case 2:
                     $extendedSection = trim($pieces[1]);
                     $iniArray[$thisSection] = array_merge(
-                        array(';extends'=>$extendedSection), $data
+                        array(';extends' => $extendedSection), $data
                     );
                     break;
 
                 default:
                     throw new Yaf_Config_Exception(
-                        "Section '$thisSection' may not extend ".
+                        "Section '$thisSection' may not extend " .
                         "multiple sections in $filename"
                     );
             }
@@ -182,9 +182,9 @@ class Yaf_Config_Ini extends Yaf_Config_Simple
      * key. Passes control to _processKey() to handle the nest separator
      * sub-property syntax that may be used within the key name.
      *
-     * @param  array  $iniArray
+     * @param  array $iniArray
      * @param  string $section
-     * @param  array  $config
+     * @param  array $config
      * @throws Yaf_Config_Exception
      * @return array
      */
@@ -195,9 +195,9 @@ class Yaf_Config_Ini extends Yaf_Config_Simple
             foreach ($thisSection as $key => $value) {
                 if (strtolower($key) == ';extends') {
                     if (isset($iniArray[$value])) {
-                            $config = $this->_processSection(
-                                $iniArray, $value, $config
-                            );
+                        $config = $this->_processSection(
+                            $iniArray, $value, $config
+                        );
                     } else {
                         throw new Yaf_Config_Exception(
                             "Parent section '$value' cannot be found"
@@ -215,7 +215,7 @@ class Yaf_Config_Ini extends Yaf_Config_Simple
      * Assign the key's value to the property list. Handles the
      * nest separator for sub-properties.
      *
-     * @param  array  $config
+     * @param  array $config
      * @param  string $key
      * @param  string $value
      * @throws Yaf_Config_Exception
@@ -235,7 +235,7 @@ class Yaf_Config_Ini extends Yaf_Config_Simple
                     }
                 } elseif (!is_array($config[$pieces[0]])) {
                     throw new Yaf_Config_Exception(
-                        "Cannot create sub-key for '{$pieces[0]}' ".
+                        "Cannot create sub-key for '{$pieces[0]}' " .
                         "as key already exists"
                     );
                 }

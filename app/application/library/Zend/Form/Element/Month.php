@@ -42,15 +42,15 @@ class Month extends DateTime
     protected function getStepValidator()
     {
         $stepValue = (isset($this->attributes['step']))
-                     ? $this->attributes['step'] : 1; // Months
+            ? $this->attributes['step'] : 1; // Months
 
         $baseValue = (isset($this->attributes['min']))
-                     ? $this->attributes['min'] : '1970-01';
+            ? $this->attributes['min'] : '1970-01';
 
         return new DateStepValidator(array(
-            'format'    => "Y-m",
+            'format' => "Y-m",
             'baseValue' => $baseValue,
-            'step'      => new \DateInterval("P{$stepValue}M"),
+            'step' => new \DateInterval("P{$stepValue}M"),
         ));
     }
 }

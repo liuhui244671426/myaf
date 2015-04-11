@@ -58,10 +58,10 @@ class DateFormat extends AbstractHelper
      * Format a date
      *
      * @param  DateTime|int|array $date
-     * @param  int                    $dateType
-     * @param  int                    $timeType
-     * @param  string                 $locale
-     * @param  string|null            $pattern
+     * @param  int $dateType
+     * @param  int $timeType
+     * @param  string $locale
+     * @param  string|null $pattern
      * @return string
      */
     public function __invoke(
@@ -70,13 +70,14 @@ class DateFormat extends AbstractHelper
         $timeType = IntlDateFormatter::NONE,
         $locale = null,
         $pattern = null
-    ) {
+    )
+    {
         if ($locale === null) {
             $locale = $this->getLocale();
         }
 
-        $timezone    = $this->getTimezone();
-        $formatterId = md5($dateType . "\0" . $timeType . "\0" . $locale ."\0" . $pattern);
+        $timezone = $this->getTimezone();
+        $formatterId = md5($dateType . "\0" . $timeType . "\0" . $locale . "\0" . $pattern);
 
         if (!isset($this->formatters[$formatterId])) {
             $this->formatters[$formatterId] = new IntlDateFormatter(
@@ -100,7 +101,7 @@ class DateFormat extends AbstractHelper
      */
     public function setLocale($locale)
     {
-        $this->locale = (string) $locale;
+        $this->locale = (string)$locale;
         return $this;
     }
 
@@ -126,7 +127,7 @@ class DateFormat extends AbstractHelper
      */
     public function setTimezone($timezone)
     {
-        $this->timezone = (string) $timezone;
+        $this->timezone = (string)$timezone;
 
         // The method setTimeZoneId is deprecated as of PHP 5.5.0
         $setTimeZoneMethodName = (PHP_VERSION_ID < 50500) ? 'setTimeZoneId' : 'setTimeZone';

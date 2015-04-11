@@ -50,7 +50,7 @@ class XCacheOptions extends AdapterOptions
      */
     public function setNamespaceSeparator($namespaceSeparator)
     {
-        $namespaceSeparator = (string) $namespaceSeparator;
+        $namespaceSeparator = (string)$namespaceSeparator;
         $this->triggerOptionEvent('namespace_separator', $namespaceSeparator);
         $this->namespaceSeparator = $namespaceSeparator;
         return $this;
@@ -74,7 +74,7 @@ class XCacheOptions extends AdapterOptions
      */
     public function setAdminUser($adminUser)
     {
-        $adminUser = ($adminUser === null) ? null : (string) $adminUser;
+        $adminUser = ($adminUser === null) ? null : (string)$adminUser;
         if ($this->adminUser !== $adminUser) {
             $this->triggerOptionEvent('admin_user', $adminUser);
             $this->adminUser = $adminUser;
@@ -100,7 +100,7 @@ class XCacheOptions extends AdapterOptions
      */
     public function setAdminAuth($adminAuth)
     {
-        $adminAuth = (bool) $adminAuth;
+        $adminAuth = (bool)$adminAuth;
         if ($this->adminAuth !== $adminAuth) {
             $this->triggerOptionEvent('admin_auth', $adminAuth);
             $this->adminAuth = $adminAuth;
@@ -126,7 +126,7 @@ class XCacheOptions extends AdapterOptions
      */
     public function setAdminPass($adminPass)
     {
-        $adminPass = ($adminPass === null) ? null : (string) $adminPass;
+        $adminPass = ($adminPass === null) ? null : (string)$adminPass;
         if ($this->adminPass !== $adminPass) {
             $this->triggerOptionEvent('admin_pass', $adminPass);
             $this->adminPass = $adminPass;

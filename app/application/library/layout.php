@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Layout class used for render layouts and views.
  *
@@ -53,7 +54,7 @@ class layout implements Yaf_View_Interface
      *
      * @var array
      */
-    protected $options=array();
+    protected $options = array();
     /**
      *
      */
@@ -82,6 +83,7 @@ class layout implements Yaf_View_Interface
      * @var string
      */
     protected $tpl_dir;
+
     /**
      * Constructor
      *
@@ -90,11 +92,12 @@ class layout implements Yaf_View_Interface
      *
      * @return void
      */
-    public function __construct($path, $options=array())
+    public function __construct($path, $options = array())
     {
         $this->layout_path = $path;
         $this->options = $options;
     }
+
     /**
      * Return the instance of a template engine.
      *
@@ -102,12 +105,13 @@ class layout implements Yaf_View_Interface
      */
     protected function engine()
     {
-        $this->engine =  $this->engine ?: new Yaf_View_Simple(
+        $this->engine = $this->engine ?: new Yaf_View_Simple(
             $this->tpl_dir,
             $this->options
         );
         return $this->engine;
     }
+
     /**
      * Create engine instance and set the path of views and layout templates.
      *
@@ -119,8 +123,7 @@ class layout implements Yaf_View_Interface
      */
     public function setScriptPath($path)
     {
-        if (is_readable($path))
-        {
+        if (is_readable($path)) {
             $this->tpl_dir = $path;
             $this->engine()->setScriptPath($path);
             //$this->layout_path = $path . "/../layouts";
@@ -129,6 +132,7 @@ class layout implements Yaf_View_Interface
         }
         throw new Exception("Invalid path: {$path}");
     }
+
     /**
      * Getter method for views path.
      *
@@ -138,6 +142,7 @@ class layout implements Yaf_View_Interface
     {
         return $this->engine()->getScriptPath();
     }
+
     /**
      * Setter for Layout::layout variable
      *
@@ -149,6 +154,7 @@ class layout implements Yaf_View_Interface
     {
         $this->layout = $name;
     }
+
     /**
      * Getter for Layout::layout variable
      *
@@ -168,6 +174,7 @@ class layout implements Yaf_View_Interface
     {
         $this->layout_path = $path;
     }
+
     /**
      * Get full layout path with filename and extension.
      *
@@ -177,15 +184,16 @@ class layout implements Yaf_View_Interface
     public function getLayoutPath()
     {
         $config = Yaf_Registry::get('config');
-        $ext = empty($config->view->ext)?
-            'phtml':$config->view->ext;
+        $ext = empty($config->view->ext) ?
+            'phtml' : $config->view->ext;
         return $this->layout_path . $this->layout . ".{$ext}";
     }
+
     /**
      * Assign a variable to the template
      *
-     * @param string $name  The variable name.
-     * @param mixed  $value The variable value.
+     * @param string $name The variable name.
+     * @param mixed $value The variable value.
      *
      * @return void
      */
@@ -193,6 +201,7 @@ class layout implements Yaf_View_Interface
     {
         $this->assign($name, $value);
     }
+
     /**
      * Allows testing with empty() and isset() to work
      *
@@ -204,6 +213,7 @@ class layout implements Yaf_View_Interface
     {
         return (null !== $this->engine()->$name);
     }
+
     /**
      * Allows unset() on object properties to work
      *
@@ -215,6 +225,7 @@ class layout implements Yaf_View_Interface
     {
         $this->engine()->clear($name);
     }
+
     /**
      * Assign variables to the template
      *
@@ -223,9 +234,9 @@ class layout implements Yaf_View_Interface
      *
      * @see __set()
      *
-     * @param string|array $name  The assignment strategy to use (key or
+     * @param string|array $name The assignment strategy to use (key or
      *                            array of key => value pairs)
-     * @param mixed        $value (Optional) If assigning a named variable,
+     * @param mixed $value (Optional) If assigning a named variable,
      *                            use this as the value.
      *
      * @return void
@@ -235,6 +246,7 @@ class layout implements Yaf_View_Interface
         $this->tpl_vars[$name] = $value;
         $this->engine()->assign($name, $value);
     }
+
     /**
      * Assign variables by reference to the template
      *
@@ -244,6 +256,7 @@ class layout implements Yaf_View_Interface
         $this->tpl_vars[$name] = $value;
         $this->engine()->assignRef($name, $value);
     }
+
     /**
      * Clear all assigned variables
      *
@@ -253,10 +266,12 @@ class layout implements Yaf_View_Interface
      *
      * @return void
      */
-    public function clearVars() {
+    public function clearVars()
+    {
         $this->tpl_vars = array();
         $this->engine()->clear();
     }
+
     /**
      * Processes a view and returns the output.
      *
@@ -264,12 +279,13 @@ class layout implements Yaf_View_Interface
      * So render the view at $this->content property and then render the
      * layout template.
      *
-     * @param string $tpl      The template to process.
-     * @param array  $tpl_vars Additional variables to be assigned to template.
+     * @param string $tpl The template to process.
+     * @param array $tpl_vars Additional variables to be assigned to template.
      *
      * @return string The view or layout template output.
      */
-    public function render($tpl, $tpl_vars=array()) {
+    public function render($tpl, $tpl_vars = array())
+    {
         $tpl_vars = array_merge($this->tpl_vars, $tpl_vars);
         $this->content = $this->engine()->render($tpl, $tpl_vars);
         // if no layout is defined,
@@ -295,15 +311,16 @@ class layout implements Yaf_View_Interface
             $tpl_vars
         );
     }
+
     /**
      * Directly display the constens of a view / layout template.
      *
-     * @param string $tpl      The template to process.
-     * @param array  $tpl_vars Additional variables to be assigned to template.
+     * @param string $tpl The template to process.
+     * @param array $tpl_vars Additional variables to be assigned to template.
      *
      * @return void
      */
-    public function display($tpl, $tpl_vars=array())
+    public function display($tpl, $tpl_vars = array())
     {
         echo $this->render($tpl, $tpl_vars);
     }

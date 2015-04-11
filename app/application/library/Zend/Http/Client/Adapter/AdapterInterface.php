@@ -27,8 +27,8 @@ interface AdapterInterface
     /**
      * Connect to the remote server
      *
-     * @param string  $host
-     * @param int     $port
+     * @param string $host
+     * @param int $port
      * @param  bool $secure
      */
     public function connect($host, $port = 80, $secure = false);
@@ -36,11 +36,11 @@ interface AdapterInterface
     /**
      * Send request to the remote server
      *
-     * @param string        $method
+     * @param string $method
      * @param \Zend\Uri\Uri $url
-     * @param string        $httpVer
-     * @param array         $headers
-     * @param string        $body
+     * @param string $httpVer
+     * @param array $headers
+     * @param string $body
      * @return string Request as text
      */
     public function write($method, $url, $httpVer = '1.1', $headers = array(), $body = '');

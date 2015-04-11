@@ -83,7 +83,7 @@ abstract class StringUtils
      */
     public static function registerWrapper($wrapper)
     {
-        $wrapper = (string) $wrapper;
+        $wrapper = (string)$wrapper;
         if (!in_array($wrapper, static::$wrapperRegistry, true)) {
             static::$wrapperRegistry[] = $wrapper;
         }
@@ -97,7 +97,7 @@ abstract class StringUtils
      */
     public static function unregisterWrapper($wrapper)
     {
-        $index = array_search((string) $wrapper, static::$wrapperRegistry, true);
+        $index = array_search((string)$wrapper, static::$wrapperRegistry, true);
         if ($index !== false) {
             unset(static::$wrapperRegistry[$index]);
         }
@@ -117,7 +117,7 @@ abstract class StringUtils
      * Get the first string wrapper supporting the given character encoding
      * and supports to convert into the given convert encoding.
      *
-     * @param string      $encoding        Character encoding to support
+     * @param string $encoding Character encoding to support
      * @param string|null $convertEncoding OPTIONAL character encoding to convert in
      * @return StringWrapperInterface
      * @throws Exception\RuntimeException If no wrapper supports given character encodings

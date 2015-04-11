@@ -14,7 +14,7 @@ use DOMElement;
 use Zend\Feed\Writer\Extension;
 
 /**
-*/
+ */
 class Feed extends Extension\AbstractRenderer
 {
     /**
@@ -73,7 +73,7 @@ class Feed extends Extension\AbstractRenderer
         }
         foreach ($flinks as $type => $href) {
             if (strtolower($type) == $this->getType()) { // issue 2605
-                $mime  = 'application/' . strtolower($type) . '+xml';
+                $mime = 'application/' . strtolower($type) . '+xml';
                 $flink = $dom->createElement('atom:link');
                 $root->appendChild($flink);
                 $flink->setAttribute('rel', 'self');

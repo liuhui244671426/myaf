@@ -80,9 +80,9 @@ class Code39 extends AbstractObject
      */
     protected function calculateBarcodeWidth()
     {
-        $quietZone       = $this->getQuietZone();
+        $quietZone = $this->getQuietZone();
         $characterLength = (6 * $this->barThinWidth + 3 * $this->barThickWidth + 1) * $this->factor;
-        $encodedData     = strlen($this->getText()) * $characterLength - $this->factor;
+        $encodedData = strlen($this->getText()) * $characterLength - $this->factor;
         return $quietZone + $encodedData + $quietZone;
     }
 
@@ -126,16 +126,16 @@ class Code39 extends AbstractObject
      */
     protected function prepareBarcode()
     {
-        $text         = str_split($this->getText());
+        $text = str_split($this->getText());
         $barcodeTable = array();
         foreach ($text as $char) {
             $barcodeChar = str_split($this->codingMap[$char]);
-            $visible     = true;
+            $visible = true;
             foreach ($barcodeChar as $c) {
                 /* visible, width, top, length */
-                $width          = $c ? $this->barThickWidth : $this->barThinWidth;
-                $barcodeTable[] = array((int) $visible, $width, 0, 1);
-                $visible = ! $visible;
+                $width = $c ? $this->barThickWidth : $this->barThinWidth;
+                $barcodeTable[] = array((int)$visible, $width, 0, 1);
+                $visible = !$visible;
             }
             $barcodeTable[] = array(0, $this->barThinWidth);
         }
@@ -151,8 +151,8 @@ class Code39 extends AbstractObject
     public function getChecksum($text)
     {
         $this->checkText($text);
-        $text     = str_split($text);
-        $charset  = array_flip(array_keys($this->codingMap));
+        $text = str_split($text);
+        $charset = array_flip(array_keys($this->codingMap));
         $checksum = 0;
         foreach ($text as $character) {
             $checksum += $charset[$character];

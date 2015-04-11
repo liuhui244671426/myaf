@@ -19,6 +19,7 @@ use Traversable;
  *     class QueryParams extends ArrayObject implements Parameters {}
  * and have 90% of the functionality
  */
+
 interface ParametersInterface extends ArrayAccess, Countable, Serializable, Traversable
 {
     /**

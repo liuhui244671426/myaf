@@ -60,7 +60,7 @@ class Predicate extends PredicateSet
         if ($this->unnest == null) {
             throw new RuntimeException('Not nested');
         }
-        $unnest       = $this->unnest;
+        $unnest = $this->unnest;
         $this->unnest = null;
         return $unnest;
     }
@@ -216,6 +216,7 @@ class Predicate extends PredicateSet
 
         return $this;
     }
+
     /**
      * Create "notLike" predicate
      *
@@ -229,7 +230,7 @@ class Predicate extends PredicateSet
     {
         $this->addPredicate(
             new NotLike($identifier, $notLike),
-            ($this->nextPredicateCombineOperator) ? : $this->defaultCombination
+            ($this->nextPredicateCombineOperator) ?: $this->defaultCombination
         );
         $this->nextPredicateCombineOperator = null;
         return $this;

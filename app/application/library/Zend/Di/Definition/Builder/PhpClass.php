@@ -22,27 +22,27 @@ class PhpClass
     /**
      * @var null|string
      */
-    protected $name                 = null;
+    protected $name = null;
 
     /**
      * @var string|\Callable|array
      */
-    protected $instantiator         = '__construct';
+    protected $instantiator = '__construct';
 
     /**
      * @var InjectionMethod[]
      */
-    protected $injectionMethods     = array();
+    protected $injectionMethods = array();
 
     /**
      * @var array
      */
-    protected $superTypes           = array();
+    protected $superTypes = array();
 
     /**
      * Set name
      *
-     * @param  string   $name
+     * @param  string $name
      * @return PhpClass
      */
     public function setName($name)
@@ -82,7 +82,7 @@ class PhpClass
     }
 
     /**
-     * @param  string   $superType
+     * @param  string $superType
      * @return PhpClass
      */
     public function addSuperType($superType)
@@ -124,14 +124,14 @@ class PhpClass
      * order to provide a more fluent interface for building classes with
      * injection methods.
      *
-     * @param  null|string     $name
+     * @param  null|string $name
      * @return InjectionMethod
      */
     public function createInjectionMethod($name = null)
     {
         $builder = $this->defaultMethodBuilder;
         /* @var $method InjectionMethod */
-        $method  = new $builder();
+        $method = new $builder();
         if (null !== $name) {
             $method->setName($name);
         }
@@ -143,7 +143,7 @@ class PhpClass
     /**
      * Override which class will be used by {@link createInjectionMethod()}
      *
-     * @param  string   $class
+     * @param  string $class
      * @return PhpClass
      */
     public function setMethodBuilder($class)

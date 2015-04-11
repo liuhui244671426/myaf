@@ -41,10 +41,10 @@ class Rss extends AbstractEntry implements EntryInterface
     public function __construct(DOMElement $entry, $entryKey, $type = null)
     {
         parent::__construct($entry, $entryKey, $type);
-        $this->xpathQueryRss = '//item[' . ($this->entryKey+1) . ']';
-        $this->xpathQueryRdf = '//rss:item[' . ($this->entryKey+1) . ']';
+        $this->xpathQueryRss = '//item[' . ($this->entryKey + 1) . ']';
+        $this->xpathQueryRdf = '//rss:item[' . ($this->entryKey + 1) . ']';
 
-        $manager    = Reader\Reader::getExtensionManager();
+        $manager = Reader\Reader::getExtensionManager();
         $extensions = array(
             'DublinCore\Entry',
             'Content\Entry',
@@ -101,7 +101,8 @@ class Rss extends AbstractEntry implements EntryInterface
         }
 
         if ($this->getType() !== Reader\Reader::TYPE_RSS_10
-        && $this->getType() !== Reader\Reader::TYPE_RSS_090) {
+            && $this->getType() !== Reader\Reader::TYPE_RSS_090
+        ) {
             $list = $this->xpath->query($this->xpathQueryRss . '//author');
         } else {
             $list = $this->xpath->query($this->xpathQueryRdf . '//rss:author');
@@ -201,7 +202,7 @@ class Rss extends AbstractEntry implements EntryInterface
                     $date = new DateTime('@' . $dateModifiedParsed);
                 } else {
                     $dateStandards = array(DateTime::RSS, DateTime::RFC822,
-                                           DateTime::RFC2822, null);
+                        DateTime::RFC2822, null);
                     foreach ($dateStandards as $standard) {
                         try {
                             $date = date_create_from_format($standard, $dateModified);
@@ -210,7 +211,7 @@ class Rss extends AbstractEntry implements EntryInterface
                             if ($standard == null) {
                                 throw new Exception\RuntimeException(
                                     'Could not load date due to unrecognised'
-                                    .' format (should follow RFC 822 or 2822):'
+                                    . ' format (should follow RFC 822 or 2822):'
                                     . $e->getMessage(),
                                     0, $e
                                 );
@@ -293,9 +294,9 @@ class Rss extends AbstractEntry implements EntryInterface
 
             if ($nodeList->length > 0) {
                 $enclosure = new \stdClass();
-                $enclosure->url    = $nodeList->item(0)->getAttribute('url');
+                $enclosure->url = $nodeList->item(0)->getAttribute('url');
                 $enclosure->length = $nodeList->item(0)->getAttribute('length');
-                $enclosure->type   = $nodeList->item(0)->getAttribute('type');
+                $enclosure->type = $nodeList->item(0)->getAttribute('type');
             }
         }
 
@@ -383,7 +384,8 @@ class Rss extends AbstractEntry implements EntryInterface
         $links = array();
 
         if ($this->getType() !== Reader\Reader::TYPE_RSS_10 &&
-            $this->getType() !== Reader\Reader::TYPE_RSS_090) {
+            $this->getType() !== Reader\Reader::TYPE_RSS_090
+        ) {
             $list = $this->xpath->query($this->xpathQueryRss . '//link');
         } else {
             $list = $this->xpath->query($this->xpathQueryRdf . '//rss:link');
@@ -414,7 +416,8 @@ class Rss extends AbstractEntry implements EntryInterface
         }
 
         if ($this->getType() !== Reader\Reader::TYPE_RSS_10 &&
-            $this->getType() !== Reader\Reader::TYPE_RSS_090) {
+            $this->getType() !== Reader\Reader::TYPE_RSS_090
+        ) {
             $list = $this->xpath->query($this->xpathQueryRss . '//category');
         } else {
             $list = $this->xpath->query($this->xpathQueryRdf . '//rss:category');

@@ -121,18 +121,18 @@ class Sendmail implements TransportInterface
      */
     public function send(Mail\Message $message)
     {
-        $to      = $this->prepareRecipients($message);
+        $to = $this->prepareRecipients($message);
         $subject = $this->prepareSubject($message);
-        $body    = $this->prepareBody($message);
+        $body = $this->prepareBody($message);
         $headers = $this->prepareHeaders($message);
-        $params  = $this->prepareParameters($message);
+        $params = $this->prepareParameters($message);
 
         // On *nix platforms, we need to replace \r\n with \n
         // sendmail is not an SMTP server, it is a unix command - it expects LF
         if (!$this->isWindowsOs()) {
-            $to      = str_replace("\r\n", "\n", $to);
+            $to = str_replace("\r\n", "\n", $to);
             $subject = str_replace("\r\n", "\n", $subject);
-            $body    = str_replace("\r\n", "\n", $body);
+            $body = str_replace("\r\n", "\n", $body);
             $headers = str_replace("\r\n", "\n", $headers);
         }
 
@@ -154,7 +154,7 @@ class Sendmail implements TransportInterface
             throw new Exception\RuntimeException('Invalid email; contains no "To" header');
         }
 
-        $to   = $headers->get('to');
+        $to = $headers->get('to');
         $list = $to->getAddressList();
         if (0 == count($list)) {
             throw new Exception\RuntimeException('Invalid "To" header; contains no addresses');
@@ -244,7 +244,7 @@ class Sendmail implements TransportInterface
             return null;
         }
 
-        $parameters = (string) $this->parameters;
+        $parameters = (string)$this->parameters;
 
         $sender = $message->getSender();
         if ($sender instanceof AddressInterface) {
@@ -255,7 +255,7 @@ class Sendmail implements TransportInterface
         $from = $message->getFrom();
         if (count($from)) {
             $from->rewind();
-            $sender      = $from->current();
+            $sender = $from->current();
             $parameters .= ' -f' . $sender->getEmail();
             return $parameters;
         }
@@ -295,11 +295,11 @@ class Sendmail implements TransportInterface
     /**
      * Temporary error handler for PHP native mail().
      *
-     * @param int    $errno
+     * @param int $errno
      * @param string $errstr
      * @param string $errfile
      * @param string $errline
-     * @param array  $errcontext
+     * @param array $errcontext
      * @return bool always true
      */
     public function handleMailErrors($errno, $errstr, $errfile = null, $errline = null, array $errcontext = null)

@@ -83,7 +83,7 @@ class Csrf extends AbstractValidator
         }
 
         if (!is_array($options)) {
-            $options = (array) $options;
+            $options = (array)$options;
         }
 
         foreach ($options as $key => $value) {
@@ -116,7 +116,7 @@ class Csrf extends AbstractValidator
      */
     public function isValid($value, $context = null)
     {
-        $this->setValue((string) $value);
+        $this->setValue((string)$value);
 
         $tokenId = $this->getTokenIdFromHash($value);
         $hash = $this->getValidationToken($tokenId);
@@ -137,7 +137,7 @@ class Csrf extends AbstractValidator
      */
     public function setName($name)
     {
-        $this->name = (string) $name;
+        $this->name = (string)$name;
         return $this;
     }
 
@@ -190,7 +190,7 @@ class Csrf extends AbstractValidator
      */
     public function setSalt($salt)
     {
-        $this->salt = (string) $salt;
+        $this->salt = (string)$salt;
         return $this;
     }
 
@@ -210,7 +210,7 @@ class Csrf extends AbstractValidator
      * If no CSRF token currently exists, or should be regenerated,
      * generates one.
      *
-     * @param  bool $regenerate    default false
+     * @param  bool $regenerate default false
      * @return string
      */
     public function getHash($regenerate = false)
@@ -231,8 +231,8 @@ class Csrf extends AbstractValidator
     public function getSessionName()
     {
         return str_replace('\\', '_', __CLASS__) . '_'
-            . $this->getSalt() . '_'
-            . strtr($this->getName(), array('[' => '_', ']' => ''));
+        . $this->getSalt() . '_'
+        . strtr($this->getName(), array('[' => '_', ']' => ''));
     }
 
     /**
@@ -243,7 +243,7 @@ class Csrf extends AbstractValidator
      */
     public function setTimeout($ttl)
     {
-        $this->timeout = ($ttl !== null) ? (int) $ttl : null;
+        $this->timeout = ($ttl !== null) ? (int)$ttl : null;
         return $this;
     }
 
@@ -274,7 +274,7 @@ class Csrf extends AbstractValidator
         $token = $this->getTokenFromHash($hash);
         $tokenId = $this->getTokenIdFromHash($hash);
 
-        if (! $session->tokenList) {
+        if (!$session->tokenList) {
             $session->tokenList = array();
         }
         $session->tokenList[$tokenId] = $token;
@@ -291,7 +291,7 @@ class Csrf extends AbstractValidator
      */
     protected function generateHash()
     {
-        $token = md5($this->getSalt() . Rand::getBytes(32) .  $this->getName());
+        $token = md5($this->getSalt() . Rand::getBytes(32) . $this->getName());
 
         $this->hash = $this->formatHash($token, $this->generateTokenId());
 
@@ -323,7 +323,7 @@ class Csrf extends AbstractValidator
          * if no tokenId is passed we revert to the old behaviour
          * @todo remove, here for BC
          */
-        if (! $tokenId && isset($session->hash)) {
+        if (!$tokenId && isset($session->hash)) {
             return $session->hash;
         }
 
@@ -362,7 +362,7 @@ class Csrf extends AbstractValidator
     {
         $data = explode('-', $hash);
 
-        if (! isset($data[1])) {
+        if (!isset($data[1])) {
             return null;
         }
 

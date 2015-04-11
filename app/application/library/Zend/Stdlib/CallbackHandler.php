@@ -41,11 +41,11 @@ class CallbackHandler
      * Constructor
      *
      * @param  string|array|object|callable $callback PHP callback
-     * @param  array                        $metadata  Callback metadata
+     * @param  array $metadata Callback metadata
      */
     public function __construct($callback, array $metadata = array())
     {
-        $this->metadata  = $metadata;
+        $this->metadata = $metadata;
         $this->registerCallback($callback);
     }
 
@@ -96,7 +96,7 @@ class CallbackHandler
             $result = $this->validateStringCallbackFor54($callback);
 
             if ($result !== true && $argCount <= 3) {
-                $callback       = $result;
+                $callback = $result;
                 // Minor performance tweak, if the callback gets called more
                 // than once
                 $this->callback = $result;

@@ -231,7 +231,7 @@ abstract class AbstractRenderer implements RendererInterface
      */
     public function setAutomaticRenderError($value)
     {
-        $this->automaticRenderError = (bool) $value;
+        $this->automaticRenderError = (bool)$value;
         return $this;
     }
 

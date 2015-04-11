@@ -57,7 +57,7 @@ class Stream
     public function stream_open($path, $mode, $options, &$opened_path)
     {
         // get the view script source
-        $path        = str_replace('zend.view://', '', $path);
+        $path = str_replace('zend.view://', '', $path);
         $this->data = file_get_contents($path);
 
         /**

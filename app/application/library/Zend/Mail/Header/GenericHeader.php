@@ -61,7 +61,7 @@ class GenericHeader implements HeaderInterface, UnstructuredInterface
     /**
      * Constructor
      *
-     * @param string $fieldName  Optional
+     * @param string $fieldName Optional
      * @param string $fieldValue Optional
      */
     public function __construct($fieldName = null, $fieldValue = null)
@@ -115,7 +115,7 @@ class GenericHeader implements HeaderInterface, UnstructuredInterface
      */
     public function setFieldValue($fieldValue)
     {
-        $fieldValue = (string) $fieldValue;
+        $fieldValue = (string)$fieldValue;
 
         if (empty($fieldValue) || preg_match('/^\s+$/', $fieldValue)) {
             $fieldValue = '';
@@ -147,7 +147,7 @@ class GenericHeader implements HeaderInterface, UnstructuredInterface
 
     public function toString()
     {
-        $name  = $this->getFieldName();
+        $name = $this->getFieldName();
         $value = $this->getFieldValue(HeaderInterface::FORMAT_ENCODED);
 
         return $name . ': ' . $value;

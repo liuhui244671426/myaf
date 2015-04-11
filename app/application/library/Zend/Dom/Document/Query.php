@@ -20,16 +20,16 @@ class Query
     /**#@+
      * Query types
      */
-    const TYPE_XPATH  = 'TYPE_XPATH';
-    const TYPE_CSS    = 'TYPE_CSS';
+    const TYPE_XPATH = 'TYPE_XPATH';
+    const TYPE_CSS = 'TYPE_CSS';
     /**#@-*/
 
     /**
      * Perform the query on Document
      *
-     * @param  string    $expression CSS selector or XPath query
-     * @param  Document  $document   Document to query
-     * @param  string    $type       The type of $expression
+     * @param  string $expression CSS selector or XPath query
+     * @param  Document $document Document to query
+     * @param  string $type The type of $expression
      * @return NodeList
      */
     public static function execute($expression, Document $document, $type = self::TYPE_XPATH)
@@ -62,9 +62,9 @@ class Query
      */
     public static function cssToXpath($path)
     {
-        $path = (string) $path;
+        $path = (string)$path;
         if (strstr($path, ',')) {
-            $paths       = explode(',', $path);
+            $paths = explode(',', $path);
             $expressions = array();
             foreach ($paths as $path) {
                 $xpath = static::cssToXpath(trim($path));
@@ -77,8 +77,8 @@ class Query
             return implode('|', $expressions);
         }
 
-        $paths    = array('//');
-        $path     = preg_replace('|\s+>\s+|', '>', $path);
+        $paths = array('//');
+        $path = preg_replace('|\s+>\s+|', '>', $path);
         $segments = preg_split('/\s+/', $path);
         foreach ($segments as $key => $segment) {
             $pathSegment = static::_tokenize($segment);
@@ -93,7 +93,7 @@ class Query
             if (0 === strpos($pathSegment, '[contains(')) {
                 foreach ($paths as $pathKey => $xpath) {
                     $paths[$pathKey] .= '//*' . ltrim($pathSegment, '*');
-                    $paths[]      = $xpath . $pathSegment;
+                    $paths[] = $xpath . $pathSegment;
                 }
             } else {
                 foreach ($paths as $pathKey => $xpath) {
@@ -137,7 +137,7 @@ class Query
             '|\[([a-z0-9_-]+)~=[\'"]([^\'"]+)[\'"]\]|i',
             function ($matches) {
                 return "[contains(concat(' ', normalize-space(@" . strtolower($matches[1]) . "), ' '), ' "
-                     . $matches[2] . " ')]";
+                . $matches[2] . " ')]";
             },
             $expression
         );
@@ -147,7 +147,7 @@ class Query
             '|\[([a-z0-9_-]+)\*=[\'"]([^\'"]+)[\'"]\]|i',
             function ($matches) {
                 return "[contains(@" . strtolower($matches[1]) . ", '"
-                     . $matches[2] . "')]";
+                . $matches[2] . "')]";
             },
             $expression
         );

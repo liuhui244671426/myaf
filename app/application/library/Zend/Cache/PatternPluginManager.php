@@ -27,11 +27,11 @@ class PatternPluginManager extends AbstractPluginManager
      */
     protected $invokableClasses = array(
         'callback' => 'Zend\Cache\Pattern\CallbackCache',
-        'capture'  => 'Zend\Cache\Pattern\CaptureCache',
-        'class'    => 'Zend\Cache\Pattern\ClassCache',
-        'object'   => 'Zend\Cache\Pattern\ObjectCache',
-        'output'   => 'Zend\Cache\Pattern\OutputCache',
-        'page'     => 'Zend\Cache\Pattern\PageCache',
+        'capture' => 'Zend\Cache\Pattern\CaptureCache',
+        'class' => 'Zend\Cache\Pattern\ClassCache',
+        'object' => 'Zend\Cache\Pattern\ObjectCache',
+        'output' => 'Zend\Cache\Pattern\OutputCache',
+        'page' => 'Zend\Cache\Pattern\PageCache',
     );
 
     /**

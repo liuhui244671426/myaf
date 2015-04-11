@@ -46,7 +46,7 @@ class CreateTableDecorator extends CreateTable implements PlatformDecoratorInter
         $sqls = array();
         foreach ($this->columns as $i => $column) {
             $stmtContainer = $this->processExpression($column, $platform);
-            $sql           = $stmtContainer->getSql();
+            $sql = $stmtContainer->getSql();
             $columnOptions = $column->getOptions();
 
             foreach ($columnOptions as $coName => $coValue) {

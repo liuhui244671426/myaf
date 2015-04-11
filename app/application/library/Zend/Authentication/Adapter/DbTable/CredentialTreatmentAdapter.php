@@ -28,10 +28,10 @@ class CredentialTreatmentAdapter extends AbstractAdapter
      * __construct() - Sets configuration options
      *
      * @param DbAdapter $zendDb
-     * @param string    $tableName           Optional
-     * @param string    $identityColumn      Optional
-     * @param string    $credentialColumn    Optional
-     * @param string    $credentialTreatment Optional
+     * @param string $tableName Optional
+     * @param string $identityColumn Optional
+     * @param string $credentialColumn Optional
+     * @param string $credentialTreatment Optional
      */
     public function __construct(
         DbAdapter $zendDb,
@@ -39,7 +39,8 @@ class CredentialTreatmentAdapter extends AbstractAdapter
         $identityColumn = null,
         $credentialColumn = null,
         $credentialTreatment = null
-    ) {
+    )
+    {
         parent::__construct($zendDb, $tableName, $identityColumn, $credentialColumn);
 
         if (null !== $credentialTreatment) {
@@ -109,7 +110,7 @@ class CredentialTreatmentAdapter extends AbstractAdapter
     protected function authenticateValidateResult($resultIdentity)
     {
         if ($resultIdentity['zend_auth_credential_match'] != '1') {
-            $this->authenticateResultInfo['code']       = AuthenticationResult::FAILURE_CREDENTIAL_INVALID;
+            $this->authenticateResultInfo['code'] = AuthenticationResult::FAILURE_CREDENTIAL_INVALID;
             $this->authenticateResultInfo['messages'][] = 'Supplied credential is invalid.';
             return $this->authenticateCreateAuthResult();
         }
@@ -117,7 +118,7 @@ class CredentialTreatmentAdapter extends AbstractAdapter
         unset($resultIdentity['zend_auth_credential_match']);
         $this->resultRow = $resultIdentity;
 
-        $this->authenticateResultInfo['code']       = AuthenticationResult::SUCCESS;
+        $this->authenticateResultInfo['code'] = AuthenticationResult::SUCCESS;
         $this->authenticateResultInfo['messages'][] = 'Authentication successful.';
         return $this->authenticateCreateAuthResult();
     }

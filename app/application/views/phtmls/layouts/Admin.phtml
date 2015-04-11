@@ -12,8 +12,8 @@
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-        <script src="/statics/bracket/js/html5shiv.js"></script>
-        <script src="/statics/bracket/js/respond.min.js"></script>
+    <script src="/statics/bracket/js/html5shiv.js"></script>
+    <script src="/statics/bracket/js/respond.min.js"></script>
     <![endif]-->
 </head>
 
@@ -26,92 +26,93 @@
 
 <section>
 
-<div class="leftpanel">
+    <div class="leftpanel">
 
-    <div class="logopanel">
-        <h1><span>[</span> MoWeather <span>]</span></h1>
-    </div>
-    <!-- logopanel -->
+        <div class="logopanel">
+            <h1><span>[</span> MoWeather <span>]</span></h1>
+        </div>
+        <!-- logopanel -->
 
-    <div class="leftpanelinner">
+        <div class="leftpanelinner">
 
-        <!-- This is only visible to small devices -->
-        <div class="visible-xs hidden-sm hidden-md hidden-lg">
-            <div class="media userlogged">
-                <img alt="" src="/statics/bracket/images/photos/loggeduser.png" class="media-object">
+            <!-- This is only visible to small devices -->
+            <div class="visible-xs hidden-sm hidden-md hidden-lg">
+                <div class="media userlogged">
+                    <img alt="" src="/statics/bracket/images/photos/loggeduser.png" class="media-object">
 
-                <div class="media-body">
-                    <h4>Admin</h4>
-                    <span>"Life is so funny"</span>
+                    <div class="media-body">
+                        <h4>Admin</h4>
+                        <span>"Life is so funny"</span>
+                    </div>
                 </div>
+
+                <h5 class="sidebartitle actitle">Account</h5>
+                <ul class="nav nav-pills nav-stacked nav-bracket mb30">
+                    <li><a href="/admin/index/logout"><i class="fa fa-sign-out"></i> <span>Sign Out</span></a></li>
+                </ul>
             </div>
 
-            <h5 class="sidebartitle actitle">Account</h5>
-            <ul class="nav nav-pills nav-stacked nav-bracket mb30">
-                <li><a href="/admin/index/logout"><i class="fa fa-sign-out"></i> <span>Sign Out</span></a></li>
-            </ul>
+            <?php echo LeftBuilder::menuHtml(); ?>
+
         </div>
+        <!-- leftpanelinner -->
+    </div>
+    <!-- leftpanel -->
 
-        <?php echo LeftBuilder::menuHtml();?>
+
+    <div class="mainpanel">
+
+        <div class="headerbar">
+
+            <a class="menutoggle"><i class="fa fa-bars"></i></a>
+
+            <form class="searchform" action="index.html" method="post">
+                <input type="text" class="form-control" name="keyword" placeholder="Search here..."/>
+            </form>
+
+            <div class="header-right">
+                <ul class="headermenu">
+                    <li>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <img src="/statics/bracket/images/photos/loggeduser.png" alt=""/>
+                                <?php
+                                echo HeaderBuilder::getUserName()['uname'];
+                                ?>
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                                <li><a href="/admin/index/logout"><i class="glyphicon glyphicon-log-out"></i> Log
+                                        Out</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- header-right -->
+
+        </div>
+        <!-- headerbar -->
+
+        <div class="contentpanel">
+            <?php echo $content; ?>
+        </div>
+        <!-- contentpanel -->
 
     </div>
-    <!-- leftpanelinner -->
-</div>
-<!-- leftpanel -->
+    <!-- mainpanel -->
 
-
-<div class="mainpanel">
-
-<div class="headerbar">
-
-    <a class="menutoggle"><i class="fa fa-bars"></i></a>
-
-    <form class="searchform" action="index.html" method="post">
-        <input type="text" class="form-control" name="keyword" placeholder="Search here..."/>
-    </form>
-
-    <div class="header-right">
-        <ul class="headermenu">
-            <li>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                        <img src="/statics/bracket/images/photos/loggeduser.png" alt=""/>
-                        <?php
-                            echo HeaderBuilder::getUserName()['uname'];
-                        ?>
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
-                        <li><a href="/admin/index/logout"><i class="glyphicon glyphicon-log-out"></i> Log Out</a></li>
-                    </ul>
-                </div>
-            </li>
+    <div class="rightpanel">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs nav-justified">
+            <li class="active"><a href="#rp-alluser" data-toggle="tab"><i class="fa fa-users"></i></a></li>
+            <li><a href="#rp-favorites" data-toggle="tab"><i class="fa fa-heart"></i></a></li>
+            <li><a href="#rp-history" data-toggle="tab"><i class="fa fa-clock-o"></i></a></li>
+            <li><a href="#rp-settings" data-toggle="tab"><i class="fa fa-gear"></i></a></li>
         </ul>
+
     </div>
-    <!-- header-right -->
-
-</div>
-<!-- headerbar -->
-
-<div class="contentpanel">
-<?php echo $content;?>
-</div>
-<!-- contentpanel -->
-
-</div>
-<!-- mainpanel -->
-
-<div class="rightpanel">
-<!-- Nav tabs -->
-<ul class="nav nav-tabs nav-justified">
-    <li class="active"><a href="#rp-alluser" data-toggle="tab"><i class="fa fa-users"></i></a></li>
-    <li><a href="#rp-favorites" data-toggle="tab"><i class="fa fa-heart"></i></a></li>
-    <li><a href="#rp-history" data-toggle="tab"><i class="fa fa-clock-o"></i></a></li>
-    <li><a href="#rp-settings" data-toggle="tab"><i class="fa fa-gear"></i></a></li>
-</ul>
-
-</div>
-<!-- rightpanel -->
+    <!-- rightpanel -->
 
 
 </section>

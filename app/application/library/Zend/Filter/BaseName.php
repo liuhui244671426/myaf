@@ -26,7 +26,7 @@ class BaseName extends AbstractFilter
         if (!is_scalar($value)) {
             return $value;
         }
-        $value = (string) $value;
+        $value = (string)$value;
 
         return basename($value);
     }

@@ -19,9 +19,9 @@ class HtmlFlash extends AbstractHtmlElement
     /**
      * Output a flash movie object tag
      *
-     * @param  string $data    The flash file
-     * @param  array  $attribs Attribs for the object tag
-     * @param  array  $params  Params for in the object tag
+     * @param  string $data The flash file
+     * @param  array $attribs Attribs for the object tag
+     * @param  array $params Params for in the object tag
      * @param  string $content Alternative content
      * @return string
      */

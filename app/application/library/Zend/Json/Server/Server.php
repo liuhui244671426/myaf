@@ -65,8 +65,8 @@ class Server extends AbstractServer
     /**
      * Attach a function or callback to the server
      *
-     * @param  string|array|callable $function   Valid PHP callback
-     * @param  string                $namespace  Ignored
+     * @param  string|array|callable $function Valid PHP callback
+     * @param  string $namespace Ignored
      * @throws Exception\InvalidArgumentException if function invalid or not callable
      * @return Server
      */
@@ -90,11 +90,11 @@ class Server extends AbstractServer
         if (is_string($function)) {
             $method = Reflection::reflectFunction($function, $argv, $namespace);
         } else {
-            $class  = array_shift($function);
+            $class = array_shift($function);
             $action = array_shift($function);
             $reflection = Reflection::reflectClass($class, $argv, $namespace);
             $methods = $reflection->getMethods();
-            $found   = false;
+            $found = false;
             foreach ($methods as $method) {
                 if ($action == $method->getName()) {
                     $found = true;
@@ -329,7 +329,7 @@ class Server extends AbstractServer
     protected function _addMethodServiceMap(Method\Definition $method)
     {
         $serviceInfo = array(
-            'name'   => $method->getName(),
+            'name' => $method->getName(),
             'return' => $this->_getReturnType($method),
         );
         $params = $this->_getParams($method);
@@ -402,8 +402,8 @@ class Server extends AbstractServer
             foreach ($prototype->getParameterObjects() as $key => $parameter) {
                 if (!isset($params[$key])) {
                     $params[$key] = array(
-                        'type'     => $parameter->getType(),
-                        'name'     => $parameter->getName(),
+                        'type' => $parameter->getType(),
+                        'name' => $parameter->getName(),
                         'optional' => $parameter->isOptional(),
                     );
                     if (null !== ($default = $parameter->getDefaultValue())) {
@@ -420,7 +420,7 @@ class Server extends AbstractServer
                     if ($params[$key]['type'] == $newType) {
                         continue;
                     }
-                    $params[$key]['type'] = (array) $params[$key]['type'];
+                    $params[$key]['type'] = (array)$params[$key]['type'];
                 } elseif (in_array($newType, $params[$key]['type'])) {
                     continue;
                 }
@@ -437,7 +437,7 @@ class Server extends AbstractServer
      */
     protected function _getReadyResponse()
     {
-        $request  = $this->getRequest();
+        $request = $this->getRequest();
         $response = $this->getResponse();
 
         $response->setServiceMap($this->getServiceMap());
@@ -518,10 +518,10 @@ class Server extends AbstractServer
             return $this->fault('Method not found', Error::ERROR_INVALID_METHOD);
         }
 
-        $params        = $request->getParams();
-        $invokable     = $this->table->getMethod($method);
-        $serviceMap    = $this->getServiceMap();
-        $service       = $serviceMap->getService($method);
+        $params = $request->getParams();
+        $invokable = $this->table->getMethod($method);
+        $serviceMap = $this->getServiceMap();
+        $service = $serviceMap->getService($method);
         $serviceParams = $service->getParams();
 
         if (count($params) < count($serviceParams)) {

@@ -16,25 +16,25 @@ use DateTime;
  */
 class Attribute
 {
-    const PASSWORD_HASH_MD5   = 'md5';
-    const PASSWORD_HASH_SMD5  = 'smd5';
-    const PASSWORD_HASH_SHA   = 'sha';
-    const PASSWORD_HASH_SSHA  = 'ssha';
+    const PASSWORD_HASH_MD5 = 'md5';
+    const PASSWORD_HASH_SMD5 = 'smd5';
+    const PASSWORD_HASH_SHA = 'sha';
+    const PASSWORD_HASH_SSHA = 'ssha';
     const PASSWORD_UNICODEPWD = 'unicodePwd';
 
     /**
      * Sets a LDAP attribute.
      *
-     * @param  array                     $data
-     * @param  string                    $attribName
+     * @param  array $data
+     * @param  string $attribName
      * @param  string|array|\Traversable $value
-     * @param  bool                   $append
+     * @param  bool $append
      * @return void
      */
     public static function setAttribute(array &$data, $attribName, $value, $append = false)
     {
         $attribName = strtolower($attribName);
-        $valArray   = array();
+        $valArray = array();
         if (is_array($value) || ($value instanceof \Traversable)) {
             foreach ($value as $v) {
                 $v = self::valueToLdap($v);
@@ -62,8 +62,8 @@ class Attribute
     /**
      * Gets a LDAP attribute.
      *
-     * @param  array   $data
-     * @param  string  $attribName
+     * @param  array $data
+     * @param  string $attribName
      * @param  int $index
      * @return array|mixed
      */
@@ -95,8 +95,8 @@ class Attribute
     /**
      * Checks if the given value(s) exist in the attribute
      *
-     * @param array       $data
-     * @param string      $attribName
+     * @param array $data
+     * @param string $attribName
      * @param mixed|array $value
      * @return bool
      */
@@ -124,7 +124,7 @@ class Attribute
     /**
      * Removes duplicate values from a LDAP attribute
      *
-     * @param array  $data
+     * @param array $data
      * @param string $attribName
      * @return void
      */
@@ -140,8 +140,8 @@ class Attribute
     /**
      * Remove given values from a LDAP attribute
      *
-     * @param array       $data
-     * @param string      $attribName
+     * @param array $data
+     * @param string $attribName
      * @param mixed|array $value
      * @return void
      */
@@ -171,7 +171,7 @@ class Attribute
                 unset($resultArray[$k]);
             }
         }
-        $resultArray       = array_values($resultArray);
+        $resultArray = array_values($resultArray);
         $data[$attribName] = $resultArray;
     }
 
@@ -205,15 +205,16 @@ class Attribute
     /**
      * Sets a LDAP password.
      *
-     * @param array  $data
+     * @param array $data
      * @param string $password
-     * @param string $hashType   Optional by default MD5
+     * @param string $hashType Optional by default MD5
      * @param string $attribName Optional
      */
     public static function setPassword(
         array &$data, $password, $hashType = self::PASSWORD_HASH_MD5,
         $attribName = null
-    ) {
+    )
+    {
         if ($attribName === null) {
             if ($hashType === self::PASSWORD_UNICODEPWD) {
                 $attribName = 'unicodePwd';
@@ -255,23 +256,23 @@ class Attribute
                 }
                 return $password;
             case self::PASSWORD_HASH_SSHA:
-                $salt    = substr(sha1(uniqid(mt_rand(), true), true), 0, 4);
+                $salt = substr(sha1(uniqid(mt_rand(), true), true), 0, 4);
                 $rawHash = sha1($password . $salt, true) . $salt;
-                $method  = '{SSHA}';
+                $method = '{SSHA}';
                 break;
             case self::PASSWORD_HASH_SHA:
                 $rawHash = sha1($password, true);
-                $method  = '{SHA}';
+                $method = '{SHA}';
                 break;
             case self::PASSWORD_HASH_SMD5:
-                $salt    = substr(sha1(uniqid(mt_rand(), true), true), 0, 4);
+                $salt = substr(sha1(uniqid(mt_rand(), true), true), 0, 4);
                 $rawHash = md5($password . $salt, true) . $salt;
-                $method  = '{SMD5}';
+                $method = '{SMD5}';
                 break;
             case self::PASSWORD_HASH_MD5:
             default:
                 $rawHash = md5($password, true);
-                $method  = '{MD5}';
+                $method = '{MD5}';
                 break;
         }
         return $method . base64_encode($rawHash);
@@ -280,16 +281,17 @@ class Attribute
     /**
      * Sets a LDAP date/time attribute.
      *
-     * @param  array                      $data
-     * @param  string                     $attribName
+     * @param  array $data
+     * @param  string $attribName
      * @param  int|array|\Traversable $value
-     * @param  bool                    $utc
-     * @param  bool                    $append
+     * @param  bool $utc
+     * @param  bool $append
      */
     public static function setDateTimeAttribute(
         array &$data, $attribName, $value, $utc = false,
         $append = false
-    ) {
+    )
+    {
         $convertedValues = array();
         if (is_array($value) || ($value instanceof \Traversable)) {
             foreach ($value as $v) {
@@ -324,8 +326,8 @@ class Attribute
     /**
      * Gets a LDAP date/time attribute.
      *
-     * @param  array   $data
-     * @param  string  $attribName
+     * @param  array $data
+     * @param  string $attribName
      * @param  int $index
      * @return array|int
      */

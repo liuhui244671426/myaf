@@ -8,12 +8,13 @@
                 <form role="form" action="/admin/articles/edit" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="inputTitle">title</label>
-                        <input type="text" class="form-control" id="inputTitle" placeholder="title" value="<?php echo $article['title'];?>" name="title">
-                        <input type="hidden" value="<?php echo $article['id'];?>" name="id">
+                        <input type="text" class="form-control" id="inputTitle" placeholder="title"
+                               value="<?php echo $article['title']; ?>" name="title">
+                        <input type="hidden" value="<?php echo $article['id']; ?>" name="id">
                     </div>
                     <div class="form-group">
                         <textarea id="kedit" name="content" class="form-control">
-                            <?php echo $article['content'];?>
+                            <?php echo $article['content']; ?>
                         </textarea>
                     </div>
                     <div class="form-group">

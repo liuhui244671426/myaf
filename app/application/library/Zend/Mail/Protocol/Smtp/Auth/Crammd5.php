@@ -33,9 +33,9 @@ class Crammd5 extends Smtp
      * All parameters may be passed as an array to the first argument of the
      * constructor. If so,
      *
-     * @param  string|array $host   (Default: 127.0.0.1)
-     * @param  null|int     $port   (Default: null)
-     * @param  null|array   $config Auth-specific parameters
+     * @param  string|array $host (Default: 127.0.0.1)
+     * @param  null|int $port (Default: null)
+     * @param  null|array $config Auth-specific parameters
      */
     public function __construct($host = '127.0.0.1', $port = null, $config = null)
     {
@@ -127,9 +127,9 @@ class Crammd5 extends Smtp
     /**
      * Prepare CRAM-MD5 response to server's ticket
      *
-     * @param  string $key   Challenge key (usually password)
-     * @param  string $data  Challenge data
-     * @param  int    $block Length of blocks (deprecated; unused)
+     * @param  string $key Challenge key (usually password)
+     * @param  string $data Challenge data
+     * @param  int $block Length of blocks (deprecated; unused)
      * @return string
      */
     protected function _hmacMd5($key, $data, $block = 64)

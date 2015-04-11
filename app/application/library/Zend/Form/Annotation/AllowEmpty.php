@@ -40,7 +40,7 @@ class AllowEmpty
         $allowEmpty = $data['value'];
 
         if (!is_bool($allowEmpty)) {
-            $filter   = new BooleanFilter();
+            $filter = new BooleanFilter();
             $allowEmpty = $filter->filter($allowEmpty);
         }
 

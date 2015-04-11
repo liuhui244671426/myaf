@@ -173,26 +173,26 @@ class Connection implements ConnectionInterface, Profiler\ProfilerAwareInterface
             switch (strtolower($key)) {
                 case 'hostname':
                 case 'servername':
-                    $serverName = (string) $value;
+                    $serverName = (string)$value;
                     break;
                 case 'username':
                 case 'uid':
-                    $params['UID'] = (string) $value;
+                    $params['UID'] = (string)$value;
                     break;
                 case 'password':
                 case 'pwd':
-                    $params['PWD'] = (string) $value;
+                    $params['PWD'] = (string)$value;
                     break;
                 case 'database':
                 case 'dbname':
-                    $params['Database'] = (string) $value;
+                    $params['Database'] = (string)$value;
                     break;
                 case 'charset':
-                    $params['CharacterSet'] = (string) $value;
+                    $params['CharacterSet'] = (string)$value;
                     break;
                 case 'driver_options':
                 case 'options':
-                    $params = array_merge($params, (array) $value);
+                    $params = array_merge($params, (array)$value);
                     break;
 
             }

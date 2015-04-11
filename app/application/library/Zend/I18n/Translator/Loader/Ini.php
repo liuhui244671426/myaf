@@ -39,8 +39,8 @@ class Ini extends AbstractFileLoader
             ));
         }
 
-        $messages           = array();
-        $iniReader          = new IniReader();
+        $messages = array();
+        $iniReader = new IniReader();
         $messagesNamespaced = $iniReader->fromFile($fromIncludePath);
 
         $list = $messagesNamespaced;

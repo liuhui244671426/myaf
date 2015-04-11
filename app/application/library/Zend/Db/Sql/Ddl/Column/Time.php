@@ -29,16 +29,16 @@ class Time extends Column
      */
     public function getExpressionData()
     {
-        $spec   = $this->specification;
+        $spec = $this->specification;
         $params = array();
 
-        $types    = array(self::TYPE_IDENTIFIER);
+        $types = array(self::TYPE_IDENTIFIER);
         $params[] = $this->name;
 
-        $types[]  = self::TYPE_LITERAL;
+        $types[] = self::TYPE_LITERAL;
         $params[] = (!$this->isNullable) ? 'NOT NULL' : '';
 
-        $types[]  = ($this->default !== null) ? self::TYPE_VALUE : self::TYPE_LITERAL;
+        $types[] = ($this->default !== null) ? self::TYPE_VALUE : self::TYPE_LITERAL;
         $params[] = ($this->default !== null) ? $this->default : '';
 
         return array(array(

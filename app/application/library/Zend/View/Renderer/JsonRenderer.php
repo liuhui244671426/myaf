@@ -76,7 +76,7 @@ class JsonRenderer implements Renderer, TreeRendererInterface
      */
     public function setMergeUnnamedChildren($mergeUnnamedChildren)
     {
-        $this->mergeUnnamedChildren = (bool) $mergeUnnamedChildren;
+        $this->mergeUnnamedChildren = (bool)$mergeUnnamedChildren;
         return $this;
     }
 
@@ -88,7 +88,7 @@ class JsonRenderer implements Renderer, TreeRendererInterface
      */
     public function setJsonpCallback($callback)
     {
-        $callback = (string) $callback;
+        $callback = (string)$callback;
         if (!empty($callback)) {
             $this->jsonpCallback = $callback;
         }

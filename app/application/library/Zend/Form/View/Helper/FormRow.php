@@ -18,7 +18,7 @@ use Zend\Form\LabelAwareInterface;
 
 class FormRow extends AbstractHelper
 {
-    const LABEL_APPEND  = 'append';
+    const LABEL_APPEND = 'append';
     const LABEL_PREPEND = 'prepend';
 
     /**
@@ -81,9 +81,9 @@ class FormRow extends AbstractHelper
      * Proxies to {@link render()}.
      *
      * @param  null|ElementInterface $element
-     * @param  null|string           $labelPosition
-     * @param  bool                  $renderErrors
-     * @param  string|null           $partial
+     * @param  null|string $labelPosition
+     * @param  bool $renderErrors
+     * @param  string|null $partial
      * @return string|FormRow
      */
     public function __invoke(ElementInterface $element = null, $labelPosition = null, $renderErrors = null, $partial = null)
@@ -118,12 +118,12 @@ class FormRow extends AbstractHelper
      */
     public function render(ElementInterface $element)
     {
-        $escapeHtmlHelper    = $this->getEscapeHtmlHelper();
-        $labelHelper         = $this->getLabelHelper();
-        $elementHelper       = $this->getElementHelper();
+        $escapeHtmlHelper = $this->getEscapeHtmlHelper();
+        $labelHelper = $this->getLabelHelper();
+        $elementHelper = $this->getElementHelper();
         $elementErrorsHelper = $this->getElementErrorsHelper();
 
-        $label           = $element->getLabel();
+        $label = $element->getLabel();
         $inputErrorClass = $this->getInputErrorClass();
 
         if (isset($label) && '' !== $label) {
@@ -143,11 +143,11 @@ class FormRow extends AbstractHelper
 
         if ($this->partial) {
             $vars = array(
-                'element'           => $element,
-                'label'             => $label,
-                'labelAttributes'   => $this->labelAttributes,
-                'labelPosition'     => $this->labelPosition,
-                'renderErrors'      => $this->renderErrors,
+                'element' => $element,
+                'label' => $label,
+                'labelAttributes' => $this->labelAttributes,
+                'labelPosition' => $this->labelPosition,
+                'renderErrors' => $this->renderErrors,
             );
 
             return $this->view->render($this->partial, $vars);
@@ -168,7 +168,7 @@ class FormRow extends AbstractHelper
                 $labelAttributes = $element->getLabelAttributes();
             }
 
-            if (! $element instanceof LabelAwareInterface || ! $element->getLabelOption('disable_html_escape')) {
+            if (!$element instanceof LabelAwareInterface || !$element->getLabelOption('disable_html_escape')) {
                 $label = $escapeHtmlHelper($label);
             }
 
@@ -198,7 +198,7 @@ class FormRow extends AbstractHelper
                     $labelClose = '';
                     $label = $labelHelper($element);
                 } else {
-                    $labelOpen  = $labelHelper->openTag($labelAttributes);
+                    $labelOpen = $labelHelper->openTag($labelAttributes);
                     $labelClose = $labelHelper->closeTag();
                 }
 
@@ -298,7 +298,7 @@ class FormRow extends AbstractHelper
                 __METHOD__,
                 __CLASS__,
                 __CLASS__,
-                (string) $labelPosition
+                (string)$labelPosition
             ));
         }
         $this->labelPosition = $labelPosition;
@@ -324,7 +324,7 @@ class FormRow extends AbstractHelper
      */
     public function setRenderErrors($renderErrors)
     {
-        $this->renderErrors = (bool) $renderErrors;
+        $this->renderErrors = (bool)$renderErrors;
         return $this;
     }
 

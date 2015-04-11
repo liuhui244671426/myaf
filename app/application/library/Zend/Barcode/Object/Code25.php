@@ -39,12 +39,12 @@ class Code25 extends AbstractObject
      */
     protected function calculateBarcodeWidth()
     {
-        $quietZone       = $this->getQuietZone();
-        $startCharacter  = (2 * $this->barThickWidth + 4 * $this->barThinWidth) * $this->factor;
+        $quietZone = $this->getQuietZone();
+        $startCharacter = (2 * $this->barThickWidth + 4 * $this->barThinWidth) * $this->factor;
         $characterLength = (3 * $this->barThinWidth + 2 * $this->barThickWidth + 5 * $this->barThinWidth)
-                         * $this->factor;
-        $encodedData     = strlen($this->getText()) * $characterLength;
-        $stopCharacter   = (2 * $this->barThickWidth + 4 * $this->barThinWidth) * $this->factor;
+            * $this->factor;
+        $encodedData = strlen($this->getText()) * $characterLength;
+        $stopCharacter = (2 * $this->barThickWidth + 4 * $this->barThinWidth) * $this->factor;
         return $quietZone + $startCharacter + $encodedData + $stopCharacter + $quietZone;
     }
 
@@ -102,12 +102,12 @@ class Code25 extends AbstractObject
     public function getChecksum($text)
     {
         $this->checkText($text);
-        $factor   = 3;
+        $factor = 3;
         $checksum = 0;
 
-        for ($i = strlen($text); $i > 0; $i --) {
+        for ($i = strlen($text); $i > 0; $i--) {
             $checksum += intval($text{$i - 1}) * $factor;
-            $factor    = 4 - $factor;
+            $factor = 4 - $factor;
         }
 
         $checksum = (10 - ($checksum % 10)) % 10;

@@ -26,7 +26,7 @@ class File extends Part
      * - startPos start position of message or part in file (default: current position)
      * - endPos   end position of message or part in file (default: end of file)
      *
-     * @param   array $params  full message with or without headers
+     * @param   array $params full message with or without headers
      * @throws Exception\RuntimeException
      * @throws Exception\InvalidArgumentException
      */
@@ -148,6 +148,6 @@ class File extends Part
         }
 
         return new static(array('file' => $this->fh, 'startPos' => $this->partPos[$num][0],
-                              'endPos' => $this->partPos[$num][1]));
+            'endPos' => $this->partPos[$num][1]));
     }
 }

@@ -85,7 +85,7 @@ class MongoDB implements SaveHandlerInterface
     {
         // Note: session save path is not used
         $this->sessionName = $name;
-        $this->lifetime    = ini_get('session.gc_maxlifetime');
+        $this->lifetime = ini_get('session.gc_maxlifetime');
 
         return true;
     }
@@ -116,7 +116,8 @@ class MongoDB implements SaveHandlerInterface
         if (null !== $session) {
             if ($session[$this->options->getModifiedField()] instanceof MongoDate &&
                 $session[$this->options->getModifiedField()]->sec +
-                $session[$this->options->getLifetimeField()] > time()) {
+                $session[$this->options->getLifetimeField()] > time()
+            ) {
                 return $session[$this->options->getDataField()];
             }
             $this->destroy($id);
@@ -145,7 +146,7 @@ class MongoDB implements SaveHandlerInterface
         );
 
         $newObj = array('$set' => array(
-            $this->options->getDataField() => (string) $data,
+            $this->options->getDataField() => (string)$data,
             $this->options->getLifetimeField() => $this->lifetime,
             $this->options->getModifiedField() => new MongoDate(),
         ));
@@ -158,7 +159,7 @@ class MongoDB implements SaveHandlerInterface
          */
         $result = $this->mongoCollection->update($criteria, $newObj, $saveOptions);
 
-        return (bool) (isset($result['ok']) ? $result['ok'] : $result);
+        return (bool)(isset($result['ok']) ? $result['ok'] : $result);
     }
 
     /**
@@ -174,7 +175,7 @@ class MongoDB implements SaveHandlerInterface
             $this->options->getNameField() => $this->sessionName,
         ), $this->options->getSaveOptions());
 
-        return (bool) (isset($result['ok']) ? $result['ok'] : $result);
+        return (bool)(isset($result['ok']) ? $result['ok'] : $result);
     }
 
     /**
@@ -200,6 +201,6 @@ class MongoDB implements SaveHandlerInterface
             $this->options->getModifiedField() => array('$lt' => new MongoDate(time() - $maxlifetime)),
         ), $this->options->getSaveOptions());
 
-        return (bool) (isset($result['ok']) ? $result['ok'] : $result);
+        return (bool)(isset($result['ok']) ? $result['ok'] : $result);
     }
 }

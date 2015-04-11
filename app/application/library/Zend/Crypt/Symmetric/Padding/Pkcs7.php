@@ -17,8 +17,8 @@ class Pkcs7 implements PaddingInterface
     /**
      * Pad the string to the specified size
      *
-     * @param string $string    The string to pad
-     * @param int    $blockSize The size to pad to
+     * @param string $string The string to pad
+     * @param int $blockSize The size to pad to
      *
      * @return string The padded string
      */
@@ -37,9 +37,9 @@ class Pkcs7 implements PaddingInterface
      */
     public function strip($string)
     {
-        $end  = substr($string, -1);
+        $end = substr($string, -1);
         $last = ord($end);
-        $len  = strlen($string) - $last;
+        $len = strlen($string) - $last;
         if (substr($string, $len) == str_repeat($end, $last)) {
             return substr($string, 0, $len);
         }

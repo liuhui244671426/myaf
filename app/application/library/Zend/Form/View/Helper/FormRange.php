@@ -19,18 +19,18 @@ class FormRange extends FormInput
      * @var array
      */
     protected $validTagAttributes = array(
-        'name'           => true,
-        'autocomplete'   => true,
-        'autofocus'      => true,
-        'disabled'       => true,
-        'form'           => true,
-        'list'           => true,
-        'max'            => true,
-        'min'            => true,
-        'step'           => true,
-        'required'       => true,
-        'type'           => true,
-        'value'          => true
+        'name' => true,
+        'autocomplete' => true,
+        'autofocus' => true,
+        'disabled' => true,
+        'form' => true,
+        'list' => true,
+        'max' => true,
+        'min' => true,
+        'step' => true,
+        'required' => true,
+        'type' => true,
+        'value' => true
     );
 
     /**

@@ -136,14 +136,14 @@ class MemoryManager
 
         $memoryLimitStr = trim(ini_get('memory_limit'));
         if ($memoryLimitStr != '' && $memoryLimitStr != -1) {
-            $this->memoryLimit = (int) $memoryLimitStr;
+            $this->memoryLimit = (int)$memoryLimitStr;
             switch (strtolower($memoryLimitStr[strlen($memoryLimitStr) - 1])) {
                 case 'g':
                     $this->memoryLimit *= 1024;
-                    // no break
+                // no break
                 case 'm':
                     $this->memoryLimit *= 1024;
-                    // no break
+                // no break
                 case 'k':
                     $this->memoryLimit *= 1024;
                     break;
@@ -151,7 +151,7 @@ class MemoryManager
                     break;
             }
 
-            $this->memoryLimit = (int) ($this->memoryLimit*2/3);
+            $this->memoryLimit = (int)($this->memoryLimit * 2 / 3);
         } // No limit otherwise
     }
 
@@ -250,7 +250,7 @@ class MemoryManager
     {
         $id = $this->nextId++;
 
-        if ($locked  ||  ($this->cache === null) /* Use only memory locked objects if backend is not specified */) {
+        if ($locked || ($this->cache === null) /* Use only memory locked objects if backend is not specified */) {
             return new Container\Locked($value);
         }
 
@@ -360,7 +360,7 @@ class MemoryManager
      */
     private function swapCheck()
     {
-        if ($this->memoryLimit < 0  ||  $this->memorySize < $this->memoryLimit) {
+        if ($this->memoryLimit < 0 || $this->memorySize < $this->memoryLimit) {
             // Memory limit is not reached
             // Do nothing
             return;

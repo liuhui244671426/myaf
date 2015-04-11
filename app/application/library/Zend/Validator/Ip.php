@@ -13,14 +13,14 @@ use Traversable;
 
 class Ip extends AbstractValidator
 {
-    const INVALID        = 'ipInvalid';
+    const INVALID = 'ipInvalid';
     const NOT_IP_ADDRESS = 'notIpAddress';
 
     /**
      * @var array
      */
     protected $messageTemplates = array(
-        self::INVALID        => 'Invalid type given. String expected',
+        self::INVALID => 'Invalid type given. String expected',
         self::NOT_IP_ADDRESS => "The input does not appear to be a valid IP address",
     );
 
@@ -30,10 +30,10 @@ class Ip extends AbstractValidator
      * @var array
      */
     protected $options = array(
-        'allowipv4'      => true, // Enable IPv4 Validation
-        'allowipv6'      => true, // Enable IPv6 Validation
+        'allowipv4' => true, // Enable IPv4 Validation
+        'allowipv6' => true, // Enable IPv6 Validation
         'allowipvfuture' => false, // Enable IPvFuture Validation
-        'allowliteral'   => true, // Enable IPs in literal format (only IPv6 and IPvFuture)
+        'allowliteral' => true, // Enable IPs in literal format (only IPv6 and IPvFuture)
     );
 
     /**
@@ -72,9 +72,9 @@ class Ip extends AbstractValidator
         if ($this->options['allowipv4'] && $this->validateIPv4($value)) {
             return true;
         } else {
-            if ((bool) $this->options['allowliteral']) {
+            if ((bool)$this->options['allowliteral']) {
                 static $regex = '/^\[(.*)\]$/';
-                if ((bool) preg_match($regex, $value, $matches)) {
+                if ((bool)preg_match($regex, $value, $matches)) {
                     $value = $matches[1];
                 }
             }
@@ -100,15 +100,15 @@ class Ip extends AbstractValidator
         if (preg_match('/^([01]{8}.){3}[01]{8}\z/i', $value)) {
             // binary format  00000000.00000000.00000000.00000000
             $value = bindec(substr($value, 0, 8)) . '.' . bindec(substr($value, 9, 8)) . '.'
-                   . bindec(substr($value, 18, 8)) . '.' . bindec(substr($value, 27, 8));
+                . bindec(substr($value, 18, 8)) . '.' . bindec(substr($value, 27, 8));
         } elseif (preg_match('/^([0-9]{3}.){3}[0-9]{3}\z/i', $value)) {
             // octet format 777.777.777.777
-            $value = (int) substr($value, 0, 3) . '.' . (int) substr($value, 4, 3) . '.'
-                   . (int) substr($value, 8, 3) . '.' . (int) substr($value, 12, 3);
+            $value = (int)substr($value, 0, 3) . '.' . (int)substr($value, 4, 3) . '.'
+                . (int)substr($value, 8, 3) . '.' . (int)substr($value, 12, 3);
         } elseif (preg_match('/^([0-9a-f]{2}.){3}[0-9a-f]{2}\z/i', $value)) {
             // hex format ff.ff.ff.ff
             $value = hexdec(substr($value, 0, 2)) . '.' . hexdec(substr($value, 3, 2)) . '.'
-                   . hexdec(substr($value, 6, 2)) . '.' . hexdec(substr($value, 9, 2));
+                . hexdec(substr($value, 6, 2)) . '.' . hexdec(substr($value, 9, 2));
         }
 
         $ip2long = ip2long($value);
@@ -178,7 +178,7 @@ class Ip extends AbstractValidator
          */
         static $regex = '/^v([[:xdigit:]]+)\.[[:alnum:]\-\._~!\$&\'\(\)\*\+,;=:]+$/';
 
-        $result = (bool) preg_match($regex, $value, $matches);
+        $result = (bool)preg_match($regex, $value, $matches);
 
         /*
          * "As such, implementations must not provide the version flag for the

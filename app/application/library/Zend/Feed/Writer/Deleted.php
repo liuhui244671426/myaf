@@ -13,7 +13,7 @@ use DateTime;
 use Zend\Feed\Uri;
 
 /**
-*/
+ */
 class Deleted
 {
     /**
@@ -144,7 +144,7 @@ class Deleted
             $date = new DateTime('@' . $date);
         } elseif (!$date instanceof DateTime) {
             throw new Exception\InvalidArgumentException('Invalid DateTime object or UNIX Timestamp'
-            . ' passed as parameter');
+                . ' passed as parameter');
         }
         $this->data['when'] = $date;
 
@@ -177,13 +177,13 @@ class Deleted
             || !is_string($by['name'])
         ) {
             throw new Exception\InvalidArgumentException('Invalid parameter: author array must include a'
-            . ' "name" key with a non-empty string value');
+                . ' "name" key with a non-empty string value');
         }
         $author['name'] = $by['name'];
         if (isset($by['email'])) {
             if (empty($by['email']) || !is_string($by['email'])) {
                 throw new Exception\InvalidArgumentException('Invalid parameter: "email" array'
-                . ' value must be a non-empty string');
+                    . ' value must be a non-empty string');
             }
             $author['email'] = $by['email'];
         }
@@ -193,7 +193,7 @@ class Deleted
                 || !Uri::factory($by['uri'])->isValid()
             ) {
                 throw new Exception\InvalidArgumentException('Invalid parameter: "uri" array value must'
-                 . ' be a non-empty string and valid URI/IRI');
+                    . ' be a non-empty string and valid URI/IRI');
             }
             $author['uri'] = $by['uri'];
         }

@@ -57,7 +57,7 @@ abstract class AbstractContainer implements Countable, RecursiveIterator
         }
 
         $newIndex = array();
-        $index    = 0;
+        $index = 0;
 
         foreach ($this->pages as $hash => $page) {
             $order = $page->getOrder();
@@ -70,7 +70,7 @@ abstract class AbstractContainer implements Countable, RecursiveIterator
         }
 
         asort($newIndex);
-        $this->index      = $newIndex;
+        $this->index = $newIndex;
         $this->dirtyIndex = false;
     }
 
@@ -92,7 +92,7 @@ abstract class AbstractContainer implements Countable, RecursiveIterator
      * This method will inject the container as the given page's parent by
      * calling {@link Page\AbstractPage::setParent()}.
      *
-     * @param  Page\AbstractPage|array|Traversable $page  page to add
+     * @param  Page\AbstractPage|array|Traversable $page page to add
      * @return self fluent interface, returns self
      * @throws Exception\InvalidArgumentException if page is invalid
      */
@@ -193,9 +193,9 @@ abstract class AbstractContainer implements Countable, RecursiveIterator
     /**
      * Removes the given page from the container
      *
-     * @param  Page\AbstractPage|int $page      page to remove, either a page
+     * @param  Page\AbstractPage|int $page page to remove, either a page
      *                                          instance or a specific page order
-     * @param  bool                  $recursive [optional] whether to remove recursively
+     * @param  bool $recursive [optional] whether to remove recursively
      * @return bool whether the removal was successful
      */
     public function removePage($page, $recursive = false)
@@ -289,8 +289,8 @@ abstract class AbstractContainer implements Countable, RecursiveIterator
     /**
      * Returns a child page matching $property == $value, or null if not found
      *
-     * @param  string $property        name of property to match against
-     * @param  mixed  $value           value to match property against
+     * @param  string $property name of property to match against
+     * @param  mixed $value value to match property against
      * @return Page\AbstractPage|null  matching page or null
      */
     public function findOneBy($property, $value)
@@ -310,8 +310,8 @@ abstract class AbstractContainer implements Countable, RecursiveIterator
      * Returns all child pages matching $property == $value, or an empty array
      * if no pages are found
      *
-     * @param  string $property  name of property to match against
-     * @param  mixed  $value     value to match property against
+     * @param  string $property name of property to match against
+     * @param  mixed $value value to match property against
      * @return array  array containing only Page\AbstractPage instances
      */
     public function findAllBy($property, $value)
@@ -332,9 +332,9 @@ abstract class AbstractContainer implements Countable, RecursiveIterator
     /**
      * Returns page(s) matching $property == $value
      *
-     * @param  string $property  name of property to match against
-     * @param  mixed  $value     value to match property against
-     * @param  bool   $all       [optional] whether an array of all matching
+     * @param  string $property name of property to match against
+     * @param  mixed $value value to match property against
+     * @param  bool $all [optional] whether an array of all matching
      *                           pages should be returned, or only the first.
      *                           If true, an array will be returned, even if not
      *                           matching pages are found. If false, null will
@@ -362,15 +362,15 @@ abstract class AbstractContainer implements Countable, RecursiveIterator
      * $nav->findAllByClass('foo'); // $nav->findAllBy('class', 'foo');
      * </code>
      *
-     * @param  string $method             method name
-     * @param  array  $arguments          method arguments
+     * @param  string $method method name
+     * @param  array $arguments method arguments
      * @throws Exception\BadMethodCallException  if method does not exist
      */
     public function __call($method, $arguments)
     {
         ErrorHandler::start(E_WARNING);
         $result = preg_match('/(find(?:One|All)?By)(.+)/', $method, $match);
-        $error  = ErrorHandler::stop();
+        $error = ErrorHandler::stop();
         if (!$result) {
             throw new Exception\BadMethodCallException(sprintf(
                 'Bad method call: Unknown method %s::%s',
@@ -389,7 +389,7 @@ abstract class AbstractContainer implements Countable, RecursiveIterator
     public function toArray()
     {
         $this->sort();
-        $pages   = array();
+        $pages = array();
         $indexes = array_keys($this->index);
         foreach ($indexes as $hash) {
             $pages[] = $this->pages[$hash]->toArray();

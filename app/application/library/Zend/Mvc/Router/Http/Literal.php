@@ -37,11 +37,11 @@ class Literal implements RouteInterface
      * Create a new literal route.
      *
      * @param  string $route
-     * @param  array  $defaults
+     * @param  array $defaults
      */
     public function __construct($route, array $defaults = array())
     {
-        $this->route    = $route;
+        $this->route = $route;
         $this->defaults = $defaults;
     }
 
@@ -76,7 +76,7 @@ class Literal implements RouteInterface
      * match(): defined by RouteInterface interface.
      *
      * @see    \Zend\Mvc\Router\RouteInterface::match()
-     * @param  Request      $request
+     * @param  Request $request
      * @param  integer|null $pathOffset
      * @return RouteMatch|null
      */
@@ -86,7 +86,7 @@ class Literal implements RouteInterface
             return null;
         }
 
-        $uri  = $request->getUri();
+        $uri = $request->getUri();
         $path = $uri->getPath();
 
         if ($pathOffset !== null) {

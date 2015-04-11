@@ -14,8 +14,8 @@ use Zend\Validator\AbstractValidator;
 
 class Alnum extends AbstractValidator
 {
-    const INVALID      = 'alnumInvalid';
-    const NOT_ALNUM    = 'notAlnum';
+    const INVALID = 'alnumInvalid';
+    const NOT_ALNUM = 'notAlnum';
     const STRING_EMPTY = 'alnumStringEmpty';
 
     /**
@@ -31,8 +31,8 @@ class Alnum extends AbstractValidator
      * @var array
      */
     protected $messageTemplates = array(
-        self::INVALID      => "Invalid type given. String, integer or float expected",
-        self::NOT_ALNUM    => "The input contains characters which are non alphabetic and no digits",
+        self::INVALID => "Invalid type given. String, integer or float expected",
+        self::NOT_ALNUM => "The input contains characters which are non alphabetic and no digits",
         self::STRING_EMPTY => "The input is an empty string",
     );
 
@@ -56,7 +56,7 @@ class Alnum extends AbstractValidator
         parent::__construct($options);
 
         if (is_scalar($allowWhiteSpace)) {
-            $this->options['allowWhiteSpace'] = (bool) $allowWhiteSpace;
+            $this->options['allowWhiteSpace'] = (bool)$allowWhiteSpace;
         }
     }
 
@@ -78,7 +78,7 @@ class Alnum extends AbstractValidator
      */
     public function setAllowWhiteSpace($allowWhiteSpace)
     {
-        $this->options['allowWhiteSpace'] = (bool) $allowWhiteSpace;
+        $this->options['allowWhiteSpace'] = (bool)$allowWhiteSpace;
         return $this;
     }
 

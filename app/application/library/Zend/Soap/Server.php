@@ -455,7 +455,7 @@ class Server implements ZendServerServer
             }
         }
 
-        $this->typemap   = $typeMap;
+        $this->typemap = $typeMap;
         return $this;
     }
 
@@ -472,7 +472,7 @@ class Server implements ZendServerServer
     /**
      * Set wsdl
      *
-     * @param  string $wsdl  URI or path to a WSDL
+     * @param  string $wsdl URI or path to a WSDL
      * @return self
      */
     public function setWSDL($wsdl)
@@ -666,7 +666,7 @@ class Server implements ZendServerServer
             $functions = get_class_methods($this->object);
         }
 
-        return array_merge((array) $this->functions, $functions);
+        return array_merge((array)$this->functions, $functions);
     }
 
     /**
@@ -825,7 +825,7 @@ class Server implements ZendServerServer
         }
 
         $options = $this->getOptions();
-        $server  = new SoapServer($this->wsdl, $options);
+        $server = new SoapServer($this->wsdl, $options);
 
         if (!empty($this->functions)) {
             $server->addFunction($this->functions);
@@ -853,10 +853,10 @@ class Server implements ZendServerServer
      * Proxy for _getSoap method
      * @see _getSoap
      * @return SoapServer the soapServer instance
-    public function getSoap()
-    {
-        return $this->_getSoap();
-    }
+     * public function getSoap()
+     * {
+     * return $this->_getSoap();
+     * }
      */
 
     /**
@@ -896,7 +896,7 @@ class Server implements ZendServerServer
 
         $soap = $this->getSoap();
 
-        $fault          = false;
+        $fault = false;
         $this->response = '';
 
         if ($setRequestException instanceof \Exception) {
@@ -1002,7 +1002,7 @@ class Server implements ZendServerServer
             return true;
         }
 
-        $ref        = new ReflectionClass($fault);
+        $ref = new ReflectionClass($fault);
         $classNames = $ref->getName();
         return in_array($classNames, $this->faultExceptions);
     }
@@ -1064,8 +1064,8 @@ class Server implements ZendServerServer
         if ($fault instanceof \Exception) {
             if ($this->isRegisteredAsFaultException($fault)) {
                 $message = $fault->getMessage();
-                $eCode   = $fault->getCode();
-                $code    = empty($eCode) ? $code : $eCode;
+                $eCode = $fault->getCode();
+                $code = empty($eCode) ? $code : $eCode;
             } else {
                 $message = 'Unknown error';
             }

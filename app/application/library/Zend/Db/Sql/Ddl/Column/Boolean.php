@@ -29,9 +29,9 @@ class Boolean extends Column
      */
     public function getExpressionData()
     {
-        $spec   = $this->specification;
+        $spec = $this->specification;
         $params = array($this->name);
-        $types  = array(self::TYPE_IDENTIFIER);
+        $types = array(self::TYPE_IDENTIFIER);
 
         return array(array(
             $spec,

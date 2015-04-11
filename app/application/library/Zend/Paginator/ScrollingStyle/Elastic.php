@@ -29,11 +29,11 @@ class Elastic extends Sliding
      */
     public function getPages(Paginator $paginator, $pageRange = null)
     {
-        $pageRange  = $paginator->getPageRange();
+        $pageRange = $paginator->getPageRange();
         $pageNumber = $paginator->getCurrentPageNumber();
 
         $originalPageRange = $pageRange;
-        $pageRange         = $pageRange * 2 - 1;
+        $pageRange = $pageRange * 2 - 1;
 
         if ($originalPageRange + $pageNumber - 1 < $pageRange) {
             $pageRange = $originalPageRange + $pageNumber - 1;

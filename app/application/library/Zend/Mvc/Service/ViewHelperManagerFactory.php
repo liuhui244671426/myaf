@@ -67,8 +67,7 @@ class ViewHelperManagerFactory extends AbstractPluginManagerFactory
 
             $match = $serviceLocator->get('application')
                 ->getMvcEvent()
-                ->getRouteMatch()
-            ;
+                ->getRouteMatch();
 
             if ($match instanceof RouteMatch) {
                 $helper->setRouteMatch($match);

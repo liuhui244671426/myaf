@@ -26,14 +26,14 @@ abstract class AbstractHelper extends BaseAbstractHelper
      * @var array
      */
     protected $booleanAttributes = array(
-        'autocomplete' => array('on' => 'on',        'off' => 'off'),
-        'autofocus'    => array('on' => 'autofocus', 'off' => ''),
-        'checked'      => array('on' => 'checked',   'off' => ''),
-        'disabled'     => array('on' => 'disabled',  'off' => ''),
-        'multiple'     => array('on' => 'multiple',  'off' => ''),
-        'readonly'     => array('on' => 'readonly',  'off' => ''),
-        'required'     => array('on' => 'required',  'off' => ''),
-        'selected'     => array('on' => 'selected',  'off' => ''),
+        'autocomplete' => array('on' => 'on', 'off' => 'off'),
+        'autofocus' => array('on' => 'autofocus', 'off' => ''),
+        'checked' => array('on' => 'checked', 'off' => ''),
+        'disabled' => array('on' => 'disabled', 'off' => ''),
+        'multiple' => array('on' => 'multiple', 'off' => ''),
+        'readonly' => array('on' => 'readonly', 'off' => ''),
+        'required' => array('on' => 'required', 'off' => ''),
+        'selected' => array('on' => 'selected', 'off' => ''),
     );
 
     /**
@@ -67,79 +67,79 @@ abstract class AbstractHelper extends BaseAbstractHelper
      * @var array
      */
     protected $validGlobalAttributes = array(
-        'accesskey'          => true,
-        'class'              => true,
-        'contenteditable'    => true,
-        'contextmenu'        => true,
-        'dir'                => true,
-        'draggable'          => true,
-        'dropzone'           => true,
-        'hidden'             => true,
-        'id'                 => true,
-        'lang'               => true,
-        'onabort'            => true,
-        'onblur'             => true,
-        'oncanplay'          => true,
-        'oncanplaythrough'   => true,
-        'onchange'           => true,
-        'onclick'            => true,
-        'oncontextmenu'      => true,
-        'ondblclick'         => true,
-        'ondrag'             => true,
-        'ondragend'          => true,
-        'ondragenter'        => true,
-        'ondragleave'        => true,
-        'ondragover'         => true,
-        'ondragstart'        => true,
-        'ondrop'             => true,
-        'ondurationchange'   => true,
-        'onemptied'          => true,
-        'onended'            => true,
-        'onerror'            => true,
-        'onfocus'            => true,
-        'oninput'            => true,
-        'oninvalid'          => true,
-        'onkeydown'          => true,
-        'onkeypress'         => true,
-        'onkeyup'            => true,
-        'onload'             => true,
-        'onloadeddata'       => true,
-        'onloadedmetadata'   => true,
-        'onloadstart'        => true,
-        'onmousedown'        => true,
-        'onmousemove'        => true,
-        'onmouseout'         => true,
-        'onmouseover'        => true,
-        'onmouseup'          => true,
-        'onmousewheel'       => true,
-        'onpause'            => true,
-        'onplay'             => true,
-        'onplaying'          => true,
-        'onprogress'         => true,
-        'onratechange'       => true,
+        'accesskey' => true,
+        'class' => true,
+        'contenteditable' => true,
+        'contextmenu' => true,
+        'dir' => true,
+        'draggable' => true,
+        'dropzone' => true,
+        'hidden' => true,
+        'id' => true,
+        'lang' => true,
+        'onabort' => true,
+        'onblur' => true,
+        'oncanplay' => true,
+        'oncanplaythrough' => true,
+        'onchange' => true,
+        'onclick' => true,
+        'oncontextmenu' => true,
+        'ondblclick' => true,
+        'ondrag' => true,
+        'ondragend' => true,
+        'ondragenter' => true,
+        'ondragleave' => true,
+        'ondragover' => true,
+        'ondragstart' => true,
+        'ondrop' => true,
+        'ondurationchange' => true,
+        'onemptied' => true,
+        'onended' => true,
+        'onerror' => true,
+        'onfocus' => true,
+        'oninput' => true,
+        'oninvalid' => true,
+        'onkeydown' => true,
+        'onkeypress' => true,
+        'onkeyup' => true,
+        'onload' => true,
+        'onloadeddata' => true,
+        'onloadedmetadata' => true,
+        'onloadstart' => true,
+        'onmousedown' => true,
+        'onmousemove' => true,
+        'onmouseout' => true,
+        'onmouseover' => true,
+        'onmouseup' => true,
+        'onmousewheel' => true,
+        'onpause' => true,
+        'onplay' => true,
+        'onplaying' => true,
+        'onprogress' => true,
+        'onratechange' => true,
         'onreadystatechange' => true,
-        'onreset'            => true,
-        'onscroll'           => true,
-        'onseeked'           => true,
-        'onseeking'          => true,
-        'onselect'           => true,
-        'onshow'             => true,
-        'onstalled'          => true,
-        'onsubmit'           => true,
-        'onsuspend'          => true,
-        'ontimeupdate'       => true,
-        'onvolumechange'     => true,
-        'onwaiting'          => true,
-        'role'               => true,
-        'aria-labelled-by'   => true,
-        'aria-described-by'  => true,
-        'spellcheck'         => true,
-        'style'              => true,
-        'tabindex'           => true,
-        'title'              => true,
-        'xml:base'           => true,
-        'xml:lang'           => true,
-        'xml:space'          => true,
+        'onreset' => true,
+        'onscroll' => true,
+        'onseeked' => true,
+        'onseeking' => true,
+        'onselect' => true,
+        'onshow' => true,
+        'onstalled' => true,
+        'onsubmit' => true,
+        'onsuspend' => true,
+        'ontimeupdate' => true,
+        'onvolumechange' => true,
+        'onwaiting' => true,
+        'role' => true,
+        'aria-labelled-by' => true,
+        'aria-described-by' => true,
+        'spellcheck' => true,
+        'style' => true,
+        'tabindex' => true,
+        'title' => true,
+        'xml:base' => true,
+        'xml:lang' => true,
+        'xml:space' => true,
     );
 
     /**
@@ -149,8 +149,7 @@ abstract class AbstractHelper extends BaseAbstractHelper
      *
      * @var array
      */
-    protected $validTagAttributes = array(
-    );
+    protected $validTagAttributes = array();
 
     /**
      * Set value for doctype
@@ -208,9 +207,9 @@ abstract class AbstractHelper extends BaseAbstractHelper
     public function createAttributesString(array $attributes)
     {
         $attributes = $this->prepareAttributes($attributes);
-        $escape     = $this->getEscapeHtmlHelper();
+        $escape = $this->getEscapeHtmlHelper();
         $escapeAttr = $this->getEscapeHtmlAttrHelper();
-        $strings    = array();
+        $strings = array();
 
         foreach ($attributes as $key => $value) {
             $key = strtolower($key);
@@ -393,7 +392,7 @@ abstract class AbstractHelper extends BaseAbstractHelper
             return $value;
         }
 
-        $value = (bool) $value;
+        $value = (bool)$value;
         return ($value
             ? $this->booleanAttributes[$attribute]['on']
             : $this->booleanAttributes[$attribute]['off']

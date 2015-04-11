@@ -129,7 +129,7 @@ class Int extends AbstractValidator
             return false;
         }
 
-        $decimalSep  = $format->getSymbol(NumberFormatter::DECIMAL_SEPARATOR_SYMBOL);
+        $decimalSep = $format->getSymbol(NumberFormatter::DECIMAL_SEPARATOR_SYMBOL);
         $groupingSep = $format->getSymbol(NumberFormatter::GROUPING_SEPARATOR_SYMBOL);
 
         $valueFiltered = str_replace($groupingSep, '', $value);

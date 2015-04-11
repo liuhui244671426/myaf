@@ -103,7 +103,7 @@ class Entry extends Extension\AbstractEntry
                 case 'html':
                 case 'text/html':
                     $content = $el->nodeValue;
-                break;
+                    break;
                 case 'xhtml':
                     $this->getXpath()->registerNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
                     $xhtml = $this->getXpath()->query(
@@ -116,7 +116,7 @@ class Entry extends Extension\AbstractEntry
                         $d->saveXML(),
                         $d->lookupPrefix('http://www.w3.org/1999/xhtml')
                     );
-                break;
+                    break;
             }
         }
 
@@ -246,10 +246,10 @@ class Entry extends Extension\AbstractEntry
         $nodeList = $this->getXpath()->query($this->getXpathPrefix() . '/atom:link[@rel="enclosure"]');
 
         if ($nodeList->length > 0) {
-            $enclosure         = new stdClass();
-            $enclosure->url    = $nodeList->item(0)->getAttribute('href');
+            $enclosure = new stdClass();
+            $enclosure->url = $nodeList->item(0)->getAttribute('href');
             $enclosure->length = $nodeList->item(0)->getAttribute('length');
-            $enclosure->type   = $nodeList->item(0)->getAttribute('type');
+            $enclosure->type = $nodeList->item(0)->getAttribute('type');
         }
 
         $this->data['enclosure'] = $enclosure;
@@ -298,7 +298,7 @@ class Entry extends Extension\AbstractEntry
 
         $baseUrl = $this->getXpath()->evaluate('string('
             . $this->getXpathPrefix() . '/@xml:base[1]'
-        . ')');
+            . ')');
 
         if (!$baseUrl) {
             $baseUrl = $this->getXpath()->evaluate('string(//@xml:base[1])');
@@ -462,7 +462,7 @@ class Entry extends Extension\AbstractEntry
         $link = null;
 
         $list = $this->getXpath()->query(
-            $this->getXpathPrefix() . '//atom:link[@rel="replies" and @type="application/' . $type.'+xml"]/@href'
+            $this->getXpathPrefix() . '//atom:link[@rel="replies" and @type="application/' . $type . '+xml"]/@href'
         );
 
         if ($list->length) {
@@ -572,8 +572,8 @@ class Entry extends Extension\AbstractEntry
         $author = array();
 
         $emailNode = $element->getElementsByTagName('email');
-        $nameNode  = $element->getElementsByTagName('name');
-        $uriNode   = $element->getElementsByTagName('uri');
+        $nameNode = $element->getElementsByTagName('name');
+        $uriNode = $element->getElementsByTagName('uri');
 
         if ($emailNode->length && strlen($emailNode->item(0)->nodeValue) > 0) {
             $author['email'] = $emailNode->item(0)->nodeValue;
@@ -619,11 +619,13 @@ class Entry extends Extension\AbstractEntry
         $prefixAtom03 = $dom->lookupPrefix(Reader\Reader::NAMESPACE_ATOM_03);
         $prefixAtom10 = $dom->lookupPrefix(Reader\Reader::NAMESPACE_ATOM_10);
         if ($dom->isDefaultNamespace(Reader\Reader::NAMESPACE_ATOM_03)
-        || !empty($prefixAtom03)) {
+            || !empty($prefixAtom03)
+        ) {
             return Reader\Reader::TYPE_ATOM_03;
         }
         if ($dom->isDefaultNamespace(Reader\Reader::NAMESPACE_ATOM_10)
-        || !empty($prefixAtom10)) {
+            || !empty($prefixAtom10)
+        ) {
             return Reader\Reader::TYPE_ATOM_10;
         }
     }

@@ -141,7 +141,7 @@ class EventManager implements EventManagerInterface
     public function setIdentifiers($identifiers)
     {
         if (is_array($identifiers) || $identifiers instanceof Traversable) {
-            $this->identifiers = array_unique((array) $identifiers);
+            $this->identifiers = array_unique((array)$identifiers);
         } elseif ($identifiers !== null) {
             $this->identifiers = array($identifiers);
         }
@@ -157,7 +157,7 @@ class EventManager implements EventManagerInterface
     public function addIdentifiers($identifiers)
     {
         if (is_array($identifiers) || $identifiers instanceof Traversable) {
-            $this->identifiers = array_unique(array_merge($this->identifiers, (array) $identifiers));
+            $this->identifiers = array_unique(array_merge($this->identifiers, (array)$identifiers));
         } elseif ($identifiers !== null) {
             $this->identifiers = array_unique(array_merge($this->identifiers, array($identifiers)));
         }
@@ -179,8 +179,8 @@ class EventManager implements EventManagerInterface
     public function trigger($event, $target = null, $argv = array(), $callback = null)
     {
         if ($event instanceof EventInterface) {
-            $e        = $event;
-            $event    = $e->getName();
+            $e = $event;
+            $event = $e->getName();
             $callback = $target;
         } elseif ($target instanceof EventInterface) {
             $e = $target;
@@ -224,8 +224,8 @@ class EventManager implements EventManagerInterface
     public function triggerUntil($event, $target, $argv = null, $callback = null)
     {
         if ($event instanceof EventInterface) {
-            $e        = $event;
-            $event    = $e->getName();
+            $e = $event;
+            $event = $e->getName();
             $callback = $target;
         } elseif ($target instanceof EventInterface) {
             $e = $target;
@@ -432,9 +432,9 @@ class EventManager implements EventManagerInterface
      * Actual functionality for triggering listeners, to which both trigger() and triggerUntil()
      * delegate.
      *
-     * @param  string           $event Event name
+     * @param  string $event Event name
      * @param  EventInterface $e
-     * @param  null|callable    $callback
+     * @param  null|callable $callback
      * @return ResponseCollection
      */
     protected function triggerListeners($event, EventInterface $e, $callback = null)
@@ -444,9 +444,9 @@ class EventManager implements EventManagerInterface
 
         // Add shared/wildcard listeners to the list of listeners,
         // but don't modify the listeners object
-        $sharedListeners         = $this->getSharedListeners($event);
+        $sharedListeners = $this->getSharedListeners($event);
         $sharedWildcardListeners = $this->getSharedListeners('*');
-        $wildcardListeners       = $this->getListeners('*');
+        $wildcardListeners = $this->getListeners('*');
         if (count($sharedListeners) || count($sharedWildcardListeners) || count($wildcardListeners)) {
             $listeners = clone $listeners;
 
@@ -497,7 +497,7 @@ class EventManager implements EventManagerInterface
             return array();
         }
 
-        $identifiers     = $this->getIdentifiers();
+        $identifiers = $this->getIdentifiers();
         //Add wildcard id to the search, if not already added
         if (!in_array('*', $identifiers)) {
             $identifiers[] = '*';

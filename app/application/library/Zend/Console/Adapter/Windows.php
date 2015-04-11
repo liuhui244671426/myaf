@@ -52,8 +52,8 @@ class Windows extends Virtual
             $this->runProbeCommand();
         }
 
-        if (count($this->probeResult) && (int) $this->probeResult[0]) {
-            $width = (int) $this->probeResult[0];
+        if (count($this->probeResult) && (int)$this->probeResult[0]) {
+            $width = (int)$this->probeResult[0];
         } else {
             $width = parent::getWidth();
         }
@@ -78,8 +78,8 @@ class Windows extends Virtual
             $this->runProbeCommand();
         }
 
-        if (count($this->probeResult) && (int) $this->probeResult[1]) {
-            $height = (int) $this->probeResult[1];
+        if (count($this->probeResult) && (int)$this->probeResult[1]) {
+            $height = (int)$this->probeResult[1];
         } else {
             $height = parent::getheight();
         }
@@ -138,7 +138,7 @@ class Windows extends Virtual
         }
 
         if (preg_match('/Code page\:\s+(\d+)/', $this->modeResult, $matches)) {
-            return (int) $matches[1] == 65001;
+            return (int)$matches[1] == 65001;
         }
 
         return false;
@@ -301,7 +301,7 @@ class Windows extends Virtual
                 'powershell -NonInteractive -NoProfile -NoLogo -OutputFormat Text -Command "'
                 . '[int[]] $mask = ' . join(',', $asciiMask) . ';'
                 . 'do {'
-                    . '$key = $Host.UI.RawUI.ReadKey(\'NoEcho,IncludeKeyDown\').VirtualKeyCode;'
+                . '$key = $Host.UI.RawUI.ReadKey(\'NoEcho,IncludeKeyDown\').VirtualKeyCode;'
                 . '} while ( !($mask -contains $key) );'
                 . 'write $key;'
                 . '"',
@@ -347,7 +347,7 @@ class Windows extends Virtual
      */
     public function readLine($maxLength = 2048)
     {
-        $f    = fopen('php://stdin', 'r');
+        $f = fopen('php://stdin', 'r');
         $line = rtrim(fread($f, $maxLength), "\r\n");
         fclose($f);
 

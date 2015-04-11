@@ -19,11 +19,11 @@ class MultiByte
     /**
      * Word wrap
      *
-     * @param  string  $string
+     * @param  string $string
      * @param  int $width
-     * @param  string  $break
+     * @param  string $break
      * @param  bool $cut
-     * @param  string  $charset
+     * @param  string $charset
      * @throws Exception\InvalidArgumentException
      * @return string
      * @deprecated Please use Zend\Stdlib\StringUtils instead
@@ -45,11 +45,11 @@ class MultiByte
     /**
      * String padding
      *
-     * @param  string  $input
+     * @param  string $input
      * @param  int $padLength
-     * @param  string  $padString
+     * @param  string $padString
      * @param  int $padType
-     * @param  string  $charset
+     * @param  string $charset
      * @return string
      * @deprecated Please use Zend\Stdlib\StringUtils instead
      */

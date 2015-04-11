@@ -16,10 +16,10 @@ use Zend\Ldap;
  */
 class RootDse extends AbstractNode
 {
-    const SERVER_TYPE_GENERIC         = 1;
-    const SERVER_TYPE_OPENLDAP        = 2;
+    const SERVER_TYPE_GENERIC = 1;
+    const SERVER_TYPE_OPENLDAP = 2;
     const SERVER_TYPE_ACTIVEDIRECTORY = 3;
-    const SERVER_TYPE_EDIRECTORY      = 4;
+    const SERVER_TYPE_EDIRECTORY = 4;
 
     /**
      * Factory method to create the RootDse.
@@ -29,7 +29,7 @@ class RootDse extends AbstractNode
      */
     public static function create(Ldap\Ldap $ldap)
     {
-        $dn   = Ldap\Dn::fromString('');
+        $dn = Ldap\Dn::fromString('');
         $data = $ldap->getEntry($dn, array('*', '+'), true);
         if (isset($data['domainfunctionality'])) {
             return new RootDse\ActiveDirectory($dn, $data);
@@ -50,7 +50,7 @@ class RootDse extends AbstractNode
      * Constructor is protected to enforce the use of factory methods.
      *
      * @param \Zend\Ldap\Dn $dn
-     * @param array         $data
+     * @param array $data
      */
     protected function __construct(Ldap\Dn $dn, array $data)
     {

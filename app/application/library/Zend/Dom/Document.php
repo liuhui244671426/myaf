@@ -19,9 +19,9 @@ class Document
     /**#@+
      * Document types
      */
-    const DOC_HTML     = 'DOC_HTML';
-    const DOC_XHTML    = 'DOC_XHTML';
-    const DOC_XML      = 'DOC_XML';
+    const DOC_HTML = 'DOC_HTML';
+    const DOC_XHTML = 'DOC_XHTML';
+    const DOC_XML = 'DOC_XML';
     /**#@-*/
 
     /**
@@ -63,9 +63,9 @@ class Document
     /**
      * Constructor
      *
-     * @param string|null  $document  String containing the document
-     * @param string|null  $type      Force the document to be of a certain type, bypassing setStringDocument's detection
-     * @param string|null  $encoding  Encoding for the document (used for DOMDocument generation)
+     * @param string|null $document String containing the document
+     * @param string|null $type Force the document to be of a certain type, bypassing setStringDocument's detection
+     * @param string|null $encoding Encoding for the document (used for DOMDocument generation)
      */
     public function __construct($document = null, $type = null, $encoding = null)
     {
@@ -85,9 +85,9 @@ class Document
     /**
      * Set raw document
      *
-     * @param string|null  $document
-     * @param string|null  $forcedType      Type for the provided document (see constants)
-     * @param string|null  $forcedEncoding  Encoding for the provided document
+     * @param string|null $document
+     * @param string|null $forcedType Type for the provided document (see constants)
+     * @param string|null $forcedEncoding Encoding for the provided document
      * @return self
      */
     protected function setStringDocument($document, $forcedType = null, $forcedEncoding = null)
@@ -107,8 +107,8 @@ class Document
         }
 
         // Unsetting previously registered DOMDocument
-        $this->domDocument     = null;
-        $this->stringDocument  = !empty($document) ? $document : null;
+        $this->domDocument = null;
+        $this->stringDocument = !empty($document) ? $document : null;
 
         $this->setType($forcedType ?: (!empty($document) ? $type : null));
         $this->setEncoding($forcedEncoding);
@@ -130,7 +130,7 @@ class Document
     /**
      * Set raw document type
      *
-     * @param  string    $type
+     * @param  string $type
      * @return self
      */
     protected function setType($type)
@@ -229,9 +229,9 @@ class Document
         libxml_use_internal_errors(true);
         libxml_disable_entity_loader(true);
 
-        $encoding  = $this->getEncoding();
-        $domDoc    = null === $encoding ? new DOMDocument('1.0') : new DOMDocument('1.0', $encoding);
-        $type      = $this->getType();
+        $encoding = $this->getEncoding();
+        $domDoc = null === $encoding ? new DOMDocument('1.0') : new DOMDocument('1.0', $encoding);
+        $type = $this->getType();
 
         switch ($type) {
             case static::DOC_XML:
@@ -297,6 +297,7 @@ class Document
     {
         return $this->xpathPhpFunctions;
     }
+
     /**
      * Register PHP Functions to use in internal DOMXPath
      *

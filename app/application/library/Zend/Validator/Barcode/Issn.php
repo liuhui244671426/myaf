@@ -65,9 +65,9 @@ class Issn extends AbstractAdapter
     protected function issn($value)
     {
         $checksum = substr($value, -1, 1);
-        $values   = str_split(substr($value, 0, -1));
-        $check    = 0;
-        $multi    = 8;
+        $values = str_split(substr($value, 0, -1));
+        $check = 0;
+        $multi = 8;
         foreach ($values as $token) {
             if ($token == 'X') {
                 $token = 10;
@@ -78,7 +78,7 @@ class Issn extends AbstractAdapter
         }
 
         $check %= 11;
-        $check  = ($check === 0 ? 0 : (11 - $check));
+        $check = ($check === 0 ? 0 : (11 - $check));
         if ($check == $checksum) {
             return true;
         } elseif (($check == 10) && ($checksum == 'X')) {

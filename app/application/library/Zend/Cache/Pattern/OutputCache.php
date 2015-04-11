@@ -42,18 +42,18 @@ class OutputCache extends AbstractPattern
      * if there is a cached item with the given key display it's data and return true
      * else start buffering output until end() is called or the script ends.
      *
-     * @param  string  $key Key
+     * @param  string $key Key
      * @throws Exception\MissingKeyException if key is missing
      * @return bool
      */
     public function start($key)
     {
-        if (($key = (string) $key) === '') {
+        if (($key = (string)$key) === '') {
             throw new Exception\MissingKeyException('Missing key to read/write output from cache');
         }
 
         $success = null;
-        $data    = $this->getOptions()->getStorage()->getItem($key, $success);
+        $data = $this->getOptions()->getStorage()->getItem($key, $success);
         if ($success) {
             echo $data;
             return true;

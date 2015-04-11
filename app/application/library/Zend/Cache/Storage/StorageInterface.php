@@ -33,9 +33,9 @@ interface StorageInterface
     /**
      * Get an item.
      *
-     * @param  string  $key
+     * @param  string $key
      * @param  bool $success
-     * @param  mixed   $casToken
+     * @param  mixed $casToken
      * @return mixed Data on success, null on failure
      * @throws \Zend\Cache\Exception\ExceptionInterface
      */
@@ -92,7 +92,7 @@ interface StorageInterface
      * Store an item.
      *
      * @param  string $key
-     * @param  mixed  $value
+     * @param  mixed $value
      * @return bool
      * @throws \Zend\Cache\Exception\ExceptionInterface
      */
@@ -111,7 +111,7 @@ interface StorageInterface
      * Add an item.
      *
      * @param  string $key
-     * @param  mixed  $value
+     * @param  mixed $value
      * @return bool
      * @throws \Zend\Cache\Exception\ExceptionInterface
      */
@@ -130,7 +130,7 @@ interface StorageInterface
      * Replace an existing item.
      *
      * @param  string $key
-     * @param  mixed  $value
+     * @param  mixed $value
      * @return bool
      * @throws \Zend\Cache\Exception\ExceptionInterface
      */
@@ -151,9 +151,9 @@ interface StorageInterface
      * It uses the token received from getItem() to check if the item has
      * changed before overwriting it.
      *
-     * @param  mixed  $token
+     * @param  mixed $token
      * @param  string $key
-     * @param  mixed  $value
+     * @param  mixed $value
      * @return bool
      * @throws \Zend\Cache\Exception\ExceptionInterface
      * @see    getItem()
@@ -201,7 +201,7 @@ interface StorageInterface
      * Increment an item.
      *
      * @param  string $key
-     * @param  int    $value
+     * @param  int $value
      * @return int|bool The new value on success, false on failure
      * @throws \Zend\Cache\Exception\ExceptionInterface
      */
@@ -220,7 +220,7 @@ interface StorageInterface
      * Decrement an item.
      *
      * @param  string $key
-     * @param  int    $value
+     * @param  int $value
      * @return int|bool The new value on success, false on failure
      * @throws \Zend\Cache\Exception\ExceptionInterface
      */

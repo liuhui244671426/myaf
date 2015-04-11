@@ -23,14 +23,14 @@ class Extension extends AbstractValidator
      * @const string Error constants
      */
     const FALSE_EXTENSION = 'fileExtensionFalse';
-    const NOT_FOUND       = 'fileExtensionNotFound';
+    const NOT_FOUND = 'fileExtensionNotFound';
 
     /**
      * @var array Error message templates
      */
     protected $messageTemplates = array(
         self::FALSE_EXTENSION => "File has an incorrect extension",
-        self::NOT_FOUND       => "File is not readable or does not exist",
+        self::NOT_FOUND => "File is not readable or does not exist",
     );
 
     /**
@@ -39,7 +39,7 @@ class Extension extends AbstractValidator
      * @var array
      */
     protected $options = array(
-        'case'      => false,   // Validate case sensitive
+        'case' => false,   // Validate case sensitive
         'extension' => '',      // List of extensions
     );
 
@@ -104,7 +104,7 @@ class Extension extends AbstractValidator
      */
     public function setCase($case)
     {
-        $this->options['case'] = (bool) $case;
+        $this->options['case'] = (bool)$case;
         return $this;
     }
 
@@ -172,7 +172,7 @@ class Extension extends AbstractValidator
      * set extension list
      *
      * @param  string|array $value Real file to check for extension
-     * @param  array        $file  File data from \Zend\File\Transfer\Transfer (optional)
+     * @param  array $file File data from \Zend\File\Transfer\Transfer (optional)
      * @return bool
      */
     public function isValid($value, $file = null)
@@ -180,17 +180,17 @@ class Extension extends AbstractValidator
         if (is_string($value) && is_array($file)) {
             // Legacy Zend\Transfer API support
             $filename = $file['name'];
-            $file     = $file['tmp_name'];
+            $file = $file['tmp_name'];
         } elseif (is_array($value)) {
             if (!isset($value['tmp_name']) || !isset($value['name'])) {
                 throw new Exception\InvalidArgumentException(
                     'Value array must be in $_FILES format'
                 );
             }
-            $file     = $value['tmp_name'];
+            $file = $value['tmp_name'];
             $filename = $value['name'];
         } else {
-            $file     = $value;
+            $file = $value;
             $filename = basename($file);
         }
         $this->setValue($filename);
@@ -201,7 +201,7 @@ class Extension extends AbstractValidator
             return false;
         }
 
-        $extension  = substr($filename, strrpos($filename, '.') + 1);
+        $extension = substr($filename, strrpos($filename, '.') + 1);
         $extensions = $this->getExtension();
 
         if ($this->getCase() && (in_array($extension, $extensions))) {

@@ -87,7 +87,7 @@ class UriNormalize extends AbstractFilter
         if (!is_scalar($value)) {
             return $value;
         }
-        $value = (string) $value;
+        $value = (string)$value;
 
         $defaultScheme = $this->defaultScheme ?: $this->enforcedScheme;
 

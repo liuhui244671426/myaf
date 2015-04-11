@@ -50,12 +50,12 @@ class Fault extends \Zend\XmlRpc\Fault
     public function __construct(\Exception $e)
     {
         $this->exception = $e;
-        $code             = 404;
-        $message          = 'Unknown error';
+        $code = 404;
+        $message = 'Unknown error';
 
         foreach (array_keys(static::$faultExceptionClasses) as $class) {
             if ($e instanceof $class) {
-                $code    = $e->getCode();
+                $code = $e->getCode();
                 $message = $e->getMessage();
                 break;
             }
@@ -91,7 +91,7 @@ class Fault extends \Zend\XmlRpc\Fault
     public static function attachFaultException($classes)
     {
         if (!is_array($classes)) {
-            $classes = (array) $classes;
+            $classes = (array)$classes;
         }
 
         foreach ($classes as $class) {
@@ -110,7 +110,7 @@ class Fault extends \Zend\XmlRpc\Fault
     public static function detachFaultException($classes)
     {
         if (!is_array($classes)) {
-            $classes = (array) $classes;
+            $classes = (array)$classes;
         }
 
         foreach ($classes as $class) {

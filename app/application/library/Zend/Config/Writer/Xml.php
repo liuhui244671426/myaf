@@ -32,7 +32,7 @@ class Xml extends AbstractWriter
 
         foreach ($config as $sectionName => $data) {
             if (!is_array($data)) {
-                $writer->writeElement($sectionName, (string) $data);
+                $writer->writeElement($sectionName, (string)$data);
             } else {
                 $this->addBranch($sectionName, $data, $writer);
             }
@@ -47,8 +47,8 @@ class Xml extends AbstractWriter
     /**
      * Add a branch to an XML object recursively.
      *
-     * @param  string    $branchName
-     * @param  array     $config
+     * @param  string $branchName
+     * @param  array $config
      * @param  XMLWriter $writer
      * @return void
      * @throws Exception\RuntimeException
@@ -73,13 +73,13 @@ class Xml extends AbstractWriter
                 if (is_array($value)) {
                     $this->addBranch($branchName, $value, $writer);
                 } else {
-                    $writer->writeElement($branchName, (string) $value);
+                    $writer->writeElement($branchName, (string)$value);
                 }
             } else {
                 if (is_array($value)) {
                     $this->addBranch($key, $value, $writer);
                 } else {
-                    $writer->writeElement($key, (string) $value);
+                    $writer->writeElement($key, (string)$value);
                 }
             }
         }

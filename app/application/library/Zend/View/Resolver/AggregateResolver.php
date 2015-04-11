@@ -18,7 +18,7 @@ use Zend\View\Resolver\ResolverInterface as Resolver;
 class AggregateResolver implements Countable, IteratorAggregate, ResolverInterface
 {
     const FAILURE_NO_RESOLVERS = 'AggregateResolver_Failure_No_Resolvers';
-    const FAILURE_NOT_FOUND    = 'AggregateResolver_Failure_Not_Found';
+    const FAILURE_NOT_FOUND = 'AggregateResolver_Failure_Not_Found';
 
     /**
      * Last lookup failure
@@ -89,7 +89,7 @@ class AggregateResolver implements Countable, IteratorAggregate, ResolverInterfa
      */
     public function resolve($name, Renderer $renderer = null)
     {
-        $this->lastLookupFailure      = false;
+        $this->lastLookupFailure = false;
         $this->lastSuccessfulResolver = null;
 
         if (0 === count($this->queue)) {

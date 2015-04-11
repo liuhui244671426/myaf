@@ -114,14 +114,14 @@ class Menu extends AbstractHelper
      * Renders the deepest active menu within [$minDepth, $maxDepth], (called
      * from {@link renderMenu()})
      *
-     * @param  AbstractContainer $container          container to render
-     * @param  string            $ulClass            CSS class for first UL
-     * @param  string            $indent             initial indentation
-     * @param  int|null          $minDepth           minimum depth
-     * @param  int|null          $maxDepth           maximum depth
-     * @param  bool              $escapeLabels       Whether or not to escape the labels
-     * @param  bool              $addClassToListItem Whether or not page class applied to <li> element
-     * @param  string            $liActiveClass      CSS class for active LI
+     * @param  AbstractContainer $container container to render
+     * @param  string $ulClass CSS class for first UL
+     * @param  string $indent initial indentation
+     * @param  int|null $minDepth minimum depth
+     * @param  int|null $maxDepth maximum depth
+     * @param  bool $escapeLabels Whether or not to escape the labels
+     * @param  bool $addClassToListItem Whether or not page class applied to <li> element
+     * @param  string $liActiveClass CSS class for active LI
      * @return string
      */
     protected function renderDeepestMenu(
@@ -133,7 +133,8 @@ class Menu extends AbstractHelper
         $escapeLabels,
         $addClassToListItem,
         $liActiveClass
-    ) {
+    )
+    {
         if (!$active = $this->findActive($container, $minDepth - 1, $maxDepth)) {
             return '';
         }
@@ -146,7 +147,7 @@ class Menu extends AbstractHelper
         } elseif (!$active['page']->hasPages(!$this->renderInvisible)) {
             // found pages has no children; render siblings
             $active['page'] = $active['page']->getParent();
-        } elseif (is_int($maxDepth) && $active['depth'] +1 > $maxDepth) {
+        } elseif (is_int($maxDepth) && $active['depth'] + 1 > $maxDepth) {
             // children are below max depth; render siblings
             $active['page'] = $active['page']->getParent();
         }
@@ -195,7 +196,7 @@ class Menu extends AbstractHelper
      * @param  AbstractContainer $container [optional] container to create menu from.
      *                                      Default is to use the container retrieved
      *                                      from {@link getContainer()}.
-     * @param  array             $options   [optional] options for controlling rendering
+     * @param  array $options [optional] options for controlling rendering
      * @return string
      */
     public function renderMenu($container = null, array $options = array())
@@ -239,15 +240,15 @@ class Menu extends AbstractHelper
     /**
      * Renders a normal menu (called from {@link renderMenu()})
      *
-     * @param  AbstractContainer $container          container to render
-     * @param  string            $ulClass            CSS class for first UL
-     * @param  string            $indent             initial indentation
-     * @param  int|null          $minDepth           minimum depth
-     * @param  int|null          $maxDepth           maximum depth
-     * @param  bool              $onlyActive         render only active branch?
-     * @param  bool              $escapeLabels       Whether or not to escape the labels
-     * @param  bool              $addClassToListItem Whether or not page class applied to <li> element
-     * @param  string            $liActiveClass      CSS class for active LI
+     * @param  AbstractContainer $container container to render
+     * @param  string $ulClass CSS class for first UL
+     * @param  string $indent initial indentation
+     * @param  int|null $minDepth minimum depth
+     * @param  int|null $maxDepth maximum depth
+     * @param  bool $onlyActive render only active branch?
+     * @param  bool $escapeLabels Whether or not to escape the labels
+     * @param  bool $addClassToListItem Whether or not page class applied to <li> element
+     * @param  string $liActiveClass CSS class for active LI
      * @return string
      */
     protected function renderNormalMenu(
@@ -260,7 +261,8 @@ class Menu extends AbstractHelper
         $escapeLabels,
         $addClassToListItem,
         $liActiveClass
-    ) {
+    )
+    {
         $html = '';
 
         // find deepest active
@@ -269,7 +271,7 @@ class Menu extends AbstractHelper
         $escaper = $this->view->plugin('escapeHtmlAttr');
 
         if ($found) {
-            $foundPage  = $found['page'];
+            $foundPage = $found['page'];
             $foundDepth = $found['depth'];
         } else {
             $foundPage = null;
@@ -302,7 +304,8 @@ class Menu extends AbstractHelper
                     } elseif ($foundPage->getParent()->hasPage($page)) {
                         // page is a sibling of the active page...
                         if (!$foundPage->hasPages(!$this->renderInvisible) ||
-                            is_int($maxDepth) && $foundDepth + 1 > $maxDepth) {
+                            is_int($maxDepth) && $foundDepth + 1 > $maxDepth
+                        ) {
                             // accept if active page has no children, or the
                             // children are too deep to be rendered
                             $accept = true;
@@ -321,7 +324,7 @@ class Menu extends AbstractHelper
 
             if ($depth > $prevDepth) {
                 // start new ul tag
-                if ($ulClass && $depth ==  0) {
+                if ($ulClass && $depth == 0) {
                     $ulClass = ' class="' . $escaper($ulClass) . '"';
                 } else {
                     $ulClass = '';
@@ -362,8 +365,8 @@ class Menu extends AbstractHelper
 
         if ($html) {
             // done iterating container; close open ul/li tags
-            for ($i = $prevDepth+1; $i > 0; $i--) {
-                $myIndent = $indent . str_repeat('        ', $i-1);
+            for ($i = $prevDepth + 1; $i > 0; $i--) {
+                $myIndent = $indent . str_repeat('        ', $i - 1);
                 $html .= $myIndent . '    </li>' . PHP_EOL
                     . $myIndent . '</ul>' . PHP_EOL;
             }
@@ -380,10 +383,10 @@ class Menu extends AbstractHelper
      * as-is, and will be available in the partial script as 'container', e.g.
      * <code>echo 'Number of pages: ', count($this->container);</code>.
      *
-     * @param  AbstractContainer     $container [optional] container to pass to view
+     * @param  AbstractContainer $container [optional] container to pass to view
      *                                  script. Default is to use the container
      *                                  registered in the helper.
-     * @param  string|array  $partial   [optional] partial view script to use.
+     * @param  string|array $partial [optional] partial view script to use.
      *                                  Default is to use the partial
      *                                  registered in the helper. If an array
      *                                  is given, it is expected to contain two
@@ -422,8 +425,8 @@ class Menu extends AbstractHelper
             if (count($partial) != 2) {
                 throw new Exception\InvalidArgumentException(
                     'Unable to render menu: A view partial supplied as '
-                    .  'an array must contain two values: partial view '
-                    .  'script and module where script can be found'
+                    . 'an array must contain two values: partial view '
+                    . 'script and module where script can be found'
                 );
             }
 
@@ -449,20 +452,20 @@ class Menu extends AbstractHelper
      * ));
      * </code>
      *
-     * @param  AbstractContainer $container     [optional] container to
+     * @param  AbstractContainer $container [optional] container to
      *                                          render. Default is to render
      *                                          the container registered in
      *                                          the helper.
-     * @param  string            $ulClass       [optional] CSS class to
+     * @param  string $ulClass [optional] CSS class to
      *                                          use for UL element. Default
      *                                          is to use the value from
      *                                          {@link getUlClass()}.
-     * @param  string|int        $indent        [optional] indentation as
+     * @param  string|int $indent [optional] indentation as
      *                                          a string or number of
      *                                          spaces. Default is to use
      *                                          the value retrieved from
      *                                          {@link getIndent()}.
-     * @param  string            $liActiveClass [optional] CSS class to
+     * @param  string $liActiveClass [optional] CSS class to
      *                                          use for UL element. Default
      *                                          is to use the value from
      *                                          {@link getUlClass()}.
@@ -473,17 +476,18 @@ class Menu extends AbstractHelper
         $ulClass = null,
         $indent = null,
         $liActiveClass = null
-    ) {
+    )
+    {
         return $this->renderMenu($container, array(
-            'indent'             => $indent,
-            'ulClass'            => $ulClass,
-            'minDepth'           => null,
-            'maxDepth'           => null,
-            'onlyActiveBranch'   => true,
-            'renderParents'      => false,
-            'escapeLabels'       => true,
+            'indent' => $indent,
+            'ulClass' => $ulClass,
+            'minDepth' => null,
+            'maxDepth' => null,
+            'onlyActiveBranch' => true,
+            'renderParents' => false,
+            'escapeLabels' => true,
             'addClassToListItem' => false,
-            'liActiveClass'      => $liActiveClass
+            'liActiveClass' => $liActiveClass
         ));
     }
 
@@ -493,17 +497,17 @@ class Menu extends AbstractHelper
      *
      * Overrides {@link AbstractHelper::htmlify()}.
      *
-     * @param  AbstractPage $page               page to generate HTML for
-     * @param  bool         $escapeLabel        Whether or not to escape the label
-     * @param  bool         $addClassToListItem Whether or not to add the page class to the list item
+     * @param  AbstractPage $page page to generate HTML for
+     * @param  bool $escapeLabel Whether or not to escape the label
+     * @param  bool $addClassToListItem Whether or not to add the page class to the list item
      * @return string
      */
     public function htmlify(AbstractPage $page, $escapeLabel = true, $addClassToListItem = false)
     {
         // get attribs for element
         $attribs = array(
-            'id'     => $page->getId(),
-            'title'  => $this->translate($page->getTitle(), $page->getTextDomain()),
+            'id' => $page->getId(),
+            'title' => $this->translate($page->getTitle(), $page->getTextDomain()),
         );
 
         if ($addClassToListItem === false) {
@@ -520,7 +524,7 @@ class Menu extends AbstractHelper
             $element = 'span';
         }
 
-        $html  = '<' . $element . $this->htmlAttribs($attribs) . '>';
+        $html = '<' . $element . $this->htmlAttribs($attribs) . '>';
         $label = $this->translate($page->getLabel(), $page->getTextDomain());
         if ($escapeLabel === true) {
             /** @var \Zend\View\Helper\EscapeHtml $escaper */
@@ -537,7 +541,7 @@ class Menu extends AbstractHelper
     /**
      * Normalizes given render options
      *
-     * @param  array $options  [optional] options to normalize
+     * @param  array $options [optional] options to normalize
      * @return array
      */
     protected function normalizeOptions(array $options = array())
@@ -549,14 +553,14 @@ class Menu extends AbstractHelper
         }
 
         if (isset($options['ulClass']) && $options['ulClass'] !== null) {
-            $options['ulClass'] = (string) $options['ulClass'];
+            $options['ulClass'] = (string)$options['ulClass'];
         } else {
             $options['ulClass'] = $this->getUlClass();
         }
 
         if (array_key_exists('minDepth', $options)) {
             if (null !== $options['minDepth']) {
-                $options['minDepth'] = (int) $options['minDepth'];
+                $options['minDepth'] = (int)$options['minDepth'];
             }
         } else {
             $options['minDepth'] = $this->getMinDepth();
@@ -568,7 +572,7 @@ class Menu extends AbstractHelper
 
         if (array_key_exists('maxDepth', $options)) {
             if (null !== $options['maxDepth']) {
-                $options['maxDepth'] = (int) $options['maxDepth'];
+                $options['maxDepth'] = (int)$options['maxDepth'];
             }
         } else {
             $options['maxDepth'] = $this->getMaxDepth();
@@ -591,7 +595,7 @@ class Menu extends AbstractHelper
         }
 
         if (isset($options['liActiveClass']) && $options['liActiveClass'] !== null) {
-            $options['liActiveClass'] = (string) $options['liActiveClass'];
+            $options['liActiveClass'] = (string)$options['liActiveClass'];
         } else {
             $options['liActiveClass'] = $this->getLiActiveClass();
         }
@@ -607,7 +611,7 @@ class Menu extends AbstractHelper
      */
     public function escapeLabels($flag = true)
     {
-        $this->escapeLabels = (bool) $flag;
+        $this->escapeLabels = (bool)$flag;
         return $this;
     }
 
@@ -620,7 +624,7 @@ class Menu extends AbstractHelper
      */
     public function setAddClassToListItem($flag = true)
     {
-        $this->addClassToListItem = (bool) $flag;
+        $this->addClassToListItem = (bool)$flag;
         return $this;
     }
 
@@ -644,7 +648,7 @@ class Menu extends AbstractHelper
      */
     public function setOnlyActiveBranch($flag = true)
     {
-        $this->onlyActiveBranch = (bool) $flag;
+        $this->onlyActiveBranch = (bool)$flag;
         return $this;
     }
 
@@ -700,7 +704,7 @@ class Menu extends AbstractHelper
      */
     public function setRenderParents($flag = true)
     {
-        $this->renderParents = (bool) $flag;
+        $this->renderParents = (bool)$flag;
         return $this;
     }
 

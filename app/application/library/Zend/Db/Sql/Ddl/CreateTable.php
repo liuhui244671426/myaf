@@ -15,9 +15,9 @@ use Zend\Db\Sql\AbstractSql;
 
 class CreateTable extends AbstractSql implements SqlInterface
 {
-    const COLUMNS     = 'columns';
+    const COLUMNS = 'columns';
     const CONSTRAINTS = 'constraints';
-    const TABLE       = 'table';
+    const TABLE = 'table';
 
     /**
      * @var array
@@ -40,7 +40,7 @@ class CreateTable extends AbstractSql implements SqlInterface
      */
     protected $specifications = array(
         self::TABLE => 'CREATE %1$sTABLE %2$s (',
-        self::COLUMNS  => array(
+        self::COLUMNS => array(
             "\n    %1\$s" => array(
                 array(1 => '%1$s', 'combinedby' => ",\n    ")
             )
@@ -59,7 +59,7 @@ class CreateTable extends AbstractSql implements SqlInterface
 
     /**
      * @param string $table
-     * @param bool   $isTemporary
+     * @param bool $isTemporary
      */
     public function __construct($table = '', $isTemporary = false)
     {
@@ -73,7 +73,7 @@ class CreateTable extends AbstractSql implements SqlInterface
      */
     public function setTemporary($temporary)
     {
-        $this->isTemporary = (bool) $temporary;
+        $this->isTemporary = (bool)$temporary;
         return $this;
     }
 
@@ -122,9 +122,9 @@ class CreateTable extends AbstractSql implements SqlInterface
     public function getRawState($key = null)
     {
         $rawState = array(
-            self::COLUMNS     => $this->columns,
+            self::COLUMNS => $this->columns,
             self::CONSTRAINTS => $this->constraints,
-            self::TABLE       => $this->table,
+            self::TABLE => $this->table,
         );
 
         return (isset($key) && array_key_exists($key, $rawState)) ? $rawState[$key] : $rawState;
@@ -139,7 +139,7 @@ class CreateTable extends AbstractSql implements SqlInterface
         // get platform, or create default
         $adapterPlatform = ($adapterPlatform) ?: new AdapterSql92Platform;
 
-        $sqls       = array();
+        $sqls = array();
         $parameters = array();
 
         foreach ($this->specifications as $name => $specification) {

@@ -40,18 +40,18 @@ class Date extends DateTimeElement
      */
     protected function getStepValidator()
     {
-        $format    = $this->getFormat();
+        $format = $this->getFormat();
         $stepValue = (isset($this->attributes['step']))
-                     ? $this->attributes['step'] : 1; // Days
+            ? $this->attributes['step'] : 1; // Days
 
         $baseValue = (isset($this->attributes['min']))
-                     ? $this->attributes['min'] : date($format, 0);
+            ? $this->attributes['min'] : date($format, 0);
 
         return new DateStepValidator(array(
-            'format'    => $format,
+            'format' => $format,
             'baseValue' => $baseValue,
-            'timezone'  => new DateTimezone('UTC'),
-            'step'      => new DateInterval("P{$stepValue}D"),
+            'timezone' => new DateTimezone('UTC'),
+            'step' => new DateInterval("P{$stepValue}D"),
         ));
     }
 }

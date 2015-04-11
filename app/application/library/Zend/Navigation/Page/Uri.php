@@ -34,7 +34,7 @@ class Uri extends AbstractPage
     /**
      * Sets page URI
      *
-     * @param  string $uri                page URI, must a string or null
+     * @param  string $uri page URI, must a string or null
      *
      * @return Uri   fluent interface, returns self
      * @throws Exception\InvalidArgumentException  if $uri is invalid

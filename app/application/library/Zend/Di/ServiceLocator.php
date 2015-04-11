@@ -67,7 +67,7 @@ class ServiceLocator implements ServiceLocatorInterface
      * method.
      *
      * @param  string $name
-     * @param  array  $params
+     * @param  array $params
      * @return mixed
      */
     public function get($name, array $params = array())

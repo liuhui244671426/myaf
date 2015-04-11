@@ -9,7 +9,7 @@ define(function (require) {
     var slider = Swipe(document.getElementById('scroll_img'), {
         auto: 3000,
         continuous: true,
-        callback: function(pos) {
+        callback: function (pos) {
             var i = bullets.length;
             while (i--) {
                 bullets[i].className = ' ';

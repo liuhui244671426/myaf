@@ -16,7 +16,7 @@ use Zend\Form\View\Helper\FormInput;
 
 abstract class AbstractWord extends FormInput
 {
-    const CAPTCHA_APPEND  = 'append';
+    const CAPTCHA_APPEND = 'append';
     const CAPTCHA_PREPEND = 'prepend';
 
     /**
@@ -87,7 +87,7 @@ abstract class AbstractWord extends FormInput
         }
 
         $hidden = $this->renderCaptchaHidden($captcha, $attributes);
-        $input  = $this->renderCaptchaInput($captcha, $attributes);
+        $input = $this->renderCaptchaInput($captcha, $attributes);
 
         return $hidden . $input;
     }
@@ -96,12 +96,12 @@ abstract class AbstractWord extends FormInput
      * Render the hidden input with the captcha identifier
      *
      * @param  CaptchaAdapter $captcha
-     * @param  array          $attributes
+     * @param  array $attributes
      * @return string
      */
     protected function renderCaptchaHidden(CaptchaAdapter $captcha, array $attributes)
     {
-        $attributes['type']  = 'hidden';
+        $attributes['type'] = 'hidden';
         $attributes['name'] .= '[id]';
 
         if (isset($attributes['id'])) {
@@ -115,8 +115,8 @@ abstract class AbstractWord extends FormInput
                 $attributes['value'] = $attributes['value']['id'];
             }
         }
-        $closingBracket      = $this->getInlineClosingBracket();
-        $hidden              = sprintf(
+        $closingBracket = $this->getInlineClosingBracket();
+        $hidden = sprintf(
             '<input %s%s',
             $this->createAttributesString($attributes),
             $closingBracket
@@ -129,18 +129,18 @@ abstract class AbstractWord extends FormInput
      * Render the input for capturing the captcha value from the client
      *
      * @param  CaptchaAdapter $captcha
-     * @param  array          $attributes
+     * @param  array $attributes
      * @return string
      */
     protected function renderCaptchaInput(CaptchaAdapter $captcha, array $attributes)
     {
-        $attributes['type']  = 'text';
+        $attributes['type'] = 'text';
         $attributes['name'] .= '[input]';
         if (array_key_exists('value', $attributes)) {
             unset($attributes['value']);
         }
-        $closingBracket      = $this->getInlineClosingBracket();
-        $input               = sprintf(
+        $closingBracket = $this->getInlineClosingBracket();
+        $input = sprintf(
             '<input %s%s',
             $this->createAttributesString($attributes),
             $closingBracket
@@ -165,7 +165,7 @@ abstract class AbstractWord extends FormInput
                 __METHOD__,
                 __CLASS__,
                 __CLASS__,
-                (string) $captchaPosition
+                (string)$captchaPosition
             ));
         }
         $this->captchaPosition = $captchaPosition;
@@ -191,7 +191,7 @@ abstract class AbstractWord extends FormInput
      */
     public function setSeparator($separator)
     {
-        $this->separator = (string) $separator;
+        $this->separator = (string)$separator;
         return $this;
     }
 

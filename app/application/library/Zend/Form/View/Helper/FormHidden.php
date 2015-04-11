@@ -19,11 +19,11 @@ class FormHidden extends FormInput
      * @var array
      */
     protected $validTagAttributes = array(
-        'name'           => true,
-        'disabled'       => true,
-        'form'           => true,
-        'type'           => true,
-        'value'          => true,
+        'name' => true,
+        'disabled' => true,
+        'form' => true,
+        'type' => true,
+        'value' => true,
     );
 
     /**

@@ -203,7 +203,7 @@ class PatternOptions extends AbstractOptions
      */
     public function setCacheOutput($cacheOutput)
     {
-        $this->cacheOutput = (bool) $cacheOutput;
+        $this->cacheOutput = (bool)$cacheOutput;
         return $this;
     }
 
@@ -323,7 +323,7 @@ class PatternOptions extends AbstractOptions
             if (is_string($dirPermission)) {
                 $dirPermission = octdec($dirPermission);
             } else {
-                $dirPermission = (int) $dirPermission;
+                $dirPermission = (int)$dirPermission;
             }
 
             // validate
@@ -364,7 +364,7 @@ class PatternOptions extends AbstractOptions
             if (is_string($umask)) {
                 $umask = octdec($umask);
             } else {
-                $umask = (int) $umask;
+                $umask = (int)$umask;
             }
 
             // validate
@@ -406,7 +406,7 @@ class PatternOptions extends AbstractOptions
      */
     public function setFileLocking($fileLocking)
     {
-        $this->fileLocking = (bool) $fileLocking;
+        $this->fileLocking = (bool)$fileLocking;
         return $this;
     }
 
@@ -436,7 +436,7 @@ class PatternOptions extends AbstractOptions
             if (is_string($filePermission)) {
                 $filePermission = octdec($filePermission);
             } else {
-                $filePermission = (int) $filePermission;
+                $filePermission = (int)$filePermission;
             }
 
             // validate
@@ -473,7 +473,7 @@ class PatternOptions extends AbstractOptions
      */
     public function setIndexFilename($indexFilename)
     {
-        $this->indexFilename = (string) $indexFilename;
+        $this->indexFilename = (string)$indexFilename;
         return $this;
     }
 
@@ -526,7 +526,7 @@ class PatternOptions extends AbstractOptions
      */
     public function setObjectCacheMagicProperties($objectCacheMagicProperties)
     {
-        $this->objectCacheMagicProperties = (bool) $objectCacheMagicProperties;
+        $this->objectCacheMagicProperties = (bool)$objectCacheMagicProperties;
         return $this;
     }
 
@@ -580,7 +580,7 @@ class PatternOptions extends AbstractOptions
     public function setObjectKey($objectKey)
     {
         if ($objectKey !== null) {
-            $this->objectKey = (string) $objectKey;
+            $this->objectKey = (string)$objectKey;
         } else {
             $this->objectKey = null;
         }
@@ -638,7 +638,7 @@ class PatternOptions extends AbstractOptions
      */
     public function setPublicDir($publicDir)
     {
-        $publicDir = (string) $publicDir;
+        $publicDir = (string)$publicDir;
 
         if (!is_dir($publicDir)) {
             throw new Exception\InvalidArgumentException(
@@ -729,7 +729,7 @@ class PatternOptions extends AbstractOptions
      */
     protected function normalizeObjectMethods(array $methods)
     {
-        $methods   = $this->recursiveStrtolower($methods);
+        $methods = $this->recursiveStrtolower($methods);
         $intersect = array_intersect(array('__set', '__get', '__unset', '__isset'), $methods);
         if (!empty($intersect)) {
             throw new Exception\InvalidArgumentException(

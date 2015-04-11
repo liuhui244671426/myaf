@@ -29,7 +29,7 @@ class InjectNamedConsoleParamsListener extends AbstractListenerAggregate
      *
      * @param MvcEvent $e
      * @return void
-    */
+     */
     public function injectNamedParams(MvcEvent $e)
     {
         if (!$routeMatch = $e->getRouteMatch()) {

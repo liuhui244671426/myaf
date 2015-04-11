@@ -14,8 +14,8 @@ interface PaddingInterface
     /**
      * Pad the string to the specified size
      *
-     * @param  string $string    The string to pad
-     * @param  int    $blockSize The size to pad to
+     * @param  string $string The string to pad
+     * @param  int $blockSize The size to pad to
      * @return string The padded string
      */
     public function pad($string, $blockSize = 32);

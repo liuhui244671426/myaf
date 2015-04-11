@@ -12,7 +12,7 @@ namespace Zend\Http\Header;
 /**
  * Content-Location Header
  *
-  */
+ */
 class GenericHeader implements HeaderInterface
 {
     /**
@@ -127,7 +127,7 @@ class GenericHeader implements HeaderInterface
      */
     public function setFieldValue($fieldValue)
     {
-        $fieldValue = (string) $fieldValue;
+        $fieldValue = (string)$fieldValue;
 
         if (preg_match('/^\s+$/', $fieldValue)) {
             $fieldValue = '';

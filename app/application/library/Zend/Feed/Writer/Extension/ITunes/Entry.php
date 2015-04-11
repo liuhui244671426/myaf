@@ -15,7 +15,7 @@ use Zend\Stdlib\StringUtils;
 use Zend\Stdlib\StringWrapper\StringWrapperInterface;
 
 /**
-*/
+ */
 class Entry
 {
     /**
@@ -53,7 +53,7 @@ class Entry
     public function setEncoding($enc)
     {
         $this->stringWrapper = StringUtils::getWrapper($enc);
-        $this->encoding      = $enc;
+        $this->encoding = $enc;
         return $this;
     }
 
@@ -78,12 +78,12 @@ class Entry
     {
         if (!ctype_alpha($value) && strlen($value) > 0) {
             throw new Writer\Exception\InvalidArgumentException('invalid parameter: "block" may only'
-            . ' contain alphabetic characters');
+                . ' contain alphabetic characters');
         }
 
         if ($this->stringWrapper->strlen($value) > 255) {
             throw new Writer\Exception\InvalidArgumentException('invalid parameter: "block" may only'
-            . ' contain a maximum of 255 characters');
+                . ' contain a maximum of 255 characters');
         }
         $this->data['block'] = $value;
     }
@@ -113,7 +113,7 @@ class Entry
     {
         if ($this->stringWrapper->strlen($value) > 255) {
             throw new Writer\Exception\InvalidArgumentException('invalid parameter: any "author" may only'
-            . ' contain a maximum of 255 characters each');
+                . ' contain a maximum of 255 characters each');
         }
         if (!isset($this->data['authors'])) {
             $this->data['authors'] = array();
@@ -131,13 +131,13 @@ class Entry
      */
     public function setItunesDuration($value)
     {
-        $value = (string) $value;
+        $value = (string)$value;
         if (!ctype_digit($value)
             && !preg_match("/^\d+:[0-5]{1}[0-9]{1}$/", $value)
             && !preg_match("/^\d+:[0-5]{1}[0-9]{1}:[0-5]{1}[0-9]{1}$/", $value)
         ) {
             throw new Writer\Exception\InvalidArgumentException('invalid parameter: "duration" may only'
-            . ' be of a specified [[HH:]MM:]SS format');
+                . ' be of a specified [[HH:]MM:]SS format');
         }
         $this->data['duration'] = $value;
         return $this;
@@ -154,7 +154,7 @@ class Entry
     {
         if (!in_array($value, array('yes', 'no', 'clean'))) {
             throw new Writer\Exception\InvalidArgumentException('invalid parameter: "explicit" may only'
-            . ' be one of "yes", "no" or "clean"');
+                . ' be one of "yes", "no" or "clean"');
         }
         $this->data['explicit'] = $value;
         return $this;
@@ -171,14 +171,14 @@ class Entry
     {
         if (count($value) > 12) {
             throw new Writer\Exception\InvalidArgumentException('invalid parameter: "keywords" may only'
-            . ' contain a maximum of 12 terms');
+                . ' contain a maximum of 12 terms');
         }
 
         $concat = implode(',', $value);
         if ($this->stringWrapper->strlen($concat) > 255) {
             throw new Writer\Exception\InvalidArgumentException('invalid parameter: "keywords" may only'
-            . ' have a concatenated length of 255 chars where terms are delimited'
-            . ' by a comma');
+                . ' have a concatenated length of 255 chars where terms are delimited'
+                . ' by a comma');
         }
         $this->data['keywords'] = $value;
         return $this;
@@ -195,7 +195,7 @@ class Entry
     {
         if ($this->stringWrapper->strlen($value) > 255) {
             throw new Writer\Exception\InvalidArgumentException('invalid parameter: "subtitle" may only'
-            . ' contain a maximum of 255 characters');
+                . ' contain a maximum of 255 characters');
         }
         $this->data['subtitle'] = $value;
         return $this;
@@ -212,7 +212,7 @@ class Entry
     {
         if ($this->stringWrapper->strlen($value) > 4000) {
             throw new Writer\Exception\InvalidArgumentException('invalid parameter: "summary" may only'
-            . ' contain a maximum of 4000 characters');
+                . ' contain a maximum of 4000 characters');
         }
         $this->data['summary'] = $value;
         return $this;

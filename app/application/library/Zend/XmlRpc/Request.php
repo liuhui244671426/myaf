@@ -72,7 +72,7 @@ class Request
      * Create a new XML-RPC request
      *
      * @param string $method (optional)
-     * @param array $params  (optional)
+     * @param array $params (optional)
      */
     public function __construct($method = null, $params = null)
     {
@@ -156,10 +156,10 @@ class Request
                 $type = $value->getType();
             } else {
                 $xmlRpcValue = AbstractValue::getXmlRpcValue($value);
-                $type        = $xmlRpcValue->getType();
+                $type = $xmlRpcValue->getType();
             }
         }
-        $this->types[]  = $type;
+        $this->types[] = $type;
         $this->xmlRpcParams[] = array('value' => $value, 'type' => $type);
     }
 
@@ -193,8 +193,8 @@ class Request
         }
 
         if ((1 == $argc) && is_array($argv[0])) {
-            $params     = array();
-            $types      = array();
+            $params = array();
+            $types = array();
             $wellFormed = true;
             foreach ($argv[0] as $arg) {
                 if (!is_array($arg) || !isset($arg['value'])) {
@@ -212,17 +212,17 @@ class Request
             if ($wellFormed) {
                 $this->xmlRpcParams = $argv[0];
                 $this->params = $params;
-                $this->types  = $types;
+                $this->types = $types;
             } else {
                 $this->params = $argv[0];
-                $this->types  = array();
-                $xmlRpcParams  = array();
+                $this->types = array();
+                $xmlRpcParams = array();
                 foreach ($argv[0] as $arg) {
                     if ($arg instanceof AbstractValue) {
                         $type = $arg->getType();
                     } else {
                         $xmlRpcValue = AbstractValue::getXmlRpcValue($arg);
-                        $type        = $xmlRpcValue->getType();
+                        $type = $xmlRpcValue->getType();
                     }
                     $xmlRpcParams[] = array('value' => $arg, 'type' => $type);
                     $this->types[] = $type;
@@ -233,14 +233,14 @@ class Request
         }
 
         $this->params = $argv;
-        $this->types  = array();
-        $xmlRpcParams  = array();
+        $this->types = array();
+        $xmlRpcParams = array();
         foreach ($argv as $arg) {
             if ($arg instanceof AbstractValue) {
                 $type = $arg->getType();
             } else {
                 $xmlRpcValue = AbstractValue::getXmlRpcValue($arg);
-                $type        = $xmlRpcValue->getType();
+                $type = $xmlRpcValue->getType();
             }
             $xmlRpcParams[] = array('value' => $arg, 'type' => $type);
             $this->types[] = $type;
@@ -284,7 +284,7 @@ class Request
         }
 
         // @see ZF-12293 - disable external entities for security purposes
-        $loadEntities  = libxml_disable_entity_loader(true);
+        $loadEntities = libxml_disable_entity_loader(true);
         $xmlErrorsFlag = libxml_use_internal_errors(true);
         try {
             $dom = new DOMDocument;
@@ -297,7 +297,7 @@ class Request
                 }
             }
             ErrorHandler::start();
-            $xml   = simplexml_import_dom($dom);
+            $xml = simplexml_import_dom($dom);
             $error = ErrorHandler::stop();
             libxml_disable_entity_loader($loadEntities);
             libxml_use_internal_errors($xmlErrorsFlag);
@@ -325,12 +325,12 @@ class Request
             return false;
         }
 
-        $this->method = (string) $xml->methodName;
+        $this->method = (string)$xml->methodName;
 
         // Check for parameters
         if (!empty($xml->params)) {
             $types = array();
-            $argv  = array();
+            $argv = array();
             foreach ($xml->params->children() as $param) {
                 if (!isset($param->value)) {
                     $this->fault = new Fault(633);
@@ -339,9 +339,9 @@ class Request
                 }
 
                 try {
-                    $param   = AbstractValue::getXmlRpcValue($param->value, AbstractValue::XML_STRING);
+                    $param = AbstractValue::getXmlRpcValue($param->value, AbstractValue::XML_STRING);
                     $types[] = $param->getType();
-                    $argv[]  = $param->getValue();
+                    $argv[] = $param->getValue();
                 } catch (\Exception $e) {
                     $this->fault = new Fault(636);
                     $this->fault->setEncoding($this->getEncoding());
@@ -349,7 +349,7 @@ class Request
                 }
             }
 
-            $this->types  = $types;
+            $this->types = $types;
             $this->params = $argv;
         }
 
@@ -390,7 +390,7 @@ class Request
         if (is_array($this->xmlRpcParams)) {
             foreach ($this->xmlRpcParams as $param) {
                 $value = $param['value'];
-                $type  = $param['type'] ?: AbstractValue::AUTO_DETECT_TYPE;
+                $type = $param['type'] ?: AbstractValue::AUTO_DETECT_TYPE;
 
                 if (!$value instanceof AbstractValue) {
                     $value = AbstractValue::getXmlRpcValue($value, $type);
@@ -409,13 +409,13 @@ class Request
      */
     public function saveXml()
     {
-        $args   = $this->_getXmlRpcParams();
+        $args = $this->_getXmlRpcParams();
         $method = $this->getMethod();
 
         $generator = AbstractValue::getGenerator();
         $generator->openElement('methodCall')
-                  ->openElement('methodName', $method)
-                  ->closeElement('methodName');
+            ->openElement('methodName', $method)
+            ->closeElement('methodName');
 
         if (is_array($args) && count($args)) {
             $generator->openElement('params');

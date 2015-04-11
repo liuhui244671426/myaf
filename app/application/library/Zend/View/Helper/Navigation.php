@@ -98,8 +98,8 @@ class Navigation extends AbstractNavigationHelper
      * $blogPages = $this->navigation()->findAllByRoute('blog');
      * </code>
      *
-     * @param  string $method             helper name or method name in container
-     * @param  array  $arguments          [optional] arguments to pass
+     * @param  string $method helper name or method name in container
+     * @param  array $arguments [optional] arguments to pass
      * @throws \Zend\View\Exception\ExceptionInterface        if proxying to a helper, and the
      *                                    helper is not an instance of the
      *                                    interface specified in
@@ -140,8 +140,8 @@ class Navigation extends AbstractNavigationHelper
      * The helper must implement the interface
      * {@link Zend\View\Helper\Navigation\Helper}.
      *
-     * @param string $proxy  helper name
-     * @param bool   $strict [optional] whether exceptions should be
+     * @param string $proxy helper name
+     * @param bool $strict [optional] whether exceptions should be
      *                                  thrown if something goes
      *                                  wrong. Default is true.
      * @throws Exception\RuntimeException if $strict is true and helper cannot be found
@@ -160,9 +160,9 @@ class Navigation extends AbstractNavigationHelper
             return false;
         }
 
-        $helper    = $plugins->get($proxy);
+        $helper = $plugins->get($proxy);
         $container = $this->getContainer();
-        $hash      = spl_object_hash($container) . spl_object_hash($helper);
+        $hash = spl_object_hash($container) . spl_object_hash($helper);
 
         if (!isset($this->injected[$hash])) {
             $helper->setContainer();
@@ -215,7 +215,7 @@ class Navigation extends AbstractNavigationHelper
      */
     public function setDefaultProxy($proxy)
     {
-        $this->defaultProxy = (string) $proxy;
+        $this->defaultProxy = (string)$proxy;
         return $this;
     }
 
@@ -237,7 +237,7 @@ class Navigation extends AbstractNavigationHelper
      */
     public function setInjectContainer($injectContainer = true)
     {
-        $this->injectContainer = (bool) $injectContainer;
+        $this->injectContainer = (bool)$injectContainer;
         return $this;
     }
 
@@ -259,7 +259,7 @@ class Navigation extends AbstractNavigationHelper
      */
     public function setInjectAcl($injectAcl = true)
     {
-        $this->injectAcl = (bool) $injectAcl;
+        $this->injectAcl = (bool)$injectAcl;
         return $this;
     }
 
@@ -281,7 +281,7 @@ class Navigation extends AbstractNavigationHelper
      */
     public function setInjectTranslator($injectTranslator = true)
     {
-        $this->injectTranslator = (bool) $injectTranslator;
+        $this->injectTranslator = (bool)$injectTranslator;
         return $this;
     }
 

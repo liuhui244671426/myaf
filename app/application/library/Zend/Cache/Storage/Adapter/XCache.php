@@ -115,9 +115,9 @@ class XCache extends AbstractAdapter implements
 
             $this->initAdminAuth();
             $cnt = xcache_count(XC_TYPE_VAR);
-            for ($i=0; $i < $cnt; $i++) {
+            for ($i = 0; $i < $cnt; $i++) {
                 $info = xcache_info(XC_TYPE_VAR, $i);
-                $this->totalSpace+= $info['size'];
+                $this->totalSpace += $info['size'];
             }
             $this->resetAdminAuth();
         }
@@ -140,7 +140,7 @@ class XCache extends AbstractAdapter implements
         $cnt = xcache_count(XC_TYPE_VAR);
         for ($i = 0; $i < $cnt; $i++) {
             $info = xcache_info(XC_TYPE_VAR, $i);
-            $availableSpace+= $info['avail'];
+            $availableSpace += $info['avail'];
         }
         $this->resetAdminAuth();
 
@@ -157,13 +157,13 @@ class XCache extends AbstractAdapter implements
      */
     public function clearByNamespace($namespace)
     {
-        $namespace = (string) $namespace;
+        $namespace = (string)$namespace;
         if ($namespace === '') {
             throw new Exception\InvalidArgumentException('No namespace given');
         }
 
         $options = $this->getOptions();
-        $prefix  = $namespace . $options->getNamespaceSeparator();
+        $prefix = $namespace . $options->getNamespaceSeparator();
 
         xcache_unset_by_prefix($prefix);
         return true;
@@ -179,14 +179,14 @@ class XCache extends AbstractAdapter implements
      */
     public function clearByPrefix($prefix)
     {
-        $prefix = (string) $prefix;
+        $prefix = (string)$prefix;
         if ($prefix === '') {
             throw new Exception\InvalidArgumentException('No prefix given');
         }
 
-        $options   = $this->getOptions();
+        $options = $this->getOptions();
         $namespace = $options->getNamespace();
-        $prefix    = ($namespace === '') ? '' : $namespace . $options->getNamespaceSeparator() . $prefix;
+        $prefix = ($namespace === '') ? '' : $namespace . $options->getNamespaceSeparator() . $prefix;
 
         xcache_unset_by_prefix($prefix);
         return true;
@@ -220,26 +220,26 @@ class XCache extends AbstractAdapter implements
      */
     public function getIterator()
     {
-        $options   = $this->getOptions();
+        $options = $this->getOptions();
         $namespace = $options->getNamespace();
-        $keys      = array();
+        $keys = array();
 
         $this->initAdminAuth();
 
         if ($namespace === '') {
             $cnt = xcache_count(XC_TYPE_VAR);
-            for ($i=0; $i < $cnt; $i++) {
+            for ($i = 0; $i < $cnt; $i++) {
                 $list = xcache_list(XC_TYPE_VAR, $i);
                 foreach ($list['cache_list'] as & $item) {
                     $keys[] = $item['name'];
                 }
             }
         } else {
-            $prefix  = $namespace . $options->getNamespaceSeparator();
+            $prefix = $namespace . $options->getNamespaceSeparator();
             $prefixL = strlen($prefix);
 
             $cnt = xcache_count(XC_TYPE_VAR);
-            for ($i=0; $i < $cnt; $i++) {
+            for ($i = 0; $i < $cnt; $i++) {
                 $list = xcache_list(XC_TYPE_VAR, $i);
                 foreach ($list['cache_list'] as & $item) {
                     $keys[] = substr($item['name'], $prefixL);
@@ -257,20 +257,20 @@ class XCache extends AbstractAdapter implements
     /**
      * Internal method to get an item.
      *
-     * @param  string  $normalizedKey
+     * @param  string $normalizedKey
      * @param  bool $success
-     * @param  mixed   $casToken
+     * @param  mixed $casToken
      * @return mixed Data on success, null on failure
      * @throws Exception\ExceptionInterface
      */
     protected function internalGetItem(& $normalizedKey, & $success = null, & $casToken = null)
     {
-        $options     = $this->getOptions();
-        $namespace   = $options->getNamespace();
-        $prefix      = ($namespace === '') ? '' : $namespace . $options->getNamespaceSeparator();
+        $options = $this->getOptions();
+        $namespace = $options->getNamespace();
+        $prefix = ($namespace === '') ? '' : $namespace . $options->getNamespaceSeparator();
         $internalKey = $prefix . $normalizedKey;
 
-        $result  = xcache_get($internalKey);
+        $result = xcache_get($internalKey);
         $success = ($result !== null);
 
         if ($success) {
@@ -289,9 +289,9 @@ class XCache extends AbstractAdapter implements
      */
     protected function internalHasItem(& $normalizedKey)
     {
-        $options   = $this->getOptions();
+        $options = $this->getOptions();
         $namespace = $options->getNamespace();
-        $prefix    = ($namespace === '') ? '' : $namespace . $options->getNamespaceSeparator();
+        $prefix = ($namespace === '') ? '' : $namespace . $options->getNamespaceSeparator();
         return xcache_isset($prefix . $normalizedKey);
     }
 
@@ -304,15 +304,15 @@ class XCache extends AbstractAdapter implements
      */
     protected function internalGetMetadata(& $normalizedKey)
     {
-        $options     = $this->getOptions();
-        $namespace   = $options->getNamespace();
-        $prefix      = ($namespace === '') ? '' : $namespace . $options->getNamespaceSeparator();
+        $options = $this->getOptions();
+        $namespace = $options->getNamespace();
+        $prefix = ($namespace === '') ? '' : $namespace . $options->getNamespaceSeparator();
         $internalKey = $prefix . $normalizedKey;
 
         if (xcache_isset($internalKey)) {
             $this->initAdminAuth();
             $cnt = xcache_count(XC_TYPE_VAR);
-            for ($i=0; $i < $cnt; $i++) {
+            for ($i = 0; $i < $cnt; $i++) {
                 $list = xcache_list(XC_TYPE_VAR, $i);
                 foreach ($list['cache_list'] as & $metadata) {
                     if ($metadata['name'] === $internalKey) {
@@ -333,17 +333,17 @@ class XCache extends AbstractAdapter implements
      * Internal method to store an item.
      *
      * @param  string $normalizedKey
-     * @param  mixed  $value
+     * @param  mixed $value
      * @return bool
      * @throws Exception\ExceptionInterface
      */
     protected function internalSetItem(& $normalizedKey, & $value)
     {
-        $options     = $this->getOptions();
-        $namespace   = $options->getNamespace();
-        $prefix      = ($options === '') ? '' : $namespace . $options->getNamespaceSeparator();
+        $options = $this->getOptions();
+        $namespace = $options->getNamespace();
+        $prefix = ($options === '') ? '' : $namespace . $options->getNamespaceSeparator();
         $internalKey = $prefix . $normalizedKey;
-        $ttl         = $options->getTtl();
+        $ttl = $options->getTtl();
 
         if (!xcache_set($internalKey, $value, $ttl)) {
             $type = is_object($value) ? get_class($value) : gettype($value);
@@ -364,9 +364,9 @@ class XCache extends AbstractAdapter implements
      */
     protected function internalRemoveItem(& $normalizedKey)
     {
-        $options     = $this->getOptions();
-        $namespace   = $options->getNamespace();
-        $prefix      = ($namespace === '') ? '' : $namespace . $options->getNamespaceSeparator();
+        $options = $this->getOptions();
+        $namespace = $options->getNamespace();
+        $prefix = ($namespace === '') ? '' : $namespace . $options->getNamespaceSeparator();
         $internalKey = $prefix . $normalizedKey;
 
         return xcache_unset($internalKey);
@@ -376,18 +376,18 @@ class XCache extends AbstractAdapter implements
      * Internal method to increment an item.
      *
      * @param  string $normalizedKey
-     * @param  int    $value
+     * @param  int $value
      * @return int|bool The new value on success, false on failure
      * @throws Exception\ExceptionInterface
      */
     protected function internalIncrementItem(& $normalizedKey, & $value)
     {
-        $options     = $this->getOptions();
-        $namespace   = $options->getNamespace();
-        $prefix      = ($namespace === '') ? '' : $namespace . $options->getNamespaceSeparator();
+        $options = $this->getOptions();
+        $namespace = $options->getNamespace();
+        $prefix = ($namespace === '') ? '' : $namespace . $options->getNamespaceSeparator();
         $internalKey = $prefix . $normalizedKey;
-        $ttl         = $options->getTtl();
-        $value       = (int) $value;
+        $ttl = $options->getTtl();
+        $value = (int)$value;
 
         return xcache_inc($internalKey, $value, $ttl);
     }
@@ -396,18 +396,18 @@ class XCache extends AbstractAdapter implements
      * Internal method to decrement an item.
      *
      * @param  string $normalizedKey
-     * @param  int    $value
+     * @param  int $value
      * @return int|bool The new value on success, false on failure
      * @throws Exception\ExceptionInterface
      */
     protected function internalDecrementItem(& $normalizedKey, & $value)
     {
-        $options     = $this->getOptions();
-        $namespace   = $options->getNamespace();
-        $prefix      = ($namespace === '') ? '' : $namespace . $options->getNamespaceSeparator();
+        $options = $this->getOptions();
+        $namespace = $options->getNamespace();
+        $prefix = ($namespace === '') ? '' : $namespace . $options->getNamespaceSeparator();
         $internalKey = $prefix . $normalizedKey;
-        $ttl         = $options->getTtl();
-        $value       = (int) $value;
+        $ttl = $options->getTtl();
+        $value = (int)$value;
 
         return xcache_dec($internalKey, $value, $ttl);
     }
@@ -422,19 +422,19 @@ class XCache extends AbstractAdapter implements
     protected function internalGetCapabilities()
     {
         if ($this->capabilities === null) {
-            $marker       = new stdClass();
+            $marker = new stdClass();
             $capabilities = new Capabilities(
                 $this,
                 $marker,
                 array(
                     'supportedDatatypes' => array(
-                        'NULL'     => false,
-                        'boolean'  => true,
-                        'integer'  => true,
-                        'double'   => true,
-                        'string'   => true,
-                        'array'    => true,
-                        'object'   => 'object',
+                        'NULL' => false,
+                        'boolean' => true,
+                        'integer' => true,
+                        'double' => true,
+                        'string' => true,
+                        'array' => true,
+                        'object' => 'object',
                         'resource' => false,
                     ),
                     'supportedMetadata' => array(
@@ -442,14 +442,14 @@ class XCache extends AbstractAdapter implements
                         'size', 'refcount', 'hits',
                         'ctime', 'atime', 'hvalue',
                     ),
-                    'minTtl'             => 1,
-                    'maxTtl'             => (int)ini_get('xcache.var_maxttl'),
-                    'staticTtl'          => true,
-                    'ttlPrecision'       => 1,
-                    'useRequestTime'     => true,
-                    'expiredRead'        => false,
-                    'maxKeyLength'       => 5182,
-                    'namespaceIsPrefix'  => true,
+                    'minTtl' => 1,
+                    'maxTtl' => (int)ini_get('xcache.var_maxttl'),
+                    'staticTtl' => true,
+                    'ttlPrecision' => 1,
+                    'useRequestTime' => true,
+                    'expiredRead' => false,
+                    'maxKeyLength' => 5182,
+                    'namespaceIsPrefix' => true,
                     'namespaceSeparator' => $this->getOptions()->getNamespaceSeparator(),
                 )
             );
@@ -463,7 +463,7 @@ class XCache extends AbstractAdapter implements
                 }
             });
 
-            $this->capabilities     = $capabilities;
+            $this->capabilities = $capabilities;
             $this->capabilityMarker = $marker;
         }
 
@@ -495,7 +495,7 @@ class XCache extends AbstractAdapter implements
 
             // set authentication
             $_SERVER['PHP_AUTH_USER'] = $adminUser;
-            $_SERVER['PHP_AUTH_PW']   = $adminPass;
+            $_SERVER['PHP_AUTH_PW'] = $adminPass;
         }
     }
 

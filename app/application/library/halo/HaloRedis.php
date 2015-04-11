@@ -44,7 +44,7 @@ class HaloRedis
     {
         if (!isset($this->_REDIS)) {
 
-            if(!class_exists('redis')){
+            if (!class_exists('redis')) {
                 throw new Exception('Class Redis not exists');
             }
 

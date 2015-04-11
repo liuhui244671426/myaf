@@ -14,7 +14,7 @@ interface AdapterInterface
     /**
      * Checks the length of a barcode
      *
-     * @param  string $value  The barcode to check for proper length
+     * @param  string $value The barcode to check for proper length
      * @return bool
      */
     public function hasValidLength($value);

@@ -75,7 +75,7 @@ class Variables extends ArrayObject
      */
     public function setStrictVars($flag)
     {
-        $this->strictVars = (bool) $flag;
+        $this->strictVars = (bool)$flag;
         return $this;
     }
 
@@ -102,7 +102,7 @@ class Variables extends ArrayObject
             if (method_exists($spec, 'toArray')) {
                 $spec = $spec->toArray();
             } else {
-                $spec = (array) $spec;
+                $spec = (array)$spec;
             }
         }
         if (!is_array($spec)) {

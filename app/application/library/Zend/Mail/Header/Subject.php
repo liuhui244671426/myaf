@@ -69,7 +69,7 @@ class Subject implements UnstructuredInterface
 
     public function setSubject($subject)
     {
-        $this->subject = (string) $subject;
+        $this->subject = (string)$subject;
         return $this;
     }
 

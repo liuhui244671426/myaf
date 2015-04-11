@@ -1,11 +1,11 @@
 <?php
 /**
  * Zend Framework (http://framework.zend.com/)
-*
-* @link      http://github.com/zendframework/zf2 for the canonical source repository
-* @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
-* @license   http://framework.zend.com/license/new-bsd New BSD License
-*/
+ *
+ * @link      http://github.com/zendframework/zf2 for the canonical source repository
+ * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license   http://framework.zend.com/license/new-bsd New BSD License
+ */
 
 namespace Zend\Log\Processor;
 
@@ -28,7 +28,7 @@ class Backtrace implements ProcessorInterface
      *
      * @param array $event event data
      * @return array event data
-    */
+     */
     public function process(array $event)
     {
         $trace = $this->getBacktrace();
@@ -38,15 +38,15 @@ class Backtrace implements ProcessorInterface
 
         $i = 0;
         while (isset($trace[$i]['class'])
-               && false !== strpos($trace[$i]['class'], $this->ignoredNamespace)
+            && false !== strpos($trace[$i]['class'], $this->ignoredNamespace)
         ) {
             $i++;
         }
 
         $origin = array(
-            'file'     => isset($trace[$i-1]['file'])   ? $trace[$i-1]['file']   : null,
-            'line'     => isset($trace[$i-1]['line'])   ? $trace[$i-1]['line']   : null,
-            'class'    => isset($trace[$i]['class'])    ? $trace[$i]['class']    : null,
+            'file' => isset($trace[$i - 1]['file']) ? $trace[$i - 1]['file'] : null,
+            'line' => isset($trace[$i - 1]['line']) ? $trace[$i - 1]['line'] : null,
+            'class' => isset($trace[$i]['class']) ? $trace[$i]['class'] : null,
             'function' => isset($trace[$i]['function']) ? $trace[$i]['function'] : null,
         );
 

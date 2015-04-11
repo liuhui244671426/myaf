@@ -64,7 +64,7 @@ class Headers implements Countable, Iterator
      */
     public static function fromString($string, $EOL = self::EOL)
     {
-        $headers     = new static();
+        $headers = new static();
         $currentLine = '';
 
         // iterate the header lines, some might be continuations
@@ -302,7 +302,7 @@ class Headers implements Countable, Iterator
                 } else {
                     return $results[0];
                 }
-                //fall-trough
+            //fall-trough
             default:
                 return new ArrayIterator($results);
         }
@@ -453,7 +453,7 @@ class Headers implements Countable, Iterator
         $class = ($this->getPluginClassLoader()->load($key)) ?: 'Zend\Mail\Header\GenericHeader';
 
         $encoding = $current->getEncoding();
-        $headers  = $class::fromString($current->toString());
+        $headers = $class::fromString($current->toString());
         if (is_array($headers)) {
             $current = array_shift($headers);
             $current->setEncoding($encoding);
@@ -461,7 +461,7 @@ class Headers implements Countable, Iterator
             foreach ($headers as $header) {
                 $header->setEncoding($encoding);
                 $this->headersKeys[] = $key;
-                $this->headers[]     = $header;
+                $this->headers[] = $header;
             }
             return $current;
         }

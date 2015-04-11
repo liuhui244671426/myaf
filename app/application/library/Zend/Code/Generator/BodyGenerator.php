@@ -22,7 +22,7 @@ class BodyGenerator extends AbstractGenerator
      */
     public function setContent($content)
     {
-        $this->content = (string) $content;
+        $this->content = (string)$content;
         return $this;
     }
 

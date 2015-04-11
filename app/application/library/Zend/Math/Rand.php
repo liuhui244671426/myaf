@@ -33,7 +33,7 @@ abstract class Rand
      */
     public static function getBytes($length, $strong = false)
     {
-        $length = (int) $length;
+        $length = (int)$length;
 
         if ($length <= 0) {
             return false;
@@ -98,7 +98,7 @@ abstract class Rand
     public static function getBoolean($strong = false)
     {
         $byte = static::getBytes(1, $strong);
-        return (bool) (ord($byte) % 2);
+        return (bool)(ord($byte) % 2);
     }
 
     /**
@@ -134,12 +134,12 @@ abstract class Rand
             $r >>= 1;
         }
 
-        $bits   = (int) max($bits, 1);
-        $bytes  = (int) max(ceil($bits / 8), 1);
-        $filter = (int) ((1 << $bits) - 1);
+        $bits = (int)max($bits, 1);
+        $bytes = (int)max(ceil($bits / 8), 1);
+        $filter = (int)((1 << $bits) - 1);
 
         do {
-            $rnd  = hexdec(bin2hex(static::getBytes($bytes, $strong)));
+            $rnd = hexdec(bin2hex(static::getBytes($bytes, $strong)));
             $rnd &= $filter;
         } while ($rnd > $range);
 
@@ -155,14 +155,14 @@ abstract class Rand
      * and we fix the exponent to the bias (1023). In this way we generate
      * a float of 1.mantissa.
      *
-     * @param  bool $strong  true if you need a strong random generator (cryptography)
+     * @param  bool $strong true if you need a strong random generator (cryptography)
      * @return float
      */
     public static function getFloat($strong = false)
     {
-        $bytes    = static::getBytes(7, $strong);
+        $bytes = static::getBytes(7, $strong);
         $bytes[6] = $bytes[6] | chr(0xF0);
-        $bytes   .= chr(63); // exponent bias (1023)
+        $bytes .= chr(63); // exponent bias (1023)
         list(, $float) = unpack('d', $bytes);
 
         return ($float - 1);
@@ -176,7 +176,7 @@ abstract class Rand
      *
      * @param  int $length
      * @param  string|null $charlist
-     * @param  bool $strong  true if you need a strong random generator (cryptography)
+     * @param  bool $strong true if you need a strong random generator (cryptography)
      * @return string
      * @throws Exception\DomainException
      */
@@ -189,7 +189,7 @@ abstract class Rand
         // charlist is empty or not provided
         if (empty($charlist)) {
             $numBytes = ceil($length * 0.75);
-            $bytes    = static::getBytes($numBytes, $strong);
+            $bytes = static::getBytes($numBytes, $strong);
             return substr(rtrim(base64_encode($bytes), '='), 0, $length);
         }
 
@@ -199,11 +199,11 @@ abstract class Rand
             return str_repeat($charlist, $length);
         }
 
-        $bytes  = static::getBytes($length, $strong);
-        $pos    = 0;
+        $bytes = static::getBytes($length, $strong);
+        $pos = 0;
         $result = '';
         for ($i = 0; $i < $length; $i++) {
-            $pos     = ($pos + ord($bytes[$i])) % $listLen;
+            $pos = ($pos + ord($bytes[$i])) % $listLen;
             $result .= $charlist[$pos];
         }
 

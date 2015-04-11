@@ -41,13 +41,13 @@ class Rule
      * Create a new plural rule.
      *
      * @param  int $numPlurals
-     * @param  array   $ast
+     * @param  array $ast
      * @return Rule
      */
     protected function __construct($numPlurals, array $ast)
     {
         $this->numPlurals = $numPlurals;
-        $this->ast        = $ast;
+        $this->ast = $ast;
     }
 
     /**
@@ -59,7 +59,7 @@ class Rule
      */
     public function evaluate($number)
     {
-        $result = $this->evaluateAstPart($this->ast, abs((int) $number));
+        $result = $this->evaluateAstPart($this->ast, abs((int)$number));
 
         if ($result < 0 || $result >= $this->numPlurals) {
             throw new Exception\RangeException(
@@ -83,7 +83,7 @@ class Rule
     /**
      * Evaluate a part of an ast.
      *
-     * @param  array   $ast
+     * @param  array $ast
      * @param  int $number
      * @return int
      * @throws Exception\ParseException
@@ -99,11 +99,11 @@ class Rule
 
             case '+':
                 return $this->evaluateAstPart($ast['arguments'][0], $number)
-                       + $this->evaluateAstPart($ast['arguments'][1], $number);
+                + $this->evaluateAstPart($ast['arguments'][1], $number);
 
             case '-':
                 return $this->evaluateAstPart($ast['arguments'][0], $number)
-                       - $this->evaluateAstPart($ast['arguments'][1], $number);
+                - $this->evaluateAstPart($ast['arguments'][1], $number);
 
             case '/':
                 // Integer division
@@ -114,60 +114,60 @@ class Rule
 
             case '*':
                 return $this->evaluateAstPart($ast['arguments'][0], $number)
-                       * $this->evaluateAstPart($ast['arguments'][1], $number);
+                * $this->evaluateAstPart($ast['arguments'][1], $number);
 
             case '%':
                 return $this->evaluateAstPart($ast['arguments'][0], $number)
-                       % $this->evaluateAstPart($ast['arguments'][1], $number);
+                % $this->evaluateAstPart($ast['arguments'][1], $number);
 
             case '>':
                 return $this->evaluateAstPart($ast['arguments'][0], $number)
-                       > $this->evaluateAstPart($ast['arguments'][1], $number)
-                       ? 1 : 0;
+                > $this->evaluateAstPart($ast['arguments'][1], $number)
+                    ? 1 : 0;
 
             case '>=':
                 return $this->evaluateAstPart($ast['arguments'][0], $number)
-                       >= $this->evaluateAstPart($ast['arguments'][1], $number)
-                       ? 1 : 0;
+                >= $this->evaluateAstPart($ast['arguments'][1], $number)
+                    ? 1 : 0;
 
             case '<':
                 return $this->evaluateAstPart($ast['arguments'][0], $number)
-                       < $this->evaluateAstPart($ast['arguments'][1], $number)
-                       ? 1 : 0;
+                < $this->evaluateAstPart($ast['arguments'][1], $number)
+                    ? 1 : 0;
 
             case '<=':
                 return $this->evaluateAstPart($ast['arguments'][0], $number)
-                       <= $this->evaluateAstPart($ast['arguments'][1], $number)
-                       ? 1 : 0;
+                <= $this->evaluateAstPart($ast['arguments'][1], $number)
+                    ? 1 : 0;
 
             case '==':
                 return $this->evaluateAstPart($ast['arguments'][0], $number)
-                       == $this->evaluateAstPart($ast['arguments'][1], $number)
-                       ? 1 : 0;
+                == $this->evaluateAstPart($ast['arguments'][1], $number)
+                    ? 1 : 0;
 
             case '!=':
                 return $this->evaluateAstPart($ast['arguments'][0], $number)
-                       != $this->evaluateAstPart($ast['arguments'][1], $number)
-                       ? 1 : 0;
+                != $this->evaluateAstPart($ast['arguments'][1], $number)
+                    ? 1 : 0;
 
             case '&&':
                 return $this->evaluateAstPart($ast['arguments'][0], $number)
-                       && $this->evaluateAstPart($ast['arguments'][1], $number)
-                       ? 1 : 0;
+                && $this->evaluateAstPart($ast['arguments'][1], $number)
+                    ? 1 : 0;
 
             case '||':
                 return $this->evaluateAstPart($ast['arguments'][0], $number)
-                       || $this->evaluateAstPart($ast['arguments'][1], $number)
-                       ? 1 : 0;
+                || $this->evaluateAstPart($ast['arguments'][1], $number)
+                    ? 1 : 0;
 
             case '!':
                 return !$this->evaluateAstPart($ast['arguments'][0], $number)
-                       ? 1 : 0;
+                    ? 1 : 0;
 
             case '?':
                 return $this->evaluateAstPart($ast['arguments'][0], $number)
-                       ? $this->evaluateAstPart($ast['arguments'][1], $number)
-                       : $this->evaluateAstPart($ast['arguments'][2], $number);
+                    ? $this->evaluateAstPart($ast['arguments'][1], $number)
+                    : $this->evaluateAstPart($ast['arguments'][2], $number);
 
             default:
                 throw new Exception\ParseException(sprintf(
@@ -197,7 +197,7 @@ class Rule
             ));
         }
 
-        $numPlurals = (int) $match['nplurals'];
+        $numPlurals = (int)$match['nplurals'];
 
         if (!preg_match('(plural=(?P<plural>[^;\n]+))', $string, $match)) {
             throw new Exception\ParseException(sprintf(
@@ -207,7 +207,7 @@ class Rule
         }
 
         $tree = static::$parser->parse($match['plural']);
-        $ast  = static::createAst($tree);
+        $ast = static::createAst($tree);
 
         return new static($numPlurals, $ast);
     }

@@ -26,12 +26,12 @@ class Digits extends AbstractFilter
     public function filter($value)
     {
         if (is_int($value)) {
-            return (string) $value;
+            return (string)$value;
         }
-        if (! (is_float($value) || is_string($value))) {
+        if (!(is_float($value) || is_string($value))) {
             return $value;
         }
-        $value = (string) $value;
+        $value = (string)$value;
 
         if (!StringUtils::hasPcreUnicodeSupport()) {
             // POSIX named classes are not supported, use alternative 0-9 match

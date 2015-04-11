@@ -44,9 +44,9 @@ class TranslatorAwareTreeRouteStack extends TreeRouteStack implements Translator
      * match(): defined by \Zend\Mvc\Router\RouteInterface
      *
      * @see    \Zend\Mvc\Router\RouteInterface::match()
-     * @param  Request      $request
+     * @param  Request $request
      * @param  integer|null $pathOffset
-     * @param  array        $options
+     * @param  array $options
      * @return RouteMatch|null
      */
     public function match(Request $request, $pathOffset = null, array $options = array())
@@ -90,7 +90,7 @@ class TranslatorAwareTreeRouteStack extends TreeRouteStack implements Translator
      *
      * @see    TranslatorAwareInterface::setTranslator()
      * @param  Translator $translator
-     * @param  string     $textDomain
+     * @param  string $textDomain
      * @return TreeRouteStack
      */
     public function setTranslator(Translator $translator = null, $textDomain = null)

@@ -33,8 +33,8 @@ class IbmDb2 implements DriverInterface, Profiler\ProfilerAwareInterface
 
     /**
      * @param array|Connection|resource $connection
-     * @param null|Statement            $statementPrototype
-     * @param null|Result               $resultPrototype
+     * @param null|Statement $statementPrototype
+     * @param null|Result $resultPrototype
      */
     public function __construct($connection, Statement $statementPrototype = null, Result $resultPrototype = null)
     {
@@ -194,7 +194,7 @@ class IbmDb2 implements DriverInterface, Profiler\ProfilerAwareInterface
      * Format parameter name
      *
      * @param string $name
-     * @param mixed  $type
+     * @param mixed $type
      * @return string
      */
     public function formatParameterName($name, $type = null)

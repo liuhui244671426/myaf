@@ -34,13 +34,13 @@ class Row
      * Create a new column and append it to the row
      *
      * @param  string $content
-     * @param  array  $options
+     * @param  array $options
      * @return Row
      */
     public function createColumn($content, array $options = null)
     {
-        $align    = null;
-        $colSpan  = null;
+        $align = null;
+        $colSpan = null;
         $encoding = null;
 
         if ($options !== null) {
@@ -114,9 +114,9 @@ class Row
     /**
      * Render the row
      *
-     * @param  array                               $columnWidths Width of all columns
-     * @param  Decorator $decorator    Decorator for the row borders
-     * @param  int                             $padding      Padding for the columns
+     * @param  array $columnWidths Width of all columns
+     * @param  Decorator $decorator Decorator for the row borders
+     * @param  int $padding Padding for the columns
      * @throws Exception\OverflowException When there are too many columns
      * @return string
      */
@@ -133,8 +133,8 @@ class Row
 
         // First we have to render all columns, to get the maximum height
         $renderedColumns = array();
-        $maxHeight       = 0;
-        $colNum          = 0;
+        $maxHeight = 0;
+        $colNum = 0;
         foreach ($this->columns as $column) {
             // Get the colspan of the column
             $colSpan = $column->getColSpan();
@@ -155,7 +155,7 @@ class Row
 
             // Store the rendered column and calculate the new max height
             $renderedColumns[] = $result;
-            $maxHeight         = max($maxHeight, count($result));
+            $maxHeight = max($maxHeight, count($result));
 
             // Set up the internal column number
             $colNum += $colSpan;
@@ -165,7 +165,7 @@ class Row
         // it with an empty column
         if ($colNum < count($columnWidths)) {
             $remainingWidth = (count($columnWidths) - $colNum - 1) +
-                               array_sum(array_slice($columnWidths, $colNum));
+                array_sum(array_slice($columnWidths, $colNum));
             $renderedColumns[] = array(str_repeat(' ', $remainingWidth));
 
             $this->columnWidths[] = $remainingWidth;

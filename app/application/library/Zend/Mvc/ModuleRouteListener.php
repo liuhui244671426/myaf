@@ -14,7 +14,7 @@ use Zend\EventManager\ListenerAggregateInterface;
 
 class ModuleRouteListener implements ListenerAggregateInterface
 {
-    const MODULE_NAMESPACE    = '__NAMESPACE__';
+    const MODULE_NAMESPACE = '__NAMESPACE__';
     const ORIGINAL_CONTROLLER = '__CONTROLLER__';
 
     /**

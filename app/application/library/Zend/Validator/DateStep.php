@@ -17,7 +17,7 @@ use Zend\Stdlib\ArrayUtils;
 
 class DateStep extends Date
 {
-    const NOT_STEP       = 'dateStepNotStep';
+    const NOT_STEP = 'dateStepNotStep';
 
     const FORMAT_DEFAULT = DateTime::ISO8601;
 
@@ -25,10 +25,10 @@ class DateStep extends Date
      * @var array
      */
     protected $messageTemplates = array(
-        self::INVALID      => "Invalid type given. String, integer, array or DateTime expected",
+        self::INVALID => "Invalid type given. String, integer, array or DateTime expected",
         self::INVALID_DATE => "The input does not appear to be a valid date",
-        self::FALSEFORMAT  => "The input does not fit the date format '%format%'",
-        self::NOT_STEP     => "The input is not a valid step",
+        self::FALSEFORMAT => "The input does not fit the date format '%format%'",
+        self::NOT_STEP => "The input is not a valid step",
     );
 
     /**
@@ -199,8 +199,8 @@ class DateStep extends Date
         }
 
         $valueDate = $this->convertToDateTime($value, false); // avoid duplicate errors
-        $baseDate  = $this->convertToDateTime($this->baseValue, false);
-        $step      = $this->getStep();
+        $baseDate = $this->convertToDateTime($this->baseValue, false);
+        $step = $this->getStep();
 
         // Same date?
         if ($valueDate == $baseDate) {
@@ -210,23 +210,23 @@ class DateStep extends Date
         // Optimization for simple intervals.
         // Handle intervals of just one date or time unit.
         $intervalParts = explode('|', $step->format('%y|%m|%d|%h|%i|%s'));
-        $partCounts    = array_count_values($intervalParts);
+        $partCounts = array_count_values($intervalParts);
 
         $unitKeys = array('years', 'months', 'days', 'hours', 'minutes', 'seconds');
         $intervalParts = array_combine($unitKeys, $intervalParts);
 
         // Get absolute time difference
-        $timeDiff  = $valueDate->diff($baseDate, true);
+        $timeDiff = $valueDate->diff($baseDate, true);
         $diffParts = array_combine($unitKeys, explode('|', $timeDiff->format('%y|%m|%d|%h|%i|%s')));
 
         if (5 === $partCounts["0"]) {
             // Find the unit with the non-zero interval
             $intervalUnit = null;
-            $stepValue    = null;
+            $stepValue = null;
             foreach ($intervalParts as $key => $value) {
                 if (0 != $value) {
                     $intervalUnit = $key;
-                    $stepValue    = (int) $value;
+                    $stepValue = (int)$value;
                     break;
                 }
             }
@@ -310,8 +310,8 @@ class DateStep extends Date
                             break;
                         case 'seconds':
                             $seconds = ($diffParts['hours'] * 60 * 60)
-                                       + ($diffParts['minutes'] * 60)
-                                       + $diffParts['seconds'];
+                                + ($diffParts['minutes'] * 60)
+                                + $diffParts['seconds'];
                             if (($seconds % $stepValue) === 0) {
                                 return true;
                             }
@@ -336,10 +336,10 @@ class DateStep extends Date
      * iterations by starting at the lower bound of steps needed to reach
      * the target
      *
-     * @param DateTime     $baseDate
-     * @param DateTime     $valueDate
-     * @param int[]        $intervalParts
-     * @param int[]        $diffParts
+     * @param DateTime $baseDate
+     * @param DateTime $valueDate
+     * @param int[] $intervalParts
+     * @param int[] $diffParts
      * @param DateInterval $step
      *
      * @return bool
@@ -350,18 +350,19 @@ class DateStep extends Date
         array $intervalParts,
         array $diffParts,
         DateInterval $step
-    ) {
+    )
+    {
         list($minSteps, $requiredIterations) = $this->computeMinStepAndRequiredIterations($intervalParts, $diffParts);
-        $minimumInterval                     = $this->computeMinimumInterval($intervalParts, $minSteps);
-        $isIncrementalStepping               = $baseDate < $valueDate;
-        $dateModificationOperation           = $isIncrementalStepping ? 'add' : 'sub';
+        $minimumInterval = $this->computeMinimumInterval($intervalParts, $minSteps);
+        $isIncrementalStepping = $baseDate < $valueDate;
+        $dateModificationOperation = $isIncrementalStepping ? 'add' : 'sub';
 
         for ($offsetIterations = 0; $offsetIterations < $requiredIterations; $offsetIterations += 1) {
             $baseDate->{$dateModificationOperation}($minimumInterval);
         }
 
         while (($isIncrementalStepping && $baseDate < $valueDate)
-            || (! $isIncrementalStepping && $baseDate > $valueDate)
+            || (!$isIncrementalStepping && $baseDate > $valueDate)
         ) {
             $baseDate->{$dateModificationOperation}($step);
 
@@ -379,7 +380,7 @@ class DateStep extends Date
      * Computes minimum interval to use for iterations while checking steps
      *
      * @param int[] $intervalParts
-     * @param int   $minSteps
+     * @param int $minSteps
      *
      * @return DateInterval
      */
@@ -408,14 +409,14 @@ class DateStep extends Date
 
         // If we use PHP_INT_MAX DateInterval::__construct falls over with a bad format error
         // before we reach the max on 64 bit machines
-        $maxInteger             = min(pow(2, 31), PHP_INT_MAX);
+        $maxInteger = min(pow(2, 31), PHP_INT_MAX);
         // check for integer overflow and split $minimum interval if needed
-        $maximumInterval        = max($intervalParts);
+        $maximumInterval = max($intervalParts);
         $requiredStepIterations = 1;
 
         if (($minSteps * $maximumInterval) > $maxInteger) {
             $requiredStepIterations = ceil(($minSteps * $maximumInterval) / $maxInteger);
-            $minSteps               = floor($minSteps / $requiredStepIterations);
+            $minSteps = floor($minSteps / $requiredStepIterations);
         }
 
         return array($minSteps, $minSteps ? $requiredStepIterations : 0);
@@ -449,11 +450,11 @@ class DateStep extends Date
     private function computeIntervalMaxSeconds(array $intervalParts)
     {
         return ($intervalParts['years'] * 60 * 60 * 24 * 366)
-            + ($intervalParts['months'] * 60 * 60 * 24 * 31)
-            + ($intervalParts['days'] * 60 * 60 * 24)
-            + ($intervalParts['hours'] * 60 * 60)
-            + ($intervalParts['minutes'] * 60)
-            + $intervalParts['seconds'];
+        + ($intervalParts['months'] * 60 * 60 * 24 * 31)
+        + ($intervalParts['days'] * 60 * 60 * 24)
+        + ($intervalParts['hours'] * 60 * 60)
+        + ($intervalParts['minutes'] * 60)
+        + $intervalParts['seconds'];
     }
 
     /**
@@ -467,10 +468,10 @@ class DateStep extends Date
     private function computeDiffMinSeconds(array $diffParts)
     {
         return ($diffParts['years'] * 60 * 60 * 24 * 365)
-            + ($diffParts['months'] * 60 * 60 * 24 * 28)
-            + ($diffParts['days'] * 60 * 60 * 24)
-            + ($diffParts['hours'] * 60 * 60)
-            + ($diffParts['minutes'] * 60)
-            + $diffParts['seconds'];
+        + ($diffParts['months'] * 60 * 60 * 24 * 28)
+        + ($diffParts['days'] * 60 * 60 * 24)
+        + ($diffParts['hours'] * 60 * 60)
+        + ($diffParts['minutes'] * 60)
+        + $diffParts['seconds'];
     }
 }

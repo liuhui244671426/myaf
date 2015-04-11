@@ -22,9 +22,9 @@ class Date extends AbstractValidator
      * Validity constants
      * @var string
      */
-    const INVALID        = 'dateInvalid';
-    const INVALID_DATE   = 'dateInvalidDate';
-    const FALSEFORMAT    = 'dateFalseFormat';
+    const INVALID = 'dateInvalid';
+    const INVALID_DATE = 'dateInvalidDate';
+    const FALSEFORMAT = 'dateFalseFormat';
     /**#@-*/
 
     /**
@@ -39,9 +39,9 @@ class Date extends AbstractValidator
      * @var array
      */
     protected $messageTemplates = array(
-        self::INVALID      => "Invalid type given. String, integer, array or DateTime expected",
+        self::INVALID => "Invalid type given. String, integer, array or DateTime expected",
         self::INVALID_DATE => "The input does not appear to be a valid date",
-        self::FALSEFORMAT  => "The input does not fit the date format '%format%'",
+        self::FALSEFORMAT => "The input does not fit the date format '%format%'",
     );
 
     /**
@@ -123,7 +123,7 @@ class Date extends AbstractValidator
      * Attempts to convert an int, string, or array to a DateTime object
      *
      * @param  string|int|array $param
-     * @param  bool             $addErrors
+     * @param  bool $addErrors
      * @return bool|DateTime
      */
     protected function convertToDateTime($param, $addErrors = true)
@@ -160,7 +160,7 @@ class Date extends AbstractValidator
      * Attempts to convert a string into a DateTime object
      *
      * @param  string $value
-     * @param  bool   $addErrors
+     * @param  bool $addErrors
      * @return bool|DateTime
      */
     protected function convertString($value, $addErrors = true)
@@ -184,7 +184,7 @@ class Date extends AbstractValidator
      * Implodes the array into a string and proxies to {@link convertString()}.
      *
      * @param  array $value
-     * @param  bool  $addErrors
+     * @param  bool $addErrors
      * @return bool|DateTime
      * @todo   enhance the implosion
      */

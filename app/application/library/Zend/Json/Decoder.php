@@ -23,14 +23,14 @@ class Decoder
      * for public consumption, they are just used internally to the
      * class.
      */
-    const EOF       = 0;
-    const DATUM     = 1;
-    const LBRACE    = 2;
-    const LBRACKET  = 3;
-    const RBRACE    = 4;
-    const RBRACKET  = 5;
-    const COMMA     = 6;
-    const COLON     = 7;
+    const EOF = 0;
+    const DATUM = 1;
+    const LBRACE = 2;
+    const LBRACKET = 3;
+    const RBRACE = 4;
+    const RBRACKET = 5;
+    const COMMA = 6;
+    const COLON = 7;
 
     /**
      * Use to maintain a "pointer" to the source being decoded
@@ -87,8 +87,8 @@ class Decoder
      */
     public static function decodeUnicodeString($chrs)
     {
-        $chrs       = (string) $chrs;
-        $utf8       = '';
+        $chrs = (string)$chrs;
+        $utf8 = '';
         $strlenChrs = strlen($chrs);
 
         for ($i = 0; $i < $strlenChrs; $i++) {
@@ -98,12 +98,12 @@ class Decoder
                 case preg_match('/\\\u[0-9A-F]{4}/i', substr($chrs, $i, 6)):
                     // single, escaped unicode character
                     $utf16 = chr(hexdec(substr($chrs, ($i + 2), 2)))
-                           . chr(hexdec(substr($chrs, ($i + 4), 2)));
+                        . chr(hexdec(substr($chrs, ($i + 4), 2)));
                     $utf8char = self::_utf162utf8($utf16);
-                    $search  = array('\\', "\n", "\t", "\r", chr(0x08), chr(0x0C), '"', '\'', '/');
+                    $search = array('\\', "\n", "\t", "\r", chr(0x08), chr(0x0C), '"', '\'', '/');
                     if (in_array($utf8char, $search)) {
                         $replace = array('\\\\', '\\n', '\\t', '\\r', '\\b', '\\f', '\\"', '\\\'', '\\/');
-                        $utf8char  = str_replace($search, $replace, $utf8char);
+                        $utf8char = str_replace($search, $replace, $utf8char);
                     }
                     $utf8 .= $utf8char;
                     $i += 5;
@@ -150,8 +150,8 @@ class Decoder
     /**
      * Constructor
      *
-     * @param string $source     String source to decode
-     * @param int    $decodeType How objects should be decoded -- see
+     * @param string $source String source to decode
+     * @param int $decodeType How objects should be decoded -- see
      * {@link Zend\Json\Json::TYPE_ARRAY} and {@link Zend\Json\Json::TYPE_OBJECT} for
      * valid values
      * @throws InvalidArgumentException
@@ -159,10 +159,10 @@ class Decoder
     protected function __construct($source, $decodeType)
     {
         // Set defaults
-        $this->source       = self::decodeUnicodeString($source);
+        $this->source = self::decodeUnicodeString($source);
         $this->sourceLength = strlen($this->source);
-        $this->token        = self::EOF;
-        $this->offset       = 0;
+        $this->token = self::EOF;
+        $this->offset = 0;
 
         switch ($decodeType) {
             case Json::TYPE_ARRAY:
@@ -217,15 +217,15 @@ class Decoder
     {
         switch ($this->token) {
             case self::DATUM:
-                $result  = $this->tokenValue;
+                $result = $this->tokenValue;
                 $this->_getNextToken();
-                return($result);
+                return ($result);
                 break;
             case self::LBRACE:
-                return($this->_decodeObject());
+                return ($this->_decodeObject());
                 break;
             case self::LBRACKET:
-                return($this->_decodeArray());
+                return ($this->_decodeArray());
                 break;
             default:
                 return null;
@@ -254,7 +254,7 @@ class Decoder
         $tok = $this->_getNextToken();
 
         while ($tok && $tok != self::RBRACE) {
-            if ($tok != self::DATUM || ! is_string($this->tokenValue)) {
+            if ($tok != self::DATUM || !is_string($this->tokenValue)) {
                 throw new RuntimeException('Missing key in object encoding: ' . $this->source);
             }
 
@@ -312,7 +312,7 @@ class Decoder
     {
         $result = array();
         $tok = $this->_getNextToken(); // Move past the '['
-        $index  = 0;
+        $index = 0;
 
         while ($tok && $tok != self::RBRACKET) {
             $result[$index++] = $this->_decodeValue();
@@ -340,7 +340,8 @@ class Decoder
     protected function _eatWhitespace()
     {
         if (preg_match('/([\t\b\f\n\r ])*/s', $this->source, $matches, PREG_OFFSET_CAPTURE, $this->offset)
-            && $matches[0][1] == $this->offset) {
+            && $matches[0][1] == $this->offset
+        ) {
             $this->offset += strlen($matches[0][0]);
         }
     }
@@ -353,18 +354,18 @@ class Decoder
      */
     protected function _getNextToken()
     {
-        $this->token      = self::EOF;
+        $this->token = self::EOF;
         $this->tokenValue = null;
         $this->_eatWhitespace();
 
         if ($this->offset >= $this->sourceLength) {
-            return(self::EOF);
+            return (self::EOF);
         }
 
-        $str       = $this->source;
+        $str = $this->source;
         $strLength = $this->sourceLength;
-        $i         = $this->offset;
-        $start     = $i;
+        $i = $this->offset;
+        $start = $i;
 
         switch ($str{$i}) {
             case '{':
@@ -444,21 +445,21 @@ class Decoder
                 $this->tokenValue = $result;
                 break;
             case 't':
-                if (($i+ 3) < $strLength && substr($str, $start, 4) == "true") {
+                if (($i + 3) < $strLength && substr($str, $start, 4) == "true") {
                     $this->token = self::DATUM;
                 }
                 $this->tokenValue = true;
                 $i += 3;
                 break;
             case 'f':
-                if (($i+ 4) < $strLength && substr($str, $start, 5) == "false") {
+                if (($i + 4) < $strLength && substr($str, $start, 5) == "false") {
                     $this->token = self::DATUM;
                 }
                 $this->tokenValue = false;
                 $i += 4;
                 break;
             case 'n':
-                if (($i+ 3) < $strLength && substr($str, $start, 4) == "null") {
+                if (($i + 3) < $strLength && substr($str, $start, 4) == "null") {
                     $this->token = self::DATUM;
                 }
                 $this->tokenValue = null;
@@ -468,7 +469,7 @@ class Decoder
 
         if ($this->token != self::EOF) {
             $this->offset = $i + 1; // Consume the last token character
-            return($this->token);
+            return ($this->token);
         }
 
         $chr = $str{$i};
@@ -480,7 +481,7 @@ class Decoder
                     if (preg_match('/^0\d+$/', $datum)) {
                         throw new RuntimeException("Octal notation not supported by JSON (value: {$datum})");
                     } else {
-                        $val  = intval($datum);
+                        $val = intval($datum);
                         $fVal = floatval($datum);
                         $this->tokenValue = ($val == $fVal ? $val : $fVal);
                     }
@@ -530,14 +531,14 @@ class Decoder
                 // return a 2-byte UTF-8 character
                 // see: http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
                 return chr(0xC0 | (($bytes >> 6) & 0x1F))
-                     . chr(0x80 | ($bytes & 0x3F));
+                . chr(0x80 | ($bytes & 0x3F));
 
             case (0xFFFF & $bytes) == $bytes:
                 // return a 3-byte UTF-8 character
                 // see: http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
                 return chr(0xE0 | (($bytes >> 12) & 0x0F))
-                     . chr(0x80 | (($bytes >> 6) & 0x3F))
-                     . chr(0x80 | ($bytes & 0x3F));
+                . chr(0x80 | (($bytes >> 6) & 0x3F))
+                . chr(0x80 | ($bytes & 0x3F));
         }
 
         // ignoring UTF-32 for now, sorry

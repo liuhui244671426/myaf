@@ -20,7 +20,7 @@ use Zend\ProgressBar\Adapter;
  */
 class Http extends AbstractAdapter
 {
-    protected static $callbackApc            = 'apc_fetch';
+    protected static $callbackApc = 'apc_fetch';
     protected static $callbackUploadProgress = 'uploadprogress_get_info';
 
     /**
@@ -43,8 +43,8 @@ class Http extends AbstractAdapter
     /**
      * Sets a validator for the class, erasing all previous set
      *
-     * @param  array        $validators Validator to set
-     * @param  string|array $files      Files to limit this validator to
+     * @param  array $validators Validator to set
+     * @param  string|array $files Files to limit this validator to
      * @return AbstractAdapter
      */
     public function setValidators(array $validators, $files = null)
@@ -116,12 +116,12 @@ class Http extends AbstractAdapter
             }
 
             $temp = array($files => array(
-                'name'  => $files,
+                'name' => $files,
                 'error' => 1));
             $validator = $this->validators['Zend\Validator\File\Upload'];
             $validator->setTranslator($this->getTranslator())
-                      ->setFiles($temp)
-                      ->isValid($files, null);
+                ->setFiles($temp)
+                ->isValid($files, null);
             $this->messages += $validator->getMessages();
             return false;
         }
@@ -144,14 +144,14 @@ class Http extends AbstractAdapter
         $check = $this->getFiles($files);
         foreach ($check as $file => $content) {
             if (!$content['received']) {
-                $directory   = '';
+                $directory = '';
                 $destination = $this->getDestination($file);
                 if ($destination !== null) {
                     $directory = $destination . DIRECTORY_SEPARATOR;
                 }
 
                 $filename = $directory . $content['name'];
-                $rename   = $this->getFilter('Rename');
+                $rename = $this->getFilter('Rename');
                 if ($rename !== null) {
                     $tmp = $rename->getNewName($content['tmp_name']);
                     if ($tmp != $content['tmp_name']) {
@@ -180,7 +180,7 @@ class Http extends AbstractAdapter
 
                 if ($rename !== null) {
                     $this->files[$file]['destination'] = dirname($filename);
-                    $this->files[$file]['name']        = basename($filename);
+                    $this->files[$file]['name'] = basename($filename);
                 }
 
                 $this->files[$file]['tmp_name'] = $filename;
@@ -293,12 +293,12 @@ class Http extends AbstractAdapter
         }
 
         $session = 'Zend\File\Transfer\Adapter\Http\ProgressBar';
-        $status  = array(
-            'total'    => 0,
-            'current'  => 0,
-            'rate'     => 0,
-            'message'  => '',
-            'done'     => false
+        $status = array(
+            'total' => 0,
+            'current' => 0,
+            'rate' => 0,
+            'message' => '',
+            'done' => false
         );
 
         if (is_array($id)) {
@@ -325,7 +325,7 @@ class Http extends AbstractAdapter
         if (empty($id)) {
             if (!isset($_GET['progress_key'])) {
                 $status['message'] = 'No upload in progress';
-                $status['done']    = true;
+                $status['done'] = true;
             } else {
                 $id = $_GET['progress_key'];
             }
@@ -341,9 +341,9 @@ class Http extends AbstractAdapter
                 $call = call_user_func(static::$callbackUploadProgress, $id);
                 if (is_array($call)) {
                     $status = $call + $status;
-                    $status['total']   = $status['bytes_total'];
+                    $status['total'] = $status['bytes_total'];
                     $status['current'] = $status['bytes_uploaded'];
-                    $status['rate']    = $status['speed_average'];
+                    $status['rate'] = $status['speed_average'];
                     if ($status['total'] == $status['current']) {
                         $status['done'] = true;
                     }
@@ -351,10 +351,10 @@ class Http extends AbstractAdapter
             }
 
             if (!is_array($call)) {
-                $status['done']    = true;
+                $status['done'] = true;
                 $status['message'] = 'Failure while retrieving the upload progress';
             } elseif (!empty($status['cancel_upload'])) {
-                $status['done']    = true;
+                $status['done'] = true;
                 $status['message'] = 'The upload has been canceled';
             } else {
                 $status['message'] = static::toByteString($status['current']) . " - " . static::toByteString($status['total']);
@@ -391,7 +391,7 @@ class Http extends AbstractAdapter
      */
     public static function isApcAvailable()
     {
-        return (bool) ini_get('apc.enabled') && (bool) ini_get('apc.rfc1867') && is_callable(static::$callbackApc);
+        return (bool)ini_get('apc.enabled') && (bool)ini_get('apc.rfc1867') && is_callable(static::$callbackApc);
     }
 
     /**
@@ -416,17 +416,17 @@ class Http extends AbstractAdapter
             if (is_array($content['name'])) {
                 foreach ($content as $param => $file) {
                     foreach ($file as $number => $target) {
-                        $this->files[$form . '_' . $number . '_'][$param]      = $target;
+                        $this->files[$form . '_' . $number . '_'][$param] = $target;
                         $this->files[$form]['multifiles'][$number] = $form . '_' . $number . '_';
                     }
                 }
 
                 $this->files[$form]['name'] = $form;
                 foreach ($this->files[$form]['multifiles'] as $key => $value) {
-                    $this->files[$value]['options']   = $this->options;
+                    $this->files[$value]['options'] = $this->options;
                     $this->files[$value]['validated'] = false;
-                    $this->files[$value]['received']  = false;
-                    $this->files[$value]['filtered']  = false;
+                    $this->files[$value]['received'] = false;
+                    $this->files[$value]['filtered'] = false;
 
                     $mimetype = $this->detectMimeType($this->files[$value]);
                     $this->files[$value]['type'] = $mimetype;
@@ -440,11 +440,11 @@ class Http extends AbstractAdapter
                     }
                 }
             } else {
-                $this->files[$form]              = $content;
-                $this->files[$form]['options']   = $this->options;
+                $this->files[$form] = $content;
+                $this->files[$form]['options'] = $this->options;
                 $this->files[$form]['validated'] = false;
-                $this->files[$form]['received']  = false;
-                $this->files[$form]['filtered']  = false;
+                $this->files[$form]['received'] = false;
+                $this->files[$form]['filtered'] = false;
 
                 $mimetype = $this->detectMimeType($this->files[$form]);
                 $this->files[$form]['type'] = $mimetype;

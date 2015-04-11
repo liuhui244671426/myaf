@@ -32,7 +32,7 @@ class Container extends AbstractContainer
             return $ret;
         }
         $storage = $this->getStorage();
-        $name    = $this->getName();
+        $name = $this->getName();
         $ret =& $storage[$name][$key];
 
         return $ret;

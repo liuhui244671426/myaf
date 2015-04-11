@@ -171,7 +171,7 @@ class Console extends AbstractAdapter
     {
         ErrorHandler::start();
         $stream = fopen($resource, 'w');
-        $error  = ErrorHandler::stop();
+        $error = ErrorHandler::stop();
 
         if ($stream === false) {
             throw new Exception\RuntimeException('Unable to open stream', 0, $error);
@@ -224,14 +224,14 @@ class Console extends AbstractAdapter
                 // Try to determine the width through stty
                 ErrorHandler::start();
                 if (preg_match('#\d+ (\d+)#', shell_exec('stty size'), $match) === 1) {
-                    $this->width = (int) $match[1];
+                    $this->width = (int)$match[1];
                 } elseif (preg_match('#columns = (\d+);#', shell_exec('stty'), $match) === 1) {
-                    $this->width = (int) $match[1];
+                    $this->width = (int)$match[1];
                 }
                 ErrorHandler::stop();
             }
         } else {
-            $this->width = (int) $width;
+            $this->width = (int)$width;
         }
 
         $this->_calculateBarWidth();
@@ -249,9 +249,9 @@ class Console extends AbstractAdapter
     public function setElements(array $elements)
     {
         $allowedElements = array(self::ELEMENT_PERCENT,
-                                 self::ELEMENT_BAR,
-                                 self::ELEMENT_ETA,
-                                 self::ELEMENT_TEXT);
+            self::ELEMENT_BAR,
+            self::ELEMENT_ETA,
+            self::ELEMENT_TEXT);
 
         if (count(array_diff($elements, $allowedElements)) > 0) {
             throw new Exception\InvalidArgumentException('Invalid element found in $elements array');
@@ -277,7 +277,7 @@ class Console extends AbstractAdapter
             throw new Exception\InvalidArgumentException('Character may not be empty');
         }
 
-        $this->barLeftChar = (string) $char;
+        $this->barLeftChar = (string)$char;
 
         return $this;
     }
@@ -295,7 +295,7 @@ class Console extends AbstractAdapter
             throw new Exception\InvalidArgumentException('Character may not be empty');
         }
 
-        $this->barRightChar = (string) $char;
+        $this->barRightChar = (string)$char;
 
         return $this;
     }
@@ -308,7 +308,7 @@ class Console extends AbstractAdapter
      */
     public function setBarIndicatorChar($char)
     {
-        $this->barIndicatorChar = (string) $char;
+        $this->barIndicatorChar = (string)$char;
 
         return $this;
     }
@@ -321,7 +321,7 @@ class Console extends AbstractAdapter
      */
     public function setTextWidth($width)
     {
-        $this->textWidth = (int) $width;
+        $this->textWidth = (int)$width;
 
         $this->_calculateBarWidth();
 
@@ -348,8 +348,8 @@ class Console extends AbstractAdapter
     public function setFinishAction($action)
     {
         $allowedActions = array(self::FINISH_ACTION_CLEAR_LINE,
-                                self::FINISH_ACTION_EOL,
-                                self::FINISH_ACTION_NONE);
+            self::FINISH_ACTION_EOL,
+            self::FINISH_ACTION_NONE);
 
         if (!in_array($action, $allowedActions)) {
             throw new Exception\InvalidArgumentException('Invalid finish action specified');
@@ -363,12 +363,12 @@ class Console extends AbstractAdapter
     /**
      * Defined by Zend\ProgressBar\Adapter\AbstractAdapter
      *
-     * @param  float   $current       Current progress value
-     * @param  float   $max           Max progress value
-     * @param  float   $percent       Current percent value
-     * @param  int $timeTaken     Taken time in seconds
+     * @param  float $current Current progress value
+     * @param  float $max Max progress value
+     * @param  float $percent Current percent value
+     * @param  int $timeTaken Taken time in seconds
      * @param  int $timeRemaining Remaining time in seconds
-     * @param  string  $text          Status text
+     * @param  string $text Status text
      * @return void
      */
     public function notify($current, $max, $percent, $timeTaken, $timeRemaining, $text)
@@ -388,7 +388,7 @@ class Console extends AbstractAdapter
             switch ($element) {
                 case self::ELEMENT_BAR:
                     $visualWidth = $this->barWidth - 2;
-                    $bar         = '[';
+                    $bar = '[';
 
                     $indicatorWidth = strlen($this->barIndicatorChar);
 
@@ -425,7 +425,7 @@ class Console extends AbstractAdapter
                     if ($timeRemaining === null || $timeRemaining > 86400) {
                         $etaFormatted = '??:??:??';
                     } else {
-                        $hours   = floor($timeRemaining / 3600);
+                        $hours = floor($timeRemaining / 3600);
                         $minutes = floor(($timeRemaining % 3600) / 60);
                         $seconds = ($timeRemaining % 3600 % 60);
 
@@ -468,8 +468,8 @@ class Console extends AbstractAdapter
             case self::FINISH_ACTION_CLEAR_LINE:
                 if ($this->outputStarted) {
                     $data = str_repeat("\x08", $this->width)
-                          . str_repeat(' ', $this->width)
-                          . str_repeat("\x08", $this->width);
+                        . str_repeat(' ', $this->width)
+                        . str_repeat("\x08", $this->width);
 
                     $this->_outputData($data);
                 }

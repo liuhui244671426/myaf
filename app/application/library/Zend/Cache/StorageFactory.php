@@ -54,21 +54,21 @@ abstract class StorageFactory
         if (!isset($cfg['adapter'])) {
             throw new Exception\InvalidArgumentException('Missing "adapter"');
         }
-        $adapterName    = $cfg['adapter'];
+        $adapterName = $cfg['adapter'];
         $adapterOptions = array();
         if (is_array($cfg['adapter'])) {
             if (!isset($cfg['adapter']['name'])) {
                 throw new Exception\InvalidArgumentException('Missing "adapter.name"');
             }
 
-            $adapterName    = $cfg['adapter']['name'];
+            $adapterName = $cfg['adapter']['name'];
             $adapterOptions = isset($cfg['adapter']['options']) ? $cfg['adapter']['options'] : array();
         }
         if (isset($cfg['options'])) {
             $adapterOptions = array_merge($adapterOptions, $cfg['options']);
         }
 
-        $adapter = static::adapterFactory((string) $adapterName, $adapterOptions);
+        $adapter = static::adapterFactory((string)$adapterName, $adapterOptions);
 
         // add plugins
         if (isset($cfg['plugins'])) {
@@ -95,13 +95,13 @@ abstract class StorageFactory
                             "'plugins.{$k}' needs to be an array"
                         );
                     }
-                    $pluginName    = $k;
+                    $pluginName = $k;
                     $pluginOptions = $v;
                 } elseif (is_array($v)) {
                     if (!isset($v['name'])) {
                         throw new Exception\InvalidArgumentException("Invalid plugins[{$k}] or missing plugins[{$k}].name");
                     }
-                    $pluginName = (string) $v['name'];
+                    $pluginName = (string)$v['name'];
 
                     if (isset($v['options'])) {
                         $pluginOptions = $v['options'];
@@ -113,7 +113,7 @@ abstract class StorageFactory
                         $pluginPrio = $v['priority'];
                     }
                 } else {
-                    $pluginName    = $v;
+                    $pluginName = $v;
                     $pluginOptions = array();
                 }
 
@@ -128,7 +128,7 @@ abstract class StorageFactory
     /**
      * Instantiate a storage adapter
      *
-     * @param  string|Storage\StorageInterface                  $adapterName
+     * @param  string|Storage\StorageInterface $adapterName
      * @param  array|Traversable|Storage\Adapter\AdapterOptions $options
      * @return Storage\StorageInterface
      * @throws Exception\RuntimeException
@@ -186,7 +186,7 @@ abstract class StorageFactory
     /**
      * Instantiate a storage plugin
      *
-     * @param string|Storage\Plugin\PluginInterface     $pluginName
+     * @param string|Storage\Plugin\PluginInterface $pluginName
      * @param array|Traversable|Storage\Plugin\PluginOptions $options
      * @return Storage\Plugin\PluginInterface
      * @throws Exception\RuntimeException

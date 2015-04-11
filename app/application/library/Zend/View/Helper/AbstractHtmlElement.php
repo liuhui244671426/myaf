@@ -65,11 +65,11 @@ abstract class AbstractHtmlElement extends AbstractHelper
      */
     protected function htmlAttribs($attribs)
     {
-        $xhtml          = '';
-        $escaper        = $this->getView()->plugin('escapehtml');
+        $xhtml = '';
+        $escaper = $this->getView()->plugin('escapehtml');
         $escapeHtmlAttr = $this->getView()->plugin('escapehtmlattr');
 
-        foreach ((array) $attribs as $key => $val) {
+        foreach ((array)$attribs as $key => $val) {
             $key = $escaper($key);
 
             if (('on' == substr($key, 0, 2)) || ('constraints' == $key)) {

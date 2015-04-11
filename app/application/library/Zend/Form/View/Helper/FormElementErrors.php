@@ -18,8 +18,8 @@ class FormElementErrors extends AbstractHelper
     /**@+
      * @var string Templates for the open/close/separators for message tags
      */
-    protected $messageCloseString     = '</li></ul>';
-    protected $messageOpenFormat      = '<ul%s><li>';
+    protected $messageCloseString = '</li></ul>';
+    protected $messageOpenFormat = '<ul%s><li>';
     protected $messageSeparatorString = '</li><li>';
     /**@-*/
 
@@ -34,7 +34,7 @@ class FormElementErrors extends AbstractHelper
      * Proxies to {@link render()} if an element is passed.
      *
      * @param  ElementInterface $element
-     * @param  array            $attributes
+     * @param  array $attributes
      * @return string|FormElementErrors
      */
     public function __invoke(ElementInterface $element = null, array $attributes = array())
@@ -76,7 +76,7 @@ class FormElementErrors extends AbstractHelper
         }
 
         // Flatten message array
-        $escapeHtml      = $this->getEscapeHtmlHelper();
+        $escapeHtml = $this->getEscapeHtmlHelper();
         $messagesToPrint = array();
         array_walk_recursive($messages, function ($item) use (&$messagesToPrint, $escapeHtml) {
             $messagesToPrint[] = $escapeHtml($item);
@@ -87,7 +87,7 @@ class FormElementErrors extends AbstractHelper
         }
 
         // Generate markup
-        $markup  = sprintf($this->getMessageOpenFormat(), $attributes);
+        $markup = sprintf($this->getMessageOpenFormat(), $attributes);
         $markup .= implode($this->getMessageSeparatorString(), $messagesToPrint);
         $markup .= $this->getMessageCloseString();
 
@@ -124,7 +124,7 @@ class FormElementErrors extends AbstractHelper
      */
     public function setMessageCloseString($messageCloseString)
     {
-        $this->messageCloseString = (string) $messageCloseString;
+        $this->messageCloseString = (string)$messageCloseString;
         return $this;
     }
 
@@ -146,7 +146,7 @@ class FormElementErrors extends AbstractHelper
      */
     public function setMessageOpenFormat($messageOpenFormat)
     {
-        $this->messageOpenFormat = (string) $messageOpenFormat;
+        $this->messageOpenFormat = (string)$messageOpenFormat;
         return $this;
     }
 
@@ -168,7 +168,7 @@ class FormElementErrors extends AbstractHelper
      */
     public function setMessageSeparatorString($messageSeparatorString)
     {
-        $this->messageSeparatorString = (string) $messageSeparatorString;
+        $this->messageSeparatorString = (string)$messageSeparatorString;
         return $this;
     }
 

@@ -67,7 +67,7 @@ class Test implements AdapterInterface
      */
     public function setNextRequestWillFail($flag)
     {
-        $this->nextRequestWillFail = (bool) $flag;
+        $this->nextRequestWillFail = (bool)$flag;
 
         return $this;
     }
@@ -84,7 +84,7 @@ class Test implements AdapterInterface
             $options = ArrayUtils::iteratorToArray($options);
         }
 
-        if (! is_array($options)) {
+        if (!is_array($options)) {
             throw new Exception\InvalidArgumentException(
                 'Array or Traversable object expected, got ' . gettype($options)
             );
@@ -100,8 +100,8 @@ class Test implements AdapterInterface
      * Connect to the remote server
      *
      * @param  string $host
-     * @param  int    $port
-     * @param  bool   $secure
+     * @param  int $port
+     * @param  bool $secure
      * @throws Exception\RuntimeException
      */
     public function connect($host, $port = 80, $secure = false)
@@ -115,11 +115,11 @@ class Test implements AdapterInterface
     /**
      * Send request to the remote server
      *
-     * @param string        $method
+     * @param string $method
      * @param \Zend\Uri\Uri $uri
-     * @param string        $httpVer
-     * @param array         $headers
-     * @param string        $body
+     * @param string $httpVer
+     * @param array $headers
+     * @param string $body
      * @return string Request as string
      */
     public function write($method, $uri, $httpVer = '1.1', $headers = array(), $body = '')
@@ -183,7 +183,7 @@ class Test implements AdapterInterface
             $response = $response->toString();
         }
 
-        $this->responses = (array) $response;
+        $this->responses = (array)$response;
         $this->responseIndex = 0;
     }
 

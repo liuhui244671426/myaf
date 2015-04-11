@@ -78,7 +78,7 @@ class Prototype
             }
         } else {
             $parameter = new Parameter(array(
-                'type' => (string) $parameter,
+                'type' => (string)$parameter,
             ));
             $this->parameters[] = $parameter;
         }
@@ -107,7 +107,7 @@ class Prototype
      */
     public function setParameters(array $parameters)
     {
-        $this->parameters       = array();
+        $this->parameters = array();
         $this->parameterNameMap = array();
         $this->addParameters($parameters);
         return $this;

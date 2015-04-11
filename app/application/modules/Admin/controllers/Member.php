@@ -1,18 +1,22 @@
 <?php
+
 /**
  * @Desc:会员管理
  * @User: liuhui
- * @Date: 15-4-11 下午11:56 
+ * @Date: 15-4-11 下午11:56
  */
-class MemberController extends BaseController{
-    public function doInit(){
+class MemberController extends BaseController
+{
+    public function doInit()
+    {
         $this->_view->setLayout('Admin');
     }
 
     /**
      * 获取所用会员的列表
      * */
-    public function getAllMembersAction(){
+    public function getAllMembersAction()
+    {
         $db = new Admin_MemberModel();
         $data = $db->getAll();
         $table = TableBuilder::allMemberHtml($data);

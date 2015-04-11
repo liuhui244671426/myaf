@@ -24,7 +24,7 @@ class SessionConfigFactory implements FactoryInterface
      * you may also specify a specific implementation variant using the
      * "config_class" subkey.
      *
-     * @param  ServiceLocatorInterface    $services
+     * @param  ServiceLocatorInterface $services
      * @return ConfigInterface
      * @throws ServiceNotCreatedException if session_config is missing, or an
      *         invalid config_class is used
@@ -37,7 +37,7 @@ class SessionConfigFactory implements FactoryInterface
                 'Configuration is missing a "session_config" key, or the value of that key is not an array'
             );
         }
-        $class  = 'Zend\Session\Config\SessionConfig';
+        $class = 'Zend\Session\Config\SessionConfig';
         $config = $config['session_config'];
         if (isset($config['config_class'])) {
             if (!class_exists($config['config_class'])) {

@@ -20,7 +20,7 @@ class SessionConfig extends StandardConfig
      * Used with {@link handleError()}; stores PHP error code
      * @var int
      */
-    protected $phpErrorCode    = false;
+    protected $phpErrorCode = false;
 
     /**
      * Used with {@link handleError()}; stores PHP error message
@@ -116,7 +116,7 @@ class SessionConfig extends StandardConfig
             case 'use_only_cookies':
             case 'use_trans_sid':
             case 'cookie_httponly':
-                return (bool) ini_get('session.' . $storageOption);
+                return (bool)ini_get('session.' . $storageOption);
             default:
                 return ini_get('session.' . $storageOption);
         }
@@ -131,7 +131,7 @@ class SessionConfig extends StandardConfig
      */
     public function setPhpSaveHandler($phpSaveHandler)
     {
-        $phpSaveHandler = (string) $phpSaveHandler;
+        $phpSaveHandler = (string)$phpSaveHandler;
         set_error_handler(array($this, 'handleError'));
         ini_set('session.save_handler', $phpSaveHandler);
         restore_error_handler();
@@ -171,7 +171,7 @@ class SessionConfig extends StandardConfig
      */
     public function setSerializeHandler($serializeHandler)
     {
-        $serializeHandler = (string) $serializeHandler;
+        $serializeHandler = (string)$serializeHandler;
 
         set_error_handler(array($this, 'handleError'));
         ini_set('session.serialize_handler', $serializeHandler);
@@ -180,7 +180,7 @@ class SessionConfig extends StandardConfig
             throw new Exception\InvalidArgumentException('Invalid serialize handler specified');
         }
 
-        $this->serializeHandler = (string) $serializeHandler;
+        $this->serializeHandler = (string)$serializeHandler;
         return $this;
     }
 
@@ -195,7 +195,7 @@ class SessionConfig extends StandardConfig
      */
     public function setCacheLimiter($cacheLimiter)
     {
-        $cacheLimiter = (string) $cacheLimiter;
+        $cacheLimiter = (string)$cacheLimiter;
         if (!in_array($cacheLimiter, $this->validCacheLimiters)) {
             throw new Exception\InvalidArgumentException('Invalid cache limiter provided');
         }
@@ -213,7 +213,7 @@ class SessionConfig extends StandardConfig
      */
     public function setHashFunction($hashFunction)
     {
-        $hashFunction = (string) $hashFunction;
+        $hashFunction = (string)$hashFunction;
         $validHashFunctions = $this->getHashFunctions();
         if (!in_array($hashFunction, $validHashFunctions, true)) {
             throw new Exception\InvalidArgumentException('Invalid hash function provided');
@@ -239,7 +239,7 @@ class SessionConfig extends StandardConfig
             throw new Exception\InvalidArgumentException('Invalid hash bits per character provided');
         }
 
-        $hashBitsPerCharacter = (int) $hashBitsPerCharacter;
+        $hashBitsPerCharacter = (int)$hashBitsPerCharacter;
         $this->setOption('hash_bits_per_character', $hashBitsPerCharacter);
         ini_set('session.hash_bits_per_character', $hashBitsPerCharacter);
         return $this;
@@ -272,7 +272,7 @@ class SessionConfig extends StandardConfig
      */
     protected function handleError($code, $message)
     {
-        $this->phpErrorCode    = $code;
+        $this->phpErrorCode = $code;
         $this->phpErrorMessage = $message;
     }
 }

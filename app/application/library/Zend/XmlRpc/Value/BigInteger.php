@@ -19,7 +19,7 @@ class BigInteger extends Integer
     public function __construct($value)
     {
         $this->value = BigIntegerMath::factory()->init($value, 10);
-        $this->type  = self::XMLRPC_TYPE_I8;
+        $this->type = self::XMLRPC_TYPE_I8;
     }
 
     /**

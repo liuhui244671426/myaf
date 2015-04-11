@@ -44,8 +44,8 @@ abstract class AbstractActionController extends AbstractController
      */
     public function notFoundAction()
     {
-        $response   = $this->response;
-        $event      = $this->getEvent();
+        $response = $this->response;
+        $event = $this->getEvent();
         $routeMatch = $event->getRouteMatch();
         $routeMatch->setParam('action', 'not-found');
 

@@ -39,7 +39,7 @@ class UpperCase extends StringToUpper
 
             $isFileUpload = true;
             $uploadData = $value;
-            $value      = $value['tmp_name'];
+            $value = $value['tmp_name'];
         }
 
         if (!file_exists($value)) {
@@ -56,7 +56,7 @@ class UpperCase extends StringToUpper
         }
 
         $content = parent::filter($content);
-        $result  = file_put_contents($value, $content);
+        $result = file_put_contents($value, $content);
 
         if (!$result) {
             throw new Exception\RuntimeException("Problem while writing file '$value'");

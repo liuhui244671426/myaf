@@ -46,7 +46,7 @@ class AbstractConsoleController extends AbstractActionController
      */
     public function dispatch(RequestInterface $request, ResponseInterface $response = null)
     {
-        if (! $request instanceof ConsoleRequest) {
+        if (!$request instanceof ConsoleRequest) {
             throw new InvalidArgumentException(sprintf(
                 '%s can only dispatch requests in a console environment',
                 get_called_class()

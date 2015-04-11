@@ -31,7 +31,7 @@ class DiFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        $di     = new Di();
+        $di = new Di();
         $config = $serviceLocator->get('Config');
 
         if (isset($config['di'])) {

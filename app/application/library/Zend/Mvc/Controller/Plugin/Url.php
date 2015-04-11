@@ -22,11 +22,11 @@ class Url extends AbstractPlugin
     /**
      * Generates a URL based on a route
      *
-     * @param  string             $route              RouteInterface name
-     * @param  array|Traversable  $params             Parameters to use in url generation, if any
-     * @param  array|bool         $options            RouteInterface-specific options to use in url generation, if any.
+     * @param  string $route RouteInterface name
+     * @param  array|Traversable $params Parameters to use in url generation, if any
+     * @param  array|bool $options RouteInterface-specific options to use in url generation, if any.
      *                                                If boolean, and no fourth argument, used as $reuseMatchedParams.
-     * @param  bool               $reuseMatchedParams Whether to reuse matched parameters
+     * @param  bool $reuseMatchedParams Whether to reuse matched parameters
      *
      * @throws \Zend\Mvc\Exception\RuntimeException
      * @throws \Zend\Mvc\Exception\InvalidArgumentException
@@ -49,14 +49,14 @@ class Url extends AbstractPlugin
             $params = iterator_to_array($params);
         }
 
-        $event   = $controller->getEvent();
-        $router  = null;
+        $event = $controller->getEvent();
+        $router = null;
         $matches = null;
         if ($event instanceof MvcEvent) {
-            $router  = $event->getRouter();
+            $router = $event->getRouter();
             $matches = $event->getRouteMatch();
         } elseif ($event instanceof EventInterface) {
-            $router  = $event->getParam('router', false);
+            $router = $event->getParam('router', false);
             $matches = $event->getParam('route-match', false);
         }
         if (!$router instanceof RouteStackInterface) {

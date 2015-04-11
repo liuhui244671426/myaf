@@ -64,7 +64,7 @@ class GenericAnnotationParser implements ParserInterface
             $class = $this->resolveAlias($class);
         }
 
-        $index      = array_search($class, $this->annotationNames);
+        $index = array_search($class, $this->annotationNames);
         $annotation = $this->annotations[$index];
 
         $newAnnotation = clone $annotation;
@@ -87,7 +87,7 @@ class GenericAnnotationParser implements ParserInterface
     {
         $class = false;
         if (is_string($annotation) && class_exists($annotation)) {
-            $class      = $annotation;
+            $class = $annotation;
             $annotation = new $annotation();
         }
 
@@ -109,7 +109,7 @@ class GenericAnnotationParser implements ParserInterface
             ));
         }
 
-        $this->annotations[]     = $annotation;
+        $this->annotations[] = $annotation;
         $this->annotationNames[] = $class;
     }
 
@@ -216,7 +216,7 @@ class GenericAnnotationParser implements ParserInterface
     {
         do {
             $normalized = $this->normalizeAlias($alias);
-            $class      = $this->aliases[$normalized];
+            $class = $this->aliases[$normalized];
         } while ($this->hasAlias($class));
 
         return $class;

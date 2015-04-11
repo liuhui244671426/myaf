@@ -20,7 +20,7 @@ class IsImage extends MimeType
     /**
      * @const string Error constants
      */
-    const FALSE_TYPE   = 'fileIsImageFalseType';
+    const FALSE_TYPE = 'fileIsImageFalseType';
     const NOT_DETECTED = 'fileIsImageNotDetected';
     const NOT_READABLE = 'fileIsImageNotReadable';
 
@@ -28,7 +28,7 @@ class IsImage extends MimeType
      * @var array Error message templates
      */
     protected $messageTemplates = array(
-        self::FALSE_TYPE   => "File is no image, '%type%' detected",
+        self::FALSE_TYPE => "File is no image, '%type%' detected",
         self::NOT_DETECTED => "The mimetype could not be detected from the file",
         self::NOT_READABLE => "File is not readable or does not exist",
     );

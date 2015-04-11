@@ -42,7 +42,7 @@ class Required
         $required = $data['value'];
 
         if (!is_bool($required)) {
-            $filter   = new BooleanFilter();
+            $filter = new BooleanFilter();
             $required = $filter->filter($required);
         }
 

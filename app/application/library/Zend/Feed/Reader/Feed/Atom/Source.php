@@ -15,7 +15,7 @@ use Zend\Feed\Reader;
 use Zend\Feed\Reader\Feed;
 
 /**
-*/
+ */
 class Source extends Feed\Atom
 {
     /**

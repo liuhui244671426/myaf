@@ -72,7 +72,7 @@ class InjectTemplateListener extends AbstractListenerAggregate
 
         $template = $this->mapController($controller);
         if (!$template) {
-            $module     = $this->deriveModuleNamespace($controller);
+            $module = $this->deriveModuleNamespace($controller);
 
             if ($namespace = $routeMatch->getParam(ModuleRouteListener::MODULE_NAMESPACE)) {
                 $controllerSubNs = $this->deriveControllerSubNamespace($namespace);
@@ -86,15 +86,15 @@ class InjectTemplateListener extends AbstractListenerAggregate
             }
 
             $controller = $this->deriveControllerClass($controller);
-            $template   = $this->inflectName($module);
+            $template = $this->inflectName($module);
 
             if (!empty($template)) {
                 $template .= '/';
             }
-            $template  .= $this->inflectName($controller);
+            $template .= $this->inflectName($controller);
         }
 
-        $action     = $routeMatch->getParam('action');
+        $action = $routeMatch->getParam('action');
         if (null !== $action) {
             $template .= '/' . $this->inflectName($action);
         }

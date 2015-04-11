@@ -56,7 +56,7 @@ class DbTableGatewayOptions extends AbstractOptions
      */
     public function setIdColumn($idColumn)
     {
-        $idColumn = (string) $idColumn;
+        $idColumn = (string)$idColumn;
         if (strlen($idColumn) === 0) {
             throw new Exception\InvalidArgumentException('$idColumn must be a non-empty string');
         }
@@ -83,7 +83,7 @@ class DbTableGatewayOptions extends AbstractOptions
      */
     public function setNameColumn($nameColumn)
     {
-        $nameColumn = (string) $nameColumn;
+        $nameColumn = (string)$nameColumn;
         if (strlen($nameColumn) === 0) {
             throw new Exception\InvalidArgumentException('$nameColumn must be a non-empty string');
         }
@@ -110,7 +110,7 @@ class DbTableGatewayOptions extends AbstractOptions
      */
     public function setDataColumn($dataColumn)
     {
-        $dataColumn = (string) $dataColumn;
+        $dataColumn = (string)$dataColumn;
         if (strlen($dataColumn) === 0) {
             throw new Exception\InvalidArgumentException('$dataColumn must be a non-empty string');
         }
@@ -137,7 +137,7 @@ class DbTableGatewayOptions extends AbstractOptions
      */
     public function setLifetimeColumn($lifetimeColumn)
     {
-        $lifetimeColumn = (string) $lifetimeColumn;
+        $lifetimeColumn = (string)$lifetimeColumn;
         if (strlen($lifetimeColumn) === 0) {
             throw new Exception\InvalidArgumentException('$lifetimeColumn must be a non-empty string');
         }
@@ -164,7 +164,7 @@ class DbTableGatewayOptions extends AbstractOptions
      */
     public function setModifiedColumn($modifiedColumn)
     {
-        $modifiedColumn = (string) $modifiedColumn;
+        $modifiedColumn = (string)$modifiedColumn;
         if (strlen($modifiedColumn) === 0) {
             throw new Exception\InvalidArgumentException('$modifiedColumn must be a non-empty string');
         }

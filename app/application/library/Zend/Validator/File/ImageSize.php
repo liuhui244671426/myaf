@@ -21,35 +21,35 @@ class ImageSize extends AbstractValidator
     /**
      * @const string Error constants
      */
-    const WIDTH_TOO_BIG    = 'fileImageSizeWidthTooBig';
-    const WIDTH_TOO_SMALL  = 'fileImageSizeWidthTooSmall';
-    const HEIGHT_TOO_BIG   = 'fileImageSizeHeightTooBig';
+    const WIDTH_TOO_BIG = 'fileImageSizeWidthTooBig';
+    const WIDTH_TOO_SMALL = 'fileImageSizeWidthTooSmall';
+    const HEIGHT_TOO_BIG = 'fileImageSizeHeightTooBig';
     const HEIGHT_TOO_SMALL = 'fileImageSizeHeightTooSmall';
-    const NOT_DETECTED     = 'fileImageSizeNotDetected';
-    const NOT_READABLE     = 'fileImageSizeNotReadable';
+    const NOT_DETECTED = 'fileImageSizeNotDetected';
+    const NOT_READABLE = 'fileImageSizeNotReadable';
 
     /**
      * @var array Error message template
      */
     protected $messageTemplates = array(
-        self::WIDTH_TOO_BIG    => "Maximum allowed width for image should be '%maxwidth%' but '%width%' detected",
-        self::WIDTH_TOO_SMALL  => "Minimum expected width for image should be '%minwidth%' but '%width%' detected",
-        self::HEIGHT_TOO_BIG   => "Maximum allowed height for image should be '%maxheight%' but '%height%' detected",
+        self::WIDTH_TOO_BIG => "Maximum allowed width for image should be '%maxwidth%' but '%width%' detected",
+        self::WIDTH_TOO_SMALL => "Minimum expected width for image should be '%minwidth%' but '%width%' detected",
+        self::HEIGHT_TOO_BIG => "Maximum allowed height for image should be '%maxheight%' but '%height%' detected",
         self::HEIGHT_TOO_SMALL => "Minimum expected height for image should be '%minheight%' but '%height%' detected",
-        self::NOT_DETECTED     => "The size of image could not be detected",
-        self::NOT_READABLE     => "File is not readable or does not exist",
+        self::NOT_DETECTED => "The size of image could not be detected",
+        self::NOT_READABLE => "File is not readable or does not exist",
     );
 
     /**
      * @var array Error message template variables
      */
     protected $messageVariables = array(
-        'minwidth'  => array('options' => 'minWidth'),
-        'maxwidth'  => array('options' => 'maxWidth'),
+        'minwidth' => array('options' => 'minWidth'),
+        'maxwidth' => array('options' => 'maxWidth'),
         'minheight' => array('options' => 'minHeight'),
         'maxheight' => array('options' => 'maxHeight'),
-        'width'     => 'width',
-        'height'    => 'height'
+        'width' => 'width',
+        'height' => 'height'
     );
 
     /**
@@ -72,8 +72,8 @@ class ImageSize extends AbstractValidator
      * @var array
      */
     protected $options = array(
-        'minWidth'  => null,  // Minimum image width
-        'maxWidth'  => null,  // Maximum image width
+        'minWidth' => null,  // Minimum image width
+        'maxWidth' => null,  // Maximum image width
         'minHeight' => null,  // Minimum image height
         'maxHeight' => null,  // Maximum image height
     );
@@ -136,7 +136,7 @@ class ImageSize extends AbstractValidator
             );
         }
 
-        $this->options['minWidth']  = (int) $minWidth;
+        $this->options['minWidth'] = (int)$minWidth;
         return $this;
     }
 
@@ -166,7 +166,7 @@ class ImageSize extends AbstractValidator
             );
         }
 
-        $this->options['maxWidth']  = (int) $maxWidth;
+        $this->options['maxWidth'] = (int)$maxWidth;
         return $this;
     }
 
@@ -196,7 +196,7 @@ class ImageSize extends AbstractValidator
             );
         }
 
-        $this->options['minHeight']  = (int) $minHeight;
+        $this->options['minHeight'] = (int)$minHeight;
         return $this;
     }
 
@@ -226,7 +226,7 @@ class ImageSize extends AbstractValidator
             );
         }
 
-        $this->options['maxHeight']  = (int) $maxHeight;
+        $this->options['maxHeight'] = (int)$maxHeight;
         return $this;
     }
 
@@ -273,7 +273,7 @@ class ImageSize extends AbstractValidator
     /**
      * Sets the minimum image size
      *
-     * @param  array $options                 The minimum image dimensions
+     * @param  array $options The minimum image dimensions
      * @return ImageSize Provides a fluent interface
      */
     public function setImageMin($options)
@@ -297,7 +297,7 @@ class ImageSize extends AbstractValidator
     /**
      * Sets the minimum and maximum image width
      *
-     * @param  array $options               The image width dimensions
+     * @param  array $options The image width dimensions
      * @return ImageSize Provides a fluent interface
      */
     public function setImageWidth($options)
@@ -311,7 +311,7 @@ class ImageSize extends AbstractValidator
     /**
      * Sets the minimum and maximum image height
      *
-     * @param  array $options               The image height dimensions
+     * @param  array $options The image height dimensions
      * @return ImageSize Provides a fluent interface
      */
     public function setImageHeight($options)
@@ -327,7 +327,7 @@ class ImageSize extends AbstractValidator
      * not bigger than max
      *
      * @param  string|array $value Real file to check for image size
-     * @param  array        $file  File data from \Zend\File\Transfer\Transfer (optional)
+     * @param  array $file File data from \Zend\File\Transfer\Transfer (optional)
      * @return bool
      */
     public function isValid($value, $file = null)
@@ -335,17 +335,17 @@ class ImageSize extends AbstractValidator
         if (is_string($value) && is_array($file)) {
             // Legacy Zend\Transfer API support
             $filename = $file['name'];
-            $file     = $file['tmp_name'];
+            $file = $file['tmp_name'];
         } elseif (is_array($value)) {
             if (!isset($value['tmp_name']) || !isset($value['name'])) {
                 throw new Exception\InvalidArgumentException(
                     'Value array must be in $_FILES format'
                 );
             }
-            $file     = $value['tmp_name'];
+            $file = $value['tmp_name'];
             $filename = $value['name'];
         } else {
-            $file     = $value;
+            $file = $value;
             $filename = basename($file);
         }
         $this->setValue($filename);
@@ -365,7 +365,7 @@ class ImageSize extends AbstractValidator
             return false;
         }
 
-        $this->width  = $size[0];
+        $this->width = $size[0];
         $this->height = $size[1];
         if ($this->width < $this->getMinWidth()) {
             $this->error(self::WIDTH_TOO_SMALL);

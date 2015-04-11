@@ -13,7 +13,7 @@ use DOMDocument;
 use DOMElement;
 
 /**
-*/
+ */
 abstract class AbstractRenderer implements RendererInterface
 {
     /**
@@ -96,7 +96,7 @@ abstract class AbstractRenderer implements RendererInterface
      */
     public function setDomDocument(DOMDocument $dom, DOMElement $base)
     {
-        $this->dom  = $dom;
+        $this->dom = $dom;
         $this->base = $base;
         return $this;
     }

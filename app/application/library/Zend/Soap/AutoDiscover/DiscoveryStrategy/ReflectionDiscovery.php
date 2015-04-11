@@ -45,7 +45,7 @@ class ReflectionDiscovery implements DiscoveryStrategyInterface
      * Return function return type
      *
      * @param  AbstractFunction $function
-     * @param  Prototype        $prototype
+     * @param  Prototype $prototype
      * @return string
      */
     public function getFunctionReturnType(AbstractFunction $function, Prototype $prototype)
@@ -57,7 +57,7 @@ class ReflectionDiscovery implements DiscoveryStrategyInterface
      * Return true if function is one way (return nothing)
      *
      * @param  AbstractFunction $function
-     * @param  Prototype        $prototype
+     * @param  Prototype $prototype
      * @return bool
      */
     public function isFunctionOneWay(AbstractFunction $function, Prototype $prototype)

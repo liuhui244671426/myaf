@@ -182,7 +182,7 @@ class ModuleAutoloader implements SplAutoloader
             }
         }
 
-        $moduleClassPath   = str_replace('\\', DIRECTORY_SEPARATOR, $moduleName);
+        $moduleClassPath = str_replace('\\', DIRECTORY_SEPARATOR, $moduleName);
 
         $pharSuffixPattern = null;
         if ($this->pharExtensions) {
@@ -251,7 +251,7 @@ class ModuleAutoloader implements SplAutoloader
 
         if (($file->isReadable() && $file->isFile())) {
             // Found directory with Module.php in it
-            $absModulePath = $this->pharBasePath ? (string) $file : $file->getRealPath();
+            $absModulePath = $this->pharBasePath ? (string)$file : $file->getRealPath();
             require_once $absModulePath;
             if (class_exists($class)) {
                 $this->moduleClassMap[$class] = $absModulePath;
@@ -305,7 +305,7 @@ class ModuleAutoloader implements SplAutoloader
         // Checks for /path/to/MyModule.tar/MyModule/Module.php
         // (shell-integrated zip/tar utilities wrap directories like this)
         $pharBaseName = $this->pharFileToModuleName($fileRealPath);
-        $moduleClassFile = 'phar://' . $fileRealPath . '/' . $pharBaseName  . '/Module.php';
+        $moduleClassFile = 'phar://' . $fileRealPath . '/' . $pharBaseName . '/Module.php';
         $moduleFile = new SplFileInfo($moduleClassFile);
         if ($moduleFile->isReadable() && $moduleFile->isFile()) {
             require_once $moduleClassFile;
@@ -427,7 +427,7 @@ class ModuleAutoloader implements SplAutoloader
      * Normalize a path for insertion in the stack
      *
      * @param  string $path
-     * @param  bool   $trailingSlash Whether trailing slash should be included
+     * @param  bool $trailingSlash Whether trailing slash should be included
      * @return string
      */
     public static function normalizePath($path, $trailingSlash = true)

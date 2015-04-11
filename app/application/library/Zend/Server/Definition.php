@@ -47,7 +47,7 @@ class Definition implements Countable, Iterator
      */
     public function setOverwriteExistingMethods($flag)
     {
-        $this->overwriteExistingMethods = (bool) $flag;
+        $this->overwriteExistingMethods = (bool)$flag;
         return $this;
     }
 
@@ -244,6 +244,6 @@ class Definition implements Countable, Iterator
      */
     public function valid()
     {
-        return (bool) $this->current();
+        return (bool)$this->current();
     }
 }

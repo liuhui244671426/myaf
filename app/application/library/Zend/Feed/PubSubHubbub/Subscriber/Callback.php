@@ -85,9 +85,9 @@ class Callback extends PubSubHubbub\AbstractCallback
         ) {
             $this->setFeedUpdate($this->_getRawBody());
             $this->getHttpResponse()->setHeader('X-Hub-On-Behalf-Of', $this->getSubscriberCount());
-        /**
-         * Handle any (un)subscribe confirmation requests
-         */
+            /**
+             * Handle any (un)subscribe confirmation requests
+             */
         } elseif ($this->isValidHubVerification($httpGetData)) {
             $this->getHttpResponse()->setContent($httpGetData['hub_challenge']);
 
@@ -110,9 +110,9 @@ class Callback extends PubSubHubbub\AbstractCallback
                         $httpGetData['hub_mode']
                     ));
             }
-        /**
-         * Hey, C'mon! We tried everything else!
-         */
+            /**
+             * Hey, C'mon! We tried everything else!
+             */
         } else {
             $this->getHttpResponse()->setStatusCode(404);
         }
@@ -288,7 +288,7 @@ class Callback extends PubSubHubbub\AbstractCallback
      */
     protected function _parseQueryString()
     {
-        $params      = array();
+        $params = array();
         $queryString = '';
         if (isset($_SERVER['QUERY_STRING'])) {
             $queryString = $_SERVER['QUERY_STRING'];
@@ -298,8 +298,8 @@ class Callback extends PubSubHubbub\AbstractCallback
         }
         $parts = explode('&', $queryString);
         foreach ($parts as $kvpair) {
-            $pair  = explode('=', $kvpair);
-            $key   = rawurldecode($pair[0]);
+            $pair = explode('=', $kvpair);
+            $key = rawurldecode($pair[0]);
             $value = rawurldecode($pair[1]);
             if (isset($params[$key])) {
                 if (is_array($params[$key])) {

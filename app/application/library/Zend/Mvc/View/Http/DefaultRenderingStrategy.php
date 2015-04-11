@@ -59,7 +59,7 @@ class DefaultRenderingStrategy extends AbstractListenerAggregate
      */
     public function setLayoutTemplate($layoutTemplate)
     {
-        $this->layoutTemplate = (string) $layoutTemplate;
+        $this->layoutTemplate = (string)$layoutTemplate;
         return $this;
     }
 
@@ -88,8 +88,8 @@ class DefaultRenderingStrategy extends AbstractListenerAggregate
         }
 
         // Martial arguments
-        $request   = $e->getRequest();
-        $response  = $e->getResponse();
+        $request = $e->getRequest();
+        $response = $e->getResponse();
         $viewModel = $e->getViewModel();
         if (!$viewModel instanceof ViewModel) {
             return;
@@ -107,9 +107,9 @@ class DefaultRenderingStrategy extends AbstractListenerAggregate
             }
 
             $application = $e->getApplication();
-            $events      = $application->getEventManager();
+            $events = $application->getEventManager();
             $e->setError(Application::ERROR_EXCEPTION)
-              ->setParam('exception', $ex);
+                ->setParam('exception', $ex);
             $events->trigger(MvcEvent::EVENT_RENDER_ERROR, $e);
         }
 

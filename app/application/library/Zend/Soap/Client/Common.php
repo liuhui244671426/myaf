@@ -11,7 +11,7 @@ namespace Zend\Soap\Client;
 
 use SoapClient;
 
-if (! extension_loaded('soap')) {
+if (!extension_loaded('soap')) {
     return;
 }
 
@@ -45,8 +45,8 @@ class Common extends SoapClient
      * @param  string $request
      * @param  string $location
      * @param  string $action
-     * @param  int    $version
-     * @param  int    $oneWay
+     * @param  int $version
+     * @param  int $oneWay
      * @return mixed
      */
     public function __doRequest($request, $location, $action, $version, $oneWay = null)

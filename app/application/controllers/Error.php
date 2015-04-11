@@ -35,7 +35,7 @@ class ErrorController extends BaseController
         }
         header(httpStatus($httpCode));
         $isSupportTwig = initConfig::isSupportExtendConfig('twig');
-        if($isSupportTwig){
+        if ($isSupportTwig) {
             $this->_view->display('404.phtml', array('msg' => $msg, 'code' => $code));
         } else {
             $this->_view->display('404.phtml', array('msg' => $msg, 'code' => $code));

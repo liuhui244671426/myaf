@@ -14,7 +14,7 @@ use Zend\Stdlib\ArrayUtils;
 
 class LessThan extends AbstractValidator
 {
-    const NOT_LESS           = 'notLessThan';
+    const NOT_LESS = 'notLessThan';
     const NOT_LESS_INCLUSIVE = 'notLessThanInclusive';
 
     /**
@@ -23,7 +23,7 @@ class LessThan extends AbstractValidator
      * @var array
      */
     protected $messageTemplates = array(
-        self::NOT_LESS           => "The input is not less than '%max%'",
+        self::NOT_LESS => "The input is not less than '%max%'",
         self::NOT_LESS_INCLUSIVE => "The input is not less or equal than '%max%'"
     );
 
@@ -84,7 +84,7 @@ class LessThan extends AbstractValidator
         }
 
         $this->setMax($options['max'])
-             ->setInclusive($options['inclusive']);
+            ->setInclusive($options['inclusive']);
 
         parent::__construct($options);
     }

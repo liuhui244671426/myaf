@@ -16,7 +16,7 @@ use Zend\Db\Adapter\Profiler;
 class Connection implements ConnectionInterface, Profiler\ProfilerAwareInterface
 {
     /**
-     *  @var IbmDb2
+     * @var IbmDb2
      */
     protected $driver = null;
 
@@ -59,7 +59,7 @@ class Connection implements ConnectionInterface, Profiler\ProfilerAwareInterface
     /**
      * Constructor
      *
-     * @param  array|resource|null                $connectionParameters (ibm_db2 connection resource)
+     * @param  array|resource|null $connectionParameters (ibm_db2 connection resource)
      * @throws Exception\InvalidArgumentException
      */
     public function __construct($connectionParameters = null)
@@ -78,7 +78,7 @@ class Connection implements ConnectionInterface, Profiler\ProfilerAwareInterface
     /**
      * Set driver
      *
-     * @param  IbmDb2     $driver
+     * @param  IbmDb2 $driver
      * @return Connection
      */
     public function setDriver(IbmDb2 $driver)
@@ -106,7 +106,7 @@ class Connection implements ConnectionInterface, Profiler\ProfilerAwareInterface
     }
 
     /**
-     * @param  array      $connectionParameters
+     * @param  array $connectionParameters
      * @return Connection
      */
     public function setConnectionParameters(array $connectionParameters)
@@ -124,7 +124,7 @@ class Connection implements ConnectionInterface, Profiler\ProfilerAwareInterface
     }
 
     /**
-     * @param  resource   $resource DB2 resource
+     * @param  resource $resource DB2 resource
      * @return Connection
      */
     public function setResource($resource)
@@ -186,12 +186,12 @@ class Connection implements ConnectionInterface, Profiler\ProfilerAwareInterface
             return null;
         };
 
-        $database     = $findParameterValue(array('database', 'db'));
-        $username     = $findParameterValue(array('username', 'uid', 'UID'));
-        $password     = $findParameterValue(array('password', 'pwd', 'PWD'));
+        $database = $findParameterValue(array('database', 'db'));
+        $username = $findParameterValue(array('username', 'uid', 'UID'));
+        $password = $findParameterValue(array('password', 'pwd', 'PWD'));
         $isPersistent = $findParameterValue(array('persistent', 'PERSISTENT', 'Persistent'));
-        $options      = (isset($p['driver_options']) ? $p['driver_options'] : array());
-        $connect      = ((bool) $isPersistent) ? 'db2_pconnect' : 'db2_connect';
+        $options = (isset($p['driver_options']) ? $p['driver_options'] : array());
+        $connect = ((bool)$isPersistent) ? 'db2_pconnect' : 'db2_connect';
 
         $this->resource = $connect($database, $username, $password, $options);
 
@@ -329,7 +329,8 @@ class Connection implements ConnectionInterface, Profiler\ProfilerAwareInterface
             $this->profiler->profilerStart($sql);
         }
 
-        set_error_handler(function () {}, E_WARNING); // suppress warnings
+        set_error_handler(function () {
+            }, E_WARNING); // suppress warnings
         $resultResource = db2_exec($this->resource, $sql);
         restore_error_handler();
 

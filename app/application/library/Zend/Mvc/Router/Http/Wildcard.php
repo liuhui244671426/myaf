@@ -52,13 +52,13 @@ class Wildcard implements RouteInterface
      *
      * @param  string $keyValueDelimiter
      * @param  string $paramDelimiter
-     * @param  array  $defaults
+     * @param  array $defaults
      */
     public function __construct($keyValueDelimiter = '/', $paramDelimiter = '/', array $defaults = array())
     {
         $this->keyValueDelimiter = $keyValueDelimiter;
-        $this->paramDelimiter    = $paramDelimiter;
-        $this->defaults          = $defaults;
+        $this->paramDelimiter = $paramDelimiter;
+        $this->defaults = $defaults;
     }
 
     /**
@@ -96,7 +96,7 @@ class Wildcard implements RouteInterface
      * match(): defined by RouteInterface interface.
      *
      * @see    \Zend\Mvc\Router\RouteInterface::match()
-     * @param  Request      $request
+     * @param  Request $request
      * @param  integer|null $pathOffset
      * @return RouteMatch|null
      */
@@ -106,7 +106,7 @@ class Wildcard implements RouteInterface
             return null;
         }
 
-        $uri  = $request->getUri();
+        $uri = $request->getUri();
         $path = $uri->getPath();
 
         if ($path === '/') {
@@ -118,7 +118,7 @@ class Wildcard implements RouteInterface
         }
 
         $matches = array();
-        $params  = explode($this->paramDelimiter, $path);
+        $params = explode($this->paramDelimiter, $path);
 
         if (count($params) > 1 && ($params[0] !== '' || end($params) === '')) {
             return null;
@@ -157,8 +157,8 @@ class Wildcard implements RouteInterface
      */
     public function assemble(array $params = array(), array $options = array())
     {
-        $elements              = array();
-        $mergedParams          = array_merge($this->defaults, $params);
+        $elements = array();
+        $mergedParams = array_merge($this->defaults, $params);
         $this->assembledParams = array();
 
         if ($mergedParams) {

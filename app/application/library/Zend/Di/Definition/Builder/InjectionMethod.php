@@ -46,10 +46,10 @@ class InjectionMethod
     }
 
     /**
-     * @param  string          $name
-     * @param  string|null     $class
-     * @param  mixed|null      $isRequired
-     * @param  mixed|null      $default
+     * @param  string $name
+     * @param  string|null $class
+     * @param  mixed|null $isRequired
+     * @param  mixed|null $default
      * @return InjectionMethod
      */
     public function addParameter($name, $class = null, $isRequired = null, $default = null)

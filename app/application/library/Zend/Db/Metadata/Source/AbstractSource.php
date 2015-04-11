@@ -61,7 +61,7 @@ abstract class AbstractSource implements MetadataInterface
      * Get table names
      *
      * @param  string $schema
-     * @param  bool   $includeViews
+     * @param  bool $includeViews
      * @return string[]
      */
     public function getTableNames($schema = null, $includeViews = false)
@@ -89,7 +89,7 @@ abstract class AbstractSource implements MetadataInterface
      * Get tables
      *
      * @param  string $schema
-     * @param  bool   $includeViews
+     * @param  bool $includeViews
      * @return Object\TableObject[]
      */
     public function getTables($schema = null, $includeViews = false)
@@ -347,16 +347,16 @@ abstract class AbstractSource implements MetadataInterface
         $constraint = new Object\ConstraintObject($constraintName, $table, $schema);
 
         foreach (array(
-            'constraint_type'         => 'setType',
-            'match_option'            => 'setMatchOption',
-            'update_rule'             => 'setUpdateRule',
-            'delete_rule'             => 'setDeleteRule',
-            'columns'                 => 'setColumns',
-            'referenced_table_schema' => 'setReferencedTableSchema',
-            'referenced_table_name'   => 'setReferencedTableName',
-            'referenced_columns'      => 'setReferencedColumns',
-            'check_clause'            => 'setCheckClause',
-        ) as $key => $setMethod) {
+                     'constraint_type' => 'setType',
+                     'match_option' => 'setMatchOption',
+                     'update_rule' => 'setUpdateRule',
+                     'delete_rule' => 'setDeleteRule',
+                     'columns' => 'setColumns',
+                     'referenced_table_schema' => 'setReferencedTableSchema',
+                     'referenced_table_name' => 'setReferencedTableName',
+                     'referenced_columns' => 'setReferencedColumns',
+                     'check_clause' => 'setCheckClause',
+                 ) as $key => $setMethod) {
             if (isset($info[$key])) {
                 $constraint->{$setMethod}($info[$key]);
             }

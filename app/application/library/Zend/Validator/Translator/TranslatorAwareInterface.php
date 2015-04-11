@@ -14,9 +14,9 @@ interface TranslatorAwareInterface
     /**
      * Sets translator to use in helper
      *
-     * @param  TranslatorInterface $translator  [optional] translator.
+     * @param  TranslatorInterface $translator [optional] translator.
      *             Default is null, which sets no translator.
-     * @param  string $textDomain  [optional] text domain
+     * @param  string $textDomain [optional] text domain
      *             Default is null, which skips setTranslatorTextDomain
      * @return self
      */

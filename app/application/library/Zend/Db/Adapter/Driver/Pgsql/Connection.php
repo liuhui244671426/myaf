@@ -307,12 +307,12 @@ class Connection implements ConnectionInterface, Profiler\ProfilerAwareInterface
         };
 
         $connectionParameters = array(
-            'host'     => $findParameterValue(array('hostname', 'host')),
-            'user'     => $findParameterValue(array('username', 'user')),
+            'host' => $findParameterValue(array('hostname', 'host')),
+            'user' => $findParameterValue(array('username', 'user')),
             'password' => $findParameterValue(array('password', 'passwd', 'pw')),
-            'dbname'   => $findParameterValue(array('database', 'dbname', 'db', 'schema')),
-            'port'     => isset($p['port']) ? (int) $p['port'] : null,
-            'socket'   => isset($p['socket']) ? $p['socket'] : null,
+            'dbname' => $findParameterValue(array('database', 'dbname', 'db', 'schema')),
+            'port' => isset($p['port']) ? (int)$p['port'] : null,
+            'socket' => isset($p['socket']) ? $p['socket'] : null,
         );
 
         return urldecode(http_build_query(array_filter($connectionParameters), null, ' '));

@@ -73,8 +73,8 @@ class FilterChain extends AbstractFilter implements Countable
                     break;
                 case 'filters':
                     foreach ($value as $spec) {
-                        $name     = isset($spec['name'])     ? $spec['name']     : false;
-                        $options  = isset($spec['options'])  ? $spec['options']  : array();
+                        $name = isset($spec['name']) ? $spec['name'] : false;
+                        $options = isset($spec['options']) ? $spec['options'] : array();
                         $priority = isset($spec['priority']) ? $spec['priority'] : static::DEFAULT_PRIORITY;
                         if ($name) {
                             $this->attachByName($name, $options, $priority);
@@ -175,7 +175,7 @@ class FilterChain extends AbstractFilter implements Countable
     public function attachByName($name, $options = array(), $priority = self::DEFAULT_PRIORITY)
     {
         if (!is_array($options)) {
-            $options = (array) $options;
+            $options = (array)$options;
         } elseif (empty($options)) {
             $options = null;
         }

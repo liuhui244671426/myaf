@@ -43,7 +43,7 @@ final class Version
      * Compare the specified Zend Framework version string $version
      * with the current Zend\Version\Version::VERSION of Zend Framework.
      *
-     * @param  string  $version  A version string (e.g. "0.7.1").
+     * @param  string $version A version string (e.g. "0.7.1").
      * @return int           -1 if the $version is older,
      *                           0 if they are the same,
      *                           and +1 if $version is newer.
@@ -72,7 +72,7 @@ final class Version
      * @see    http://developer.github.com/v3/git/refs/#get-all-references
      * @link   https://api.github.com/repos/zendframework/zf2/git/refs/tags/release-
      * @link   http://framework.zend.com/api/zf-version?v=2
-     * @param  string      $service    Version service with which to retrieve the version
+     * @param  string $service Version service with which to retrieve the version
      * @param  Http\Client $httpClient HTTP client with which to retrieve the version
      * @return string
      */
@@ -136,7 +136,7 @@ final class Version
     /**
      * Get the API response to a call from a configured HTTP client
      *
-     * @param  Http\Client  $httpClient Configured HTTP client
+     * @param  Http\Client $httpClient Configured HTTP client
      * @return string|false API response or false on error
      */
     protected static function getApiResponse(Http\Client $httpClient)
@@ -189,7 +189,7 @@ final class Version
         // Simplify the API response into a simple array of version numbers
         $tags = array_map(function ($tag) {
             return substr($tag['ref'], 18); // Reliable because we're
-                                            // filtering on 'refs/tags/release-'
+            // filtering on 'refs/tags/release-'
         }, $decodedResponse);
 
         // Fetch the latest version number from the array

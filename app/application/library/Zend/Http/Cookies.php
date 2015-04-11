@@ -103,7 +103,7 @@ class Cookies extends Headers
 
         if ($cookie instanceof SetCookie) {
             $domain = $cookie->getDomain();
-            $path   = $cookie->getPath();
+            $path = $cookie->getPath();
             if (!isset($this->cookies[$domain])) {
                 $this->cookies[$domain] = array();
             }
@@ -165,7 +165,8 @@ class Cookies extends Headers
         $matchSessionCookies = true,
         $retAs = self::COOKIE_OBJECT,
         $now = null
-    ) {
+    )
+    {
         if (is_string($uri)) {
             $uri = Uri\UriFactory::factory($uri, 'http');
         } elseif (!$uri instanceof Uri\Uri) {
@@ -220,7 +221,7 @@ class Cookies extends Headers
         // Get correct cookie path
         $path = $uri->getPath();
         $path = substr($path, 0, strrpos($path, '/'));
-        if (! $path) {
+        if (!$path) {
             $path = '/';
         }
 
@@ -319,7 +320,7 @@ class Cookies extends Headers
         foreach ($domains as $dom => $pathsArray) {
             foreach (array_keys($pathsArray) as $cpath) {
                 if (SetCookie::matchCookiePath($cpath, $path)) {
-                    if (! isset($ret[$dom])) {
+                    if (!isset($ret[$dom])) {
                         $ret[$dom] = array();
                     }
 

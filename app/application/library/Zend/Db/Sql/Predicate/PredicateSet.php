@@ -15,13 +15,13 @@ use Zend\Db\Sql\Exception;
 class PredicateSet implements PredicateInterface, Countable
 {
     const COMBINED_BY_AND = 'AND';
-    const OP_AND          = 'AND';
+    const OP_AND = 'AND';
 
-    const COMBINED_BY_OR  = 'OR';
-    const OP_OR           = 'OR';
+    const COMBINED_BY_OR = 'OR';
+    const OP_OR = 'OR';
 
     protected $defaultCombination = self::COMBINED_BY_AND;
-    protected $predicates         = array();
+    protected $predicates = array();
 
     /**
      * Constructor
@@ -173,8 +173,8 @@ class PredicateSet implements PredicateInterface, Countable
                 $parts[] = ')';
             }
 
-            if (isset($this->predicates[$i+1])) {
-                $parts[] = sprintf(' %s ', $this->predicates[$i+1][0]);
+            if (isset($this->predicates[$i + 1])) {
+                $parts[] = sprintf(' %s ', $this->predicates[$i + 1][0]);
             }
         }
         return $parts;

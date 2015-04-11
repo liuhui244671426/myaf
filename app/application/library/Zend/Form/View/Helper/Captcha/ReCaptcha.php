@@ -52,16 +52,16 @@ class ReCaptcha extends FormInput
             ));
         }
 
-        $name          = $element->getName();
-        $id            = isset($attributes['id']) ? $attributes['id'] : $name;
+        $name = $element->getName();
+        $id = isset($attributes['id']) ? $attributes['id'] : $name;
         $challengeName = empty($name) ? 'recaptcha_challenge_field' : $name . '[recaptcha_challenge_field]';
-        $responseName  = empty($name) ? 'recaptcha_response_field'  : $name . '[recaptcha_response_field]';
-        $challengeId   = $id . '-challenge';
-        $responseId    = $id . '-response';
+        $responseName = empty($name) ? 'recaptcha_response_field' : $name . '[recaptcha_response_field]';
+        $challengeId = $id . '-challenge';
+        $responseId = $id . '-response';
 
         $markup = $captcha->getService()->getHtml($name);
         $hidden = $this->renderHiddenInput($challengeName, $challengeId, $responseName, $responseId);
-        $js     = $this->renderJsEvents($challengeId, $responseId);
+        $js = $this->renderJsEvents($challengeId, $responseId);
 
         return $hidden . $markup . $js;
     }
@@ -77,18 +77,18 @@ class ReCaptcha extends FormInput
      */
     protected function renderHiddenInput($challengeName, $challengeId, $responseName, $responseId)
     {
-        $pattern        = '<input type="hidden" %s%s';
+        $pattern = '<input type="hidden" %s%s';
         $closingBracket = $this->getInlineClosingBracket();
 
         $attributes = $this->createAttributesString(array(
             'name' => $challengeName,
-            'id'   => $challengeId,
+            'id' => $challengeId,
         ));
         $challenge = sprintf($pattern, $attributes, $closingBracket);
 
         $attributes = $this->createAttributesString(array(
             'name' => $responseName,
-            'id'   => $responseId,
+            'id' => $responseId,
         ));
         $response = sprintf($pattern, $attributes, $closingBracket);
 
@@ -105,7 +105,7 @@ class ReCaptcha extends FormInput
     protected function renderJsEvents($challengeId, $responseId)
     {
         $elseif = 'else if'; // php-cs-fixer bug
-        $js =<<<EOJ
+        $js = <<<EOJ
 <script type="text/javascript" language="JavaScript">
 function windowOnLoad(fn)
 {

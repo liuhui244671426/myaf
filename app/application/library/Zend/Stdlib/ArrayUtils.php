@@ -22,7 +22,7 @@ abstract class ArrayUtils
      * Test whether an array contains one or more string keys
      *
      * @param  mixed $value
-     * @param  bool  $allowEmpty    Should an empty array() return true
+     * @param  bool $allowEmpty Should an empty array() return true
      * @return bool
      */
     public static function hasStringKeys($value, $allowEmpty = false)
@@ -42,7 +42,7 @@ abstract class ArrayUtils
      * Test whether an array contains one or more integer keys
      *
      * @param  mixed $value
-     * @param  bool  $allowEmpty    Should an empty array() return true
+     * @param  bool $allowEmpty Should an empty array() return true
      * @return bool
      */
     public static function hasIntegerKeys($value, $allowEmpty = false)
@@ -69,7 +69,7 @@ abstract class ArrayUtils
      * - a string with float:  '4000.99999', '-10.10'
      *
      * @param  mixed $value
-     * @param  bool  $allowEmpty    Should an empty array() return true
+     * @param  bool $allowEmpty Should an empty array() return true
      * @return bool
      */
     public static function hasNumericKeys($value, $allowEmpty = false)
@@ -102,7 +102,7 @@ abstract class ArrayUtils
      * </code>
      *
      * @param  mixed $value
-     * @param  bool  $allowEmpty    Is an empty list a valid list?
+     * @param  bool $allowEmpty Is an empty list a valid list?
      * @return bool
      */
     public static function isList($value, $allowEmpty = false)
@@ -144,7 +144,7 @@ abstract class ArrayUtils
      * </code>
      *
      * @param  mixed $value
-     * @param  bool  $allowEmpty    Is an empty array() a valid hash table?
+     * @param  bool $allowEmpty Is an empty array() a valid hash table?
      * @return bool
      */
     public static function isHashTable($value, $allowEmpty = false)
@@ -177,12 +177,12 @@ abstract class ArrayUtils
     {
         if (!$strict) {
             if (is_int($needle) || is_float($needle)) {
-                $needle = (string) $needle;
+                $needle = (string)$needle;
             }
             if (is_string($needle)) {
                 foreach ($haystack as &$h) {
                     if (is_int($h) || is_float($h)) {
-                        $h = (string) $h;
+                        $h = (string)$h;
                     }
                 }
             }
@@ -196,8 +196,8 @@ abstract class ArrayUtils
      * Converts an iterator to an array. The $recursive flag, on by default,
      * hints whether or not you want to do so recursively.
      *
-     * @param  array|Traversable  $iterator     The array or Traversable object to convert
-     * @param  bool               $recursive    Recursively check all nested structures
+     * @param  array|Traversable $iterator The array or Traversable object to convert
+     * @param  bool $recursive Recursively check all nested structures
      * @throws Exception\InvalidArgumentException if $iterator is not an array or a Traversable object
      * @return array
      */
@@ -251,7 +251,7 @@ abstract class ArrayUtils
      *
      * @param  array $a
      * @param  array $b
-     * @param  bool  $preserveNumericKeys
+     * @param  bool $preserveNumericKeys
      * @return array
      */
     public static function merge(array $a, array $b, $preserveNumericKeys = false)

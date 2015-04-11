@@ -69,7 +69,7 @@ abstract class AbstractCallback implements CallbackInterface
 
         if (!is_array($options)) {
             throw new Exception\InvalidArgumentException('Array or Traversable object'
-            . 'expected, got ' . gettype($options));
+                . 'expected, got ' . gettype($options));
         }
 
         if (is_array($options)) {
@@ -214,7 +214,7 @@ abstract class AbstractCallback implements CallbackInterface
                 $callbackUrl = substr($callbackUrl, strlen($schemeAndHttpHost));
             }
         } elseif (isset($_SERVER['ORIG_PATH_INFO'])) {
-            $callbackUrl= $_SERVER['ORIG_PATH_INFO'];
+            $callbackUrl = $_SERVER['ORIG_PATH_INFO'];
             if (!empty($_SERVER['QUERY_STRING'])) {
                 $callbackUrl .= '?' . $_SERVER['QUERY_STRING'];
             }

@@ -201,7 +201,7 @@ class ClassMapAutoloader implements SplAutoloader
             return;
         }
 
-        $prefixLength  = 5 + strlen($match[1]);
+        $prefixLength = 5 + strlen($match[1]);
         $parts = explode('/', str_replace(array('/', '\\'), '/', substr($path, $prefixLength)));
         $parts = array_values(array_filter($parts, function ($p) {
             return ($p !== '' && $p !== '.');
@@ -209,7 +209,7 @@ class ClassMapAutoloader implements SplAutoloader
 
         array_walk($parts, function ($value, $key) use (&$parts) {
             if ($value === '..') {
-                unset($parts[$key], $parts[$key-1]);
+                unset($parts[$key], $parts[$key - 1]);
                 $parts = array_values($parts);
             }
         });

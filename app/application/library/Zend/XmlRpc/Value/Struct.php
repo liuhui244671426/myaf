@@ -32,18 +32,18 @@ class Struct extends AbstractCollection
     {
         $generator = $this->getGenerator();
         $generator->openElement('value')
-                  ->openElement('struct');
+            ->openElement('struct');
 
         if (is_array($this->value)) {
             foreach ($this->value as $name => $val) {
                 $generator->openElement('member')
-                          ->openElement('name', $name)
-                          ->closeElement('name');
+                    ->openElement('name', $name)
+                    ->closeElement('name');
                 $val->generateXml();
                 $generator->closeElement('member');
             }
         }
         $generator->closeElement('struct')
-                  ->closeElement('value');
+            ->closeElement('value');
     }
 }

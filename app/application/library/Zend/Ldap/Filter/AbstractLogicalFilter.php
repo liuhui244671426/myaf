@@ -15,7 +15,7 @@ namespace Zend\Ldap\Filter;
 abstract class AbstractLogicalFilter extends AbstractFilter
 {
     const TYPE_AND = '&';
-    const TYPE_OR  = '|';
+    const TYPE_OR = '|';
 
     /**
      * All the sub-filters for this grouping filter.
@@ -34,7 +34,7 @@ abstract class AbstractLogicalFilter extends AbstractFilter
     /**
      * Creates a new grouping filter.
      *
-     * @param array  $subfilters
+     * @param array $subfilters
      * @param string $symbol
      * @throws Exception\FilterException
      */
@@ -48,7 +48,7 @@ abstract class AbstractLogicalFilter extends AbstractFilter
             }
         }
         $this->subfilters = $subfilters;
-        $this->symbol     = $symbol;
+        $this->symbol = $symbol;
     }
 
     /**
@@ -59,7 +59,7 @@ abstract class AbstractLogicalFilter extends AbstractFilter
      */
     public function addFilter(AbstractFilter $filter)
     {
-        $new               = clone $this;
+        $new = clone $this;
         $new->subfilters[] = $filter;
         return $new;
     }

@@ -133,7 +133,7 @@ class Xml implements ReaderInterface
     protected function processNextElement()
     {
         $children = array();
-        $text     = '';
+        $text = '';
 
         while ($this->reader->read()) {
             if ($this->reader->nodeType === XMLReader::ELEMENT) {
@@ -142,7 +142,7 @@ class Xml implements ReaderInterface
                 }
 
                 $attributes = $this->getAttributes();
-                $name       = $this->reader->name;
+                $name = $this->reader->name;
 
                 if ($this->reader->isEmptyElement) {
                     $child = array();
@@ -155,7 +155,7 @@ class Xml implements ReaderInterface
                         $child = array('_' => $child);
                     }
 
-                    if (! is_array($child) ) {
+                    if (!is_array($child)) {
                         $child = array();
                     }
 

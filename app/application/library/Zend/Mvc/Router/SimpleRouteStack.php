@@ -147,8 +147,8 @@ class SimpleRouteStack implements RouteStackInterface
      * addRoute(): defined by RouteStackInterface interface.
      *
      * @see    RouteStackInterface::addRoute()
-     * @param  string  $name
-     * @param  mixed   $route
+     * @param  string $name
+     * @param  mixed $route
      * @param  int $priority
      * @return SimpleRouteStack
      */
@@ -241,7 +241,7 @@ class SimpleRouteStack implements RouteStackInterface
      * Set a default parameter.
      *
      * @param  string $name
-     * @param  mixed  $value
+     * @param  mixed $value
      * @return SimpleRouteStack
      */
     public function setDefaultParam($name, $value)

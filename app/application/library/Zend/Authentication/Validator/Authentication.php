@@ -29,8 +29,8 @@ class Authentication extends AbstractValidator
     const IDENTITY_NOT_FOUND = 'identityNotFound';
     const IDENTITY_AMBIGUOUS = 'identityAmbiguous';
     const CREDENTIAL_INVALID = 'credentialInvalid';
-    const UNCATEGORIZED      = 'uncategorized';
-    const GENERAL            = 'general';
+    const UNCATEGORIZED = 'uncategorized';
+    const GENERAL = 'general';
 
     /**
      * Error Messages
@@ -40,8 +40,8 @@ class Authentication extends AbstractValidator
         self::IDENTITY_NOT_FOUND => 'Invalid identity',
         self::IDENTITY_AMBIGUOUS => 'Identity is ambiguous',
         self::CREDENTIAL_INVALID => 'Invalid password',
-        self::UNCATEGORIZED      => 'Authentication failed',
-        self::GENERAL            => 'Authentication failed',
+        self::UNCATEGORIZED => 'Authentication failed',
+        self::GENERAL => 'Authentication failed',
     );
 
     /**
@@ -132,7 +132,7 @@ class Authentication extends AbstractValidator
     /**
      * Set Identity
      *
-     * @param  mixed          $identity
+     * @param  mixed $identity
      * @return Authentication
      */
     public function setIdentity($identity)
@@ -155,7 +155,7 @@ class Authentication extends AbstractValidator
     /**
      * Set Credential
      *
-     * @param  mixed          $credential
+     * @param  mixed $credential
      * @return Authentication
      */
     public function setCredential($credential)

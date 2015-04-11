@@ -31,7 +31,7 @@ class Application
     protected $_errno = 0;
     protected $_errmsg = '';
 
-    public function __construct($config, $env=null)
+    public function __construct($config, $env = null)
     {
         $app = self::app();
         if (!is_null($app)) {
@@ -80,9 +80,9 @@ class Application
         //loader initialization
         $loader = Loader::getInstance(
             (
-                isset($this->_options['local_library'])
-                ?$this->_options['local_library']
-                :''
+            isset($this->_options['local_library'])
+                ? $this->_options['local_library']
+                : ''
             ),
             G::iniGet('yaf.library')
         );
@@ -99,7 +99,7 @@ class Application
         if (
             isset($this->_options['local_namespace'])
             &&
-            $this->_options['local_namespace'] !=''
+            $this->_options['local_namespace'] != ''
         ) {
             $namespace = str_replace(
                 array(',', ' '),
@@ -114,6 +114,7 @@ class Application
             set_exception_handler(array($this, 'exceptionHandler'));
         }
     }
+
     public function __destruct()
     {
 
@@ -127,7 +128,7 @@ class Application
         } else {
             $bootstrap =
                 $this->getAppDirectory() .
-                DIRECTORY_SEPARATOR. $bootstrapClass .
+                DIRECTORY_SEPARATOR . $bootstrapClass .
                 '.' . G::get('ext');
         }
 
@@ -135,20 +136,20 @@ class Application
         if (Loader::import($bootstrap)) {
             if (!class_exists($bootstrapClass)) {
                 throw new Exception(
-                    'Couldn\'t find class Bootstrap in '.$bootstrap
+                    'Couldn\'t find class Bootstrap in ' . $bootstrap
                 );
             } else {
                 $bootstrap = new $bootstrapClass();
                 if (!($bootstrap instanceof Bootstrap_Abstract)) {
                     throw new Exception(
-                        'Expect a Yaf_Bootstrap_Abstract instance, '.
-                        get_class($bootstrap).' give '
+                        'Expect a Yaf_Bootstrap_Abstract instance, ' .
+                        get_class($bootstrap) . ' give '
                     );
                 }
                 if (version_compare(PHP_VERSION, '5.2.6') === -1) {
-                    $class        = new \ReflectionObject($bootstrap);
+                    $class = new \ReflectionObject($bootstrap);
                     $classMethods = $class->getMethods();
-                    $methodNames  = array();
+                    $methodNames = array();
 
                     foreach ($classMethods as $method) {
                         $methodNames[] = $method->getName();
@@ -175,11 +176,12 @@ class Application
             }
         } else {
             throw new Exception(
-                'Couldn\'t find bootstrap file '.$bootstrap
+                'Couldn\'t find bootstrap file ' . $bootstrap
             );
         }
         return $this;
     }
+
     /**
      * Start Yaf_Application
      */
@@ -194,6 +196,7 @@ class Application
             return $this->_dispatcher->dispatch();
         }
     }
+
     /**
      * Retrieve application instance
      * @return Yaf_Application
@@ -219,6 +222,7 @@ class Application
     {
         return $this->_dispatcher;
     }
+
     /**
      * Get defined module names
      */
@@ -226,6 +230,7 @@ class Application
     {
         return $this->_modules;
     }
+
     /**
      * Retrieve environment
      */
@@ -264,6 +269,7 @@ class Application
     {
 
     }
+
     /**
      * Yaf_Application can not be serialized
      */
@@ -271,6 +277,7 @@ class Application
     {
 
     }
+
     /**
      * Yaf_Application can not be deserialized
      */
@@ -342,7 +349,7 @@ class Application
         return $this->_errno;
     }
 
-     /**
+    /**
      * Load configuration file of options
      *
      * @param  string $file
@@ -360,7 +367,7 @@ class Application
             $config = $file;
         } else {
             throw new Exception(
-                'Invalid options provided; must be location of config file, '.
+                'Invalid options provided; must be location of config file, ' .
                 'a config object, or an array'
             );
         }
@@ -393,7 +400,7 @@ class Application
             G::set(
                 'directory',
                 preg_replace(
-                    "/".preg_quote(DIRECTORY_SEPARATOR, "/")."$/",
+                    "/" . preg_quote(DIRECTORY_SEPARATOR, "/") . "$/",
                     "", $options['directory']
                 )
             );
@@ -417,13 +424,13 @@ class Application
                     && is_string($options['library']['directory'])
                 ) {
                     $this->_options['local_library'] =
-                    $options['library']['directory'];
+                        $options['library']['directory'];
                 }
                 if (!empty($options['library']['namespace'])
                     && is_string($options['library']['namespace'])
                 ) {
                     $this->_options['local_namespace'] =
-                    $options['library']['namespace'];
+                        $options['library']['namespace'];
                 }
 
             }
@@ -447,7 +454,7 @@ class Application
         if (!empty($options['dispatcher']) && is_array($options['dispatcher'])
         ) {
             if (!empty($options['dispatcher']['defaultModule'])
-            && is_string($options['dispatcher']['defaultModule'])
+                && is_string($options['dispatcher']['defaultModule'])
             ) {
                 G::set(
                     'default_module', $options['dispatcher']['defaultModule']
@@ -459,7 +466,7 @@ class Application
                 );
             }
             if (!empty($options['dispatcher']['defaultController'])
-            && is_string($options['dispatcher']['defaultController'])
+                && is_string($options['dispatcher']['defaultController'])
             ) {
                 G::set(
                     'default_controller',
@@ -472,7 +479,7 @@ class Application
                 );
             }
             if (!empty($options['dispatcher']['defaultAction'])
-            && is_string($options['dispatcher']['defaultAction'])
+                && is_string($options['dispatcher']['defaultAction'])
             ) {
                 G::set(
                     'default_action',
@@ -534,9 +541,9 @@ class Application
         return true;
     }
 
-     public function exceptionHandler (\Exception $e)
-     {
-         //the exception is registered
-         echo PHP_EOL.'Exception throught App - '.$e->getMessage();
-     }
+    public function exceptionHandler(\Exception $e)
+    {
+        //the exception is registered
+        echo PHP_EOL . 'Exception throught App - ' . $e->getMessage();
+    }
 }

@@ -58,14 +58,14 @@ class Hostname implements RouteInterface
      * Create a new hostname route.
      *
      * @param  string $route
-     * @param  array  $constraints
-     * @param  array  $defaults
+     * @param  array $constraints
+     * @param  array $defaults
      */
     public function __construct($route, array $constraints = array(), array $defaults = array())
     {
         $this->defaults = $defaults;
-        $this->parts    = $this->parseRouteDefinition($route);
-        $this->regex    = $this->buildRegex($this->parts, $constraints);
+        $this->parts = $this->parseRouteDefinition($route);
+        $this->regex = $this->buildRegex($this->parts, $constraints);
     }
 
     /**
@@ -109,10 +109,10 @@ class Hostname implements RouteInterface
     protected function parseRouteDefinition($def)
     {
         $currentPos = 0;
-        $length     = strlen($def);
-        $parts      = array();
+        $length = strlen($def);
+        $parts = array();
         $levelParts = array(&$parts);
-        $level      = 0;
+        $level = 0;
 
         while ($currentPos < $length) {
             preg_match('(\G(?P<literal>[a-z0-9-.]*)(?P<token>[:{\[\]]|$))', $def, $matches, 0, $currentPos);
@@ -158,8 +158,8 @@ class Hostname implements RouteInterface
     /**
      * Build the matching regex from parsed parts.
      *
-     * @param  array   $parts
-     * @param  array   $constraints
+     * @param  array $parts
+     * @param  array $constraints
      * @param  int $groupIndex
      * @return string
      * @throws Exception\RuntimeException
@@ -200,17 +200,17 @@ class Hostname implements RouteInterface
     /**
      * Build host.
      *
-     * @param  array   $parts
-     * @param  array   $mergedParams
-     * @param  bool    $isOptional
+     * @param  array $parts
+     * @param  array $mergedParams
+     * @param  bool $isOptional
      * @return string
      * @throws Exception\RuntimeException
      * @throws Exception\InvalidArgumentException
      */
     protected function buildHost(array $parts, array $mergedParams, $isOptional)
     {
-        $host      = '';
-        $skip      = true;
+        $host = '';
+        $skip = true;
         $skippable = false;
 
         foreach ($parts as $part) {
@@ -238,12 +238,12 @@ class Hostname implements RouteInterface
                     break;
 
                 case 'optional':
-                    $skippable    = true;
+                    $skippable = true;
                     $optionalPart = $this->buildHost($part[1], $mergedParams, true);
 
                     if ($optionalPart !== '') {
                         $host .= $optionalPart;
-                        $skip  = false;
+                        $skip = false;
                     }
                     break;
             }
@@ -269,7 +269,7 @@ class Hostname implements RouteInterface
             return null;
         }
 
-        $uri  = $request->getUri();
+        $uri = $request->getUri();
         $host = $uri->getHost();
 
         $result = preg_match('(^' . $this->regex . '$)', $host, $matches);

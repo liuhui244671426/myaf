@@ -110,7 +110,7 @@ class Virtual extends AbstractAdapter
         }
 
         if (preg_match('/Code page\:\s+(\d+)/', $this->modeResult, $matches)) {
-            return (int) $matches[1] == 65001;
+            return (int)$matches[1] == 65001;
         }
 
         return false;

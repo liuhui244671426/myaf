@@ -13,34 +13,34 @@ use Zend\Db\Sql\Exception;
 
 class Operator implements PredicateInterface
 {
-    const OPERATOR_EQUAL_TO                  = '=';
-    const OP_EQ                              = '=';
+    const OPERATOR_EQUAL_TO = '=';
+    const OP_EQ = '=';
 
-    const OPERATOR_NOT_EQUAL_TO              = '!=';
-    const OP_NE                              = '!=';
+    const OPERATOR_NOT_EQUAL_TO = '!=';
+    const OP_NE = '!=';
 
-    const OPERATOR_LESS_THAN                 = '<';
-    const OP_LT                              = '<';
+    const OPERATOR_LESS_THAN = '<';
+    const OP_LT = '<';
 
-    const OPERATOR_LESS_THAN_OR_EQUAL_TO     = '<=';
-    const OP_LTE                             = '<=';
+    const OPERATOR_LESS_THAN_OR_EQUAL_TO = '<=';
+    const OP_LTE = '<=';
 
-    const OPERATOR_GREATER_THAN              = '>';
-    const OP_GT                              = '>';
+    const OPERATOR_GREATER_THAN = '>';
+    const OP_GT = '>';
 
-    const OPERATOR_GREATER_THAN_OR_EQUAL_TO  = '>=';
-    const OP_GTE                             = '>=';
+    const OPERATOR_GREATER_THAN_OR_EQUAL_TO = '>=';
+    const OP_GTE = '>=';
 
-    protected $allowedTypes  = array(
+    protected $allowedTypes = array(
         self::TYPE_IDENTIFIER,
         self::TYPE_VALUE,
     );
 
-    protected $left          = null;
-    protected $leftType      = self::TYPE_IDENTIFIER;
-    protected $operator      = self::OPERATOR_EQUAL_TO;
-    protected $right         = null;
-    protected $rightType     = self::TYPE_VALUE;
+    protected $left = null;
+    protected $leftType = self::TYPE_IDENTIFIER;
+    protected $operator = self::OPERATOR_EQUAL_TO;
+    protected $right = null;
+    protected $rightType = self::TYPE_VALUE;
 
     /**
      * Constructor

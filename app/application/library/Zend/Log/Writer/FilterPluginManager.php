@@ -21,12 +21,12 @@ class FilterPluginManager extends AbstractPluginManager
      * @var array
      */
     protected $invokableClasses = array(
-        'mock'           => 'Zend\Log\Filter\Mock',
-        'priority'       => 'Zend\Log\Filter\Priority',
-        'regex'          => 'Zend\Log\Filter\Regex',
-        'suppress'       => 'Zend\Log\Filter\SuppressFilter',
+        'mock' => 'Zend\Log\Filter\Mock',
+        'priority' => 'Zend\Log\Filter\Priority',
+        'regex' => 'Zend\Log\Filter\Regex',
+        'suppress' => 'Zend\Log\Filter\SuppressFilter',
         'suppressfilter' => 'Zend\Log\Filter\SuppressFilter',
-        'validator'      => 'Zend\Log\Filter\Validator',
+        'validator' => 'Zend\Log\Filter\Validator',
     );
 
     /**

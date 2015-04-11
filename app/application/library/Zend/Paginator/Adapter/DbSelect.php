@@ -64,14 +64,14 @@ class DbSelect implements AdapterInterface
             );
         }
 
-        $this->sql                = $adapterOrSqlObject;
+        $this->sql = $adapterOrSqlObject;
         $this->resultSetPrototype = ($resultSetPrototype) ?: new ResultSet;
     }
 
     /**
      * Returns an array of items for a page.
      *
-     * @param  int $offset           Page offset
+     * @param  int $offset Page offset
      * @param  int $itemCountPerPage Number of items per page
      * @return array
      */
@@ -82,7 +82,7 @@ class DbSelect implements AdapterInterface
         $select->limit($itemCountPerPage);
 
         $statement = $this->sql->prepareStatementForSqlObject($select);
-        $result    = $statement->execute();
+        $result = $statement->execute();
 
         $resultSet = clone $this->resultSetPrototype;
         $resultSet->initialize($result);
@@ -111,8 +111,8 @@ class DbSelect implements AdapterInterface
         $countSelect->from(array('original_select' => $select));
 
         $statement = $this->sql->prepareStatementForSqlObject($countSelect);
-        $result    = $statement->execute();
-        $row       = $result->current();
+        $result = $statement->execute();
+        $row = $result->current();
 
         $this->rowCount = $row['c'];
 

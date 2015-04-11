@@ -27,7 +27,7 @@ class Jumping implements ScrollingStyleInterface
      */
     public function getPages(Paginator $paginator, $pageRange = null)
     {
-        $pageRange  = $paginator->getPageRange();
+        $pageRange = $paginator->getPageRange();
         $pageNumber = $paginator->getCurrentPageNumber();
 
         $delta = $pageNumber % $pageRange;
@@ -36,7 +36,7 @@ class Jumping implements ScrollingStyleInterface
             $delta = $pageRange;
         }
 
-        $offset     = $pageNumber - $delta;
+        $offset = $pageNumber - $delta;
         $lowerBound = $offset + 1;
         $upperBound = $offset + $pageRange;
 

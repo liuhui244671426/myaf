@@ -145,7 +145,7 @@ class SmtpOptions extends AbstractOptions
      */
     public function setHost($host)
     {
-        $this->host = (string) $host;
+        $this->host = (string)$host;
         return $this;
     }
 
@@ -168,7 +168,7 @@ class SmtpOptions extends AbstractOptions
      */
     public function setPort($port)
     {
-        $port = (int) $port;
+        $port = (int)$port;
         if ($port < 1) {
             throw new Exception\InvalidArgumentException(sprintf(
                 'Port must be greater than 1; received "%d"',

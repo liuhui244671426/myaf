@@ -109,7 +109,7 @@ class Breadcrumbs extends AbstractHelper
         } else {
             /** @var \Zend\View\Helper\EscapeHtml $escaper */
             $escaper = $this->view->plugin('escapeHtml');
-            $html    = $escaper(
+            $html = $escaper(
                 $this->translate($active->getLabel(), $active->getTextDomain())
             );
         }
@@ -203,8 +203,8 @@ class Breadcrumbs extends AbstractHelper
             if (count($partial) != 2) {
                 throw new Exception\InvalidArgumentException(
                     'Unable to render menu: A view partial supplied as '
-                    .  'an array must contain two values: partial view '
-                    .  'script and module where script can be found'
+                    . 'an array must contain two values: partial view '
+                    . 'script and module where script can be found'
                 );
             }
 
@@ -222,7 +222,7 @@ class Breadcrumbs extends AbstractHelper
      */
     public function setLinkLast($linkLast)
     {
-        $this->linkLast = (bool) $linkLast;
+        $this->linkLast = (bool)$linkLast;
         return $this;
     }
 

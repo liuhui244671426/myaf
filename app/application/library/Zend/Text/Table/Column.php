@@ -20,9 +20,9 @@ class Column
     /**
      * Aligns for columns
      */
-    const ALIGN_LEFT   = 'left';
+    const ALIGN_LEFT = 'left';
     const ALIGN_CENTER = 'center';
-    const ALIGN_RIGHT  = 'right';
+    const ALIGN_RIGHT = 'right';
 
     /**
      * Content of the column
@@ -55,10 +55,10 @@ class Column
     /**
      * Create a column for a Zend\Text\Table\Row object.
      *
-     * @param string  $content  The content of the column
-     * @param string  $align    The align of the content
-     * @param int $colSpan  The colspan of the column
-     * @param string  $charset  The encoding of the content
+     * @param string $content The content of the column
+     * @param string $align The align of the content
+     * @param int $colSpan The colspan of the column
+     * @param string $charset The encoding of the content
      */
     public function __construct($content = null, $align = null, $colSpan = null, $charset = null)
     {
@@ -82,8 +82,8 @@ class Column
      * the charset defined via Zend\Text\Table::setInputCharset() (defaults
      * to utf-8).
      *
-     * @param  string $content  Content of the column
-     * @param  string $charset  The charset of the content
+     * @param  string $content Content of the column
+     * @param  string $charset The charset of the content
      * @throws Exception\InvalidArgumentException When $content is not a string
      * @return Column
      */
@@ -164,7 +164,7 @@ class Column
      * Render the column width the given column width
      *
      * @param  int $columnWidth The width of the column
-     * @param  int $padding     The padding for the column
+     * @param  int $padding The padding for the column
      * @throws Exception\InvalidArgumentException When $columnWidth is lower than 1
      * @throws Exception\OutOfBoundsException When padding is greater than columnWidth
      * @return string
@@ -200,14 +200,14 @@ class Column
         }
 
         $outputCharset = Table::getOutputCharset();
-        $strWrapper    = StringUtils::getWrapper($outputCharset);
-        $lines         = explode("\n", $strWrapper->wordWrap($this->content, $columnWidth, "\n", true));
-        $paddedLines   = array();
+        $strWrapper = StringUtils::getWrapper($outputCharset);
+        $lines = explode("\n", $strWrapper->wordWrap($this->content, $columnWidth, "\n", true));
+        $paddedLines = array();
 
         foreach ($lines as $line) {
             $paddedLines[] = str_repeat(' ', $padding)
-                           . $strWrapper->strPad($line, $columnWidth, ' ', $padMode)
-                           . str_repeat(' ', $padding);
+                . $strWrapper->strPad($line, $columnWidth, ' ', $padMode)
+                . str_repeat(' ', $padding);
         }
 
         $result = implode("\n", $paddedLines);

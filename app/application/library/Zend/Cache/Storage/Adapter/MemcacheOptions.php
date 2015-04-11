@@ -53,7 +53,7 @@ class MemcacheOptions extends AdapterOptions
      */
     public function setNamespace($namespace)
     {
-        $namespace = (string) $namespace;
+        $namespace = (string)$namespace;
 
         if (128 < strlen($namespace)) {
             throw new Exception\InvalidArgumentException(sprintf(
@@ -73,7 +73,7 @@ class MemcacheOptions extends AdapterOptions
      */
     public function setNamespaceSeparator($namespaceSeparator)
     {
-        $namespaceSeparator = (string) $namespaceSeparator;
+        $namespaceSeparator = (string)$namespaceSeparator;
         if ($this->namespaceSeparator !== $namespaceSeparator) {
             $this->triggerOptionEvent('namespace_separator', $namespaceSeparator);
             $this->namespaceSeparator = $namespaceSeparator;
@@ -137,7 +137,7 @@ class MemcacheOptions extends AdapterOptions
      */
     public function setResourceId($resourceId)
     {
-        $resourceId = (string) $resourceId;
+        $resourceId = (string)$resourceId;
         if ($this->resourceId !== $resourceId) {
             $this->triggerOptionEvent('resource_id', $resourceId);
             $this->resourceId = $resourceId;
@@ -163,7 +163,7 @@ class MemcacheOptions extends AdapterOptions
      */
     public function setCompression($compression)
     {
-        $compression = (bool) $compression;
+        $compression = (bool)$compression;
         if ($this->compression !== $compression) {
             $this->triggerOptionEvent('compression', $compression);
             $this->compression = $compression;

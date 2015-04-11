@@ -52,14 +52,14 @@ class DbaIterator implements IteratorInterface
     /**
      * Constructor
      *
-     * @param Dba      $storage
+     * @param Dba $storage
      * @param resource $handle
-     * @param string   $prefix
+     * @param string $prefix
      */
     public function __construct(Dba $storage, $handle, $prefix)
     {
-        $this->storage      = $storage;
-        $this->handle       = $handle;
+        $this->storage = $storage;
+        $this->handle = $handle;
         $this->prefixLength = strlen($prefix);
 
         $this->rewind();
@@ -93,7 +93,7 @@ class DbaIterator implements IteratorInterface
      */
     public function setMode($mode)
     {
-        $this->mode = (int) $mode;
+        $this->mode = (int)$mode;
         return $this;
     }
 

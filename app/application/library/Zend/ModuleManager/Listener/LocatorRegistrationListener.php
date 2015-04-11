@@ -60,7 +60,7 @@ class LocatorRegistrationListener extends AbstractListener implements
     public function onLoadModules(Event $e)
     {
         $moduleManager = $e->getTarget();
-        $events        = $moduleManager->getEventManager()->getSharedManager();
+        $events = $moduleManager->getEventManager()->getSharedManager();
 
         if (!$events) {
             return;
@@ -71,8 +71,8 @@ class LocatorRegistrationListener extends AbstractListener implements
             $moduleClassName = get_class($moduleManager);
             $moduleClassNameArray = explode('\\', $moduleClassName);
             $moduleClassNameAlias = end($moduleClassNameArray);
-            $application     = $e->getApplication();
-            $services        = $application->getServiceManager();
+            $application = $e->getApplication();
+            $services = $application->getServiceManager();
             if (!$services->has($moduleClassName)) {
                 $services->setAlias($moduleClassName, $moduleClassNameAlias);
             }
@@ -100,7 +100,7 @@ class LocatorRegistrationListener extends AbstractListener implements
     public function onBootstrap(Event $e)
     {
         $application = $e->getApplication();
-        $services    = $application->getServiceManager();
+        $services = $application->getServiceManager();
 
         foreach ($this->modules as $module) {
             $moduleClassName = get_class($module);

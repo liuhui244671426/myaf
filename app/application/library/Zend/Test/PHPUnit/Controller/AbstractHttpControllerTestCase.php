@@ -33,8 +33,8 @@ abstract class AbstractHttpControllerTestCase extends AbstractControllerTestCase
      */
     protected function getResponseHeader($header)
     {
-        $response       = $this->getResponse();
-        $headers        = $response->getHeaders();
+        $response = $this->getResponse();
+        $headers = $response->getHeaders();
         $responseHeader = $headers->get($header, false);
         return $responseHeader;
     }
@@ -180,7 +180,7 @@ abstract class AbstractHttpControllerTestCase extends AbstractControllerTestCase
         $headerMatched = false;
 
         foreach ($responseHeader as $currentHeader) {
-            $headerMatched = (bool) preg_match($pattern, $currentHeader->getFieldValue());
+            $headerMatched = (bool)preg_match($pattern, $currentHeader->getFieldValue());
 
             if ($headerMatched) {
                 break;
@@ -222,7 +222,7 @@ abstract class AbstractHttpControllerTestCase extends AbstractControllerTestCase
         $headerMatched = false;
 
         foreach ($responseHeader as $currentHeader) {
-            $headerMatched = (bool) preg_match($pattern, $currentHeader->getFieldValue());
+            $headerMatched = (bool)preg_match($pattern, $currentHeader->getFieldValue());
 
             if ($headerMatched) {
                 throw new PHPUnit_Framework_ExpectationFailedException(sprintf(
@@ -330,7 +330,7 @@ abstract class AbstractHttpControllerTestCase extends AbstractControllerTestCase
                 $responseHeader->getFieldValue()
             ));
         }
-        $this->assertTrue((bool) preg_match($pattern, $responseHeader->getFieldValue()));
+        $this->assertTrue((bool)preg_match($pattern, $responseHeader->getFieldValue()));
     }
 
     /**
@@ -352,7 +352,7 @@ abstract class AbstractHttpControllerTestCase extends AbstractControllerTestCase
                 $pattern
             ));
         }
-        $this->assertFalse((bool) preg_match($pattern, $responseHeader->getFieldValue()));
+        $this->assertFalse((bool)preg_match($pattern, $responseHeader->getFieldValue()));
     }
 
     /**
@@ -471,7 +471,7 @@ abstract class AbstractHttpControllerTestCase extends AbstractControllerTestCase
     private function notQueryAssertion($path, $useXpath = false)
     {
         $method = $useXpath ? 'xpathQueryCount' : 'queryCount';
-        $match  = $this->$method($path);
+        $match = $this->$method($path);
         if ($match != 0) {
             throw new PHPUnit_Framework_ExpectationFailedException(sprintf(
                 'Failed asserting node DENOTED BY %s DOES NOT EXIST',
@@ -802,7 +802,7 @@ abstract class AbstractHttpControllerTestCase extends AbstractControllerTestCase
                 $result->current()->nodeValue
             ));
         }
-        $this->assertTrue((bool) preg_match($pattern, $result->current()->nodeValue));
+        $this->assertTrue((bool)preg_match($pattern, $result->current()->nodeValue));
     }
 
     /**
@@ -850,7 +850,7 @@ abstract class AbstractHttpControllerTestCase extends AbstractControllerTestCase
                 $pattern
             ));
         }
-        $this->assertFalse((bool) preg_match($pattern, $result->current()->nodeValue));
+        $this->assertFalse((bool)preg_match($pattern, $result->current()->nodeValue));
     }
 
     /**

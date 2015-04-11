@@ -26,10 +26,10 @@ class FilterPluginManager extends BaseManager
      * @var array
      */
     protected $aliases = array(
-        'decrypt'   => 'filedecrypt',
-        'encrypt'   => 'fileencrypt',
+        'decrypt' => 'filedecrypt',
+        'encrypt' => 'fileencrypt',
         'lowercase' => 'filelowercase',
-        'rename'    => 'filerename',
+        'rename' => 'filerename',
         'uppercase' => 'fileuppercase',
     );
 }

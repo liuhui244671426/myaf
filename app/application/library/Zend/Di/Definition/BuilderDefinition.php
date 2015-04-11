@@ -69,7 +69,7 @@ class BuilderDefinition implements DefinitionInterface
     /**
      * Add class
      *
-     * @param  Builder\PhpClass  $phpClass
+     * @param  Builder\PhpClass $phpClass
      * @return BuilderDefinition
      */
     public function addClass(Builder\PhpClass $phpClass)
@@ -84,7 +84,7 @@ class BuilderDefinition implements DefinitionInterface
      *
      * This method is a factory that can be used in place of addClass().
      *
-     * @param  null|string      $name Optional name of class to assign
+     * @param  null|string $name Optional name of class to assign
      * @return Builder\PhpClass
      */
     public function createClass($name = null)
@@ -105,7 +105,7 @@ class BuilderDefinition implements DefinitionInterface
     /**
      * Set the class to use with {@link createClass()}
      *
-     * @param  string            $class
+     * @param  string $class
      * @return BuilderDefinition
      */
     public function setClassBuilder($class)
@@ -158,7 +158,7 @@ class BuilderDefinition implements DefinitionInterface
     }
 
     /**
-     * @param  string                $name
+     * @param  string $name
      * @return bool|Builder\PhpClass
      */
     protected function getClass($name)

@@ -25,7 +25,7 @@ class PublicKey extends AbstractKey
      * Create public key instance public key from PEM formatted key file
      * or X.509 certificate file
      *
-     * @param  string      $pemOrCertificateFile
+     * @param  string $pemOrCertificateFile
      * @return PublicKey
      * @throws Exception\InvalidArgumentException
      */
@@ -62,7 +62,7 @@ class PublicKey extends AbstractKey
         }
 
         $this->opensslKeyResource = $result;
-        $this->details            = openssl_pkey_get_details($this->opensslKeyResource);
+        $this->details = openssl_pkey_get_details($this->opensslKeyResource);
     }
 
     /**

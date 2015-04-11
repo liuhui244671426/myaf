@@ -99,7 +99,7 @@ class MemcacheResourceManager
      */
     public function setResource($id, $resource, $failureCallback = null, $serverDefaults = array())
     {
-        $id = (string) $id;
+        $id = (string)$id;
 
         if ($serverDefaults instanceof Traversable) {
             $serverDefaults = ArrayUtils::iteratorToArray($serverDefaults);
@@ -125,7 +125,7 @@ class MemcacheResourceManager
 
             $resourceOptions = array(
                 'servers' => array(),
-                'auto_compress_threshold'   => null,
+                'auto_compress_threshold' => null,
                 'auto_compress_min_savings' => null,
             );
             $resource = array_merge($resourceOptions, $resource);
@@ -163,7 +163,7 @@ class MemcacheResourceManager
      * Normalize compress threshold options
      *
      * @param int|string|array|ArrayAccess $threshold
-     * @param float|string                 $minSavings
+     * @param float|string $minSavings
      */
     protected function normalizeAutoCompressThreshold(& $threshold, & $minSavings)
     {
@@ -173,10 +173,10 @@ class MemcacheResourceManager
             $threshold = $tmpThreshold;
         }
         if (isset($threshold)) {
-            $threshold = (int) $threshold;
+            $threshold = (int)$threshold;
         }
         if (isset($minSavings)) {
-            $minSavings = (float) $minSavings;
+            $minSavings = (float)$minSavings;
         }
     }
 
@@ -211,7 +211,7 @@ class MemcacheResourceManager
             throw new Exception\RuntimeException("No resource with id '{$id}'");
         }
 
-        $resource = & $this->resources[$id];
+        $resource = &$this->resources[$id];
         if ($resource instanceof MemcacheResource) {
             // Cannot get options from Memcache resource once created
             throw new Exception\RuntimeException("Cannot get compress threshold once resource is created");
@@ -222,9 +222,9 @@ class MemcacheResourceManager
     /**
      * Set compress threshold
      *
-     * @param string                            $id
+     * @param string $id
      * @param int|string|array|ArrayAccess|null $threshold
-     * @param float|string|bool                 $minSavings
+     * @param float|string|bool $minSavings
      * @return MemcacheResourceManager
      */
     public function setAutoCompressThreshold($id, $threshold, $minSavings = false)
@@ -237,7 +237,7 @@ class MemcacheResourceManager
 
         $this->normalizeAutoCompressThreshold($threshold, $minSavings);
 
-        $resource = & $this->resources[$id];
+        $resource = &$this->resources[$id];
         if ($resource instanceof MemcacheResource) {
             $this->setResourceAutoCompressThreshold($resource, $threshold, $minSavings);
         } else {
@@ -262,7 +262,7 @@ class MemcacheResourceManager
             throw new Exception\RuntimeException("No resource with id '{$id}'");
         }
 
-        $resource = & $this->resources[$id];
+        $resource = &$this->resources[$id];
         if ($resource instanceof MemcacheResource) {
             // Cannot get options from Memcache resource once created
             throw new Exception\RuntimeException("Cannot get compress min savings once resource is created");
@@ -273,7 +273,7 @@ class MemcacheResourceManager
     /**
      * Set compress min savings
      *
-     * @param  string            $id
+     * @param  string $id
      * @param  float|string|null $minSavings
      * @return MemcacheResourceManager
      * @throws \Zend\Cache\Exception\RuntimeException
@@ -286,9 +286,9 @@ class MemcacheResourceManager
             ));
         }
 
-        $minSavings = (float) $minSavings;
+        $minSavings = (float)$minSavings;
 
-        $resource = & $this->resources[$id];
+        $resource = &$this->resources[$id];
         if ($resource instanceof MemcacheResource) {
             throw new Exception\RuntimeException(
                 "Cannot set compress min savings without a threshold value once a resource is created"
@@ -306,7 +306,7 @@ class MemcacheResourceManager
      *   'timeout' => <timeout>, 'retry_interval' => <retryInterval>,
      * )
      * @param string $id
-     * @param array  $serverDefaults
+     * @param array $serverDefaults
      * @return MemcacheResourceManager
      */
     public function setServerDefaults($id, array $serverDefaults)
@@ -361,12 +361,12 @@ class MemcacheResourceManager
         foreach ($serverDefaults as $key => $value) {
             switch ($key) {
                 case 'persistent':
-                    $value = (bool) $value;
+                    $value = (bool)$value;
                     break;
                 case 'weight':
                 case 'timeout':
                 case 'retry_interval':
-                    $value = (int) $value;
+                    $value = (int)$value;
                     break;
             }
             $result[$key] = $value;
@@ -420,7 +420,7 @@ class MemcacheResourceManager
             throw new Exception\RuntimeException("No resource with id '{$id}'");
         }
 
-        $resource = & $this->resources[$id];
+        $resource = &$this->resources[$id];
         if ($resource instanceof MemcacheResource) {
             throw new Exception\RuntimeException("Cannot get server list once resource is created");
         }
@@ -430,7 +430,7 @@ class MemcacheResourceManager
     /**
      * Add servers
      *
-     * @param string       $id
+     * @param string $id
      * @param string|array $servers
      * @return MemcacheResourceManager
      */
@@ -444,7 +444,7 @@ class MemcacheResourceManager
 
         $this->normalizeServers($servers);
 
-        $resource = & $this->resources[$id];
+        $resource = &$this->resources[$id];
         if ($resource instanceof MemcacheResource) {
             foreach ($servers as $server) {
                 $this->addServerToResource(
@@ -468,7 +468,7 @@ class MemcacheResourceManager
     /**
      * Add one server
      *
-     * @param string       $id
+     * @param string $id
      * @param string|array $server
      * @return MemcacheResourceManager
      */
@@ -488,7 +488,8 @@ class MemcacheResourceManager
         array $server,
         array $serverDefaults,
         $failureCallback
-    ) {
+    )
+    {
         // Apply server defaults
         $server = array_merge($serverDefaults, $server);
 
@@ -547,12 +548,12 @@ class MemcacheResourceManager
         // Used for converting an ordered array to a keyed array.
         // Append new options, do not insert or you will break BC.
         $sTmp = array(
-            'host'           => null,
-            'port'           => 11211,
-            'weight'         => null,
-            'status'         => true,
-            'persistent'     => null,
-            'timeout'        => null,
+            'host' => null,
+            'port' => 11211,
+            'weight' => null,
+            'status' => true,
+            'persistent' => null,
+            'timeout' => null,
             'retry_interval' => null,
         );
 
@@ -600,17 +601,17 @@ class MemcacheResourceManager
             if (isset($value)) {
                 switch ($key) {
                     case 'host':
-                        $value = (string) $value;
+                        $value = (string)$value;
                         break;
                     case 'status':
                     case 'persistent':
-                        $value = (bool) $value;
+                        $value = (bool)$value;
                         break;
                     case 'port':
                     case 'weight':
                     case 'timeout':
                     case 'retry_interval':
-                        $value = (int) $value;
+                        $value = (int)$value;
                         break;
                 }
             }

@@ -34,11 +34,11 @@ class Number extends Line
     /**
      * Ask the user for a number.
      *
-     * @param string    $promptText     The prompt text to display in console
-     * @param bool      $allowEmpty     Is empty response allowed?
-     * @param bool      $allowFloat     Are floating (non-decimal) numbers allowed?
-     * @param int   $min            Minimum value (inclusive)
-     * @param int   $max            Maximum value (inclusive)
+     * @param string $promptText The prompt text to display in console
+     * @param bool $allowEmpty Is empty response allowed?
+     * @param bool $allowFloat Are floating (non-decimal) numbers allowed?
+     * @param int $min Minimum value (inclusive)
+     * @param int $max Maximum value (inclusive)
      */
     public function __construct(
         $promptText = 'Please enter a number: ',
@@ -46,7 +46,8 @@ class Number extends Line
         $allowFloat = false,
         $min = null,
         $max = null
-    ) {
+    )
+    {
         if ($promptText !== null) {
             $this->setPromptText($promptText);
         }
@@ -104,7 +105,7 @@ class Number extends Line
          * Cast proper type
          */
         if ($number !== null) {
-            $number = $this->allowFloat ? (double) $number : (int) $number;
+            $number = $this->allowFloat ? (double)$number : (int)$number;
         }
 
         return $this->lastResponse = $number;

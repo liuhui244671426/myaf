@@ -71,10 +71,10 @@ class Exists extends AbstractValidator
      */
     public function getDirectory($asArray = false)
     {
-        $asArray   = (bool) $asArray;
+        $asArray = (bool)$asArray;
         $directory = $this->options['directory'];
         if ($asArray && isset($directory)) {
-            $directory = explode(',', (string) $directory);
+            $directory = explode(',', (string)$directory);
         }
 
         return $directory;
@@ -139,7 +139,7 @@ class Exists extends AbstractValidator
      * Returns true if and only if the file already exists in the set directories
      *
      * @param  string|array $value Real file to check for existence
-     * @param  array        $file  File data from \Zend\File\Transfer\Transfer (optional)
+     * @param  array $file File data from \Zend\File\Transfer\Transfer (optional)
      * @return bool
      */
     public function isValid($value, $file = null)
@@ -147,7 +147,7 @@ class Exists extends AbstractValidator
         if (is_string($value) && is_array($file)) {
             // Legacy Zend\Transfer API support
             $filename = $file['name'];
-            $file     = $file['tmp_name'];
+            $file = $file['tmp_name'];
             $this->setValue($filename);
         } elseif (is_array($value)) {
             if (!isset($value['tmp_name']) || !isset($value['name'])) {
@@ -155,11 +155,11 @@ class Exists extends AbstractValidator
                     'Value array must be in $_FILES format'
                 );
             }
-            $file     = $value['tmp_name'];
+            $file = $value['tmp_name'];
             $filename = basename($file);
             $this->setValue($value['name']);
         } else {
-            $file     = $value;
+            $file = $value;
             $filename = basename($file);
             $this->setValue($filename);
         }

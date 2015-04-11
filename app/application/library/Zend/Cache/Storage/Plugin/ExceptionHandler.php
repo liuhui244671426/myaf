@@ -68,7 +68,7 @@ class ExceptionHandler extends AbstractPlugin
      */
     public function onException(ExceptionEvent $event)
     {
-        $options  = $this->getOptions();
+        $options = $this->getOptions();
         $callback = $options->getExceptionCallback();
         if ($callback) {
             call_user_func($callback, $event->getException());

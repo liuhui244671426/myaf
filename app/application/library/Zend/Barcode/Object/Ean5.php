@@ -15,16 +15,16 @@ namespace Zend\Barcode\Object;
 class Ean5 extends Ean13
 {
     protected $parities = array(
-        0 => array('B','B','A','A','A'),
-        1 => array('B','A','B','A','A'),
-        2 => array('B','A','A','B','A'),
-        3 => array('B','A','A','A','B'),
-        4 => array('A','B','B','A','A'),
-        5 => array('A','A','B','B','A'),
-        6 => array('A','A','A','B','B'),
-        7 => array('A','B','A','B','A'),
-        8 => array('A','B','A','A','B'),
-        9 => array('A','A','B','A','B')
+        0 => array('B', 'B', 'A', 'A', 'A'),
+        1 => array('B', 'A', 'B', 'A', 'A'),
+        2 => array('B', 'A', 'A', 'B', 'A'),
+        3 => array('B', 'A', 'A', 'A', 'B'),
+        4 => array('A', 'B', 'B', 'A', 'A'),
+        5 => array('A', 'A', 'B', 'B', 'A'),
+        6 => array('A', 'A', 'A', 'B', 'B'),
+        7 => array('A', 'B', 'A', 'B', 'A'),
+        8 => array('A', 'B', 'A', 'A', 'B'),
+        9 => array('A', 'A', 'B', 'A', 'B')
     );
 
     /**
@@ -42,10 +42,10 @@ class Ean5 extends Ean13
      */
     protected function calculateBarcodeWidth()
     {
-        $quietZone       = $this->getQuietZone();
-        $startCharacter  = (5 * $this->barThinWidth) * $this->factor;
+        $quietZone = $this->getQuietZone();
+        $startCharacter = (5 * $this->barThinWidth) * $this->factor;
         $middleCharacter = (2 * $this->barThinWidth) * $this->factor;
-        $encodedData     = (7 * $this->barThinWidth) * $this->factor;
+        $encodedData = (7 * $this->barThinWidth) * $this->factor;
         return $quietZone + $startCharacter + ($this->barcodeLength - 1) * $middleCharacter + $this->barcodeLength * $encodedData + $quietZone;
     }
 
@@ -96,7 +96,7 @@ class Ean5 extends Ean13
         $this->checkText($text);
         $checksum = 0;
 
-        for ($i = 0; $i < $this->barcodeLength; $i ++) {
+        for ($i = 0; $i < $this->barcodeLength; $i++) {
             $checksum += intval($text{$i}) * ($i % 2 ? 9 : 3);
         }
 

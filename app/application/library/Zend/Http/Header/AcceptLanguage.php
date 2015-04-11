@@ -86,7 +86,7 @@ class AcceptLanguage extends AbstractAccept
         }
 
         if ($pos = strpos($fieldValuePart, '-')) {
-            $subtypeWhole = $format = $subtype = trim(substr($fieldValuePart, strpos($fieldValuePart, '-')+1));
+            $subtypeWhole = $format = $subtype = trim(substr($fieldValuePart, strpos($fieldValuePart, '-') + 1));
         } else {
             $subtypeWhole = '';
             $format = '*';
@@ -94,16 +94,16 @@ class AcceptLanguage extends AbstractAccept
         }
 
         $aggregated = array(
-                'typeString' => trim($fieldValuePart),
-                'type'       => $type,
-                'subtype'    => $subtype,
-                'subtypeRaw' => $subtypeWhole,
-                'format'     => $format,
-                'priority'   => isset($params['q']) ? $params['q'] : 1,
-                'params'     => $params,
-                'raw'        => trim($raw)
+            'typeString' => trim($fieldValuePart),
+            'type' => $type,
+            'subtype' => $subtype,
+            'subtypeRaw' => $subtypeWhole,
+            'format' => $format,
+            'priority' => isset($params['q']) ? $params['q'] : 1,
+            'params' => $params,
+            'raw' => trim($raw)
         );
 
-        return new FieldValuePart\LanguageFieldValuePart((object) $aggregated);
+        return new FieldValuePart\LanguageFieldValuePart((object)$aggregated);
     }
 }

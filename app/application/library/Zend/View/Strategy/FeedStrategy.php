@@ -76,7 +76,7 @@ class FeedStrategy extends AbstractListenerAggregate
             return;
         }
 
-        $result   = $e->getResult();
+        $result = $e->getResult();
         if (!is_string($result) && !$result instanceof Feed) {
             // We don't have a string, and thus, no feed
             return;
@@ -90,10 +90,10 @@ class FeedStrategy extends AbstractListenerAggregate
         // Get the content-type header based on feed type
         $feedType = $renderer->getFeedType();
         $feedType = ('rss' == $feedType)
-                  ? 'application/rss+xml'
-                  : 'application/atom+xml';
+            ? 'application/rss+xml'
+            : 'application/atom+xml';
 
-        $model   = $e->getModel();
+        $model = $e->getModel();
         $charset = '';
 
         if ($model instanceof Model\FeedModel) {

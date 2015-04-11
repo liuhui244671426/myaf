@@ -118,7 +118,7 @@ class Query implements RouteInterface
      */
     public function assemble(array $params = array(), array $options = array())
     {
-        $mergedParams          = array_merge($this->defaults, $params);
+        $mergedParams = array_merge($this->defaults, $params);
         $this->assembledParams = array();
 
         if (isset($options['uri']) && count($mergedParams)) {

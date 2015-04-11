@@ -112,7 +112,8 @@ class Encoder
         if ($this->cycleCheck) {
             if ($this->_wasVisited($value)) {
                 if (isset($this->options['silenceCyclicalExceptions'])
-                    && $this->options['silenceCyclicalExceptions']===true) {
+                    && $this->options['silenceCyclicalExceptions'] === true
+                ) {
                     return '"* RECURSION (' . str_replace('\\', '\\\\', get_class($value)) . ') *"';
                 } else {
                     throw new RecursionException(
@@ -141,17 +142,17 @@ class Encoder
             foreach ($propCollection as $name => $propValue) {
                 if (isset($propValue)) {
                     $props .= ','
-                            . $this->_encodeValue($name)
-                            . ':'
-                            . $this->_encodeValue($propValue);
+                        . $this->_encodeValue($name)
+                        . ':'
+                        . $this->_encodeValue($propValue);
                 }
             }
         }
 
         $className = get_class($value);
         return '{"__className":'
-            . $this->_encodeString($className)
-            . $props . '}';
+        . $this->_encodeString($className)
+        . $props . '}';
     }
 
     /**
@@ -191,10 +192,10 @@ class Encoder
             // Associative array
             $result = '{';
             foreach ($array as $key => $value) {
-                $key = (string) $key;
+                $key = (string)$key;
                 $tmpArray[] = $this->_encodeString($key)
-                            . ':'
-                            . $this->_encodeValue($value);
+                    . ':'
+                    . $this->_encodeValue($value);
             }
             $result .= implode(',', $tmpArray);
             $result .= '}';
@@ -226,7 +227,7 @@ class Encoder
         $result = 'null';
 
         if (is_int($value) || is_float($value)) {
-            $result = (string) $value;
+            $result = (string)$value;
             $result = str_replace(',', '.', $result);
         } elseif (is_string($value)) {
             $result = $this->_encodeString($value);
@@ -247,9 +248,9 @@ class Encoder
     {
         // Escape these characters with a backslash or unicode escape:
         // " \ / \n \r \t \b \f
-        $search  = array('\\', "\n", "\t", "\r", "\b", "\f", '"', '\'', '&', '<', '>', '/');
-        $replace = array('\\\\', '\\n', '\\t', '\\r', '\\b', '\\f', '\\u0022', '\\u0027', '\\u0026',  '\\u003C', '\\u003E', '\\/');
-        $string  = str_replace($search, $replace, $string);
+        $search = array('\\', "\n", "\t", "\r", "\b", "\f", '"', '\'', '&', '<', '>', '/');
+        $replace = array('\\\\', '\\n', '\\t', '\\r', '\\b', '\\f', '\\u0022', '\\u0027', '\\u0026', '\\u003C', '\\u003E', '\\/');
+        $string = str_replace($search, $replace, $string);
 
         // Escape certain ASCII characters:
         // 0x08 => \b
@@ -269,7 +270,7 @@ class Encoder
      */
     private static function _encodeConstants(ReflectionClass $cls)
     {
-        $result    = "constants : {";
+        $result = "constants : {";
         $constants = $cls->getConstants();
 
         $tmpArray = array();
@@ -299,7 +300,7 @@ class Encoder
 
         $started = false;
         foreach ($methods as $method) {
-            if (! $method->isPublic() || !$method->isUserDefined()) {
+            if (!$method->isPublic() || !$method->isUserDefined()) {
                 continue;
             }
 
@@ -308,10 +309,10 @@ class Encoder
             }
             $started = true;
 
-            $result .= '' . $method->getName(). ':function(';
+            $result .= '' . $method->getName() . ':function(';
 
             if ('__construct' != $method->getName()) {
-                $parameters  = $method->getParameters();
+                $parameters = $method->getParameters();
                 $argsStarted = false;
 
                 $argNames = "var argNames=[";
@@ -333,11 +334,11 @@ class Encoder
                 $argNames .= "];";
 
                 $result .= "){"
-                         . $argNames
-                         . 'var result = ZAjaxEngine.invokeRemoteMethod('
-                         . "this, '" . $method->getName()
-                         . "',argNames,arguments);"
-                         . 'return(result);}';
+                    . $argNames
+                    . 'var result = ZAjaxEngine.invokeRemoteMethod('
+                    . "this, '" . $method->getName()
+                    . "',argNames,arguments);"
+                    . 'return(result);}';
             } else {
                 $result .= "){}";
             }
@@ -362,13 +363,13 @@ class Encoder
 
         $tmpArray = array();
         foreach ($properties as $prop) {
-            if (! $prop->isPublic()) {
+            if (!$prop->isPublic()) {
                 continue;
             }
 
             $tmpArray[] = $prop->getName()
-                        . ':'
-                        . self::encode($propValues[$prop->getName()]);
+                . ':'
+                . self::encode($propValues[$prop->getName()]);
         }
         $result .= implode(',', $tmpArray);
 
@@ -391,14 +392,14 @@ class Encoder
     public static function encodeClass($className, $package = '')
     {
         $cls = new \ReflectionClass($className);
-        if (! $cls->isInstantiable()) {
+        if (!$cls->isInstantiable()) {
             throw new InvalidArgumentException("'{$className}' must be instantiable");
         }
 
         return "Class.create('$package$className',{"
-                . self::_encodeConstants($cls)    .","
-                . self::_encodeMethods($cls)      .","
-                . self::_encodeVariables($cls)    .'});';
+        . self::_encodeConstants($cls) . ","
+        . self::_encodeMethods($cls) . ","
+        . self::_encodeVariables($cls) . '});';
     }
 
     /**

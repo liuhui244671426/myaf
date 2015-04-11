@@ -184,7 +184,7 @@ class Ini implements ReaderInterface
      *
      * @param  string $key
      * @param  string $value
-     * @param  array  $config
+     * @param  array $config
      * @return array
      * @throws Exception\RuntimeException
      */
@@ -214,9 +214,9 @@ class Ini implements ReaderInterface
                     throw new Exception\RuntimeException('Cannot process @include statement for a string config');
                 }
 
-                $reader  = clone $this;
+                $reader = clone $this;
                 $include = $reader->fromFile($this->directory . '/' . $value);
-                $config  = array_replace_recursive($config, $include);
+                $config = array_replace_recursive($config, $include);
             } else {
                 $config[$key] = $value;
             }

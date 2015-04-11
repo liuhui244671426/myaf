@@ -23,16 +23,16 @@ class FilesSize extends Size
     /**
      * @const string Error constants
      */
-    const TOO_BIG      = 'fileFilesSizeTooBig';
-    const TOO_SMALL    = 'fileFilesSizeTooSmall';
+    const TOO_BIG = 'fileFilesSizeTooBig';
+    const TOO_SMALL = 'fileFilesSizeTooSmall';
     const NOT_READABLE = 'fileFilesSizeNotReadable';
 
     /**
      * @var array Error message templates
      */
     protected $messageTemplates = array(
-        self::TOO_BIG      => "All files in sum should have a maximum size of '%max%' but '%size%' were detected",
-        self::TOO_SMALL    => "All files in sum should have a minimum size of '%min%' but '%size%' were detected",
+        self::TOO_BIG => "All files in sum should have a maximum size of '%max%' but '%size%' were detected",
+        self::TOO_SMALL => "All files in sum should have a minimum size of '%min%' but '%size%' were detected",
         self::NOT_READABLE => "One or more files can not be read",
     );
 
@@ -82,7 +82,7 @@ class FilesSize extends Size
      * not bigger than max (when max is not null).
      *
      * @param  string|array $value Real file to check for size
-     * @param  array        $file  File data from \Zend\File\Transfer\Transfer
+     * @param  array $file File data from \Zend\File\Transfer\Transfer
      * @return bool
      */
     public function isValid($value, $file = null)
@@ -91,8 +91,8 @@ class FilesSize extends Size
             $value = array($value);
         }
 
-        $min  = $this->getMin(true);
-        $max  = $this->getMax(true);
+        $min = $this->getMin(true);
+        $max = $this->getMax(true);
         $size = $this->getSize();
         foreach ($value as $files) {
             // Is file readable ?
@@ -116,10 +116,10 @@ class FilesSize extends Size
             if (($max !== null) && ($max < $size)) {
                 if ($this->getByteString()) {
                     $this->options['max'] = $this->toByteString($max);
-                    $this->size          = $this->toByteString($size);
+                    $this->size = $this->toByteString($size);
                     $this->throwError($file, self::TOO_BIG);
                     $this->options['max'] = $max;
-                    $this->size          = $size;
+                    $this->size = $size;
                 } else {
                     $this->throwError($file, self::TOO_BIG);
                 }
@@ -130,10 +130,10 @@ class FilesSize extends Size
         if (($min !== null) && ($size < $min)) {
             if ($this->getByteString()) {
                 $this->options['min'] = $this->toByteString($min);
-                $this->size          = $this->toByteString($size);
+                $this->size = $this->toByteString($size);
                 $this->throwError($file, self::TOO_SMALL);
                 $this->options['min'] = $min;
-                $this->size          = $size;
+                $this->size = $size;
             } else {
                 $this->throwError($file, self::TOO_SMALL);
             }

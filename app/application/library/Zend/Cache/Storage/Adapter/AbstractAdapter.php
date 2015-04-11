@@ -156,7 +156,7 @@ abstract class AbstractAdapter implements StorageInterface, EventsCapableInterfa
      */
     public function setCaching($flag)
     {
-        $flag    = (bool) $flag;
+        $flag = (bool)$flag;
         $options = $this->getOptions();
         $options->setWritable($flag);
         $options->setReadable($flag);
@@ -208,15 +208,15 @@ abstract class AbstractAdapter implements StorageInterface, EventsCapableInterfa
     /**
      * Triggers the PostEvent and return the result value.
      *
-     * @param  string      $eventName
+     * @param  string $eventName
      * @param  ArrayObject $args
-     * @param  mixed       $result
+     * @param  mixed $result
      * @return mixed
      */
     protected function triggerPost($eventName, ArrayObject $args, & $result)
     {
         $postEvent = new PostEvent($eventName . '.post', $this, $args, $result);
-        $eventRs   = $this->getEventManager()->trigger($postEvent);
+        $eventRs = $this->getEventManager()->trigger($postEvent);
         if ($eventRs->stopped()) {
             return $eventRs->last();
         }
@@ -230,17 +230,17 @@ abstract class AbstractAdapter implements StorageInterface, EventsCapableInterfa
      * If the ExceptionEvent has the flag "throwException" enabled throw the
      * exception after trigger else return the result.
      *
-     * @param  string      $eventName
+     * @param  string $eventName
      * @param  ArrayObject $args
-     * @param  mixed       $result
-     * @param  \Exception  $exception
+     * @param  mixed $result
+     * @param  \Exception $exception
      * @throws Exception\ExceptionInterface
      * @return mixed
      */
     protected function triggerException($eventName, ArrayObject $args, & $result, \Exception $exception)
     {
         $exceptionEvent = new ExceptionEvent($eventName . '.exception', $this, $args, $result, $exception);
-        $eventRs        = $this->getEventManager()->trigger($exceptionEvent);
+        $eventRs = $this->getEventManager()->trigger($exceptionEvent);
 
         if ($exceptionEvent->getThrowException()) {
             throw $exceptionEvent->getException();
@@ -269,7 +269,7 @@ abstract class AbstractAdapter implements StorageInterface, EventsCapableInterfa
      * Register a plugin
      *
      * @param  Plugin\PluginInterface $plugin
-     * @param  int                    $priority
+     * @param  int $priority
      * @return AbstractAdapter Fluent interface
      * @throws Exception\LogicException
      */
@@ -324,9 +324,9 @@ abstract class AbstractAdapter implements StorageInterface, EventsCapableInterfa
     /**
      * Get an item.
      *
-     * @param  string  $key
+     * @param  string $key
      * @param  bool $success
-     * @param  mixed   $casToken
+     * @param  mixed $casToken
      * @return mixed Data on success, null on failure
      * @throws Exception\ExceptionInterface
      *
@@ -348,10 +348,10 @@ abstract class AbstractAdapter implements StorageInterface, EventsCapableInterfa
             'key' => & $key,
         );
         if ($argn > 1) {
-            $args['success'] = & $success;
+            $args['success'] = &$success;
         }
         if ($argn > 2) {
-            $args['casToken'] = & $casToken;
+            $args['casToken'] = &$casToken;
         }
         $args = new ArrayObject($args);
 
@@ -378,9 +378,9 @@ abstract class AbstractAdapter implements StorageInterface, EventsCapableInterfa
     /**
      * Internal method to get an item.
      *
-     * @param  string  $normalizedKey
+     * @param  string $normalizedKey
      * @param  bool $success
-     * @param  mixed   $casToken
+     * @param  mixed $casToken
      * @return mixed Data on success, null on failure
      * @throws Exception\ExceptionInterface
      */
@@ -432,7 +432,7 @@ abstract class AbstractAdapter implements StorageInterface, EventsCapableInterfa
     protected function internalGetItems(array & $normalizedKeys)
     {
         $success = null;
-        $result  = array();
+        $result = array();
         foreach ($normalizedKeys as $normalizedKey) {
             $value = $this->internalGetItem($normalizedKey, $success);
             if ($success) {
@@ -660,7 +660,7 @@ abstract class AbstractAdapter implements StorageInterface, EventsCapableInterfa
      * Store an item.
      *
      * @param  string $key
-     * @param  mixed  $value
+     * @param  mixed $value
      * @return bool
      * @throws Exception\ExceptionInterface
      *
@@ -676,7 +676,7 @@ abstract class AbstractAdapter implements StorageInterface, EventsCapableInterfa
 
         $this->normalizeKey($key);
         $args = new ArrayObject(array(
-            'key'   => & $key,
+            'key' => & $key,
             'value' => & $value,
         ));
 
@@ -698,7 +698,7 @@ abstract class AbstractAdapter implements StorageInterface, EventsCapableInterfa
      * Internal method to store an item.
      *
      * @param  string $normalizedKey
-     * @param  mixed  $value
+     * @param  mixed $value
      * @return bool
      * @throws Exception\ExceptionInterface
      */
@@ -762,7 +762,7 @@ abstract class AbstractAdapter implements StorageInterface, EventsCapableInterfa
      * Add an item.
      *
      * @param  string $key
-     * @param  mixed  $value
+     * @param  mixed $value
      * @return bool
      * @throws Exception\ExceptionInterface
      *
@@ -778,7 +778,7 @@ abstract class AbstractAdapter implements StorageInterface, EventsCapableInterfa
 
         $this->normalizeKey($key);
         $args = new ArrayObject(array(
-            'key'   => & $key,
+            'key' => & $key,
             'value' => & $value,
         ));
 
@@ -800,7 +800,7 @@ abstract class AbstractAdapter implements StorageInterface, EventsCapableInterfa
      * Internal method to add an item.
      *
      * @param  string $normalizedKey
-     * @param  mixed  $value
+     * @param  mixed $value
      * @return bool
      * @throws Exception\ExceptionInterface
      */
@@ -870,7 +870,7 @@ abstract class AbstractAdapter implements StorageInterface, EventsCapableInterfa
      * Replace an existing item.
      *
      * @param  string $key
-     * @param  mixed  $value
+     * @param  mixed $value
      * @return bool
      * @throws Exception\ExceptionInterface
      *
@@ -886,7 +886,7 @@ abstract class AbstractAdapter implements StorageInterface, EventsCapableInterfa
 
         $this->normalizeKey($key);
         $args = new ArrayObject(array(
-            'key'   => & $key,
+            'key' => & $key,
             'value' => & $value,
         ));
 
@@ -908,7 +908,7 @@ abstract class AbstractAdapter implements StorageInterface, EventsCapableInterfa
      * Internal method to replace an existing item.
      *
      * @param  string $normalizedKey
-     * @param  mixed  $value
+     * @param  mixed $value
      * @return bool
      * @throws Exception\ExceptionInterface
      */
@@ -981,9 +981,9 @@ abstract class AbstractAdapter implements StorageInterface, EventsCapableInterfa
      * It uses the token received from getItem() to check if the item has
      * changed before overwriting it.
      *
-     * @param  mixed  $token
+     * @param  mixed $token
      * @param  string $key
-     * @param  mixed  $value
+     * @param  mixed $value
      * @return bool
      * @throws Exception\ExceptionInterface
      * @see    getItem()
@@ -998,7 +998,7 @@ abstract class AbstractAdapter implements StorageInterface, EventsCapableInterfa
         $this->normalizeKey($key);
         $args = new ArrayObject(array(
             'token' => & $token,
-            'key'   => & $key,
+            'key' => & $key,
             'value' => & $value,
         ));
 
@@ -1019,9 +1019,9 @@ abstract class AbstractAdapter implements StorageInterface, EventsCapableInterfa
     /**
      * Internal method to set an item only if token matches
      *
-     * @param  mixed  $token
+     * @param  mixed $token
      * @param  string $normalizedKey
-     * @param  mixed  $value
+     * @param  mixed $value
      * @return bool
      * @throws Exception\ExceptionInterface
      * @see    getItem()
@@ -1083,7 +1083,7 @@ abstract class AbstractAdapter implements StorageInterface, EventsCapableInterfa
     protected function internalTouchItem(& $normalizedKey)
     {
         $success = null;
-        $value   = $this->internalGetItem($normalizedKey, $success);
+        $value = $this->internalGetItem($normalizedKey, $success);
         if (!$success) {
             return false;
         }
@@ -1246,7 +1246,7 @@ abstract class AbstractAdapter implements StorageInterface, EventsCapableInterfa
      * Increment an item.
      *
      * @param  string $key
-     * @param  int    $value
+     * @param  int $value
      * @return int|bool The new value on success, false on failure
      * @throws Exception\ExceptionInterface
      *
@@ -1262,7 +1262,7 @@ abstract class AbstractAdapter implements StorageInterface, EventsCapableInterfa
 
         $this->normalizeKey($key);
         $args = new ArrayObject(array(
-            'key'   => & $key,
+            'key' => & $key,
             'value' => & $value,
         ));
 
@@ -1284,15 +1284,15 @@ abstract class AbstractAdapter implements StorageInterface, EventsCapableInterfa
      * Internal method to increment an item.
      *
      * @param  string $normalizedKey
-     * @param  int    $value
+     * @param  int $value
      * @return int|bool The new value on success, false on failure
      * @throws Exception\ExceptionInterface
      */
     protected function internalIncrementItem(& $normalizedKey, & $value)
     {
-        $success  = null;
-        $value    = (int) $value;
-        $get      = (int) $this->internalGetItem($normalizedKey, $success);
+        $success = null;
+        $value = (int)$value;
+        $get = (int)$this->internalGetItem($normalizedKey, $success);
         $newValue = $get + $value;
 
         if ($success) {
@@ -1363,7 +1363,7 @@ abstract class AbstractAdapter implements StorageInterface, EventsCapableInterfa
      * Decrement an item.
      *
      * @param  string $key
-     * @param  int    $value
+     * @param  int $value
      * @return int|bool The new value on success, false on failure
      * @throws Exception\ExceptionInterface
      *
@@ -1379,7 +1379,7 @@ abstract class AbstractAdapter implements StorageInterface, EventsCapableInterfa
 
         $this->normalizeKey($key);
         $args = new ArrayObject(array(
-            'key'   => & $key,
+            'key' => & $key,
             'value' => & $value,
         ));
 
@@ -1401,15 +1401,15 @@ abstract class AbstractAdapter implements StorageInterface, EventsCapableInterfa
      * Internal method to decrement an item.
      *
      * @param  string $normalizedKey
-     * @param  int    $value
+     * @param  int $value
      * @return int|bool The new value on success, false on failure
      * @throws Exception\ExceptionInterface
      */
     protected function internalDecrementItem(& $normalizedKey, & $value)
     {
-        $success  = null;
-        $value    = (int) $value;
-        $get      = (int) $this->internalGetItem($normalizedKey, $success);
+        $success = null;
+        $value = (int)$value;
+        $get = (int)$this->internalGetItem($normalizedKey, $success);
         $newValue = $get - $value;
 
         if ($success) {
@@ -1513,7 +1513,7 @@ abstract class AbstractAdapter implements StorageInterface, EventsCapableInterfa
     {
         if ($this->capabilities === null) {
             $this->capabilityMarker = new stdClass();
-            $this->capabilities     = new Capabilities($this, $this->capabilityMarker);
+            $this->capabilities = new Capabilities($this, $this->capabilityMarker);
         }
         return $this->capabilities;
     }
@@ -1529,7 +1529,7 @@ abstract class AbstractAdapter implements StorageInterface, EventsCapableInterfa
      */
     protected function normalizeKey(& $key)
     {
-        $key = (string) $key;
+        $key = (string)$key;
 
         if ($key === '') {
             throw new Exception\InvalidArgumentException(

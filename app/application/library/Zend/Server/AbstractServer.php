@@ -61,11 +61,11 @@ abstract class AbstractServer implements Server
         $callback = new Method\Callback();
         if ($reflection instanceof Reflection\ReflectionMethod) {
             $callback->setType($reflection->isStatic() ? 'static' : 'instance')
-                     ->setClass($reflection->getDeclaringClass()->getName())
-                     ->setMethod($reflection->getName());
+                ->setClass($reflection->getDeclaringClass()->getName())
+                ->setMethod($reflection->getName());
         } elseif ($reflection instanceof Reflection\ReflectionFunction) {
             $callback->setType('function')
-                     ->setFunction($reflection->getName());
+                ->setFunction($reflection->getName());
         }
         return $callback;
     }
@@ -80,9 +80,9 @@ abstract class AbstractServer implements Server
      */
     protected function _buildSignature(Reflection\AbstractFunction $reflection, $class = null)
     {
-        $ns         = $reflection->getNamespace();
-        $name       = $reflection->getName();
-        $method     = empty($ns) ? $name : $ns . '.' . $name;
+        $ns = $reflection->getNamespace();
+        $name = $reflection->getName();
+        $method = empty($ns) ? $name : $ns . '.' . $name;
 
         if (!$this->overwriteExistingMethods && $this->table->hasMethod($method)) {
             throw new Exception\RuntimeException('Duplicate method registered: ' . $method);
@@ -90,17 +90,17 @@ abstract class AbstractServer implements Server
 
         $definition = new Method\Definition();
         $definition->setName($method)
-                   ->setCallback($this->_buildCallback($reflection))
-                   ->setMethodHelp($reflection->getDescription())
-                   ->setInvokeArguments($reflection->getInvokeArguments());
+            ->setCallback($this->_buildCallback($reflection))
+            ->setMethodHelp($reflection->getDescription())
+            ->setInvokeArguments($reflection->getInvokeArguments());
 
         foreach ($reflection->getPrototypes() as $proto) {
             $prototype = new Method\Prototype();
             $prototype->setReturnType($this->_fixType($proto->getReturnType()));
             foreach ($proto->getParameters() as $parameter) {
                 $param = new Method\Parameter(array(
-                    'type'     => $this->_fixType($parameter->getType()),
-                    'name'     => $parameter->getName(),
+                    'type' => $this->_fixType($parameter->getType()),
+                    'name' => $parameter->getName(),
                     'optional' => $parameter->isOptional(),
                 ));
                 if ($parameter->isDefaultValueAvailable()) {
@@ -127,14 +127,14 @@ abstract class AbstractServer implements Server
     protected function _dispatch(Method\Definition $invokable, array $params)
     {
         $callback = $invokable->getCallback();
-        $type     = $callback->getType();
+        $type = $callback->getType();
 
         if ('function' == $type) {
             $function = $callback->getFunction();
             return call_user_func_array($function, $params);
         }
 
-        $class  = $callback->getClass();
+        $class = $callback->getClass();
         $method = $callback->getMethod();
 
         if ('static' == $type) {
@@ -146,7 +146,7 @@ abstract class AbstractServer implements Server
             $invokeArgs = $invokable->getInvokeArguments();
             if (!empty($invokeArgs)) {
                 $reflection = new ReflectionClass($class);
-                $object     = $reflection->newInstanceArgs($invokeArgs);
+                $object = $reflection->newInstanceArgs($invokeArgs);
             } else {
                 $object = new $class;
             }

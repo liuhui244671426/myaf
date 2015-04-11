@@ -18,9 +18,9 @@ abstract class Factory
      * @var array Known captcha types
      */
     protected static $classMap = array(
-        'dumb'      => 'Zend\Captcha\Dumb',
-        'figlet'    => 'Zend\Captcha\Figlet',
-        'image'     => 'Zend\Captcha\Image',
+        'dumb' => 'Zend\Captcha\Dumb',
+        'figlet' => 'Zend\Captcha\Figlet',
+        'image' => 'Zend\Captcha\Image',
         'recaptcha' => 'Zend\Captcha\ReCaptcha',
     );
 

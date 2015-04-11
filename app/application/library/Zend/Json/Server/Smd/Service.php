@@ -23,7 +23,7 @@ class Service
      * Service metadata
      * @var string
      */
-    protected $envelope  = Smd::ENV_JSONRPC_1;
+    protected $envelope = Smd::ENV_JSONRPC_1;
     protected $name;
     protected $return;
     protected $target;
@@ -53,9 +53,9 @@ class Service
      * @var array
      */
     protected $paramOptionTypes = array(
-        'name'        => 'is_string',
-        'optional'    => 'is_bool',
-        'default'     => null,
+        'name' => 'is_string',
+        'optional' => 'is_bool',
+        'default' => null,
         'description' => 'is_string',
     );
 
@@ -70,28 +70,28 @@ class Service
      * @var array
      */
     protected $paramMap = array(
-        'any'     => 'any',
-        'arr'     => 'array',
-        'array'   => 'array',
-        'assoc'   => 'object',
-        'bool'    => 'boolean',
+        'any' => 'any',
+        'arr' => 'array',
+        'array' => 'array',
+        'assoc' => 'object',
+        'bool' => 'boolean',
         'boolean' => 'boolean',
-        'dbl'     => 'float',
-        'double'  => 'float',
-        'false'   => 'boolean',
-        'float'   => 'float',
-        'hash'    => 'object',
+        'dbl' => 'float',
+        'double' => 'float',
+        'false' => 'boolean',
+        'float' => 'float',
+        'hash' => 'object',
         'integer' => 'integer',
-        'int'     => 'integer',
-        'mixed'   => 'any',
-        'nil'     => 'null',
-        'null'    => 'null',
-        'object'  => 'object',
-        'string'  => 'string',
-        'str'     => 'string',
-        'struct'  => 'object',
-        'true'    => 'boolean',
-        'void'    => 'null',
+        'int' => 'integer',
+        'mixed' => 'any',
+        'nil' => 'null',
+        'null' => 'null',
+        'object' => 'object',
+        'string' => 'string',
+        'str' => 'string',
+        'struct' => 'object',
+        'true' => 'boolean',
+        'void' => 'null',
     );
 
     /**
@@ -105,7 +105,7 @@ class Service
     /**
      * Constructor
      *
-     * @param  string|array             $spec
+     * @param  string|array $spec
      * @throws InvalidArgumentException if no name provided
      */
     public function __construct($spec)
@@ -124,7 +124,7 @@ class Service
     /**
      * Set object state
      *
-     * @param  array   $options
+     * @param  array $options
      * @return Service
      */
     public function setOptions(array $options)
@@ -146,13 +146,13 @@ class Service
     /**
      * Set service name
      *
-     * @param  string                   $name
+     * @param  string $name
      * @return Service
      * @throws InvalidArgumentException
      */
     public function setName($name)
     {
-        $name = (string) $name;
+        $name = (string)$name;
         if (!preg_match($this->nameRegex, $name)) {
             throw new InvalidArgumentException("Invalid name '{$name} provided for service; must follow PHP method naming conventions");
         }
@@ -176,7 +176,7 @@ class Service
      *
      * Currently limited to POST
      *
-     * @param  string                   $transport
+     * @param  string $transport
      * @throws InvalidArgumentException
      * @return Service
      */
@@ -204,12 +204,12 @@ class Service
     /**
      * Set service target
      *
-     * @param  string  $target
+     * @param  string $target
      * @return Service
      */
     public function setTarget($target)
     {
-        $this->target = (string) $target;
+        $this->target = (string)$target;
 
         return $this;
     }
@@ -227,7 +227,7 @@ class Service
     /**
      * Set envelope type
      *
-     * @param  string                   $envelopeType
+     * @param  string $envelopeType
      * @throws InvalidArgumentException
      * @return Service
      */
@@ -255,9 +255,9 @@ class Service
     /**
      * Add a parameter to the service
      *
-     * @param  string|array             $type
-     * @param  array                    $options
-     * @param  int|null                 $order
+     * @param  string|array $type
+     * @param  array $options
+     * @param  int|null $order
      * @throws InvalidArgumentException
      * @return Service
      */
@@ -300,7 +300,7 @@ class Service
      *
      * Each param should be an array, and should include the key 'type'.
      *
-     * @param  array   $params
+     * @param  array $params
      * @return Service
      */
     public function addParams(array $params)
@@ -313,7 +313,7 @@ class Service
             if (!array_key_exists('type', $options)) {
                 continue;
             }
-            $type  = $options['type'];
+            $type = $options['type'];
             $order = (array_key_exists('order', $options)) ? $options['order'] : null;
             $this->addParam($type, $options, $order);
         }
@@ -324,7 +324,7 @@ class Service
     /**
      * Overwrite all parameters
      *
-     * @param  array   $params
+     * @param  array $params
      * @return Service
      */
     public function setParams(array $params)
@@ -344,7 +344,7 @@ class Service
     public function getParams()
     {
         $params = array();
-        $index  = 0;
+        $index = 0;
         foreach ($this->params as $param) {
             if (null === $param['order']) {
                 if (array_search($index, array_keys($params), true)) {
@@ -364,7 +364,7 @@ class Service
     /**
      * Set return type
      *
-     * @param  string|array             $type
+     * @param  string|array $type
      * @throws InvalidArgumentException
      * @return Service
      */
@@ -401,12 +401,12 @@ class Service
      */
     public function toArray()
     {
-        $envelope   = $this->getEnvelope();
-        $target     = $this->getTarget();
-        $transport  = $this->getTransport();
+        $envelope = $this->getEnvelope();
+        $target = $this->getTarget();
+        $transport = $this->getTransport();
         $parameters = $this->getParams();
-        $returns    = $this->getReturn();
-        $name       = $this->getName();
+        $returns = $this->getReturn();
+        $name = $this->getName();
 
         if (empty($target)) {
             return compact('envelope', 'transport', 'name', 'parameters', 'returns');
@@ -440,8 +440,8 @@ class Service
     /**
      * Validate parameter type
      *
-     * @param  string                   $type
-     * @param  bool                     $isReturn
+     * @param  string $type
+     * @param  bool $isReturn
      * @return string
      * @throws InvalidArgumentException
      */

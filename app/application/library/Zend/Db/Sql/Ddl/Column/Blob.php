@@ -23,10 +23,10 @@ class Blob extends Column
 
     /**
      * @param string $name
-     * @param int    $length
-     * @param bool   $nullable
-     * @param null   $default
-     * @param array  $options
+     * @param int $length
+     * @param bool $nullable
+     * @param null $default
+     * @param array $options
      */
     public function __construct($name, $length, $nullable = false, $default = null, array $options = array())
     {
@@ -62,7 +62,7 @@ class Blob extends Column
     {
         $spec = $this->specification;
 
-        $params   = array();
+        $params = array();
         $params[] = $this->name;
         $params[] = $this->type;
 
@@ -77,9 +77,9 @@ class Blob extends Column
         }
 
         if ($this->default !== null) {
-            $spec    .= ' DEFAULT %s';
+            $spec .= ' DEFAULT %s';
             $params[] = $this->default;
-            $types[]  = self::TYPE_VALUE;
+            $types[] = self::TYPE_VALUE;
         }
 
         return array(array(

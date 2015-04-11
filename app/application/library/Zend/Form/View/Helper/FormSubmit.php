@@ -20,17 +20,17 @@ class FormSubmit extends FormInput
      * @var array
      */
     protected $validTagAttributes = array(
-        'name'           => true,
-        'autofocus'      => true,
-        'disabled'       => true,
-        'form'           => true,
-        'formaction'     => true,
-        'formenctype'    => true,
-        'formmethod'     => true,
+        'name' => true,
+        'autofocus' => true,
+        'disabled' => true,
+        'form' => true,
+        'formaction' => true,
+        'formenctype' => true,
+        'formmethod' => true,
         'formnovalidate' => true,
-        'formtarget'     => true,
-        'type'           => true,
-        'value'          => true,
+        'formtarget' => true,
+        'type' => true,
+        'value' => true,
     );
 
     /**

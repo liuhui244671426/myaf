@@ -17,7 +17,7 @@ use Zend\Feed\Writer;
 use Zend\Feed\Writer\Renderer;
 
 /**
-*/
+ */
 class Rss extends Renderer\AbstractRenderer implements Renderer\RendererInterface
 {
     /**
@@ -74,10 +74,11 @@ class Rss extends Renderer\AbstractRenderer implements Renderer\RendererInterfac
     protected function _setTitle(DOMDocument $dom, DOMElement $root)
     {
         if (!$this->getDataContainer()->getDescription()
-        && !$this->getDataContainer()->getTitle()) {
+            && !$this->getDataContainer()->getTitle()
+        ) {
             $message = 'RSS 2.0 entry elements SHOULD contain exactly one'
-            . ' title element but a title has not been set. In addition, there'
-            . ' is no description as required in the absence of a title.';
+                . ' title element but a title has not been set. In addition, there'
+                . ' is no description as required in the absence of a title.';
             $exception = new Writer\Exception\InvalidArgumentException($message);
             if (!$this->ignoreExceptions) {
                 throw $exception;
@@ -103,11 +104,12 @@ class Rss extends Renderer\AbstractRenderer implements Renderer\RendererInterfac
     protected function _setDescription(DOMDocument $dom, DOMElement $root)
     {
         if (!$this->getDataContainer()->getDescription()
-        && !$this->getDataContainer()->getTitle()) {
+            && !$this->getDataContainer()->getTitle()
+        ) {
             $message = 'RSS 2.0 entry elements SHOULD contain exactly one'
-            . ' description element but a description has not been set. In'
-            . ' addition, there is no title element as required in the absence'
-            . ' of a description.';
+                . ' description element but a description has not been set. In'
+                . ' addition, there is no title element as required in the absence'
+                . ' of a description.';
             $exception = new Writer\Exception\InvalidArgumentException($message);
             if (!$this->ignoreExceptions) {
                 throw $exception;
@@ -222,9 +224,9 @@ class Rss extends Renderer\AbstractRenderer implements Renderer\RendererInterfac
                 return;
             }
         }
-        if (isset($data['length']) && (int) $data['length'] <= 0) {
+        if (isset($data['length']) && (int)$data['length'] <= 0) {
             $exception = new Writer\Exception\InvalidArgumentException('Enclosure "length" must be an integer'
-            . ' indicating the content\'s length in bytes');
+                . ' indicating the content\'s length in bytes');
             if (!$this->ignoreExceptions) {
                 throw $exception;
             } else {
@@ -267,7 +269,8 @@ class Rss extends Renderer\AbstractRenderer implements Renderer\RendererInterfac
     protected function _setId(DOMDocument $dom, DOMElement $root)
     {
         if (!$this->getDataContainer()->getId()
-        && !$this->getDataContainer()->getLink()) {
+            && !$this->getDataContainer()->getLink()
+        ) {
             return;
         }
 

@@ -155,16 +155,16 @@ class Stream extends Response
         }
 
         $headerComplete = false;
-        $headersString  = '';
-        $responseArray  = array();
+        $headersString = '';
+        $responseArray = array();
 
         if ($responseString) {
             $responseArray = explode("\n", $responseString);
         }
 
         while (count($responseArray)) {
-            $nextLine        = array_shift($responseArray);
-            $headersString  .= $nextLine."\n";
+            $nextLine = array_shift($responseArray);
+            $headersString .= $nextLine . "\n";
             $nextLineTrimmed = trim($nextLine);
             if ($nextLineTrimmed == '') {
                 $headerComplete = true;
@@ -175,7 +175,7 @@ class Stream extends Response
         if (!$headerComplete) {
             while (false !== ($nextLine = fgets($stream))) {
 
-                $headersString .= trim($nextLine)."\r\n";
+                $headersString .= trim($nextLine) . "\r\n";
                 if ($nextLine == "\r\n" || $nextLine == "\n") {
                     $headerComplete = true;
                     break;
@@ -187,7 +187,7 @@ class Stream extends Response
             throw new Exception\OutOfRangeException('End of header not found');
         }
 
-        /** @var Stream $response  */
+        /** @var Stream $response */
         $response = static::fromString($headersString);
 
         if (is_resource($stream)) {
@@ -201,7 +201,7 @@ class Stream extends Response
         $headers = $response->getHeaders();
         foreach ($headers as $header) {
             if ($header instanceof \Zend\Http\Header\ContentLength) {
-                $response->setContentLength((int) $header->getFieldValue());
+                $response->setContentLength((int)$header->getFieldValue());
                 $contentLength = $response->getContentLength();
                 if (strlen($response->content) > $contentLength) {
                     throw new Exception\OutOfRangeException(sprintf(
@@ -273,7 +273,7 @@ class Stream extends Response
             return '';
         }
 
-        $this->content         .= stream_get_contents($this->stream, $bytes);
+        $this->content .= stream_get_contents($this->stream, $bytes);
         $this->contentStreamed += strlen($this->content);
 
         if ($this->getContentLength() == $this->contentStreamed) {

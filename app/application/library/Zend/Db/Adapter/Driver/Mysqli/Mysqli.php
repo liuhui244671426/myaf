@@ -188,10 +188,10 @@ class Mysqli implements DriverInterface, Profiler\ProfilerAwareInterface
     {
         /**
          * @todo Resource tracking
-        if (is_resource($sqlOrResource) && !in_array($sqlOrResource, $this->resources, true)) {
-            $this->resources[] = $sqlOrResource;
-        }
-        */
+         * if (is_resource($sqlOrResource) && !in_array($sqlOrResource, $this->resources, true)) {
+         * $this->resources[] = $sqlOrResource;
+         * }
+         */
 
         $statement = clone $this->statementPrototype;
         if ($sqlOrResource instanceof mysqli_stmt) {
@@ -236,7 +236,7 @@ class Mysqli implements DriverInterface, Profiler\ProfilerAwareInterface
      * Format parameter name
      *
      * @param string $name
-     * @param mixed  $type
+     * @param mixed $type
      * @return string
      */
     public function formatParameterName($name, $type = null)

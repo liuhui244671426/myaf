@@ -68,8 +68,8 @@ abstract class AbstractEntry
      */
     public function __construct(DOMElement $entry, $entryKey, $type = null)
     {
-        $this->entry       = $entry;
-        $this->entryKey    = $entryKey;
+        $this->entry = $entry;
+        $this->entryKey = $entryKey;
         $this->domDocument = $entry->ownerDocument;
         if ($type !== null) {
             $this->data['type'] = $type;
@@ -213,9 +213,9 @@ abstract class AbstractEntry
      */
     protected function loadExtensions()
     {
-        $all     = Reader\Reader::getExtensions();
+        $all = Reader\Reader::getExtensions();
         $manager = Reader\Reader::getExtensionManager();
-        $feed    = $all['entry'];
+        $feed = $all['entry'];
         foreach ($feed as $extension) {
             if (in_array($extension, $all['core'])) {
                 continue;

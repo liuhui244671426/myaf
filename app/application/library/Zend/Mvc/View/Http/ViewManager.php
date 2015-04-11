@@ -92,22 +92,22 @@ class ViewManager extends AbstractListenerAggregate
      */
     public function onBootstrap($event)
     {
-        $application  = $event->getApplication();
-        $services     = $application->getServiceManager();
-        $config       = $services->get('Config');
-        $events       = $application->getEventManager();
+        $application = $event->getApplication();
+        $services = $application->getServiceManager();
+        $config = $services->get('Config');
+        $events = $application->getEventManager();
         $sharedEvents = $events->getSharedManager();
 
-        $this->config   = isset($config['view_manager']) && (is_array($config['view_manager']) || $config['view_manager'] instanceof ArrayAccess)
-                        ? $config['view_manager']
-                        : array();
+        $this->config = isset($config['view_manager']) && (is_array($config['view_manager']) || $config['view_manager'] instanceof ArrayAccess)
+            ? $config['view_manager']
+            : array();
         $this->services = $services;
-        $this->event    = $event;
+        $this->event = $event;
 
-        $routeNotFoundStrategy   = $this->getRouteNotFoundStrategy();
-        $exceptionStrategy       = $this->getExceptionStrategy();
-        $mvcRenderingStrategy    = $this->getMvcRenderingStrategy();
-        $injectTemplateListener  = $this->getInjectTemplateListener();
+        $routeNotFoundStrategy = $this->getRouteNotFoundStrategy();
+        $exceptionStrategy = $this->getExceptionStrategy();
+        $mvcRenderingStrategy = $this->getMvcRenderingStrategy();
+        $injectTemplateListener = $this->getInjectTemplateListener();
         $createViewModelListener = new CreateViewModelListener();
         $injectViewModelListener = new InjectViewModelListener();
 
@@ -170,7 +170,7 @@ class ViewManager extends AbstractListenerAggregate
         $this->renderer->setHelperPluginManager($this->getHelperManager());
         $this->renderer->setResolver($this->getResolver());
 
-        $model       = $this->getViewModel();
+        $model = $this->getViewModel();
         $modelHelper = $this->renderer->plugin('view_model');
         $modelHelper->setRoot($model);
 
@@ -304,9 +304,9 @@ class ViewManager extends AbstractListenerAggregate
 
         $this->routeNotFoundStrategy = new RouteNotFoundStrategy();
 
-        $displayExceptions     = false;
+        $displayExceptions = false;
         $displayNotFoundReason = false;
-        $notFoundTemplate      = '404';
+        $notFoundTemplate = '404';
 
         if (isset($this->config['display_exceptions'])) {
             $displayExceptions = $this->config['display_exceptions'];

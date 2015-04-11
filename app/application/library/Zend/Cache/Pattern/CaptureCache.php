@@ -17,7 +17,7 @@ class CaptureCache extends AbstractPattern
     /**
      * Start the cache
      *
-     * @param  string $pageId  Page identifier
+     * @param  string $pageId Page identifier
      * @return void
      */
     public function start($pageId = null)
@@ -41,7 +41,7 @@ class CaptureCache extends AbstractPattern
     /**
      * Write content to page identity
      *
-     * @param string      $content
+     * @param string $content
      * @param null|string $pageId
      * @throws Exception\LogicException
      */
@@ -89,7 +89,7 @@ class CaptureCache extends AbstractPattern
         if (file_exists($file)) {
             ErrorHandler::start();
             $content = file_get_contents($file);
-            $error   = ErrorHandler::stop();
+            $error = ErrorHandler::stop();
             if ($content === false) {
                 throw new Exception\RuntimeException("Failed to read cached pageId '{$pageId}'", 0, $error);
             }
@@ -237,8 +237,8 @@ class CaptureCache extends AbstractPattern
     /**
      * Write content to a file
      *
-     * @param  string  $file File complete path
-     * @param  string  $data Data to write
+     * @param  string $file File complete path
+     * @param  string $data Data to write
      * @return void
      * @throws Exception\RuntimeException
      */
@@ -246,8 +246,8 @@ class CaptureCache extends AbstractPattern
     {
         $options = $this->getOptions();
         $locking = $options->getFileLocking();
-        $perm    = $options->getFilePermission();
-        $umask   = $options->getUmask();
+        $perm = $options->getFilePermission();
+        $umask = $options->getUmask();
         if ($umask !== false && $perm !== false) {
             $perm = $perm & ~$umask;
         }
@@ -255,7 +255,7 @@ class CaptureCache extends AbstractPattern
         ErrorHandler::start();
 
         $umask = ($umask !== false) ? umask($umask) : false;
-        $rs    = file_put_contents($file, $data, $locking ? LOCK_EX : 0);
+        $rs = file_put_contents($file, $data, $locking ? LOCK_EX : 0);
         if ($umask) {
             umask($umask);
         }
@@ -289,8 +289,8 @@ class CaptureCache extends AbstractPattern
         }
 
         $options = $this->getOptions();
-        $perm    = $options->getDirPermission();
-        $umask   = $options->getUmask();
+        $perm = $options->getDirPermission();
+        $umask = $options->getUmask();
         if ($umask !== false && $perm !== false) {
             $perm = $perm & ~$umask;
         }
@@ -301,7 +301,7 @@ class CaptureCache extends AbstractPattern
             // build-in mkdir function is enough
 
             $umask = ($umask !== false) ? umask($umask) : false;
-            $res   = mkdir($pathname, ($perm !== false) ? $perm : 0777, true);
+            $res = mkdir($pathname, ($perm !== false) ? $perm : 0777, true);
 
             if ($umask !== false) {
                 umask($umask);
@@ -325,7 +325,7 @@ class CaptureCache extends AbstractPattern
 
             // find existing path and missing path parts
             $parts = array();
-            $path  = $pathname;
+            $path = $pathname;
             while (!file_exists($path)) {
                 array_unshift($parts, basename($path));
                 $nextPath = dirname($path);
@@ -337,11 +337,11 @@ class CaptureCache extends AbstractPattern
 
             // make all missing path parts
             foreach ($parts as $part) {
-                $path.= DIRECTORY_SEPARATOR . $part;
+                $path .= DIRECTORY_SEPARATOR . $part;
 
                 // create a single directory, set and reset umask immediately
                 $umask = ($umask !== false) ? umask($umask) : false;
-                $res   = mkdir($path, ($perm === false) ? 0777 : $perm, false);
+                $res = mkdir($path, ($perm === false) ? 0777 : $perm, false);
                 if ($umask !== false) {
                     umask($umask);
                 }
@@ -380,8 +380,8 @@ class CaptureCache extends AbstractPattern
         }
 
         $publicDir = $this->getOptions()->getPublicDir();
-        $path      = $this->pageId2Path($pageId);
-        $file      = $path . DIRECTORY_SEPARATOR . $this->pageId2Filename($pageId);
+        $path = $this->pageId2Path($pageId);
+        $file = $path . DIRECTORY_SEPARATOR . $this->pageId2Filename($pageId);
 
         return $publicDir . $file;
     }

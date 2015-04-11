@@ -14,7 +14,7 @@ use Traversable;
 class PregReplace extends AbstractFilter
 {
     protected $options = array(
-        'pattern'     => null,
+        'pattern' => null,
         'replacement' => '',
     );
 

@@ -51,14 +51,14 @@ class Xterm256
         }
 
         $ahex = array_map(function ($hex) {
-            $val = round(((hexdec($hex) - 55)/40), 0);
-            return $val > 0 ? (int) $val : 0;
+            $val = round(((hexdec($hex) - 55) / 40), 0);
+            return $val > 0 ? (int)$val : 0;
         }, $hex);
 
         $dhex = array_map('hexdec', $hex);
 
-        if (array_fill(0, 3, $dhex[0]) === $dhex && (int) substr($dhex[0], -1) === 8) {
-            $x11 = 232 + (int) floor($dhex[0]/10);
+        if (array_fill(0, 3, $dhex[0]) === $dhex && (int)substr($dhex[0], -1) === 8) {
+            $x11 = 232 + (int)floor($dhex[0] / 10);
             return new static($x11);
         }
 

@@ -34,17 +34,17 @@ class UploadProgress extends AbstractUploadHandler
             return false;
         }
 
-        $status  = array(
-            'total'    => 0,
-            'current'  => 0,
-            'rate'     => 0,
-            'message'  => '',
-            'done'     => false
+        $status = array(
+            'total' => 0,
+            'current' => 0,
+            'rate' => 0,
+            'message' => '',
+            'done' => false
         );
         $status = $uploadInfo + $status;
-        $status['total']   = $status['bytes_total'];
+        $status['total'] = $status['bytes_total'];
         $status['current'] = $status['bytes_uploaded'];
-        $status['rate']    = $status['speed_average'];
+        $status['rate'] = $status['speed_average'];
         if ($status['total'] == $status['current']) {
             $status['done'] = true;
         }

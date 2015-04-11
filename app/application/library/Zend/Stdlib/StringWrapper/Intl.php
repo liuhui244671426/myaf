@@ -58,8 +58,8 @@ class Intl extends AbstractStringWrapper
     /**
      * Returns the portion of string specified by the start and length parameters
      *
-     * @param string   $str
-     * @param int      $offset
+     * @param string $str
+     * @param int $offset
      * @param int|null $length
      * @return string|false
      */
@@ -78,7 +78,7 @@ class Intl extends AbstractStringWrapper
      *
      * @param string $haystack
      * @param string $needle
-     * @param int    $offset
+     * @param int $offset
      * @return int|false
      */
     public function strpos($haystack, $needle, $offset = 0)

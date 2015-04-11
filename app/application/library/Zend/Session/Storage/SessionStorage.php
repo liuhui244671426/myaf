@@ -26,8 +26,8 @@ class SessionStorage extends ArrayStorage
      * values if any discovered.
      *
      * @param array|null $input
-     * @param int        $flags
-     * @param string     $iteratorClass
+     * @param int $flags
+     * @param string $iteratorClass
      */
     public function __construct($input = null, $flags = ArrayObject::ARRAY_AS_PROPS, $iteratorClass = '\\ArrayIterator')
     {
@@ -37,7 +37,7 @@ class SessionStorage extends ArrayStorage
             if (is_object($input) && $_SESSION instanceof ArrayObject) {
                 $resetSession = false;
             } elseif (is_object($input) && !$_SESSION instanceof ArrayObject) {
-                $input = (array) $input;
+                $input = (array)$input;
             }
         } elseif (null === $input) {
             $input = array();
@@ -59,7 +59,7 @@ class SessionStorage extends ArrayStorage
      */
     public function __destruct()
     {
-        $_SESSION = (array) $this->getArrayCopy();
+        $_SESSION = (array)$this->getArrayCopy();
     }
 
     /**
@@ -67,7 +67,7 @@ class SessionStorage extends ArrayStorage
      *
      * Ensures $_SESSION is set to an instance of the object when complete.
      *
-     * @param  array          $array
+     * @param  array $array
      * @return SessionStorage
      */
     public function fromArray(array $array)

@@ -28,9 +28,9 @@ class SimpleRouteStack extends BaseSimpleRouteStack
     {
         $routes = $this->routePluginManager;
         foreach (array(
-                'catchall' => __NAMESPACE__ . '\Catchall',
-                'simple'   => __NAMESPACE__ . '\Simple',
-            ) as $name => $class
+                     'catchall' => __NAMESPACE__ . '\Catchall',
+                     'simple' => __NAMESPACE__ . '\Simple',
+                 ) as $name => $class
         ) {
             $routes->setInvokableClass($name, $class);
         };
@@ -40,8 +40,8 @@ class SimpleRouteStack extends BaseSimpleRouteStack
      * addRoute(): defined by RouteStackInterface interface.
      *
      * @see    RouteStackInterface::addRoute()
-     * @param  string  $name
-     * @param  mixed   $route
+     * @param  string $name
+     * @param  mixed $route
      * @param  int $priority
      * @return SimpleRouteStack
      */

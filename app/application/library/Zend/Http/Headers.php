@@ -61,7 +61,7 @@ class Headers implements Countable, Iterator
                 if ($current) {
                     // a header name was present, then store the current complete line
                     $headers->headersKeys[] = static::createKey($current['name']);
-                    $headers->headers[]     = $current;
+                    $headers->headers[] = $current;
                 }
                 $current = array(
                     'name' => $matches['name'],
@@ -83,7 +83,7 @@ class Headers implements Countable, Iterator
         }
         if ($current) {
             $headers->headersKeys[] = static::createKey($current['name']);
-            $headers->headers[]     = $current;
+            $headers->headers[] = $current;
         }
         return $headers;
     }
@@ -165,16 +165,17 @@ class Headers implements Countable, Iterator
     {
         $matches = null;
         if (preg_match('/^(?P<name>[^()><@,;:\"\\/\[\]?=}{ \t]+):.*$/', $headerFieldNameOrLine, $matches)
-            && $fieldValue === null) {
+            && $fieldValue === null
+        ) {
             // is a header
             $headerName = $matches['name'];
-            $headerKey  = static::createKey($matches['name']);
+            $headerKey = static::createKey($matches['name']);
             $line = $headerFieldNameOrLine;
         } elseif ($fieldValue === null) {
             throw new Exception\InvalidArgumentException('A field name was provided without a field value');
         } else {
             $headerName = $headerFieldNameOrLine;
-            $headerKey  = static::createKey($headerFieldNameOrLine);
+            $headerKey = static::createKey($headerFieldNameOrLine);
             if (is_array($fieldValue)) {
                 $fieldValue = implode(', ', $fieldValue);
             }
@@ -182,7 +183,7 @@ class Headers implements Countable, Iterator
         }
 
         $this->headersKeys[] = $headerKey;
-        $this->headers[]     = array('name' => $headerName, 'line' => $line);
+        $this->headers[] = array('name' => $headerName, 'line' => $line);
 
         return $this;
     }
@@ -196,7 +197,7 @@ class Headers implements Countable, Iterator
     public function addHeader(Header\HeaderInterface $header)
     {
         $this->headersKeys[] = static::createKey($header->getFieldName());
-        $this->headers[]     = $header;
+        $this->headers[] = $header;
 
         return $this;
     }
@@ -432,7 +433,7 @@ class Headers implements Countable, Iterator
             $this->headers[$index] = $current = array_shift($headers);
             foreach ($headers as $header) {
                 $this->headersKeys[] = $key;
-                $this->headers[]     = $header;
+                $this->headers[] = $header;
             }
             return $current;
         }

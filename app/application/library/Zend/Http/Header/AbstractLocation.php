@@ -73,7 +73,7 @@ abstract class AbstractLocation implements HeaderInterface
                 $uri = UriFactory::factory($uri);
             } catch (UriException\InvalidUriPartException $e) {
                 throw new Exception\InvalidArgumentException(
-                    sprintf('Invalid URI passed as string (%s)', (string) $uri),
+                    sprintf('Invalid URI passed as string (%s)', (string)$uri),
                     $e->getCode(),
                     $e
                 );

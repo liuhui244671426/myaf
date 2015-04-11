@@ -27,13 +27,13 @@ abstract class UriFactory
      *
      * @var array
      */
-     protected static $schemeClasses = array(
-        'http'   => 'Zend\Uri\Http',
-        'https'  => 'Zend\Uri\Http',
+    protected static $schemeClasses = array(
+        'http' => 'Zend\Uri\Http',
+        'https' => 'Zend\Uri\Http',
         'mailto' => 'Zend\Uri\Mailto',
-        'file'   => 'Zend\Uri\File',
-        'urn'    => 'Zend\Uri\Uri',
-        'tag'    => 'Zend\Uri\Uri',
+        'file' => 'Zend\Uri\File',
+        'urn' => 'Zend\Uri\Uri',
+        'tag' => 'Zend\Uri\Uri',
     );
 
     /**
@@ -95,13 +95,13 @@ abstract class UriFactory
             ));
         }
 
-        $uri    = new Uri($uriString);
+        $uri = new Uri($uriString);
         $scheme = strtolower($uri->getScheme());
         if (!$scheme && $defaultScheme) {
             $scheme = $defaultScheme;
         }
 
-        if ($scheme && ! isset(static::$schemeClasses[$scheme])) {
+        if ($scheme && !isset(static::$schemeClasses[$scheme])) {
             throw new Exception\InvalidArgumentException(sprintf(
                 'no class registered for scheme "%s"',
                 $scheme
@@ -110,7 +110,7 @@ abstract class UriFactory
         if ($scheme && isset(static::$schemeClasses[$scheme])) {
             $class = static::$schemeClasses[$scheme];
             $uri = new $class($uri);
-            if (! $uri instanceof UriInterface) {
+            if (!$uri instanceof UriInterface) {
                 throw new Exception\InvalidArgumentException(sprintf(
                     'class "%s" registered for scheme "%s" does not implement Zend\Uri\UriInterface',
                     $class,

@@ -26,7 +26,7 @@ class ScrollingStylePluginManager extends AbstractPluginManager
      * @var array
      */
     protected $invokableClasses = array(
-        'all'     => 'Zend\Paginator\ScrollingStyle\All',
+        'all' => 'Zend\Paginator\ScrollingStyle\All',
         'elastic' => 'Zend\Paginator\ScrollingStyle\Elastic',
         'jumping' => 'Zend\Paginator\ScrollingStyle\Jumping',
         'sliding' => 'Zend\Paginator\ScrollingStyle\Sliding',

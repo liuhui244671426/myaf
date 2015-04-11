@@ -202,7 +202,7 @@ class Request
      */
     public function setId($name)
     {
-        $this->id = (string) $name;
+        $this->id = (string)$name;
         return $this;
     }
 

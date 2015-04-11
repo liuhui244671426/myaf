@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Yaf_Request_Simple
  *
@@ -24,7 +25,7 @@ class Yaf_Request_Simple extends Yaf_Request_Abstract
             } else {
                 $sapiType = php_sapi_name();
                 if (strtolower($sapiType) == 'cli'
-                || substr($sapiType, 0, 3) == 'cgi'
+                    || substr($sapiType, 0, 3) == 'cgi'
                 ) {
                     $method = 'CLI';
                 } else {
@@ -33,7 +34,7 @@ class Yaf_Request_Simple extends Yaf_Request_Abstract
             }
         }
         $this->method = $method;
-        if ($module!=null || $action!=null || $controller!=null) {
+        if ($module != null || $action != null || $controller != null) {
             $this->setActionName($action);
             $this->setControllerName($controller);
             $this->setModuleName($module);

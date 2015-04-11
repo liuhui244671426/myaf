@@ -91,7 +91,7 @@ class Response
     public function setReturnValue($value, $type = null)
     {
         $this->return = $value;
-        $this->type = (string) $type;
+        $this->type = (string)$type;
     }
 
     /**
@@ -202,12 +202,12 @@ class Response
         $value = $this->_getXmlRpcReturn();
         $generator = AbstractValue::getGenerator();
         $generator->openElement('methodResponse')
-                  ->openElement('params')
-                  ->openElement('param');
+            ->openElement('params')
+            ->openElement('param');
         $value->generateXml();
         $generator->closeElement('param')
-                  ->closeElement('params')
-                  ->closeElement('methodResponse');
+            ->closeElement('params')
+            ->closeElement('methodResponse');
 
         return $generator->flush();
     }

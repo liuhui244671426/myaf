@@ -13,7 +13,7 @@ use Countable;
 use Iterator;
 
 /**
-*/
+ */
 class Feed extends AbstractFeed implements Iterator, Countable
 {
     /**
@@ -140,9 +140,9 @@ class Feed extends AbstractFeed implements Iterator, Countable
         $entries = array();
         foreach ($this->entries as $entry) {
             if ($entry->getDateModified()) {
-                $timestamp = (int) $entry->getDateModified()->getTimestamp();
+                $timestamp = (int)$entry->getDateModified()->getTimestamp();
             } elseif ($entry->getDateCreated()) {
-                $timestamp = (int) $entry->getDateCreated()->getTimestamp();
+                $timestamp = (int)$entry->getDateCreated()->getTimestamp();
             }
             $entries[$timestamp] = $entry;
         }
@@ -216,8 +216,8 @@ class Feed extends AbstractFeed implements Iterator, Countable
     /**
      * Attempt to build and return the feed resulting from the data set
      *
-     * @param  string  $type The feed type "rss" or "atom" to export as
-     * @param  bool    $ignoreExceptions
+     * @param  string $type The feed type "rss" or "atom" to export as
+     * @param  bool $ignoreExceptions
      * @throws Exception\InvalidArgumentException
      * @return string
      */
@@ -227,7 +227,7 @@ class Feed extends AbstractFeed implements Iterator, Countable
         $type = ucfirst($this->getType());
         if ($type !== 'Rss' && $type !== 'Atom') {
             throw new Exception\InvalidArgumentException('Invalid feed type specified: ' . $type . '.'
-            . ' Should be one of "rss" or "atom".');
+                . ' Should be one of "rss" or "atom".');
         }
         $renderClass = 'Zend\\Feed\\Writer\\Renderer\\Feed\\' . $type;
         $renderer = new $renderClass($this);

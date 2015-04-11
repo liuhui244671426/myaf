@@ -16,5 +16,6 @@ namespace Zend\InputFilter;
 interface UnknownInputsCapableInterface
 {
     public function hasUnknown();
+
     public function getUnknown();
 }

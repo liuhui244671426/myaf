@@ -34,10 +34,10 @@ class PaginationControl extends AbstractHelper
      * if so, uses that.  Also, if no scrolling style or partial are specified,
      * the defaults will be used (if set).
      *
-     * @param  Paginator\Paginator $paginator      (Optional)
-     * @param  string              $scrollingStyle (Optional) Scrolling style
-     * @param  string              $partial        (Optional) View partial
-     * @param  array|string        $params         (Optional) params to pass to the partial
+     * @param  Paginator\Paginator $paginator (Optional)
+     * @param  string $scrollingStyle (Optional) Scrolling style
+     * @param  string $partial (Optional) View partial
+     * @param  array|string $params (Optional) params to pass to the partial
      * @throws Exception\RuntimeException if no paginator or no view partial provided
      * @throws Exception\InvalidArgumentException if partial is invalid array
      * @return string
@@ -47,7 +47,8 @@ class PaginationControl extends AbstractHelper
         $scrollingStyle = null,
         $partial = null,
         $params = null
-    ) {
+    )
+    {
         if ($paginator === null) {
             if (isset($this->view->paginator)
                 && $this->view->paginator !== null
@@ -74,7 +75,7 @@ class PaginationControl extends AbstractHelper
         $pages = get_object_vars($paginator->getPages($scrollingStyle));
 
         if ($params !== null) {
-            $pages = array_merge($pages, (array) $params);
+            $pages = array_merge($pages, (array)$params);
         }
 
         if (is_array($partial)) {

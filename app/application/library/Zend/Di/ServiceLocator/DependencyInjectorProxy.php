@@ -28,8 +28,8 @@ class DependencyInjectorProxy extends Di
      */
     public function __construct(Di $di)
     {
-        $this->di              = $di;
-        $this->definitions     = $di->definitions();
+        $this->di = $di;
+        $this->definitions = $di->definitions();
         $this->instanceManager = $di->instanceManager();
     }
 
@@ -103,7 +103,7 @@ class DependencyInjectorProxy extends Di
             );
         }
 
-        $class  = $callback[0];
+        $class = $callback[0];
         $method = $callback[1];
 
         $callParameters = array();
@@ -123,7 +123,7 @@ class DependencyInjectorProxy extends Di
     {
         return array(
             'method' => $method,
-            'params' =>  $this->resolveMethodParameters($class, $method, $params, $alias, $isRequired),
+            'params' => $this->resolveMethodParameters($class, $method, $params, $alias, $isRequired),
         );
     }
 

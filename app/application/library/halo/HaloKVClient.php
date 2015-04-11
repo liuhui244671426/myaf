@@ -18,109 +18,102 @@ class  HaloKVClient
     public function __construct($config)
     {
         $this->config = $config;
-        $this->port = empty($port) ? 27017 : $port ;
+        $this->port = empty($port) ? 27017 : $port;
     }
+
     public function __destruct()
     {
-        if($this->connection)
-        {
+        if ($this->connection) {
             $this->connection->close();
         }
     }
+
     public function isConnected()
     {
         return $this->connection && $this->collection;
     }
 
-    public function setDBCollection($db,$collection)
+    public function setDBCollection($db, $collection)
     {
-        if (!$this->isConnected())
-        {
+        if (!$this->isConnected()) {
             list($usec, $sec) = explode(" ", microtime());
             $begin = ((float)$usec + (float)$sec);
             $this->connect();
             list($usec, $sec) = explode(" ", microtime());
             $end = ((float)$usec + (float)$sec);
 
-            if ($end - $begin >= 0.2)
-            {
-                Logger::traceUser(0,3002, array('time'=>($end - $begin)*1000, 'host'=>$this->config['host']));
+            if ($end - $begin >= 0.2) {
+                Logger::traceUser(0, 3002, array('time' => ($end - $begin) * 1000, 'host' => $this->config['host']));
             }
         }
-        if($this->connection)
-        {
-            $this->collection =  $this->connection->$db->$collection;
+        if ($this->connection) {
+            $this->collection = $this->connection->$db->$collection;
             return $this->collection;
         }
-        return ;
+        return;
     }
 
     public function connect()
     {
-        try{
-            if(isEmptyString($this->config['username']) || isEmptyString($this->config['password']))
-            {
+        try {
+            if (isEmptyString($this->config['username']) || isEmptyString($this->config['password'])) {
                 $this->connection = new MongoClient(sprintf('mongodb://%s:%d', $this->config['host'], $this->config['port']));
-            }
-            else
-            {
+            } else {
                 $this->connection = new MongoClient(sprintf('mongodb://%s:%d', $this->config['host'], $this->config['port']),
                     array(
-                        'username'=>$this->config['username'],
-                        'password'=>$this->config['password'],
-                        'db'=>$this->config['db'],
+                        'username' => $this->config['username'],
+                        'password' => $this->config['password'],
+                        'db' => $this->config['db'],
                     ));
             }
-        }
-        catch (Exception $e)
-        {
+        } catch (Exception $e) {
             $this->collection = null;
             $this->connection = null;
-            Logger::ERROR('Connect mongodb error ['.$e->getMessage().']',__FILE__,__LINE__,ERROR_LOG_FILE);
+            Logger::ERROR('Connect mongodb error [' . $e->getMessage() . ']', __FILE__, __LINE__, ERROR_LOG_FILE);
         }
     }
+
     public function disconnect()
     {
-        if($this->connection)
-        {
+        if ($this->connection) {
             $this->connection->close();
         }
     }
+
     public function set($key, $value)
     {
-        if (!$this->isConnected())
-        {
+        if (!$this->isConnected()) {
             $this->connect();
 
         }
         if (!$this->collection)
-            return ;
+            return;
 
         $ret = $this->get($key);
-        if($ret)
-            $this->collection->update(array('key'=>$key), array('$set'=>array('value'=>$value)));
+        if ($ret)
+            $this->collection->update(array('key' => $key), array('$set' => array('value' => $value)));
         else
-            $this->collection->insert(array('key'=>$key, 'value'=>$value));
+            $this->collection->insert(array('key' => $key, 'value' => $value));
     }
+
     public function get($key)
     {
-        if (!$this->isConnected())
-        {
+        if (!$this->isConnected()) {
             $this->connect();
         }
         if (!$this->collection)
             return null;
-        $ret =  $this->collection->findOne(array('key'=>$key));
+        $ret = $this->collection->findOne(array('key' => $key));
         return $ret ? $ret['value'] : null;
     }
+
     public function remove($key)
     {
-        if (!$this->isConnected())
-        {
+        if (!$this->isConnected()) {
             $this->connect();
         }
         if (!$this->collection)
-            return ;
-        $this->collection->remove(array('key'=>$key));
+            return;
+        $this->collection->remove(array('key' => $key));
     }
 }

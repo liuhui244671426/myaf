@@ -12,9 +12,9 @@ namespace Zend\Db\Sql\Predicate;
 class Between implements PredicateInterface
 {
     protected $specification = '%1$s BETWEEN %2$s AND %3$s';
-    protected $identifier    = null;
-    protected $minValue      = null;
-    protected $maxValue      = null;
+    protected $identifier = null;
+    protected $minValue = null;
+    protected $maxValue = null;
 
     /**
      * Constructor

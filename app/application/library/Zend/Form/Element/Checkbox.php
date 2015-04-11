@@ -81,7 +81,7 @@ class Checkbox extends Element implements InputProviderInterface
      */
     public function setUseHiddenElement($useHiddenElement)
     {
-        $this->useHiddenElement = (bool) $useHiddenElement;
+        $this->useHiddenElement = (bool)$useHiddenElement;
         return $this;
     }
 
@@ -149,7 +149,7 @@ class Checkbox extends Element implements InputProviderInterface
         if (null === $this->validator) {
             $this->validator = new InArrayValidator(array(
                 'haystack' => array($this->checkedValue, $this->uncheckedValue),
-                'strict'   => false
+                'strict' => false
             ));
         }
         return $this->validator;
@@ -209,7 +209,7 @@ class Checkbox extends Element implements InputProviderInterface
     public function setValue($value)
     {
         // Cast to strings because POST data comes in string form
-        $checked = (string) $value === (string) $this->getCheckedValue();
+        $checked = (string)$value === (string)$this->getCheckedValue();
         $this->value = $checked ? $this->getCheckedValue() : $this->getUncheckedValue();
         return $this;
     }

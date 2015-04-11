@@ -40,48 +40,48 @@ class Posix extends AbstractAdapter
      */
     protected static $ansiColorMap = array(
         'fg' => array(
-            Color::NORMAL        => '22;39',
-            Color::RESET         => '22;39',
+            Color::NORMAL => '22;39',
+            Color::RESET => '22;39',
 
-            Color::BLACK         => '0;30',
-            Color::RED           => '0;31',
-            Color::GREEN         => '0;32',
-            Color::YELLOW        => '0;33',
-            Color::BLUE          => '0;34',
-            Color::MAGENTA       => '0;35',
-            Color::CYAN          => '0;36',
-            Color::WHITE         => '0;37',
+            Color::BLACK => '0;30',
+            Color::RED => '0;31',
+            Color::GREEN => '0;32',
+            Color::YELLOW => '0;33',
+            Color::BLUE => '0;34',
+            Color::MAGENTA => '0;35',
+            Color::CYAN => '0;36',
+            Color::WHITE => '0;37',
 
-            Color::GRAY          => '1;30',
-            Color::LIGHT_RED     => '1;31',
-            Color::LIGHT_GREEN   => '1;32',
-            Color::LIGHT_YELLOW  => '1;33',
-            Color::LIGHT_BLUE    => '1;34',
+            Color::GRAY => '1;30',
+            Color::LIGHT_RED => '1;31',
+            Color::LIGHT_GREEN => '1;32',
+            Color::LIGHT_YELLOW => '1;33',
+            Color::LIGHT_BLUE => '1;34',
             Color::LIGHT_MAGENTA => '1;35',
-            Color::LIGHT_CYAN    => '1;36',
-            Color::LIGHT_WHITE   => '1;37',
+            Color::LIGHT_CYAN => '1;36',
+            Color::LIGHT_WHITE => '1;37',
         ),
         'bg' => array(
-            Color::NORMAL        => '0;49',
-            Color::RESET         => '0;49',
+            Color::NORMAL => '0;49',
+            Color::RESET => '0;49',
 
-            Color::BLACK         => '40',
-            Color::RED           => '41',
-            Color::GREEN         => '42',
-            Color::YELLOW        => '43',
-            Color::BLUE          => '44',
-            Color::MAGENTA       => '45',
-            Color::CYAN          => '46',
-            Color::WHITE         => '47',
+            Color::BLACK => '40',
+            Color::RED => '41',
+            Color::GREEN => '42',
+            Color::YELLOW => '43',
+            Color::BLUE => '44',
+            Color::MAGENTA => '45',
+            Color::CYAN => '46',
+            Color::WHITE => '47',
 
-            Color::GRAY          => '40',
-            Color::LIGHT_RED     => '41',
-            Color::LIGHT_GREEN   => '42',
-            Color::LIGHT_YELLOW  => '43',
-            Color::LIGHT_BLUE    => '44',
+            Color::GRAY => '40',
+            Color::LIGHT_RED => '41',
+            Color::LIGHT_GREEN => '42',
+            Color::LIGHT_YELLOW => '43',
+            Color::LIGHT_BLUE => '44',
             Color::LIGHT_MAGENTA => '45',
-            Color::LIGHT_CYAN    => '46',
-            Color::LIGHT_WHITE   => '47',
+            Color::LIGHT_CYAN => '46',
+            Color::LIGHT_WHITE => '47',
         ),
     );
 
@@ -100,7 +100,7 @@ class Posix extends AbstractAdapter
      * appropriate color reset sequences before sending EOL character.
      *
      * @link https://github.com/zendframework/zf2/issues/4167
-     * @param string   $text
+     * @param string $text
      * @param null|int $color
      * @param null|int $bgColor
      */
@@ -126,7 +126,7 @@ class Posix extends AbstractAdapter
          * Try to read env variable
          */
         if (($result = getenv('COLUMNS')) !== false) {
-            return $width = (int) $result;
+            return $width = (int)$result;
         }
 
         /**
@@ -134,7 +134,7 @@ class Posix extends AbstractAdapter
          */
         $result = exec('tput cols', $output, $return);
         if (!$return && is_numeric($result)) {
-            return $width = (int) $result;
+            return $width = (int)$result;
         }
 
         return $width = parent::getWidth();
@@ -154,13 +154,13 @@ class Posix extends AbstractAdapter
 
         // Try to read env variable
         if (($result = getenv('LINES')) !== false) {
-            return $height = (int) $result;
+            return $height = (int)$result;
         }
 
         // Try to read console size from "tput" command
         $result = exec('tput lines', $output, $return);
         if (!$return && is_numeric($result)) {
-            return $height = (int) $result;
+            return $height = (int)$result;
         }
 
         return $height = parent::getHeight();
@@ -225,20 +225,20 @@ class Posix extends AbstractAdapter
     /**
      * Prepare a string that will be rendered in color.
      *
-     * @param  string   $string
-     * @param  int      $color
+     * @param  string $string
+     * @param  int $color
      * @param  null|int $bgColor
      * @throws Exception\BadMethodCallException
      * @return string
      */
     public function colorize($string, $color = null, $bgColor = null)
     {
-        $color   = $this->getColorCode($color, 'fg');
+        $color = $this->getColorCode($color, 'fg');
         $bgColor = $this->getColorCode($bgColor, 'bg');
-        return ($color !== null ? "\x1b[" . $color   . 'm' : '')
-            . ($bgColor !== null ? "\x1b[" . $bgColor . 'm' : '')
-            . $string
-            . "\x1b[22;39m\x1b[0;49m";
+        return ($color !== null ? "\x1b[" . $color . 'm' : '')
+        . ($bgColor !== null ? "\x1b[" . $bgColor . 'm' : '')
+        . $string
+        . "\x1b[22;39m\x1b[0;49m";
     }
 
     /**
@@ -314,7 +314,7 @@ class Posix extends AbstractAdapter
     /**
      * Read a single character from the console input
      *
-     * @param  string|null $mask   A list of allowed chars
+     * @param  string|null $mask A list of allowed chars
      * @return string
      */
     public function readChar($mask = null)
@@ -366,21 +366,21 @@ class Posix extends AbstractAdapter
         $this->lastTTYMode = trim(`stty -g`);
 
         // Set new mode
-        shell_exec('stty '.escapeshellcmd($mode));
+        shell_exec('stty ' . escapeshellcmd($mode));
     }
 
     /**
      * Get the final color code and throw exception on error
      *
      * @param  null|int|Xterm256 $color
-     * @param  string            $type  (optional) Foreground 'fg' or background 'bg'.
+     * @param  string $type (optional) Foreground 'fg' or background 'bg'.
      * @throws Exception\BadMethodCallException
      * @return string
      */
     protected function getColorCode($color, $type = 'fg')
     {
         if ($color instanceof Xterm256) {
-            $r    = new ReflectionClass($color);
+            $r = new ReflectionClass($color);
             $code = $r->getStaticPropertyValue('color');
             if ($type == 'fg') {
                 $code = sprintf($code, $color::FOREGROUND);

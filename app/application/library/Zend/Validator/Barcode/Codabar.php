@@ -57,7 +57,7 @@ class Codabar extends AbstractAdapter
             $value = substr($value, 1, -1);
         }
 
-        $chars  = $this->getCharacters();
+        $chars = $this->getCharacters();
         $this->setCharacters('0123456789-$:/.+');
         $result = parent::hasValidCharacters($value);
         $this->setCharacters($chars);

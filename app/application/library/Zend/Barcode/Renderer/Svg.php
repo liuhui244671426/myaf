@@ -122,13 +122,13 @@ class Svg extends AbstractRenderer
      */
     protected function initRenderer()
     {
-        $barcodeWidth  = $this->barcode->getWidth(true);
+        $barcodeWidth = $this->barcode->getWidth(true);
         $barcodeHeight = $this->barcode->getHeight(true);
 
         $backgroundColor = $this->barcode->getBackgroundColor();
         $imageBackgroundColor = 'rgb(' . implode(', ', array(($backgroundColor & 0xFF0000) >> 16,
-                                                             ($backgroundColor & 0x00FF00) >> 8,
-                                                             ($backgroundColor & 0x0000FF))) . ')';
+                ($backgroundColor & 0x00FF00) >> 8,
+                ($backgroundColor & 0x0000FF))) . ')';
 
         $width = $barcodeWidth;
         $height = $barcodeHeight;
@@ -207,7 +207,7 @@ class Svg extends AbstractRenderer
             $element->setAttribute($k, $v);
         }
         if ($textContent !== null) {
-            $element->appendChild(new DOMText((string) $textContent));
+            $element->appendChild(new DOMText((string)$textContent));
         }
         return $element;
     }
@@ -232,7 +232,7 @@ class Svg extends AbstractRenderer
     {
         if ($this->resource !== null) {
             $this->readRootElement();
-            $height = (float) $this->rootElement->getAttribute('height');
+            $height = (float)$this->rootElement->getAttribute('height');
             if ($height < $this->barcode->getHeight(true)) {
                 throw new Exception\RuntimeException(
                     'Barcode is define outside the image (height)'
@@ -260,7 +260,7 @@ class Svg extends AbstractRenderer
             }
         } else {
             if ($this->userWidth) {
-                $width = (float) $this->barcode->getWidth(true);
+                $width = (float)$this->barcode->getWidth(true);
                 if ($this->userWidth < $width) {
                     throw new Exception\RuntimeException(sprintf(
                         "Barcode is define outside the image (calculated: '%d', provided: '%d')",
@@ -305,8 +305,8 @@ class Svg extends AbstractRenderer
     protected function drawPolygon($points, $color, $filled = true)
     {
         $color = 'rgb(' . implode(', ', array(($color & 0xFF0000) >> 16,
-                                              ($color & 0x00FF00) >> 8,
-                                              ($color & 0x0000FF))) . ')';
+                ($color & 0x00FF00) >> 8,
+                ($color & 0x0000FF))) . ')';
         $orientation = $this->getBarcode()->getOrientation();
         $newPoints = array(
             $points[0][0] + $this->leftOffset,
@@ -349,8 +349,8 @@ class Svg extends AbstractRenderer
     protected function drawText($text, $size, $position, $font, $color, $alignment = 'center', $orientation = 0)
     {
         $color = 'rgb(' . implode(', ', array(($color & 0xFF0000) >> 16,
-                                              ($color & 0x00FF00) >> 8,
-                                              ($color & 0x0000FF))) . ')';
+                ($color & 0x00FF00) >> 8,
+                ($color & 0x0000FF))) . ')';
         $attributes = array();
         $attributes['x'] = $position[0] + $this->leftOffset;
         $attributes['y'] = $position[1] + $this->topOffset;
@@ -370,11 +370,11 @@ class Svg extends AbstractRenderer
         }
         $attributes['style'] = 'text-anchor: ' . $textAnchor;
         $attributes['transform'] = 'rotate('
-                                 . (- $orientation)
-                                 . ', '
-                                 . ($position[0] + $this->leftOffset)
-                                 . ', ' . ($position[1] + $this->topOffset)
-                                 . ')';
+            . (-$orientation)
+            . ', '
+            . ($position[0] + $this->leftOffset)
+            . ', ' . ($position[1] + $this->topOffset)
+            . ')';
         $this->appendRootElement('text', $attributes, $text);
     }
 }

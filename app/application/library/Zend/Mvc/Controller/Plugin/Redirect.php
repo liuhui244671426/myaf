@@ -87,7 +87,7 @@ class Redirect extends AbstractPlugin
             return $this->response;
         }
 
-        $event    = $this->getEvent();
+        $event = $this->getEvent();
         $response = $event->getResponse();
         if (!$response instanceof Response) {
             throw new Exception\DomainException('Redirect plugin requires event compose a response');
@@ -116,7 +116,7 @@ class Redirect extends AbstractPlugin
         $event = $controller->getEvent();
         if (!$event instanceof MvcEvent) {
             $params = $event->getParams();
-            $event  = new MvcEvent();
+            $event = new MvcEvent();
             $event->setParams($params);
         }
         $this->event = $event;

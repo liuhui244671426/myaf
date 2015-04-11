@@ -27,27 +27,27 @@ class AclListener
      *      - Page is accepted if it has no resource or privilege.
      *      - Page is accepted if ACL allows page's resource or privilege.
      *
-     * @param  Event    $event
+     * @param  Event $event
      * @return bool
      */
     public static function accept(Event $event)
     {
         $accepted = true;
-        $params   = $event->getParams();
-        $acl      = $params['acl'];
-        $page     = $params['page'];
-        $role     = $params['role'];
+        $params = $event->getParams();
+        $acl = $params['acl'];
+        $page = $params['page'];
+        $role = $params['role'];
 
         if (!$acl) {
             return $accepted;
         }
 
-        $resource  = $page->getResource();
+        $resource = $page->getResource();
         $privilege = $page->getPrivilege();
 
         if ($resource || $privilege) {
             $accepted = $acl->hasResource($resource)
-                        && $acl->isAllowed($role, $resource, $privilege);
+                && $acl->isAllowed($role, $resource, $privilege);
         }
 
         return $accepted;

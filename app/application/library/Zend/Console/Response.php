@@ -33,7 +33,7 @@ class Response extends Message implements ResponseInterface
     /**
      * Set the error level that will be returned to shell.
      *
-     * @param int   $errorLevel
+     * @param int $errorLevel
      * @return Response
      */
     public function setErrorLevel($errorLevel)
@@ -74,7 +74,7 @@ class Response extends Message implements ResponseInterface
     public function send()
     {
         $this->sendContent();
-        $errorLevel = (int) $this->getMetadata('errorLevel', 0);
+        $errorLevel = (int)$this->getMetadata('errorLevel', 0);
         exit($errorLevel);
     }
 }

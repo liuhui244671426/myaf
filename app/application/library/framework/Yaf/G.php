@@ -1,4 +1,5 @@
 <?php
+
 /**
  * added this class to handle all the global options
  * which are available when yaf.so is loaded
@@ -45,7 +46,7 @@ class Yaf_G
 
     public static function iniGet($key)
     {
-        if (($iniValue = ini_get($key))!==false) {
+        if (($iniValue = ini_get($key)) !== false) {
             //we have ini set from php
             if ($iniValue == '0') {
                 $value = false;

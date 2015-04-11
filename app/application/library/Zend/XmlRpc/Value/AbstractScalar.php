@@ -23,8 +23,8 @@ abstract class AbstractScalar extends AbstractValue
         $generator = $this->getGenerator();
 
         $generator->openElement('value')
-                  ->openElement($this->type, $this->value)
-                  ->closeElement($this->type)
-                  ->closeElement('value');
+            ->openElement($this->type, $this->value)
+            ->closeElement($this->type)
+            ->closeElement('value');
     }
 }

@@ -94,7 +94,7 @@ class ParameterScanner
      */
     public function __construct(array $parameterTokens, NameInformation $nameInformation = null)
     {
-        $this->tokens          = $parameterTokens;
+        $this->tokens = $parameterTokens;
         $this->nameInformation = $nameInformation;
     }
 
@@ -106,7 +106,7 @@ class ParameterScanner
      */
     public function setDeclaringClass($class)
     {
-        $this->declaringClass = (string) $class;
+        $this->declaringClass = (string)$class;
     }
 
     /**
@@ -179,7 +179,7 @@ class ParameterScanner
                 goto SCANNER_CONTINUE;
             }
             if ($token === '=') {
-                $this->isOptional              = true;
+                $this->isOptional = true;
                 $this->isDefaultValueAvailable = true;
                 goto SCANNER_CONTINUE;
             }

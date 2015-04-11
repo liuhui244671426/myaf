@@ -71,19 +71,19 @@ class Mcrypt implements SymmetricInterface
      * @var array
      */
     protected $supportedAlgos = array(
-        'aes'          => 'rijndael-128',
-        'blowfish'     => 'blowfish',
-        'des'          => 'des',
-        '3des'         => 'tripledes',
-        'tripledes'    => 'tripledes',
-        'cast-128'     => 'cast-128',
-        'cast-256'     => 'cast-256',
+        'aes' => 'rijndael-128',
+        'blowfish' => 'blowfish',
+        'des' => 'des',
+        '3des' => 'tripledes',
+        'tripledes' => 'tripledes',
+        'cast-128' => 'cast-128',
+        'cast-256' => 'cast-256',
         'rijndael-128' => 'rijndael-128',
         'rijndael-192' => 'rijndael-192',
         'rijndael-256' => 'rijndael-256',
-        'saferplus'    => 'saferplus',
-        'serpent'      => 'serpent',
-        'twofish'      => 'twofish'
+        'saferplus' => 'saferplus',
+        'serpent' => 'serpent',
+        'twofish' => 'twofish'
     );
 
     /**
@@ -92,10 +92,10 @@ class Mcrypt implements SymmetricInterface
      * @var array
      */
     protected $supportedModes = array(
-        'cbc'  => 'cbc',
-        'cfb'  => 'cfb',
-        'ctr'  => 'ctr',
-        'ofb'  => 'ofb',
+        'cbc' => 'cbc',
+        'cfb' => 'cfb',
+        'ctr' => 'ctr',
+        'ofb' => 'ofb',
         'nofb' => 'nofb',
         'ncfb' => 'ncfb'
     );
@@ -103,7 +103,7 @@ class Mcrypt implements SymmetricInterface
     /**
      * Constructor
      *
-     * @param  array|Traversable                  $options
+     * @param  array|Traversable $options
      * @throws Exception\RuntimeException
      * @throws Exception\InvalidArgumentException
      */
@@ -139,8 +139,8 @@ class Mcrypt implements SymmetricInterface
                         $this->setSalt($value);
                         break;
                     case 'padding':
-                        $plugins       = static::getPaddingPluginManager();
-                        $padding       = $plugins->get($value);
+                        $plugins = static::getPaddingPluginManager();
+                        $padding = $plugins->get($value);
                         $this->padding = $padding;
                         break;
                 }
@@ -158,8 +158,8 @@ class Mcrypt implements SymmetricInterface
     protected function setDefaultOptions($options = array())
     {
         if (!isset($options['padding'])) {
-            $plugins       = static::getPaddingPluginManager();
-            $padding       = $plugins->get(self::DEFAULT_PADDING);
+            $plugins = static::getPaddingPluginManager();
+            $padding = $plugins->get(self::DEFAULT_PADDING);
             $this->padding = $padding;
         }
     }
@@ -181,7 +181,7 @@ class Mcrypt implements SymmetricInterface
     /**
      * Set the padding plugin manager
      *
-     * @param  string|PaddingPluginManager        $plugins
+     * @param  string|PaddingPluginManager $plugins
      * @throws Exception\InvalidArgumentException
      * @return void
      */
@@ -220,7 +220,7 @@ class Mcrypt implements SymmetricInterface
      * Set the encryption key
      * If the key is longer than maximum supported, it will be truncated by getKey().
      *
-     * @param  string                             $key
+     * @param  string $key
      * @throws Exception\InvalidArgumentException
      * @return Mcrypt
      */
@@ -266,7 +266,7 @@ class Mcrypt implements SymmetricInterface
     /**
      * Set the encryption algorithm (cipher)
      *
-     * @param  string                             $algo
+     * @param  string $algo
      * @throws Exception\InvalidArgumentException
      * @return Mcrypt
      */
@@ -318,7 +318,7 @@ class Mcrypt implements SymmetricInterface
     /**
      * Encrypt
      *
-     * @param  string                             $data
+     * @param  string $data
      * @throws Exception\InvalidArgumentException
      * @return string
      */
@@ -339,7 +339,7 @@ class Mcrypt implements SymmetricInterface
         }
         // padding
         $data = $this->padding->pad($data, $this->getBlockSize());
-        $iv   = $this->getSalt();
+        $iv = $this->getSalt();
         // encryption
         $result = mcrypt_encrypt(
             $this->supportedAlgos[$this->algo],
@@ -355,7 +355,7 @@ class Mcrypt implements SymmetricInterface
     /**
      * Decrypt
      *
-     * @param  string                             $data
+     * @param  string $data
      * @throws Exception\InvalidArgumentException
      * @return string
      */
@@ -370,9 +370,9 @@ class Mcrypt implements SymmetricInterface
         if (null === $this->getPadding()) {
             throw new Exception\InvalidArgumentException('You have to specify a padding method');
         }
-        $iv         = substr($data, 0, $this->getSaltSize());
+        $iv = substr($data, 0, $this->getSaltSize());
         $ciphertext = substr($data, $this->getSaltSize());
-        $result     = mcrypt_decrypt(
+        $result = mcrypt_decrypt(
             $this->supportedAlgos[$this->algo],
             $this->getKey(),
             $ciphertext,
@@ -406,7 +406,7 @@ class Mcrypt implements SymmetricInterface
     /**
      * Set the salt (IV)
      *
-     * @param  string                             $salt
+     * @param  string $salt
      * @throws Exception\InvalidArgumentException
      * @return Mcrypt
      */
@@ -457,7 +457,7 @@ class Mcrypt implements SymmetricInterface
     /**
      * Set the cipher mode
      *
-     * @param  string                             $mode
+     * @param  string $mode
      * @throws Exception\InvalidArgumentException
      * @return Mcrypt
      */

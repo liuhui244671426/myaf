@@ -53,7 +53,7 @@ class SuppressFilter implements FilterInterface
      */
     public function suppress($suppress)
     {
-        $this->accept = ! (bool) $suppress;
+        $this->accept = !(bool)$suppress;
     }
 
     /**

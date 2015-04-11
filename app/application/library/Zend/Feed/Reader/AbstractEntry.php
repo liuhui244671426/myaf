@@ -66,8 +66,8 @@ abstract class AbstractEntry
      */
     public function __construct(DOMElement $entry, $entryKey, $type = null)
     {
-        $this->entry       = $entry;
-        $this->entryKey    = $entryKey;
+        $this->entry = $entry;
+        $this->entryKey = $entryKey;
         $this->domDocument = $entry->ownerDocument;
         if ($type !== null) {
             $this->data['type'] = $type;

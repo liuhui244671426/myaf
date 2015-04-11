@@ -98,8 +98,8 @@ class ConsoleRenderer implements RendererInterface, TreeRendererInterface
     /**
      * Recursively processes all ViewModels and returns output.
      *
-     * @param  string|ModelInterface   $model        A ViewModel instance.
-     * @param  null|array|\Traversable $values       Values to use when rendering. If none
+     * @param  string|ModelInterface $model A ViewModel instance.
+     * @param  null|array|\Traversable $values Values to use when rendering. If none
      *                                               provided, uses those in the composed
      *                                               variables container.
      * @return string Console output.

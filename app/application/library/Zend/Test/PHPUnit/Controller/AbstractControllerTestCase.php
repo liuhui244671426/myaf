@@ -87,7 +87,7 @@ abstract class AbstractControllerTestCase extends PHPUnit_Framework_TestCase
 
     /**
      * Set the trace error flag
-     * @param  bool                       $traceError
+     * @param  bool $traceError
      * @return AbstractControllerTestCase
      */
     public function setTraceError($traceError)
@@ -108,12 +108,12 @@ abstract class AbstractControllerTestCase extends PHPUnit_Framework_TestCase
 
     /**
      * Set the usage of the console router or not
-     * @param  bool                       $boolean
+     * @param  bool $boolean
      * @return AbstractControllerTestCase
      */
     public function setUseConsoleRequest($boolean)
     {
-        $this->useConsoleRequest = (bool) $boolean;
+        $this->useConsoleRequest = (bool)$boolean;
 
         return $this;
     }
@@ -129,7 +129,7 @@ abstract class AbstractControllerTestCase extends PHPUnit_Framework_TestCase
 
     /**
      * Set the application config
-     * @param  array                      $applicationConfig
+     * @param  array $applicationConfig
      * @return AbstractControllerTestCase
      * @throws LogicException
      */
@@ -199,9 +199,9 @@ abstract class AbstractControllerTestCase extends PHPUnit_Framework_TestCase
     /**
      * Set the request URL
      *
-     * @param  string                     $url
-     * @param  string|null                $method
-     * @param  array|null                 $params
+     * @param  string $url
+     * @param  string|null $method
+     * @param  array|null $params
      * @return AbstractControllerTestCase
      */
     public function url($url, $method = HttpRequest::METHOD_GET, $params = array())
@@ -215,9 +215,9 @@ abstract class AbstractControllerTestCase extends PHPUnit_Framework_TestCase
             return $this;
         }
 
-        $query       = $request->getQuery()->toArray();
-        $post        = $request->getPost()->toArray();
-        $uri         = new HttpUri($url);
+        $query = $request->getQuery()->toArray();
+        $post = $request->getPost()->toArray();
+        $uri = new HttpUri($url);
         $queryString = $uri->getQuery();
 
         if ($queryString) {
@@ -257,9 +257,9 @@ abstract class AbstractControllerTestCase extends PHPUnit_Framework_TestCase
      *
      * The URL provided set the request URI in the request object.
      *
-     * @param  string      $url
+     * @param  string $url
      * @param  string|null $method
-     * @param  array|null  $params
+     * @param  array|null $params
      * @throws \Exception
      */
     public function dispatch($url, $method = null, $params = array(), $isXmlHttpRequest = false)
@@ -295,11 +295,11 @@ abstract class AbstractControllerTestCase extends PHPUnit_Framework_TestCase
         // reset server datas
         if (!$keepPersistence) {
             $_SESSION = array();
-            $_COOKIE  = array();
+            $_COOKIE = array();
         }
 
-        $_GET     = array();
-        $_POST    = array();
+        $_GET = array();
+        $_POST = array();
 
         // reset singleton
         StaticEventManager::resetInstance();
@@ -310,13 +310,13 @@ abstract class AbstractControllerTestCase extends PHPUnit_Framework_TestCase
     /**
      * Trigger an application event
      *
-     * @param  string                                $eventName
+     * @param  string $eventName
      * @return \Zend\EventManager\ResponseCollection
      */
     public function triggerApplicationEvent($eventName)
     {
         $events = $this->getApplication()->getEventManager();
-        $event  = $this->getApplication()->getMvcEvent();
+        $event = $this->getApplication()->getMvcEvent();
 
         if ($eventName != MvcEvent::EVENT_ROUTE && $eventName != MvcEvent::EVENT_DISPATCH) {
             return $events->trigger($eventName, $event);
@@ -346,7 +346,7 @@ abstract class AbstractControllerTestCase extends PHPUnit_Framework_TestCase
     {
         $moduleManager = $this->getApplicationServiceLocator()->get('ModuleManager');
         $modulesLoaded = $moduleManager->getModules();
-        $list          = array_diff($modules, $modulesLoaded);
+        $list = array_diff($modules, $modulesLoaded);
         if ($list) {
             throw new PHPUnit_Framework_ExpectationFailedException(
                 sprintf('Several modules are not loaded "%s"', implode(', ', $list))
@@ -364,7 +364,7 @@ abstract class AbstractControllerTestCase extends PHPUnit_Framework_TestCase
     {
         $moduleManager = $this->getApplicationServiceLocator()->get('ModuleManager');
         $modulesLoaded = $moduleManager->getModules();
-        $list          = array_intersect($modules, $modulesLoaded);
+        $list = array_intersect($modules, $modulesLoaded);
         if ($list) {
             throw new PHPUnit_Framework_ExpectationFailedException(
                 sprintf('Several modules WAS not loaded "%s"', implode(', ', $list))
@@ -468,10 +468,10 @@ abstract class AbstractControllerTestCase extends PHPUnit_Framework_TestCase
      */
     protected function getControllerFullClassName()
     {
-        $routeMatch           = $this->getApplication()->getMvcEvent()->getRouteMatch();
+        $routeMatch = $this->getApplication()->getMvcEvent()->getRouteMatch();
         $controllerIdentifier = $routeMatch->getParam('controller');
-        $controllerManager    = $this->getApplicationServiceLocator()->get('ControllerManager');
-        $controllerClass      = $controllerManager->get($controllerIdentifier);
+        $controllerManager = $this->getApplicationServiceLocator()->get('ControllerManager');
+        $controllerClass = $controllerManager->get($controllerIdentifier);
 
         return get_class($controllerClass);
     }
@@ -484,9 +484,9 @@ abstract class AbstractControllerTestCase extends PHPUnit_Framework_TestCase
     public function assertModuleName($module)
     {
         $controllerClass = $this->getControllerFullClassName();
-        $match           = substr($controllerClass, 0, strpos($controllerClass, '\\'));
-        $match           = strtolower($match);
-        $module          = strtolower($module);
+        $match = substr($controllerClass, 0, strpos($controllerClass, '\\'));
+        $match = strtolower($match);
+        $module = strtolower($module);
         if ($module != $match) {
             throw new PHPUnit_Framework_ExpectationFailedException(
                 sprintf('Failed asserting module name "%s", actual module name is "%s"', $module, $match)
@@ -503,9 +503,9 @@ abstract class AbstractControllerTestCase extends PHPUnit_Framework_TestCase
     public function assertNotModuleName($module)
     {
         $controllerClass = $this->getControllerFullClassName();
-        $match           = substr($controllerClass, 0, strpos($controllerClass, '\\'));
-        $match           = strtolower($match);
-        $module          = strtolower($module);
+        $match = substr($controllerClass, 0, strpos($controllerClass, '\\'));
+        $match = strtolower($match);
+        $module = strtolower($module);
         if ($module == $match) {
             throw new PHPUnit_Framework_ExpectationFailedException(
                 sprintf('Failed asserting module was NOT "%s"', $module)
@@ -522,9 +522,9 @@ abstract class AbstractControllerTestCase extends PHPUnit_Framework_TestCase
     public function assertControllerClass($controller)
     {
         $controllerClass = $this->getControllerFullClassName();
-        $match           = substr($controllerClass, strrpos($controllerClass, '\\')+1);
-        $match           = strtolower($match);
-        $controller      = strtolower($controller);
+        $match = substr($controllerClass, strrpos($controllerClass, '\\') + 1);
+        $match = strtolower($match);
+        $controller = strtolower($controller);
         if ($controller != $match) {
             throw new PHPUnit_Framework_ExpectationFailedException(
                 sprintf('Failed asserting controller class "%s", actual controller class is "%s"', $controller, $match)
@@ -541,9 +541,9 @@ abstract class AbstractControllerTestCase extends PHPUnit_Framework_TestCase
     public function assertNotControllerClass($controller)
     {
         $controllerClass = $this->getControllerFullClassName();
-        $match           = substr($controllerClass, strrpos($controllerClass, '\\')+1);
-        $match           = strtolower($match);
-        $controller      = strtolower($controller);
+        $match = substr($controllerClass, strrpos($controllerClass, '\\') + 1);
+        $match = strtolower($match);
+        $controller = strtolower($controller);
         if ($controller == $match) {
             throw new PHPUnit_Framework_ExpectationFailedException(
                 sprintf('Failed asserting controller class was NOT "%s"', $controller)
@@ -560,8 +560,8 @@ abstract class AbstractControllerTestCase extends PHPUnit_Framework_TestCase
     public function assertControllerName($controller)
     {
         $routeMatch = $this->getApplication()->getMvcEvent()->getRouteMatch();
-        $match      = $routeMatch->getParam('controller');
-        $match      = strtolower($match);
+        $match = $routeMatch->getParam('controller');
+        $match = strtolower($match);
         $controller = strtolower($controller);
         if ($controller != $match) {
             throw new PHPUnit_Framework_ExpectationFailedException(
@@ -579,8 +579,8 @@ abstract class AbstractControllerTestCase extends PHPUnit_Framework_TestCase
     public function assertNotControllerName($controller)
     {
         $routeMatch = $this->getApplication()->getMvcEvent()->getRouteMatch();
-        $match      = $routeMatch->getParam('controller');
-        $match      = strtolower($match);
+        $match = $routeMatch->getParam('controller');
+        $match = strtolower($match);
         $controller = strtolower($controller);
         if ($controller == $match) {
             throw new PHPUnit_Framework_ExpectationFailedException(
@@ -598,9 +598,9 @@ abstract class AbstractControllerTestCase extends PHPUnit_Framework_TestCase
     public function assertActionName($action)
     {
         $routeMatch = $this->getApplication()->getMvcEvent()->getRouteMatch();
-        $match      = $routeMatch->getParam('action');
-        $match      = strtolower($match);
-        $action     = strtolower($action);
+        $match = $routeMatch->getParam('action');
+        $match = strtolower($match);
+        $action = strtolower($action);
         if ($action != $match) {
             throw new PHPUnit_Framework_ExpectationFailedException(
                 sprintf('Failed asserting action name "%s", actual action name is "%s"', $action, $match)
@@ -617,9 +617,9 @@ abstract class AbstractControllerTestCase extends PHPUnit_Framework_TestCase
     public function assertNotActionName($action)
     {
         $routeMatch = $this->getApplication()->getMvcEvent()->getRouteMatch();
-        $match      = $routeMatch->getParam('action');
-        $match      = strtolower($match);
-        $action     = strtolower($action);
+        $match = $routeMatch->getParam('action');
+        $match = strtolower($match);
+        $action = strtolower($action);
         if ($action == $match) {
             throw new PHPUnit_Framework_ExpectationFailedException(
                 sprintf('Failed asserting action name was NOT "%s"', $action)
@@ -636,9 +636,9 @@ abstract class AbstractControllerTestCase extends PHPUnit_Framework_TestCase
     public function assertMatchedRouteName($route)
     {
         $routeMatch = $this->getApplication()->getMvcEvent()->getRouteMatch();
-        $match      = $routeMatch->getMatchedRouteName();
-        $match      = strtolower($match);
-        $route      = strtolower($route);
+        $match = $routeMatch->getMatchedRouteName();
+        $match = strtolower($match);
+        $route = strtolower($route);
         if ($route != $match) {
             throw new PHPUnit_Framework_ExpectationFailedException(
                 sprintf('Failed asserting matched route name was "%s", actual matched route name is "%s"', $route, $match)
@@ -655,9 +655,9 @@ abstract class AbstractControllerTestCase extends PHPUnit_Framework_TestCase
     public function assertNotMatchedRouteName($route)
     {
         $routeMatch = $this->getApplication()->getMvcEvent()->getRouteMatch();
-        $match      = $routeMatch->getMatchedRouteName();
-        $match      = strtolower($match);
-        $route      = strtolower($route);
+        $match = $routeMatch->getMatchedRouteName();
+        $match = strtolower($match);
+        $route = strtolower($route);
         if ($route == $match) {
             throw new PHPUnit_Framework_ExpectationFailedException(
                 sprintf('Failed asserting route matched was NOT "%s"', $route)
@@ -694,7 +694,7 @@ abstract class AbstractControllerTestCase extends PHPUnit_Framework_TestCase
      * Recursively search a view model and it's children for the given templateName
      *
      * @param  \Zend\View\Model\ModelInterface $viewModel
-     * @param  string    $templateName
+     * @param  string $templateName
      * @return boolean
      */
     protected function searchTemplates($viewModel, $templateName)

@@ -47,7 +47,7 @@ class ModuleLoaderListener extends AbstractListener implements ListenerAggregate
         parent::__construct($options);
 
         $this->generateCache = $this->options->getModuleMapCacheEnabled();
-        $this->moduleLoader  = new ModuleAutoloader($this->options->getModulePaths());
+        $this->moduleLoader = new ModuleAutoloader($this->options->getModulePaths());
 
         if ($this->hasCachedClassMap()) {
             $this->generateCache = false;

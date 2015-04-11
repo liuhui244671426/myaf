@@ -50,7 +50,7 @@ class FormCaptcha extends AbstractHelper
             ));
         }
 
-        $helper  = $captcha->getHelperName();
+        $helper = $captcha->getHelperName();
 
         $renderer = $this->getView();
         if (!method_exists($renderer, 'plugin')) {

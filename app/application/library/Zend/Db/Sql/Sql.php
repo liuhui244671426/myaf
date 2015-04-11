@@ -132,7 +132,7 @@ class Sql
     /**
      * Get sql string using platform or sql object
      *
-     * @param SqlInterface      $sqlObject
+     * @param SqlInterface $sqlObject
      * @param PlatformInterface $platform
      *
      * @return string

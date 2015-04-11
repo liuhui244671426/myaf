@@ -48,9 +48,9 @@ class Stream extends AbstractWriter
 
         if (is_array($streamOrUrl)) {
             parent::__construct($streamOrUrl);
-            $mode         = isset($streamOrUrl['mode'])          ? $streamOrUrl['mode']          : null;
+            $mode = isset($streamOrUrl['mode']) ? $streamOrUrl['mode'] : null;
             $logSeparator = isset($streamOrUrl['log_separator']) ? $streamOrUrl['log_separator'] : null;
-            $streamOrUrl  = isset($streamOrUrl['stream'])        ? $streamOrUrl['stream']        : null;
+            $streamOrUrl = isset($streamOrUrl['stream']) ? $streamOrUrl['stream'] : null;
         }
 
         // Setting the default mode
@@ -117,7 +117,7 @@ class Stream extends AbstractWriter
      */
     public function setLogSeparator($logSeparator)
     {
-        $this->logSeparator = (string) $logSeparator;
+        $this->logSeparator = (string)$logSeparator;
         return $this;
     }
 

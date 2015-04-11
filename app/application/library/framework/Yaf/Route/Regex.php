@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Yaf Route Regex
  */
@@ -56,8 +57,8 @@ class Yaf_Route_Regex implements Yaf_Route_Interface
             );
         }
         $this->_route = $match;
-        $this->_default = (array) $route;
-        $this->_maps = (array) $map;
+        $this->_default = (array)$route;
+        $this->_maps = (array)$map;
         $this->_verify = $verify;
     }
 
@@ -73,9 +74,9 @@ class Yaf_Route_Regex implements Yaf_Route_Interface
         $requestUri = $request->getRequestUri();
         $baseuri = $request->getBaseUri();
         if (
-            $requestUri!=''
-            && $baseuri!=''
-            && stripos($requestUri, $baseuri)!==false
+            $requestUri != ''
+            && $baseuri != ''
+            && stripos($requestUri, $baseuri) !== false
         ) {
             $path = substr($requestUri, strlen($baseuri));
         } else {
@@ -109,7 +110,7 @@ class Yaf_Route_Regex implements Yaf_Route_Interface
      * of index => name parameter mapping. If map is not found,
      * it returns nothing.
      *
-     * @param  array   $values Indexed or associative array of values to map
+     * @param  array $values Indexed or associative array of values to map
      * @return array   An array of mapped values
      */
     protected function _getMappedValues($values)

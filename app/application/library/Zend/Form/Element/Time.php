@@ -36,17 +36,17 @@ class Time extends DateTime
      */
     protected function getStepValidator()
     {
-        $format    = $this->getFormat();
+        $format = $this->getFormat();
         $stepValue = (isset($this->attributes['step']))
-                     ? $this->attributes['step'] : 60; // Seconds
+            ? $this->attributes['step'] : 60; // Seconds
 
         $baseValue = (isset($this->attributes['min']))
-                     ? $this->attributes['min'] : date($format, 0);
+            ? $this->attributes['min'] : date($format, 0);
 
         return new DateStepValidator(array(
-            'format'    => $format,
+            'format' => $format,
             'baseValue' => $baseValue,
-            'step'      => new DateInterval("PT{$stepValue}S"),
+            'step' => new DateInterval("PT{$stepValue}S"),
         ));
     }
 }

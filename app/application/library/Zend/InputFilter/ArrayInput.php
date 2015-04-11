@@ -52,8 +52,8 @@ class ArrayInput extends Input
     {
         $this->injectNotEmptyValidator();
         $validator = $this->getValidatorChain();
-        $values    = $this->getValue();
-        $result    = true;
+        $values = $this->getValue();
+        $result = true;
         foreach ($values as $value) {
             $result = $validator->isValid($value, $context);
             if (!$result) {

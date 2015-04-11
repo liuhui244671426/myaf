@@ -58,11 +58,11 @@ class Json extends AbstractAdapter
      */
     public function serialize($value)
     {
-        $options    = $this->getOptions();
+        $options = $this->getOptions();
         $cycleCheck = $options->getCycleCheck();
         $opts = array(
             'enableJsonExprFinder' => $options->getEnableJsonExprFinder(),
-            'objectDecodeType'     => $options->getObjectDecodeType(),
+            'objectDecodeType' => $options->getObjectDecodeType(),
         );
 
         try {

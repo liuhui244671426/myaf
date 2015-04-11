@@ -105,9 +105,9 @@ class BlackHole implements
     /**
      * Get an item.
      *
-     * @param  string  $key
+     * @param  string $key
      * @param  bool $success
-     * @param  mixed   $casToken
+     * @param  mixed $casToken
      * @return mixed Data on success, null on failure
      */
     public function getItem($key, & $success = null, & $casToken = null)
@@ -175,7 +175,7 @@ class BlackHole implements
      * Store an item.
      *
      * @param  string $key
-     * @param  mixed  $value
+     * @param  mixed $value
      * @return bool
      */
     public function setItem($key, $value)
@@ -198,7 +198,7 @@ class BlackHole implements
      * Add an item.
      *
      * @param  string $key
-     * @param  mixed  $value
+     * @param  mixed $value
      * @return bool
      */
     public function addItem($key, $value)
@@ -221,7 +221,7 @@ class BlackHole implements
      * Replace an existing item.
      *
      * @param  string $key
-     * @param  mixed  $value
+     * @param  mixed $value
      * @return bool
      */
     public function replaceItem($key, $value)
@@ -246,9 +246,9 @@ class BlackHole implements
      * It uses the token received from getItem() to check if the item has
      * changed before overwriting it.
      *
-     * @param  mixed  $token
+     * @param  mixed $token
      * @param  string $key
-     * @param  mixed  $value
+     * @param  mixed $value
      * @return bool
      */
     public function checkAndSetItem($token, $key, $value)
@@ -304,7 +304,7 @@ class BlackHole implements
      * Increment an item.
      *
      * @param  string $key
-     * @param  int    $value
+     * @param  int $value
      * @return int|bool The new value on success, false on failure
      */
     public function incrementItem($key, $value)
@@ -327,7 +327,7 @@ class BlackHole implements
      * Decrement an item.
      *
      * @param  string $key
-     * @param  int    $value
+     * @param  int $value
      * @return int|bool The new value on success, false on failure
      */
     public function decrementItem($key, $value)
@@ -356,7 +356,7 @@ class BlackHole implements
         if ($this->capabilities === null) {
             // use default capabilities only
             $this->capabilityMarker = new stdClass();
-            $this->capabilities     = new Capabilities($this, $this->capabilityMarker);
+            $this->capabilities = new Capabilities($this, $this->capabilityMarker);
         }
         return $this->capabilities;
     }
@@ -453,7 +453,7 @@ class BlackHole implements
      * Set tags to an item by given key.
      * An empty array will remove all tags.
      *
-     * @param string   $key
+     * @param string $key
      * @param string[] $tags
      * @return bool
      */
@@ -480,7 +480,7 @@ class BlackHole implements
      * else all given tags must match.
      *
      * @param string[] $tags
-     * @param  bool  $disjunction
+     * @param  bool $disjunction
      * @return bool
      */
     public function clearByTags(array $tags, $disjunction = false)

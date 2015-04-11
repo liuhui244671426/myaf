@@ -74,7 +74,7 @@ class FormCollection extends AbstractHelper
      * Proxies to {@link render()}.
      *
      * @param  ElementInterface|null $element
-     * @param  bool                  $wrap
+     * @param  bool $wrap
      * @return string|FormCollection
      */
     public function __invoke(ElementInterface $element = null, $wrap = true)
@@ -102,10 +102,10 @@ class FormCollection extends AbstractHelper
             return '';
         }
 
-        $markup           = '';
-        $templateMarkup   = '';
-        $elementHelper    = $this->getElementHelper();
-        $fieldsetHelper   = $this->getFieldsetHelper();
+        $markup = '';
+        $templateMarkup = '';
+        $elementHelper = $this->getElementHelper();
+        $fieldsetHelper = $this->getFieldsetHelper();
 
         if ($element instanceof CollectionElement && $element->shouldCreateTemplate()) {
             $templateMarkup = $this->renderTemplate($element);
@@ -136,7 +136,7 @@ class FormCollection extends AbstractHelper
                     );
                 }
 
-                if (! $element instanceof LabelAwareInterface || ! $element->getLabelOption('disable_html_escape')) {
+                if (!$element instanceof LabelAwareInterface || !$element->getLabelOption('disable_html_escape')) {
                     $escapeHtmlHelper = $this->getEscapeHtmlHelper();
                     $label = $escapeHtmlHelper($label);
                 }
@@ -169,11 +169,11 @@ class FormCollection extends AbstractHelper
      */
     public function renderTemplate(CollectionElement $collection)
     {
-        $elementHelper          = $this->getElementHelper();
+        $elementHelper = $this->getElementHelper();
         $escapeHtmlAttribHelper = $this->getEscapeHtmlAttrHelper();
-        $fieldsetHelper         = $this->getFieldsetHelper();
+        $fieldsetHelper = $this->getFieldsetHelper();
 
-        $templateMarkup         = '';
+        $templateMarkup = '';
 
         $elementOrFieldset = $collection->getTemplateElement();
 
@@ -197,7 +197,7 @@ class FormCollection extends AbstractHelper
      */
     public function setShouldWrap($wrap)
     {
-        $this->shouldWrap = (bool) $wrap;
+        $this->shouldWrap = (bool)$wrap;
         return $this;
     }
 

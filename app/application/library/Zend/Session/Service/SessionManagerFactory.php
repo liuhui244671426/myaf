@@ -55,16 +55,16 @@ class SessionManagerFactory implements FactoryInterface
      *   this is true; set it to false to disable.
      * - validators: ...
      *
-     * @param  ServiceLocatorInterface    $services
+     * @param  ServiceLocatorInterface $services
      * @return SessionManager
      * @throws ServiceNotCreatedException if any collaborators are not of the
      *         correct type
      */
     public function createService(ServiceLocatorInterface $services)
     {
-        $config        = null;
-        $storage       = null;
-        $saveHandler   = null;
+        $config = null;
+        $storage = null;
+        $saveHandler = null;
         $managerConfig = $this->defaultManagerConfig;
 
         if ($services->has('Zend\Session\Config\ConfigInterface')) {

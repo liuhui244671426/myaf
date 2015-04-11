@@ -162,7 +162,7 @@ class Form extends Fieldset implements FormInterface
      * the element or fieldset, order in which to prioritize it, etc.
      *
      * @param  array|Traversable|ElementInterface $elementOrFieldset
-     * @param  array                              $flags
+     * @param  array $flags
      * @return self
      */
     public function add($elementOrFieldset, array $flags = array())
@@ -265,7 +265,7 @@ class Form extends Fieldset implements FormInterface
         }
 
         $this->hasValidated = false;
-        $this->data         = $data;
+        $this->data = $data;
         $this->populateValues($data);
 
         return $this;
@@ -588,7 +588,7 @@ class Form extends Fieldset implements FormInterface
         }
 
         if (!is_array($arg)) {
-            $arg = (array) $arg;
+            $arg = (array)$arg;
         }
 
         $this->validationGroup = $arg;
@@ -610,8 +610,8 @@ class Form extends Fieldset implements FormInterface
      * could have been dynamically added or removed from a collection using JavaScript)
      *
      * @param FieldsetInterface $formOrFieldset
-     * @param array             $data
-     * @param array             $validationGroup
+     * @param array $data
+     * @param array $validationGroup
      */
     protected function prepareValidationGroup(FieldsetInterface $formOrFieldset, array $data, array &$validationGroup)
     {
@@ -654,9 +654,9 @@ class Form extends Fieldset implements FormInterface
      */
     public function setInputFilter(InputFilterInterface $inputFilter)
     {
-        $this->hasValidated                = false;
+        $this->hasValidated = false;
         $this->hasAddedInputFilterDefaults = false;
-        $this->filter                      = $inputFilter;
+        $this->filter = $inputFilter;
 
         if (false === $this->hasSetPreferFormInputFilter) {
             $this->preferFormInputFilter = false;
@@ -708,7 +708,7 @@ class Form extends Fieldset implements FormInterface
      */
     public function setUseInputFilterDefaults($useInputFilterDefaults)
     {
-        $this->useInputFilterDefaults = (bool) $useInputFilterDefaults;
+        $this->useInputFilterDefaults = (bool)$useInputFilterDefaults;
         return $this;
     }
 
@@ -730,7 +730,7 @@ class Form extends Fieldset implements FormInterface
      */
     public function setPreferFormInputFilter($preferFormInputFilter)
     {
-        $this->preferFormInputFilter = (bool) $preferFormInputFilter;
+        $this->preferFormInputFilter = (bool)$preferFormInputFilter;
         $this->hasSetPreferFormInputFilter = true;
         return $this;
     }
@@ -754,7 +754,7 @@ class Form extends Fieldset implements FormInterface
      */
     public function attachInputFilterDefaults(InputFilterInterface $inputFilter, FieldsetInterface $fieldset)
     {
-        $formFactory  = $this->getFormFactory();
+        $formFactory = $this->getFormFactory();
         $inputFactory = $formFactory->getInputFilterFactory();
 
         if ($fieldset instanceof Collection && $fieldset->getTargetElement() instanceof FieldsetInterface) {
@@ -776,11 +776,11 @@ class Form extends Fieldset implements FormInterface
                         continue;
                     }
                     // Create a new empty default input for this element
-                    $spec  = array('name' => $name, 'required' => false);
+                    $spec = array('name' => $name, 'required' => false);
                     $input = $inputFactory->createInput($spec);
                 } else {
                     // Create an input based on the specification returned from the element
-                    $spec  = $element->getInputSpecification();
+                    $spec = $element->getInputSpecification();
                     $input = $inputFactory->createInput($spec);
 
                     if ($inputFilter->has($name) && $inputFilter instanceof ReplaceableInputInterface) {
@@ -838,7 +838,7 @@ class Form extends Fieldset implements FormInterface
             }
 
             // Create an input filter based on the specification returned from the fieldset
-            $spec   = $childFieldset->getInputFilterSpecification();
+            $spec = $childFieldset->getInputFilterSpecification();
             $filter = $inputFactory->createInputFilter($spec);
             $inputFilter->add($filter, $name);
 
@@ -855,7 +855,7 @@ class Form extends Fieldset implements FormInterface
      */
     public function setWrapElements($wrapElements)
     {
-        $this->wrapElements = (bool) $wrapElements;
+        $this->wrapElements = (bool)$wrapElements;
         return $this;
     }
 

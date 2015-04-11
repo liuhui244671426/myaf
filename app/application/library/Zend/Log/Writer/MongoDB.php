@@ -56,9 +56,9 @@ class MongoDB extends AbstractWriter
         if (is_array($mongo)) {
             parent::__construct($mongo);
             $saveOptions = isset($mongo['save_options']) ? $mongo['save_options'] : array();
-            $collection  = isset($mongo['collection']) ? $mongo['collection'] : null;
-            $database    = isset($mongo['database']) ? $mongo['database'] : null;
-            $mongo       = isset($mongo['mongo']) ? $mongo['mongo'] : null;
+            $collection = isset($mongo['collection']) ? $mongo['collection'] : null;
+            $database = isset($mongo['database']) ? $mongo['database'] : null;
+            $mongo = isset($mongo['mongo']) ? $mongo['mongo'] : null;
         }
 
         if (null === $collection) {
@@ -77,7 +77,7 @@ class MongoDB extends AbstractWriter
         }
 
         $this->mongoCollection = $mongo->selectCollection($database, $collection);
-        $this->saveOptions     = $saveOptions;
+        $this->saveOptions = $saveOptions;
     }
 
     /**

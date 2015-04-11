@@ -29,7 +29,7 @@ class Serializer extends AbstractPlugin
     {
         // The higher the priority the sooner the plugin will be called on pre events
         // but the later it will be called on post events.
-        $prePriority  = $priority;
+        $prePriority = $priority;
         $postPriority = -$priority;
 
         // read
@@ -68,8 +68,8 @@ class Serializer extends AbstractPlugin
     public function onReadItemPost(PostEvent $event)
     {
         $serializer = $this->getOptions()->getSerializer();
-        $result     = $event->getResult();
-        $result     = $serializer->unserialize($result);
+        $result = $event->getResult();
+        $result = $serializer->unserialize($result);
         $event->setResult($result);
     }
 
@@ -82,7 +82,7 @@ class Serializer extends AbstractPlugin
     public function onReadItemsPost(PostEvent $event)
     {
         $serializer = $this->getOptions()->getSerializer();
-        $result     = $event->getResult();
+        $result = $event->getResult();
         foreach ($result as &$value) {
             $value = $serializer->unserialize($value);
         }
@@ -98,7 +98,7 @@ class Serializer extends AbstractPlugin
     public function onWriteItemPre(Event $event)
     {
         $serializer = $this->getOptions()->getSerializer();
-        $params     = $event->getParams();
+        $params = $event->getParams();
         $params['value'] = $serializer->serialize($params['value']);
     }
 
@@ -111,7 +111,7 @@ class Serializer extends AbstractPlugin
     public function onWriteItemsPre(Event $event)
     {
         $serializer = $this->getOptions()->getSerializer();
-        $params     = $event->getParams();
+        $params = $event->getParams();
         foreach ($params['keyValuePairs'] as &$value) {
             $value = $serializer->serialize($value);
         }
@@ -125,10 +125,10 @@ class Serializer extends AbstractPlugin
      */
     public function onIncrementItemPre(Event $event)
     {
-        $storage  = $event->getTarget();
-        $params   = $event->getParams();
+        $storage = $event->getTarget();
+        $params = $event->getParams();
         $casToken = null;
-        $success  = null;
+        $success = null;
         $oldValue = $storage->getItem($params['key'], $success, $casToken);
         $newValue = $oldValue + $params['value'];
 
@@ -151,12 +151,12 @@ class Serializer extends AbstractPlugin
      */
     public function onIncrementItemsPre(Event $event)
     {
-        $storage       = $event->getTarget();
-        $params        = $event->getParams();
+        $storage = $event->getTarget();
+        $params = $event->getParams();
         $keyValuePairs = $storage->getItems(array_keys($params['keyValuePairs']));
         foreach ($params['keyValuePairs'] as $key => & $value) {
             if (isset($keyValuePairs[$key])) {
-                $keyValuePairs[$key]+= $value;
+                $keyValuePairs[$key] += $value;
             } else {
                 $keyValuePairs[$key] = $value;
             }
@@ -179,9 +179,9 @@ class Serializer extends AbstractPlugin
      */
     public function onDecrementItemPre(Event $event)
     {
-        $storage  = $event->getTarget();
-        $params   = $event->getParams();
-        $success  = null;
+        $storage = $event->getTarget();
+        $params = $event->getParams();
+        $success = null;
         $casToken = null;
         $oldValue = $storage->getItem($params['key'], $success, $casToken);
         $newValue = $oldValue - $params['value'];
@@ -205,12 +205,12 @@ class Serializer extends AbstractPlugin
      */
     public function onDecrementItemsPre(Event $event)
     {
-        $storage       = $event->getTarget();
-        $params        = $event->getParams();
+        $storage = $event->getTarget();
+        $params = $event->getParams();
         $keyValuePairs = $storage->getItems(array_keys($params['keyValuePairs']));
         foreach ($params['keyValuePairs'] as $key => &$value) {
             if (isset($keyValuePairs[$key])) {
-                $keyValuePairs[$key]-= $value;
+                $keyValuePairs[$key] -= $value;
             } else {
                 $keyValuePairs[$key] = -$value;
             }
@@ -241,13 +241,13 @@ class Serializer extends AbstractPlugin
                 $baseCapabilities->getAdapter(),
                 new stdClass(), // marker
                 array('supportedDatatypes' => array(
-                    'NULL'     => true,
-                    'boolean'  => true,
-                    'integer'  => true,
-                    'double'   => true,
-                    'string'   => true,
-                    'array'    => true,
-                    'object'   => 'object',
+                    'NULL' => true,
+                    'boolean' => true,
+                    'integer' => true,
+                    'double' => true,
+                    'string' => true,
+                    'array' => true,
+                    'object' => 'object',
                     'resource' => false,
                 )),
                 $baseCapabilities

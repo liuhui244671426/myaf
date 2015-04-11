@@ -120,7 +120,7 @@ class Csrf extends Element implements InputProviderInterface, ElementPrepareAwar
     public function getAttributes()
     {
         $attributes = parent::getAttributes();
-        $validator  = $this->getCsrfValidator();
+        $validator = $this->getCsrfValidator();
         $attributes['value'] = $validator->getHash();
         return $attributes;
     }

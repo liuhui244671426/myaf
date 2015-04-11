@@ -23,7 +23,7 @@ class Changefreq extends AbstractValidator
      *
      */
     const NOT_VALID = 'sitemapChangefreqNotValid';
-    const INVALID   = 'sitemapChangefreqInvalid';
+    const INVALID = 'sitemapChangefreqInvalid';
 
     /**
      * Validation failure message template definitions
@@ -32,7 +32,7 @@ class Changefreq extends AbstractValidator
      */
     protected $messageTemplates = array(
         self::NOT_VALID => "The input is not a valid sitemap changefreq",
-        self::INVALID   => "Invalid type given. String expected",
+        self::INVALID => "Invalid type given. String expected",
     );
 
     /**
@@ -41,7 +41,7 @@ class Changefreq extends AbstractValidator
      * @var array
      */
     protected $changeFreqs = array(
-        'always',  'hourly', 'daily', 'weekly',
+        'always', 'hourly', 'daily', 'weekly',
         'monthly', 'yearly', 'never'
     );
 
@@ -50,7 +50,7 @@ class Changefreq extends AbstractValidator
      *
      * @link http://www.sitemaps.org/protocol.php#changefreqdef <changefreq>
      *
-     * @param  string  $value  value to validate
+     * @param  string $value value to validate
      * @return bool
      */
     public function isValid($value)

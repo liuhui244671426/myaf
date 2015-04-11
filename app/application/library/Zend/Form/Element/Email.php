@@ -47,7 +47,7 @@ class Email extends Element implements InputProviderInterface
             $emailValidator = $this->getEmailValidator();
 
             $multiple = (isset($this->attributes['multiple']))
-                      ? $this->attributes['multiple'] : null;
+                ? $this->attributes['multiple'] : null;
 
             if (true === $multiple || 'multiple' === $multiple) {
                 $this->validator = new ExplodeValidator(array(

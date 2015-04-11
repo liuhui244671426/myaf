@@ -14,20 +14,20 @@ abstract class AbstractMemberGenerator extends AbstractGenerator
     /**#@+
      * @const int Flags for construction usage
      */
-    const FLAG_ABSTRACT  = 0x01;
-    const FLAG_FINAL     = 0x02;
-    const FLAG_STATIC    = 0x04;
-    const FLAG_PUBLIC    = 0x10;
+    const FLAG_ABSTRACT = 0x01;
+    const FLAG_FINAL = 0x02;
+    const FLAG_STATIC = 0x04;
+    const FLAG_PUBLIC = 0x10;
     const FLAG_PROTECTED = 0x20;
-    const FLAG_PRIVATE   = 0x40;
+    const FLAG_PRIVATE = 0x40;
     /**#@-*/
 
     /**#@+
      * @param const string
      */
-    const VISIBILITY_PUBLIC    = 'public';
+    const VISIBILITY_PUBLIC = 'public';
     const VISIBILITY_PROTECTED = 'protected';
-    const VISIBILITY_PRIVATE   = 'private';
+    const VISIBILITY_PRIVATE = 'private';
     /**#@-*/
 
     /**
@@ -53,7 +53,7 @@ abstract class AbstractMemberGenerator extends AbstractGenerator
     {
         if (is_array($flags)) {
             $flagsArray = $flags;
-            $flags      = 0x00;
+            $flags = 0x00;
             foreach ($flagsArray as $flag) {
                 $flags |= $flag;
             }
@@ -98,7 +98,7 @@ abstract class AbstractMemberGenerator extends AbstractGenerator
      */
     public function isAbstract()
     {
-        return (bool) ($this->flags & self::FLAG_ABSTRACT);
+        return (bool)($this->flags & self::FLAG_ABSTRACT);
     }
 
     /**
@@ -115,7 +115,7 @@ abstract class AbstractMemberGenerator extends AbstractGenerator
      */
     public function isFinal()
     {
-        return (bool) ($this->flags & self::FLAG_FINAL);
+        return (bool)($this->flags & self::FLAG_FINAL);
     }
 
     /**
@@ -132,7 +132,7 @@ abstract class AbstractMemberGenerator extends AbstractGenerator
      */
     public function isStatic()
     {
-        return (bool) ($this->flags & self::FLAG_STATIC); // is FLAG_STATIC in flags
+        return (bool)($this->flags & self::FLAG_STATIC); // is FLAG_STATIC in flags
     }
 
     /**
@@ -180,7 +180,7 @@ abstract class AbstractMemberGenerator extends AbstractGenerator
      */
     public function setName($name)
     {
-        $this->name = (string) $name;
+        $this->name = (string)$name;
         return $this;
     }
 

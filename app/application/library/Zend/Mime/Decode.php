@@ -19,7 +19,7 @@ class Decode
      *
      * Parts consist of the header and the body of each MIME part.
      *
-     * @param  string $body     raw body of message
+     * @param  string $body raw body of message
      * @param  string $boundary boundary as found in content-type
      * @return array parts with content of each part, empty if no parts found
      * @throws Exception\RuntimeException
@@ -44,18 +44,18 @@ class Decode
         $start = $p + 3 + strlen($boundary);
 
         while (($p = strpos($body, '--' . $boundary . "\n", $start)) !== false) {
-            $res[] = substr($body, $start, $p-$start);
+            $res[] = substr($body, $start, $p - $start);
             $start = $p + 3 + strlen($boundary);
         }
 
         // no more parts, find end boundary
         $p = strpos($body, '--' . $boundary . '--', $start);
-        if ($p===false) {
+        if ($p === false) {
             throw new Exception\RuntimeException('Not a valid Mime Message: End Missing');
         }
 
         // the remaining part also needs to be parsed:
-        $res[] = substr($body, $start, $p-$start);
+        $res[] = substr($body, $start, $p - $start);
         return $res;
     }
 
@@ -63,7 +63,7 @@ class Decode
      * decodes a mime encoded String and returns a
      * struct of parts with header and body
      *
-     * @param  string $message  raw message content
+     * @param  string $message raw message content
      * @param  string $boundary boundary as found in content-type
      * @param  string $EOL EOL string; defaults to {@link Zend\Mime\Mime::LINEEND}
      * @return array|null parts as array('header' => array(name => value), 'body' => content), null if no parts found
@@ -77,11 +77,11 @@ class Decode
         }
         $result = array();
         $headers = null; // "Declare" variable before the first usage "for reading"
-        $body    = null; // "Declare" variable before the first usage "for reading"
+        $body = null; // "Declare" variable before the first usage "for reading"
         foreach ($parts as $part) {
             static::splitMessage($part, $headers, $body, $EOL);
             $result[] = array('header' => $headers,
-                              'body'   => $body    );
+                'body' => $body);
         }
         return $result;
     }
@@ -92,11 +92,11 @@ class Decode
      *
      * The charset of the returned headers depend on your iconv settings.
      *
-     * @param  string|Headers  $message raw message with header and optional content
-     * @param  Headers         $headers output param, headers container
-     * @param  string          $body    output param, content of message
-     * @param  string          $EOL EOL string; defaults to {@link Zend\Mime\Mime::LINEEND}
-     * @param  bool         $strict  enable strict mode for parsing message
+     * @param  string|Headers $message raw message with header and optional content
+     * @param  Headers $headers output param, headers container
+     * @param  string $body output param, content of message
+     * @param  string $EOL EOL string; defaults to {@link Zend\Mime\Mime::LINEEND}
+     * @param  bool $strict enable strict mode for parsing message
      * @return null
      */
     public static function splitMessage($message, &$headers, &$body, $EOL = Mime::LINEEND, $strict = false)
@@ -117,7 +117,7 @@ class Decode
         if (!$strict) {
             $parts = explode(':', $firstline, 2);
             if (count($parts) != 2) {
-                $message = substr($message, strpos($message, $EOL)+1);
+                $message = substr($message, strpos($message, $EOL) + 1);
             }
         }
 
@@ -125,15 +125,15 @@ class Decode
         // default is set new line
         if (strpos($message, $EOL . $EOL)) {
             list($headers, $body) = explode($EOL . $EOL, $message, 2);
-        // next is the standard new line
+            // next is the standard new line
         } elseif ($EOL != "\r\n" && strpos($message, "\r\n\r\n")) {
             list($headers, $body) = explode("\r\n\r\n", $message, 2);
-        // next is the other "standard" new line
+            // next is the other "standard" new line
         } elseif ($EOL != "\n" && strpos($message, "\n\n")) {
             list($headers, $body) = explode("\n\n", $message, 2);
-        // at last resort find anything that looks like a new line
+            // at last resort find anything that looks like a new line
         } else {
-            ErrorHandler::start(E_NOTICE|E_WARNING);
+            ErrorHandler::start(E_NOTICE | E_WARNING);
             list($headers, $body) = preg_split("%([\r\n]+)\\1%U", $message, 2);
             ErrorHandler::stop();
         }
@@ -144,7 +144,7 @@ class Decode
     /**
      * split a content type in its different parts
      *
-     * @param  string $type       content-type
+     * @param  string $type content-type
      * @param  string $wantedPart the wanted part, else an array with all parts is returned
      * @return string|array wanted part or all parts as array('type' => content-type, partname => value)
      */
@@ -156,9 +156,9 @@ class Decode
     /**
      * split a header field like content type in its different parts
      *
-     * @param  string $field      header field
+     * @param  string $field header field
      * @param  string $wantedPart the wanted part, else an array with all parts is returned
-     * @param  string $firstName  key name for the first part
+     * @param  string $firstName key name for the first part
      * @return string|array wanted part or all parts as array($firstName => firstPart, partname => value)
      * @throws Exception\RuntimeException
      */

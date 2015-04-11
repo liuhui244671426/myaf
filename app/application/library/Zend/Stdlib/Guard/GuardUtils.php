@@ -25,8 +25,8 @@ abstract class GuardUtils
     /**
      * Verifies that the data is an array or Traversable
      *
-     * @param  mixed  $data           the data to verify
-     * @param  string $dataName       the data name
+     * @param  mixed $data the data to verify
+     * @param  string $dataName the data name
      * @param  string $exceptionClass FQCN for the exception
      * @throws \Exception
      */
@@ -34,7 +34,8 @@ abstract class GuardUtils
         $data,
         $dataName = 'Argument',
         $exceptionClass = self::DEFAULT_EXCEPTION_CLASS
-    ) {
+    )
+    {
         if (!is_array($data) && !($data instanceof Traversable)) {
             $message = sprintf(
                 '%s must be an array or Traversable, [%s] given',
@@ -48,8 +49,8 @@ abstract class GuardUtils
     /**
      * Verify that the data is not empty
      *
-     * @param  mixed  $data           the data to verify
-     * @param  string $dataName       the data name
+     * @param  mixed $data the data to verify
+     * @param  string $dataName the data name
      * @param  string $exceptionClass FQCN for the exception
      * @throws \Exception
      */
@@ -57,7 +58,8 @@ abstract class GuardUtils
         $data,
         $dataName = 'Argument',
         $exceptionClass = self::DEFAULT_EXCEPTION_CLASS
-    ) {
+    )
+    {
         if (empty($data)) {
             $message = sprintf('%s cannot be empty', $dataName);
             throw new $exceptionClass($message);
@@ -67,8 +69,8 @@ abstract class GuardUtils
     /**
      * Verify that the data is not null
      *
-     * @param  mixed  $data           the data to verify
-     * @param  string $dataName       the data name
+     * @param  mixed $data the data to verify
+     * @param  string $dataName the data name
      * @param  string $exceptionClass FQCN for the exception
      * @throws \Exception
      */
@@ -76,7 +78,8 @@ abstract class GuardUtils
         $data,
         $dataName = 'Argument',
         $exceptionClass = self::DEFAULT_EXCEPTION_CLASS
-    ) {
+    )
+    {
         if (null === $data) {
             $message = sprintf('%s cannot be null', $dataName);
             throw new $exceptionClass($message);

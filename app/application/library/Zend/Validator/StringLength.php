@@ -14,17 +14,17 @@ use Zend\Stdlib\StringWrapper\StringWrapperInterface as StringWrapper;
 
 class StringLength extends AbstractValidator
 {
-    const INVALID   = 'stringLengthInvalid';
+    const INVALID = 'stringLengthInvalid';
     const TOO_SHORT = 'stringLengthTooShort';
-    const TOO_LONG  = 'stringLengthTooLong';
+    const TOO_LONG = 'stringLengthTooLong';
 
     /**
      * @var array
      */
     protected $messageTemplates = array(
-        self::INVALID   => "Invalid type given. String expected",
+        self::INVALID => "Invalid type given. String expected",
         self::TOO_SHORT => "The input is less than %min% characters long",
-        self::TOO_LONG  => "The input is more than %max% characters long",
+        self::TOO_LONG => "The input is more than %max% characters long",
     );
 
     /**
@@ -36,8 +36,8 @@ class StringLength extends AbstractValidator
     );
 
     protected $options = array(
-        'min'      => 0,       // Minimum length
-        'max'      => null,    // Maximum length, null if there is no length limitation
+        'min' => 0,       // Minimum length
+        'max' => null,    // Maximum length, null if there is no length limitation
         'encoding' => 'UTF-8', // Encoding to use
     );
 
@@ -51,7 +51,7 @@ class StringLength extends AbstractValidator
     public function __construct($options = array())
     {
         if (!is_array($options)) {
-            $options     = func_get_args();
+            $options = func_get_args();
             $temp['min'] = array_shift($options);
             if (!empty($options)) {
                 $temp['max'] = array_shift($options);
@@ -92,7 +92,7 @@ class StringLength extends AbstractValidator
             );
         }
 
-        $this->options['min'] = max(0, (int) $min);
+        $this->options['min'] = max(0, (int)$min);
         return $this;
     }
 
@@ -122,7 +122,7 @@ class StringLength extends AbstractValidator
                 "The maximum must be greater than or equal to the minimum length, but $max < " . $this->getMin()
             );
         } else {
-            $this->options['max'] = (int) $max;
+            $this->options['max'] = (int)$max;
         }
 
         return $this;

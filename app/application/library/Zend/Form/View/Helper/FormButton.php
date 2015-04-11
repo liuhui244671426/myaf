@@ -21,17 +21,17 @@ class FormButton extends FormInput
      * @var array
      */
     protected $validTagAttributes = array(
-        'name'           => true,
-        'autofocus'      => true,
-        'disabled'       => true,
-        'form'           => true,
-        'formaction'     => true,
-        'formenctype'    => true,
-        'formmethod'     => true,
+        'name' => true,
+        'autofocus' => true,
+        'disabled' => true,
+        'form' => true,
+        'formaction' => true,
+        'formenctype' => true,
+        'formmethod' => true,
         'formnovalidate' => true,
-        'formtarget'     => true,
-        'type'           => true,
-        'value'          => true,
+        'formtarget' => true,
+        'type' => true,
+        'value' => true,
     );
 
     /**
@@ -40,9 +40,9 @@ class FormButton extends FormInput
      * @var array
      */
     protected $validTypes = array(
-        'button'         => true,
-        'reset'          => true,
-        'submit'         => true,
+        'button' => true,
+        'reset' => true,
+        'submit' => true,
     );
 
     /**
@@ -51,7 +51,7 @@ class FormButton extends FormInput
      * Proxies to {@link render()}.
      *
      * @param  ElementInterface|null $element
-     * @param  null|string           $buttonContent
+     * @param  null|string $buttonContent
      * @return string|FormButton
      */
     public function __invoke(ElementInterface $element = null, $buttonContent = null)
@@ -96,7 +96,7 @@ class FormButton extends FormInput
             }
         }
 
-        if (! $element instanceof LabelAwareInterface || ! $element->getLabelOption('disable_html_escape')) {
+        if (!$element instanceof LabelAwareInterface || !$element->getLabelOption('disable_html_escape')) {
             $escapeHtmlHelper = $this->getEscapeHtmlHelper();
             $buttonContent = $escapeHtmlHelper($buttonContent);
         }
@@ -132,7 +132,7 @@ class FormButton extends FormInput
         }
 
         $element = $attributesOrElement;
-        $name    = $element->getName();
+        $name = $element->getName();
         if (empty($name) && $name !== 0) {
             throw new Exception\DomainException(sprintf(
                 '%s requires that the element has an assigned name; none discovered',
@@ -140,9 +140,9 @@ class FormButton extends FormInput
             ));
         }
 
-        $attributes          = $element->getAttributes();
-        $attributes['name']  = $name;
-        $attributes['type']  = $this->getType($element);
+        $attributes = $element->getAttributes();
+        $attributes['name'] = $name;
+        $attributes['type'] = $this->getType($element);
         $attributes['value'] = $element->getValue();
 
         return sprintf(

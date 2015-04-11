@@ -19,18 +19,18 @@ use Zend\Validator\Exception;
 
 class PostCode extends AbstractValidator
 {
-    const INVALID        = 'postcodeInvalid';
-    const NO_MATCH       = 'postcodeNoMatch';
-    const SERVICE        = 'postcodeService';
+    const INVALID = 'postcodeInvalid';
+    const NO_MATCH = 'postcodeNoMatch';
+    const SERVICE = 'postcodeService';
     const SERVICEFAILURE = 'postcodeServiceFailure';
 
     /**
      * @var array
      */
     protected $messageTemplates = array(
-        self::INVALID        => "Invalid type given. String or integer expected",
-        self::NO_MATCH       => "The input does not appear to be a postal code",
-        self::SERVICE        => "The input does not appear to be a postal code",
+        self::INVALID => "Invalid type given. String or integer expected",
+        self::NO_MATCH => "The input does not appear to be a postal code",
+        self::SERVICE => "The input does not appear to be a postal code",
         self::SERVICEFAILURE => "An exception has been raised while validating the input",
     );
 
@@ -340,8 +340,8 @@ class PostCode extends AbstractValidator
         $this->setValue($value);
 
         $service = $this->getService();
-        $locale  = $this->getLocale();
-        $format  = $this->getFormat();
+        $locale = $this->getLocale();
+        $format = $this->getFormat();
         if ((null === $format || '' === $format) && !empty($locale)) {
             $region = Locale::getRegion($locale);
             if ('' === $region) {

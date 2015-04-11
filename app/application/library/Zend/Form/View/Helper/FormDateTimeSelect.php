@@ -42,9 +42,9 @@ class FormDateTimeSelect extends FormDateSelectHelper
      * Proxies to {@link render()}.
      *
      * @param ElementInterface $element
-     * @param int              $dateType
-     * @param int|null|string  $timeType
-     * @param null|string      $locale
+     * @param int $dateType
+     * @param int|null|string $timeType
+     * @param null|string $locale
      * @return string
      */
     public function __invoke(
@@ -52,7 +52,8 @@ class FormDateTimeSelect extends FormDateSelectHelper
         $dateType = IntlDateFormatter::LONG,
         $timeType = IntlDateFormatter::LONG,
         $locale = null
-    ) {
+    )
+    {
         if (!$element) {
             return $this;
         }
@@ -94,19 +95,19 @@ class FormDateTimeSelect extends FormDateSelectHelper
 
         $shouldRenderDelimiters = $element->shouldRenderDelimiters();
         $selectHelper = $this->getSelectElementHelper();
-        $pattern      = $this->parsePattern($shouldRenderDelimiters);
+        $pattern = $this->parsePattern($shouldRenderDelimiters);
 
-        $daysOptions   = $this->getDaysOptions($pattern['day']);
+        $daysOptions = $this->getDaysOptions($pattern['day']);
         $monthsOptions = $this->getMonthsOptions($pattern['month']);
-        $yearOptions   = $this->getYearsOptions($element->getMinYear(), $element->getMaxYear());
-        $hourOptions   = $this->getHoursOptions($pattern['hour']);
+        $yearOptions = $this->getYearsOptions($element->getMinYear(), $element->getMaxYear());
+        $hourOptions = $this->getHoursOptions($pattern['hour']);
         $minuteOptions = $this->getMinutesOptions($pattern['minute']);
         $secondOptions = $this->getSecondsOptions($pattern['second']);
 
-        $dayElement    = $element->getDayElement()->setValueOptions($daysOptions);
-        $monthElement  = $element->getMonthElement()->setValueOptions($monthsOptions);
-        $yearElement   = $element->getYearElement()->setValueOptions($yearOptions);
-        $hourElement   = $element->getHourElement()->setValueOptions($hourOptions);
+        $dayElement = $element->getDayElement()->setValueOptions($daysOptions);
+        $monthElement = $element->getMonthElement()->setValueOptions($monthsOptions);
+        $yearElement = $element->getYearElement()->setValueOptions($yearOptions);
+        $hourElement = $element->getHourElement()->setValueOptions($hourOptions);
         $minuteElement = $element->getMinuteElement()->setValueOptions($minuteOptions);
         $secondElement = $element->getSecondElement()->setValueOptions($secondOptions);
 
@@ -120,14 +121,14 @@ class FormDateTimeSelect extends FormDateSelectHelper
         }
 
         $data = array();
-        $data[$pattern['day']]    = $selectHelper->render($dayElement);
-        $data[$pattern['month']]  = $selectHelper->render($monthElement);
-        $data[$pattern['year']]   = $selectHelper->render($yearElement);
-        $data[$pattern['hour']]   = $selectHelper->render($hourElement);
+        $data[$pattern['day']] = $selectHelper->render($dayElement);
+        $data[$pattern['month']] = $selectHelper->render($monthElement);
+        $data[$pattern['year']] = $selectHelper->render($yearElement);
+        $data[$pattern['hour']] = $selectHelper->render($hourElement);
         $data[$pattern['minute']] = $selectHelper->render($minuteElement);
 
         if ($element->shouldShowSeconds()) {
-            $data[$pattern['second']]  = $selectHelper->render($secondElement);
+            $data[$pattern['second']] = $selectHelper->render($secondElement);
         } else {
             unset($pattern['second']);
             if ($shouldRenderDelimiters) {
@@ -180,10 +181,10 @@ class FormDateTimeSelect extends FormDateSelectHelper
     public function getPattern()
     {
         if ($this->pattern === null) {
-            $intl           = new IntlDateFormatter($this->getLocale(), $this->dateType, $this->timeType);
+            $intl = new IntlDateFormatter($this->getLocale(), $this->dateType, $this->timeType);
             // remove time zone format character
             $pattern = rtrim($intl->getPattern(), ' z');
-            $this->pattern  = $pattern;
+            $this->pattern = $pattern;
         }
 
         return $this->pattern;
@@ -197,7 +198,7 @@ class FormDateTimeSelect extends FormDateSelectHelper
      */
     protected function parsePattern($renderDelimiters = true)
     {
-        $pattern    = $this->getPattern();
+        $pattern = $this->getPattern();
         $pregResult = preg_split("/([ -,.:\/]*'.*?'[ -,.:\/]*)|([ -,.:\/]+)/", $pattern, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
 
         $result = array();
@@ -208,7 +209,7 @@ class FormDateTimeSelect extends FormDateSelectHelper
                 $result['month'] = $value;
             } elseif (stripos($value, "'") === false && stripos($value, 'y') !== false) {
                 $result['year'] = $value;
-            } elseif (stripos($value, "'") === false && stripos($value, 'h') !==  false) {
+            } elseif (stripos($value, "'") === false && stripos($value, 'h') !== false) {
                 $result['hour'] = $value;
             } elseif (stripos($value, "'") === false && stripos($value, 'm') !== false) {
                 $result['minute'] = $value;
@@ -233,13 +234,13 @@ class FormDateTimeSelect extends FormDateSelectHelper
      */
     protected function getHoursOptions($pattern)
     {
-        $keyFormatter   = new IntlDateFormatter($this->getLocale(), null, null, null, null, 'HH');
+        $keyFormatter = new IntlDateFormatter($this->getLocale(), null, null, null, null, 'HH');
         $valueFormatter = new IntlDateFormatter($this->getLocale(), null, null, null, null, $pattern);
-        $date           = new DateTime('1970-01-01 00:00:00');
+        $date = new DateTime('1970-01-01 00:00:00');
 
         $result = array();
         for ($hour = 1; $hour <= 24; $hour++) {
-            $key   = $keyFormatter->format($date);
+            $key = $keyFormatter->format($date);
             $value = $valueFormatter->format($date);
             $result[$key] = $value;
 
@@ -257,13 +258,13 @@ class FormDateTimeSelect extends FormDateSelectHelper
      */
     protected function getMinutesOptions($pattern)
     {
-        $keyFormatter   = new IntlDateFormatter($this->getLocale(), null, null, null, null, 'mm');
+        $keyFormatter = new IntlDateFormatter($this->getLocale(), null, null, null, null, 'mm');
         $valueFormatter = new IntlDateFormatter($this->getLocale(), null, null, null, null, $pattern);
-        $date           = new DateTime('1970-01-01 00:00:00');
+        $date = new DateTime('1970-01-01 00:00:00');
 
         $result = array();
         for ($min = 1; $min <= 60; $min++) {
-            $key   = $keyFormatter->format($date);
+            $key = $keyFormatter->format($date);
             $value = $valueFormatter->format($date);
             $result[$key] = $value;
 
@@ -281,13 +282,13 @@ class FormDateTimeSelect extends FormDateSelectHelper
      */
     protected function getSecondsOptions($pattern)
     {
-        $keyFormatter   = new IntlDateFormatter($this->getLocale(), null, null, null, null, 'ss');
+        $keyFormatter = new IntlDateFormatter($this->getLocale(), null, null, null, null, 'ss');
         $valueFormatter = new IntlDateFormatter($this->getLocale(), null, null, null, null, $pattern);
-        $date           = new DateTime('1970-01-01 00:00:00');
+        $date = new DateTime('1970-01-01 00:00:00');
 
         $result = array();
         for ($sec = 1; $sec <= 60; $sec++) {
-            $key   = $keyFormatter->format($date);
+            $key = $keyFormatter->format($date);
             $value = $valueFormatter->format($date);
             $result[$key] = $value;
 

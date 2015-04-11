@@ -35,7 +35,7 @@ class ServiceManagerConfig extends Config
      * @var array
      */
     protected $factories = array(
-        'EventManager'  => 'Zend\Mvc\Service\EventManagerFactory',
+        'EventManager' => 'Zend\Mvc\Service\EventManagerFactory',
         'ModuleManager' => 'Zend\Mvc\Service\ModuleManagerFactory',
     );
 
@@ -52,9 +52,9 @@ class ServiceManagerConfig extends Config
      * @var array
      */
     protected $aliases = array(
-        'Zend\EventManager\EventManagerInterface'     => 'EventManager',
+        'Zend\EventManager\EventManagerInterface' => 'EventManager',
         'Zend\ServiceManager\ServiceLocatorInterface' => 'ServiceManager',
-        'Zend\ServiceManager\ServiceManager'          => 'ServiceManager',
+        'Zend\ServiceManager\ServiceManager' => 'ServiceManager',
     );
 
     /**
@@ -122,13 +122,13 @@ class ServiceManagerConfig extends Config
 
         parent::__construct(ArrayUtils::merge(
             array(
-                'invokables'         => $this->invokables,
-                'factories'          => $this->factories,
+                'invokables' => $this->invokables,
+                'factories' => $this->factories,
                 'abstract_factories' => $this->abstractFactories,
-                'aliases'            => $this->aliases,
-                'shared'             => $this->shared,
-                'delegators'         => $this->delegators,
-                'initializers'       => $this->initializers,
+                'aliases' => $this->aliases,
+                'shared' => $this->shared,
+                'delegators' => $this->delegators,
+                'initializers' => $this->initializers,
             ),
             $configuration
         ));

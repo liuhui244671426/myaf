@@ -19,14 +19,14 @@ class FormColor extends FormInput
      * @var array
      */
     protected $validTagAttributes = array(
-        'name'           => true,
-        'autocomplete'   => true,
-        'autofocus'      => true,
-        'disabled'       => true,
-        'form'           => true,
-        'list'           => true,
-        'type'           => true,
-        'value'          => true,
+        'name' => true,
+        'autocomplete' => true,
+        'autofocus' => true,
+        'disabled' => true,
+        'form' => true,
+        'list' => true,
+        'type' => true,
+        'value' => true,
     );
 
     /**

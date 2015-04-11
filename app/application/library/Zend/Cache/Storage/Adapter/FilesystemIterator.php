@@ -52,15 +52,15 @@ class FilesystemIterator implements IteratorInterface
     /**
      * Constructor
      *
-     * @param Filesystem  $storage
-     * @param string      $path
-     * @param string      $prefix
+     * @param Filesystem $storage
+     * @param string $path
+     * @param string $prefix
      */
     public function __construct(Filesystem $storage, $path, $prefix)
     {
-        $this->storage      = $storage;
+        $this->storage = $storage;
         $this->globIterator = new GlobIterator($path, GlobIterator::KEY_AS_FILENAME);
-        $this->prefix       = $prefix;
+        $this->prefix = $prefix;
         $this->prefixLength = strlen($prefix);
     }
 
@@ -92,7 +92,7 @@ class FilesystemIterator implements IteratorInterface
      */
     public function setMode($mode)
     {
-        $this->mode = (int) $mode;
+        $this->mode = (int)$mode;
         return $this;
     }
 

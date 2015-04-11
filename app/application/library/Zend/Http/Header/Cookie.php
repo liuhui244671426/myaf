@@ -71,7 +71,7 @@ class Cookie extends ArrayObject implements HeaderInterface
 
     public function setEncodeValue($encodeValue)
     {
-        $this->encodeValue = (bool) $encodeValue;
+        $this->encodeValue = (bool)$encodeValue;
         return $this;
     }
 

@@ -252,7 +252,7 @@ abstract class AbstractFeed implements Feed\FeedInterface
             }
         }
         throw new Exception\BadMethodCallException('Method: ' . $method
-        . 'does not exist and could not be located on a registered Extension');
+            . 'does not exist and could not be located on a registered Extension');
     }
 
     /**
@@ -271,9 +271,9 @@ abstract class AbstractFeed implements Feed\FeedInterface
 
     protected function loadExtensions()
     {
-        $all     = Reader::getExtensions();
+        $all = Reader::getExtensions();
         $manager = Reader::getExtensionManager();
-        $feed    = $all['feed'];
+        $feed = $all['feed'];
         foreach ($feed as $extension) {
             if (in_array($extension, $all['core'])) {
                 continue;

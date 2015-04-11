@@ -48,7 +48,7 @@ class Message
         if (!$from instanceof AddressList) {
             return false;
         }
-        return (bool) count($from);
+        return (bool)count($from);
     }
 
     /**
@@ -391,7 +391,7 @@ class Message
 
         // Multipart content headers
         if ($this->body->isMultiPart()) {
-            $mime   = $this->body->getMime();
+            $mime = $this->body->getMime();
             $header = $this->getHeaderByName('content-type', __NAMESPACE__ . '\Header\ContentType');
             $header->setType('multipart/mixed');
             $header->addParameter('boundary', $mime->boundary());
@@ -428,7 +428,7 @@ class Message
             return $this->body->generateMessage(Headers::EOL);
         }
 
-        return (string) $this->body;
+        return (string)$this->body;
     }
 
     /**
@@ -527,8 +527,8 @@ class Message
     {
         $headers = $this->getHeaders();
         return $headers->toString()
-               . Headers::EOL
-               . $this->getBodyText();
+        . Headers::EOL
+        . $this->getBodyText();
     }
 
     /**

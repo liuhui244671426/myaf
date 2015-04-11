@@ -13,8 +13,8 @@ use Zend\I18n\Filter\Alpha as AlphaFilter;
 
 class Alpha extends Alnum
 {
-    const INVALID      = 'alphaInvalid';
-    const NOT_ALPHA    = 'notAlpha';
+    const INVALID = 'alphaInvalid';
+    const NOT_ALPHA = 'notAlpha';
     const STRING_EMPTY = 'alphaStringEmpty';
 
     /**
@@ -30,8 +30,8 @@ class Alpha extends Alnum
      * @var array
      */
     protected $messageTemplates = array(
-        self::INVALID      => "Invalid type given. String expected",
-        self::NOT_ALPHA    => "The input contains non alphabetic characters",
+        self::INVALID => "Invalid type given. String expected",
+        self::NOT_ALPHA => "The input contains non alphabetic characters",
         self::STRING_EMPTY => "The input is an empty string"
     );
 

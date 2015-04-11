@@ -48,8 +48,8 @@ class PartialLoop extends Partial
      *
      * If no arguments are provided, returns object instance.
      *
-     * @param  string $name   Name of view script
-     * @param  array  $values Variables to populate in the view
+     * @param  string $name Name of view script
+     * @param  array $values Variables to populate in the view
      * @throws Exception\InvalidArgumentException
      * @return string
      */
@@ -99,7 +99,7 @@ class PartialLoop extends Partial
         if (null === $key) {
             unset($this->objectKeyStack[$this->nestingLevel]);
         } else {
-            $this->objectKeyStack[$this->nestingLevel] = (string) $key;
+            $this->objectKeyStack[$this->nestingLevel] = (string)$key;
         }
 
         return parent::setObjectKey($key);

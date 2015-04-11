@@ -101,7 +101,7 @@ class Memory extends AbstractAdapter implements
     public function getAvailableSpace()
     {
         $total = $this->getOptions()->getMemoryLimit();
-        $avail = $total - (float) memory_get_usage(true);
+        $avail = $total - (float)memory_get_usage(true);
         return ($avail > 0) ? $avail : 0;
     }
 
@@ -114,7 +114,7 @@ class Memory extends AbstractAdapter implements
      */
     public function getIterator()
     {
-        $ns   = $this->getOptions()->getNamespace();
+        $ns = $this->getOptions()->getNamespace();
         $keys = array();
 
         if (isset($this->data[$ns])) {
@@ -160,7 +160,7 @@ class Memory extends AbstractAdapter implements
             return true;
         }
 
-        $data = & $this->data[$ns];
+        $data = &$this->data[$ns];
         foreach ($data as $key => & $item) {
             if (microtime(true) >= $data[$key][1] + $ttl) {
                 unset($data[$key]);
@@ -174,7 +174,7 @@ class Memory extends AbstractAdapter implements
 
     public function clearByNamespace($namespace)
     {
-        $namespace = (string) $namespace;
+        $namespace = (string)$namespace;
         if ($namespace === '') {
             throw new Exception\InvalidArgumentException('No namespace given');
         }
@@ -193,7 +193,7 @@ class Memory extends AbstractAdapter implements
      */
     public function clearByPrefix($prefix)
     {
-        $prefix = (string) $prefix;
+        $prefix = (string)$prefix;
         if ($prefix === '') {
             throw new Exception\InvalidArgumentException('No prefix given');
         }
@@ -204,7 +204,7 @@ class Memory extends AbstractAdapter implements
         }
 
         $prefixL = strlen($prefix);
-        $data    = & $this->data[$ns];
+        $data = &$this->data[$ns];
         foreach ($data as $key => & $item) {
             if (substr($key, 0, $prefixL) === $prefix) {
                 unset($data[$key]);
@@ -220,7 +220,7 @@ class Memory extends AbstractAdapter implements
      * Set tags to an item by given key.
      * An empty array will remove all tags.
      *
-     * @param string   $key
+     * @param string $key
      * @param string[] $tags
      * @return bool
      */
@@ -240,7 +240,7 @@ class Memory extends AbstractAdapter implements
      *
      * @param string $key
      * @return string[]|FALSE
-    */
+     */
     public function getTags($key)
     {
         $ns = $this->getOptions()->getNamespace();
@@ -258,9 +258,9 @@ class Memory extends AbstractAdapter implements
      * else all given tags must match.
      *
      * @param string[] $tags
-     * @param  bool  $disjunction
+     * @param  bool $disjunction
      * @return bool
-    */
+     */
     public function clearByTags(array $tags, $disjunction = false)
     {
         $ns = $this->getOptions()->getNamespace();
@@ -269,7 +269,7 @@ class Memory extends AbstractAdapter implements
         }
 
         $tagCount = count($tags);
-        $data     = & $this->data[$ns];
+        $data = &$this->data[$ns];
         foreach ($data as $key => & $item) {
             if (isset($item['tags'])) {
                 $diff = array_diff($tags, $item['tags']);
@@ -287,20 +287,20 @@ class Memory extends AbstractAdapter implements
     /**
      * Internal method to get an item.
      *
-     * @param  string  $normalizedKey
+     * @param  string $normalizedKey
      * @param  bool $success
-     * @param  mixed   $casToken
+     * @param  mixed $casToken
      * @return mixed Data on success, null on failure
      * @throws Exception\ExceptionInterface
      */
     protected function internalGetItem(& $normalizedKey, & $success = null, & $casToken = null)
     {
         $options = $this->getOptions();
-        $ns      = $options->getNamespace();
+        $ns = $options->getNamespace();
         $success = isset($this->data[$ns][$normalizedKey]);
         if ($success) {
-            $data = & $this->data[$ns][$normalizedKey];
-            $ttl  = $options->getTtl();
+            $data = &$this->data[$ns][$normalizedKey];
+            $ttl = $options->getTtl();
             if ($ttl && microtime(true) >= ($data[1] + $ttl)) {
                 $success = false;
             }
@@ -324,14 +324,14 @@ class Memory extends AbstractAdapter implements
     protected function internalGetItems(array & $normalizedKeys)
     {
         $options = $this->getOptions();
-        $ns      = $options->getNamespace();
+        $ns = $options->getNamespace();
         if (!isset($this->data[$ns])) {
             return array();
         }
 
-        $data = & $this->data[$ns];
-        $ttl  = $options->getTtl();
-        $now  = microtime(true);
+        $data = &$this->data[$ns];
+        $ttl = $options->getTtl();
+        $now = microtime(true);
 
         $result = array();
         foreach ($normalizedKeys as $normalizedKey) {
@@ -354,7 +354,7 @@ class Memory extends AbstractAdapter implements
     protected function internalHasItem(& $normalizedKey)
     {
         $options = $this->getOptions();
-        $ns      = $options->getNamespace();
+        $ns = $options->getNamespace();
         if (!isset($this->data[$ns][$normalizedKey])) {
             return false;
         }
@@ -377,14 +377,14 @@ class Memory extends AbstractAdapter implements
     protected function internalHasItems(array & $normalizedKeys)
     {
         $options = $this->getOptions();
-        $ns      = $options->getNamespace();
+        $ns = $options->getNamespace();
         if (!isset($this->data[$ns])) {
             return array();
         }
 
-        $data = & $this->data[$ns];
-        $ttl  = $options->getTtl();
-        $now  = microtime(true);
+        $data = &$this->data[$ns];
+        $ttl = $options->getTtl();
+        $now = microtime(true);
 
         $result = array();
         foreach ($normalizedKeys as $normalizedKey) {
@@ -427,7 +427,7 @@ class Memory extends AbstractAdapter implements
      * Internal method to store an item.
      *
      * @param  string $normalizedKey
-     * @param  mixed  $value
+     * @param  mixed $value
      * @return bool
      * @throws Exception\ExceptionInterface
      */
@@ -471,8 +471,8 @@ class Memory extends AbstractAdapter implements
             $this->data[$ns] = array();
         }
 
-        $data = & $this->data[$ns];
-        $now  = microtime(true);
+        $data = &$this->data[$ns];
+        $now = microtime(true);
         foreach ($normalizedKeyValuePairs as $normalizedKey => $value) {
             $data[$normalizedKey] = array($value, $now);
         }
@@ -484,7 +484,7 @@ class Memory extends AbstractAdapter implements
      * Add an item.
      *
      * @param  string $normalizedKey
-     * @param  mixed  $value
+     * @param  mixed $value
      * @return bool
      * @throws Exception\ExceptionInterface
      */
@@ -532,8 +532,8 @@ class Memory extends AbstractAdapter implements
         }
 
         $result = array();
-        $data   = & $this->data[$ns];
-        $now    = microtime(true);
+        $data = &$this->data[$ns];
+        $now = microtime(true);
         foreach ($normalizedKeyValuePairs as $normalizedKey => $value) {
             if (isset($data[$normalizedKey])) {
                 $result[] = $normalizedKey;
@@ -549,7 +549,7 @@ class Memory extends AbstractAdapter implements
      * Internal method to replace an existing item.
      *
      * @param  string $normalizedKey
-     * @param  mixed  $value
+     * @param  mixed $value
      * @return bool
      * @throws Exception\ExceptionInterface
      */
@@ -579,7 +579,7 @@ class Memory extends AbstractAdapter implements
         }
 
         $result = array();
-        $data   = & $this->data[$ns];
+        $data = &$this->data[$ns];
         foreach ($normalizedKeyValuePairs as $normalizedKey => $value) {
             if (!isset($data[$normalizedKey])) {
                 $result[] = $normalizedKey;
@@ -638,7 +638,7 @@ class Memory extends AbstractAdapter implements
      * Internal method to increment an item.
      *
      * @param  string $normalizedKey
-     * @param  int    $value
+     * @param  int $value
      * @return int|bool The new value on success, false on failure
      * @throws Exception\ExceptionInterface
      */
@@ -646,13 +646,13 @@ class Memory extends AbstractAdapter implements
     {
         $ns = $this->getOptions()->getNamespace();
         if (isset($this->data[$ns][$normalizedKey])) {
-            $data = & $this->data[$ns][$normalizedKey];
-            $data[0]+= $value;
+            $data = &$this->data[$ns][$normalizedKey];
+            $data[0] += $value;
             $data[1] = microtime(true);
             $newValue = $data[0];
         } else {
             // initial value
-            $newValue                        = $value;
+            $newValue = $value;
             $this->data[$ns][$normalizedKey] = array($newValue, microtime(true));
         }
 
@@ -663,7 +663,7 @@ class Memory extends AbstractAdapter implements
      * Internal method to decrement an item.
      *
      * @param  string $normalizedKey
-     * @param  int    $value
+     * @param  int $value
      * @return int|bool The new value on success, false on failure
      * @throws Exception\ExceptionInterface
      */
@@ -671,13 +671,13 @@ class Memory extends AbstractAdapter implements
     {
         $ns = $this->getOptions()->getNamespace();
         if (isset($this->data[$ns][$normalizedKey])) {
-            $data = & $this->data[$ns][$normalizedKey];
-            $data[0]-= $value;
+            $data = &$this->data[$ns][$normalizedKey];
+            $data[0] -= $value;
             $data[1] = microtime(true);
             $newValue = $data[0];
         } else {
             // initial value
-            $newValue                        = -$value;
+            $newValue = -$value;
             $this->data[$ns][$normalizedKey] = array($newValue, microtime(true));
         }
 
@@ -700,23 +700,23 @@ class Memory extends AbstractAdapter implements
                 $this->capabilityMarker,
                 array(
                     'supportedDatatypes' => array(
-                        'NULL'     => true,
-                        'boolean'  => true,
-                        'integer'  => true,
-                        'double'   => true,
-                        'string'   => true,
-                        'array'    => true,
-                        'object'   => true,
+                        'NULL' => true,
+                        'boolean' => true,
+                        'integer' => true,
+                        'double' => true,
+                        'string' => true,
+                        'array' => true,
+                        'object' => true,
                         'resource' => true,
                     ),
-                    'supportedMetadata'  => array('mtime'),
-                    'minTtl'             => 1,
-                    'maxTtl'             => PHP_INT_MAX,
-                    'staticTtl'          => false,
-                    'ttlPrecision'       => 0.05,
-                    'expiredRead'        => true,
-                    'maxKeyLength'       => 0,
-                    'namespaceIsPrefix'  => false,
+                    'supportedMetadata' => array('mtime'),
+                    'minTtl' => 1,
+                    'maxTtl' => PHP_INT_MAX,
+                    'staticTtl' => false,
+                    'ttlPrecision' => 0.05,
+                    'expiredRead' => true,
+                    'maxKeyLength' => 0,
+                    'namespaceIsPrefix' => false,
                     'namespaceSeparator' => '',
                 )
             );
@@ -741,7 +741,7 @@ class Memory extends AbstractAdapter implements
             return true;
         }
 
-        $free = $total - (float) memory_get_usage(true);
+        $free = $total - (float)memory_get_usage(true);
         return ($free > 0);
     }
 }

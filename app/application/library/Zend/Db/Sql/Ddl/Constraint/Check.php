@@ -28,7 +28,7 @@ class Check extends AbstractConstraint
     public function __construct($expression, $name)
     {
         $this->expression = $expression;
-        $this->name       = $name;
+        $this->name = $name;
     }
 
     /**

@@ -48,7 +48,7 @@ class Placeholder extends AbstractHelper
             );
         }
 
-        $name = (string) $name;
+        $name = (string)$name;
         return $this->getContainer($name);
     }
 
@@ -61,7 +61,7 @@ class Placeholder extends AbstractHelper
      */
     public function createContainer($key, array $value = array())
     {
-        $key = (string) $key;
+        $key = (string)$key;
 
         $this->items[$key] = new $this->containerClass($value);
         return $this->items[$key];
@@ -75,7 +75,7 @@ class Placeholder extends AbstractHelper
      */
     public function getContainer($key)
     {
-        $key = (string) $key;
+        $key = (string)$key;
         if (isset($this->items[$key])) {
             return $this->items[$key];
         }
@@ -93,8 +93,8 @@ class Placeholder extends AbstractHelper
      */
     public function containerExists($key)
     {
-        $key = (string) $key;
-        $return =  array_key_exists($key, $this->items);
+        $key = (string)$key;
+        $return = array_key_exists($key, $this->items);
         return $return;
     }
 }

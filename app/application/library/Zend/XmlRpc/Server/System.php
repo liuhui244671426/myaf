@@ -133,7 +133,7 @@ class System
 
             if ($fault) {
                 $responses[] = array(
-                    'faultCode'   => $fault->getCode(),
+                    'faultCode' => $fault->getCode(),
                     'faultString' => $fault->getMessage()
                 );
             }

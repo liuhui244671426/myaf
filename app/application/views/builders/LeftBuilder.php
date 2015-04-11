@@ -1,13 +1,16 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: liuhui
  * Date: 15-3-4
  * Time: 下午5:04
  */
-class LeftBuilder{
+class LeftBuilder
+{
 
-    static public function menuHtml(){
+    static public function menuHtml()
+    {
         return '<h5 class="sidebartitle">Navigation</h5>
         <ul class="nav nav-pills nav-stacked nav-bracket">
             <li class="active"><a href="/admin/main/main"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
@@ -20,7 +23,8 @@ class LeftBuilder{
         </ul>';
     }
 
-    static public function getLeftMenu(){
+    static public function getLeftMenu()
+    {
         $uid = $_SESSION['user']['uid'];
         $db = new Admin_IndexModel();
         $data = $db->getLeftMenu($uid);

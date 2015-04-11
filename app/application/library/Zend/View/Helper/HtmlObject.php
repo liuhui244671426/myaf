@@ -16,10 +16,10 @@ class HtmlObject extends AbstractHtmlElement
     /**
      * Output an object set
      *
-     * @param  string $data    The data file
-     * @param  string $type    Data file type
-     * @param  array  $attribs Attribs for the object tag
-     * @param  array  $params  Params for in the object tag
+     * @param  string $data The data file
+     * @param  string $type Data file type
+     * @param  array $attribs Attribs for the object tag
+     * @param  array $params Params for in the object tag
      * @param  string $content Alternative content for object
      * @throws InvalidArgumentException
      * @return string
@@ -30,7 +30,8 @@ class HtmlObject extends AbstractHtmlElement
         array $attribs = array(),
         array $params = array(),
         $content = null
-    ) {
+    )
+    {
         if ($data == null || $type == null) {
             throw new InvalidArgumentException(
                 'HTMLObject: missing argument. $data and $type are required in '
@@ -62,9 +63,9 @@ class HtmlObject extends AbstractHtmlElement
 
         // Object header
         $xhtml = '<object' . $this->htmlAttribs($attribs) . '>' . self::EOL
-                 . implode(self::EOL, $paramHtml) . self::EOL
-                 . ($content ? $content . self::EOL : '')
-                 . '</object>';
+            . implode(self::EOL, $paramHtml) . self::EOL
+            . ($content ? $content . self::EOL : '')
+            . '</object>';
 
         return $xhtml;
     }

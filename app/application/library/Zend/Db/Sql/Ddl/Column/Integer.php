@@ -17,10 +17,10 @@ class Integer extends Column
     protected $length;
 
     /**
-     * @param null|string     $name
-     * @param bool            $nullable
+     * @param null|string $name
+     * @param bool $nullable
      * @param null|string|int $default
-     * @param array           $options
+     * @param array $options
      */
     public function __construct($name, $nullable = false, $default = null, array $options = array())
     {

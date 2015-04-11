@@ -44,7 +44,7 @@ class Origin implements HeaderInterface
      */
     public function __construct($value = null)
     {
-        $this->value = (string) $value;
+        $this->value = (string)$value;
     }
 
     public function getFieldName()

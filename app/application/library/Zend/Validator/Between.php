@@ -14,7 +14,7 @@ use Zend\Stdlib\ArrayUtils;
 
 class Between extends AbstractValidator
 {
-    const NOT_BETWEEN        = 'notBetween';
+    const NOT_BETWEEN = 'notBetween';
     const NOT_BETWEEN_STRICT = 'notBetweenStrict';
 
     /**
@@ -23,7 +23,7 @@ class Between extends AbstractValidator
      * @var array
      */
     protected $messageTemplates = array(
-        self::NOT_BETWEEN        => "The input is not between '%min%' and '%max%', inclusively",
+        self::NOT_BETWEEN => "The input is not between '%min%' and '%max%', inclusively",
         self::NOT_BETWEEN_STRICT => "The input is not strictly between '%min%' and '%max%'"
     );
 
@@ -44,8 +44,8 @@ class Between extends AbstractValidator
      */
     protected $options = array(
         'inclusive' => true,  // Whether to do inclusive comparisons, allowing equivalence to min and/or max
-        'min'       => 0,
-        'max'       => PHP_INT_MAX,
+        'min' => 0,
+        'max' => PHP_INT_MAX,
     );
 
     /**

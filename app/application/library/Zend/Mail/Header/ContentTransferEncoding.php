@@ -94,9 +94,9 @@ class ContentTransferEncoding implements HeaderInterface
 
         if (!in_array($transferEncoding, static::$allowedTransferEncodings)) {
             throw new Exception\InvalidArgumentException(sprintf(
-                '%s expects one of "'. implode(', ', static::$allowedTransferEncodings) . '"; received "%s"',
+                '%s expects one of "' . implode(', ', static::$allowedTransferEncodings) . '"; received "%s"',
                 __METHOD__,
-                (string) $transferEncoding
+                (string)$transferEncoding
             ));
         }
         $this->transferEncoding = $transferEncoding;

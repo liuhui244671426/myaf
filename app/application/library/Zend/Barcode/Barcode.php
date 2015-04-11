@@ -87,11 +87,11 @@ abstract class Barcode
      * If the first argument is of type Traversable, it is assumed to contain
      * all parameters, and the second argument is ignored.
      *
-     * @param  mixed $barcode         String name of barcode class, or Traversable object.
-     * @param  mixed $renderer        String name of renderer class
-     * @param  mixed $barcodeConfig   OPTIONAL; an array or Traversable object with barcode parameters.
-     * @param  mixed $rendererConfig  OPTIONAL; an array or Traversable object with renderer parameters.
-     * @param  bool $automaticRenderError  OPTIONAL; set the automatic rendering of exception
+     * @param  mixed $barcode String name of barcode class, or Traversable object.
+     * @param  mixed $renderer String name of renderer class
+     * @param  mixed $barcodeConfig OPTIONAL; an array or Traversable object with barcode parameters.
+     * @param  mixed $rendererConfig OPTIONAL; an array or Traversable object with renderer parameters.
+     * @param  bool $automaticRenderError OPTIONAL; set the automatic rendering of exception
      * @return Barcode
      * @throws Exception\ExceptionInterface
      */
@@ -101,7 +101,8 @@ abstract class Barcode
         $barcodeConfig = array(),
         $rendererConfig = array(),
         $automaticRenderError = true
-    ) {
+    )
+    {
         /*
          * Convert Traversable argument to plain string
          * barcode name and separate config object.
@@ -112,24 +113,24 @@ abstract class Barcode
                 $rendererConfig = $barcode['rendererParams'];
             }
             if (isset($barcode['renderer'])) {
-                $renderer = (string) $barcode['renderer'];
+                $renderer = (string)$barcode['renderer'];
             }
             if (isset($barcode['barcodeParams'])) {
                 $barcodeConfig = $barcode['barcodeParams'];
             }
             if (isset($barcode['barcode'])) {
-                $barcode = (string) $barcode['barcode'];
+                $barcode = (string)$barcode['barcode'];
             } else {
                 $barcode = null;
             }
         }
 
         try {
-            $barcode  = static::makeBarcode($barcode, $barcodeConfig);
+            $barcode = static::makeBarcode($barcode, $barcodeConfig);
             $renderer = static::makeRenderer($renderer, $rendererConfig);
         } catch (Exception\ExceptionInterface $e) {
             if ($automaticRenderError && !($e instanceof Exception\RendererCreationException)) {
-                $barcode  = static::makeBarcode('error', array('text' => $e->getMessage()));
+                $barcode = static::makeBarcode('error', array('text' => $e->getMessage()));
                 $renderer = static::makeRenderer($renderer, array());
             } else {
                 throw $e;
@@ -143,8 +144,8 @@ abstract class Barcode
     /**
      * Barcode Constructor
      *
-     * @param mixed $barcode        String name of barcode class, or Traversable object, or barcode object.
-     * @param mixed $barcodeConfig  OPTIONAL; an array or Traversable object with barcode parameters.
+     * @param mixed $barcode String name of barcode class, or Traversable object, or barcode object.
+     * @param mixed $barcodeConfig OPTIONAL; an array or Traversable object with barcode parameters.
      * @throws Exception\InvalidArgumentException
      * @return Object\ObjectInterface
      */
@@ -164,7 +165,7 @@ abstract class Barcode
                 $barcodeConfig = $barcode['barcodeParams'];
             }
             if (isset($barcode['barcode'])) {
-                $barcode = (string) $barcode['barcode'];
+                $barcode = (string)$barcode['barcode'];
             } else {
                 $barcode = null;
             }
@@ -197,8 +198,8 @@ abstract class Barcode
     /**
      * Renderer Constructor
      *
-     * @param mixed $renderer           String name of renderer class, or Traversable object.
-     * @param mixed $rendererConfig     OPTIONAL; an array or Traversable object with renderer parameters.
+     * @param mixed $renderer String name of renderer class, or Traversable object.
+     * @param mixed $rendererConfig OPTIONAL; an array or Traversable object with renderer parameters.
      * @throws Exception\RendererCreationException
      * @return Renderer\RendererInterface
      */
@@ -218,7 +219,7 @@ abstract class Barcode
                 $rendererConfig = $renderer['rendererParams'];
             }
             if (isset($renderer['renderer'])) {
-                $renderer = (string) $renderer['renderer'];
+                $renderer = (string)$renderer['renderer'];
             }
         }
         if ($rendererConfig instanceof Traversable) {
@@ -259,7 +260,8 @@ abstract class Barcode
         $renderer,
         $barcodeConfig = array(),
         $rendererConfig = array()
-    ) {
+    )
+    {
         static::factory($barcode, $renderer, $barcodeConfig, $rendererConfig)->render();
     }
 
@@ -277,7 +279,8 @@ abstract class Barcode
         $renderer,
         $barcodeConfig = array(),
         $rendererConfig = array()
-    ) {
+    )
+    {
         return static::factory($barcode, $renderer, $barcodeConfig, $rendererConfig)->draw();
     }
 

@@ -108,7 +108,7 @@ class Translator implements TranslatorInterface
     /**
      * Instantiate a translator
      *
-     * @param  array|Traversable                  $options
+     * @param  array|Traversable $options
      * @return Translator
      * @throws Exception\InvalidArgumentException
      */
@@ -128,7 +128,7 @@ class Translator implements TranslatorInterface
 
         // locales
         if (isset($options['locale'])) {
-            $locales = (array) $options['locale'];
+            $locales = (array)$options['locale'];
             $translator->setLocale(array_shift($locales));
             if (count($locales) > 0) {
                 $translator->setFallbackLocale(array_shift($locales));
@@ -234,7 +234,7 @@ class Translator implements TranslatorInterface
     /**
      * Set the default locale.
      *
-     * @param  string     $locale
+     * @param  string $locale
      * @return Translator
      */
     public function setLocale($locale)
@@ -268,7 +268,7 @@ class Translator implements TranslatorInterface
     /**
      * Set the fallback locale.
      *
-     * @param  string     $locale
+     * @param  string $locale
      * @return Translator
      */
     public function setFallbackLocale($locale)
@@ -350,7 +350,7 @@ class Translator implements TranslatorInterface
      */
     public function translate($message, $textDomain = 'default', $locale = null)
     {
-        $locale      = ($locale ?: $this->getLocale());
+        $locale = ($locale ?: $this->getLocale());
         $translation = $this->getTranslatedMessage($message, $locale, $textDomain);
 
         if ($translation !== null && $translation !== '') {
@@ -369,11 +369,11 @@ class Translator implements TranslatorInterface
     /**
      * Translate a plural message.
      *
-     * @param  string                         $singular
-     * @param  string                         $plural
-     * @param  int                            $number
-     * @param  string                         $textDomain
-     * @param  string|null                    $locale
+     * @param  string $singular
+     * @param  string $plural
+     * @param  int $number
+     * @param  string $textDomain
+     * @param  string|null $locale
      * @return string
      * @throws Exception\OutOfBoundsException
      */
@@ -383,8 +383,9 @@ class Translator implements TranslatorInterface
         $number,
         $textDomain = 'default',
         $locale = null
-    ) {
-        $locale      = $locale ?: $this->getLocale();
+    )
+    {
+        $locale = $locale ?: $this->getLocale();
         $translation = $this->getTranslatedMessage($singular, $locale, $textDomain);
 
         if ($translation === null || $translation === '') {
@@ -404,8 +405,8 @@ class Translator implements TranslatorInterface
         }
 
         $index = $this->messages[$textDomain][$locale]
-                      ->getPluralRule()
-                      ->evaluate($number);
+            ->getPluralRule()
+            ->evaluate($number);
 
         if (!isset($translation[$index])) {
             throw new Exception\OutOfBoundsException(
@@ -429,7 +430,8 @@ class Translator implements TranslatorInterface
         $message,
         $locale,
         $textDomain = 'default'
-    ) {
+    )
+    {
         if ($message === '') {
             return '';
         }
@@ -447,8 +449,8 @@ class Translator implements TranslatorInterface
                 self::EVENT_MISSING_TRANSLATION,
                 $this,
                 array(
-                    'message'     => $message,
-                    'locale'      => $locale,
+                    'message' => $message,
+                    'locale' => $locale,
                     'text_domain' => $textDomain,
                 ),
                 function ($r) {
@@ -467,10 +469,10 @@ class Translator implements TranslatorInterface
     /**
      * Add a translation file.
      *
-     * @param  string     $type
-     * @param  string     $filename
-     * @param  string     $textDomain
-     * @param  string     $locale
+     * @param  string $type
+     * @param  string $filename
+     * @param  string $textDomain
+     * @param  string $locale
      * @return Translator
      */
     public function addTranslationFile(
@@ -478,7 +480,8 @@ class Translator implements TranslatorInterface
         $filename,
         $textDomain = 'default',
         $locale = null
-    ) {
+    )
+    {
         $locale = $locale ?: '*';
 
         if (!isset($this->files[$textDomain])) {
@@ -496,10 +499,10 @@ class Translator implements TranslatorInterface
     /**
      * Add multiple translations with a file pattern.
      *
-     * @param  string     $type
-     * @param  string     $baseDir
-     * @param  string     $pattern
-     * @param  string     $textDomain
+     * @param  string $type
+     * @param  string $baseDir
+     * @param  string $pattern
+     * @param  string $textDomain
      * @return Translator
      */
     public function addTranslationFilePattern(
@@ -507,13 +510,14 @@ class Translator implements TranslatorInterface
         $baseDir,
         $pattern,
         $textDomain = 'default'
-    ) {
+    )
+    {
         if (!isset($this->patterns[$textDomain])) {
             $this->patterns[$textDomain] = array();
         }
 
         $this->patterns[$textDomain][] = array(
-            'type'    => $type,
+            'type' => $type,
             'baseDir' => rtrim($baseDir, '/'),
             'pattern' => $pattern,
         );
@@ -524,8 +528,8 @@ class Translator implements TranslatorInterface
     /**
      * Add remote translations.
      *
-     * @param  string     $type
-     * @param  string     $textDomain
+     * @param  string $type
+     * @param  string $textDomain
      * @return Translator
      */
     public function addRemoteTranslations($type, $textDomain = 'default')
@@ -564,7 +568,7 @@ class Translator implements TranslatorInterface
             }
         }
 
-        $messagesLoaded  = false;
+        $messagesLoaded = false;
         $messagesLoaded |= $this->loadMessagesFromRemote($textDomain, $locale);
         $messagesLoaded |= $this->loadMessagesFromPatterns($textDomain, $locale);
         $messagesLoaded |= $this->loadMessagesFromFiles($textDomain, $locale);
@@ -576,7 +580,7 @@ class Translator implements TranslatorInterface
                     self::EVENT_NO_MESSAGES_LOADED,
                     $this,
                     array(
-                        'locale'      => $locale,
+                        'locale' => $locale,
                         'text_domain' => $textDomain,
                     ),
                     function ($r) {

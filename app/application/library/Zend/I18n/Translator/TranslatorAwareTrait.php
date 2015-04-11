@@ -30,7 +30,7 @@ trait TranslatorAwareTrait
      * Sets translator to use in helper
      *
      * @param TranslatorInterface $translator
-     * @param string              $textDomain
+     * @param string $textDomain
      * @return mixed
      */
     public function setTranslator(TranslatorInterface $translator = null, $textDomain = null)

@@ -77,15 +77,15 @@ class Escaper
      * @var array
      */
     protected $supportedEncodings = array(
-        'iso-8859-1',   'iso8859-1',    'iso-8859-5',   'iso8859-5',
-        'iso-8859-15',  'iso8859-15',   'utf-8',        'cp866',
-        'ibm866',       '866',          'cp1251',       'windows-1251',
-        'win-1251',     '1251',         'cp1252',       'windows-1252',
-        '1252',         'koi8-r',       'koi8-ru',      'koi8r',
-        'big5',         '950',          'gb2312',       '936',
-        'big5-hkscs',   'shift_jis',    'sjis',         'sjis-win',
-        'cp932',        '932',          'euc-jp',       'eucjp',
-        'eucjp-win',    'macroman'
+        'iso-8859-1', 'iso8859-1', 'iso-8859-5', 'iso8859-5',
+        'iso-8859-15', 'iso8859-15', 'utf-8', 'cp866',
+        'ibm866', '866', 'cp1251', 'windows-1251',
+        'win-1251', '1251', 'cp1252', 'windows-1252',
+        '1252', 'koi8-r', 'koi8-ru', 'koi8r',
+        'big5', '950', 'gb2312', '936',
+        'big5-hkscs', 'shift_jis', 'sjis', 'sjis-win',
+        'cp932', '932', 'euc-jp', 'eucjp',
+        'eucjp-win', 'macroman'
     );
 
     /**
@@ -99,7 +99,7 @@ class Escaper
     public function __construct($encoding = null)
     {
         if ($encoding !== null) {
-            $encoding = (string) $encoding;
+            $encoding = (string)$encoding;
             if ($encoding === '') {
                 throw new Exception\InvalidArgumentException(
                     get_class($this) . ' constructor parameter does not allow a blank value'
@@ -118,13 +118,13 @@ class Escaper
         }
 
         if (defined('ENT_SUBSTITUTE')) {
-            $this->htmlSpecialCharsFlags|= ENT_SUBSTITUTE;
+            $this->htmlSpecialCharsFlags |= ENT_SUBSTITUTE;
         }
 
         // set matcher callbacks
         $this->htmlAttrMatcher = array($this, 'htmlAttrMatcher');
-        $this->jsMatcher       = array($this, 'jsMatcher');
-        $this->cssMatcher      = array($this, 'cssMatcher');
+        $this->jsMatcher = array($this, 'jsMatcher');
+        $this->cssMatcher = array($this, 'cssMatcher');
     }
 
     /**

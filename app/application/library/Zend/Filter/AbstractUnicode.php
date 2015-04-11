@@ -29,7 +29,7 @@ abstract class AbstractUnicode extends AbstractFilter
                 ));
             }
 
-            $encoding    = strtolower($encoding);
+            $encoding = strtolower($encoding);
             $mbEncodings = array_map('strtolower', mb_list_encodings());
             if (!in_array($encoding, $mbEncodings)) {
                 throw new Exception\InvalidArgumentException(sprintf(

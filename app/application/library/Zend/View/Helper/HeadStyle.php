@@ -86,8 +86,8 @@ class HeadStyle extends Placeholder\Container\AbstractStandalone
      *
      * Returns headStyle helper object; optionally, allows specifying
      *
-     * @param  string       $content    Stylesheet contents
-     * @param  string       $placement  Append, prepend, or set
+     * @param  string $content Stylesheet contents
+     * @param  string $placement Append, prepend, or set
      * @param  string|array $attributes Optional attributes to utilize
      * @return HeadStyle
      */
@@ -116,15 +116,15 @@ class HeadStyle extends Placeholder\Container\AbstractStandalone
      * Overload method calls
      *
      * @param  string $method
-     * @param  array  $args
+     * @param  array $args
      * @throws Exception\BadMethodCallException When no $content provided or invalid method
      * @return void
      */
     public function __call($method, $args)
     {
         if (preg_match('/^(?P<action>set|(ap|pre)pend|offsetSet)(Style)$/', $method, $matches)) {
-            $index  = null;
-            $argc   = count($args);
+            $index = null;
+            $argc = count($args);
             $action = $matches['action'];
 
             if ('offsetSet' == $action) {
@@ -142,9 +142,9 @@ class HeadStyle extends Placeholder\Container\AbstractStandalone
             }
 
             $content = $args[0];
-            $attrs   = array();
+            $attrs = array();
             if (isset($args[1])) {
-                $attrs = (array) $args[1];
+                $attrs = (array)$args[1];
             }
 
             $item = $this->createData($content, $attrs);
@@ -202,9 +202,9 @@ class HeadStyle extends Placeholder\Container\AbstractStandalone
             throw new Exception\RuntimeException('Cannot nest headStyle captures');
         }
 
-        $this->captureLock        = true;
-        $this->captureAttrs       = $attrs;
-        $this->captureType        = $type;
+        $this->captureLock = true;
+        $this->captureAttrs = $attrs;
+        $this->captureType = $type;
         ob_start();
     }
 
@@ -215,10 +215,10 @@ class HeadStyle extends Placeholder\Container\AbstractStandalone
      */
     public function captureEnd()
     {
-        $content             = ob_get_clean();
-        $attrs               = $this->captureAttrs;
+        $content = ob_get_clean();
+        $attrs = $this->captureAttrs;
         $this->captureAttrs = null;
-        $this->captureLock  = false;
+        $this->captureLock = false;
 
         switch ($this->captureType) {
             case Placeholder\Container\AbstractContainer::SET:
@@ -238,7 +238,7 @@ class HeadStyle extends Placeholder\Container\AbstractStandalone
      * Create data item for use in stack
      *
      * @param  string $content
-     * @param  array  $attributes
+     * @param  array $attributes
      * @return stdClass
      */
     public function createData($content, array $attributes)
@@ -250,7 +250,7 @@ class HeadStyle extends Placeholder\Container\AbstractStandalone
         }
 
         $data = new stdClass();
-        $data->content    = $content;
+        $data->content = $content;
         $data->attributes = $attributes;
 
         return $data;
@@ -274,8 +274,8 @@ class HeadStyle extends Placeholder\Container\AbstractStandalone
     /**
      * Convert content and attributes into valid style tag
      *
-     * @param  stdClass $item   Item to render
-     * @param  string   $indent Indentation to use
+     * @param  stdClass $item Item to render
+     * @param  string $indent Indentation to use
      * @return string
      */
     public function itemToString(stdClass $item, $indent)
@@ -306,7 +306,7 @@ class HeadStyle extends Placeholder\Container\AbstractStandalone
                             if (!in_array($type, $this->mediaTypes)) {
                                 continue;
                             }
-                            $value .= $type .',';
+                            $value .= $type . ',';
                         }
                         $value = substr($value, 0, -1);
                     }
@@ -362,7 +362,7 @@ class HeadStyle extends Placeholder\Container\AbstractStandalone
      * Override offsetSet to enforce style creation
      *
      * @param  string|int $index
-     * @param  mixed      $value
+     * @param  mixed $value
      * @throws Exception\InvalidArgumentException
      * @return void
      */

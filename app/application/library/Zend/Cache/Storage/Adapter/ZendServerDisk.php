@@ -68,7 +68,7 @@ class ZendServerDisk extends AbstractZendServer implements
      */
     public function clearByNamespace($namespace)
     {
-        $namespace = (string) $namespace;
+        $namespace = (string)$namespace;
         if ($namespace === '') {
             throw new Exception\InvalidArgumentException('No namespace given');
         }
@@ -129,8 +129,8 @@ class ZendServerDisk extends AbstractZendServer implements
      * Store data into Zend Data Disk Cache
      *
      * @param  string $internalKey
-     * @param  mixed  $value
-     * @param  int    $ttl
+     * @param  mixed $value
+     * @param  int $ttl
      * @return void
      * @throws Exception\RuntimeException
      */
@@ -153,7 +153,7 @@ class ZendServerDisk extends AbstractZendServer implements
      */
     protected function zdcFetch($internalKey)
     {
-        return zend_disk_cache_fetch((string) $internalKey);
+        return zend_disk_cache_fetch((string)$internalKey);
     }
 
     /**

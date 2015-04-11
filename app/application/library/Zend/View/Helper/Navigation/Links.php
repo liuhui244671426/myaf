@@ -27,23 +27,23 @@ class Links extends AbstractHelper
      *
      * @var int
      */
-    const RENDER_ALTERNATE  = 0x0001;
+    const RENDER_ALTERNATE = 0x0001;
     const RENDER_STYLESHEET = 0x0002;
-    const RENDER_START      = 0x0004;
-    const RENDER_NEXT       = 0x0008;
-    const RENDER_PREV       = 0x0010;
-    const RENDER_CONTENTS   = 0x0020;
-    const RENDER_INDEX      = 0x0040;
-    const RENDER_GLOSSARY   = 0x0080;
-    const RENDER_COPYRIGHT  = 0x0100;
-    const RENDER_CHAPTER    = 0x0200;
-    const RENDER_SECTION    = 0x0400;
+    const RENDER_START = 0x0004;
+    const RENDER_NEXT = 0x0008;
+    const RENDER_PREV = 0x0010;
+    const RENDER_CONTENTS = 0x0020;
+    const RENDER_INDEX = 0x0040;
+    const RENDER_GLOSSARY = 0x0080;
+    const RENDER_COPYRIGHT = 0x0100;
+    const RENDER_CHAPTER = 0x0200;
+    const RENDER_SECTION = 0x0400;
     const RENDER_SUBSECTION = 0x0800;
-    const RENDER_APPENDIX   = 0x1000;
-    const RENDER_HELP       = 0x2000;
-    const RENDER_BOOKMARK   = 0x4000;
-    const RENDER_CUSTOM     = 0x8000;
-    const RENDER_ALL        = 0xffff;
+    const RENDER_APPENDIX = 0x1000;
+    const RENDER_HELP = 0x2000;
+    const RENDER_BOOKMARK = 0x4000;
+    const RENDER_CUSTOM = 0x8000;
+    const RENDER_ALL = 0xffff;
 
     /**
      * Maps render constants to W3C link types
@@ -51,21 +51,21 @@ class Links extends AbstractHelper
      * @var array
      */
     protected static $RELATIONS = array(
-        self::RENDER_ALTERNATE  => 'alternate',
+        self::RENDER_ALTERNATE => 'alternate',
         self::RENDER_STYLESHEET => 'stylesheet',
-        self::RENDER_START      => 'start',
-        self::RENDER_NEXT       => 'next',
-        self::RENDER_PREV       => 'prev',
-        self::RENDER_CONTENTS   => 'contents',
-        self::RENDER_INDEX      => 'index',
-        self::RENDER_GLOSSARY   => 'glossary',
-        self::RENDER_COPYRIGHT  => 'copyright',
-        self::RENDER_CHAPTER    => 'chapter',
-        self::RENDER_SECTION    => 'section',
+        self::RENDER_START => 'start',
+        self::RENDER_NEXT => 'next',
+        self::RENDER_PREV => 'prev',
+        self::RENDER_CONTENTS => 'contents',
+        self::RENDER_INDEX => 'index',
+        self::RENDER_GLOSSARY => 'glossary',
+        self::RENDER_COPYRIGHT => 'copyright',
+        self::RENDER_CHAPTER => 'chapter',
+        self::RENDER_SECTION => 'section',
         self::RENDER_SUBSECTION => 'subsection',
-        self::RENDER_APPENDIX   => 'appendix',
-        self::RENDER_HELP       => 'help',
-        self::RENDER_BOOKMARK   => 'bookmark',
+        self::RENDER_APPENDIX => 'appendix',
+        self::RENDER_HELP => 'help',
+        self::RENDER_BOOKMARK => 'bookmark',
     );
 
     /**
@@ -115,7 +115,7 @@ class Links extends AbstractHelper
      * </code>
      *
      * @param  string $method
-     * @param  array  $arguments
+     * @param  array $arguments
      * @return mixed
      * @throws Exception\ExceptionInterface
      */
@@ -182,10 +182,10 @@ class Links extends AbstractHelper
     /**
      * Renders the given $page as a link element, with $attrib = $relation
      *
-     * @param  AbstractPage $page     the page to render the link for
-     * @param  string       $attrib   the attribute to use for $type,
+     * @param  AbstractPage $page the page to render the link for
+     * @param  string $attrib the attribute to use for $type,
      *                                either 'rel' or 'rev'
-     * @param  string       $relation relation type, muse be one of;
+     * @param  string $relation relation type, muse be one of;
      *                                alternate, appendix, bookmark,
      *                                chapter, contents, copyright,
      *                                glossary, help, home, index, next,
@@ -210,14 +210,14 @@ class Links extends AbstractHelper
         // TODO: add more attribs
         // http://www.w3.org/TR/html401/struct/links.html#h-12.2
         $attribs = array(
-            $attrib  => $relation,
-            'href'   => $href,
-            'title'  => $page->getLabel()
+            $attrib => $relation,
+            'href' => $href,
+            'title' => $page->getLabel()
         );
 
         return '<link' .
-            $this->htmlAttribs($attribs) .
-            $this->getClosingBracket();
+        $this->htmlAttribs($attribs) .
+        $this->getClosingBracket();
     }
 
     // Finder methods:
@@ -242,7 +242,7 @@ class Links extends AbstractHelper
      * );
      * </code>
      *
-     * @param  AbstractPage $page  page to find links for
+     * @param  AbstractPage $page page to find links for
      * @param  null|int
      * @return array
      */
@@ -287,8 +287,8 @@ class Links extends AbstractHelper
      * by searching the root container if nothing was found in the page.
      *
      * @param  AbstractPage $page page to find relations for
-     * @param  string       $rel  relation, "rel" or "rev"
-     * @param  string       $type link type, e.g. 'start', 'next'
+     * @param  string $rel relation, "rel" or "rev"
+     * @param  string $type link type, e.g. 'start', 'next'
      * @return AbstractPage|array|null
      * @throws Exception\DomainException if $rel is not "rel" or "rev"
      */
@@ -312,9 +312,9 @@ class Links extends AbstractHelper
      * Finds relations of given $type for $page by checking if the
      * relation is specified as a property of $page
      *
-     * @param  AbstractPage $page  page to find relations for
-     * @param  string       $rel   relation, 'rel' or 'rev'
-     * @param  string       $type  link type, e.g. 'start', 'next'
+     * @param  AbstractPage $page page to find relations for
+     * @param  string $rel relation, 'rel' or 'rev'
+     * @param  string $type link type, e.g. 'start', 'next'
      * @return AbstractPage|array|null
      */
     protected function findFromProperty(AbstractPage $page, $rel, $type)
@@ -346,8 +346,8 @@ class Links extends AbstractHelper
      * search for the relation in the root container
      *
      * @param  AbstractPage $page page to find relations for
-     * @param  string       $rel  relation, 'rel' or 'rev'
-     * @param  string       $type link type, e.g. 'start', 'next', etc
+     * @param  string $rel relation, 'rel' or 'rev'
+     * @param  string $type link type, e.g. 'start', 'next', etc
      * @return array|null
      */
     protected function findFromSearch(AbstractPage $page, $rel, $type)
@@ -485,7 +485,8 @@ class Links extends AbstractHelper
             // exclude self and start page from chapters
             if ($chapter !== $page &&
                 !in_array($chapter, $start) &&
-                $this->accept($chapter)) {
+                $this->accept($chapter)
+            ) {
                 $found[] = $chapter;
             }
         }
@@ -584,11 +585,12 @@ class Links extends AbstractHelper
      */
     public function searchRevSection(AbstractPage $page)
     {
-        $found  = null;
+        $found = null;
         $parent = $page->getParent();
         if ($parent) {
             if ($parent instanceof AbstractPage &&
-                $this->findRoot($page)->hasPage($parent)) {
+                $this->findRoot($page)->hasPage($parent)
+            ) {
                 $found = $parent;
             }
         }
@@ -609,7 +611,7 @@ class Links extends AbstractHelper
      */
     public function searchRevSubsection(AbstractPage $page)
     {
-        $found  = null;
+        $found = null;
         $parent = $page->getParent();
         if ($parent) {
             if ($parent instanceof AbstractPage) {
@@ -662,8 +664,8 @@ class Links extends AbstractHelper
     /**
      * Converts a $mixed value to an array of pages
      *
-     * @param  mixed $mixed     mixed value to get page(s) from
-     * @param  bool  $recursive whether $value should be looped
+     * @param  mixed $mixed mixed value to get page(s) from
+     * @param  bool $recursive whether $value should be looped
      *                          if it is an array or a config
      * @return AbstractPage|array|null
      */
@@ -685,7 +687,7 @@ class Links extends AbstractHelper
             // value is a string; make a URI page
             return AbstractPage::factory(array(
                 'type' => 'uri',
-                'uri'  => $mixed
+                'uri' => $mixed
             ));
         }
 
@@ -744,7 +746,7 @@ class Links extends AbstractHelper
      */
     public function setRenderFlag($renderFlag)
     {
-        $this->renderFlag = (int) $renderFlag;
+        $this->renderFlag = (int)$renderFlag;
 
         return $this;
     }

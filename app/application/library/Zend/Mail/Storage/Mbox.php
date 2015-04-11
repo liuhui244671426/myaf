@@ -57,7 +57,7 @@ class Mbox extends AbstractStorage
     /**
      * Get a list of messages with number and size
      *
-     * @param  int|null $id  number of message or null for all messages
+     * @param  int|null $id number of message or null for all messages
      * @return int|array size of given message of list with all messages as array(num => size)
      */
     public function getSize($id = 0)
@@ -102,11 +102,12 @@ class Mbox extends AbstractStorage
     {
         // TODO that's ugly, would be better to let the message class decide
         if (strtolower($this->messageClass) == '\zend\mail\storage\message\file'
-            || is_subclass_of($this->messageClass, '\Zend\Mail\Storage\Message\File')) {
+            || is_subclass_of($this->messageClass, '\Zend\Mail\Storage\Message\File')
+        ) {
             // TODO top/body lines
             $messagePos = $this->getPos($id);
             return new $this->messageClass(array('file' => $this->fh, 'startPos' => $messagePos['start'],
-                                                  'endPos' => $messagePos['end']));
+                'endPos' => $messagePos['end']));
         }
 
         $bodyLines = 0; // TODO: need a way to change that
@@ -174,7 +175,7 @@ class Mbox extends AbstractStorage
     public function __construct($params)
     {
         if (is_array($params)) {
-            $params = (object) $params;
+            $params = (object)$params;
         }
 
         if (!isset($params->filename)) {
@@ -182,7 +183,7 @@ class Mbox extends AbstractStorage
         }
 
         $this->openMboxFile($params->filename);
-        $this->has['top']      = true;
+        $this->has['top'] = true;
         $this->has['uniqueid'] = false;
     }
 
@@ -382,7 +383,7 @@ class Mbox extends AbstractStorage
         } else {
             ErrorHandler::start();
             $this->fh = fopen($this->filename, 'r');
-            $error    = ErrorHandler::stop();
+            $error = ErrorHandler::stop();
             if (!$this->fh) {
                 throw new Exception\RuntimeException('cannot open mbox file', 0, $error);
             }

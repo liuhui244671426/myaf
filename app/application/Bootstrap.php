@@ -1,19 +1,21 @@
 <?php
+
 /**
  * Bootstrap类, 在这个类中, 所以以_init开头的方法
  * 都会被调用, 调用次序和申明次序相同
- * 
+ *
  * @author  Laruence
  * @date    2011-05-13 15:24
- * @version $Id$ 
-*/
-
-class Bootstrap extends Yaf_Bootstrap_Abstract {
+ * @version $Id$
+ */
+class Bootstrap extends Yaf_Bootstrap_Abstract
+{
 
     /**
      * 初始化init配置
      */
-    public function _initConfig(Yaf_Dispatcher $dispatcher){
+    public function _initConfig(Yaf_Dispatcher $dispatcher)
+    {
         header('content-type:text/html;charset=utf-8');
         session_start();
 
@@ -23,19 +25,20 @@ class Bootstrap extends Yaf_Bootstrap_Abstract {
         //register_shutdown_function('sysShutdown');
     }
 
-    public function _initNamespaces(){
+    public function _initNamespaces()
+    {
         //申明, 凡是以Zend,Local开头的类, 都是本地类
         Yaf_Loader::getInstance()->registerLocalNameSpace(array("Zend", "Local"));
     }
 
-	/**
-	 * 注册一个插件
-	 */
-	public function _initPlugin(Yaf_Dispatcher $dispatcher)
+    /**
+     * 注册一个插件
+     */
+    public function _initPlugin(Yaf_Dispatcher $dispatcher)
     {
-		$auth = new AuthPlugin();
-		$dispatcher->registerPlugin($auth);
-	}
+        $auth = new AuthPlugin();
+        $dispatcher->registerPlugin($auth);
+    }
 
     /**
      * 初始化模版
@@ -45,7 +48,7 @@ class Bootstrap extends Yaf_Bootstrap_Abstract {
         Yaf_Dispatcher::getInstance()->autoRender(false);
 
         $isLayout = true;
-        if($isLayout){
+        if ($isLayout) {
             $layout = new layout(PHTML_PATH);
             $layout->setScriptPath(PHTML_PATH);
             $dispatcher->setView($layout);

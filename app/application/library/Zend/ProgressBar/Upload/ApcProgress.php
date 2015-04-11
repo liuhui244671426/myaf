@@ -32,12 +32,12 @@ class ApcProgress extends AbstractUploadHandler
             return false;
         }
 
-        $status  = array(
-            'total'    => 0,
-            'current'  => 0,
-            'rate'     => 0,
-            'message'  => '',
-            'done'     => false
+        $status = array(
+            'total' => 0,
+            'current' => 0,
+            'rate' => 0,
+            'message' => '',
+            'done' => false
         );
         $status = $uploadInfo + $status;
         if (!empty($status['cancel_upload'])) {
@@ -55,8 +55,8 @@ class ApcProgress extends AbstractUploadHandler
      */
     public function isApcAvailable()
     {
-        return (bool) ini_get('apc.enabled')
-            && (bool) ini_get('apc.rfc1867')
-            && is_callable('apc_fetch');
+        return (bool)ini_get('apc.enabled')
+        && (bool)ini_get('apc.rfc1867')
+        && is_callable('apc_fetch');
     }
 }

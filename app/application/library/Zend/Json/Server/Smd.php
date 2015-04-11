@@ -16,7 +16,7 @@ class Smd
 {
     const ENV_JSONRPC_1 = 'JSON-RPC-1.0';
     const ENV_JSONRPC_2 = 'JSON-RPC-2.0';
-    const SMD_VERSION   = '2.0';
+    const SMD_VERSION = '2.0';
 
     /**
      * Content type
@@ -191,7 +191,7 @@ class Smd
      */
     public function setTarget($target)
     {
-        $this->target = (string) $target;
+        $this->target = (string)$target;
         return $this;
     }
 
@@ -213,7 +213,7 @@ class Smd
      */
     public function setId($id)
     {
-        $this->id = (string) $id;
+        $this->id = (string)$id;
         return $this->id;
     }
 
@@ -235,7 +235,7 @@ class Smd
      */
     public function setDescription($description)
     {
-        $this->description = (string) $description;
+        $this->description = (string)$description;
         return $this->description;
     }
 
@@ -257,7 +257,7 @@ class Smd
      */
     public function setDojoCompatible($flag)
     {
-        $this->dojoCompatible = (bool) $flag;
+        $this->dojoCompatible = (bool)$flag;
         return $this;
     }
 
@@ -374,14 +374,14 @@ class Smd
         }
 
         $description = $this->getDescription();
-        $transport   = $this->getTransport();
-        $envelope    = $this->getEnvelope();
+        $transport = $this->getTransport();
+        $envelope = $this->getEnvelope();
         $contentType = $this->getContentType();
-        $SMDVersion  = static::SMD_VERSION;
+        $SMDVersion = static::SMD_VERSION;
         $service = compact('transport', 'envelope', 'contentType', 'SMDVersion', 'description');
 
         if (null !== ($target = $this->getTarget())) {
-            $service['target']     = $target;
+            $service['target'] = $target;
         }
         if (null !== ($id = $this->getId())) {
             $service['id'] = $id;
@@ -407,7 +407,7 @@ class Smd
      */
     public function toDojoArray()
     {
-        $SMDVersion  = '.1';
+        $SMDVersion = '.1';
         $serviceType = 'JSON-RPC';
         $service = compact('SMDVersion', 'serviceType');
 
@@ -418,7 +418,7 @@ class Smd
             $service['methods'] = array();
             foreach ($services as $name => $svc) {
                 $method = array(
-                    'name'       => $name,
+                    'name' => $name,
                     'serviceURL' => $target,
                 );
                 $params = array();

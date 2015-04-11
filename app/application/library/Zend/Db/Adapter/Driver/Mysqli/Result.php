@@ -85,7 +85,8 @@ class Result implements
             $this->isBuffered = $isBuffered;
         } else {
             if ($resource instanceof \mysqli || $resource instanceof \mysqli_result
-                || $resource instanceof \mysqli_stmt && $resource->num_rows != 0) {
+                || $resource instanceof \mysqli_stmt && $resource->num_rows != 0
+            ) {
                 $this->isBuffered = true;
             }
         }

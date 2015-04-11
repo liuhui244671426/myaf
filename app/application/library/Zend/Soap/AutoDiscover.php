@@ -99,7 +99,8 @@ class AutoDiscover
         $endpointUri = null,
         $wsdlClass = null,
         array $classMap = array()
-    ) {
+    )
+    {
         $this->reflection = new Reflection();
         $this->setDiscoveryStrategy(new ReflectionDiscovery());
 
@@ -475,8 +476,8 @@ class AutoDiscover
             }
 
             $element = array(
-                'name'      => $functionName,
-                'sequence'  => $sequence
+                'name' => $functionName,
+                'sequence' => $sequence
             );
 
             // Add the wrapper element part, which must be named 'parameters'
@@ -507,8 +508,8 @@ class AutoDiscover
                 }
 
                 $element = array(
-                    'name'      => $functionName . 'Response',
-                    'sequence'  => $sequence
+                    'name' => $functionName . 'Response',
+                    'sequence' => $sequence
                 );
 
                 // Add the wrapper element part, which must be named 'parameters'

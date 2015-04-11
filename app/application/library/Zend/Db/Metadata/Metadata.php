@@ -66,7 +66,7 @@ class Metadata implements MetadataInterface
      * Get base tables and views
      *
      * @param string $schema
-     * @param bool   $includeViews
+     * @param bool $includeViews
      * @return Object\TableObject[]
      */
     public function getTables($schema = null, $includeViews = false)
@@ -158,7 +158,7 @@ class Metadata implements MetadataInterface
      * Get table names
      *
      * @param  string $schema
-     * @param  bool   $includeViews
+     * @param  bool $includeViews
      * @return array
      */
     public function getTableNames($schema = null, $includeViews = false)

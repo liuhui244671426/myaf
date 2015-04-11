@@ -25,7 +25,7 @@ class Insert extends AbstractSql implements SqlInterface, PreparableSqlInterface
     const SPECIFICATION_INSERT = 'insert';
     const SPECIFICATION_SELECT = 'select';
     const VALUES_MERGE = 'merge';
-    const VALUES_SET   = 'set';
+    const VALUES_SET = 'set';
     /**#@-*/
 
     /**
@@ -39,13 +39,13 @@ class Insert extends AbstractSql implements SqlInterface, PreparableSqlInterface
     /**
      * @var string|TableIdentifier
      */
-    protected $table            = null;
-    protected $columns          = array();
+    protected $table = null;
+    protected $columns = array();
 
     /**
      * @var array|Select
      */
-    protected $values           = null;
+    protected $values = null;
 
     /**
      * Constructor
@@ -174,7 +174,7 @@ class Insert extends AbstractSql implements SqlInterface, PreparableSqlInterface
      */
     public function prepareStatement(AdapterInterface $adapter, StatementContainerInterface $statementContainer)
     {
-        $driver   = $adapter->getDriver();
+        $driver = $adapter->getDriver();
         $platform = $adapter->getPlatform();
         $parameterContainer = $statementContainer->getParameterContainer();
 
@@ -198,7 +198,7 @@ class Insert extends AbstractSql implements SqlInterface, PreparableSqlInterface
         }
 
         $columns = array();
-        $values  = array();
+        $values = array();
 
         if (is_array($this->values)) {
             foreach ($this->columns as $cIndex => $column) {

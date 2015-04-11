@@ -242,33 +242,33 @@ class Connection implements ConnectionInterface, Profiler\ProfilerAwareInterface
                     }
                     break;
                 case 'pdodriver':
-                    $pdoDriver = (string) $value;
+                    $pdoDriver = (string)$value;
                     break;
                 case 'user':
                 case 'username':
-                    $username = (string) $value;
+                    $username = (string)$value;
                     break;
                 case 'pass':
                 case 'password':
-                    $password = (string) $value;
+                    $password = (string)$value;
                     break;
                 case 'host':
                 case 'hostname':
-                    $hostname = (string) $value;
+                    $hostname = (string)$value;
                     break;
                 case 'port':
-                    $port = (int) $value;
+                    $port = (int)$value;
                     break;
                 case 'database':
                 case 'dbname':
-                    $database = (string) $value;
+                    $database = (string)$value;
                     break;
                 case 'charset':
-                    $charset    = (string) $value;
+                    $charset = (string)$value;
                     break;
                 case 'driver_options':
                 case 'options':
-                    $value = (array) $value;
+                    $value = (array)$value;
                     $options = array_diff_key($options, $value) + $value;
                     break;
                 default:

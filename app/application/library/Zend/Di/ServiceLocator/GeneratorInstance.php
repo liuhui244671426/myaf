@@ -47,15 +47,15 @@ class GeneratorInstance
     /**
      * @param string|null $class
      * @param string|null $alias
-     * @param mixed       $constructor
-     * @param array       $params
+     * @param mixed $constructor
+     * @param array $params
      */
     public function __construct($class, $alias, $constructor, array $params)
     {
-        $this->class       = $class;
-        $this->alias       = $alias;
+        $this->class = $class;
+        $this->alias = $alias;
         $this->constructor = $constructor;
-        $this->params      = $params;
+        $this->params = $params;
     }
 
     /**
@@ -94,7 +94,7 @@ class GeneratorInstance
      * In the case of an instance created via a callback, we need to set the
      * class name after creating the generator instance.
      *
-     * @param  string            $class
+     * @param  string $class
      * @return GeneratorInstance
      */
     public function setClass($class)
@@ -107,7 +107,7 @@ class GeneratorInstance
     /**
      * Set instance alias
      *
-     * @param  string            $alias
+     * @param  string $alias
      * @return GeneratorInstance
      */
     public function setAlias($alias)
@@ -141,7 +141,7 @@ class GeneratorInstance
     /**
      * Set methods
      *
-     * @param  array             $methods
+     * @param  array $methods
      * @return GeneratorInstance
      */
     public function setMethods(array $methods)
@@ -181,7 +181,7 @@ class GeneratorInstance
      */
     public function setShared($shared)
     {
-        $this->shared = (bool) $shared;
+        $this->shared = (bool)$shared;
     }
 
     /**

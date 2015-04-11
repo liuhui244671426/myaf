@@ -22,10 +22,10 @@ abstract class AbstractWord extends AbstractAdapter
     /**#@+
      * @var array Character sets
      */
-    public static $V  = array("a", "e", "i", "o", "u", "y");
-    public static $VN = array("a", "e", "i", "o", "u", "y","2","3","4","5","6","7","8","9");
-    public static $C  = array("b","c","d","f","g","h","j","k","m","n","p","q","r","s","t","u","v","w","x","z");
-    public static $CN = array("b","c","d","f","g","h","j","k","m","n","p","q","r","s","t","u","v","w","x","z","2","3","4","5","6","7","8","9");
+    public static $V = array("a", "e", "i", "o", "u", "y");
+    public static $VN = array("a", "e", "i", "o", "u", "y", "2", "3", "4", "5", "6", "7", "8", "9");
+    public static $C = array("b", "c", "d", "f", "g", "h", "j", "k", "m", "n", "p", "q", "r", "s", "t", "u", "v", "w", "x", "z");
+    public static $CN = array("b", "c", "d", "f", "g", "h", "j", "k", "m", "n", "p", "q", "r", "s", "t", "u", "v", "w", "x", "z", "2", "3", "4", "5", "6", "7", "8", "9");
     /**#@-*/
 
     /**
@@ -88,8 +88,8 @@ abstract class AbstractWord extends AbstractAdapter
      * Error codes
      */
     const MISSING_VALUE = 'missingValue';
-    const MISSING_ID    = 'missingID';
-    const BAD_CAPTCHA   = 'badCaptcha';
+    const MISSING_ID = 'missingID';
+    const BAD_CAPTCHA = 'badCaptcha';
     /**#@-*/
 
     /**
@@ -98,8 +98,8 @@ abstract class AbstractWord extends AbstractAdapter
      */
     protected $messageTemplates = array(
         self::MISSING_VALUE => 'Empty captcha value',
-        self::MISSING_ID    => 'Captcha ID field is missing',
-        self::BAD_CAPTCHA   => 'Captcha value is wrong',
+        self::MISSING_ID => 'Captcha ID field is missing',
+        self::BAD_CAPTCHA => 'Captcha value is wrong',
     );
 
     /**
@@ -186,7 +186,7 @@ abstract class AbstractWord extends AbstractAdapter
      */
     public function setTimeout($ttl)
     {
-        $this->timeout = (int) $ttl;
+        $this->timeout = (int)$ttl;
         return $this;
     }
 
@@ -277,8 +277,8 @@ abstract class AbstractWord extends AbstractAdapter
     public function getWord()
     {
         if (empty($this->word)) {
-            $session     = $this->getSession();
-            $this->word  = $session->word;
+            $session = $this->getSession();
+            $this->word = $session->word;
         }
         return $this->word;
     }
@@ -291,9 +291,9 @@ abstract class AbstractWord extends AbstractAdapter
      */
     protected function setWord($word)
     {
-        $session       = $this->getSession();
+        $session = $this->getSession();
         $session->word = $word;
-        $this->word    = $word;
+        $this->word = $word;
         return $this;
     }
 
@@ -304,16 +304,16 @@ abstract class AbstractWord extends AbstractAdapter
      */
     protected function generateWord()
     {
-        $word       = '';
-        $wordLen    = $this->getWordLen();
-        $vowels     = $this->useNumbers ? static::$VN : static::$V;
+        $word = '';
+        $wordLen = $this->getWordLen();
+        $vowels = $this->useNumbers ? static::$VN : static::$V;
         $consonants = $this->useNumbers ? static::$CN : static::$C;
 
-        for ($i=0; $i < $wordLen; $i = $i + 2) {
+        for ($i = 0; $i < $wordLen; $i = $i + 2) {
             // generate word with mix of vowels and consonants
             $consonant = $consonants[array_rand($consonants)];
-            $vowel     = $vowels[array_rand($vowels)];
-            $word     .= $consonant . $vowel;
+            $vowel = $vowels[array_rand($vowels)];
+            $word .= $consonant . $vowel;
         }
 
         if (strlen($word) > $wordLen) {

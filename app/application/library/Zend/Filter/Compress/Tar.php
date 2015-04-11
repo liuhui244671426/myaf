@@ -29,9 +29,9 @@ class Tar extends AbstractCompressionAlgorithm
      * @var array
      */
     protected $options = array(
-        'archive'  => null,
-        'target'   => '.',
-        'mode'     => null,
+        'archive' => null,
+        'target' => '.',
+        'mode' => null,
     );
 
     /**
@@ -70,7 +70,7 @@ class Tar extends AbstractCompressionAlgorithm
      */
     public function setArchive($archive)
     {
-        $archive = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, (string) $archive);
+        $archive = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, (string)$archive);
         $this->options['archive'] = $archive;
 
         return $this;
@@ -99,7 +99,7 @@ class Tar extends AbstractCompressionAlgorithm
             throw new Exception\InvalidArgumentException("The directory '$target' does not exist");
         }
 
-        $target = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, (string) $target);
+        $target = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, (string)$target);
         $this->options['target'] = $target;
         return $this;
     }
@@ -172,9 +172,9 @@ class Tar extends AbstractCompressionAlgorithm
         if (is_dir($content)) {
             // collect all file infos
             foreach (new RecursiveIteratorIterator(
-                new RecursiveDirectoryIterator($content, RecursiveDirectoryIterator::KEY_AS_PATHNAME),
-                RecursiveIteratorIterator::SELF_FIRST
-            ) as $directory => $info) {
+                         new RecursiveDirectoryIterator($content, RecursiveDirectoryIterator::KEY_AS_PATHNAME),
+                         RecursiveIteratorIterator::SELF_FIRST
+                     ) as $directory => $info) {
                 if ($info->isFile()) {
                     $file[] = $directory;
                 }
@@ -183,7 +183,7 @@ class Tar extends AbstractCompressionAlgorithm
             $content = $file;
         }
 
-        $result  = $archive->create($content);
+        $result = $archive->create($content);
         if ($result === false) {
             throw new Exception\RuntimeException('Error creating the Tar archive');
         }
@@ -208,7 +208,7 @@ class Tar extends AbstractCompressionAlgorithm
 
         $archive = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, realpath($content));
         $archive = new Archive_Tar($archive, $this->getMode());
-        $target  = $this->getTarget();
+        $target = $this->getTarget();
         if (!is_dir($target)) {
             $target = dirname($target) . DIRECTORY_SEPARATOR;
         }

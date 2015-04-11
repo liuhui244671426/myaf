@@ -18,7 +18,7 @@ class Royalmail extends AbstractAdapter
         'I' => 4, 'J' => 4, 'K' => 4, 'L' => 4, 'M' => 4, 'N' => 4,
         'O' => 5, 'P' => 5, 'Q' => 5, 'R' => 5, 'S' => 5, 'T' => 5,
         'U' => 0, 'V' => 0, 'W' => 0, 'X' => 0, 'Y' => 0, 'Z' => 0,
-     );
+    );
 
     protected $columns = array(
         '0' => 1, '1' => 2, '2' => 3, '3' => 4, '4' => 5, '5' => 0,
@@ -48,7 +48,7 @@ class Royalmail extends AbstractAdapter
     protected function royalmail($value)
     {
         $checksum = substr($value, -1, 1);
-        $values   = str_split(substr($value, 0, -1));
+        $values = str_split(substr($value, 0, -1));
         $rowvalue = 0;
         $colvalue = 0;
         foreach ($values as $row) {
@@ -62,7 +62,7 @@ class Royalmail extends AbstractAdapter
         $rowchkvalue = array_keys($this->rows, $rowvalue);
         $colchkvalue = array_keys($this->columns, $colvalue);
         $intersect = array_intersect($rowchkvalue, $colchkvalue);
-        $chkvalue    = current($intersect);
+        $chkvalue = current($intersect);
         if ($chkvalue == $checksum) {
             return true;
         }

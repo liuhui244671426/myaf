@@ -22,7 +22,7 @@ class Count extends AbstractValidator
      * @const string Error constants
      */
     const TOO_MANY = 'fileCountTooMany';
-    const TOO_FEW  = 'fileCountTooFew';
+    const TOO_FEW = 'fileCountTooFew';
     /**#@-*/
 
     /**
@@ -30,15 +30,15 @@ class Count extends AbstractValidator
      */
     protected $messageTemplates = array(
         self::TOO_MANY => "Too many files, maximum '%max%' are allowed but '%count%' are given",
-        self::TOO_FEW  => "Too few files, minimum '%min%' are expected but '%count%' are given",
+        self::TOO_FEW => "Too few files, minimum '%min%' are expected but '%count%' are given",
     );
 
     /**
      * @var array Error message template variables
      */
     protected $messageVariables = array(
-        'min'   => array('options' => 'min'),
-        'max'   => array('options' => 'max'),
+        'min' => array('options' => 'min'),
+        'max' => array('options' => 'max'),
         'count' => 'count'
     );
 
@@ -119,7 +119,7 @@ class Count extends AbstractValidator
             throw new Exception\InvalidArgumentException('Invalid options to validator provided');
         }
 
-        $min = (int) $min;
+        $min = (int)$min;
         if (($this->getMax() !== null) && ($min > $this->getMax())) {
             throw new Exception\InvalidArgumentException(
                 "The minimum must be less than or equal to the maximum file count, but $min > {$this->getMax()}"
@@ -157,7 +157,7 @@ class Count extends AbstractValidator
             throw new Exception\InvalidArgumentException('Invalid options to validator provided');
         }
 
-        $max = (int) $max;
+        $max = (int)$max;
         if (($this->getMin() !== null) && ($max < $this->getMin())) {
             throw new Exception\InvalidArgumentException(
                 "The maximum must be greater than or equal to the minimum file count, but $max < {$this->getMin()}"
@@ -197,7 +197,7 @@ class Count extends AbstractValidator
      * must give all files with the first call, otherwise you will get a false.
      *
      * @param  string|array $value Filenames to check for count
-     * @param  array        $file  File data from \Zend\File\Transfer\Transfer
+     * @param  array $file File data from \Zend\File\Transfer\Transfer
      * @return bool
      */
     public function isValid($value, $file = null)

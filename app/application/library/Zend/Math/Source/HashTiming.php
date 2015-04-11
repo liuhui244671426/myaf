@@ -70,32 +70,32 @@ class HashTiming implements RandomLib\Source
      */
     public function generate($size)
     {
-        $result         = '';
-        $entropy        = '';
+        $result = '';
+        $entropy = '';
         $msec_per_round = 400;
         $bits_per_round = 2;
-        $total          = $size;
-        $hash_length    = 20;
+        $total = $size;
+        $hash_length = 20;
 
         while (strlen($result) < $size) {
-            $bytes  = ($total > $hash_length)? $hash_length : $total;
+            $bytes = ($total > $hash_length) ? $hash_length : $total;
             $total -= $bytes;
-            for ($i=1; $i < 3; $i++) {
-                $t1   = microtime(true);
+            for ($i = 1; $i < 3; $i++) {
+                $t1 = microtime(true);
                 $seed = mt_rand();
-                for ($j=1; $j < 50; $j++) {
+                for ($j = 1; $j < 50; $j++) {
                     $seed = sha1($seed);
                 }
                 $t2 = microtime(true);
                 $entropy .= $t1 . $t2;
             }
-            $div = (int) (($t2 - $t1) * 1000000);
+            $div = (int)(($t2 - $t1) * 1000000);
             if ($div <= 0) {
                 $div = 400;
             }
-            $rounds = (int) ($msec_per_round * 50 / $div);
-            $iter = $bytes * (int) (ceil(8 / $bits_per_round));
-            for ($i = 0; $i < $iter; $i ++) {
+            $rounds = (int)($msec_per_round * 50 / $div);
+            $iter = $bytes * (int)(ceil(8 / $bits_per_round));
+            for ($i = 0; $i < $iter; $i++) {
                 $t1 = microtime();
                 $seed = sha1(mt_rand());
                 for ($j = 0; $j < $rounds; $j++) {

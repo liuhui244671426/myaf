@@ -48,7 +48,7 @@ class Mbox extends Storage\Mbox implements FolderInterface
     public function __construct($params)
     {
         if (is_array($params)) {
-            $params = (object) $params;
+            $params = (object)$params;
         }
 
         if (isset($params->filename)) {
@@ -63,7 +63,7 @@ class Mbox extends Storage\Mbox implements FolderInterface
 
         $this->_buildFolderTree($this->rootdir);
         $this->selectFolder(!empty($params->folder) ? $params->folder : 'INBOX');
-        $this->has['top']      = true;
+        $this->has['top'] = true;
         $this->has['uniqueid'] = false;
     }
 
@@ -154,7 +154,7 @@ class Mbox extends Storage\Mbox implements FolderInterface
      */
     public function selectFolder($globalName)
     {
-        $this->currentFolder = (string) $globalName;
+        $this->currentFolder = (string)$globalName;
 
         // getting folder from folder tree for validation
         $folder = $this->getFolders($this->currentFolder);

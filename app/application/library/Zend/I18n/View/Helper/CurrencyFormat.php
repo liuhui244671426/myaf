@@ -70,9 +70,9 @@ class CurrencyFormat extends AbstractHelper
     /**
      * Format a number
      *
-     * @param  float  $number
+     * @param  float $number
      * @param  string $currencyCode
-     * @param  bool   $showDecimals
+     * @param  bool $showDecimals
      * @param  string $locale
      * @param  string $pattern
      * @return string
@@ -83,7 +83,8 @@ class CurrencyFormat extends AbstractHelper
         $showDecimals = null,
         $locale = null,
         $pattern = null
-    ) {
+    )
+    {
         if (null === $locale) {
             $locale = $this->getLocale();
         }
@@ -103,9 +104,9 @@ class CurrencyFormat extends AbstractHelper
     /**
      * Format a number
      *
-     * @param  float  $number
+     * @param  float $number
      * @param  string $currencyCode
-     * @param  bool   $showDecimals
+     * @param  bool $showDecimals
      * @param  string $locale
      * @param  string $pattern
      * @return string
@@ -116,7 +117,8 @@ class CurrencyFormat extends AbstractHelper
         $showDecimals,
         $locale,
         $pattern
-    ) {
+    )
+    {
         $formatterId = md5($locale);
 
         if (!isset($this->formatters[$formatterId])) {
@@ -191,7 +193,7 @@ class CurrencyFormat extends AbstractHelper
      */
     public function setLocale($locale)
     {
-        $this->locale = (string) $locale;
+        $this->locale = (string)$locale;
         return $this;
     }
 
@@ -217,7 +219,7 @@ class CurrencyFormat extends AbstractHelper
      */
     public function setShouldShowDecimals($showDecimals)
     {
-        $this->showDecimals = (bool) $showDecimals;
+        $this->showDecimals = (bool)$showDecimals;
         return $this;
     }
 

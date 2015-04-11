@@ -19,7 +19,7 @@ class HtmlQuicktime extends AbstractHtmlElement
     /**
      * Object classid
      */
-    const ATTRIB_CLASSID  = 'clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B';
+    const ATTRIB_CLASSID = 'clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B';
 
     /**
      * Object Codebase
@@ -36,9 +36,9 @@ class HtmlQuicktime extends AbstractHtmlElement
     /**
      * Output a quicktime movie object tag
      *
-     * @param  string $data    The quicktime file
-     * @param  array  $attribs Attribs for the object tag
-     * @param  array  $params  Params for in the object tag
+     * @param  string $data The quicktime file
+     * @param  array $attribs Attribs for the object tag
+     * @param  array $params Params for in the object tag
      * @param  string $content Alternative content
      * @return string
      */

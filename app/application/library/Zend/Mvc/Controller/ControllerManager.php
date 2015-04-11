@@ -115,8 +115,8 @@ class ControllerManager extends AbstractPluginManager
      * Override: do not use peering service managers
      *
      * @param  string|array $name
-     * @param  bool         $checkAbstractFactories
-     * @param  bool         $usePeeringServiceManagers
+     * @param  bool $checkAbstractFactories
+     * @param  bool $usePeeringServiceManagers
      * @return bool
      */
     public function has($name, $checkAbstractFactories = true, $usePeeringServiceManagers = false)

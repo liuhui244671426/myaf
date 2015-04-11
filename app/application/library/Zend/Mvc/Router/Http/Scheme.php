@@ -37,11 +37,11 @@ class Scheme implements RouteInterface
      * Create a new scheme route.
      *
      * @param  string $scheme
-     * @param  array  $defaults
+     * @param  array $defaults
      */
     public function __construct($scheme, array $defaults = array())
     {
-        $this->scheme   = $scheme;
+        $this->scheme = $scheme;
         $this->defaults = $defaults;
     }
 
@@ -85,7 +85,7 @@ class Scheme implements RouteInterface
             return null;
         }
 
-        $uri    = $request->getUri();
+        $uri = $request->getUri();
         $scheme = $uri->getScheme();
 
         if ($scheme !== $this->scheme) {

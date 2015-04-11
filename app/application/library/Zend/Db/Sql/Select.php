@@ -72,24 +72,24 @@ class Select extends AbstractSql implements SqlInterface, PreparableSqlInterface
                 array(1 => '%1$s', 2 => '%1$s AS %2$s', 'combinedby' => ', '),
             ),
         ),
-        self::JOINS  => array(
+        self::JOINS => array(
             '%1$s' => array(
                 array(3 => '%1$s JOIN %2$s ON %3$s', 'combinedby' => ' ')
             )
         ),
-        self::WHERE  => 'WHERE %1$s',
-        self::GROUP  => array(
+        self::WHERE => 'WHERE %1$s',
+        self::GROUP => array(
             'GROUP BY %1$s' => array(
                 array(1 => '%1$s', 'combinedby' => ', ')
             )
         ),
         self::HAVING => 'HAVING %1$s',
-        self::ORDER  => array(
+        self::ORDER => array(
             'ORDER BY %1$s' => array(
                 array(1 => '%1$s', 2 => '%1$s %2$s', 'combinedby' => ', ')
             )
         ),
-        self::LIMIT  => 'LIMIT %1$s',
+        self::LIMIT => 'LIMIT %1$s',
         self::OFFSET => 'OFFSET %1$s',
         'statementEnd' => '%1$s',
         self::COMBINE => '%1$s ( %2$s )',
@@ -231,13 +231,13 @@ class Select extends AbstractSql implements SqlInterface, PreparableSqlInterface
      *     value can be string or Expression objects
      *
      * @param  array $columns
-     * @param  bool  $prefixColumnsWithTable
+     * @param  bool $prefixColumnsWithTable
      * @return Select
      */
     public function columns(array $columns, $prefixColumnsWithTable = true)
     {
         $this->columns = $columns;
-        $this->prefixColumnsWithTable = (bool) $prefixColumnsWithTable;
+        $this->prefixColumnsWithTable = (bool)$prefixColumnsWithTable;
         return $this;
     }
 
@@ -262,10 +262,10 @@ class Select extends AbstractSql implements SqlInterface, PreparableSqlInterface
             $columns = array($columns);
         }
         $this->joins[] = array(
-            'name'    => $name,
-            'on'      => $on,
+            'name' => $name,
+            'on' => $on,
             'columns' => $columns,
-            'type'    => $type
+            'type' => $type
         );
         return $this;
     }
@@ -327,7 +327,7 @@ class Select extends AbstractSql implements SqlInterface, PreparableSqlInterface
             if (strpos($order, ',') !== false) {
                 $order = preg_split('#,\s+#', $order);
             } else {
-                $order = (array) $order;
+                $order = (array)$order;
             }
         } elseif (!is_array($order)) {
             $order = array($order);
@@ -460,17 +460,17 @@ class Select extends AbstractSql implements SqlInterface, PreparableSqlInterface
     public function getRawState($key = null)
     {
         $rawState = array(
-            self::TABLE      => $this->table,
+            self::TABLE => $this->table,
             self::QUANTIFIER => $this->quantifier,
-            self::COLUMNS    => $this->columns,
-            self::JOINS      => $this->joins,
-            self::WHERE      => $this->where,
-            self::ORDER      => $this->order,
-            self::GROUP      => $this->group,
-            self::HAVING     => $this->having,
-            self::LIMIT      => $this->limit,
-            self::OFFSET     => $this->offset,
-            self::COMBINE    => $this->combine
+            self::COLUMNS => $this->columns,
+            self::JOINS => $this->joins,
+            self::WHERE => $this->where,
+            self::ORDER => $this->order,
+            self::GROUP => $this->group,
+            self::HAVING => $this->having,
+            self::LIMIT => $this->limit,
+            self::OFFSET => $this->offset,
+            self::COMBINE => $this->combine
         );
         return (isset($key) && array_key_exists($key, $rawState)) ? $rawState[$key] : $rawState;
     }
@@ -756,7 +756,7 @@ class Select extends AbstractSql implements SqlInterface, PreparableSqlInterface
             // on expression
             // note: for Expression objects, pass them to processExpression with a prefix specific to each join (used for named parameters)
             $joinSpecArgArray[$j][] = ($join['on'] instanceof ExpressionInterface)
-                ? $this->processExpression($join['on'], $platform, $driver, $this->processInfo['paramPrefix'] . 'join' . ($j+1) . 'part')
+                ? $this->processExpression($join['on'], $platform, $driver, $this->processInfo['paramPrefix'] . 'join' . ($j + 1) . 'part')
                 : $platform->quoteIdentifierInFragment($join['on'], array('=', 'AND', 'OR', '(', ')', 'BETWEEN', '<', '>')); // on
             if ($joinSpecArgArray[$j][2] instanceof StatementContainerInterface) {
                 if ($parameterContainer) {
@@ -933,7 +933,7 @@ class Select extends AbstractSql implements SqlInterface, PreparableSqlInterface
      */
     public function __clone()
     {
-        $this->where  = clone $this->where;
+        $this->where = clone $this->where;
         $this->having = clone $this->having;
     }
 }

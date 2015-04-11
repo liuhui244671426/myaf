@@ -55,8 +55,8 @@ class ArrayObject implements IteratorAggregate, ArrayAccess, Serializable, Count
     /**
      * Constructor
      *
-     * @param array  $input
-     * @param int    $flags
+     * @param array $input
+     * @param int $flags
      * @param string $iteratorClass
      */
     public function __construct($input = array(), $flags = self::STD_PROP_LIST, $iteratorClass = 'ArrayIterator')
@@ -188,7 +188,7 @@ class ArrayObject implements IteratorAggregate, ArrayAccess, Serializable, Count
             $data = $data->getArrayCopy();
         }
         if (!is_array($data)) {
-            $data = (array) $data;
+            $data = (array)$data;
         }
 
         $storage = $this->storage;
@@ -336,7 +336,7 @@ class ArrayObject implements IteratorAggregate, ArrayAccess, Serializable, Count
     /**
      * Sets the behavior flags
      *
-     * @param  int  $flags
+     * @param  int $flags
      * @return void
      */
     public function setFlags($flags)
@@ -355,7 +355,7 @@ class ArrayObject implements IteratorAggregate, ArrayAccess, Serializable, Count
         if (class_exists($class)) {
             $this->iteratorClass = $class;
 
-            return ;
+            return;
         }
 
         if (strpos($class, '\\') === 0) {
@@ -363,7 +363,7 @@ class ArrayObject implements IteratorAggregate, ArrayAccess, Serializable, Count
             if (class_exists($class)) {
                 $this->iteratorClass = $class;
 
-                return ;
+                return;
             }
         }
 
@@ -404,7 +404,7 @@ class ArrayObject implements IteratorAggregate, ArrayAccess, Serializable, Count
      */
     public function unserialize($data)
     {
-        $ar                        = unserialize($data);
+        $ar = unserialize($data);
         $this->protectedProperties = array_keys(get_object_vars($this));
 
         $this->setFlags($ar['flag']);

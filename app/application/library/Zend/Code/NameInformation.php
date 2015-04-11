@@ -41,7 +41,7 @@ class NameInformation
      */
     public function setNamespace($namespace)
     {
-        $this->namespace = (string) $namespace;
+        $this->namespace = (string)$namespace;
         return $this;
     }
 
@@ -98,13 +98,13 @@ class NameInformation
     {
         if (is_array($use) && array_key_exists('use', $use) && array_key_exists('as', $use)) {
             $uses = $use;
-            $use  = $uses['use'];
-            $as   = $uses['as'];
+            $use = $uses['use'];
+            $as = $uses['as'];
         }
 
         $use = trim($use, '\\');
         if ($as === null) {
-            $as                  = trim($use, '\\');
+            $as = trim($use, '\\');
             $nsSeparatorPosition = strrpos($as, '\\');
             if ($nsSeparatorPosition !== false && $nsSeparatorPosition !== 0 && $nsSeparatorPosition != strlen($as)) {
                 $as = substr($as, $nsSeparatorPosition + 1);

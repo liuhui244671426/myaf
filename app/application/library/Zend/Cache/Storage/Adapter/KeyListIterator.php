@@ -54,13 +54,13 @@ class KeyListIterator implements IteratorInterface, Countable
      * Constructor
      *
      * @param StorageInterface $storage
-     * @param array            $keys
+     * @param array $keys
      */
     public function __construct(StorageInterface $storage, array $keys)
     {
         $this->storage = $storage;
-        $this->keys    = $keys;
-        $this->count   = count($keys);
+        $this->keys = $keys;
+        $this->count = count($keys);
     }
 
     /**
@@ -91,7 +91,7 @@ class KeyListIterator implements IteratorInterface, Countable
      */
     public function setMode($mode)
     {
-        $this->mode = (int) $mode;
+        $this->mode = (int)$mode;
         return $this;
     }
 

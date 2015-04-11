@@ -82,15 +82,15 @@ class Debug
      * the <pre /> tags, cleans up newlines and indents, and runs
      * htmlentities() before output.
      *
-     * @param  mixed  $var   The variable to dump.
+     * @param  mixed $var The variable to dump.
      * @param  string $label OPTIONAL Label to prepend to output.
-     * @param  bool   $echo  OPTIONAL Echo output if true.
+     * @param  bool $echo OPTIONAL Echo output if true.
      * @return string
      */
     public static function dump($var, $label = null, $echo = true)
     {
         // format the label
-        $label = ($label===null) ? '' : rtrim($label) . ' ';
+        $label = ($label === null) ? '' : rtrim($label) . ' ';
 
         // var_dump the variable into a buffer and keep the output
         ob_start();
@@ -101,8 +101,8 @@ class Debug
         $output = preg_replace("/\]\=\>\n(\s+)/m", "] => ", $output);
         if (static::getSapi() == 'cli') {
             $output = PHP_EOL . $label
-                    . PHP_EOL . $output
-                    . PHP_EOL;
+                . PHP_EOL . $output
+                . PHP_EOL;
         } else {
             if (null !== static::$escaper) {
                 $output = static::$escaper->escapeHtml($output);
@@ -111,9 +111,9 @@ class Debug
             }
 
             $output = '<pre>'
-                    . $label
-                    . $output
-                    . '</pre>';
+                . $label
+                . $output
+                . '</pre>';
         }
 
         if ($echo) {

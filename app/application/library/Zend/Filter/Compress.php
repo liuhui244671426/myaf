@@ -176,7 +176,7 @@ class Compress extends AbstractFilter
     /**
      * Calls adapter methods
      *
-     * @param string       $method  Method to call
+     * @param string $method Method to call
      * @param string|array $options Options for this method
      * @return mixed
      * @throws Exception\BadMethodCallException

@@ -21,10 +21,10 @@ class Table
     /**
      * Auto separator settings
      */
-    const AUTO_SEPARATE_NONE   = 0x0;
+    const AUTO_SEPARATE_NONE = 0x0;
     const AUTO_SEPARATE_HEADER = 0x1;
     const AUTO_SEPARATE_FOOTER = 0x2;
-    const AUTO_SEPARATE_ALL    = 0x4;
+    const AUTO_SEPARATE_ALL = 0x4;
 
     /**
      * Decorator used for the table borders
@@ -181,7 +181,7 @@ class Table
      */
     public function setAutoSeparate($autoSeparate)
     {
-        $this->autoSeparate = (int) $autoSeparate;
+        $this->autoSeparate = (int)$autoSeparate;
         return $this;
     }
 
@@ -210,7 +210,7 @@ class Table
      */
     public function setPadding($padding)
     {
-        $this->padding = max(0, (int) $padding);
+        $this->padding = max(0, (int)$padding);
         return $this;
     }
 
@@ -245,7 +245,7 @@ class Table
      * Set default column align for rows created by appendRow(array $data)
      *
      * @param  int $columnNum
-     * @param  string  $align
+     * @param  string $align
      * @return Table
      */
     public function setDefaultColumnAlign($columnNum, $align)
@@ -314,8 +314,8 @@ class Table
                 throw new Exception\OverflowException('Row contains too many columns');
             }
 
-            $data   = $row;
-            $row    = new Row();
+            $data = $row;
+            $row = new Row();
             $colNum = 0;
             foreach ($data as $columnData) {
                 if (isset($this->defaultColumnAligns[$colNum])) {
@@ -364,9 +364,9 @@ class Table
                 $lastColumnWidths = $columnWidths;
             }
 
-            $renderedRow  = $row->render($this->columnWidths, $this->decorator, $this->padding);
+            $renderedRow = $row->render($this->columnWidths, $this->decorator, $this->padding);
             $columnWidths = $row->getColumnWidths();
-            $numColumns   = count($columnWidths);
+            $numColumns = count($columnWidths);
 
             // Check what we have to draw
             if ($rowNum === 0 && $hasHorizontal) {
@@ -403,8 +403,8 @@ class Table
 
                     $currentUpperColumn = 0;
                     $currentLowerColumn = 0;
-                    $currentUpperWidth  = 0;
-                    $currentLowerWidth  = 0;
+                    $currentUpperWidth = 0;
+                    $currentLowerWidth = 0;
 
                     // Add horizontal lines
                     // Loop through all column widths
@@ -418,22 +418,22 @@ class Table
                         }
 
                         // Else check, which connector style has to be used
-                        $connector          = 0x0;
+                        $connector = 0x0;
                         $currentUpperWidth += $columnWidth;
                         $currentLowerWidth += $columnWidth;
 
                         if ($lastColumnWidths[$currentUpperColumn] === $currentUpperWidth) {
-                            $connector          |= 0x1;
+                            $connector |= 0x1;
                             $currentUpperColumn += 1;
-                            $currentUpperWidth   = 0;
+                            $currentUpperWidth = 0;
                         } else {
                             $currentUpperWidth += 1;
                         }
 
                         if ($columnWidths[$currentLowerColumn] === $currentLowerWidth) {
-                            $connector          |= 0x2;
+                            $connector |= 0x2;
                             $currentLowerColumn += 1;
-                            $currentLowerWidth   = 0;
+                            $currentLowerWidth = 0;
                         } else {
                             $currentLowerWidth += 1;
                         }

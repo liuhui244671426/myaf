@@ -27,14 +27,14 @@ class Allow implements HeaderInterface
      */
     protected $methods = array(
         Request::METHOD_OPTIONS => false,
-        Request::METHOD_GET     => true,
-        Request::METHOD_HEAD    => false,
-        Request::METHOD_POST    => true,
-        Request::METHOD_PUT     => false,
-        Request::METHOD_DELETE  => false,
-        Request::METHOD_TRACE   => false,
+        Request::METHOD_GET => true,
+        Request::METHOD_HEAD => false,
+        Request::METHOD_POST => true,
+        Request::METHOD_PUT => false,
+        Request::METHOD_DELETE => false,
+        Request::METHOD_TRACE => false,
         Request::METHOD_CONNECT => false,
-        Request::METHOD_PATCH   => false,
+        Request::METHOD_PATCH => false,
     );
 
     /**
@@ -108,7 +108,7 @@ class Allow implements HeaderInterface
      */
     public function allowMethods($allowedMethods)
     {
-        foreach ((array) $allowedMethods as $method) {
+        foreach ((array)$allowedMethods as $method) {
             $method = trim(strtoupper($method));
             $this->methods[$method] = true;
         }
@@ -124,7 +124,7 @@ class Allow implements HeaderInterface
      */
     public function disallowMethods($disallowedMethods)
     {
-        foreach ((array) $disallowedMethods as $method) {
+        foreach ((array)$disallowedMethods as $method) {
             $method = trim(strtoupper($method));
             $this->methods[$method] = false;
         }
@@ -154,7 +154,7 @@ class Allow implements HeaderInterface
         $method = trim(strtoupper($method));
 
         // disallow unknown method
-        if (! isset($this->methods[$method])) {
+        if (!isset($this->methods[$method])) {
             $this->methods[$method] = false;
         }
 

@@ -34,18 +34,18 @@ class ExceptionHandler implements FormatterInterface
         }
 
         $output = $event['timestamp'] . ' ' . $event['priorityName'] . ' ('
-                . $event['priority'] . ') ' . $event['message'] .' in '
-                . $event['extra']['file'] . ' on line ' . $event['extra']['line'];
+            . $event['priority'] . ') ' . $event['message'] . ' in '
+            . $event['extra']['file'] . ' on line ' . $event['extra']['line'];
 
         if (!empty($event['extra']['trace'])) {
             $outputTrace = '';
             foreach ($event['extra']['trace'] as $trace) {
                 $outputTrace .= "File  : {$trace['file']}\n"
-                              . "Line  : {$trace['line']}\n"
-                              . "Func  : {$trace['function']}\n"
-                              . "Class : {$trace['class']}\n"
-                              . "Type  : " . $this->getType($trace['type']) . "\n"
-                              . "Args  : " . print_r($trace['args'], true) . "\n";
+                    . "Line  : {$trace['line']}\n"
+                    . "Func  : {$trace['function']}\n"
+                    . "Class : {$trace['class']}\n"
+                    . "Type  : " . $this->getType($trace['type']) . "\n"
+                    . "Args  : " . print_r($trace['args'], true) . "\n";
             }
             $output .= "\n[Trace]\n" . $outputTrace;
         }
@@ -66,7 +66,7 @@ class ExceptionHandler implements FormatterInterface
      */
     public function setDateTimeFormat($dateTimeFormat)
     {
-        $this->dateTimeFormat = (string) $dateTimeFormat;
+        $this->dateTimeFormat = (string)$dateTimeFormat;
         return $this;
     }
 

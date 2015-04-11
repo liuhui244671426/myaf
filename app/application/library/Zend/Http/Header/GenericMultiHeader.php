@@ -29,7 +29,7 @@ class GenericMultiHeader extends GenericHeader implements MultipleHeaderInterfac
 
     public function toStringMultipleHeaders(array $headers)
     {
-        $name  = $this->getFieldName();
+        $name = $this->getFieldName();
         $values = array($this->getFieldValue());
         foreach ($headers as $header) {
             if (!$header instanceof static) {

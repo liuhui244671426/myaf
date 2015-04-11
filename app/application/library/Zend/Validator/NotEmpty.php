@@ -14,37 +14,37 @@ use Zend\Stdlib\ArrayUtils;
 
 class NotEmpty extends AbstractValidator
 {
-    const BOOLEAN       = 0x001;
-    const INTEGER       = 0x002;
-    const FLOAT         = 0x004;
-    const STRING        = 0x008;
-    const ZERO          = 0x010;
-    const EMPTY_ARRAY   = 0x020;
-    const NULL          = 0x040;
-    const PHP           = 0x07F;
-    const SPACE         = 0x080;
-    const OBJECT        = 0x100;
+    const BOOLEAN = 0x001;
+    const INTEGER = 0x002;
+    const FLOAT = 0x004;
+    const STRING = 0x008;
+    const ZERO = 0x010;
+    const EMPTY_ARRAY = 0x020;
+    const NULL = 0x040;
+    const PHP = 0x07F;
+    const SPACE = 0x080;
+    const OBJECT = 0x100;
     const OBJECT_STRING = 0x200;
-    const OBJECT_COUNT  = 0x400;
-    const ALL           = 0x7FF;
+    const OBJECT_COUNT = 0x400;
+    const ALL = 0x7FF;
 
-    const INVALID  = 'notEmptyInvalid';
+    const INVALID = 'notEmptyInvalid';
     const IS_EMPTY = 'isEmpty';
 
     protected $constants = array(
-        self::BOOLEAN       => 'boolean',
-        self::INTEGER       => 'integer',
-        self::FLOAT         => 'float',
-        self::STRING        => 'string',
-        self::ZERO          => 'zero',
-        self::EMPTY_ARRAY   => 'array',
-        self::NULL          => 'null',
-        self::PHP           => 'php',
-        self::SPACE         => 'space',
-        self::OBJECT        => 'object',
+        self::BOOLEAN => 'boolean',
+        self::INTEGER => 'integer',
+        self::FLOAT => 'float',
+        self::STRING => 'string',
+        self::ZERO => 'zero',
+        self::EMPTY_ARRAY => 'array',
+        self::NULL => 'null',
+        self::PHP => 'php',
+        self::SPACE => 'space',
+        self::OBJECT => 'object',
         self::OBJECT_STRING => 'objectstring',
-        self::OBJECT_COUNT  => 'objectcount',
-        self::ALL           => 'all',
+        self::OBJECT_COUNT => 'objectcount',
+        self::ALL => 'all',
     );
 
     /**
@@ -67,7 +67,7 @@ class NotEmpty extends AbstractValidator
      */
     protected $messageTemplates = array(
         self::IS_EMPTY => "Value is required and can't be empty",
-        self::INVALID  => "Invalid type given. String, integer, float, boolean or array expected",
+        self::INVALID => "Invalid type given. String, integer, float, boolean or array expected",
     );
 
     /**
@@ -92,7 +92,7 @@ class NotEmpty extends AbstractValidator
 
         if (!is_array($options)) {
             $options = func_get_args();
-            $temp    = array();
+            $temp = array();
             if (!empty($options)) {
                 $temp['type'] = array_shift($options);
             }
@@ -103,7 +103,7 @@ class NotEmpty extends AbstractValidator
         if (is_array($options)) {
             if (!array_key_exists('type', $options)) {
                 $detected = 0;
-                $found    = false;
+                $found = false;
                 foreach ($options as $option) {
                     if (in_array($option, $this->constants, true)) {
                         $found = true;
@@ -197,9 +197,9 @@ class NotEmpty extends AbstractValidator
             return false;
         }
 
-        $type    = $this->getType();
+        $type = $this->getType();
         $this->setValue($value);
-        $object  = false;
+        $object = false;
 
         // OBJECT_COUNT (countable object)
         if ($type & self::OBJECT_COUNT) {
@@ -216,7 +216,8 @@ class NotEmpty extends AbstractValidator
             $object = true;
 
             if ((is_object($value) && (!method_exists($value, '__toString'))) ||
-                (is_object($value) && (method_exists($value, '__toString')) && (((string) $value) == ""))) {
+                (is_object($value) && (method_exists($value, '__toString')) && (((string)$value) == ""))
+            ) {
                 $this->error(self::IS_EMPTY);
                 return false;
             }

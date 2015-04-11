@@ -38,7 +38,7 @@ class Hex extends AbstractValidator
         }
 
         $this->setValue($value);
-        if (!ctype_xdigit((string) $value)) {
+        if (!ctype_xdigit((string)$value)) {
             $this->error(self::NOT_HEX);
             return false;
         }

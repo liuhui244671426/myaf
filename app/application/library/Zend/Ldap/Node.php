@@ -75,10 +75,10 @@ class Node extends Node\AbstractNode implements Iterator, RecursiveIterator
      *
      * Constructor is protected to enforce the use of factory methods.
      *
-     * @param  Dn      $dn
-     * @param  array   $data
+     * @param  Dn $dn
+     * @param  array $data
      * @param  bool $fromDataSource
-     * @param  Ldap    $ldap
+     * @param  Ldap $ldap
      * @throws Exception\LdapException
      */
     protected function __construct(Dn $dn, array $data, $fromDataSource, Ldap $ldap = null)
@@ -101,7 +101,7 @@ class Node extends Node\AbstractNode implements Iterator, RecursiveIterator
     public function __sleep()
     {
         return array('dn', 'currentData', 'newDn', 'originalData',
-                     'new', 'delete', 'children');
+            'new', 'delete', 'children');
     }
 
     /**
@@ -192,8 +192,8 @@ class Node extends Node\AbstractNode implements Iterator, RecursiveIterator
     /**
      * Trigger an event
      *
-     * @param  string             $event Event name
-     * @param  array|\ArrayAccess $argv  Array of arguments; typically, should be associative
+     * @param  string $event Event name
+     * @param  array|\ArrayAccess $argv Array of arguments; typically, should be associative
      */
     protected function triggerEvent($event, $argv = array())
     {
@@ -208,7 +208,7 @@ class Node extends Node\AbstractNode implements Iterator, RecursiveIterator
     }
 
     /**
-     * @param  array   $data
+     * @param  array $data
      * @param  bool $fromDataSource
      * @throws Exception\LdapException
      */
@@ -229,7 +229,7 @@ class Node extends Node\AbstractNode implements Iterator, RecursiveIterator
      * Factory method to create a new detached Zend\Ldap\Node for a given DN.
      *
      * @param  string|array|Dn $dn
-     * @param  array           $objectClass
+     * @param  array $objectClass
      * @return Node
      * @throws Exception\LdapException
      */
@@ -253,7 +253,7 @@ class Node extends Node\AbstractNode implements Iterator, RecursiveIterator
      * Factory method to create an attached Zend\Ldap\Node for a given DN.
      *
      * @param  string|array|Dn $dn
-     * @param  Ldap            $ldap
+     * @param  Ldap $ldap
      * @return Node|null
      * @throws Exception\LdapException
      */
@@ -278,7 +278,7 @@ class Node extends Node\AbstractNode implements Iterator, RecursiveIterator
     /**
      * Factory method to create a detached Zend\Ldap\Node from array data.
      *
-     * @param  array   $data
+     * @param  array $data
      * @param  bool $fromDataSource
      * @return Node
      * @throws Exception\LdapException
@@ -296,7 +296,7 @@ class Node extends Node\AbstractNode implements Iterator, RecursiveIterator
             throw new Exception\LdapException(null, '\'dn\' key is of a wrong data type.');
         }
         $fromDataSource = ($fromDataSource === true) ? true : false;
-        $new            = new static($dn, $data, $fromDataSource, null);
+        $new = new static($dn, $data, $fromDataSource, null);
         $new->ensureRdnAttributeValues();
 
         return $new;
@@ -451,7 +451,7 @@ class Node extends Node\AbstractNode implements Iterator, RecursiveIterator
                     unset($changedData[$key]);
                 }
             }
-            $this->dn    = $this->newDn;
+            $this->dn = $this->newDn;
             $this->newDn = null;
             $this->triggerEvent('post-rename');
         }
@@ -620,8 +620,8 @@ class Node extends Node\AbstractNode implements Iterator, RecursiveIterator
     public function getChanges()
     {
         $changes = array(
-            'add'     => array(),
-            'delete'  => array(),
+            'add' => array(),
+            'delete' => array(),
             'replace' => array());
         foreach ($this->currentData as $key => $value) {
             if (!array_key_exists($key, $this->originalData) && !empty($value)) {
@@ -646,7 +646,7 @@ class Node extends Node\AbstractNode implements Iterator, RecursiveIterator
      * This is an offline method.
      *
      * @param  string $name
-     * @param  mixed  $value
+     * @param  mixed $value
      * @return Node Provides a fluid interface
      * @throws Exception\LdapException
      */
@@ -662,7 +662,7 @@ class Node extends Node\AbstractNode implements Iterator, RecursiveIterator
      * This is an offline method.
      *
      * @param  string $name
-     * @param  mixed  $value
+     * @param  mixed $value
      * @return Node Provides a fluid interface
      * @throws Exception\LdapException
      */
@@ -676,8 +676,8 @@ class Node extends Node\AbstractNode implements Iterator, RecursiveIterator
     /**
      * Checks if the attribute can be set and sets it accordingly.
      *
-     * @param  string  $name
-     * @param  mixed   $value
+     * @param  string $name
+     * @param  mixed $value
      * @param  bool $append
      * @throws Exception\LdapException
      */
@@ -692,9 +692,9 @@ class Node extends Node\AbstractNode implements Iterator, RecursiveIterator
      *
      * This is an offline method.
      *
-     * @param  string        $name
+     * @param  string $name
      * @param  int|array $value
-     * @param  bool       $utc
+     * @param  bool $utc
      * @return Node Provides a fluid interface
      * @throws Exception\LdapException
      */
@@ -709,9 +709,9 @@ class Node extends Node\AbstractNode implements Iterator, RecursiveIterator
      *
      * This is an offline method.
      *
-     * @param  string        $name
+     * @param  string $name
      * @param  int|array $value
-     * @param  bool       $utc
+     * @param  bool $utc
      * @return Node Provides a fluid interface
      * @throws Exception\LdapException
      */
@@ -725,10 +725,10 @@ class Node extends Node\AbstractNode implements Iterator, RecursiveIterator
     /**
      * Checks if the attribute can be set and sets it accordingly.
      *
-     * @param  string        $name
+     * @param  string $name
      * @param  int|array $value
-     * @param  bool       $utc
-     * @param  bool       $append
+     * @param  bool $utc
+     * @param  bool $append
      * @throws Exception\LdapException
      */
     protected function _setDateTimeAttribute($name, $value, $utc, $append)
@@ -747,8 +747,9 @@ class Node extends Node\AbstractNode implements Iterator, RecursiveIterator
      * @throws Exception\LdapException
      */
     public function setPasswordAttribute($password, $hashType = Attribute::PASSWORD_HASH_MD5,
-        $attribName = 'userPassword'
-    ) {
+                                         $attribName = 'userPassword'
+    )
+    {
         $this->assertChangeableAttribute($attribName);
         Attribute::setPassword($this->currentData, $password, $hashType, $attribName);
 
@@ -789,7 +790,7 @@ class Node extends Node\AbstractNode implements Iterator, RecursiveIterator
     /**
      * Remove given values from a LDAP attribute
      *
-     * @param  string      $attribName
+     * @param  string $attribName
      * @param  mixed|array $value
      * @return void
      */
@@ -806,7 +807,7 @@ class Node extends Node\AbstractNode implements Iterator, RecursiveIterator
     protected function assertChangeableAttribute($name)
     {
         $name = strtolower($name);
-        $rdn  = $this->getRdnArray(Dn::ATTR_CASEFOLD_LOWER);
+        $rdn = $this->getRdnArray(Dn::ATTR_CASEFOLD_LOWER);
         if ($name == 'dn') {
             throw new Exception\LdapException(null, 'DN cannot be changed.');
         } elseif (array_key_exists($name, $rdn)) {
@@ -853,7 +854,7 @@ class Node extends Node\AbstractNode implements Iterator, RecursiveIterator
      * This is an offline method.
      *
      * @param  string $name
-     * @param  mixed  $value
+     * @param  mixed $value
      * @throws Exception\LdapException
      */
     public function offsetSet($name, $value)
@@ -922,8 +923,8 @@ class Node extends Node\AbstractNode implements Iterator, RecursiveIterator
      * This is an online method.
      *
      * @param  string|Filter\AbstractFilter $filter
-     * @param  int                      $scope
-     * @param  string                       $sort
+     * @param  int $scope
+     * @param  string $sort
      * @return Node\Collection
      * @throws Exception\LdapException
      */
@@ -941,7 +942,7 @@ class Node extends Node\AbstractNode implements Iterator, RecursiveIterator
      * This is an online method.
      *
      * @param  string|Filter\AbstractFilter $filter
-     * @param  int                      $scope
+     * @param  int $scope
      * @return int
      * @throws Exception\LdapException
      */
@@ -969,7 +970,7 @@ class Node extends Node\AbstractNode implements Iterator, RecursiveIterator
      * This is an online method.
      *
      * @param  string|Filter\AbstractFilter $filter
-     * @param  string                       $sort
+     * @param  string $sort
      * @return Node\Collection
      * @throws Exception\LdapException
      */
@@ -1033,7 +1034,7 @@ class Node extends Node\AbstractNode implements Iterator, RecursiveIterator
         if ($ldap !== null) {
             $this->attachLdap($ldap);
         }
-        $ldap     = $this->getLdap();
+        $ldap = $this->getLdap();
         $parentDn = $this->_getDn()->getParentDn(1);
 
         return static::fromLdap($parentDn, $ldap);

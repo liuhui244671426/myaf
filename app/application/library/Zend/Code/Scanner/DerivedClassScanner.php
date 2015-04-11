@@ -39,7 +39,7 @@ class DerivedClassScanner extends ClassScanner
      */
     public function __construct(ClassScanner $classScanner, DirectoryScanner $directoryScanner)
     {
-        $this->classScanner     = $classScanner;
+        $this->classScanner = $classScanner;
         $this->directoryScanner = $directoryScanner;
 
         $currentScannerClass = $classScanner;
@@ -47,9 +47,9 @@ class DerivedClassScanner extends ClassScanner
         while ($currentScannerClass && $currentScannerClass->hasParentClass()) {
             $currentParentClassName = $currentScannerClass->getParentClass();
             if ($directoryScanner->hasClass($currentParentClassName)) {
-                $currentParentClass                                 = $directoryScanner->getClass($currentParentClassName);
+                $currentParentClass = $directoryScanner->getClass($currentParentClassName);
                 $this->parentClassScanners[$currentParentClassName] = $currentParentClass;
-                $currentScannerClass                                = $currentParentClass;
+                $currentScannerClass = $currentParentClass;
             } else {
                 $currentScannerClass = false;
             }

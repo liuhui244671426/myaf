@@ -27,11 +27,11 @@ class Simple extends \Yaf\Config_Abstract implements
      * Yaf_Config_Simple also implements Countable and Iterator to
      * facilitate easy access to the data.
      *
-     * @param  array   $array
+     * @param  array $array
      * @param  boolean $readonly
      * @return void
      */
-    public function __construct ($config, $readonly = false)
+    public function __construct($config, $readonly = false)
     {
         if (is_array($config)) {
             $this->_config = array();
@@ -48,67 +48,74 @@ class Simple extends \Yaf\Config_Abstract implements
             );
         }
         //if (is_bool($readonly)) {
-            $this->_readonly = (bool)$readonly;
+        $this->_readonly = (bool)$readonly;
         //}
     }
+
     /**
      * Defined by Countable interface
      *
      * @return int
      */
-    public function count ()
+    public function count()
     {
         return count($this->_config);
     }
+
     /**
      * Defined by Iterator interface
      *
      * @return mixed
      */
-    public function current ()
+    public function current()
     {
         $this->_skipNextIteration = false;
         return current($this->_config);
     }
+
     /**
      * Magic function so that $obj->value will work.
      *
      * @param string $name
      * @return mixed
      */
-    public function __get ($name)
+    public function __get($name)
     {
         return $this->get($name);
     }
+
     /**
      * Support isset() overloading on PHP 5.1
      *
      * @param string $name
      * @return boolean
      */
-    public function __isset ($name)
+    public function __isset($name)
     {
         return isset($this->_config[$name]);
     }
+
     /**
      * Support isset() overloading on PHP 5.1
      *
      * @param string $name
      * @return boolean
      */
-    public function offsetExists ($name)
+    public function offsetExists($name)
     {
         return $this->__isset($name);
     }
+
     /**
      * Return a config value specified by name
      * @param  string $name
      * @return mixed
      */
-    public function offsetGet ($name)
+    public function offsetGet($name)
     {
         return $this->__get($name);
     }
+
     /**
      * Set a key of the config with value
      * @param  string $name
@@ -116,10 +123,11 @@ class Simple extends \Yaf\Config_Abstract implements
      * @throws Yaf_Config_Exception
      * @return void
      */
-    public function offsetSet ($name, $value)
+    public function offsetSet($name, $value)
     {
         return $this->__set($name, $value);
     }
+
     /**
      * Support unset() overloading on PHP 5.1
      *
@@ -127,29 +135,31 @@ class Simple extends \Yaf\Config_Abstract implements
      * @throws Yaf_Config_Exception
      * @return void
      */
-    public function offsetUnset ($name)
+    public function offsetUnset($name)
     {
-        if (! $this->readonly()) {
+        if (!$this->readonly()) {
             unset($this->_config[$name]);
         } else {
             //do nothing for now as Yaf is doing the same
             //throw new Yaf_Config_Exception('Config is read only');
         }
     }
+
     /**
      * Defined by Iterator interface
      *
      * @return mixed
      */
-    public function key ()
+    public function key()
     {
         return key($this->_config);
     }
+
     /**
      * Defined by Iterator interface
      *
      */
-    public function next ()
+    public function next()
     {
         if ($this->_skipNextIteration) {
             $this->_skipNextIteration = false;
@@ -157,27 +167,29 @@ class Simple extends \Yaf\Config_Abstract implements
         }
         next($this->_config);
     }
+
     /**
      * Defined by Iterator interface
      *
      */
-    public function rewind ()
+    public function rewind()
     {
         $this->_skipNextIteration = false;
         reset($this->_config);
     }
+
     /**
      * Only allow setting of a property if $readonly
      * was set to true on construction. Otherwise, throw an exception.
      *
      * @param  string $name
-     * @param  mixed  $value
+     * @param  mixed $value
      * @throws Yaf_Config_Exception
      * @return void
      */
-    public function __set ($name, $value)
+    public function __set($name, $value)
     {
-        if (! $this->readonly()) {
+        if (!$this->readonly()) {
             if (is_string($name)) {
                 if (is_array($value)) {
                     $this->_config[$name] = new self($value, false);
@@ -192,12 +204,13 @@ class Simple extends \Yaf\Config_Abstract implements
             //throw new Yaf_Config_Exception('Config is read only');
         }
     }
+
     /**
      * Return an associative array of the stored data.
      *
      * @return array
      */
-    public function toArray ()
+    public function toArray()
     {
         $array = array();
         $data = $this->_config;
@@ -210,16 +223,18 @@ class Simple extends \Yaf\Config_Abstract implements
         }
         return $array;
     }
+
     /**
      * Defined by Iterator interface
      *
      * @return boolean
      */
-    public function valid ()
+    public function valid()
     {
         $key = key($this->_config);
-        return ($key == null || $key == false) ? false: true;
+        return ($key == null || $key == false) ? false : true;
     }
+
     /**
      * Support unset() overloading on PHP 5.1
      *
@@ -237,6 +252,7 @@ class Simple extends \Yaf\Config_Abstract implements
         }
 
     }
+
     /**
      * Retrieve a value and return $default if there is no element set.
      *
@@ -244,7 +260,7 @@ class Simple extends \Yaf\Config_Abstract implements
      * @param mixed $default
      * @return mixed
      */
-    public function get ($name)
+    public function get($name)
     {
         $result = false;
         if (array_key_exists($name, $this->_config)) {
@@ -255,24 +271,26 @@ class Simple extends \Yaf\Config_Abstract implements
         }
         return $result;
     }
+
     /**
      * Only allow setting of a property if $readonly
      * was set to true on construction. Otherwise, throw an exception.
      *
      * @param  string $name
-     * @param  mixed  $value
+     * @param  mixed $value
      * @throws Yaf_Config_Exception
      * @return void
      */
-    public function set ($name, $value)
+    public function set($name, $value)
     {
         return $this->__set($name, $value);
     }
+
     /**
      * Merge two arrays recursively, overwriting keys of the same name
      * in $firstArray with the value in $secondArray.
      *
-     * @param  mixed $firstArray  First array
+     * @param  mixed $firstArray First array
      * @param  mixed $secondArray Second array to merge into first array
      * @return array
      */
@@ -286,7 +304,7 @@ class Simple extends \Yaf\Config_Abstract implements
                     );
                 } else {
                     if ($key === 0) {
-                        $firstArray= array(
+                        $firstArray = array(
                             0 => $this->_arrayMergeRecursive(
                                 $firstArray, $value
                             )

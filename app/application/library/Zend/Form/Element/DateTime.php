@@ -92,7 +92,7 @@ class DateTime extends Element implements InputProviderInterface
      */
     public function setFormat($format)
     {
-        $this->format = (string) $format;
+        $this->format = (string)$format;
         return $this;
     }
 
@@ -122,13 +122,13 @@ class DateTime extends Element implements InputProviderInterface
 
         if (isset($this->attributes['min'])) {
             $validators[] = new GreaterThanValidator(array(
-                'min'       => $this->attributes['min'],
+                'min' => $this->attributes['min'],
                 'inclusive' => true,
             ));
         }
         if (isset($this->attributes['max'])) {
             $validators[] = new LessThanValidator(array(
-                'max'       => $this->attributes['max'],
+                'max' => $this->attributes['max'],
                 'inclusive' => true,
             ));
         }
@@ -159,17 +159,17 @@ class DateTime extends Element implements InputProviderInterface
      */
     protected function getStepValidator()
     {
-        $format    = $this->getFormat();
+        $format = $this->getFormat();
         $stepValue = (isset($this->attributes['step']))
-                   ? $this->attributes['step'] : 1; // Minutes
+            ? $this->attributes['step'] : 1; // Minutes
 
         $baseValue = (isset($this->attributes['min']))
-                   ? $this->attributes['min'] : date($format, 0);
+            ? $this->attributes['min'] : date($format, 0);
 
         return new DateStepValidator(array(
-            'format'    => $format,
+            'format' => $format,
             'baseValue' => $baseValue,
-            'step'      => new DateInterval("PT{$stepValue}M"),
+            'step' => new DateInterval("PT{$stepValue}M"),
         ));
     }
 

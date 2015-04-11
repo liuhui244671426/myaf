@@ -68,13 +68,13 @@ class Registry
     /**
      * Set the container for an item in the registry
      *
-     * @param  string                      $key
+     * @param  string $key
      * @param  Container\AbstractContainer $container
      * @return Registry
      */
     public function setContainer($key, Container\AbstractContainer $container)
     {
-        $key = (string) $key;
+        $key = (string)$key;
         $this->items[$key] = $container;
 
         return $this;
@@ -88,7 +88,7 @@ class Registry
      */
     public function getContainer($key)
     {
-        $key = (string) $key;
+        $key = (string)$key;
         if (isset($this->items[$key])) {
             return $this->items[$key];
         }
@@ -106,7 +106,7 @@ class Registry
      */
     public function containerExists($key)
     {
-        $key = (string) $key;
+        $key = (string)$key;
 
         return array_key_exists($key, $this->items);
     }
@@ -115,12 +115,12 @@ class Registry
      * createContainer
      *
      * @param  string $key
-     * @param  array  $value
+     * @param  array $value
      * @return Container\AbstractContainer
      */
     public function createContainer($key, array $value = array())
     {
-        $key = (string) $key;
+        $key = (string)$key;
 
         $this->items[$key] = new $this->containerClass($value);
 
@@ -135,7 +135,7 @@ class Registry
      */
     public function deleteContainer($key)
     {
-        $key = (string) $key;
+        $key = (string)$key;
         if (isset($this->items[$key])) {
             unset($this->items[$key]);
             return true;

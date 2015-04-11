@@ -28,6 +28,6 @@ interface SharedEventAggregateAwareInterface
      *
      * @param  SharedListenerAggregateInterface $aggregate
      * @return mixed return value of {@link SharedListenerAggregateInterface::detachShared()}
-    */
+     */
     public function detachAggregate(SharedListenerAggregateInterface $aggregate);
 }

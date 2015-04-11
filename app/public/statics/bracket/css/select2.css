@@ -15,14 +15,14 @@ Version: 3.5.0 Timestamp: Mon Jun 16 19:29:44 EDT 2014
 .select2-drop,
 .select2-search,
 .select2-search input {
-  /*
-    Force border-box so that % widths fit the parent
-    container without overlap because of margin/padding.
-    More Info : http://www.quirksmode.org/css/box.html
-  */
-  -webkit-box-sizing: border-box; /* webkit */
-     -moz-box-sizing: border-box; /* firefox */
-          box-sizing: border-box; /* css3 */
+    /*
+      Force border-box so that % widths fit the parent
+      container without overlap because of margin/padding.
+      More Info : http://www.quirksmode.org/css/box.html
+    */
+    -webkit-box-sizing: border-box; /* webkit */
+    -moz-box-sizing: border-box; /* firefox */
+    box-sizing: border-box; /* css3 */
 }
 
 .select2-container.sel-xs .select2-choice {
@@ -51,10 +51,10 @@ Version: 3.5.0 Timestamp: Mon Jun 16 19:29:44 EDT 2014
     background-color: #fff;
 
     -webkit-touch-callout: none;
-      -webkit-user-select: none;
-         -moz-user-select: none;
-          -ms-user-select: none;
-              user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 html[dir="rtl"] .select2-container .select2-choice {
@@ -153,7 +153,7 @@ html[dir="rtl"] .select2-container .select2-choice > .select2-chosen {
     border-radius: 0 0 4px 4px;
 
     -webkit-box-shadow: 0 4px 5px rgba(0, 0, 0, .15);
-            box-shadow: 0 4px 5px rgba(0, 0, 0, .15);
+    box-shadow: 0 4px 5px rgba(0, 0, 0, .15);
 }
 
 .select2-drop.select2-drop-above {
@@ -164,7 +164,7 @@ html[dir="rtl"] .select2-container .select2-choice > .select2-chosen {
     border-radius: 4px 4px 0 0;
 
     -webkit-box-shadow: 0 -4px 5px rgba(0, 0, 0, .15);
-            box-shadow: 0 -4px 5px rgba(0, 0, 0, .15);
+    box-shadow: 0 -4px 5px rgba(0, 0, 0, .15);
 }
 
 .select2-drop-active {
@@ -259,7 +259,7 @@ html[dir="rtl"] .select2-container .select2-choice .select2-arrow b {
     border-radius: 0;
 
     -webkit-box-shadow: none;
-            box-shadow: none;
+    box-shadow: none;
 
     background: #fff url('../images/select2.png') no-repeat 100% -22px;
     margin-top: 5px;
@@ -292,15 +292,15 @@ html[dir="rtl"] .select2-search input {
     border: 1px solid #999;
     outline: none;
 
-    -moz-box-shadow: 3px 3px 0 rgba(12,12,12,0.05);
-    -webkit-box-shadow: 3px 3px 0 rgba(12,12,12,0.05);
-    box-shadow: 3px 3px 0 rgba(12,12,12,0.05);
+    -moz-box-shadow: 3px 3px 0 rgba(12, 12, 12, 0.05);
+    -webkit-box-shadow: 3px 3px 0 rgba(12, 12, 12, 0.05);
+    box-shadow: 3px 3px 0 rgba(12, 12, 12, 0.05);
 }
 
 .select2-dropdown-open .select2-choice {
     border-bottom-color: transparent;
     -webkit-box-shadow: 0 1px 0 #fff inset;
-            box-shadow: 0 1px 0 #fff inset;
+    box-shadow: 0 1px 0 #fff inset;
 
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
@@ -323,6 +323,7 @@ html[dir="rtl"] .select2-search input {
     border-left: none;
     filter: none;
 }
+
 html[dir="rtl"] .select2-dropdown-open .select2-choice .select2-arrow {
     border-right: none;
 }
@@ -373,8 +374,8 @@ html[dir="rtl"] .select2-results {
     background-image: none;
     font-size: 13px;
     -moz-transition: all 0.2s ease-out 0s;
-   -webkit-transition: all 0.2s ease-out 0s;
-   transition: all 0.2s ease-out 0s;
+    -webkit-transition: all 0.2s ease-out 0s;
+    transition: all 0.2s ease-out 0s;
 }
 
 .select2-results li.select2-result-with-children > .select2-result-label {
@@ -389,19 +390,39 @@ html[dir="rtl"] .select2-results {
     min-height: 1em;
 
     -webkit-touch-callout: none;
-      -webkit-user-select: none;
-         -moz-user-select: none;
-          -ms-user-select: none;
-              user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
-.select2-results-dept-1 .select2-result-label { padding-left: 20px }
-.select2-results-dept-2 .select2-result-label { padding-left: 40px }
-.select2-results-dept-3 .select2-result-label { padding-left: 60px }
-.select2-results-dept-4 .select2-result-label { padding-left: 80px }
-.select2-results-dept-5 .select2-result-label { padding-left: 100px }
-.select2-results-dept-6 .select2-result-label { padding-left: 110px }
-.select2-results-dept-7 .select2-result-label { padding-left: 120px }
+.select2-results-dept-1 .select2-result-label {
+    padding-left: 20px
+}
+
+.select2-results-dept-2 .select2-result-label {
+    padding-left: 40px
+}
+
+.select2-results-dept-3 .select2-result-label {
+    padding-left: 60px
+}
+
+.select2-results-dept-4 .select2-result-label {
+    padding-left: 80px
+}
+
+.select2-results-dept-5 .select2-result-label {
+    padding-left: 100px
+}
+
+.select2-results-dept-6 .select2-result-label {
+    padding-left: 110px
+}
+
+.select2-results-dept-7 .select2-result-label {
+    padding-left: 120px
+}
 
 .select2-results .select2-highlighted {
     background: #666;
@@ -425,7 +446,6 @@ html[dir="rtl"] .select2-results {
     color: #000;
 }
 
-
 .select2-results .select2-no-results,
 .select2-results .select2-searching,
 .select2-results .select2-selection-limit {
@@ -443,10 +463,11 @@ disabled look for disabled choices in the results dropdown
     display: list-item;
     cursor: default;
 }
+
 .select2-results .select2-disabled {
-  background: #f4f4f4;
-  display: list-item;
-  cursor: default;
+    background: #f4f4f4;
+    display: list-item;
+    cursor: default;
 }
 
 .select2-results .select2-selected {
@@ -481,7 +502,6 @@ disabled look for disabled choices in the results dropdown
     display: none;
 }
 
-
 /* multiselect */
 
 .select2-container-multi .select2-choices {
@@ -497,7 +517,7 @@ disabled look for disabled choices in the results dropdown
     overflow: hidden;
 
     background-color: #fff;
-    
+
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px;
@@ -532,7 +552,7 @@ html[dir="rtl"] .select2-container-multi .select2-choices {
 }
 
 .select2-locked {
-  padding: 3px 5px 3px 5px !important;
+    padding: 3px 5px 3px 5px !important;
 }
 
 .select2-container-multi .select2-choices {
@@ -542,28 +562,28 @@ html[dir="rtl"] .select2-container-multi .select2-choices {
 .select2-container-multi.select2-container-active .select2-choices {
     border: 1px solid #999;
     outline: none;
-    
+
     -moz-box-shadow: 3px 3px 0 rgba(12, 12, 12, 0.05);
-    -webkit-box-shadow: 3px 3px 0 rgba(12, 12, 12, 0.05)
-    box-shadow: 3px 3px 0 rgba(12, 12, 12, 0.05);
-    
+    -webkit-box-shadow: 3px 3px 0 rgba(12, 12, 12, 0.05) box-shadow : 3 px 3 px 0 rgba(12, 12, 12, 0.05);
+
     -moz-border-radius: 3px 3px 0 0;
     -webkit-border-radius: 3px 3px 0 0;
     border-radius: 3px 3px 0 0;
 }
+
 .select2-container-multi .select2-choices li {
     float: left;
     list-style: none;
 }
 
 .select2-container-multi .select2-choices li:first-child {
-    margin-left: 0;    
+    margin-left: 0;
 }
 
-html[dir="rtl"] .select2-container-multi .select2-choices li
-{
+html[dir="rtl"] .select2-container-multi .select2-choices li {
     float: right;
 }
+
 .select2-container-multi .select2-choices .select2-search-field {
     margin: 0;
     padding: 0;
@@ -580,7 +600,7 @@ html[dir="rtl"] .select2-container-multi .select2-choices li
     outline: 0;
     border: 0;
     -webkit-box-shadow: none;
-            box-shadow: none;
+    box-shadow: none;
     background: transparent !important;
 }
 
@@ -611,10 +631,10 @@ html[dir="rtl"] .select2-container-multi .select2-choices li
     background-clip: padding-box;
 
     -webkit-touch-callout: none;
-      -webkit-user-select: none;
-         -moz-user-select: none;
-          -ms-user-select: none;
-              user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 
     background-color: #e4e4e4;
 }
@@ -624,14 +644,15 @@ html[dir="rtl"] .select2-container-multi .select2-choices li
     padding-bottom: 1px;
 }
 
-html[dir="rtl"] .select2-container-multi .select2-choices .select2-search-choice
-{
+html[dir="rtl"] .select2-container-multi .select2-choices .select2-search-choice {
     margin: 3px 5px 3px 0;
     padding: 3px 18px 3px 5px;
 }
+
 .select2-container-multi .select2-choices .select2-search-choice .select2-chosen {
     cursor: default;
 }
+
 .select2-container-multi .select2-choices .select2-search-choice-focus {
     background: #d4d4d4;
 }
@@ -648,6 +669,7 @@ html[dir="rtl"] .select2-container-multi .select2-choices .select2-search-choice
     outline: none;
     background: url('../images/select2.png') right top no-repeat;
 }
+
 html[dir="rtl"] .select2-search-choice-close {
     right: auto;
     left: 3px;
@@ -668,8 +690,9 @@ html[dir="rtl"] .select2-container-multi .select2-search-choice-close {
 }
 
 .select2-container-multi .select2-choices .select2-search-choice .select2-search-choice-close:hover {
-  background-position: right -11px;
+    background-position: right -11px;
 }
+
 .select2-container-multi .select2-choices .select2-search-choice-focus .select2-search-choice-close {
     background-position: right -11px;
 }
@@ -693,11 +716,12 @@ html[dir="rtl"] .select2-container-multi .select2-search-choice-close {
     margin-left: 0;
 }
 
-.select2-container-multi.select2-container-disabled .select2-choices .select2-search-choice .select2-search-choice-close {    display: none;
+.select2-container-multi.select2-container-disabled .select2-choices .select2-search-choice .select2-search-choice-close {
+    display: none;
     background: none;
 }
-/* end multiselect */
 
+/* end multiselect */
 
 .select2-result-selectable .select2-match,
 .select2-result-unselectable .select2-match {
@@ -733,7 +757,7 @@ html[dir="rtl"] .select2-container-multi .select2-search-choice-close {
 
 /* Retina-ize icons */
 
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 2dppx)  {
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 2dppx) {
     .select2-search input,
     .select2-search-choice-close,
     .select2-container .select2-choice abbr,

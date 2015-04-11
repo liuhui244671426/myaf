@@ -35,7 +35,7 @@ class Registry
      * will have the least priority, and the last parent added will have the
      * highest priority.
      *
-     * @param  RoleInterface                           $role
+     * @param  RoleInterface $role
      * @param  RoleInterface|string|array|Traversable $parents
      * @throws Exception\InvalidArgumentException
      * @return Registry Provides a fluent interface
@@ -78,7 +78,7 @@ class Registry
 
         $this->roles[$roleId] = array(
             'instance' => $role,
-            'parents'  => $roleParents,
+            'parents' => $roleParents,
             'children' => array(),
         );
 
@@ -99,7 +99,7 @@ class Registry
         if ($role instanceof RoleInterface) {
             $roleId = $role->getRoleId();
         } else {
-            $roleId = (string) $role;
+            $roleId = (string)$role;
         }
 
         if (!$this->has($role)) {
@@ -122,7 +122,7 @@ class Registry
         if ($role instanceof RoleInterface) {
             $roleId = $role->getRoleId();
         } else {
-            $roleId = (string) $role;
+            $roleId = (string)$role;
         }
 
         return isset($this->roles[$roleId]);
@@ -157,16 +157,16 @@ class Registry
      * through the entire inheritance DAG to determine whether $role
      * inherits from $inherit through its ancestor Roles.
      *
-     * @param  RoleInterface|string  $role
-     * @param  RoleInterface|string  $inherit
-     * @param  bool                    $onlyParents
+     * @param  RoleInterface|string $role
+     * @param  RoleInterface|string $inherit
+     * @param  bool $onlyParents
      * @throws Exception\InvalidArgumentException
      * @return bool
      */
     public function inherits($role, $inherit, $onlyParents = false)
     {
         try {
-            $roleId    = $this->get($role)->getRoleId();
+            $roleId = $this->get($role)->getRoleId();
             $inheritId = $this->get($inherit)->getRoleId();
         } catch (Exception\ExceptionInterface $e) {
             throw new Exception\InvalidArgumentException($e->getMessage(), $e->getCode(), $e);

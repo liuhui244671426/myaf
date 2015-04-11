@@ -34,11 +34,11 @@ class Maildir extends AbstractStorage
      * @var array
      */
     protected static $knownFlags = array('D' => Mail\Storage::FLAG_DRAFT,
-                                          'F' => Mail\Storage::FLAG_FLAGGED,
-                                          'P' => Mail\Storage::FLAG_PASSED,
-                                          'R' => Mail\Storage::FLAG_ANSWERED,
-                                          'S' => Mail\Storage::FLAG_SEEN,
-                                          'T' => Mail\Storage::FLAG_DELETED);
+        'F' => Mail\Storage::FLAG_FLAGGED,
+        'P' => Mail\Storage::FLAG_PASSED,
+        'R' => Mail\Storage::FLAG_ANSWERED,
+        'S' => Mail\Storage::FLAG_SEEN,
+        'T' => Mail\Storage::FLAG_DELETED);
 
     // TODO: getFlags($id) for fast access if headers are not needed (i.e. just setting flags)?
 
@@ -79,7 +79,7 @@ class Maildir extends AbstractStorage
     /**
      * Get one or all fields from file structure. Also checks if message is valid
      *
-     * @param  int         $id    message number
+     * @param  int $id message number
      * @param  string|null $field wanted field
      * @throws Exception\InvalidArgumentException
      * @return string|array wanted field or all fields as array
@@ -133,13 +133,14 @@ class Maildir extends AbstractStorage
     {
         // TODO that's ugly, would be better to let the message class decide
         if (strtolower($this->messageClass) == '\zend\mail\storage\message\file'
-            || is_subclass_of($this->messageClass, '\Zend\Mail\Storage\Message\File')) {
-            return new $this->messageClass(array('file'  => $this->_getFileData($id, 'filename'),
-                                                  'flags' => $this->_getFileData($id, 'flags')));
+            || is_subclass_of($this->messageClass, '\Zend\Mail\Storage\Message\File')
+        ) {
+            return new $this->messageClass(array('file' => $this->_getFileData($id, 'filename'),
+                'flags' => $this->_getFileData($id, 'flags')));
         }
 
         return new $this->messageClass(array('handler' => $this, 'id' => $id, 'headers' => $this->getRawHeader($id),
-                                              'flags'   => $this->_getFileData($id, 'flags')));
+            'flags' => $this->_getFileData($id, 'flags')));
     }
 
     /*
@@ -213,7 +214,7 @@ class Maildir extends AbstractStorage
     public function __construct($params)
     {
         if (is_array($params)) {
-            $params = (object) $params;
+            $params = (object)$params;
         }
 
         if (!isset($params->dirname) || !is_dir($params->dirname)) {
@@ -259,7 +260,7 @@ class Maildir extends AbstractStorage
         }
 
         ErrorHandler::start(E_WARNING);
-        $dh    = opendir($dirname . '/cur/');
+        $dh = opendir($dirname . '/cur/');
         $error = ErrorHandler::stop();
         if (!$dh) {
             throw new Exception\RuntimeException('cannot open maildir', 0, $error);
@@ -268,7 +269,7 @@ class Maildir extends AbstractStorage
         closedir($dh);
 
         ErrorHandler::start(E_WARNING);
-        $dh    = opendir($dirname . '/new/');
+        $dh = opendir($dirname . '/new/');
         $error = ErrorHandler::stop();
         if ($dh) {
             $this->_getMaildirFiles($dh, $dirname . '/new/', array(Mail\Storage::FLAG_RECENT));
@@ -281,9 +282,9 @@ class Maildir extends AbstractStorage
     /**
      * find all files in opened dir handle and add to maildir files
      *
-     * @param resource $dh            dir handle used for search
-     * @param string   $dirname       dirname of dir in $dh
-     * @param array    $defaultFlags default flags for given dir
+     * @param resource $dh dir handle used for search
+     * @param string $dirname dirname of dir in $dh
+     * @param array $defaultFlags default flags for given dir
      */
     protected function _getMaildirFiles($dh, $dirname, $defaultFlags = array())
     {
@@ -317,12 +318,12 @@ class Maildir extends AbstractStorage
                 $namedFlags[$flag] = isset(static::$knownFlags[$flag]) ? static::$knownFlags[$flag] : $flag;
             }
 
-            $data = array('uniq'       => $uniq,
-                          'flags'      => $namedFlags,
-                          'flaglookup' => array_flip($namedFlags),
-                          'filename'   => $dirname . $entry);
+            $data = array('uniq' => $uniq,
+                'flags' => $namedFlags,
+                'flaglookup' => array_flip($namedFlags),
+                'filename' => $dirname . $entry);
             if ($size !== null) {
-                $data['size'] = (int) $size;
+                $data['size'] = (int)$size;
             }
             $this->files[] = $data;
         }

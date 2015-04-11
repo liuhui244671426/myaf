@@ -72,12 +72,12 @@ class ServerIntrospection
         $multicallParams = array();
         foreach ($methods as $method) {
             $multicallParams[] = array('methodName' => 'system.methodSignature',
-                                       'params'     => array($method));
+                'params' => array($method));
         }
 
         $serverSignatures = $this->system->multicall($multicallParams);
 
-        if (! is_array($serverSignatures)) {
+        if (!is_array($serverSignatures)) {
             $type = gettype($serverSignatures);
             $error = "Multicall return is malformed.  Expected array, got $type";
             throw new Exception\IntrospectException($error);
@@ -121,7 +121,7 @@ class ServerIntrospection
     /**
      * Call system.methodSignature() for the given method
      *
-     * @param  array  $method
+     * @param  array $method
      * @throws Exception\IntrospectException
      * @return array  array(array(return, param, param, param...))
      */

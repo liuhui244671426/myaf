@@ -8,7 +8,7 @@ define('MODE', 'production');//运行环境
 define('INAPP', true);
 date_default_timezone_set('PRC');
 
-if(MODE == 'dev' || MODE == 'test') {
+if (MODE == 'dev' || MODE == 'test') {
     error_reporting(E_ALL & E_NOTICE & E_PARSE);
     define('XHPROF', true);//开启xhprof
 } else {
@@ -30,8 +30,7 @@ if (!extension_loaded('yaf')) {
 }
 
 //------xhprof--------//
-if(XHPROF)
-{
+if (XHPROF) {
     //xhprof_enable();
 }
 
@@ -39,8 +38,7 @@ $app = new Yaf_Application(APPLICATION_PATH . "/application/configs/application.
 $app->bootstrap()->run();
 
 //------xhprof--------//
-if(XHPROF)
-{
+if (XHPROF) {
     //结束，然后写入文件，注意目录
     //$xhprof_data = xhprof_disable();
     //$XHPROF_ROOT = sprintf('%s%s', ROOT_PATH, '/library/xhprof');

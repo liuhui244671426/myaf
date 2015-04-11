@@ -37,13 +37,13 @@ class HydrateEvent extends Event
     /**
      * @param object $target
      * @param object $hydratedObject
-     * @param array  $hydrationData
+     * @param array $hydrationData
      */
     public function __construct($target, $hydratedObject, array $hydrationData)
     {
-        $this->target         = $target;
+        $this->target = $target;
         $this->hydratedObject = $hydratedObject;
-        $this->hydrationData  = $hydrationData;
+        $this->hydrationData = $hydrationData;
     }
 
     /**

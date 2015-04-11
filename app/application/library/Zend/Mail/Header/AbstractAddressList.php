@@ -57,7 +57,7 @@ abstract class AbstractAddressList implements HeaderInterface
         }
         // split value on ","
         $fieldValue = str_replace(Headers::FOLDING, ' ', $fieldValue);
-        $values     = explode(',', $fieldValue);
+        $values = explode(',', $fieldValue);
         array_walk(
             $values,
             function (&$value) {
@@ -74,7 +74,7 @@ abstract class AbstractAddressList implements HeaderInterface
             }
             $name = null;
             if (isset($matches['name'])) {
-                $name  = trim($matches['name']);
+                $name = trim($matches['name']);
             }
             if (empty($name)) {
                 $name = null;
@@ -101,11 +101,11 @@ abstract class AbstractAddressList implements HeaderInterface
 
     public function getFieldValue($format = HeaderInterface::FORMAT_RAW)
     {
-        $emails   = array();
+        $emails = array();
         $encoding = $this->getEncoding();
         foreach ($this->getAddressList() as $address) {
             $email = $address->getEmail();
-            $name  = $address->getName();
+            $name = $address->getName();
             if (empty($name)) {
                 $emails[] = $email;
             } else {
@@ -161,7 +161,7 @@ abstract class AbstractAddressList implements HeaderInterface
 
     public function toString()
     {
-        $name  = $this->getFieldName();
+        $name = $this->getFieldName();
         $value = $this->getFieldValue(HeaderInterface::FORMAT_ENCODED);
         return (empty($value)) ? '' : sprintf('%s: %s', $name, $value);
     }

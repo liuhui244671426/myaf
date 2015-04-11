@@ -25,7 +25,7 @@ class GenericResource implements ResourceInterface
      */
     public function __construct($resourceId)
     {
-        $this->resourceId = (string) $resourceId;
+        $this->resourceId = (string)$resourceId;
     }
 
     /**

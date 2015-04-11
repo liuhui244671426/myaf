@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Yaf Route Interface
  */

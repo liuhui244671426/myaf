@@ -28,10 +28,10 @@ class Socket implements HttpAdapter, StreamInterface
      * @var array
      */
     protected static $sslCryptoTypes = array(
-        'ssl'   => STREAM_CRYPTO_METHOD_SSLv23_CLIENT,
+        'ssl' => STREAM_CRYPTO_METHOD_SSLv23_CLIENT,
         'sslv2' => STREAM_CRYPTO_METHOD_SSLv2_CLIENT,
         'sslv3' => STREAM_CRYPTO_METHOD_SSLv3_CLIENT,
-        'tls'   => STREAM_CRYPTO_METHOD_TLS_CLIENT,
+        'tls' => STREAM_CRYPTO_METHOD_TLS_CLIENT,
     );
 
     /**
@@ -61,15 +61,15 @@ class Socket implements HttpAdapter, StreamInterface
      * @var array
      */
     protected $config = array(
-        'persistent'            => false,
-        'ssltransport'          => 'ssl',
-        'sslcert'               => null,
-        'sslpassphrase'         => null,
-        'sslverifypeer'         => true,
-        'sslcafile'             => null,
-        'sslcapath'             => null,
-        'sslallowselfsigned'    => false,
-        'sslusecontext'         => false,
+        'persistent' => false,
+        'ssltransport' => 'ssl',
+        'sslcert' => null,
+        'sslpassphrase' => null,
+        'sslverifypeer' => true,
+        'sslcafile' => null,
+        'sslcapath' => null,
+        'sslallowselfsigned' => false,
+        'sslusecontext' => false,
     );
 
     /**
@@ -165,7 +165,7 @@ class Socket implements HttpAdapter, StreamInterface
      */
     public function getStreamContext()
     {
-        if (! $this->context) {
+        if (!$this->context) {
             $this->context = stream_context_create();
         }
 
@@ -175,8 +175,8 @@ class Socket implements HttpAdapter, StreamInterface
     /**
      * Connect to the remote server
      *
-     * @param string  $host
-     * @param int     $port
+     * @param string $host
+     * @param int $port
      * @param  bool $secure
      * @throws AdapterException\RuntimeException
      */
@@ -194,7 +194,7 @@ class Socket implements HttpAdapter, StreamInterface
         }
 
         // Now, if we are not connected, connect
-        if (!is_resource($this->socket) || ! $this->config['keepalive']) {
+        if (!is_resource($this->socket) || !$this->config['keepalive']) {
             $context = $this->getStreamContext();
 
             if ($secure || $this->config['sslusecontext']) {
@@ -245,7 +245,7 @@ class Socket implements HttpAdapter, StreamInterface
                 $host . ':' . $port,
                 $errno,
                 $errstr,
-                (int) $this->config['timeout'],
+                (int)$this->config['timeout'],
                 $flags,
                 $context
             );
@@ -266,7 +266,7 @@ class Socket implements HttpAdapter, StreamInterface
             }
 
             // Set the stream timeout
-            if (!stream_set_timeout($this->socket, (int) $this->config['timeout'])) {
+            if (!stream_set_timeout($this->socket, (int)$this->config['timeout'])) {
                 throw new AdapterException\RuntimeException('Unable to set the connection timeout');
             }
 
@@ -278,7 +278,7 @@ class Socket implements HttpAdapter, StreamInterface
                 }
 
                 ErrorHandler::start();
-                $test  = stream_socket_enable_crypto($this->socket, true, $sslCryptoMethod);
+                $test = stream_socket_enable_crypto($this->socket, true, $sslCryptoMethod);
                 $error = ErrorHandler::stop();
                 if (!$test || $error) {
                     // Error handling is kind of difficult when it comes to SSL
@@ -290,9 +290,9 @@ class Socket implements HttpAdapter, StreamInterface
                     }
                     $this->close();
 
-                    if ((! $errorString) && $this->config['sslverifypeer']) {
+                    if ((!$errorString) && $this->config['sslverifypeer']) {
                         // There's good chance our error is due to sslcapath not being properly set
-                        if (! ($this->config['sslcafile'] || $this->config['sslcapath'])) {
+                        if (!($this->config['sslcafile'] || $this->config['sslcapath'])) {
                             $errorString = 'make sure the "sslcafile" or "sslcapath" option are properly set for the environment.';
                         } elseif ($this->config['sslcafile'] && !is_file($this->config['sslcafile'])) {
                             $errorString = 'make sure the "sslcafile" option points to a valid SSL certificate file';
@@ -326,18 +326,18 @@ class Socket implements HttpAdapter, StreamInterface
     /**
      * Send request to the remote server
      *
-     * @param string        $method
+     * @param string $method
      * @param \Zend\Uri\Uri $uri
-     * @param string        $httpVer
-     * @param array         $headers
-     * @param string        $body
+     * @param string $httpVer
+     * @param array $headers
+     * @param string $body
      * @throws AdapterException\RuntimeException
      * @return string Request as string
      */
     public function write($method, $uri, $httpVer = '1.1', $headers = array(), $body = '')
     {
         // Make sure we're properly connected
-        if (! $this->socket) {
+        if (!$this->socket) {
             throw new AdapterException\RuntimeException('Trying to write but we are not connected');
         }
 
@@ -372,7 +372,7 @@ class Socket implements HttpAdapter, StreamInterface
 
         // Send the request
         ErrorHandler::start();
-        $test  = fwrite($this->socket, $request);
+        $test = fwrite($this->socket, $request);
         $error = ErrorHandler::stop();
         if (false === $test) {
             throw new AdapterException\RuntimeException('Error writing request to server', 0, $error);
@@ -411,7 +411,7 @@ class Socket implements HttpAdapter, StreamInterface
 
         $this->_checkSocketReadTimeout();
 
-        $responseObj= Response::fromString($response);
+        $responseObj = Response::fromString($response);
 
         $statusCode = $responseObj->getStatusCode();
 
@@ -428,7 +428,8 @@ class Socket implements HttpAdapter, StreamInterface
          * to have a body - stop reading here
          */
         if ($statusCode == 304 || $statusCode == 204 ||
-            $this->method == \Zend\Http\Request::METHOD_HEAD) {
+            $this->method == \Zend\Http\Request::METHOD_HEAD
+        ) {
             // Close the connection if requested to do so by the server
             $connection = $headers->get('connection');
             if ($connection && $connection->getFieldValue() == 'close') {
@@ -443,14 +444,14 @@ class Socket implements HttpAdapter, StreamInterface
         if ($transferEncoding !== false) {
             if (strtolower($transferEncoding->getFieldValue()) == 'chunked') {
                 do {
-                    $line  = fgets($this->socket);
+                    $line = fgets($this->socket);
                     $this->_checkSocketReadTimeout();
 
                     $chunk = $line;
 
                     // Figure out the next chunk size
                     $chunksize = trim($line);
-                    if (! ctype_xdigit($chunksize)) {
+                    if (!ctype_xdigit($chunksize)) {
                         $this->close();
                         throw new AdapterException\RuntimeException('Invalid chunk size "' .
                             $chunksize . '" unable to read chunked body');
@@ -481,7 +482,7 @@ class Socket implements HttpAdapter, StreamInterface
                             }
                             $chunk .= $line;
                         }
-                    } while (! feof($this->socket));
+                    } while (!feof($this->socket));
 
                     ErrorHandler::start();
                     $chunk .= fgets($this->socket);
@@ -503,7 +504,7 @@ class Socket implements HttpAdapter, StreamInterface
             if ($this->outStream) {
                 $response = str_ireplace("Transfer-Encoding: chunked\r\n", '', $response);
             }
-        // Else, if we got the content-length header, read this number of bytes
+            // Else, if we got the content-length header, read this number of bytes
         } elseif ($contentLength !== false) {
             // If we got more than one Content-Length header (see ZF-9404) use
             // the last value sent
@@ -538,7 +539,7 @@ class Socket implements HttpAdapter, StreamInterface
                 }
             }
 
-        // Fallback: just read the response until EOF
+            // Fallback: just read the response until EOF
         } else {
             do {
                 if ($this->outStream) {
@@ -625,7 +626,7 @@ class Socket implements HttpAdapter, StreamInterface
      */
     public function __destruct()
     {
-        if (! $this->config['persistent']) {
+        if (!$this->config['persistent']) {
             if ($this->socket) {
                 $this->close();
             }

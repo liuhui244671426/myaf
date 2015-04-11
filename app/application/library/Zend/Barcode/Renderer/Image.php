@@ -23,7 +23,7 @@ class Image extends AbstractRenderer
      */
     protected $allowedImageType = array('png',
         'jpeg',
-        'gif'  );
+        'gif');
 
     /**
      * Image format
@@ -191,7 +191,7 @@ class Image extends AbstractRenderer
      */
     protected function initRenderer()
     {
-        $barcodeWidth  = $this->barcode->getWidth(true);
+        $barcodeWidth = $this->barcode->getWidth(true);
         $barcodeHeight = $this->barcode->getHeight(true);
 
         if (null === $this->resource) {
@@ -333,7 +333,7 @@ class Image extends AbstractRenderer
             $points[2][0] + $this->leftOffset,
             $points[2][1] + $this->topOffset,
             $points[3][0] + $this->leftOffset,
-            $points[3][1] + $this->topOffset,   );
+            $points[3][1] + $this->topOffset,);
 
         $allocatedColor = imagecolorallocate(
             $this->resource,

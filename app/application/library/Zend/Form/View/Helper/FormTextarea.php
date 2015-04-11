@@ -21,18 +21,18 @@ class FormTextarea extends AbstractHelper
      */
     protected $validTagAttributes = array(
         'autocomplete' => true,
-        'autofocus'    => true,
-        'cols'         => true,
-        'dirname'      => true,
-        'disabled'     => true,
-        'form'         => true,
-        'maxlength'    => true,
-        'name'         => true,
-        'placeholder'  => true,
-        'readonly'     => true,
-        'required'     => true,
-        'rows'         => true,
-        'wrap'         => true,
+        'autofocus' => true,
+        'cols' => true,
+        'dirname' => true,
+        'disabled' => true,
+        'form' => true,
+        'maxlength' => true,
+        'name' => true,
+        'placeholder' => true,
+        'readonly' => true,
+        'required' => true,
+        'rows' => true,
+        'wrap' => true,
     );
 
     /**
@@ -61,7 +61,7 @@ class FormTextarea extends AbstractHelper
      */
     public function render(ElementInterface $element)
     {
-        $name   = $element->getName();
+        $name = $element->getName();
         if (empty($name) && $name !== 0) {
             throw new Exception\DomainException(sprintf(
                 '%s requires that the element has an assigned name; none discovered',
@@ -69,10 +69,10 @@ class FormTextarea extends AbstractHelper
             ));
         }
 
-        $attributes         = $element->getAttributes();
+        $attributes = $element->getAttributes();
         $attributes['name'] = $name;
-        $content            = (string) $element->getValue();
-        $escapeHtml         = $this->getEscapeHtmlHelper();
+        $content = (string)$element->getValue();
+        $escapeHtml = $this->getEscapeHtmlHelper();
 
         return sprintf(
             '<textarea %s>%s</textarea>',

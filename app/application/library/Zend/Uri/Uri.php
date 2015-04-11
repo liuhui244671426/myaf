@@ -20,10 +20,10 @@ class Uri implements UriInterface
     /**
      * Character classes defined in RFC-3986
      */
-    const CHAR_UNRESERVED   = 'a-zA-Z0-9_\-\.~';
-    const CHAR_GEN_DELIMS   = ':\/\?#\[\]@';
-    const CHAR_SUB_DELIMS   = '!\$&\'\(\)\*\+,;=';
-    const CHAR_RESERVED     = ':\/\?#\[\]@!\$&\'\(\)\*\+,;=';
+    const CHAR_UNRESERVED = 'a-zA-Z0-9_\-\.~';
+    const CHAR_GEN_DELIMS = ':\/\?#\[\]@';
+    const CHAR_SUB_DELIMS = '!\$&\'\(\)\*\+,;=';
+    const CHAR_RESERVED = ':\/\?#\[\]@!\$&\'\(\)\*\+,;=';
     /**
      * Not in the spec - those characters have special meaning in urlencoded query parameters
      */
@@ -36,18 +36,18 @@ class Uri implements UriInterface
      * Place 1 or 0 in the different positions for enable or disable the part.
      * Finally use a hexadecimal representation.
      */
-    const HOST_IPV4                           = 0x01; //00001
-    const HOST_IPV6                           = 0x02; //00010
-    const HOST_IPVFUTURE                      = 0x04; //00100
-    const HOST_IPVANY                         = 0x07; //00111
-    const HOST_DNS                            = 0x08; //01000
-    const HOST_DNS_OR_IPV4                    = 0x09; //01001
-    const HOST_DNS_OR_IPV6                    = 0x0A; //01010
-    const HOST_DNS_OR_IPV4_OR_IPV6            = 0x0B; //01011
-    const HOST_DNS_OR_IPVANY                  = 0x0F; //01111
-    const HOST_REGNAME                        = 0x10; //10000
+    const HOST_IPV4 = 0x01; //00001
+    const HOST_IPV6 = 0x02; //00010
+    const HOST_IPVFUTURE = 0x04; //00100
+    const HOST_IPVANY = 0x07; //00111
+    const HOST_DNS = 0x08; //01000
+    const HOST_DNS_OR_IPV4 = 0x09; //01001
+    const HOST_DNS_OR_IPV6 = 0x0A; //01010
+    const HOST_DNS_OR_IPV4_OR_IPV6 = 0x0B; //01011
+    const HOST_DNS_OR_IPVANY = 0x0F; //01111
+    const HOST_REGNAME = 0x10; //10000
     const HOST_DNS_OR_IPV4_OR_IPV6_OR_REGNAME = 0x1B; //11011
-    const HOST_ALL                            = 0x1F; //11111
+    const HOST_ALL = 0x1F; //11111
 
     /**
      * URI scheme
@@ -212,7 +212,7 @@ class Uri implements UriInterface
             return true;
         }
 
-        if (! ($this->query || $this->fragment)) {
+        if (!($this->query || $this->fragment)) {
             // No host, path, query or fragment - this is not a valid URI
             return false;
         }
@@ -239,7 +239,7 @@ class Uri implements UriInterface
             return true;
         }
 
-        if (! ($this->query || $this->fragment)) {
+        if (!($this->query || $this->fragment)) {
             // No host, path, query or fragment - this is not a valid URI
             return false;
         }
@@ -290,15 +290,15 @@ class Uri implements UriInterface
         // Capture authority part
         if (preg_match('|^//([^/\?#]*)|', $uri, $match)) {
             $authority = $match[1];
-            $uri       = substr($uri, strlen($match[0]));
+            $uri = substr($uri, strlen($match[0]));
 
             // Split authority into userInfo and host
             if (strpos($authority, '@') !== false) {
                 // The userInfo can also contain '@' symbols; split $authority
                 // into segments, and set it to the last segment.
-                $segments  = explode('@', $authority);
+                $segments = explode('@', $authority);
                 $authority = array_pop($segments);
-                $userInfo  = implode('@', $segments);
+                $userInfo = implode('@', $segments);
                 unset($segments);
                 $this->setUserInfo($userInfo);
             }
@@ -308,7 +308,7 @@ class Uri implements UriInterface
                 $portLength = strlen($matches[0]);
                 $port = substr($matches[0], 1);
 
-                $this->setPort((int) $port);
+                $this->setPort((int)$port);
                 $authority = substr($authority, 0, -$portLength);
             }
 
@@ -478,7 +478,7 @@ class Uri implements UriInterface
             $this->setPath(static::removePathDotSegments($this->getPath()));
         } else {
             $basePath = $baseUri->getPath();
-            $relPath  = $this->getPath();
+            $relPath = $this->getPath();
             if (!$relPath) {
                 $this->setPath($basePath);
                 if (!$this->getQuery()) {
@@ -528,21 +528,21 @@ class Uri implements UriInterface
         $this->normalize();
         $baseUri->normalize();
 
-        $host     = $this->getHost();
+        $host = $this->getHost();
         $baseHost = $baseUri->getHost();
         if ($host && $baseHost && ($host != $baseHost)) {
             // Not the same hostname
             return $this;
         }
 
-        $port     = $this->getPort();
+        $port = $this->getPort();
         $basePort = $baseUri->getPort();
         if ($port && $basePort && ($port != $basePort)) {
             // Not the same port
             return $this;
         }
 
-        $scheme     = $this->getScheme();
+        $scheme = $this->getScheme();
         $baseScheme = $baseUri->getScheme();
         if ($scheme && $baseScheme && ($scheme != $baseScheme)) {
             // Not the same scheme (e.g. HTTP vs. HTTPS)
@@ -551,8 +551,8 @@ class Uri implements UriInterface
 
         // Remove host, port and scheme
         $this->setHost(null)
-             ->setPort(null)
-             ->setScheme(null);
+            ->setPort(null)
+            ->setScheme(null);
 
         // Is path the same?
         if ($this->getPath() == $baseUri->getPath()) {
@@ -848,7 +848,7 @@ class Uri implements UriInterface
             return false;
         }
 
-        return (bool) preg_match('/^[A-Za-z][A-Za-z0-9\-\.+]*$/', $scheme);
+        return (bool)preg_match('/^[A-Za-z][A-Za-z0-9\-\.+]*$/', $scheme);
     }
 
     /**
@@ -860,7 +860,7 @@ class Uri implements UriInterface
     public static function validateUserInfo($userInfo)
     {
         $regex = '/^(?:[' . self::CHAR_UNRESERVED . self::CHAR_SUB_DELIMS . ':]+|%[A-Fa-f0-9]{2})*$/';
-        return (bool) preg_match($regex, $userInfo);
+        return (bool)preg_match($regex, $userInfo);
     }
 
     /**
@@ -876,7 +876,7 @@ class Uri implements UriInterface
      * or even more complex names. This is different (and is much more loose)
      * from what is commonly accepted as valid HTTP URLs for example.
      *
-     * @param  string  $host
+     * @param  string $host
      * @param  int $allowed bitmask of allowed host types
      * @return bool
      */
@@ -923,7 +923,7 @@ class Uri implements UriInterface
         }
 
         if ($port) {
-            $port = (int) $port;
+            $port = (int)$port;
             if ($port < 1 || $port > 0xffff) {
                 return false;
             }
@@ -940,10 +940,10 @@ class Uri implements UriInterface
      */
     public static function validatePath($path)
     {
-        $pchar   = '(?:[' . self::CHAR_UNRESERVED . ':@&=\+\$,]+|%[A-Fa-f0-9]{2})*';
+        $pchar = '(?:[' . self::CHAR_UNRESERVED . ':@&=\+\$,]+|%[A-Fa-f0-9]{2})*';
         $segment = $pchar . "(?:;{$pchar})*";
-        $regex   = "/^{$segment}(?:\/{$segment})*$/";
-        return (bool) preg_match($regex, $path);
+        $regex = "/^{$segment}(?:\/{$segment})*$/";
+        return (bool)preg_match($regex, $path);
     }
 
     /**
@@ -961,7 +961,7 @@ class Uri implements UriInterface
     public static function validateQueryFragment($input)
     {
         $regex = '/^(?:[' . self::CHAR_UNRESERVED . self::CHAR_SUB_DELIMS . ':@\/\?]+|%[A-Fa-f0-9]{2})*$/';
-        return (bool) preg_match($regex, $input);
+        return (bool)preg_match($regex, $input);
     }
 
     /**
@@ -980,7 +980,7 @@ class Uri implements UriInterface
             ));
         }
 
-        $regex   = '/(?:[^' . self::CHAR_UNRESERVED . self::CHAR_SUB_DELIMS . '%:]|%(?![A-Fa-f0-9]{2}))/';
+        $regex = '/(?:[^' . self::CHAR_UNRESERVED . self::CHAR_SUB_DELIMS . '%:]|%(?![A-Fa-f0-9]{2}))/';
         $escaper = static::getEscaper();
         $replace = function ($match) use ($escaper) {
             return $escaper->escapeUrl($match[0]);
@@ -1008,7 +1008,7 @@ class Uri implements UriInterface
             ));
         }
 
-        $regex   = '/(?:[^' . self::CHAR_UNRESERVED . ':@&=\+\$,\/;%]+|%(?![A-Fa-f0-9]{2}))/';
+        $regex = '/(?:[^' . self::CHAR_UNRESERVED . ':@&=\+\$,\/;%]+|%(?![A-Fa-f0-9]{2}))/';
         $escaper = static::getEscaper();
         $replace = function ($match) use ($escaper) {
             return $escaper->escapeUrl($match[0]);
@@ -1037,7 +1037,7 @@ class Uri implements UriInterface
             ));
         }
 
-        $regex   = '/(?:[^' . self::CHAR_UNRESERVED . self::CHAR_SUB_DELIMS . '%:@\/\?]+|%(?![A-Fa-f0-9]{2}))/';
+        $regex = '/(?:[^' . self::CHAR_UNRESERVED . self::CHAR_SUB_DELIMS . '%:@\/\?]+|%(?![A-Fa-f0-9]{2}))/';
         $escaper = static::getEscaper();
         $replace = function ($match) use ($escaper) {
             return $escaper->escapeUrl($match[0]);
@@ -1062,7 +1062,7 @@ class Uri implements UriInterface
      */
     public static function parseScheme($uriString)
     {
-        if (! is_string($uriString)) {
+        if (!is_string($uriString)) {
             throw new Exception\InvalidArgumentException(sprintf(
                 'Expecting a string, got %s',
                 (is_object($uriString) ? get_class($uriString) : gettype($uriString))
@@ -1101,11 +1101,11 @@ class Uri implements UriInterface
                     $path = '/';
                     break;
                 case ($path == '/..'):
-                    $path   = '/';
+                    $path = '/';
                     $output = substr($output, 0, strrpos($output, '/', -1));
                     break;
                 case (substr($path, 0, 4) == '/../'):
-                    $path   = '/' . substr($path, 4);
+                    $path = '/' . substr($path, 4);
                     $output = substr($output, 0, strrpos($output, '/', -1));
                     break;
                 case (substr($path, 0, 3) == '/./'):
@@ -1126,7 +1126,7 @@ class Uri implements UriInterface
                     }
 
                     $output .= $seg;
-                    $path    = substr($path, strlen($seg));
+                    $path = substr($path, strlen($seg));
                     break;
             }
         }
@@ -1156,17 +1156,17 @@ class Uri implements UriInterface
     /**
      * Check if a host name is a valid IP address, depending on allowed IP address types
      *
-     * @param  string  $host
+     * @param  string $host
      * @param  int $allowed allowed address types
      * @return bool
      */
     protected static function isValidIpAddress($host, $allowed)
     {
         $validatorParams = array(
-            'allowipv4'      => (bool) ($allowed & self::HOST_IPV4),
-            'allowipv6'      => false,
+            'allowipv4' => (bool)($allowed & self::HOST_IPV4),
+            'allowipv6' => false,
             'allowipvfuture' => false,
-            'allowliteral'   => false,
+            'allowliteral' => false,
         );
 
         // Test only IPv4
@@ -1178,10 +1178,10 @@ class Uri implements UriInterface
 
         // IPv6 & IPvLiteral must be in literal format
         $validatorParams = array(
-            'allowipv4'      => false,
-            'allowipv6'      => (bool) ($allowed & self::HOST_IPV6),
-            'allowipvfuture' => (bool) ($allowed & self::HOST_IPVFUTURE),
-            'allowliteral'   => true,
+            'allowipv4' => false,
+            'allowipv6' => (bool)($allowed & self::HOST_IPV6),
+            'allowipvfuture' => (bool)($allowed & self::HOST_IPVFUTURE),
+            'allowliteral' => true,
         );
         static $regex = '/^\[.*\]$/';
         $validator->setOptions($validatorParams);
@@ -1212,7 +1212,7 @@ class Uri implements UriInterface
     protected static function isValidRegName($host)
     {
         $regex = '/^(?:[' . self::CHAR_UNRESERVED . self::CHAR_SUB_DELIMS . ':@\/\?]+|%[A-Fa-f0-9]{2})+$/';
-        return (bool) preg_match($regex, $host);
+        return (bool)preg_match($regex, $host);
     }
 
     /**
@@ -1256,7 +1256,7 @@ class Uri implements UriInterface
      * current port is default, it will be unset.
      *
      * @param  int $port
-     * @param  string  $scheme
+     * @param  string $scheme
      * @return int|null
      */
     protected static function normalizePort($port, $scheme = null)

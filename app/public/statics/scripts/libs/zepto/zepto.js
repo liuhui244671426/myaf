@@ -3,34 +3,37 @@
 //     (c) 2010-2012 Thomas Fuchs
 //     Zepto.js may be freely distributed under the MIT license.
 
-define(function(require,exports,module){
+define(function (require, exports, module) {
 
-    ;(function(undefined){
+    ;
+    (function (undefined) {
         if (String.prototype.trim === undefined) // fix for iOS 3.2
-            String.prototype.trim = function(){ return this.replace(/^\s+|\s+$/g, '') }
+            String.prototype.trim = function () {
+                return this.replace(/^\s+|\s+$/g, '')
+            }
 
         // For iOS 3.x
         // from https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/reduce
         if (Array.prototype.reduce === undefined)
-            Array.prototype.reduce = function(fun){
-                if(this === void 0 || this === null) throw new TypeError()
+            Array.prototype.reduce = function (fun) {
+                if (this === void 0 || this === null) throw new TypeError()
                 var t = Object(this), len = t.length >>> 0, k = 0, accumulator
-                if(typeof fun != 'function') throw new TypeError()
-                if(len == 0 && arguments.length == 1) throw new TypeError()
+                if (typeof fun != 'function') throw new TypeError()
+                if (len == 0 && arguments.length == 1) throw new TypeError()
 
-                if(arguments.length >= 2)
+                if (arguments.length >= 2)
                     accumulator = arguments[1]
                 else
-                    do{
-                        if(k in t){
+                    do {
+                        if (k in t) {
                             accumulator = t[k++]
                             break
                         }
-                        if(++k >= len) throw new TypeError()
+                        if (++k >= len) throw new TypeError()
                     } while (true)
 
-                while (k < len){
-                    if(k in t) accumulator = fun.call(undefined, accumulator, t[k], k, t)
+                while (k < len) {
+                    if (k in t) accumulator = fun.call(undefined, accumulator, t[k], k, t)
                     k++
                 }
                 return accumulator
@@ -42,12 +45,20 @@ define(function(require,exports,module){
 //     (c) 2010-2012 Thomas Fuchs
 //     Zepto.js may be freely distributed under the MIT license.
 
-    var Zepto = (function() {
+    var Zepto = (function () {
         var undefined, key, $, classList, emptyArray = [], slice = emptyArray.slice, filter = emptyArray.filter,
             document = window.document,
             elementDisplay = {}, classCache = {},
             getComputedStyle = document.defaultView.getComputedStyle,
-            cssNumber = { 'column-count': 1, 'columns': 1, 'font-weight': 1, 'line-height': 1,'opacity': 1, 'z-index': 1, 'zoom': 1 },
+            cssNumber = {
+                'column-count': 1,
+                'columns': 1,
+                'font-weight': 1,
+                'line-height': 1,
+                'opacity': 1,
+                'z-index': 1,
+                'zoom': 1
+            },
             fragmentRE = /^\s*<(\w+|!)[^>]*>/,
             tagExpanderRE = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/ig,
             rootNodeRE = /^(?:body|html)$/i,
@@ -55,7 +66,7 @@ define(function(require,exports,module){
         // special attributes that should be get/set via method calls
             methodAttributes = ['val', 'css', 'html', 'text', 'data', 'width', 'height', 'offset'],
 
-            adjacencyOperators = [ 'after', 'prepend', 'before', 'append' ],
+            adjacencyOperators = ['after', 'prepend', 'before', 'append'],
             table = document.createElement('table'),
             tableRow = document.createElement('tr'),
             containers = {
@@ -74,7 +85,7 @@ define(function(require,exports,module){
             camelize, uniq,
             tempParent = document.createElement('div')
 
-        zepto.matches = function(element, selector) {
+        zepto.matches = function (element, selector) {
             if (!element || element.nodeType !== 1) return false
             var matchesSelector = element.webkitMatchesSelector || element.mozMatchesSelector ||
                 element.oMatchesSelector || element.matchesSelector
@@ -89,22 +100,52 @@ define(function(require,exports,module){
 
         function type(obj) {
             return obj == null ? String(obj) :
-                class2type[toString.call(obj)] || "object"
+            class2type[toString.call(obj)] || "object"
         }
 
-        function isFunction(value) { return type(value) == "function" }
-        function isWindow(obj)     { return obj != null && obj == obj.window }
-        function isDocument(obj)   { return obj != null && obj.nodeType == obj.DOCUMENT_NODE }
-        function isObject(obj)     { return type(obj) == "object" }
+        function isFunction(value) {
+            return type(value) == "function"
+        }
+
+        function isWindow(obj) {
+            return obj != null && obj == obj.window
+        }
+
+        function isDocument(obj) {
+            return obj != null && obj.nodeType == obj.DOCUMENT_NODE
+        }
+
+        function isObject(obj) {
+            return type(obj) == "object"
+        }
+
         function isPlainObject(obj) {
             return isObject(obj) && !isWindow(obj) && obj.__proto__ == Object.prototype
         }
-        function isArray(value) { return value instanceof Array }
-        function likeArray(obj) { return typeof obj.length == 'number' }
 
-        function compact(array) { return filter.call(array, function(item){ return item != null }) }
-        function flatten(array) { return array.length > 0 ? $.fn.concat.apply([], array) : array }
-        camelize = function(str){ return str.replace(/-+(.)?/g, function(match, chr){ return chr ? chr.toUpperCase() : '' }) }
+        function isArray(value) {
+            return value instanceof Array
+        }
+
+        function likeArray(obj) {
+            return typeof obj.length == 'number'
+        }
+
+        function compact(array) {
+            return filter.call(array, function (item) {
+                return item != null
+            })
+        }
+
+        function flatten(array) {
+            return array.length > 0 ? $.fn.concat.apply([], array) : array
+        }
+
+        camelize = function (str) {
+            return str.replace(/-+(.)?/g, function (match, chr) {
+                return chr ? chr.toUpperCase() : ''
+            })
+        }
         function dasherize(str) {
             return str.replace(/::/g, '/')
                 .replace(/([A-Z]+)([A-Z][a-z])/g, '$1_$2')
@@ -112,7 +153,12 @@ define(function(require,exports,module){
                 .replace(/_/g, '-')
                 .toLowerCase()
         }
-        uniq = function(array){ return filter.call(array, function(item, idx){ return array.indexOf(item) == idx }) }
+
+        uniq = function (array) {
+            return filter.call(array, function (item, idx) {
+                return array.indexOf(item) == idx
+            })
+        }
 
         function classRE(name) {
             return name in classCache ?
@@ -139,7 +185,9 @@ define(function(require,exports,module){
         function children(element) {
             return 'children' in element ?
                 slice.call(element.children) :
-                $.map(element.childNodes, function(node){ if (node.nodeType == 1) return node })
+                $.map(element.childNodes, function (node) {
+                    if (node.nodeType == 1) return node
+                })
         }
 
         // `$.zepto.fragment` takes a html string and an optional tag name
@@ -147,19 +195,19 @@ define(function(require,exports,module){
         // The generated DOM nodes are returned as an array.
         // This function can be overriden in plugins for example to make
         // it compatible with browsers that don't support the DOM fully.
-        zepto.fragment = function(html, name, properties) {
+        zepto.fragment = function (html, name, properties) {
             if (html.replace) html = html.replace(tagExpanderRE, "<$1></$2>")
             if (name === undefined) name = fragmentRE.test(html) && RegExp.$1
             if (!(name in containers)) name = '*'
 
             var nodes, dom, container = containers[name]
             container.innerHTML = '' + html
-            dom = $.each(slice.call(container.childNodes), function(){
+            dom = $.each(slice.call(container.childNodes), function () {
                 container.removeChild(this)
             })
             if (isPlainObject(properties)) {
                 nodes = $(dom)
-                $.each(properties, function(key, value) {
+                $.each(properties, function (key, value) {
                     if (methodAttributes.indexOf(key) > -1) nodes[key](value)
                     else nodes.attr(key, value)
                 })
@@ -171,7 +219,7 @@ define(function(require,exports,module){
         // of nodes with `$.fn` and thus supplying all the Zepto functions
         // to the array. Note that `__proto__` is not supported on Internet
         // Explorer. This method can be overriden in plugins.
-        zepto.Z = function(dom, selector) {
+        zepto.Z = function (dom, selector) {
             dom = dom || []
             dom.__proto__ = $.fn
             dom.selector = selector || ''
@@ -180,7 +228,7 @@ define(function(require,exports,module){
 
         // `$.zepto.isZ` should return `true` if the given object is a Zepto
         // collection. This method can be overriden in plugins.
-        zepto.isZ = function(object) {
+        zepto.isZ = function (object) {
             return object instanceof zepto.Z
         }
 
@@ -188,7 +236,7 @@ define(function(require,exports,module){
         // takes a CSS selector and an optional context (and handles various
         // special cases).
         // This method can be overriden in plugins.
-        zepto.init = function(selector, context) {
+        zepto.init = function (selector, context) {
             // If nothing given, return an empty Zepto collection
             if (!selector) return zepto.Z()
             // If a function is given, call it when the DOM is ready
@@ -219,7 +267,7 @@ define(function(require,exports,module){
         // function just call `$.zepto.init, which makes the implementation
         // details of selecting nodes and creating Zepto collections
         // patchable in plugins.
-        $ = function(selector, context){
+        $ = function (selector, context) {
             return zepto.init(selector, context)
         }
 
@@ -237,20 +285,22 @@ define(function(require,exports,module){
 
         // Copy all but undefined properties from one or more
         // objects to the `target` object.
-        $.extend = function(target){
+        $.extend = function (target) {
             var deep, args = slice.call(arguments, 1)
             if (typeof target == 'boolean') {
                 deep = target
                 target = args.shift()
             }
-            args.forEach(function(arg){ extend(target, arg, deep) })
+            args.forEach(function (arg) {
+                extend(target, arg, deep)
+            })
             return target
         }
 
         // `$.zepto.qsa` is Zepto's CSS selector implementation which
         // uses `document.querySelectorAll` and optimizes for some special cases, like `#id`.
         // This method can be overriden in plugins.
-        zepto.qsa = function(element, selector){
+        zepto.qsa = function (element, selector) {
             var found
             return (isDocument(element) && idSelectorRE.test(selector)) ?
                 ( (found = element.getElementById(RegExp.$1)) ? [found] : [] ) :
@@ -266,7 +316,7 @@ define(function(require,exports,module){
             return selector === undefined ? $(nodes) : $(nodes).filter(selector)
         }
 
-        $.contains = function(parent, node) {
+        $.contains = function (parent, node) {
             return parent !== node && parent.contains(node)
         }
 
@@ -279,9 +329,9 @@ define(function(require,exports,module){
         }
 
         // access className property while respecting SVGAnimatedString
-        function className(node, value){
+        function className(node, value) {
             var klass = node.className,
-                svg   = klass && klass.baseVal !== undefined
+                svg = klass && klass.baseVal !== undefined
 
             if (value === undefined) return svg ? klass.baseVal : klass
             svg ? (klass.baseVal = value) : (node.className = value)
@@ -298,14 +348,14 @@ define(function(require,exports,module){
             var num
             try {
                 return value ?
-                    value == "true" ||
-                        ( value == "false" ? false :
-                            value == "null" ? null :
-                                !isNaN(num = Number(value)) ? num :
-                                    /^[\[\{]/.test(value) ? $.parseJSON(value) :
-                                        value )
+                value == "true" ||
+                ( value == "false" ? false :
+                    value == "null" ? null :
+                        !isNaN(num = Number(value)) ? num :
+                            /^[\[\{]/.test(value) ? $.parseJSON(value) :
+                                value )
                     : value
-            } catch(e) {
+            } catch (e) {
                 return value
             }
         }
@@ -316,25 +366,27 @@ define(function(require,exports,module){
         $.isArray = isArray
         $.isPlainObject = isPlainObject
 
-        $.isEmptyObject = function(obj) {
+        $.isEmptyObject = function (obj) {
             var name
             for (name in obj) return false
             return true
         }
 
-        $.inArray = function(elem, array, i){
+        $.inArray = function (elem, array, i) {
             return emptyArray.indexOf.call(array, elem, i)
         }
 
         $.camelCase = camelize
-        $.trim = function(str) { return str.trim() }
+        $.trim = function (str) {
+            return str.trim()
+        }
 
         // plugin compatibility
         $.uuid = 0
-        $.support = { }
-        $.expr = { }
+        $.support = {}
+        $.expr = {}
 
-        $.map = function(elements, callback){
+        $.map = function (elements, callback) {
             var value, values = [], i, key
             if (likeArray(elements))
                 for (i = 0; i < elements.length; i++) {
@@ -349,7 +401,7 @@ define(function(require,exports,module){
             return flatten(values)
         }
 
-        $.each = function(elements, callback){
+        $.each = function (elements, callback) {
             var i, key
             if (likeArray(elements)) {
                 for (i = 0; i < elements.length; i++)
@@ -362,15 +414,15 @@ define(function(require,exports,module){
             return elements
         }
 
-        $.grep = function(elements, callback){
+        $.grep = function (elements, callback) {
             return filter.call(elements, callback)
         }
 
         if (window.JSON) $.parseJSON = JSON.parse
 
         // Populate the class2type map
-        $.each("Boolean Number String Function Array Date RegExp Object Error".split(" "), function(i, name) {
-            class2type[ "[object " + name + "]" ] = name.toLowerCase()
+        $.each("Boolean Number String Function Array Date RegExp Object Error".split(" "), function (i, name) {
+            class2type["[object " + name + "]"] = name.toLowerCase()
         })
 
         // Define methods that will be available on all
@@ -387,106 +439,114 @@ define(function(require,exports,module){
 
             // `map` and `slice` in the jQuery API work differently
             // from their array counterparts
-            map: function(fn){
-                return $($.map(this, function(el, i){ return fn.call(el, i, el) }))
+            map: function (fn) {
+                return $($.map(this, function (el, i) {
+                    return fn.call(el, i, el)
+                }))
             },
-            slice: function(){
+            slice: function () {
                 return $(slice.apply(this, arguments))
             },
 
-            ready: function(callback){
+            ready: function (callback) {
                 if (readyRE.test(document.readyState)) callback($)
-                else document.addEventListener('DOMContentLoaded', function(){ callback($) }, false)
+                else document.addEventListener('DOMContentLoaded', function () {
+                    callback($)
+                }, false)
                 return this
             },
-            get: function(idx){
+            get: function (idx) {
                 return idx === undefined ? slice.call(this) : this[idx >= 0 ? idx : idx + this.length]
             },
-            toArray: function(){ return this.get() },
-            size: function(){
+            toArray: function () {
+                return this.get()
+            },
+            size: function () {
                 return this.length
             },
-            remove: function(){
-                return this.each(function(){
+            remove: function () {
+                return this.each(function () {
                     if (this.parentNode != null)
                         this.parentNode.removeChild(this)
                 })
             },
-            each: function(callback){
-                emptyArray.every.call(this, function(el, idx){
+            each: function (callback) {
+                emptyArray.every.call(this, function (el, idx) {
                     return callback.call(el, idx, el) !== false
                 })
                 return this
             },
-            filter: function(selector){
+            filter: function (selector) {
                 if (isFunction(selector)) return this.not(this.not(selector))
-                return $(filter.call(this, function(element){
+                return $(filter.call(this, function (element) {
                     return zepto.matches(element, selector)
                 }))
             },
-            add: function(selector,context){
-                return $(uniq(this.concat($(selector,context))))
+            add: function (selector, context) {
+                return $(uniq(this.concat($(selector, context))))
             },
-            is: function(selector){
+            is: function (selector) {
                 return this.length > 0 && zepto.matches(this[0], selector)
             },
-            not: function(selector){
-                var nodes=[]
+            not: function (selector) {
+                var nodes = []
                 if (isFunction(selector) && selector.call !== undefined)
-                    this.each(function(idx){
-                        if (!selector.call(this,idx)) nodes.push(this)
+                    this.each(function (idx) {
+                        if (!selector.call(this, idx)) nodes.push(this)
                     })
                 else {
                     var excludes = typeof selector == 'string' ? this.filter(selector) :
                         (likeArray(selector) && isFunction(selector.item)) ? slice.call(selector) : $(selector)
-                    this.forEach(function(el){
+                    this.forEach(function (el) {
                         if (excludes.indexOf(el) < 0) nodes.push(el)
                     })
                 }
                 return $(nodes)
             },
-            has: function(selector){
-                return this.filter(function(){
+            has: function (selector) {
+                return this.filter(function () {
                     return isObject(selector) ?
                         $.contains(this, selector) :
                         $(this).find(selector).size()
                 })
             },
-            eq: function(idx){
-                return idx === -1 ? this.slice(idx) : this.slice(idx, + idx + 1)
+            eq: function (idx) {
+                return idx === -1 ? this.slice(idx) : this.slice(idx, +idx + 1)
             },
-            first: function(){
+            first: function () {
                 var el = this[0]
                 return el && !isObject(el) ? el : $(el)
             },
-            last: function(){
+            last: function () {
                 var el = this[this.length - 1]
                 return el && !isObject(el) ? el : $(el)
             },
-            find: function(selector){
+            find: function (selector) {
                 var result, $this = this
                 if (typeof selector == 'object')
-                    result = $(selector).filter(function(){
+                    result = $(selector).filter(function () {
                         var node = this
-                        return emptyArray.some.call($this, function(parent){
+                        return emptyArray.some.call($this, function (parent) {
                             return $.contains(parent, node)
                         })
                     })
                 else if (this.length == 1) result = $(zepto.qsa(this[0], selector))
-                else result = this.map(function(){ return zepto.qsa(this, selector) })
+                else result = this.map(function () {
+                        return zepto.qsa(this, selector)
+                    })
                 return result
             },
-            closest: function(selector, context){
+            closest: function (selector, context) {
                 var node = this[0], collection = false
                 if (typeof selector == 'object') collection = $(selector)
                 while (node && !(collection ? collection.indexOf(node) >= 0 : zepto.matches(node, selector)))
                     node = node !== context && !isDocument(node) && node.parentNode
                 return $(node)
             },
-            parents: function(selector){
+            parents: function (selector) {
                 var ancestors = [], nodes = this
                 while (nodes.length > 0)
-                    nodes = $.map(nodes, function(node){
+                    nodes = $.map(nodes, function (node) {
                         if ((node = node.parentNode) && !isDocument(node) && ancestors.indexOf(node) < 0) {
                             ancestors.push(node)
                             return node
@@ -494,51 +554,61 @@ define(function(require,exports,module){
                     })
                 return filtered(ancestors, selector)
             },
-            parent: function(selector){
+            parent: function (selector) {
                 return filtered(uniq(this.pluck('parentNode')), selector)
             },
-            children: function(selector){
-                return filtered(this.map(function(){ return children(this) }), selector)
-            },
-            contents: function() {
-                return this.map(function() { return slice.call(this.childNodes) })
-            },
-            siblings: function(selector){
-                return filtered(this.map(function(i, el){
-                    return filter.call(children(el.parentNode), function(child){ return child!==el })
+            children: function (selector) {
+                return filtered(this.map(function () {
+                    return children(this)
                 }), selector)
             },
-            empty: function(){
-                return this.each(function(){ this.innerHTML = '' })
+            contents: function () {
+                return this.map(function () {
+                    return slice.call(this.childNodes)
+                })
+            },
+            siblings: function (selector) {
+                return filtered(this.map(function (i, el) {
+                    return filter.call(children(el.parentNode), function (child) {
+                        return child !== el
+                    })
+                }), selector)
+            },
+            empty: function () {
+                return this.each(function () {
+                    this.innerHTML = ''
+                })
             },
             // `pluck` is borrowed from Prototype.js
-            pluck: function(property){
-                return $.map(this, function(el){ return el[property] })
+            pluck: function (property) {
+                return $.map(this, function (el) {
+                    return el[property]
+                })
             },
-            show: function(){
-                return this.each(function(){
+            show: function () {
+                return this.each(function () {
                     this.style.display == "none" && (this.style.display = null)
                     if (getComputedStyle(this, '').getPropertyValue("display") == "none")
                         this.style.display = defaultDisplay(this.nodeName)
                 })
             },
-            replaceWith: function(newContent){
+            replaceWith: function (newContent) {
                 return this.before(newContent).remove()
             },
-            wrap: function(structure){
+            wrap: function (structure) {
                 var func = isFunction(structure)
                 if (this[0] && !func)
-                    var dom   = $(structure).get(0),
+                    var dom = $(structure).get(0),
                         clone = dom.parentNode || this.length > 1
 
-                return this.each(function(index){
+                return this.each(function (index) {
                     $(this).wrapAll(
                         func ? structure.call(this, index) :
                             clone ? dom.cloneNode(true) : dom
                     )
                 })
             },
-            wrapAll: function(structure){
+            wrapAll: function (structure) {
                 if (this[0]) {
                     $(this[0]).before(structure = $(structure))
                     var children
@@ -548,98 +618,111 @@ define(function(require,exports,module){
                 }
                 return this
             },
-            wrapInner: function(structure){
+            wrapInner: function (structure) {
                 var func = isFunction(structure)
-                return this.each(function(index){
+                return this.each(function (index) {
                     var self = $(this), contents = self.contents(),
-                        dom  = func ? structure.call(this, index) : structure
+                        dom = func ? structure.call(this, index) : structure
                     contents.length ? contents.wrapAll(dom) : self.append(dom)
                 })
             },
-            unwrap: function(){
-                this.parent().each(function(){
+            unwrap: function () {
+                this.parent().each(function () {
                     $(this).replaceWith($(this).children())
                 })
                 return this
             },
-            clone: function(){
-                return this.map(function(){ return this.cloneNode(true) })
-            },
-            hide: function(){
-                return this.css("display", "none")
-            },
-            toggle: function(setting){
-                return this.each(function(){
-                    var el = $(this)
-                        ;(setting === undefined ? el.css("display") == "none" : setting) ? el.show() : el.hide()
+            clone: function () {
+                return this.map(function () {
+                    return this.cloneNode(true)
                 })
             },
-            prev: function(selector){ return $(this.pluck('previousElementSibling')).filter(selector || '*') },
-            next: function(selector){ return $(this.pluck('nextElementSibling')).filter(selector || '*') },
-            html: function(html){
+            hide: function () {
+                return this.css("display", "none")
+            },
+            toggle: function (setting) {
+                return this.each(function () {
+                    var el = $(this)
+                        ;
+                    (setting === undefined ? el.css("display") == "none" : setting) ? el.show() : el.hide()
+                })
+            },
+            prev: function (selector) {
+                return $(this.pluck('previousElementSibling')).filter(selector || '*')
+            },
+            next: function (selector) {
+                return $(this.pluck('nextElementSibling')).filter(selector || '*')
+            },
+            html: function (html) {
                 return html === undefined ?
                     (this.length > 0 ? this[0].innerHTML : null) :
-                    this.each(function(idx){
+                    this.each(function (idx) {
                         var originHtml = this.innerHTML
-                        $(this).empty().append( funcArg(this, html, idx, originHtml) )
+                        $(this).empty().append(funcArg(this, html, idx, originHtml))
                     })
             },
-            text: function(text){
+            text: function (text) {
                 return text === undefined ?
                     (this.length > 0 ? this[0].textContent : null) :
-                    this.each(function(){ this.textContent = text })
+                    this.each(function () {
+                        this.textContent = text
+                    })
             },
-            attr: function(name, value){
+            attr: function (name, value) {
                 var result
                 return (typeof name == 'string' && value === undefined) ?
                     (this.length == 0 || this[0].nodeType !== 1 ? undefined :
                         (name == 'value' && this[0].nodeName == 'INPUT') ? this.val() :
                             (!(result = this[0].getAttribute(name)) && name in this[0]) ? this[0][name] : result
-                        ) :
-                    this.each(function(idx){
+                    ) :
+                    this.each(function (idx) {
                         if (this.nodeType !== 1) return
                         if (isObject(name)) for (key in name) setAttribute(this, key, name[key])
                         else setAttribute(this, name, funcArg(this, value, idx, this.getAttribute(name)))
                     })
             },
-            removeAttr: function(name){
-                return this.each(function(){ this.nodeType === 1 && setAttribute(this, name) })
+            removeAttr: function (name) {
+                return this.each(function () {
+                    this.nodeType === 1 && setAttribute(this, name)
+                })
             },
-            prop: function(name, value){
+            prop: function (name, value) {
                 return (value === undefined) ?
                     (this[0] && this[0][name]) :
-                    this.each(function(idx){
+                    this.each(function (idx) {
                         this[name] = funcArg(this, value, idx, this[name])
                     })
             },
-            data: function(name, value){
+            data: function (name, value) {
                 var data = this.attr('data-' + dasherize(name), value)
                 return data !== null ? deserializeValue(data) : undefined
             },
-            val: function(value){
+            val: function (value) {
                 return (value === undefined) ?
                     (this[0] && (this[0].multiple ?
-                        $(this[0]).find('option').filter(function(o){ return this.selected }).pluck('value') :
+                        $(this[0]).find('option').filter(function (o) {
+                            return this.selected
+                        }).pluck('value') :
                         this[0].value)
-                        ) :
-                    this.each(function(idx){
+                    ) :
+                    this.each(function (idx) {
                         this.value = funcArg(this, value, idx, this.value)
                     })
             },
-            offset: function(coordinates){
-                if (coordinates) return this.each(function(index){
+            offset: function (coordinates) {
+                if (coordinates) return this.each(function (index) {
                     var $this = $(this),
                         coords = funcArg(this, coordinates, index, $this.offset()),
                         parentOffset = $this.offsetParent().offset(),
                         props = {
-                            top:  coords.top  - parentOffset.top,
+                            top: coords.top - parentOffset.top,
                             left: coords.left - parentOffset.left
                         }
 
                     if ($this.css('position') == 'static') props['position'] = 'relative'
                     $this.css(props)
                 })
-                if (this.length==0) return null
+                if (this.length == 0) return null
                 var obj = this[0].getBoundingClientRect()
                 return {
                     left: obj.left + window.pageXOffset,
@@ -648,95 +731,101 @@ define(function(require,exports,module){
                     height: Math.round(obj.height)
                 }
             },
-            css: function(property, value){
+            css: function (property, value) {
                 if (arguments.length < 2 && typeof property == 'string')
                     return this[0] && (this[0].style[camelize(property)] || getComputedStyle(this[0], '').getPropertyValue(property))
 
                 var css = ''
                 if (type(property) == 'string') {
                     if (!value && value !== 0)
-                        this.each(function(){ this.style.removeProperty(dasherize(property)) })
+                        this.each(function () {
+                            this.style.removeProperty(dasherize(property))
+                        })
                     else
                         css = dasherize(property) + ":" + maybeAddPx(property, value)
                 } else {
                     for (key in property)
                         if (!property[key] && property[key] !== 0)
-                            this.each(function(){ this.style.removeProperty(dasherize(key)) })
+                            this.each(function () {
+                                this.style.removeProperty(dasherize(key))
+                            })
                         else
                             css += dasherize(key) + ':' + maybeAddPx(key, property[key]) + ';'
                 }
 
-                return this.each(function(){ this.style.cssText += ';' + css })
+                return this.each(function () {
+                    this.style.cssText += ';' + css
+                })
             },
-            index: function(element){
+            index: function (element) {
                 return element ? this.indexOf($(element)[0]) : this.parent().children().indexOf(this[0])
             },
-            hasClass: function(name){
-                return emptyArray.some.call(this, function(el){
+            hasClass: function (name) {
+                return emptyArray.some.call(this, function (el) {
                     return this.test(className(el))
                 }, classRE(name))
             },
-            addClass: function(name){
-                return this.each(function(idx){
+            addClass: function (name) {
+                return this.each(function (idx) {
                     classList = []
                     var cls = className(this), newName = funcArg(this, name, idx, cls)
-                    newName.split(/\s+/g).forEach(function(klass){
+                    newName.split(/\s+/g).forEach(function (klass) {
                         if (!$(this).hasClass(klass)) classList.push(klass)
                     }, this)
                     classList.length && className(this, cls + (cls ? " " : "") + classList.join(" "))
                 })
             },
-            removeClass: function(name){
-                return this.each(function(idx){
+            removeClass: function (name) {
+                return this.each(function (idx) {
                     if (name === undefined) return className(this, '')
                     classList = className(this)
-                    funcArg(this, name, idx, classList).split(/\s+/g).forEach(function(klass){
+                    funcArg(this, name, idx, classList).split(/\s+/g).forEach(function (klass) {
                         classList = classList.replace(classRE(klass), " ")
                     })
                     className(this, classList.trim())
                 })
             },
-            toggleClass: function(name, when){
-                return this.each(function(idx){
+            toggleClass: function (name, when) {
+                return this.each(function (idx) {
                     var $this = $(this), names = funcArg(this, name, idx, className(this))
-                    names.split(/\s+/g).forEach(function(klass){
+                    names.split(/\s+/g).forEach(function (klass) {
                         (when === undefined ? !$this.hasClass(klass) : when) ?
                             $this.addClass(klass) : $this.removeClass(klass)
                     })
                 })
             },
-            scrollTop: function(){
+            scrollTop: function () {
                 if (!this.length) return
                 return ('scrollTop' in this[0]) ? this[0].scrollTop : this[0].scrollY
             },
-            position: function() {
+            position: function () {
                 if (!this.length) return
 
                 var elem = this[0],
                 // Get *real* offsetParent
                     offsetParent = this.offsetParent(),
                 // Get correct offsets
-                    offset       = this.offset(),
-                    parentOffset = rootNodeRE.test(offsetParent[0].nodeName) ? { top: 0, left: 0 } : offsetParent.offset()
+                    offset = this.offset(),
+                    parentOffset = rootNodeRE.test(offsetParent[0].nodeName) ? {top: 0, left: 0} : offsetParent.offset()
 
                 // Subtract element margins
                 // note: when an element has margin: auto the offsetLeft and marginLeft
                 // are the same in Safari causing offset.left to incorrectly be 0
-                offset.top  -= parseFloat( $(elem).css('margin-top') ) || 0
-                offset.left -= parseFloat( $(elem).css('margin-left') ) || 0
+                offset.top -= parseFloat($(elem).css('margin-top')) || 0
+                offset.left -= parseFloat($(elem).css('margin-left')) || 0
 
                 // Add offsetParent borders
-                parentOffset.top  += parseFloat( $(offsetParent[0]).css('border-top-width') ) || 0
-                parentOffset.left += parseFloat( $(offsetParent[0]).css('border-left-width') ) || 0
+                parentOffset.top += parseFloat($(offsetParent[0]).css('border-top-width')) || 0
+                parentOffset.left += parseFloat($(offsetParent[0]).css('border-left-width')) || 0
 
                 // Subtract the two offsets
                 return {
-                    top:  offset.top  - parentOffset.top,
+                    top: offset.top - parentOffset.top,
                     left: offset.left - parentOffset.left
                 }
             },
-            offsetParent: function() {
-                return this.map(function(){
+            offsetParent: function () {
+                return this.map(function () {
                     var parent = this.offsetParent || document.body
                     while (parent && !rootNodeRE.test(parent.nodeName) && $(parent).css("position") == "static")
                         parent = parent.offsetParent
@@ -749,14 +838,17 @@ define(function(require,exports,module){
         $.fn.detach = $.fn.remove
 
             // Generate the `width` and `height` functions
-        ;['width', 'height'].forEach(function(dimension){
-            $.fn[dimension] = function(value){
+        ;
+        ['width', 'height'].forEach(function (dimension) {
+            $.fn[dimension] = function (value) {
                 var offset, el = this[0],
-                    Dimension = dimension.replace(/./, function(m){ return m[0].toUpperCase() })
+                    Dimension = dimension.replace(/./, function (m) {
+                        return m[0].toUpperCase()
+                    })
                 if (value === undefined) return isWindow(el) ? el['inner' + Dimension] :
                     isDocument(el) ? el.documentElement['offset' + Dimension] :
-                        (offset = this.offset()) && offset[dimension]
-                else return this.each(function(idx){
+                    (offset = this.offset()) && offset[dimension]
+                else return this.each(function (idx) {
                     el = $(this)
                     el.css(dimension, funcArg(this, value, idx, el[dimension]()))
                 })
@@ -770,12 +862,12 @@ define(function(require,exports,module){
 
         // Generate the `after`, `prepend`, `before`, `append`,
         // `insertAfter`, `insertBefore`, `appendTo`, and `prependTo` methods.
-        adjacencyOperators.forEach(function(operator, operatorIndex) {
+        adjacencyOperators.forEach(function (operator, operatorIndex) {
             var inside = operatorIndex % 2 //=> prepend, append
 
-            $.fn[operator] = function(){
+            $.fn[operator] = function () {
                 // arguments can be nodes, arrays of nodes, Zepto objects and HTML strings
-                var argType, nodes = $.map(arguments, function(arg) {
+                var argType, nodes = $.map(arguments, function (arg) {
                         argType = type(arg)
                         return argType == "object" || argType == "array" || arg == null ?
                             arg : zepto.fragment(arg)
@@ -783,7 +875,7 @@ define(function(require,exports,module){
                     parent, copyByClone = this.length > 1
                 if (nodes.length < 1) return this
 
-                return this.each(function(_, target){
+                return this.each(function (_, target) {
                     parent = inside ? target : target.parentNode
 
                     // convert all methods to a "before" operation
@@ -792,11 +884,11 @@ define(function(require,exports,module){
                             operatorIndex == 2 ? target :
                                 null
 
-                    nodes.forEach(function(node){
+                    nodes.forEach(function (node) {
                         if (copyByClone) node = node.cloneNode(true)
                         else if (!parent) return $(node).remove()
 
-                        traverseNode(parent.insertBefore(node, target), function(el){
+                        traverseNode(parent.insertBefore(node, target), function (el) {
                             if (el.nodeName != null && el.nodeName.toUpperCase() === 'SCRIPT' &&
                                 (!el.type || el.type === 'text/javascript') && !el.src)
                                 window['eval'].call(window, el.innerHTML)
@@ -809,7 +901,7 @@ define(function(require,exports,module){
             // prepend  => prependTo
             // before   => insertBefore
             // append   => appendTo
-            $.fn[inside ? operator+'To' : 'insert'+(operatorIndex ? 'Before' : 'After')] = function(html){
+            $.fn[inside ? operator + 'To' : 'insert' + (operatorIndex ? 'Before' : 'After')] = function (html) {
                 $(html)[operator](this)
                 return this
             }
@@ -833,8 +925,9 @@ define(function(require,exports,module){
 //     (c) 2010-2012 Thomas Fuchs
 //     Zepto.js may be freely distributed under the MIT license.
 
-    ;(function($){
-        function detect(ua){
+    ;
+    (function ($) {
+        function detect(ua) {
             var os = this.os = {}, browser = this.browser = {},
                 webkit = ua.match(/WebKit\/([\d.]+)/),
                 android = ua.match(/(Android)\s+([\d.]+)/),
@@ -875,8 +968,8 @@ define(function(require,exports,module){
             if (firefox) browser.firefox = true, browser.version = firefox[1]
 
             os.tablet = !!(ipad || playbook || (android && !ua.match(/Mobile/)) || (firefox && ua.match(/Tablet/)))
-            os.phone  = !!(!os.tablet && (android || iphone || webos || blackberry || bb10 ||
-                (chrome && ua.match(/Android/)) || (chrome && ua.match(/CriOS\/([\d.]+)/)) || (firefox && ua.match(/Mobile/))))
+            os.phone = !!(!os.tablet && (android || iphone || webos || blackberry || bb10 ||
+            (chrome && ua.match(/Android/)) || (chrome && ua.match(/CriOS\/([\d.]+)/)) || (firefox && ua.match(/Mobile/))))
         }
 
         detect.call($, navigator.userAgent)
@@ -889,63 +982,68 @@ define(function(require,exports,module){
 //     (c) 2010-2012 Thomas Fuchs
 //     Zepto.js may be freely distributed under the MIT license.
 
-    ;(function($){
-        var $$ = $.zepto.qsa, handlers = {}, _zid = 1, specialEvents={},
-            hover = { mouseenter: 'mouseover', mouseleave: 'mouseout' }
+    ;
+    (function ($) {
+        var $$ = $.zepto.qsa, handlers = {}, _zid = 1, specialEvents = {},
+            hover = {mouseenter: 'mouseover', mouseleave: 'mouseout'}
 
         specialEvents.click = specialEvents.mousedown = specialEvents.mouseup = specialEvents.mousemove = 'MouseEvents'
 
         function zid(element) {
             return element._zid || (element._zid = _zid++)
         }
+
         function findHandlers(element, event, fn, selector) {
             event = parse(event)
             if (event.ns) var matcher = matcherFor(event.ns)
-            return (handlers[zid(element)] || []).filter(function(handler) {
+            return (handlers[zid(element)] || []).filter(function (handler) {
                 return handler
-                    && (!event.e  || handler.e == event.e)
-                    && (!event.ns || matcher.test(handler.ns))
-                    && (!fn       || zid(handler.fn) === zid(fn))
-                    && (!selector || handler.sel == selector)
+                && (!event.e || handler.e == event.e)
+                && (!event.ns || matcher.test(handler.ns))
+                && (!fn || zid(handler.fn) === zid(fn))
+                && (!selector || handler.sel == selector)
             })
         }
+
         function parse(event) {
             var parts = ('' + event).split('.')
             return {e: parts[0], ns: parts.slice(1).sort().join(' ')}
         }
+
         function matcherFor(ns) {
             return new RegExp('(?:^| )' + ns.replace(' ', ' .* ?') + '(?: |$)')
         }
 
-        function eachEvent(events, fn, iterator){
+        function eachEvent(events, fn, iterator) {
             if ($.type(events) != "string") $.each(events, iterator)
-            else events.split(/\s/).forEach(function(type){ iterator(type, fn) })
+            else events.split(/\s/).forEach(function (type) {
+                iterator(type, fn)
+            })
         }
 
         function eventCapture(handler, captureSetting) {
             return handler.del &&
-                (handler.e == 'focus' || handler.e == 'blur') ||
-                !!captureSetting
+            (handler.e == 'focus' || handler.e == 'blur') || !!captureSetting
         }
 
         function realEvent(type) {
             return hover[type] || type
         }
 
-        function add(element, events, fn, selector, getDelegate, capture){
+        function add(element, events, fn, selector, getDelegate, capture) {
             var id = zid(element), set = (handlers[id] || (handlers[id] = []))
-            eachEvent(events, fn, function(event, fn){
-                var handler   = parse(event)
-                handler.fn    = fn
-                handler.sel   = selector
+            eachEvent(events, fn, function (event, fn) {
+                var handler = parse(event)
+                handler.fn = fn
+                handler.sel = selector
                 // emulate mouseenter, mouseleave
-                if (handler.e in hover) fn = function(e){
+                if (handler.e in hover) fn = function (e) {
                     var related = e.relatedTarget
                     if (!related || (related !== this && !$.contains(this, related)))
                         return handler.fn.apply(this, arguments)
                 }
-                handler.del   = getDelegate && getDelegate(fn, event)
-                var callback  = handler.del || fn
+                handler.del = getDelegate && getDelegate(fn, event)
+                var callback = handler.del || fn
                 handler.proxy = function (e) {
                     var result = callback.apply(element, [e].concat(e.data))
                     if (result === false) e.preventDefault(), e.stopPropagation()
@@ -956,21 +1054,24 @@ define(function(require,exports,module){
                 element.addEventListener(realEvent(handler.e), handler.proxy, eventCapture(handler, capture))
             })
         }
-        function remove(element, events, fn, selector, capture){
+
+        function remove(element, events, fn, selector, capture) {
             var id = zid(element)
-            eachEvent(events || '', fn, function(event, fn){
-                findHandlers(element, event, fn, selector).forEach(function(handler){
+            eachEvent(events || '', fn, function (event, fn) {
+                findHandlers(element, event, fn, selector).forEach(function (handler) {
                     delete handlers[id][handler.i]
                     element.removeEventListener(realEvent(handler.e), handler.proxy, eventCapture(handler, capture))
                 })
             })
         }
 
-        $.event = { add: add, remove: remove }
+        $.event = {add: add, remove: remove}
 
-        $.proxy = function(fn, context) {
+        $.proxy = function (fn, context) {
             if ($.isFunction(fn)) {
-                var proxyFn = function(){ return fn.apply(context, arguments) }
+                var proxyFn = function () {
+                    return fn.apply(context, arguments)
+                }
                 proxyFn._zid = zid(fn)
                 return proxyFn
             } else if (typeof context == 'string') {
@@ -980,20 +1081,20 @@ define(function(require,exports,module){
             }
         }
 
-        $.fn.bind = function(event, callback){
-            return this.each(function(){
+        $.fn.bind = function (event, callback) {
+            return this.each(function () {
                 add(this, event, callback)
             })
         }
-        $.fn.unbind = function(event, callback){
-            return this.each(function(){
+        $.fn.unbind = function (event, callback) {
+            return this.each(function () {
                 remove(this, event, callback)
             })
         }
-        $.fn.one = function(event, callback){
-            return this.each(function(i, element){
-                add(this, event, callback, null, function(fn, type){
-                    return function(){
+        $.fn.one = function (event, callback) {
+            return this.each(function (i, element) {
+                add(this, event, callback, null, function (fn, type) {
+                    return function () {
                         var result = fn.apply(element, arguments)
                         remove(element, type, fn)
                         return result
@@ -1002,21 +1103,26 @@ define(function(require,exports,module){
             })
         }
 
-        var returnTrue = function(){return true},
-            returnFalse = function(){return false},
+        var returnTrue = function () {
+                return true
+            },
+            returnFalse = function () {
+                return false
+            },
             ignoreProperties = /^([A-Z]|layer[XY]$)/,
             eventMethods = {
                 preventDefault: 'isDefaultPrevented',
                 stopImmediatePropagation: 'isImmediatePropagationStopped',
                 stopPropagation: 'isPropagationStopped'
             }
+
         function createProxy(event) {
-            var key, proxy = { originalEvent: event }
+            var key, proxy = {originalEvent: event}
             for (key in event)
                 if (!ignoreProperties.test(key) && event[key] !== undefined) proxy[key] = event[key]
 
-            $.each(eventMethods, function(name, predicate) {
-                proxy[name] = function(){
+            $.each(eventMethods, function (name, predicate) {
+                proxy[name] = function () {
                     this[predicate] = returnTrue
                     return event[name].apply(event, arguments)
                 }
@@ -1030,17 +1136,17 @@ define(function(require,exports,module){
             if (!('defaultPrevented' in event)) {
                 event.defaultPrevented = false
                 var prevent = event.preventDefault
-                event.preventDefault = function() {
+                event.preventDefault = function () {
                     this.defaultPrevented = true
                     prevent.call(this)
                 }
             }
         }
 
-        $.fn.delegate = function(selector, event, callback){
-            return this.each(function(i, element){
-                add(element, event, callback, selector, function(fn){
-                    return function(e){
+        $.fn.delegate = function (selector, event, callback) {
+            return this.each(function (i, element) {
+                add(element, event, callback, selector, function (fn) {
+                    return function (e) {
                         var evt, match = $(e.target).closest(selector, element).get(0)
                         if (match) {
                             evt = $.extend(createProxy(e), {currentTarget: match, liveFired: element})
@@ -1050,50 +1156,50 @@ define(function(require,exports,module){
                 })
             })
         }
-        $.fn.undelegate = function(selector, event, callback){
-            return this.each(function(){
+        $.fn.undelegate = function (selector, event, callback) {
+            return this.each(function () {
                 remove(this, event, callback, selector)
             })
         }
 
-        $.fn.live = function(event, callback){
+        $.fn.live = function (event, callback) {
             $(document.body).delegate(this.selector, event, callback)
             return this
         }
-        $.fn.die = function(event, callback){
+        $.fn.die = function (event, callback) {
             $(document.body).undelegate(this.selector, event, callback)
             return this
         }
 
-        $.fn.on = function(event, selector, callback){
+        $.fn.on = function (event, selector, callback) {
             return !selector || $.isFunction(selector) ?
                 this.bind(event, selector || callback) : this.delegate(selector, event, callback)
         }
-        $.fn.off = function(event, selector, callback){
+        $.fn.off = function (event, selector, callback) {
             return !selector || $.isFunction(selector) ?
                 this.unbind(event, selector || callback) : this.undelegate(selector, event, callback)
         }
 
-        $.fn.trigger = function(event, data){
+        $.fn.trigger = function (event, data) {
             if (typeof event == 'string' || $.isPlainObject(event)) event = $.Event(event)
             fix(event)
             event.data = data
-            return this.each(function(){
+            return this.each(function () {
                 // items in the collection might not be DOM elements
                 // (todo: possibly support events on plain old objects)
-                if('dispatchEvent' in this) this.dispatchEvent(event)
+                if ('dispatchEvent' in this) this.dispatchEvent(event)
             })
         }
 
         // triggers event handlers on current element just as if an event occurred,
         // doesn't trigger an actual event, doesn't bubble
-        $.fn.triggerHandler = function(event, data){
+        $.fn.triggerHandler = function (event, data) {
             var e, result
-            this.each(function(i, element){
+            this.each(function (i, element) {
                 e = createProxy(typeof event == 'string' ? $.Event(event) : event)
                 e.data = data
                 e.target = element
-                $.each(findHandlers(element, event.type || event), function(i, handler){
+                $.each(findHandlers(element, event.type || event), function (i, handler) {
                     result = handler.proxy(e)
                     if (e.isImmediatePropagationStopped()) return false
                 })
@@ -1102,33 +1208,40 @@ define(function(require,exports,module){
         }
 
             // shortcut methods for `.bind(event, fn)` for each event type
-        ;('focusin focusout load resize scroll unload click dblclick '+
-            'mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave '+
-            'change select keydown keypress keyup error').split(' ').forEach(function(event) {
-                $.fn[event] = function(callback) {
+        ;
+        ('focusin focusout load resize scroll unload click dblclick ' +
+        'mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave ' +
+        'change select keydown keypress keyup error').split(' ').forEach(function (event) {
+                $.fn[event] = function (callback) {
                     return callback ?
                         this.bind(event, callback) :
                         this.trigger(event)
                 }
             })
 
-        ;['focus', 'blur'].forEach(function(name) {
-            $.fn[name] = function(callback) {
+        ;
+        ['focus', 'blur'].forEach(function (name) {
+            $.fn[name] = function (callback) {
                 if (callback) this.bind(name, callback)
-                else this.each(function(){
-                    try { this[name]() }
-                    catch(e) {}
+                else this.each(function () {
+                    try {
+                        this[name]()
+                    }
+                    catch (e) {
+                    }
                 })
                 return this
             }
         })
 
-        $.Event = function(type, props) {
+        $.Event = function (type, props) {
             if (typeof type != 'string') props = type, type = props.type
             var event = document.createEvent(specialEvents[type] || 'Events'), bubbles = true
             if (props) for (var name in props) (name == 'bubbles') ? (bubbles = !!props[name]) : (event[name] = props[name])
             event.initEvent(type, bubbles, true, null, null, null, null, null, null, null, null, null, null, null, null)
-            event.isDefaultPrevented = function(){ return this.defaultPrevented }
+            event.isDefaultPrevented = function () {
+                return this.defaultPrevented
+            }
             return event
         }
 
@@ -1138,7 +1251,8 @@ define(function(require,exports,module){
 //     (c) 2010-2012 Thomas Fuchs
 //     Zepto.js may be freely distributed under the MIT license.
 
-    ;(function($){
+    ;
+    (function ($) {
         var jsonpID = 0,
             document = window.document,
             key,
@@ -1168,6 +1282,7 @@ define(function(require,exports,module){
         function ajaxStart(settings) {
             if (settings.global && $.active++ === 0) triggerGlobal(settings, null, 'ajaxStart')
         }
+
         function ajaxStop(settings) {
             if (settings.global && !(--$.active)) triggerGlobal(settings, null, 'ajaxStop')
         }
@@ -1181,12 +1296,14 @@ define(function(require,exports,module){
 
             triggerGlobal(settings, context, 'ajaxSend', [xhr, settings])
         }
+
         function ajaxSuccess(data, xhr, settings) {
             var context = settings.context, status = 'success'
             settings.success.call(context, data, status, xhr)
             triggerGlobal(settings, context, 'ajaxSuccess', [xhr, settings, data])
             ajaxComplete(status, xhr, settings)
         }
+
         // type: "timeout", "error", "abort", "parsererror"
         function ajaxError(error, type, xhr, settings) {
             var context = settings.context
@@ -1194,6 +1311,7 @@ define(function(require,exports,module){
             triggerGlobal(settings, context, 'ajaxError', [xhr, settings, error])
             ajaxComplete(type, xhr, settings)
         }
+
         // status: "success", "notmodified", "error", "timeout", "abort", "parsererror"
         function ajaxComplete(status, xhr, settings) {
             var context = settings.context
@@ -1203,43 +1321,46 @@ define(function(require,exports,module){
         }
 
         // Empty function, used as default callback
-        function empty() {}
+        function empty() {
+        }
 
-        $.ajaxJSONP = function(options){
+        $.ajaxJSONP = function (options) {
             if (!('type' in options)) return $.ajax(options)
 
             var callbackName = 'jsonp' + (++jsonpID),
                 script = document.createElement('script'),
-                cleanup = function() {
+                cleanup = function () {
                     clearTimeout(abortTimeout)
                     $(script).remove()
                     delete window[callbackName]
                 },
-                abort = function(type){
+                abort = function (type) {
                     cleanup()
                     // In case of manual abort or timeout, keep an empty function as callback
                     // so that the SCRIPT tag that eventually loads won't result in an error.
                     if (!type || type == 'timeout') window[callbackName] = empty
                     ajaxError(null, type || 'abort', xhr, options)
                 },
-                xhr = { abort: abort }, abortTimeout
+                xhr = {abort: abort}, abortTimeout
 
             if (ajaxBeforeSend(xhr, options) === false) {
                 abort('abort')
                 return false
             }
 
-            window[callbackName] = function(data){
+            window[callbackName] = function (data) {
                 cleanup()
                 ajaxSuccess(data, xhr, options)
             }
 
-            script.onerror = function() { abort('error') }
+            script.onerror = function () {
+                abort('error')
+            }
 
             script.src = options.url.replace(/=\?/, '=' + callbackName)
             $('head').append(script)
 
-            if (options.timeout > 0) abortTimeout = setTimeout(function(){
+            if (options.timeout > 0) abortTimeout = setTimeout(function () {
                 abort('timeout')
             }, options.timeout)
 
@@ -1268,10 +1389,10 @@ define(function(require,exports,module){
             // MIME types mapping
             accepts: {
                 script: 'text/javascript, application/javascript',
-                json:   jsonType,
-                xml:    'application/xml, text/xml',
-                html:   htmlType,
-                text:   'text/plain'
+                json: jsonType,
+                xml: 'application/xml, text/xml',
+                html: htmlType,
+                text: 'text/plain'
             },
             // Whether the request is to another domain
             crossDomain: false,
@@ -1288,7 +1409,7 @@ define(function(require,exports,module){
             return mime && ( mime == htmlType ? 'html' :
                 mime == jsonType ? 'json' :
                     scriptTypeRE.test(mime) ? 'script' :
-                        xmlTypeRE.test(mime) && 'xml' ) || 'text'
+                    xmlTypeRE.test(mime) && 'xml' ) || 'text'
         }
 
         function appendQuery(url, query) {
@@ -1303,14 +1424,14 @@ define(function(require,exports,module){
                 options.url = appendQuery(options.url, options.data)
         }
 
-        $.ajax = function(options){
+        $.ajax = function (options) {
             var settings = $.extend({}, options || {})
             for (key in $.ajaxSettings) if (settings[key] === undefined) settings[key] = $.ajaxSettings[key]
 
             ajaxStart(settings)
 
             if (!settings.crossDomain) settings.crossDomain = /^([\w-]+:)?\/\/([^\/]+)/.test(settings.url) &&
-                RegExp.$2 != window.location.host
+            RegExp.$2 != window.location.host
 
             if (!settings.url) settings.url = window.location.toString()
             serializeData(settings)
@@ -1323,7 +1444,7 @@ define(function(require,exports,module){
             }
 
             var mime = settings.accepts[dataType],
-                baseHeaders = { },
+                baseHeaders = {},
                 protocol = /^([\w-]+:)\/\//.test(settings.url) ? RegExp.$1 : window.location.protocol,
                 xhr = settings.xhr(), abortTimeout
 
@@ -1337,7 +1458,7 @@ define(function(require,exports,module){
                 baseHeaders['Content-Type'] = (settings.contentType || 'application/x-www-form-urlencoded')
             settings.headers = $.extend(baseHeaders, settings.headers || {})
 
-            xhr.onreadystatechange = function(){
+            xhr.onreadystatechange = function () {
                 if (xhr.readyState == 4) {
                     xhr.onreadystatechange = empty;
                     clearTimeout(abortTimeout)
@@ -1348,10 +1469,12 @@ define(function(require,exports,module){
 
                         try {
                             // http://perfectionkills.com/global-eval-what-are-the-options/
-                            if (dataType == 'script')    (1,eval)(result)
+                            if (dataType == 'script')    (1, eval)(result)
                             else if (dataType == 'xml')  result = xhr.responseXML
                             else if (dataType == 'json') result = blankRE.test(result) ? null : $.parseJSON(result)
-                        } catch (e) { error = e }
+                        } catch (e) {
+                            error = e
+                        }
 
                         if (error) ajaxError(error, 'parsererror', xhr, settings)
                         else ajaxSuccess(result, xhr, settings)
@@ -1371,7 +1494,7 @@ define(function(require,exports,module){
                 return false
             }
 
-            if (settings.timeout > 0) abortTimeout = setTimeout(function(){
+            if (settings.timeout > 0) abortTimeout = setTimeout(function () {
                 xhr.onreadystatechange = empty
                 xhr.abort()
                 ajaxError(null, 'timeout', xhr, settings)
@@ -1386,36 +1509,36 @@ define(function(require,exports,module){
         function parseArguments(url, data, success, dataType) {
             var hasData = !$.isFunction(data)
             return {
-                url:      url,
-                data:     hasData  ? data : undefined,
-                success:  !hasData ? data : $.isFunction(success) ? success : undefined,
-                dataType: hasData  ? dataType || success : success
+                url: url,
+                data: hasData ? data : undefined,
+                success: !hasData ? data : $.isFunction(success) ? success : undefined,
+                dataType: hasData ? dataType || success : success
             }
         }
 
-        $.get = function(url, data, success, dataType){
+        $.get = function (url, data, success, dataType) {
             return $.ajax(parseArguments.apply(null, arguments))
         }
 
-        $.post = function(url, data, success, dataType){
+        $.post = function (url, data, success, dataType) {
             var options = parseArguments.apply(null, arguments)
             options.type = 'POST'
             return $.ajax(options)
         }
 
-        $.getJSON = function(url, data, success){
+        $.getJSON = function (url, data, success) {
             var options = parseArguments.apply(null, arguments)
             options.dataType = 'json'
             return $.ajax(options)
         }
 
-        $.fn.load = function(url, data, success){
+        $.fn.load = function (url, data, success) {
             if (!this.length) return this
             var self = this, parts = url.split(/\s/), selector,
                 options = parseArguments(url, data, success),
                 callback = options.success
             if (parts.length > 1) options.url = parts[0], selector = parts[1]
-            options.success = function(response){
+            options.success = function (response) {
                 self.html(selector ?
                     $('<div>').html(response.replace(rscript, "")).find(selector)
                     : response)
@@ -1427,9 +1550,9 @@ define(function(require,exports,module){
 
         var escape = encodeURIComponent
 
-        function serialize(params, obj, traditional, scope){
+        function serialize(params, obj, traditional, scope) {
             var type, array = $.isArray(obj)
-            $.each(obj, function(key, value) {
+            $.each(obj, function (key, value) {
                 type = $.type(value)
                 if (scope) key = traditional ? scope : scope + '[' + (array ? '' : key) + ']'
                 // handle data in serializeArray() format
@@ -1441,9 +1564,11 @@ define(function(require,exports,module){
             })
         }
 
-        $.param = function(obj, traditional){
+        $.param = function (obj, traditional) {
             var params = []
-            params.add = function(k, v){ this.push(escape(k) + '=' + escape(v)) }
+            params.add = function (k, v) {
+                this.push(escape(k) + '=' + escape(v))
+            }
             serialize(params, obj, traditional)
             return params.join('&').replace(/%20/g, '+')
         }
@@ -1453,14 +1578,14 @@ define(function(require,exports,module){
 //     (c) 2010-2012 Thomas Fuchs
 //     Zepto.js may be freely distributed under the MIT license.
 
-    ;(function ($) {
+    ;
+    (function ($) {
         $.fn.serializeArray = function () {
             var result = [], el
-            $( Array.prototype.slice.call(this.get(0).elements) ).each(function () {
+            $(Array.prototype.slice.call(this.get(0).elements)).each(function () {
                 el = $(this)
                 var type = el.attr('type')
-                if (this.nodeName.toLowerCase() != 'fieldset' &&
-                    !this.disabled && type != 'submit' && type != 'reset' && type != 'button' &&
+                if (this.nodeName.toLowerCase() != 'fieldset' && !this.disabled && type != 'submit' && type != 'reset' && type != 'button' &&
                     ((type != 'radio' && type != 'checkbox') || this.checked))
                     result.push({
                         name: el.attr('name'),
@@ -1473,7 +1598,7 @@ define(function(require,exports,module){
         $.fn.serialize = function () {
             var result = []
             this.serializeArray().forEach(function (elm) {
-                result.push( encodeURIComponent(elm.name) + '=' + encodeURIComponent(elm.value) )
+                result.push(encodeURIComponent(elm.name) + '=' + encodeURIComponent(elm.value))
             })
             return result.join('&')
         }
@@ -1494,9 +1619,10 @@ define(function(require,exports,module){
 //     (c) 2010-2012 Thomas Fuchs
 //     Zepto.js may be freely distributed under the MIT license.
 
-    ;(function($, undefined){
+    ;
+    (function ($, undefined) {
         var prefix = '', eventPrefix, endEventName, endAnimationName,
-            vendors = { Webkit: 'webkit', Moz: '', O: 'o', ms: 'MS' },
+            vendors = {Webkit: 'webkit', Moz: '', O: 'o', ms: 'MS'},
             document = window.document, testEl = document.createElement('div'),
             supportedTransforms = /^((translate|rotate|scale)(X|Y|Z|3d)?|matrix(3d)?|perspective|skew(X|Y)?)$/i,
             transform,
@@ -1504,11 +1630,19 @@ define(function(require,exports,module){
             animationName, animationDuration, animationTiming,
             cssReset = {}
 
-        function dasherize(str) { return downcase(str.replace(/([a-z])([A-Z])/, '$1-$2')) }
-        function downcase(str) { return str.toLowerCase() }
-        function normalizeEvent(name) { return eventPrefix ? eventPrefix + name : downcase(name) }
+        function dasherize(str) {
+            return downcase(str.replace(/([a-z])([A-Z])/, '$1-$2'))
+        }
 
-        $.each(vendors, function(vendor, event){
+        function downcase(str) {
+            return str.toLowerCase()
+        }
+
+        function normalizeEvent(name) {
+            return eventPrefix ? eventPrefix + name : downcase(name)
+        }
+
+        $.each(vendors, function (vendor, event) {
             if (testEl.style[vendor + 'TransitionProperty'] !== undefined) {
                 prefix = '-' + downcase(vendor) + '-'
                 eventPrefix = event
@@ -1519,20 +1653,20 @@ define(function(require,exports,module){
         transform = prefix + 'transform'
         cssReset[transitionProperty = prefix + 'transition-property'] =
             cssReset[transitionDuration = prefix + 'transition-duration'] =
-                cssReset[transitionTiming   = prefix + 'transition-timing-function'] =
-                    cssReset[animationName      = prefix + 'animation-name'] =
-                        cssReset[animationDuration  = prefix + 'animation-duration'] =
-                            cssReset[animationTiming    = prefix + 'animation-timing-function'] = ''
+                cssReset[transitionTiming = prefix + 'transition-timing-function'] =
+                    cssReset[animationName = prefix + 'animation-name'] =
+                        cssReset[animationDuration = prefix + 'animation-duration'] =
+                            cssReset[animationTiming = prefix + 'animation-timing-function'] = ''
 
         $.fx = {
             off: (eventPrefix === undefined && testEl.style.transitionProperty === undefined),
-            speeds: { _default: 400, fast: 200, slow: 600 },
+            speeds: {_default: 400, fast: 200, slow: 600},
             cssPrefix: prefix,
             transitionEnd: normalizeEvent('TransitionEnd'),
             animationEnd: normalizeEvent('AnimationEnd')
         }
 
-        $.fn.animate = function(properties, duration, ease, callback){
+        $.fn.animate = function (properties, duration, ease, callback) {
             if ($.isPlainObject(duration))
                 ease = duration.easing, callback = duration.complete, duration = duration.duration
             if (duration) duration = (typeof duration == 'number' ? duration :
@@ -1540,7 +1674,7 @@ define(function(require,exports,module){
             return this.anim(properties, duration, ease, callback)
         }
 
-        $.fn.anim = function(properties, duration, ease, callback){
+        $.fn.anim = function (properties, duration, ease, callback) {
             var key, cssValues = {}, cssProperties, transforms = '',
                 that = this, wrappedCallback, endEvent = $.fx.transitionEnd
 
@@ -1568,7 +1702,7 @@ define(function(require,exports,module){
                 }
             }
 
-            wrappedCallback = function(event){
+            wrappedCallback = function (event) {
                 if (typeof event !== 'undefined') {
                     if (event.target !== event.currentTarget) return // makes sure the event didn't bubble from "below"
                     $(event.target).unbind(endEvent, wrappedCallback)
@@ -1583,8 +1717,10 @@ define(function(require,exports,module){
 
             this.css(cssValues)
 
-            if (duration <= 0) setTimeout(function() {
-                that.each(function(){ wrappedCallback.call(this) })
+            if (duration <= 0) setTimeout(function () {
+                that.each(function () {
+                    wrappedCallback.call(this)
+                })
             }, 0)
 
             return this

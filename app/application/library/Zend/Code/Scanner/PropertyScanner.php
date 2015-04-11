@@ -17,8 +17,8 @@ class PropertyScanner implements ScannerInterface
 {
     const T_BOOLEAN = "boolean";
     const T_INTEGER = "int";
-    const T_STRING  = "string";
-    const T_ARRAY   = "array";
+    const T_STRING = "string";
+    const T_ARRAY = "array";
     const T_UNKNOWN = "unknown";
 
     /**
@@ -238,7 +238,7 @@ class PropertyScanner implements ScannerInterface
         /**
          * Variables & Setup
          */
-        $value            = '';
+        $value = '';
         $concatenateValue = false;
 
         $tokens = &$this->tokens;

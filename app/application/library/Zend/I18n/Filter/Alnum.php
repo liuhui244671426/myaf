@@ -18,7 +18,7 @@ class Alnum extends AbstractLocale
      * @var array
      */
     protected $options = array(
-        'locale'            => null,
+        'locale' => null,
         'allow_white_space' => false,
     );
 
@@ -49,7 +49,7 @@ class Alnum extends AbstractLocale
      */
     public function setAllowWhiteSpace($flag = true)
     {
-        $this->options['allow_white_space'] = (bool) $flag;
+        $this->options['allow_white_space'] = (bool)$flag;
         return $this;
     }
 
@@ -78,14 +78,14 @@ class Alnum extends AbstractLocale
         }
 
         $whiteSpace = $this->options['allow_white_space'] ? '\s' : '';
-        $language   = Locale::getPrimaryLanguage($this->getLocale());
+        $language = Locale::getPrimaryLanguage($this->getLocale());
 
         if (!static::hasPcreUnicodeSupport()) {
             // POSIX named classes are not supported, use alternative a-zA-Z0-9 match
             $pattern = '/[^a-zA-Z0-9' . $whiteSpace . ']/';
-        } elseif ($language == 'ja'|| $language == 'ko' || $language == 'zh') {
+        } elseif ($language == 'ja' || $language == 'ko' || $language == 'zh') {
             // Use english alphabet
-            $pattern = '/[^a-zA-Z0-9'  . $whiteSpace . ']/u';
+            $pattern = '/[^a-zA-Z0-9' . $whiteSpace . ']/u';
         } else {
             // Use native language alphabet
             $pattern = '/[^\p{L}\p{N}' . $whiteSpace . ']/u';

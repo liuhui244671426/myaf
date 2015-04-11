@@ -46,7 +46,7 @@ class CachingFileScanner extends FileScanner
         if (isset(static::$cache[$cacheId])) {
             $this->fileScanner = static::$cache[$cacheId];
         } else {
-            $this->fileScanner       = new FileScanner($file, $annotationManager);
+            $this->fileScanner = new FileScanner($file, $annotationManager);
             static::$cache[$cacheId] = $this->fileScanner;
         }
     }

@@ -16,7 +16,7 @@ use Zend\Feed\Reader\Collection;
 use Zend\Feed\Reader\Exception;
 
 /**
-*/
+ */
 class Rss extends AbstractFeed
 {
     /**
@@ -98,7 +98,8 @@ class Rss extends AbstractFeed
          * but it's supported on a "just in case" basis.
          */
         if ($this->getType() !== Reader\Reader::TYPE_RSS_10
-        && $this->getType() !== Reader\Reader::TYPE_RSS_090) {
+            && $this->getType() !== Reader\Reader::TYPE_RSS_090
+        ) {
             $list = $this->xpath->query('//author');
         } else {
             $list = $this->xpath->query('//rss:author');
@@ -151,7 +152,8 @@ class Rss extends AbstractFeed
         $copyright = null;
 
         if ($this->getType() !== Reader\Reader::TYPE_RSS_10 &&
-            $this->getType() !== Reader\Reader::TYPE_RSS_090) {
+            $this->getType() !== Reader\Reader::TYPE_RSS_090
+        ) {
             $copyright = $this->xpath->evaluate('string(/rss/channel/copyright)');
         }
 
@@ -198,7 +200,8 @@ class Rss extends AbstractFeed
         $date = null;
 
         if ($this->getType() !== Reader\Reader::TYPE_RSS_10 &&
-            $this->getType() !== Reader\Reader::TYPE_RSS_090) {
+            $this->getType() !== Reader\Reader::TYPE_RSS_090
+        ) {
             $dateModified = $this->xpath->evaluate('string(/rss/channel/pubDate)');
             if (!$dateModified) {
                 $dateModified = $this->xpath->evaluate('string(/rss/channel/lastBuildDate)');
@@ -209,7 +212,7 @@ class Rss extends AbstractFeed
                     $date = new DateTime('@' . $dateModifiedParsed);
                 } else {
                     $dateStandards = array(DateTime::RSS, DateTime::RFC822,
-                                           DateTime::RFC2822, null);
+                        DateTime::RFC2822, null);
                     foreach ($dateStandards as $standard) {
                         try {
                             $date = DateTime::createFromFormat($standard, $dateModified);
@@ -218,7 +221,7 @@ class Rss extends AbstractFeed
                             if ($standard == null) {
                                 throw new Exception\RuntimeException(
                                     'Could not load date due to unrecognised'
-                                    .' format (should follow RFC 822 or 2822):'
+                                    . ' format (should follow RFC 822 or 2822):'
                                     . $e->getMessage(),
                                     0, $e
                                 );
@@ -262,7 +265,8 @@ class Rss extends AbstractFeed
         $date = null;
 
         if ($this->getType() !== Reader\Reader::TYPE_RSS_10 &&
-            $this->getType() !== Reader\Reader::TYPE_RSS_090) {
+            $this->getType() !== Reader\Reader::TYPE_RSS_090
+        ) {
             $lastBuildDate = $this->xpath->evaluate('string(/rss/channel/lastBuildDate)');
             if ($lastBuildDate) {
                 $lastBuildDateParsed = strtotime($lastBuildDate);
@@ -270,7 +274,7 @@ class Rss extends AbstractFeed
                     $date = new DateTime('@' . $lastBuildDateParsed);
                 } else {
                     $dateStandards = array(DateTime::RSS, DateTime::RFC822,
-                                           DateTime::RFC2822, null);
+                        DateTime::RFC2822, null);
                     foreach ($dateStandards as $standard) {
                         try {
                             $date = DateTime::createFromFormat($standard, $lastBuildDateParsed);
@@ -279,7 +283,7 @@ class Rss extends AbstractFeed
                             if ($standard == null) {
                                 throw new Exception\RuntimeException(
                                     'Could not load date due to unrecognised'
-                                    .' format (should follow RFC 822 or 2822):'
+                                    . ' format (should follow RFC 822 or 2822):'
                                     . $e->getMessage(),
                                     0, $e
                                 );
@@ -313,7 +317,8 @@ class Rss extends AbstractFeed
         $description = null;
 
         if ($this->getType() !== Reader\Reader::TYPE_RSS_10 &&
-            $this->getType() !== Reader\Reader::TYPE_RSS_090) {
+            $this->getType() !== Reader\Reader::TYPE_RSS_090
+        ) {
             $description = $this->xpath->evaluate('string(/rss/channel/description)');
         } else {
             $description = $this->xpath->evaluate('string(/rdf:RDF/rss:channel/rss:description)');
@@ -350,7 +355,8 @@ class Rss extends AbstractFeed
         $id = null;
 
         if ($this->getType() !== Reader\Reader::TYPE_RSS_10 &&
-            $this->getType() !== Reader\Reader::TYPE_RSS_090) {
+            $this->getType() !== Reader\Reader::TYPE_RSS_090
+        ) {
             $id = $this->xpath->evaluate('string(/rss/channel/guid)');
         }
 
@@ -389,7 +395,8 @@ class Rss extends AbstractFeed
         }
 
         if ($this->getType() !== Reader\Reader::TYPE_RSS_10 &&
-            $this->getType() !== Reader\Reader::TYPE_RSS_090) {
+            $this->getType() !== Reader\Reader::TYPE_RSS_090
+        ) {
             $list = $this->xpath->query('/rss/channel/image');
             $prefix = '/rss/channel/image[1]';
         } else {
@@ -445,7 +452,8 @@ class Rss extends AbstractFeed
         $language = null;
 
         if ($this->getType() !== Reader\Reader::TYPE_RSS_10 &&
-            $this->getType() !== Reader\Reader::TYPE_RSS_090) {
+            $this->getType() !== Reader\Reader::TYPE_RSS_090
+        ) {
             $language = $this->xpath->evaluate('string(/rss/channel/language)');
         }
 
@@ -484,7 +492,8 @@ class Rss extends AbstractFeed
         $link = null;
 
         if ($this->getType() !== Reader\Reader::TYPE_RSS_10 &&
-            $this->getType() !== Reader\Reader::TYPE_RSS_090) {
+            $this->getType() !== Reader\Reader::TYPE_RSS_090
+        ) {
             $link = $this->xpath->evaluate('string(/rss/channel/link)');
         } else {
             $link = $this->xpath->evaluate('string(/rdf:RDF/rss:channel/rss:link)');
@@ -541,13 +550,15 @@ class Rss extends AbstractFeed
         $generator = null;
 
         if ($this->getType() !== Reader\Reader::TYPE_RSS_10 &&
-            $this->getType() !== Reader\Reader::TYPE_RSS_090) {
+            $this->getType() !== Reader\Reader::TYPE_RSS_090
+        ) {
             $generator = $this->xpath->evaluate('string(/rss/channel/generator)');
         }
 
         if (!$generator) {
             if ($this->getType() !== Reader\Reader::TYPE_RSS_10 &&
-            $this->getType() !== Reader\Reader::TYPE_RSS_090) {
+                $this->getType() !== Reader\Reader::TYPE_RSS_090
+            ) {
                 $generator = $this->xpath->evaluate('string(/rss/channel/atom:generator)');
             } else {
                 $generator = $this->xpath->evaluate('string(/rdf:RDF/rss:channel/atom:generator)');
@@ -581,7 +592,8 @@ class Rss extends AbstractFeed
         $title = null;
 
         if ($this->getType() !== Reader\Reader::TYPE_RSS_10 &&
-            $this->getType() !== Reader\Reader::TYPE_RSS_090) {
+            $this->getType() !== Reader\Reader::TYPE_RSS_090
+        ) {
             $title = $this->xpath->evaluate('string(/rss/channel/title)');
         } else {
             $title = $this->xpath->evaluate('string(/rdf:RDF/rss:channel/rss:title)');
@@ -640,7 +652,8 @@ class Rss extends AbstractFeed
         }
 
         if ($this->getType() !== Reader\Reader::TYPE_RSS_10 &&
-            $this->getType() !== Reader\Reader::TYPE_RSS_090) {
+            $this->getType() !== Reader\Reader::TYPE_RSS_090
+        ) {
             $list = $this->xpath->query('/rss/channel//category');
         } else {
             $list = $this->xpath->query('/rdf:RDF/rss:channel//rss:category');

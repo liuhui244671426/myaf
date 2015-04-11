@@ -49,7 +49,7 @@ class Priority implements FilterInterface
             ));
         }
 
-        $this->priority = (int) $priority;
+        $this->priority = (int)$priority;
         $this->operator = $operator === null ? '<=' : $operator;
     }
 

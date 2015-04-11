@@ -5,8 +5,8 @@
     <title>404</title>
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta content="yes" name="apple-touch-fullscreen"/>
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="author" content="mojichina" />
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="author" content="mojichina"/>
     <link rel="stylesheet" type="text/css" href="/statics/styles/page/404/index.css"/>
 </head>
 <body>
@@ -15,12 +15,13 @@
         <div class="e404">
             <div class="img"></div>
         </div>
-        <div class="ta-c"><button class="btn btn-info"  onclick="javascript:history.back();">返回上一页</button><?php echo $code;?></div>
+        <div class="ta-c">
+            <button class="btn btn-info" onclick="javascript:history.back();">返回上一页</button><?php echo $code; ?></div>
     </div>
     <?php
-        $isHide = in_array(MODE, array('dev', 'test'))?'':'display: none;';
+    $isHide = in_array(MODE, array('dev', 'test')) ? '' : 'display: none;';
     ?>
-    <div style="<?php echo $isHide;?>"><?php echo $msg;?></div>
+    <div style="<?php echo $isHide; ?>"><?php echo $msg; ?></div>
 </section>
 
 </body>

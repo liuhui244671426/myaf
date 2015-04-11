@@ -27,8 +27,8 @@ class Gz extends AbstractCompressionAlgorithm
      * @var array
      */
     protected $options = array(
-        'level'   => 9,
-        'mode'    => 'compress',
+        'level' => 9,
+        'mode' => 'compress',
         'archive' => null,
     );
 
@@ -69,7 +69,7 @@ class Gz extends AbstractCompressionAlgorithm
             throw new Exception\InvalidArgumentException('Level must be between 0 and 9');
         }
 
-        $this->options['level'] = (int) $level;
+        $this->options['level'] = (int)$level;
         return $this;
     }
 
@@ -118,7 +118,7 @@ class Gz extends AbstractCompressionAlgorithm
      */
     public function setArchive($archive)
     {
-        $this->options['archive'] = (string) $archive;
+        $this->options['archive'] = (string)$archive;
         return $this;
     }
 
@@ -164,7 +164,7 @@ class Gz extends AbstractCompressionAlgorithm
     public function decompress($content)
     {
         $archive = $this->getArchive();
-        $mode    = $this->getMode();
+        $mode = $this->getMode();
 
         //check if there are null byte characters before doing a file_exists check
         if (!strstr($content, "\0") && file_exists($content)) {
@@ -179,11 +179,11 @@ class Gz extends AbstractCompressionAlgorithm
 
             fseek($handler, -4, SEEK_END);
             $packet = fread($handler, 4);
-            $bytes  = unpack("V", $packet);
-            $size   = end($bytes);
+            $bytes = unpack("V", $packet);
+            $size = end($bytes);
             fclose($handler);
 
-            $file       = gzopen($archive, 'r');
+            $file = gzopen($archive, 'r');
             $compressed = gzread($file, $size);
             gzclose($file);
         } elseif ($mode == 'deflate') {

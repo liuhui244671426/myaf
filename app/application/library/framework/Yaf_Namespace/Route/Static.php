@@ -30,7 +30,7 @@ class Route_Static implements Route_Interface
         return true;
     }
 
-     /**
+    /**
      * Processes a request and sets its controller and action.  If
      * no route was possible, default route is set.
      *
@@ -42,9 +42,9 @@ class Route_Static implements Route_Interface
         $requestUri = $request->getRequestUri();
         $baseuri = $request->getBaseUri();
         if (
-            $requestUri!=''
-            && $baseuri!=''
-            && stripos($requestUri, $baseuri)===0
+            $requestUri != ''
+            && $baseuri != ''
+            && stripos($requestUri, $baseuri) === 0
         ) {
             $path = substr($requestUri, strlen($baseuri));
         } else {
@@ -115,15 +115,15 @@ class Route_Static implements Route_Interface
                 $request->setActionName($action);
             }
             $params = array();
-            if ($rest!=null && trim($rest)!='') {
+            if ($rest != null && trim($rest) != '') {
                 $path = explode(Router::URI_DELIMITER, $rest);
-                if (($numSegs = count($path))!=0) {
+                if (($numSegs = count($path)) != 0) {
                     for ($i = 0; $i < $numSegs; $i = $i + 2) {
                         $key = urldecode($path[$i]);
                         $val = isset($path[$i + 1]) ?
                             urldecode($path[$i + 1]) : null;
                         $params[$key] = (isset($params[$key])
-                            ? (array_merge((array) $params[$key], array($val)))
+                            ? (array_merge((array)$params[$key], array($val)))
                             : $val);
                     }
                 }

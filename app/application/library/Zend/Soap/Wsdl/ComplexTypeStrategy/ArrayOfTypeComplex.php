@@ -50,8 +50,8 @@ class ArrayOfTypeComplex extends DefaultComplexType
      * Add an ArrayOfType based on the xsd:complexType syntax if type[] is
      * detected in return value doc comment.
      *
-     * @param  string $singularType   e.g. '\MyNamespace\MyClassname'
-     * @param  string $type           e.g. '\MyNamespace\MyClassname[]'
+     * @param  string $singularType e.g. '\MyNamespace\MyClassname'
+     * @param  string $type e.g. '\MyNamespace\MyClassname[]'
      * @return string tns:xsd-type   e.g. 'tns:ArrayOfMyNamespace.MyClassname'
      */
     protected function _addArrayOfComplexType($singularType, $type)
@@ -61,7 +61,7 @@ class ArrayOfTypeComplex extends DefaultComplexType
         }
 
         $xsdComplexTypeName = 'ArrayOf' . $this->getContext()->translateType($singularType);
-        $xsdComplexType     = Wsdl::TYPES_NS . ':' . $xsdComplexTypeName;
+        $xsdComplexType = Wsdl::TYPES_NS . ':' . $xsdComplexTypeName;
 
         // Register type here to avoid recursion
         $this->getContext()->addType($type, $xsdComplexType);

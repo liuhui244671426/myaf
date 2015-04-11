@@ -21,12 +21,12 @@ require_once __DIR__ . '/SplAutoloader.php';
  */
 class StandardAutoloader implements SplAutoloader
 {
-    const NS_SEPARATOR     = '\\';
+    const NS_SEPARATOR = '\\';
     const PREFIX_SEPARATOR = '_';
-    const LOAD_NS          = 'namespaces';
-    const LOAD_PREFIX      = 'prefixes';
-    const ACT_AS_FALLBACK  = 'fallback_autoloader';
-    const AUTOREGISTER_ZF  = 'autoregister_zf';
+    const LOAD_NS = 'namespaces';
+    const LOAD_PREFIX = 'prefixes';
+    const ACT_AS_FALLBACK = 'fallback_autoloader';
+    const AUTOREGISTER_ZF = 'autoregister_zf';
 
     /**
      * @var array Namespace/directory pairs to search; ZF library added by default
@@ -120,7 +120,7 @@ class StandardAutoloader implements SplAutoloader
      */
     public function setFallbackAutoloader($flag)
     {
-        $this->fallbackAutoloaderFlag = (bool) $flag;
+        $this->fallbackAutoloaderFlag = (bool)$flag;
         return $this;
     }
 
@@ -177,7 +177,7 @@ class StandardAutoloader implements SplAutoloader
      */
     public function registerPrefix($prefix, $directory)
     {
-        $prefix = rtrim($prefix, self::PREFIX_SEPARATOR). self::PREFIX_SEPARATOR;
+        $prefix = rtrim($prefix, self::PREFIX_SEPARATOR) . self::PREFIX_SEPARATOR;
         $this->prefixes[$prefix] = $this->normalizeDirectory($directory);
         return $this;
     }
@@ -257,13 +257,13 @@ class StandardAutoloader implements SplAutoloader
         $matches = array();
         preg_match('/(?P<namespace>.+\\\)?(?P<class>[^\\\]+$)/', $class, $matches);
 
-        $class     = (isset($matches['class'])) ? $matches['class'] : '';
+        $class = (isset($matches['class'])) ? $matches['class'] : '';
         $namespace = (isset($matches['namespace'])) ? $matches['namespace'] : '';
 
         return $directory
-             . str_replace(self::NS_SEPARATOR, '/', $namespace)
-             . str_replace(self::PREFIX_SEPARATOR, '/', $class)
-             . '.php';
+        . str_replace(self::NS_SEPARATOR, '/', $namespace)
+        . str_replace(self::PREFIX_SEPARATOR, '/', $class)
+        . '.php';
     }
 
     /**
@@ -284,7 +284,7 @@ class StandardAutoloader implements SplAutoloader
         // Fallback autoloading
         if ($type === self::ACT_AS_FALLBACK) {
             // create filename
-            $filename     = $this->transformClassNameToFilename($class, '');
+            $filename = $this->transformClassNameToFilename($class, '');
             $resolvedName = stream_resolve_include_path($filename);
             if ($resolvedName !== false) {
                 return include $resolvedName;

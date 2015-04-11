@@ -28,10 +28,10 @@ class CallbackCheckAdapter extends AbstractAdapter
      * __construct() - Sets configuration options
      *
      * @param DbAdapter $zendDb
-     * @param string    $tableName                    Optional
-     * @param string    $identityColumn               Optional
-     * @param string    $credentialColumn             Optional
-     * @param callable  $credentialValidationCallback Optional
+     * @param string $tableName Optional
+     * @param string $identityColumn Optional
+     * @param string $credentialColumn Optional
+     * @param callable $credentialValidationCallback Optional
      */
     public function __construct(
         DbAdapter $zendDb,
@@ -39,7 +39,8 @@ class CallbackCheckAdapter extends AbstractAdapter
         $identityColumn = null,
         $credentialColumn = null,
         $credentialValidationCallback = null
-    ) {
+    )
+    {
         parent::__construct($zendDb, $tableName, $identityColumn, $credentialColumn);
 
         if (null !== $credentialValidationCallback) {
@@ -98,19 +99,19 @@ class CallbackCheckAdapter extends AbstractAdapter
         try {
             $callbackResult = call_user_func($this->credentialValidationCallback, $resultIdentity[$this->credentialColumn], $this->credential);
         } catch (\Exception $e) {
-            $this->authenticateResultInfo['code']       = AuthenticationResult::FAILURE_UNCATEGORIZED;
+            $this->authenticateResultInfo['code'] = AuthenticationResult::FAILURE_UNCATEGORIZED;
             $this->authenticateResultInfo['messages'][] = $e->getMessage();
             return $this->authenticateCreateAuthResult();
         }
         if ($callbackResult !== true) {
-            $this->authenticateResultInfo['code']       = AuthenticationResult::FAILURE_CREDENTIAL_INVALID;
+            $this->authenticateResultInfo['code'] = AuthenticationResult::FAILURE_CREDENTIAL_INVALID;
             $this->authenticateResultInfo['messages'][] = 'Supplied credential is invalid.';
             return $this->authenticateCreateAuthResult();
         }
 
         $this->resultRow = $resultIdentity;
 
-        $this->authenticateResultInfo['code']       = AuthenticationResult::SUCCESS;
+        $this->authenticateResultInfo['code'] = AuthenticationResult::SUCCESS;
         $this->authenticateResultInfo['messages'][] = 'Authentication successful.';
         return $this->authenticateCreateAuthResult();
     }

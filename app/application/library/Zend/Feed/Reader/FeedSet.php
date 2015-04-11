@@ -14,7 +14,7 @@ use DOMNodeList;
 use Zend\Feed\Uri;
 
 /**
-*/
+ */
 class FeedSet extends ArrayObject
 {
     public $rss = null;
@@ -43,7 +43,8 @@ class FeedSet extends ArrayObject
     {
         foreach ($links as $link) {
             if (strtolower($link->getAttribute('rel')) !== 'alternate'
-                || !$link->getAttribute('type') || !$link->getAttribute('href')) {
+                || !$link->getAttribute('type') || !$link->getAttribute('href')
+            ) {
                 continue;
             }
             if (!isset($this->rss) && $link->getAttribute('type') == 'application/rss+xml') {

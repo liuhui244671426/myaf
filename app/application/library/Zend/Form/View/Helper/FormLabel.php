@@ -15,7 +15,7 @@ use Zend\Form\LabelAwareInterface;
 
 class FormLabel extends AbstractHelper
 {
-    const APPEND  = 'append';
+    const APPEND = 'append';
     const PREPEND = 'prepend';
 
     /**
@@ -24,7 +24,7 @@ class FormLabel extends AbstractHelper
      * @var array
      */
     protected $validTagAttributes = array(
-        'for'  => true,
+        'for' => true,
         'form' => true,
     );
 
@@ -35,8 +35,8 @@ class FormLabel extends AbstractHelper
      * will be provided in the $labelContent.
      *
      * @param  ElementInterface $element
-     * @param  null|string      $labelContent
-     * @param  string           $position
+     * @param  null|string $labelContent
+     * @param  string $position
      * @throws Exception\DomainException
      * @return string|FormLabel
      */
@@ -47,7 +47,7 @@ class FormLabel extends AbstractHelper
         }
 
         $openTag = $this->openTag($element);
-        $label   = '';
+        $label = '';
         if ($labelContent === null || $position !== null) {
             $label = $element->getLabel();
             if (empty($label)) {
@@ -64,7 +64,7 @@ class FormLabel extends AbstractHelper
                 $label = $translator->translate($label, $this->getTranslatorTextDomain());
             }
 
-            if (! $element instanceof LabelAwareInterface || ! $element->getLabelOption('disable_html_escape')) {
+            if (!$element instanceof LabelAwareInterface || !$element->getLabelOption('disable_html_escape')) {
                 $escapeHtmlHelper = $this->getEscapeHtmlHelper();
                 $label = $escapeHtmlHelper($label);
             }

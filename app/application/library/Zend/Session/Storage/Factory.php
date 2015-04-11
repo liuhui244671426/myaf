@@ -20,8 +20,8 @@ abstract class Factory
     /**
      * Create and return a StorageInterface instance
      *
-     * @param  string                             $type
-     * @param  array|Traversable                  $options
+     * @param  string $type
+     * @param  array|Traversable $options
      * @return StorageInterface
      * @throws Exception\InvalidArgumentException for unrecognized $type or individual options
      */
@@ -80,14 +80,14 @@ abstract class Factory
     /**
      * Create a storage object from an ArrayStorage class (or a descendent)
      *
-     * @param  string       $type
-     * @param  array        $options
+     * @param  string $type
+     * @param  array $options
      * @return ArrayStorage
      */
     protected static function createArrayStorage($type, $options)
     {
-        $input         = array();
-        $flags         = ArrayObject::ARRAY_AS_PROPS;
+        $input = array();
+        $flags = ArrayObject::ARRAY_AS_PROPS;
         $iteratorClass = 'ArrayIterator';
 
         if (isset($options['input']) && null !== $options['input']) {
@@ -122,8 +122,8 @@ abstract class Factory
     /**
      * Create a storage object from a class extending AbstractSessionArrayStorage
      *
-     * @param  string                             $type
-     * @param  array                              $options
+     * @param  string $type
+     * @param  array $options
      * @return AbstractSessionArrayStorage
      * @throws Exception\InvalidArgumentException if the input option is invalid
      */

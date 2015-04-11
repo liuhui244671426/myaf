@@ -91,8 +91,8 @@ class Gettext extends AbstractFileLoader
         }
 
         // Gather main information
-        $numStrings                   = $this->readInteger();
-        $originalStringTableOffset    = $this->readInteger();
+        $numStrings = $this->readInteger();
+        $originalStringTableOffset = $this->readInteger();
         $translationStringTableOffset = $this->readInteger();
 
         // Usually there follow size and offset of the hash table, but we have
@@ -105,11 +105,11 @@ class Gettext extends AbstractFileLoader
 
         // Read in all translations
         for ($current = 0; $current < $numStrings; $current++) {
-            $sizeKey                 = $current * 2 + 1;
-            $offsetKey               = $current * 2 + 2;
-            $originalStringSize      = $originalStringTable[$sizeKey];
-            $originalStringOffset    = $originalStringTable[$offsetKey];
-            $translationStringSize   = $translationStringTable[$sizeKey];
+            $sizeKey = $current * 2 + 1;
+            $offsetKey = $current * 2 + 2;
+            $originalStringSize = $originalStringTable[$sizeKey];
+            $originalStringOffset = $originalStringTable[$offsetKey];
+            $translationStringSize = $translationStringTable[$sizeKey];
             $translationStringOffset = $translationStringTable[$offsetKey];
 
             $originalString = array('');
@@ -128,7 +128,7 @@ class Gettext extends AbstractFileLoader
                     array_shift($originalString);
 
                     foreach ($originalString as $string) {
-                        if (! isset($textDomain[$string])) {
+                        if (!isset($textDomain[$string])) {
                             $textDomain[$string] = '';
                         }
                     }

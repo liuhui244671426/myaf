@@ -87,14 +87,14 @@ class BlockCipher
     /**
      * Factory.
      *
-     * @param  string      $adapter
-     * @param  array       $options
+     * @param  string $adapter
+     * @param  array $options
      * @return BlockCipher
      */
     public static function factory($adapter, $options = array())
     {
         $plugins = static::getSymmetricPluginManager();
-        $adapter = $plugins->get($adapter, (array) $options);
+        $adapter = $plugins->get($adapter, (array)$options);
 
         return new static($adapter);
     }
@@ -116,7 +116,7 @@ class BlockCipher
     /**
      * Set the symmetric cipher plugin manager
      *
-     * @param  string|SymmetricPluginManager      $plugins
+     * @param  string|SymmetricPluginManager $plugins
      * @throws Exception\InvalidArgumentException
      */
     public static function setSymmetricPluginManager($plugins)
@@ -170,7 +170,7 @@ class BlockCipher
      */
     public function setKeyIteration($num)
     {
-        $this->keyIteration = (int) $num;
+        $this->keyIteration = (int)$num;
 
         return $this;
     }
@@ -232,7 +232,7 @@ class BlockCipher
      */
     public function setBinaryOutput($value)
     {
-        $this->binaryOutput = (bool) $value;
+        $this->binaryOutput = (bool)$value;
 
         return $this;
     }
@@ -250,7 +250,7 @@ class BlockCipher
     /**
      * Set the encryption/decryption key
      *
-     * @param  string                             $key
+     * @param  string $key
      * @return BlockCipher
      * @throws Exception\InvalidArgumentException
      */
@@ -401,7 +401,7 @@ class BlockCipher
 
         // Cast to string prior to encrypting
         if (!is_string($data)) {
-            $data = (string) $data;
+            $data = (string)$data;
         }
 
         if (empty($this->cipher)) {
@@ -459,13 +459,13 @@ class BlockCipher
         if (empty($this->cipher)) {
             throw new Exception\InvalidArgumentException('No symmetric cipher specified');
         }
-        $hmacSize   = Hmac::getOutputSize($this->hash);
-        $hmac       = substr($data, 0, $hmacSize);
+        $hmacSize = Hmac::getOutputSize($this->hash);
+        $hmac = substr($data, 0, $hmacSize);
         $ciphertext = substr($data, $hmacSize);
         if (!$this->binaryOutput) {
             $ciphertext = base64_decode($ciphertext);
         }
-        $iv      = substr($ciphertext, 0, $this->cipher->getSaltSize());
+        $iv = substr($ciphertext, 0, $this->cipher->getSaltSize());
         $keySize = $this->cipher->getKeySize();
         // generate the encryption key and the HMAC key for the authentication
         $hash = Pbkdf2::calc(

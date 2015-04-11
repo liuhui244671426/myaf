@@ -74,7 +74,7 @@ EOT;
      */
     public function setDisplayExceptions($displayExceptions)
     {
-        $this->displayExceptions = (bool) $displayExceptions;
+        $this->displayExceptions = (bool)$displayExceptions;
         return $this;
     }
 
@@ -115,7 +115,7 @@ EOT;
      *   :line        - the line where the exception has been thrown
      *   :stack       - full exception stack
      *
-     * @param string|callable  $message
+     * @param string|callable $message
      * @return ExceptionStrategy
      */
     public function setMessage($message)
@@ -183,7 +183,7 @@ EOT;
 
                 if (is_callable($this->message)) {
                     $callback = $this->message;
-                    $message = (string) $callback($exception, $this->displayExceptions);
+                    $message = (string)$callback($exception, $this->displayExceptions);
                 } elseif ($this->displayExceptions && $exception instanceof \Exception) {
                     $previous = '';
                     $previousException = $exception->getPrevious();
@@ -196,7 +196,7 @@ EOT;
                                 ':file',
                                 ':line',
                                 ':stack',
-                            ),array(
+                            ), array(
                                 get_class($previousException),
                                 $previousException->getMessage(),
                                 $previousException->getCode(),
@@ -219,7 +219,7 @@ EOT;
                             ':line',
                             ':stack',
                             ':previous',
-                        ),array(
+                        ), array(
                             get_class($exception),
                             $exception->getMessage(),
                             $exception->getCode(),
@@ -240,7 +240,7 @@ EOT;
                             ':line',
                             ':stack',
                             ':previous',
-                        ),array(
+                        ), array(
                             '',
                             '',
                             '',

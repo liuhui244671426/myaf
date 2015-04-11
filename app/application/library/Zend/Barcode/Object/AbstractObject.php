@@ -484,7 +484,7 @@ abstract class AbstractObject implements ObjectInterface
      */
     public function setWithBorder($value)
     {
-        $this->withBorder = (bool) $value;
+        $this->withBorder = (bool)$value;
         return $this;
     }
 
@@ -506,7 +506,7 @@ abstract class AbstractObject implements ObjectInterface
      */
     public function setWithQuietZones($value)
     {
-        $this->withQuietZones = (bool) $value;
+        $this->withQuietZones = (bool)$value;
         return $this;
     }
 
@@ -527,8 +527,8 @@ abstract class AbstractObject implements ObjectInterface
      */
     public function setReverseColor()
     {
-        $tmp                    = $this->foreColor;
-        $this->foreColor       = $this->backgroundColor;
+        $tmp = $this->foreColor;
+        $this->foreColor = $this->backgroundColor;
         $this->backgroundColor = $tmp;
         return $this;
     }
@@ -586,13 +586,13 @@ abstract class AbstractObject implements ObjectInterface
      * Automatically add leading zeros if barcode length is fixed
      *
      * @param  string $text
-     * @param  bool   $withoutChecksum
+     * @param  bool $withoutChecksum
      * @return string
      */
     protected function addLeadingZeros($text, $withoutChecksum = false)
     {
         if ($this->barcodeLength && $this->addLeadingZeros) {
-            $omitChecksum = (int) ($this->withChecksum && $withoutChecksum);
+            $omitChecksum = (int)($this->withChecksum && $withoutChecksum);
             if (is_int($this->barcodeLength)) {
                 $length = $this->barcodeLength - $omitChecksum;
                 if (strlen($text) < $length) {
@@ -639,7 +639,7 @@ abstract class AbstractObject implements ObjectInterface
      */
     public function setDrawText($value)
     {
-        $this->drawText = (bool) $value;
+        $this->drawText = (bool)$value;
         return $this;
     }
 
@@ -663,7 +663,7 @@ abstract class AbstractObject implements ObjectInterface
      */
     public function setStretchText($value)
     {
-        $this->stretchText = (bool) $value;
+        $this->stretchText = (bool)$value;
         return $this;
     }
 
@@ -689,7 +689,7 @@ abstract class AbstractObject implements ObjectInterface
     public function setWithChecksum($value)
     {
         if (!$this->mandatoryChecksum) {
-            $this->withChecksum = (bool) $value;
+            $this->withChecksum = (bool)$value;
         }
         return $this;
     }
@@ -717,7 +717,7 @@ abstract class AbstractObject implements ObjectInterface
     public function setWithChecksumInText($value)
     {
         if (!$this->mandatoryChecksum) {
-            $this->withChecksumInText = (bool) $value;
+            $this->withChecksumInText = (bool)$value;
         }
         return $this;
     }
@@ -849,8 +849,8 @@ abstract class AbstractObject implements ObjectInterface
      * Add a polygon drawing instruction in the set of instructions
      *
      * @param array $points
-     * @param int   $color
-     * @param bool  $filled
+     * @param int $color
+     * @param bool $filled
      */
     protected function addPolygon(array $points, $color = null, $filled = true)
     {
@@ -858,9 +858,9 @@ abstract class AbstractObject implements ObjectInterface
             $color = $this->foreColor;
         }
         $this->addInstruction(array(
-            'type'   => 'polygon',
+            'type' => 'polygon',
             'points' => $points,
-            'color'  => $color,
+            'color' => $color,
             'filled' => $filled,
         ));
     }
@@ -869,12 +869,12 @@ abstract class AbstractObject implements ObjectInterface
      * Add a text drawing instruction in the set of instructions
      *
      * @param string $text
-     * @param float  $size
-     * @param int[]  $position
+     * @param float $size
+     * @param int[] $position
      * @param string $font
-     * @param int    $color
+     * @param int $color
      * @param string $alignment
-     * @param float  $orientation
+     * @param float $orientation
      */
     protected function addText(
         $text,
@@ -884,18 +884,19 @@ abstract class AbstractObject implements ObjectInterface
         $color,
         $alignment = 'center',
         $orientation = 0
-    ) {
+    )
+    {
         if ($color === null) {
             $color = $this->foreColor;
         }
         $this->addInstruction(array(
-            'type'        => 'text',
-            'text'        => $text,
-            'size'        => $size,
-            'position'    => $position,
-            'font'        => $font,
-            'color'       => $color,
-            'alignment'   => $alignment,
+            'type' => 'text',
+            'text' => $text,
+            'size' => $size,
+            'position' => $position,
+            'font' => $font,
+            'color' => $color,
+            'alignment' => $alignment,
             'orientation' => $orientation,
         ));
     }
@@ -974,9 +975,9 @@ abstract class AbstractObject implements ObjectInterface
      */
     protected function calculateWidth()
     {
-        return (int) $this->withBorder
-            + $this->calculateBarcodeWidth()
-            + (int) $this->withBorder;
+        return (int)$this->withBorder
+        + $this->calculateBarcodeWidth()
+        + (int)$this->withBorder;
     }
 
     /**
@@ -993,9 +994,9 @@ abstract class AbstractObject implements ObjectInterface
      */
     protected function calculateHeight()
     {
-        return (int) $this->withBorder * 2
-            + $this->calculateBarcodeHeight()
-            + (int) $this->withBorder * 2;
+        return (int)$this->withBorder * 2
+        + $this->calculateBarcodeHeight()
+        + (int)$this->withBorder * 2;
     }
 
     /**
@@ -1056,7 +1057,7 @@ abstract class AbstractObject implements ObjectInterface
     public function getOffsetLeft($recalculate = false)
     {
         if ($this->offsetLeft === null || $recalculate) {
-            $this->offsetLeft = - min(
+            $this->offsetLeft = -min(
                 array(
                     0 * cos($this->orientation / 180 * pi()) - 0 * sin($this->orientation / 180 * pi()),
                     0 * cos($this->orientation / 180 * pi()) - $this->calculateBarcodeHeight() * sin($this->orientation / 180 * pi()),
@@ -1078,7 +1079,7 @@ abstract class AbstractObject implements ObjectInterface
     public function getOffsetTop($recalculate = false)
     {
         if ($this->offsetTop === null || $recalculate) {
-            $this->offsetTop = - min(
+            $this->offsetTop = -min(
                 array(
                     0 * cos($this->orientation / 180 * pi()) + 0 * sin($this->orientation / 180 * pi()),
                     $this->calculateBarcodeHeight() * cos($this->orientation / 180 * pi()) + 0 * sin($this->orientation / 180 * pi()),
@@ -1131,8 +1132,8 @@ abstract class AbstractObject implements ObjectInterface
 
         $this->preDrawBarcode();
 
-        $xpos = (int) $this->withBorder;
-        $ypos = (int) $this->withBorder;
+        $xpos = (int)$this->withBorder;
+        $ypos = (int)$this->withBorder;
 
         $point1 = $this->rotate(0, 0);
         $point2 = $this->rotate(0, $this->calculateHeight() - 1);
@@ -1149,7 +1150,7 @@ abstract class AbstractObject implements ObjectInterface
             $point4
         ), $this->backgroundColor);
 
-        $xpos     += $this->getQuietZone();
+        $xpos += $this->getQuietZone();
         $barLength = $this->barHeight * $this->factor;
 
         foreach ($barcodeTable as $bar) {
@@ -1210,20 +1211,20 @@ abstract class AbstractObject implements ObjectInterface
             $text = $this->getTextToDisplay();
             if ($this->stretchText) {
                 $textLength = strlen($text);
-                $space      = ($this->calculateWidth() - 2 * $this->getQuietZone()) / $textLength;
-                for ($i = 0; $i < $textLength; $i ++) {
+                $space = ($this->calculateWidth() - 2 * $this->getQuietZone()) / $textLength;
+                for ($i = 0; $i < $textLength; $i++) {
                     $leftPosition = $this->getQuietZone() + $space * ($i + 0.5);
                     $this->addText(
                         $text{$i},
                         $this->fontSize * $this->factor,
                         $this->rotate(
                             $leftPosition,
-                            (int) $this->withBorder * 2 + $this->factor * ($this->barHeight + $this->fontSize) + 1
+                            (int)$this->withBorder * 2 + $this->factor * ($this->barHeight + $this->fontSize) + 1
                         ),
                         $this->font,
                         $this->foreColor,
                         'center',
-                        - $this->orientation
+                        -$this->orientation
                     );
                 }
             } else {
@@ -1232,12 +1233,12 @@ abstract class AbstractObject implements ObjectInterface
                     $this->fontSize * $this->factor,
                     $this->rotate(
                         $this->calculateWidth() / 2,
-                        (int) $this->withBorder * 2 + $this->factor * ($this->barHeight + $this->fontSize) + 1
+                        (int)$this->withBorder * 2 + $this->factor * ($this->barHeight + $this->fontSize) + 1
                     ),
                     $this->font,
                     $this->foreColor,
                     'center',
-                    - $this->orientation
+                    -$this->orientation
                 );
             }
         }
@@ -1257,14 +1258,14 @@ abstract class AbstractObject implements ObjectInterface
      * Standard validation for most of barcode objects
      *
      * @param string $value
-     * @param array  $options
+     * @param array $options
      */
     protected function validateSpecificText($value, $options = array())
     {
         $validatorName = (isset($options['validator'])) ? $options['validator'] : $this->getType();
 
         $validator = new BarcodeValidator(array(
-            'adapter'  => $validatorName,
+            'adapter' => $validatorName,
             'usechecksum' => false,
         ));
 

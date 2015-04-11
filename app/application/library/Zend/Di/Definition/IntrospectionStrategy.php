@@ -66,7 +66,7 @@ class IntrospectionStrategy
     public function createDefaultAnnotationManager()
     {
         $annotationManager = new AnnotationManager;
-        $parser            = new GenericAnnotationParser();
+        $parser = new GenericAnnotationParser();
         $parser->registerAnnotation(new Annotation\Inject());
         $annotationManager->attach($parser);
 
@@ -80,7 +80,7 @@ class IntrospectionStrategy
      */
     public function setUseAnnotations($useAnnotations)
     {
-        $this->useAnnotations = (bool) $useAnnotations;
+        $this->useAnnotations = (bool)$useAnnotations;
     }
 
     /**

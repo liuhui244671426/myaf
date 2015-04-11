@@ -40,17 +40,17 @@ class Folder implements RecursiveIterator
     /**
      * create a new mail folder instance
      *
-     * @param string $localName  name of folder in current subdirectory
+     * @param string $localName name of folder in current subdirectory
      * @param string $globalName absolute name of folder
-     * @param bool   $selectable if true folder holds messages, if false it's just a parent for subfolders (Default: true)
-     * @param array  $folders    init with given instances of \Zend\Mail\Storage\Folder as subfolders
+     * @param bool $selectable if true folder holds messages, if false it's just a parent for subfolders (Default: true)
+     * @param array $folders init with given instances of \Zend\Mail\Storage\Folder as subfolders
      */
     public function __construct($localName, $globalName = '', $selectable = true, array $folders = array())
     {
-        $this->localName  = $localName;
+        $this->localName = $localName;
         $this->globalName = $globalName ? $globalName : $localName;
         $this->selectable = $selectable;
-        $this->folders    = $folders;
+        $this->folders = $folders;
     }
 
     /**
@@ -164,7 +164,7 @@ class Folder implements RecursiveIterator
      */
     public function __toString()
     {
-        return (string) $this->getGlobalName();
+        return (string)$this->getGlobalName();
     }
 
     /**

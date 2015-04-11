@@ -13,7 +13,7 @@ use DOMDocument;
 use DOMElement;
 
 /**
-*/
+ */
 interface RendererInterface
 {
     /**

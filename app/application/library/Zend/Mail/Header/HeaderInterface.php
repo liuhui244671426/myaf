@@ -23,7 +23,7 @@ interface HeaderInterface
      *
      * @var bool
      */
-    const FORMAT_RAW     = false;
+    const FORMAT_RAW = false;
 
     /**
      * Factory to generate a header object from a string

@@ -130,7 +130,7 @@ class ReflectionParameter
      */
     public function setPosition($index)
     {
-        $this->position = (int) $index;
+        $this->position = (int)$index;
     }
 
     /**

@@ -44,7 +44,7 @@ class ClientStatic
             return false;
         }
 
-        $request= new Request();
+        $request = new Request();
         $request->setUri($url);
         $request->setMethod(Request::METHOD_GET);
 
@@ -79,7 +79,7 @@ class ClientStatic
             return false;
         }
 
-        $request= new Request();
+        $request = new Request();
         $request->setUri($url);
         $request->setMethod(Request::METHOD_POST);
 
@@ -90,7 +90,7 @@ class ClientStatic
         }
 
         if (!isset($headers['Content-Type'])) {
-            $headers['Content-Type']= Client::ENC_URLENCODED;
+            $headers['Content-Type'] = Client::ENC_URLENCODED;
         }
 
         if (!empty($headers) && is_array($headers)) {

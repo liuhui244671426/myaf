@@ -69,9 +69,9 @@ class ProgressBar
      * Create a new progressbar backend.
      *
      * @param  Adapter\AbstractAdapter $adapter
-     * @param  float|int               $min
-     * @param  float|int               $max
-     * @param  string|null             $persistenceNamespace
+     * @param  float|int $min
+     * @param  float|int $max
+     * @param  string|null $persistenceNamespace
      * @throws Exception\OutOfRangeException When $min is greater than $max
      */
     public function __construct(Adapter\AbstractAdapter $adapter, $min = 0, $max = 100, $persistenceNamespace = null)
@@ -81,9 +81,9 @@ class ProgressBar
             throw new Exception\OutOfRangeException('$max must be greater than $min');
         }
 
-        $this->min     = (float) $min;
-        $this->max     = (float) $max;
-        $this->current = (float) $min;
+        $this->min = (float)$min;
+        $this->max = (float)$max;
+        $this->current = (float)$min;
 
         // See if we have to open a session namespace
         if ($persistenceNamespace !== null) {
@@ -99,13 +99,13 @@ class ProgressBar
         // See If a persistenceNamespace exists and handle accordingly
         if ($this->persistenceNamespace !== null) {
             if (isset($this->persistenceNamespace->isSet)) {
-                $this->startTime  = $this->persistenceNamespace->startTime;
-                $this->current    = $this->persistenceNamespace->current;
+                $this->startTime = $this->persistenceNamespace->startTime;
+                $this->current = $this->persistenceNamespace->current;
                 $this->statusText = $this->persistenceNamespace->statusText;
             } else {
-                $this->persistenceNamespace->isSet      = true;
-                $this->persistenceNamespace->startTime  = $this->startTime;
-                $this->persistenceNamespace->current    = $this->current;
+                $this->persistenceNamespace->isSet = true;
+                $this->persistenceNamespace->startTime = $this->startTime;
+                $this->persistenceNamespace->current = $this->current;
                 $this->persistenceNamespace->statusText = $this->statusText;
             }
         } else {
@@ -126,7 +126,7 @@ class ProgressBar
     /**
      * Update the progressbar
      *
-     * @param  float  $value
+     * @param  float $value
      * @param  string $text
      * @return void
      */
@@ -144,7 +144,7 @@ class ProgressBar
 
         // See if we have to update a namespace
         if ($this->persistenceNamespace !== null) {
-            $this->persistenceNamespace->current    = $this->current;
+            $this->persistenceNamespace->current = $this->current;
             $this->persistenceNamespace->statusText = $this->statusText;
         }
 
@@ -152,7 +152,7 @@ class ProgressBar
         if ($this->min === $this->max) {
             $percent = false;
         } else {
-            $percent = (float) ($this->current - $this->min) / ($this->max - $this->min);
+            $percent = (float)($this->current - $this->min) / ($this->max - $this->min);
         }
 
         // Calculate ETA

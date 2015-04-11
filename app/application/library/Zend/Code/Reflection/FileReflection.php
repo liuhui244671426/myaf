@@ -282,12 +282,12 @@ class FileReflection implements ReflectionInterface
      */
     protected function reflect()
     {
-        $scanner             = new CachingFileScanner($this->filePath);
-        $this->docComment    = $scanner->getDocComment();
+        $scanner = new CachingFileScanner($this->filePath);
+        $this->docComment = $scanner->getDocComment();
         $this->requiredFiles = $scanner->getIncludes();
-        $this->classes       = $scanner->getClassNames();
-        $this->namespaces    = $scanner->getNamespaces();
-        $this->uses          = $scanner->getUses();
+        $this->classes = $scanner->getClassNames();
+        $this->namespaces = $scanner->getNamespaces();
+        $this->uses = $scanner->getUses();
     }
 
     /**
@@ -299,14 +299,14 @@ class FileReflection implements ReflectionInterface
     protected function checkFileDocBlock($tokens)
     {
         foreach ($tokens as $token) {
-            $type    = $token[0];
-            $value   = $token[1];
+            $type = $token[0];
+            $value = $token[1];
             $lineNum = $token[2];
             if (($type == T_OPEN_TAG) || ($type == T_WHITESPACE)) {
                 continue;
             } elseif ($type == T_DOC_COMMENT) {
                 $this->docComment = $value;
-                $this->startLine  = $lineNum + substr_count($value, "\n") + 1;
+                $this->startLine = $lineNum + substr_count($value, "\n") + 1;
 
                 return;
             } else {

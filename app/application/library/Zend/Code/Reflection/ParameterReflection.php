@@ -25,7 +25,7 @@ class ParameterReflection extends ReflectionParameter implements ReflectionInter
      */
     public function getDeclaringClass()
     {
-        $phpReflection  = parent::getDeclaringClass();
+        $phpReflection = parent::getDeclaringClass();
         $zendReflection = new ClassReflection($phpReflection->getName());
         unset($phpReflection);
 

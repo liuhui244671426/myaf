@@ -11,9 +11,9 @@ namespace Zend\Validator;
 
 class Isbn extends AbstractValidator
 {
-    const AUTO    = 'auto';
-    const ISBN10  = '10';
-    const ISBN13  = '13';
+    const AUTO = 'auto';
+    const ISBN10 = '10';
+    const ISBN13 = '13';
     const INVALID = 'isbnInvalid';
     const NO_ISBN = 'isbnNoIsbn';
 
@@ -28,7 +28,7 @@ class Isbn extends AbstractValidator
     );
 
     protected $options = array(
-        'type'      => self::AUTO, // Allowed type
+        'type' => self::AUTO, // Allowed type
         'separator' => '',         // Separator character
     );
 
@@ -40,37 +40,37 @@ class Isbn extends AbstractValidator
     protected function detectFormat()
     {
         // prepare separator and pattern list
-        $sep      = quotemeta($this->getSeparator());
+        $sep = quotemeta($this->getSeparator());
         $patterns = array();
-        $lengths  = array();
-        $type     = $this->getType();
+        $lengths = array();
+        $type = $this->getType();
 
         // check for ISBN-10
         if ($type == self::ISBN10 || $type == self::AUTO) {
             if (empty($sep)) {
                 $pattern = '/^[0-9]{9}[0-9X]{1}$/';
-                $length  = 10;
+                $length = 10;
             } else {
                 $pattern = "/^[0-9]{1,7}[{$sep}]{1}[0-9]{1,7}[{$sep}]{1}[0-9]{1,7}[{$sep}]{1}[0-9X]{1}$/";
-                $length  = 13;
+                $length = 13;
             }
 
             $patterns[$pattern] = self::ISBN10;
-            $lengths[$pattern]  = $length;
+            $lengths[$pattern] = $length;
         }
 
         // check for ISBN-13
         if ($type == self::ISBN13 || $type == self::AUTO) {
             if (empty($sep)) {
                 $pattern = '/^[0-9]{13}$/';
-                $length  = 13;
+                $length = 13;
             } else {
                 $pattern = "/^[0-9]{1,9}[{$sep}]{1}[0-9]{1,5}[{$sep}]{1}[0-9]{1,9}[{$sep}]{1}[0-9]{1,9}[{$sep}]{1}[0-9]{1}$/";
-                $length  = 17;
+                $length = 17;
             }
 
             $patterns[$pattern] = self::ISBN13;
-            $lengths[$pattern]  = $length;
+            $lengths[$pattern] = $length;
         }
 
         // check pattern list
@@ -96,14 +96,14 @@ class Isbn extends AbstractValidator
             return false;
         }
 
-        $value = (string) $value;
+        $value = (string)$value;
         $this->setValue($value);
 
         switch ($this->detectFormat()) {
             case self::ISBN10:
                 // sum
                 $isbn10 = str_replace($this->getSeparator(), '', $value);
-                $sum    = 0;
+                $sum = 0;
                 for ($i = 0; $i < 9; $i++) {
                     $sum += (10 - $i) * $isbn10{$i};
                 }
@@ -120,7 +120,7 @@ class Isbn extends AbstractValidator
             case self::ISBN13:
                 // sum
                 $isbn13 = str_replace($this->getSeparator(), '', $value);
-                $sum    = 0;
+                $sum = 0;
                 for ($i = 0; $i < 12; $i++) {
                     if ($i % 2 == 0) {
                         $sum += $isbn13{$i};

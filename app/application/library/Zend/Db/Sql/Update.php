@@ -29,7 +29,7 @@ class Update extends AbstractSql implements SqlInterface, PreparableSqlInterface
     const SPECIFICATION_WHERE = 'where';
 
     const VALUES_MERGE = 'merge';
-    const VALUES_SET   = 'set';
+    const VALUES_SET = 'set';
     /**@#-**/
 
     protected $specifications = array(
@@ -149,7 +149,7 @@ class Update extends AbstractSql implements SqlInterface, PreparableSqlInterface
      */
     public function prepareStatement(AdapterInterface $adapter, StatementContainerInterface $statementContainer)
     {
-        $driver   = $adapter->getDriver();
+        $driver = $adapter->getDriver();
         $platform = $adapter->getPlatform();
         $parameterContainer = $statementContainer->getParameterContainer();
 

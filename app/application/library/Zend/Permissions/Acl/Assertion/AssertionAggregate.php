@@ -128,13 +128,13 @@ class AssertionAggregate implements AssertionInterface
     public function assert(Acl $acl, RoleInterface $role = null, ResourceInterface $resource = null, $privilege = null)
     {
         // check if assertions are set
-        if (! $this->assertions) {
+        if (!$this->assertions) {
             throw new RuntimeException('no assertion have been aggregated to this AssertionAggregate');
         }
 
         foreach ($this->assertions as $assertion) {
             // jit assertion mloading
-            if (! $assertion instanceof AssertionInterface) {
+            if (!$assertion instanceof AssertionInterface) {
                 if (class_exists($assertion)) {
                     $assertion = new $assertion();
                 } else {
@@ -150,9 +150,9 @@ class AssertionAggregate implements AssertionInterface
                 }
             }
 
-            $result = (bool) $assertion->assert($acl, $role, $resource, $privilege);
+            $result = (bool)$assertion->assert($acl, $role, $resource, $privilege);
 
-            if ($this->getMode() == self::MODE_ALL && ! $result) {
+            if ($this->getMode() == self::MODE_ALL && !$result) {
                 // on false is enough
                 return false;
             }

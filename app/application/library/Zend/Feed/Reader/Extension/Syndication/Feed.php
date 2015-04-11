@@ -39,7 +39,7 @@ class Feed extends Extension\AbstractFeed
                 return $period;
             default:
                 throw new Reader\Exception\InvalidArgumentException("Feed specified invalid update period: '$period'."
-                    .  " Must be one of hourly, daily, weekly or yearly"
+                    . " Must be one of hourly, daily, weekly or yearly"
                 );
         }
     }
@@ -83,13 +83,13 @@ class Feed extends Extension\AbstractFeed
         switch ($period) {
             case 'yearly':
                 $ticks *= 52; //TODO: fix generalisation, how?
-                // no break
+            // no break
             case 'weekly':
                 $ticks *= 7;
-                // no break
+            // no break
             case 'daily':
                 $ticks *= 24;
-                // no break
+            // no break
             case 'hourly':
                 $ticks *= 3600;
                 break;

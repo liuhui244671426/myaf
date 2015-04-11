@@ -14,7 +14,7 @@ use DOMElement;
 use Zend\Feed\Writer;
 
 /**
-*/
+ */
 class AbstractRenderer
 {
     /**

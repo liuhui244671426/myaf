@@ -67,7 +67,8 @@ class AcceptableViewModelSelector extends AbstractPlugin
         array $matchAgainst = null,
         $returnDefault = true,
         & $resultReference = null
-    ) {
+    )
+    {
         return $this->getViewModel($matchAgainst, $returnDefault, $resultReference);
     }
 
@@ -84,7 +85,8 @@ class AcceptableViewModelSelector extends AbstractPlugin
         array $matchAgainst = null,
         $returnDefault = true,
         & $resultReference = null
-    ) {
+    )
+    {
         $name = $this->getViewModelName($matchAgainst, $returnDefault, $resultReference);
 
         if (!$name) {
@@ -110,7 +112,8 @@ class AcceptableViewModelSelector extends AbstractPlugin
         array $matchAgainst = null,
         $returnDefault = true,
         & $resultReference = null
-    ) {
+    )
+    {
         $res = $this->match($matchAgainst);
         if ($res) {
             $resultReference = $res;
@@ -130,8 +133,8 @@ class AcceptableViewModelSelector extends AbstractPlugin
      */
     public function match(array $matchAgainst = null)
     {
-        $request        = $this->getRequest();
-        $headers        = $request->getHeaders();
+        $request = $this->getRequest();
+        $headers = $request->getHeaders();
 
         if ((!$matchAgainst && !$this->defaultMatchAgainst) || !$headers->has('accept')) {
             return null;
@@ -143,7 +146,7 @@ class AcceptableViewModelSelector extends AbstractPlugin
 
         $matchAgainstString = '';
         foreach ($matchAgainst as $modelName => $modelStrings) {
-            foreach ((array) $modelStrings as $modelString) {
+            foreach ((array)$modelStrings as $modelString) {
                 $matchAgainstString .= $this->injectViewModelName($modelString, $modelName);
             }
         }
@@ -164,7 +167,7 @@ class AcceptableViewModelSelector extends AbstractPlugin
      */
     public function setDefaultViewModelName($defaultViewModelName)
     {
-        $this->defaultViewModelName = (string) $defaultViewModelName;
+        $this->defaultViewModelName = (string)$defaultViewModelName;
         return $this;
     }
 
@@ -239,7 +242,7 @@ class AcceptableViewModelSelector extends AbstractPlugin
         $request = $event->getRequest();
         if (!$request instanceof Request) {
             throw new DomainException(
-                    'The event used does not contain a valid Request, but must.'
+                'The event used does not contain a valid Request, but must.'
             );
         }
 
@@ -262,8 +265,8 @@ class AcceptableViewModelSelector extends AbstractPlugin
         $controller = $this->getController();
         if (!$controller instanceof InjectApplicationEventInterface) {
             throw new DomainException(
-                    'A controller that implements InjectApplicationEventInterface '
-                  . 'is required to use ' . __CLASS__
+                'A controller that implements InjectApplicationEventInterface '
+                . 'is required to use ' . __CLASS__
             );
         }
 

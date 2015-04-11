@@ -36,13 +36,13 @@ class LazyServiceFactory implements DelegatorFactoryInterface
 
     /**
      * @param LazyLoadingValueHolderFactory $proxyFactory
-     * @param string[]                      $servicesMap  a map of service names to class names of their
+     * @param string[] $servicesMap a map of service names to class names of their
      *                                                    respective classes
      */
     public function __construct(LazyLoadingValueHolderFactory $proxyFactory, array $servicesMap)
     {
         $this->proxyFactory = $proxyFactory;
-        $this->servicesMap  = $servicesMap;
+        $this->servicesMap = $servicesMap;
     }
 
     /**

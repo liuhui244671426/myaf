@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Yaf Application
  */
@@ -25,7 +26,7 @@ class Yaf_Application
     protected $_errno = 0;
     protected $_errmsg = '';
 
-    public function __construct($config, $env=null)
+    public function __construct($config, $env = null)
     {
         $app = self::app();
         if (!is_null($app)) {
@@ -74,9 +75,9 @@ class Yaf_Application
         //loader initialization
         $loader = Yaf_Loader::getInstance(
             (
-                isset($this->_options['local_library'])
-                ?$this->_options['local_library']
-                :''
+            isset($this->_options['local_library'])
+                ? $this->_options['local_library']
+                : ''
             ),
             Yaf_G::iniGet('yaf.library')
         );
@@ -93,7 +94,7 @@ class Yaf_Application
         if (
             isset($this->_options['local_namespace'])
             &&
-            $this->_options['local_namespace'] !=''
+            $this->_options['local_namespace'] != ''
         ) {
             $namespace = str_replace(
                 array(',', ' '),
@@ -108,6 +109,7 @@ class Yaf_Application
             set_exception_handler(array($this, 'exceptionHandler'));
         }
     }
+
     public function __destruct()
     {
 
@@ -121,7 +123,7 @@ class Yaf_Application
         } else {
             $bootstrap =
                 $this->getAppDirectory() .
-                DIRECTORY_SEPARATOR. $bootstrapClass .
+                DIRECTORY_SEPARATOR . $bootstrapClass .
                 '.' . Yaf_G::get('ext');
         }
 
@@ -129,20 +131,20 @@ class Yaf_Application
         if (Yaf_Loader::import($bootstrap)) {
             if (!class_exists($bootstrapClass)) {
                 throw new Yaf_Exception(
-                    'Couldn\'t find class Bootstrap in '.$bootstrap
+                    'Couldn\'t find class Bootstrap in ' . $bootstrap
                 );
             } else {
                 $bootstrap = new $bootstrapClass();
                 if (!($bootstrap instanceof Yaf_Bootstrap_Abstract)) {
                     throw new Yaf_Exception(
-                        'Expect a Yaf_Bootstrap_Abstract instance, '.
-                        get_class($bootstrap).' give '
+                        'Expect a Yaf_Bootstrap_Abstract instance, ' .
+                        get_class($bootstrap) . ' give '
                     );
                 }
                 if (version_compare(PHP_VERSION, '5.2.6') === -1) {
-                    $class        = new ReflectionObject($bootstrap);
+                    $class = new ReflectionObject($bootstrap);
                     $classMethods = $class->getMethods();
-                    $methodNames  = array();
+                    $methodNames = array();
 
                     foreach ($classMethods as $method) {
                         $methodNames[] = $method->getName();
@@ -169,11 +171,12 @@ class Yaf_Application
             }
         } else {
             throw new Yaf_Exception(
-                'Couldn\'t find bootstrap file '.$bootstrap
+                'Couldn\'t find bootstrap file ' . $bootstrap
             );
         }
         return $this;
     }
+
     /**
      * Start Yaf_Application
      */
@@ -188,6 +191,7 @@ class Yaf_Application
             return $this->_dispatcher->dispatch();
         }
     }
+
     /**
      * Retrieve application instance
      * @return Yaf_Application
@@ -213,6 +217,7 @@ class Yaf_Application
     {
         return $this->_dispatcher;
     }
+
     /**
      * Get defined module names
      */
@@ -220,6 +225,7 @@ class Yaf_Application
     {
         return $this->_modules;
     }
+
     /**
      * Retrieve environment
      */
@@ -258,6 +264,7 @@ class Yaf_Application
     {
 
     }
+
     /**
      * Yaf_Application can not be serialized
      */
@@ -265,6 +272,7 @@ class Yaf_Application
     {
 
     }
+
     /**
      * Yaf_Application can not be deserialized
      */
@@ -336,7 +344,7 @@ class Yaf_Application
         return $this->_errno;
     }
 
-     /**
+    /**
      * Load configuration file of options
      *
      * @param  string $file
@@ -354,7 +362,7 @@ class Yaf_Application
             $config = $file;
         } else {
             throw new Yaf_Exception(
-                'Invalid options provided; must be location of config file, '.
+                'Invalid options provided; must be location of config file, ' .
                 'a config object, or an array'
             );
         }
@@ -387,7 +395,7 @@ class Yaf_Application
             Yaf_G::set(
                 'directory',
                 preg_replace(
-                    "/".preg_quote(DIRECTORY_SEPARATOR, "/")."$/",
+                    "/" . preg_quote(DIRECTORY_SEPARATOR, "/") . "$/",
                     "", $options['directory']
                 )
             );
@@ -411,13 +419,13 @@ class Yaf_Application
                     && is_string($options['library']['directory'])
                 ) {
                     $this->_options['local_library'] =
-                    $options['library']['directory'];
+                        $options['library']['directory'];
                 }
                 if (!empty($options['library']['namespace'])
                     && is_string($options['library']['namespace'])
                 ) {
                     $this->_options['local_namespace'] =
-                    $options['library']['namespace'];
+                        $options['library']['namespace'];
                 }
 
             }
@@ -441,7 +449,7 @@ class Yaf_Application
         if (!empty($options['dispatcher']) && is_array($options['dispatcher'])
         ) {
             if (!empty($options['dispatcher']['defaultModule'])
-            && is_string($options['dispatcher']['defaultModule'])
+                && is_string($options['dispatcher']['defaultModule'])
             ) {
                 Yaf_G::set(
                     'default_module', $options['dispatcher']['defaultModule']
@@ -453,7 +461,7 @@ class Yaf_Application
                 );
             }
             if (!empty($options['dispatcher']['defaultController'])
-            && is_string($options['dispatcher']['defaultController'])
+                && is_string($options['dispatcher']['defaultController'])
             ) {
                 Yaf_G::set(
                     'default_controller',
@@ -466,7 +474,7 @@ class Yaf_Application
                 );
             }
             if (!empty($options['dispatcher']['defaultAction'])
-            && is_string($options['dispatcher']['defaultAction'])
+                && is_string($options['dispatcher']['defaultAction'])
             ) {
                 Yaf_G::set(
                     'default_action',
@@ -528,9 +536,9 @@ class Yaf_Application
         return true;
     }
 
-     public function exceptionHandler (Exception $e)
-     {
-         //the exception is registered
-         echo PHP_EOL.'Exception throught App - '.$e->getMessage();
-     }
+    public function exceptionHandler(Exception $e)
+    {
+        //the exception is registered
+        echo PHP_EOL . 'Exception throught App - ' . $e->getMessage();
+    }
 }

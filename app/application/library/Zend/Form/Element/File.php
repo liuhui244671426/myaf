@@ -46,8 +46,8 @@ class File extends Element implements InputProviderInterface, ElementPrepareAwar
     public function getInputSpecification()
     {
         return array(
-            'type'     => 'Zend\InputFilter\FileInput',
-            'name'     => $this->getName(),
+            'type' => 'Zend\InputFilter\FileInput',
+            'name' => $this->getName(),
             'required' => false,
         );
     }
