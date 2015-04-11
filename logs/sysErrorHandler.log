@@ -89,3 +89,7 @@ Stack trace:
 <?php exit;?>2015-04-03 17:28:04 | code: 8 | msg: Undefined variable: path                      | file: /private/var/www/myaf3/app/application/library/initConfig.php | line: 52
 <?php exit;?>2015-04-03 17:39:58 | code: 2 | msg: Yaf_Loader::autoload(): Failed opening script /private/var/www/myaf3/app/application/models/Base.php: No such file or directory | file: /private/var/www/myaf3/app/application/models/Admin/Index.php | line: 8
 <?php exit;?>2015-04-03 17:44:21 | code: 2 | msg: Yaf_Loader::autoload(): Failed opening script /private/var/www/myaf3/app/application/models/Base.php: No such file or directory | file: /private/var/www/myaf3/app/application/models/Admin/Index.php | line: 8
+<?php exit;?>2015-04-11 23:08:18 | code: 2 | msg: Yaf_Controller_Abstract::__construct() expects at least 3 parameters, 0 given | file: /private/var/www/myaf3/app/application/views/phtmls/layouts/Admin.phtml | line: 91
+<?php exit;?>2015-04-11 23:30:35 | code: 8 | msg: Undefined index: userName                     | file: /private/var/www/myaf3/app/application/views/phtmls/layouts/Admin.phtml | line: 91
+<?php exit;?>2015-04-12 00:10:54 | code: 2 | msg: PDOStatement::execute(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'name' in 'field list' | file: /private/var/www/myaf3/app/application/library/halo/HaloPdo.php | line: 444
+<?php exit;?>2015-04-12 00:10:54 | code: 1024 | msg: Unknown column 'name' in 'field list'         | file: /private/var/www/myaf3/app/application/library/halo/HaloPdo.php | line: 452

@@ -22,4 +22,8 @@ class Admin_IndexModel extends BaseModel{
         $result = $this->_db->get_row($sql, array($user, $pass));
         return $result['id'];
     }
+
+    public function getLeftMenu($uid){
+
+    }
 }

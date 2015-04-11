@@ -7,64 +7,23 @@
  */
 class LeftBuilder{
 
-    /*
-     * <li class="accordion">
-            <a href="#"><i class="glyphicon glyphicon-edit"></i><span>文章管理</span></a>
-            <ul class="nav nav-pills nav-stacked">
-                <li><a href="/admin/articles/list">列表</a></li>
-            </ul>
-        </li>
-     **/
     static public function menuHtml(){
-        //----
-        /*$db = new AclModel();
-        $db->getUserPrem($_SESSION['user']['roleid']);*/
-        //----
-        $leftMenu = self::leftMenu();
+        return '<h5 class="sidebartitle">Navigation</h5>
+        <ul class="nav nav-pills nav-stacked nav-bracket">
+            <li class="active"><a href="/admin/main/main"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
 
-        $html = $ul = '';
-
-        foreach($leftMenu as $k => $v){
-            $a = '<a href="#"><i class="glyphicon glyphicon-chevron-right"></i><span>' . $v['title'] . '</span></a>';
-            $ul = '<ul class="nav nav-pills nav-stacked">';
-
-            foreach($v['subItem'] as $kk => $vv){
-                $ul .= '<li><a href="' . $vv['subLink'] . '">' . $vv['subTitle'] . '</a></li>';
-            }
-            $ul .= '</ul>';
-            $html .= '<li class="accordion">' . $a . $ul . '</li>';
-        }
-
-        return $html;
+            <li class="nav-parent"><a href=""><i class="fa fa-edit"></i> <span>会员管理</span></a>
+                <ul class="children">
+                    <li><a href="/admin/member/getAllMembers"><i class="fa fa-caret-right"></i>所有会员</a></li>
+                </ul>
+            </li>
+        </ul>';
     }
 
-    static public function leftMenu(){
-        $menu = array(
-            array(
-                'title'=>'文章管理',
-                'name'=>'articles_list',
-                'subItem' => array(
-                    array(
-                        'subTitle'=>'列表',
-                        'subLink'=>'/admin/articles/list'
-                    )
-                )
-            ),
-            array(
-                'title'=>'角色管理',
-                'name'=>'role_list',
-                'subItem' => array(
-                    array(
-                        'subTitle'=>'列表',
-                        'subLink'=>'/admin/role/list',
-                    ),
-                    array(
-                        'subTitle'=>'新加',
-                        'subLink'=>'/admin/role/insnew'
-                    )
-                )
-            )
-        );
-        return $menu;
+    static public function getLeftMenu(){
+        $uid = $_SESSION['user']['uid'];
+        $db = new Admin_IndexModel();
+        $data = $db->getLeftMenu($uid);
+
     }
 }

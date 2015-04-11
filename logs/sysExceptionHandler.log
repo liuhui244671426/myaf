@@ -1537,3 +1537,41 @@ exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method map
 Stack trace:
 #0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
 #1 {main}
+<?php exit;?>04-07 11:28:19 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method x-editable.htmlAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-07 11:34:26 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method x-editable.htmlAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-11 23:12:29 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method signin.htmlAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-11 23:13:49 | code: 517 | msg: 
+exception 'Yaf_Exception_LoadFailed_Action' with message 'There is no method logoutAction in MainController' in /private/var/www/myaf3/app/public/index_dev.php:39
+Stack trace:
+#0 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#1 {main}
+<?php exit;?>04-12 00:03:34 | code: 518 | msg: 
+exception 'Yaf_Exception_LoadFailed_View' with message 'Failed opening template /admin/getAllMember.phtml: No such file or directory' in /private/var/www/myaf3/app/application/library/layout.php:274
+Stack trace:
+#0 /private/var/www/myaf3/app/application/library/layout.php(274): Yaf_View_Simple->render('/admin/getAllMe...', Array)
+#1 /private/var/www/myaf3/app/application/library/layout.php(308): layout->render('/admin/getAllMe...', Array)
+#2 /private/var/www/myaf3/app/application/modules/Admin/controllers/Member.php(16): layout->display('/admin/getAllMe...', Array)
+#3 [internal function]: MemberController->getAllMembersAction()
+#4 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#5 {main}
+<?php exit;?>04-12 00:03:47 | code: 518 | msg: 
+exception 'Yaf_Exception_LoadFailed_View' with message 'Failed opening template /Admin/getAllMember.phtml: No such file or directory' in /private/var/www/myaf3/app/application/library/layout.php:274
+Stack trace:
+#0 /private/var/www/myaf3/app/application/library/layout.php(274): Yaf_View_Simple->render('/Admin/getAllMe...', Array)
+#1 /private/var/www/myaf3/app/application/library/layout.php(308): layout->render('/Admin/getAllMe...', Array)
+#2 /private/var/www/myaf3/app/application/modules/Admin/controllers/Member.php(16): layout->display('/Admin/getAllMe...', Array)
+#3 [internal function]: MemberController->getAllMembersAction()
+#4 /private/var/www/myaf3/app/public/index_dev.php(39): Yaf_Application->run()
+#5 {main}

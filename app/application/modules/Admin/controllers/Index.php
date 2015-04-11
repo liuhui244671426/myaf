@@ -36,23 +36,23 @@ class IndexController extends BaseController{
             $pass = md5($pass);
 
             $db = new Admin_IndexModel();
-            $result = $db->checkUserPass($user, $pass);
-            if(empty($result)){
-                $isAccess = false;
-            } else {
-                $isAccess = true;
+            $uid = $db->checkUserPass($user, $pass);
+            if(empty($uid)){
+                $this->redirect('/admin/index/login');
+                exit;
             }
             Yaflog('user: '.$user);
             Yaflog('pass: '.$pass);
-            Yaflog('是否登陆: '.$isAccess);
+            Yaflog('uis: '.$uid);
 
-            if($isAccess){
-                $_SESSION['isLogin'] = true;
-
+            if($uid >= 1){
+                //---------
+                $_SESSION['user']['uid'] = $uid;
+                $_SESSION['user']['uname'] = $user;
+                //---------
                 $this->redirect('/admin/main/main');
             } else {
-
-                //$this->redirect('/admin/index/login');
+                $this->redirect('/admin/index/login');
             }
         }
     }
@@ -61,7 +61,6 @@ class IndexController extends BaseController{
      * 注销登陆,删除session的东东
      */
     public function logoutAction(){
-        unset($_SESSION['isLogin']);
         unset($_SESSION['user']);
         $this->redirect('/admin/index/login');
     }

@@ -12,69 +12,27 @@ class TableBuilder{
      * @param array $data
      * @return string html
      * */
-    public static function listAdminHtml(array $data){
-        $table = '';
-
-        foreach($data as $k){
-            $tr = '
-        <tr>
-            <td>' . $k['id'] . '</td>
-            <td class="center">' . $k['name'] . '</td>
-            <td class="center">
-                ' . $k['rolename'] . '
-            </td>
-            <td class="center">
-                <a class="btn btn-info btn-setting" href="#">
-                    <i class="glyphicon glyphicon-edit icon-white"></i>
-                    Edit
-                </a>
-                <a class="btn btn-danger" href="#">
-                    <i class="glyphicon glyphicon-trash icon-white"></i>
-                    Delete
-                </a>
-            </td>
-        </tr>';
-            $table .= $tr;
+    public static function allMemberHtml(array $data){
+        $tr = '';
+        foreach ($data as $k => $v) {
+            $tr .= sprintf('<tr>
+                    <td>%d</td>
+                    <td>%d</td>
+                    <td>%s</td>
+                    <td>%s</td>
+                </tr>', $k, $v['id'], $v['name'], $v['rolename']);
         }
 
-        return $table;
-    }
-
-    /**
-     * 文章列表
-     * @param array $data
-     * @return string html
-     * */
-    public static function listArticlesHtml(array $data){
-        $table = '';
-        foreach($data as $k){
-            $tr = '
-        <tr>
-            <td>' . $k['id'] . '</td>
-            <td class="center">' . $k['title'] . '</td>
-            <td class="center">
-                ' . $k['publish'] . '
-            </td>
-            <td class="center">
-                <a class="btn btn-success" href="/admin/articles/view?id=' . $k['id'] . '">
-                    <i class="glyphicon glyphicon-eye-open icon-white"></i>
-                    Read
-                </a>
-                <a class="btn btn-info btn-setting" href="/admin/articles/edit">
-                    <i class="glyphicon glyphicon-edit icon-white"></i>
-                    Edit
-                </a>
-                <a class="btn btn-danger myModal" data-attr="' . $k['id'] . '">
-                    <i class="glyphicon glyphicon-trash icon-white"></i>
-                    Delete
-                </a>
-
-            </td>
-        </tr>';
-            $table .= $tr;
-        }
-
-        return $table;
+        $th = self::thHtml(array('id', 'uid', 'name', 'role name'));
+        $html = '<table class="table mb30">
+                <thead>
+                    ' . $th . '
+                </thead>
+                <tbody>
+                    ' . $tr . '
+                </tbody>
+            </table>';
+        return $html;
     }
 
     /**
@@ -87,7 +45,7 @@ class TableBuilder{
         foreach($thead as $k){
             $th .= sprintf('<th>%s</th>', $k);
         }
-        return $th;
+        return '<tr>' . $th . '</tr>';
     }
 
     /**

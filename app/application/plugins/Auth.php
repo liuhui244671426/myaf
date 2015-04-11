@@ -23,7 +23,7 @@ class AuthPlugin extends Yaf_Plugin_Abstract{
 
         if(strcasecmp($request->module, 'Admin') == 0 && strcasecmp($request->action, 'login') != 0 )
         {
-            $isLogin = ((empty($_SESSION['isLogin'])) || (!isset($_SESSION['isLogin'])) || ($_SESSION['isLogin'] == null))
+            $isLogin = ((empty($_SESSION['user']['uid'])) || (!isset($_SESSION['user']['uid'])) || ($_SESSION['user']['uid'] == null))
                 ? false : true;
             Yaflog('$request: ');
             Yaflog($request);

@@ -64,8 +64,6 @@ function httpStatus($code)
         509 => 'Bandwidth Limit Exceeded'
     );
     if (array_key_exists($code, $_status)) {
-        //return sprintf('HTTP/1.1 %s %s', $code, $_status[$code]);
-
         //return sprintf('Status: %s %s', $code, $_status[$code]);//确保FastCGI模式下正常
         return sprintf('%s %s %s', $_SERVER['SERVER_PROTOCOL'], $code, $_status[$code]);
     }
