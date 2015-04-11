@@ -15,7 +15,7 @@ class LeftBuilder
         <ul class="nav nav-pills nav-stacked nav-bracket">
             <li class="active"><a href="/admin/main/main"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
 
-            <li class="nav-parent"><a href=""><i class="fa fa-edit"></i> <span>会员管理</span></a>
+            <li class="nav-parent"><a href=""><i class="fa fa-users"></i> <span>会员管理</span></a>
                 <ul class="children">
                     <li><a href="/admin/member/getAllMembers"><i class="fa fa-caret-right"></i>所有会员</a></li>
                 </ul>

@@ -508,3 +508,87 @@
 ))
 00:50:57-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:35 '$isLogin: '
 00:50:57-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:36 true
+00:55:14-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+00:55:14-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+00:55:14-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'getallmembers'
+00:55:14-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:33 '$request: '
+00:55:14-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:34 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Member',
+   'action' => 'getallmembers',
+   'method' => 'GET',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/member/getAllMembers',
+   'dispatched' => false,
+   'routed' => true,
+))
+00:55:14-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:35 '$isLogin: '
+00:55:14-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:36 true
+00:58:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+00:58:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+00:58:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'getallmembers'
+00:58:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:33 '$request: '
+00:58:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:34 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Member',
+   'action' => 'getallmembers',
+   'method' => 'GET',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/member/getAllMembers',
+   'dispatched' => false,
+   'routed' => true,
+))
+00:58:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:35 '$isLogin: '
+00:58:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:36 true
+00:58:10-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+00:58:10-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+00:58:10-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'getallmembers'
+00:58:10-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:33 '$request: '
+00:58:10-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:34 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Member',
+   'action' => 'getallmembers',
+   'method' => 'GET',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/member/getAllMembers',
+   'dispatched' => false,
+   'routed' => true,
+))
+00:58:10-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:35 '$isLogin: '
+00:58:10-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:36 true
+00:58:30-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+00:58:30-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+00:58:30-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'getallmembers'
+00:58:30-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:33 '$request: '
+00:58:30-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:34 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Member',
+   'action' => 'getallmembers',
+   'method' => 'GET',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/member/getAllMembers',
+   'dispatched' => false,
+   'routed' => true,
+))
+00:58:30-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:35 '$isLogin: '
+00:58:30-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:36 true
