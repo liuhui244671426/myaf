@@ -53,6 +53,9 @@ class IndexController extends BaseController
             Yaflog('uis: ' . $uid);
 
             if ($uid >= 1) {
+
+                $isWrite = $db->insLoginLog($uid, 1);
+                Yaflog($isWrite);
                 //---------
                 $_SESSION['user']['uid'] = $uid;
                 $_SESSION['user']['uname'] = $user;
@@ -69,6 +72,11 @@ class IndexController extends BaseController
      */
     public function logoutAction()
     {
+        $uid = $_SESSION['user']['uid'];
+
+        $db = new Admin_IndexModel();
+        $db->insLoginLog($uid, 0);
+
         unset($_SESSION['user']);
         $this->redirect('/admin/index/login');
     }

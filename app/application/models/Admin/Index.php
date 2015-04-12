@@ -27,9 +27,17 @@ class Admin_IndexModel extends BaseModel
         $result = $this->_db->get_row($sql, array($user, $pass));
         return $result['id'];
     }
-
-    public function getLeftMenu($uid)
+    /**
+     * 添加登录日志
+     * */
+    public function insLoginLog($uid, $op)
     {
-
+        $data = array(
+            'uid' => $uid,
+            'time' => TODAY,
+            'ip' => ip2long(IP()),
+            'op' => $op
+        );
+        $this->_db->insertTable('adm_login_log', $data);
     }
 }

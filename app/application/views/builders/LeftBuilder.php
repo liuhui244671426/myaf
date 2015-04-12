@@ -20,6 +20,12 @@ class LeftBuilder
                     <li><a href="/admin/member/getAllMembers"><i class="fa fa-caret-right"></i>所有会员</a></li>
                 </ul>
             </li>
+
+            <li class="nav-parent"><a href=""><i class="fa fa-adn"></i> <span>广告管理</span></a>
+                <ul class="children">
+                    <li><a href="/admin/member/getAllMembers"><i class="fa fa-caret-right"></i>投放中</a></li>
+                </ul>
+            </li>
         </ul>';
     }
 

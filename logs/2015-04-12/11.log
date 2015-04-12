@@ -1,0 +1,487 @@
+11:28:09-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+11:28:09-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+11:28:09-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'getallmembers'
+11:28:09-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:33 '$request: '
+11:28:09-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:34 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Member',
+   'action' => 'getallmembers',
+   'method' => 'GET',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/member/getAllMembers',
+   'dispatched' => false,
+   'routed' => true,
+))
+11:28:09-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:35 '$isLogin: '
+11:28:09-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:36 true
+11:29:47-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+11:29:47-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+11:29:47-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'getallmembers'
+11:29:47-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:33 '$request: '
+11:29:47-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:34 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Member',
+   'action' => 'getallmembers',
+   'method' => 'GET',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/member/getAllMembers',
+   'dispatched' => false,
+   'routed' => true,
+))
+11:29:47-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:35 '$isLogin: '
+11:29:47-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:36 true
+11:29:50-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+11:29:50-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+11:29:50-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'main'
+11:29:50-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:33 '$request: '
+11:29:50-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:34 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Main',
+   'action' => 'main',
+   'method' => 'GET',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/main/main',
+   'dispatched' => false,
+   'routed' => true,
+))
+11:29:50-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:35 '$isLogin: '
+11:29:50-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:36 true
+11:41:24-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+11:41:24-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+11:41:24-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'logout'
+11:41:24-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:33 '$request: '
+11:41:24-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:34 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Index',
+   'action' => 'logout',
+   'method' => 'GET',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/index/logout',
+   'dispatched' => false,
+   'routed' => true,
+))
+11:41:24-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:35 '$isLogin: '
+11:41:24-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:36 true
+11:41:24-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+11:41:24-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+11:41:24-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'login'
+11:41:26-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+11:41:26-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+11:41:26-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'auth'
+11:41:26-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:33 '$request: '
+11:41:26-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:34 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Index',
+   'action' => 'auth',
+   'method' => 'POST',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/index/auth',
+   'dispatched' => false,
+   'routed' => true,
+))
+11:41:26-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:35 '$isLogin: '
+11:41:26-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:36 false
+11:41:26-[debug]-/private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php:51 'user: admin'
+11:41:26-[debug]-/private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php:52 'pass: 21232f297a57a5a743894a0e4a801fc3'
+11:41:26-[debug]-/private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php:53 'uis: 1'
+11:41:26-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:246 'INSERT INTO adm_login_log SET uid=?,time=?,ip=?插入语句'
+11:41:26-[debug]-/private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php:58 NULL
+11:41:26-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+11:41:26-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+11:41:26-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'main'
+11:41:26-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:33 '$request: '
+11:41:26-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:34 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Main',
+   'action' => 'main',
+   'method' => 'GET',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/main/main',
+   'dispatched' => false,
+   'routed' => true,
+))
+11:41:26-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:35 '$isLogin: '
+11:41:26-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:36 true
+11:42:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+11:42:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+11:42:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'logout'
+11:42:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:33 '$request: '
+11:42:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:34 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Index',
+   'action' => 'logout',
+   'method' => 'GET',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/index/logout',
+   'dispatched' => false,
+   'routed' => true,
+))
+11:42:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:35 '$isLogin: '
+11:42:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:36 true
+11:42:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+11:42:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+11:42:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'login'
+11:42:03-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+11:42:03-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+11:42:03-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'auth'
+11:42:03-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:33 '$request: '
+11:42:03-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:34 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Index',
+   'action' => 'auth',
+   'method' => 'POST',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/index/auth',
+   'dispatched' => false,
+   'routed' => true,
+))
+11:42:03-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:35 '$isLogin: '
+11:42:03-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:36 false
+11:42:03-[debug]-/private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php:51 'user: admin'
+11:42:03-[debug]-/private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php:52 'pass: 21232f297a57a5a743894a0e4a801fc3'
+11:42:03-[debug]-/private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php:53 'uis: 1'
+11:42:03-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:246 'INSERT INTO adm_login_log SET uid=?,time=?,ip=?插入语句'
+11:42:03-[debug]-/private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php:58 NULL
+11:42:03-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+11:42:03-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+11:42:03-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'main'
+11:42:03-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:33 '$request: '
+11:42:03-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:34 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Main',
+   'action' => 'main',
+   'method' => 'GET',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/main/main',
+   'dispatched' => false,
+   'routed' => true,
+))
+11:42:03-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:35 '$isLogin: '
+11:42:03-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:36 true
+11:47:48-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+11:47:48-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+11:47:48-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'logout'
+11:47:48-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:33 '$request: '
+11:47:48-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:34 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Index',
+   'action' => 'logout',
+   'method' => 'GET',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/index/logout',
+   'dispatched' => false,
+   'routed' => true,
+))
+11:47:48-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:35 '$isLogin: '
+11:47:48-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:36 true
+11:47:48-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:246 'INSERT INTO adm_login_log SET uid=?,time=?,ip=?,op=?插入语句'
+11:47:48-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+11:47:48-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+11:47:48-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'login'
+11:47:54-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+11:47:54-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+11:47:54-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'auth'
+11:47:54-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:33 '$request: '
+11:47:54-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:34 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Index',
+   'action' => 'auth',
+   'method' => 'POST',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/index/auth',
+   'dispatched' => false,
+   'routed' => true,
+))
+11:47:54-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:35 '$isLogin: '
+11:47:54-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:36 false
+11:47:54-[debug]-/private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php:51 'user: admin'
+11:47:54-[debug]-/private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php:52 'pass: 21232f297a57a5a743894a0e4a801fc3'
+11:47:54-[debug]-/private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php:53 'uis: 1'
+11:47:54-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:246 'INSERT INTO adm_login_log SET uid=?,time=?,ip=?,op=?插入语句'
+11:47:54-[debug]-/private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php:58 NULL
+11:47:54-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+11:47:54-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+11:47:54-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'main'
+11:47:54-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:33 '$request: '
+11:47:54-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:34 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Main',
+   'action' => 'main',
+   'method' => 'GET',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/main/main',
+   'dispatched' => false,
+   'routed' => true,
+))
+11:47:54-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:35 '$isLogin: '
+11:47:54-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:36 true
+11:50:39-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+11:50:39-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+11:50:39-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'logout'
+11:50:39-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:33 '$request: '
+11:50:39-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:34 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Index',
+   'action' => 'logout',
+   'method' => 'GET',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/index/logout',
+   'dispatched' => false,
+   'routed' => true,
+))
+11:50:39-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:35 '$isLogin: '
+11:50:39-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:36 true
+11:50:39-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:246 'INSERT INTO adm_login_log SET uid=?,time=?,ip=?,op=?插入语句'
+11:50:39-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+11:50:39-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+11:50:39-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'login'
+11:50:44-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+11:50:44-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+11:50:44-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'auth'
+11:50:44-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:33 '$request: '
+11:50:44-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:34 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Index',
+   'action' => 'auth',
+   'method' => 'POST',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/index/auth',
+   'dispatched' => false,
+   'routed' => true,
+))
+11:50:44-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:35 '$isLogin: '
+11:50:44-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:36 false
+11:50:44-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+11:50:44-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+11:50:44-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'login'
+11:51:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+11:51:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+11:51:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'auth'
+11:51:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:33 '$request: '
+11:51:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:34 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Index',
+   'action' => 'auth',
+   'method' => 'POST',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/index/auth',
+   'dispatched' => false,
+   'routed' => true,
+))
+11:51:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:35 '$isLogin: '
+11:51:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:36 false
+11:51:02-[debug]-/private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php:51 'user: editor'
+11:51:02-[debug]-/private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php:52 'pass: 5aee9dbd2a188839105073571bee1b1f'
+11:51:02-[debug]-/private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php:53 'uis: 2'
+11:51:02-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:246 'INSERT INTO adm_login_log SET uid=?,time=?,ip=?,op=?插入语句'
+11:51:02-[debug]-/private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php:58 NULL
+11:51:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+11:51:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+11:51:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'main'
+11:51:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:33 '$request: '
+11:51:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:34 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Main',
+   'action' => 'main',
+   'method' => 'GET',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/main/main',
+   'dispatched' => false,
+   'routed' => true,
+))
+11:51:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:35 '$isLogin: '
+11:51:02-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:36 true
+11:51:13-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+11:51:13-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+11:51:13-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'logout'
+11:51:13-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:33 '$request: '
+11:51:13-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:34 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Index',
+   'action' => 'logout',
+   'method' => 'GET',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/index/logout',
+   'dispatched' => false,
+   'routed' => true,
+))
+11:51:13-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:35 '$isLogin: '
+11:51:13-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:36 true
+11:51:13-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:246 'INSERT INTO adm_login_log SET uid=?,time=?,ip=?,op=?插入语句'
+11:51:13-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+11:51:13-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+11:51:13-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'login'
+11:51:22-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+11:51:22-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+11:51:22-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'auth'
+11:51:22-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:33 '$request: '
+11:51:22-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:34 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Index',
+   'action' => 'auth',
+   'method' => 'POST',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/index/auth',
+   'dispatched' => false,
+   'routed' => true,
+))
+11:51:22-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:35 '$isLogin: '
+11:51:22-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:36 false
+11:51:22-[debug]-/private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php:51 'user: admin'
+11:51:22-[debug]-/private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php:52 'pass: 21232f297a57a5a743894a0e4a801fc3'
+11:51:22-[debug]-/private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php:53 'uis: 1'
+11:51:22-[debug]-/private/var/www/myaf3/app/application/library/halo/HaloPdo.php:246 'INSERT INTO adm_login_log SET uid=?,time=?,ip=?,op=?插入语句'
+11:51:22-[debug]-/private/var/www/myaf3/app/application/modules/Admin/controllers/Index.php:58 NULL
+11:51:22-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+11:51:22-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+11:51:22-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'main'
+11:51:22-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:33 '$request: '
+11:51:22-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:34 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Main',
+   'action' => 'main',
+   'method' => 'GET',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/main/main',
+   'dispatched' => false,
+   'routed' => true,
+))
+11:51:22-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:35 '$isLogin: '
+11:51:22-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:36 true
+11:58:27-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+11:58:27-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+11:58:27-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'main'
+11:58:27-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:33 '$request: '
+11:58:27-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:34 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Main',
+   'action' => 'main',
+   'method' => 'GET',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/main/main',
+   'dispatched' => false,
+   'routed' => true,
+))
+11:58:27-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:35 '$isLogin: '
+11:58:27-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:36 true
+11:59:30-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:26 'AuthPlugin::dispatchLoopStartup'
+11:59:30-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:27 'Admin'
+11:59:30-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:28 'main'
+11:59:30-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:33 '$request: '
+11:59:30-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:34 Yaf_Request_Http::__set_state(array(
+   'module' => 'Admin',
+   'controller' => 'Main',
+   'action' => 'main',
+   'method' => 'GET',
+   'params' => 
+  array (
+  ),
+   'language' => NULL,
+   '_exception' => NULL,
+   '_base_uri' => '',
+   'uri' => '/admin/main/main',
+   'dispatched' => false,
+   'routed' => true,
+))
+11:59:30-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:35 '$isLogin: '
+11:59:30-[debug]-/private/var/www/myaf3/app/application/plugins/Auth.php:36 true
