@@ -17,6 +17,12 @@ class MainController extends BaseController
         $this->_view->display('Admin/main.phtml', $info);
     }
 
+    public function testAction(){
+        $db = new Admin_MainModel();
+        $db->testRedis();
+
+        $db->testMCD();
+    }
     /**
      * 后台基本信息
      * @return array

@@ -34,7 +34,7 @@ class DataCenter
             throw new Exception('HaloPdo.php is not found', -9999);
         }
 
-        $db = new HaloPdo(array('host' => $dbConfig->host, 'port' => $dbConfig->port, 'user' => $dbConfig->user, 'pass' => $dbConfig->pass, 'dbname' => $dbConfig->dbname));
+        $db = HaloPdo::getInstance(array('host' => $dbConfig->host, 'port' => $dbConfig->port, 'user' => $dbConfig->user, 'pass' => $dbConfig->pass, 'dbname' => $dbConfig->dbname));
         return static::$connections['db'][$name] = $db;
     }
 
@@ -117,7 +117,7 @@ class DataCenter
             throw new Exception('HaloRedis.php is not found', -9999);
         }
 
-        $redis = new HaloRedis($redisConfig->host, $redisConfig->port, $redisConfig->pass, $redisConfig->timeout);
+        $redis = HaloRedis::getInstance(array('host' => $redisConfig->host, 'port' => $redisConfig->port, 'pass' => $redisConfig->pass, 'timeout' => $redisConfig->timeout));
         return static::$connections['redis'][$name] = $redis;
     }
 
@@ -133,8 +133,8 @@ class DataCenter
             return static::$connections['memcached'][$name];
         }
 
-        $config = Yaf_Registry::get('config');
-        $memcachedConfig = $config->memcached->{$name};
+        $config = Yaf_Registry::get('config_memcache');
+        $memcachedConfig = $config->memcache->{$name};
 
         if (empty($memcachedConfig)) {
             throw new Exception(sprintf('config of memcached %s is not found', $name), -9998);
@@ -147,7 +147,7 @@ class DataCenter
             throw new Exception('HaloMemcached.php is not found', -9999);
         }
 
-        $memcached = new HaloMemcached($memcachedConfig->host, $memcachedConfig->port);
+        $memcached = HaloMemcached::getInstance(array('host' => $memcachedConfig['host'], 'port' => $memcachedConfig['port'], 'timeout' => $memcachedConfig['timeout']));
         return static::$connections['memcached'][$name] = $memcached;
     }
 
@@ -163,19 +163,27 @@ class DataCenter
             return static::$connections['mc'][$name];
         }
 
-        $config = Yaf_Registry::get('config');
-        $mcConfig = $config->memcache;
+        $config = Yaf_Registry::get('config_memcache');
+        $mcConfig = $config->memcache->{$name};
         if (empty($mcConfig)) {
             throw new Exception(sprintf('config of memcache %s is not found', $name), -9999);
         }
-        $serverCount = intval($mcConfig->$name->count);
+
+        $file = sprintf('%shalo/HaloMemcache.php', LIBRARY_PATH);
+        if (file_exists($file)) {
+            Yaf_Loader::import($file);
+        } else {
+            throw new Exception('HaloMemcache.php is not found', -9999);
+        }
+
+        $mc = HaloMemcache::getInstance(array('host' => $mcConfig['host'], 'port' => $mcConfig['port'], 'timeout' => $mcConfig['timeout']));
+       /* $serverCount = intval($mcConfig->$name->count);
         $mc = new Memcache();
         for ($i = 1; $i <= $serverCount; $i++) {
             $hostKey = 'host_' . $i;
             $portKey = 'port_' . $i;
             $mc->addServer($mcConfig->$name->$hostKey, $mcConfig->$name->$portKey);
-        }
-
+        }*/
         return static::$connections['mc'][$name] = $mc;
     }
 

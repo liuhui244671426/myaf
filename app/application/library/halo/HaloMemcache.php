@@ -1,9 +1,9 @@
 <?php
 
-class HaloMemcached
+class HaloMemcache
 {
     protected $_type = 1;//1:普通连接 2:长链接
-    protected $_mcd;
+    protected $_mc;
     public static $instance = null;
 
     public static function getInstance($config){
@@ -25,14 +25,27 @@ class HaloMemcached
 
     private function __construct($config)
     {
-        if (!class_exists('Memcached')) {
+        if (!class_exists('Memcache')) {
             throw new Exception('Class Memcache not exists');
         }
 
-        $this->_mcd = new Memcached();
-        $this->_mcd->addServer($config['host'], $config['port']);
+        $this->_mc = new Memcache();
+        $timeout = isset($config['timeout'])?$config['timeout'] : 2000;
 
-        return $this->_mcd;
+        if ($this->_type == 1) {
+            if (isset($config['timeout'])) {
+                $this->_mc->connect($config['host'], $config['port'], $timeout);
+            } else {
+                $this->_mc->connect($config['host'], $config['port']);
+            }
+        } else if ($this->_type == 2) {
+            if(isset($config['timeout'])){
+                $this->_mc->pconnect($config['host'], $config['port'], $timeout);
+            } else {
+                $this->_mc->pconnect($config['host'], $config['port']);
+            }
+        }
+        return $this->_mc;
     }
 
     /**
@@ -44,9 +57,9 @@ class HaloMemcached
     public function set($key, $value, $expire_time = 0)
     {
         if ($expire_time > 0) {
-            $this->_mcd->set($key, $value, 0, $expire_time);
+            $this->_mc->set($key, $value, 0, $expire_time);
         } else {
-            $this->_mcd->set($key, $value);
+            $this->_mc->set($key, $value);
         }
     }
 
@@ -56,7 +69,7 @@ class HaloMemcached
      */
     public function get($key)
     {
-        return $this->_mcd->get($key);
+        return $this->_mc->get($key);
     }
 
     /**
@@ -65,7 +78,7 @@ class HaloMemcached
      */
     public function del($key)
     {
-        $this->_mcd->delete($key);
+        $this->_mc->delete($key);
     }
 
 

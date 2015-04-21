@@ -2,20 +2,29 @@
 
 class HaloPdo
 {
-
-    public $dbh;
+    protected static $_instance = null;
+    private $_dbh;
     protected $transLevel = 0;
     public $error;
-
     /**
-     * 初始化
+     * 实例
+     * @param array $config
      * */
-    public function __construct($config)
+    static public function getInstance($config){
+        if(self::$_instance === null){
+            self::$_instance = new self($config);
+        }
+        return self::$_instance;
+    }
+    /**
+     * 私有化构造函数，防止外界实例化对象
+     * */
+    private function __construct($config)
     {
         $port = isset($config['port']) ? $config['port'] : 3306;
         $dsn = sprintf('mysql:host=%s;dbname=%s;port=%d', $config['host'], $config['dbname'], $port);
         try {
-            $this->dbh = new PDO($dsn, $config['user'], $config['pass'],
+            $this->_dbh = new PDO($dsn, $config['user'], $config['pass'],
                 array(
                     PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'utf8\'',
                     PDO::ATTR_PERSISTENT => false,
@@ -26,6 +35,19 @@ class HaloPdo
             Yaflog($e);
             if ($this) $this->error = $e->getMessage();
         }
+    }
+
+    /**
+     * 私有化克隆函数，防止外界克隆对象
+     * */
+    private function __clone(){}
+
+    /**
+     * 调用不存在的方法 throw BadMethodCallException
+     * @thorw mixed BadMethodCallException
+     */
+    public function __call($methodName, $methodArguments){
+        throw new BadMethodCallException('BadMethodCallException, called HaloPdo\'s method ' . $methodName . ' not exsits!');
     }
 
     public static function condition($sql, $_ = null)
@@ -46,7 +68,7 @@ class HaloPdo
         return true;
     }
 
-    function transaction($call)
+    public function transaction($call)
     {
         $this->beginTransaction();
         $ret = false;
@@ -65,7 +87,7 @@ class HaloPdo
         return $ret;
     }
 
-    function transactionRbn($call, $param)
+    public function transactionRbn($call, $param)
     {
         Yaflog($call);
         Yaflog($param);
@@ -89,9 +111,9 @@ class HaloPdo
     public function beginTransaction()
     {
         if (!$this->transactionNestable() || $this->transLevel == 0) {
-            $this->dbh->beginTransaction();
+            $this->_dbh->beginTransaction();
         } else {
-            $this->dbh->exec(sprintf('SAVEPOINT LEVEL%d', $this->transLevel));
+            $this->_dbh->exec(sprintf('SAVEPOINT LEVEL%d', $this->transLevel));
         }
 
         $this->transLevel++;
@@ -101,9 +123,9 @@ class HaloPdo
     {
         $this->transLevel--;
         if (!$this->transactionNestable() || $this->transLevel == 0) {
-            $this->dbh->commit();
+            $this->_dbh->commit();
         } else {
-            $this->dbh->exec(sprintf("RELEASE SAVEPOINT LEVEL%d", $this->transLevel));
+            $this->_dbh->exec(sprintf("RELEASE SAVEPOINT LEVEL%d", $this->transLevel));
         }
     }
 
@@ -112,9 +134,9 @@ class HaloPdo
         $this->transLevel--;
 
         if (!$this->transactionNestable() || $this->transLevel == 0) {
-            $this->dbh->rollBack();
+            $this->_dbh->rollBack();
         } else {
-            $this->dbh->exec(sprintf("ROLLBACK TO SAVEPOINT LEVEL%d", $this->transLevel));
+            $this->_dbh->exec(sprintf("ROLLBACK TO SAVEPOINT LEVEL%d", $this->transLevel));
         }
     }
 
@@ -244,7 +266,7 @@ class HaloPdo
             $sql = sprintf('INSERT INTO %s SET %s', $table, $fields);
             $this->query($sql, $values);
             Yaflog($sql . '插入语句');
-            return intval($this->dbh->lastInsertId());
+            return intval($this->_dbh->lastInsertId());
         }
 
         return false;
@@ -440,7 +462,7 @@ class HaloPdo
      * */
     public function query($sql, $values = null)
     {
-        $stmt = $this->dbh->prepare($sql);
+        $stmt = $this->_dbh->prepare($sql);
         $stmt->execute($values);
         if ($stmt->errorCode() != PDO::ERR_NONE) {
             if (count($values))
@@ -482,7 +504,7 @@ class HaloPdo
 
     function escape($str)
     {
-        return $this->dbh->quote($str);
+        return $this->_dbh->quote($str);
     }
 
     public function getConditionPair($condition)

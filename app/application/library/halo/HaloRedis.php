@@ -1,77 +1,65 @@
 <?php
 
-/**
- * Created by JetBrains PhpStorm.
- * User: fanlinlin
- * Date: 13-7-1
- * Time: 上午9:55
- * To change this template use File | Settings | File Templates.
- */
 class HaloRedis
 {
-    //REDIS服务主机IP
-    private $_HOST = null;
-
-    //redis服务端口
-    private $_PORT = null;
-
-    //连接时长 默认为0 不限制时长
-    private $_TIMEOUT = 0;
-
-    //数据库名
-    private $_DBNAME = null;
-
-    //连接类型 1普通连接 2长连接
-    private $_CTYPE = 1;
-
     //实例名
     public $_REDIS = null;
-
     //事物对象
     private $_TRANSCATION = null;
 
+    public static $_instance = null;
+
     /**
-     * @desc create redis instance
-     * @param $host server host
-     * @param $port server port
-     * @param $passwd auth password
-     * @param $timeout connect time limit
+     * 实例
+     * @param array $config
+     * */
+    public static function getInstance($config){
+        if(self::$_instance === null){
+            self::$_instance = new self($config);
+        }
+        return self::$_instance;
+    }
+
+    /**
+     * 私有化克隆函数，防止外界克隆对象
+     * */
+    private function __clone(){}
+
+    /**
+     * 调用不存在的方法 throw BadMethodCallException
+     * @thorw mixed BadMethodCallException
+     */
+    public function __call($methodName, $methodArguments){
+        throw new BadMethodCallException('BadMethodCallException, called HaloRedis\'s method ' . $methodName . ' not exsits!');
+    }
+
+    /**
+     * 私有化构造函数，防止外界实例化对象
      * @param $dbname
      * @param $type connect type
      * @return redis redis handle instance
      */
-    public function __construct($host, $port, $passwd, $timeout = 0, $dbname = "", $type = 1)
+    private function __construct($config)
     {
-        if (!isset($this->_REDIS)) {
-
-            if (!class_exists('redis')) {
-                throw new Exception('Class Redis not exists');
-            }
-
-            $this->_REDIS = new redis();
-            $this->connect($host, $port, $timeout = 0, $dbname, $type);
-            if (isset($passwd)) {
-                $this->_REDIS->auth($passwd);
-            }
+        if (!class_exists('redis')) {
+            throw new Exception('Class Redis not exists');
         }
+
+        $this->_REDIS = new redis();
+        $type = isset($config['type']) ? $config['type'] : 1;//1普通连接 2长连接
+        if($type == 1){
+            $this->_REDIS->connect($config['host'], $config['port'], $config['timeout']);
+        } elseif($type == 2){
+            $this->_REDIS->pconnect($config['host'], $config['port'], $config['timeout']);
+        } else {
+            throw new LogicException('LogicException, Redis connect type is ' . $type . ' and it\'s error', -9999);
+        }
+
+        if (isset($passwd)) {
+            $this->_REDIS->auth($passwd);
+        }
+
         return $this->_REDIS;
-    }
-
-    /**
-     * 连接redis服务器
-     */
-    public function connect($host, $port, $timeout, $dbname, $type)
-    {
-        switch ($type) {
-            case 1:
-                $this->_REDIS->connect($host, $port, $timeout);
-                break;
-            case 2:
-                $this->_REDIS->pconnect($host, $port, $timeout);
-                break;
-            default:
-                break;
-        }
     }
 
     /**
