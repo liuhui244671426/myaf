@@ -123,9 +123,8 @@ class DataCenter
 
     /**
      * @desc get memcached connect
-     * @createDate 2014-1-16
      * @param $name
-     * @return return_type
+     * @return memcached
      */
     public static function getMemcached($name)
     {

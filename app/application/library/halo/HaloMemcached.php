@@ -3,7 +3,7 @@
 class HaloMemcached
 {
     protected $_type = 1;//1:普通连接 2:长链接
-    protected $_mcd;
+    public $_mcd = null;
     public static $instance = null;
 
     public static function getInstance($config){
@@ -12,7 +12,9 @@ class HaloMemcached
         }
         return self::$instance;
     }
-
+    /**
+     * 私有化克隆函数，防止外界克隆对象
+     * */
     private function __clone(){}
 
     /**
@@ -26,7 +28,7 @@ class HaloMemcached
     private function __construct($config)
     {
         if (!class_exists('Memcached')) {
-            throw new Exception('Class Memcache not exists');
+            throw new Exception('Class Memcached not exists');
         }
 
         $this->_mcd = new Memcached();
@@ -44,9 +46,9 @@ class HaloMemcached
     public function set($key, $value, $expire_time = 0)
     {
         if ($expire_time > 0) {
-            $this->_mcd->set($key, $value, 0, $expire_time);
+            return $this->_mcd->set($key, $value, 0, $expire_time);
         } else {
-            $this->_mcd->set($key, $value);
+            return $this->_mcd->set($key, $value);
         }
     }
 
@@ -65,7 +67,7 @@ class HaloMemcached
      */
     public function del($key)
     {
-        $this->_mcd->delete($key);
+        return $this->_mcd->delete($key);
     }
 
 
