@@ -25,7 +25,7 @@ class initConfig
     }
 
     /**
-     * 加载文件
+     * 初始化进程时加载必要文件
      */
     static public function initLoad()
     {
@@ -36,12 +36,16 @@ class initConfig
             $file = APPLICATION_PATH . '/application/library/' . $file . '.php';
             if (file_exists($file)) {
                 Yaf_Loader::import($file);
+            } else {
+                $msg = 'load library/' . $file . ' file is not exists';
+                throw new LogicException($msg);
             }
         }
     }
 
     /**
      * 触发异常而不是错误
+     * @param string $class 文件类名
      * */
     public function autoLoader($class)
     {
@@ -51,15 +55,14 @@ class initConfig
             if (!file_exists($path)) {
                 $msg = 'load builder file is not exists ' . $class;
                 throw new LogicException($msg);
+            } else {
+                Yaf_Loader::import($path);
             }
-            Yaf_Loader::import($path);
         }
-
-
     }
 
     /**
-     * 设置配置文件
+     * 设置配置文件,首先设置config,然后设置扩展config
      */
     static public function setConfig()
     {
@@ -93,7 +96,6 @@ class initConfig
      * */
     static public function isSupportExtendConfig($iniName)
     {
-
         $optionArr = self::getExtendConfigs();
         //扩展配置项 --非空
         if (!empty($optionArr)) {

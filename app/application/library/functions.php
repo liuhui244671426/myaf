@@ -76,7 +76,6 @@ function httpStatus($code)
 function isNight()
 {
     $h = date('H', TODAY);
-    //echo $h;
     if ($h >= 7 && $h < 19) {
         return false;
     }
@@ -117,6 +116,7 @@ function getDomain()
 /**
  * 放弃使用正则校验
  * @param string $var 邮箱
+ * @return bool
  */
 function isEmail($var)
 {

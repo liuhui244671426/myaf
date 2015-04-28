@@ -1,16 +1,11 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: liuhui
- * Date: 15-1-15
- * Time: 下午10:38
- */
-/**
  * APP
  * ==============================
  * */
 //项目名
 define('APP_NAME', '墨迹天气WebAPP项目');
+define('APP_VERSION', '1.0.0');
 //views目录
 define('VIEW_PATH', APPLICATION_PATH . '/application/views/');
 //缓存目录

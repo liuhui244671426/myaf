@@ -1,5 +1,21 @@
 ;在Yaf_Config_Ini中, 可以支持继承
 ;可以直接使用PHP中定义的常量
+
+;参考URL: http://yaf.laruence.com/manual/yaf.config.optional.html
+;名称	                                    值类型	默认值	                            说明
+;application.ext	                        String	php	                                PHP脚本的扩展名
+;application.bootstrap	                    String	Bootstrapplication.php	            Bootstrap路径(绝对路径)
+;application.library	                    String	application.directory + "/library"  本地(自身)类库的绝对目录地址
+;application.baseUri	                    String	NULL	                            在路由中, 需要忽略的路径前缀, 一般不需要设置, Yaf会自动判断.
+;application.dispatcher.defaultModule	    String	index	                            默认的模块
+;application.dispatcher.throwException	    Bool	True	                            在出错的时候, 是否抛出异常
+;application.dispatcher.catchException	    Bool	False	                            是否使用默认的异常捕获Controller, 如果开启, 在有未捕获的异常的时候, 控制权会交给ErrorController的errorAction方法, 可以通过$request->getException()获得此异常对象
+;application.dispatcher.defaultController	String	index	                            默认的控制器
+;application.dispatcher.defaultAction	    String	index	                            默认的动作
+;application.view.ext	                    String	phtml	                            视图模板扩展名
+;application.modules	                    String	Index	                            声明存在的模块名, 请注意, 如果你要定义这个值, 一定要定义Index Module
+;application.system.*	                    String	*	                                通过这个属性, 可以修改yaf的runtime configure, 比如application.system.lowcase_path, 但是请注意只有PHP_INI_ALL的配置项才可以在这里被修改, 此选项从2.2.0开始引入
+
 [production]
 application.directory=APPLICATION_PATH "/application"
 application.dispatcher.throwException=true
