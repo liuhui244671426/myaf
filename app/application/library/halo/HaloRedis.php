@@ -12,6 +12,7 @@ class HaloRedis
     /**
      * 实例
      * @param array $config
+     * @return instance
      * */
     public static function getInstance($config){
         if(self::$_instance === null){
@@ -35,9 +36,8 @@ class HaloRedis
 
     /**
      * 私有化构造函数，防止外界实例化对象
-     * @param $dbname
-     * @param $type connect type
-     * @return redis redis handle instance
+     * @param array $config
+     * @return redis handle instance
      */
     private function __construct($config)
     {
@@ -64,7 +64,7 @@ class HaloRedis
 
     /**
      * 查看redis连接是否断开
-     * @return $return bool true:连接未断开 false:连接已断开
+     * @return bool true:连接未断开 false:连接已断开
      */
     public function ping()
     {
@@ -78,7 +78,7 @@ class HaloRedis
     /**
      * 设置redis模式参数
      * @param $option array 参数数组键值对
-     * @return $return true/false
+     * @return bool $return
      */
     public function setOption($option = array())
     {
@@ -87,7 +87,7 @@ class HaloRedis
 
     /**
      * 获取redis模式参数
-     * @param $option array 要获取的参数数组
+     * @param array $option 要获取的参数数组
      */
     public function getOption($option = array())
     {
@@ -96,13 +96,13 @@ class HaloRedis
 
     /**
      * 写入key-value
-     * @param $key string 要存储的key名
-     * @param $value mixed 要存储的值
-     * @param $type int 写入方式 0:不添加到现有值后面 1:添加到现有值的后面 默认0
-     * @param $repeat int 0:不判断重复 1:判断重复
-     * @param $time float 过期时间(S)
-     * @param $old int 1:返回旧的value 默认0
-     * @return $return bool true:成功 flase:失败
+     * @param string $key 要存储的key名
+     * @param mixed $value 要存储的值
+     * @param int $type 写入方式 0:不添加到现有值后面 1:添加到现有值的后面 默认0
+     * @param int $repeat 0:不判断重复 1:判断重复
+     * @param float $time 过期时间(S)
+     * @param int $old 1:返回旧的value 默认0
+     * @return bool $return true:成功 flase:失败
      */
     public function set($key, $value, $type = 0, $repeat = 0, $time = 0, $old = 0)
     {
@@ -129,10 +129,10 @@ class HaloRedis
 
     /**
      * 获取某个key值 如果指定了start end 则返回key值的start跟end之间的字符
-     * @param $key string/array 要获取的key或者key数组
-     * @param $start int 字符串开始index
-     * @param $end int 字符串结束index
-     * @return $return mixed 如果key存在则返回key值 如果不存在返回false
+     * @param string/array $key 要获取的key或者key数组
+     * @param int $start 字符串开始index
+     * @param int $end 字符串结束index
+     * @return mixed $return 如果key存在则返回key值 如果不存在返回false
      */
     public function get($key = null, $start = null, $end = null)
     {
@@ -152,8 +152,8 @@ class HaloRedis
 
     /**
      * 删除某个key值
-     * @param $key array key数组
-     * @return $return longint 删除成功的key的个数
+     * @param array $key key数组
+     * @return longint $return 删除成功的key的个数
      */
     public function delete($key = array())
     {
@@ -166,7 +166,8 @@ class HaloRedis
 
     /**
      * 判断某个key是否存在
-     * @param $key string 要查询的key名
+     * @param string $key 要查询的key名
+     * @return bool
      */
     public function exists($key)
     {
@@ -186,9 +187,9 @@ class HaloRedis
 
     /**
      * key值自增或者自减
-     * @param $key string key名
-     * @param $type int 0:自减 1:自增 默认为1
-     * @param $n int 自增步长 默认为1
+     * @param string $key key名
+     * @param int $type 0:自减 1:自增 默认为1
+     * @param int $n 自增步长 默认为1
      */
     public function deinc($key, $type = 1, $n = 1)
     {
@@ -214,54 +215,49 @@ class HaloRedis
 
     /**
      * 同时给多个key赋值
-     * @param $data array key值数组 array('key0'=>'value0','key1'=>'value1')
+     * @param array $data key值数组 array('key0'=>'value0','key1'=>'value1')
+     * @return bool
      */
     public function mset($data)
     {
         $return = null;
-
         $return = $this->_REDIS->mset($data);
-
         return $return;
     }
 
     /**
      * 查询某个key的生存时间
-     * @param $key string 要查询的key名
+     * @param string $key 要查询的key名
+     * @return bool
      */
     public function ttl($key)
     {
         $return = null;
-
         $return = $this->_REDIS->ttl($key);
-
         return $return;
     }
 
     /**
      * 删除到期的key
-     * @param $key string key名
+     * @param string $key key名
+     * @return bool
      */
     public function persist($key)
     {
         $return = null;
-
         $return = $this->_REDIS->persist($key);
-
         return $return;
     }
 
     /**
      * 获取某一key的value
-     * @param $key string key名
+     * @param string $key key名
      * @return mixed
      */
     public function strlen($key)
     {
         $return = null;
-
         $return = $this->_REDIS->strlen($key);
-
         return $return;
     }
 

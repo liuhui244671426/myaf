@@ -49,7 +49,9 @@ class HaloPdo
     public function __call($methodName, $methodArguments){
         throw new BadMethodCallException('BadMethodCallException, called HaloPdo\'s method ' . $methodName . ' not exsits!');
     }
-
+    /**
+     * 按条件生成SQL
+     * */
     public static function condition($sql, $_ = null)
     {
         $args = func_get_args();
@@ -62,7 +64,11 @@ class HaloPdo
 
         return array($sql, $args);
     }
-
+    /**
+     * ===================================================
+     * 事务
+     * ===================================================
+     * */
     protected function transactionNestable()
     {
         return true;
@@ -139,6 +145,12 @@ class HaloPdo
             $this->_dbh->exec(sprintf("ROLLBACK TO SAVEPOINT LEVEL%d", $this->transLevel));
         }
     }
+    /**
+     * ===================================================
+     * 事务
+     * ===================================================
+     * */
+
 
     public function getVarByCondition($table, $condition, $varName)
     {
@@ -176,6 +188,10 @@ class HaloPdo
         return $explain['rows'];
     }
 
+    /**
+     * 做count统计
+     * @param string $table 表名
+     * */
     public function getCountByCondition($table, $condition = '')
     {
         list($condition, $values) = $this->getConditionPair($condition);
@@ -196,6 +212,13 @@ class HaloPdo
         return $this->get_col($sql, $values);
     }
 
+    /**
+     * 通过条件查找一行数据
+     * @param string $table 表名
+     * @param mixed $condition 条件
+     * @param string $fields 字段
+     * @return array
+     * */
     public function getRowByCondition($table, $condition, $fields = '')
     {
         list($condition, $values) = $this->getConditionPair($condition);
@@ -205,7 +228,13 @@ class HaloPdo
             $sql = sprintf('SELECT %s FROM %s WHERE %s LIMIT 1', $fields, $table, $condition);
         return $this->get_row($sql, $values);
     }
-
+    /**
+     * 通过条件查找多列数据
+     * @param string $table 表名
+     * @param mixed $condition 条件
+     * @param string $fields 字段
+     * @return array
+     * */
     public function getColByCondition($table, $condition, $colName)
     {
         list($condition, $values) = $this->getConditionPair($condition);
@@ -254,7 +283,12 @@ class HaloPdo
         }
         return $this->get_results($sql, $values);
     }
-
+    /**
+     * 将数据插入到表中
+     * @param string $table 表名
+     * @param array $data 待插入的关联数组
+     * @return mixed 成功返回最后的Id,失败返回false
+     * */
     public function insertTable($table, $data)
     {
         if (!is_array($data))
@@ -270,6 +304,33 @@ class HaloPdo
         }
 
         return false;
+    }
+    /**
+     * 批量插入数据
+     * @param string $table 表名
+     * @param string $fields 字段
+     * @param array $valueData 带插入的数据
+     * */
+    public function batchInsertData($table, $fields, $valueData)
+    {
+        if (empty($fields) || empty($valueData)) {
+            return null;
+        }
+
+        $rows = array();
+        $values = array();
+        $count = count($valueData);
+        for ($index = 0; $index < $count; $index++) {
+            $padArray = array_pad(array(), count($valueData[$index]), '?');
+            $rows[] = '(' . implode(',', $padArray) . ')';
+            foreach ($valueData[$index] as $v)
+                $values[] = $v;
+        }
+
+        $sql = "INSERT IGNORE INTO %s (%s) VALUES %s";
+        $query = sprintf($sql, $table, implode(',', $fields), implode(',', $rows));
+
+        return $this->query($query, $values);
     }
 
     public function updateFieldByIncrease($table, $field, $condition, $diff = 1)
@@ -303,29 +364,6 @@ class HaloPdo
 
         }
         return false;
-
-    }
-
-    public function batchInsertData($table, $fields, $valueData)
-    {
-        if (empty($fields) || empty($valueData)) {
-            return null;
-        }
-
-        $rows = array();
-        $values = array();
-        $count = count($valueData);
-        for ($index = 0; $index < $count; $index++) {
-            $padArray = array_pad(array(), count($valueData[$index]), '?');
-            $rows[] = '(' . implode(',', $padArray) . ')';
-            foreach ($valueData[$index] as $v)
-                $values[] = $v;
-        }
-
-        $sql = "INSERT IGNORE INTO %s (%s) VALUES %s";
-        $query = sprintf($sql, $table, implode(',', $fields), implode(',', $rows));
-
-        return $this->query($query, $values);
     }
 
     public function updateTable($table, $data, $condition)
@@ -339,9 +377,7 @@ class HaloPdo
                     $values = array_merge($values, $conditionValues);
                 return $this->query($sql, $values)->rowCount();
             }
-
         }
-
         return false;
     }
 
@@ -459,6 +495,7 @@ class HaloPdo
      * 执行一条预处理语句
      * @param string $sql exm:'select * from `adm_users` where `name`=? and `pass`=?'
      * @param array $values exm:array('admin', 'pass');
+     * @return string 返回SQL语句
      * */
     public function query($sql, $values = null)
     {
@@ -470,7 +507,7 @@ class HaloPdo
             else
                 $msg = $sql;
 
-            Yaflog($msg, __FILE__, __LINE__, 'ERROR-SQL');
+            Yaflog($msg, __FILE__, __LINE__, ' ERROR-SQL');
             trigger_error($stmt->errorInfo()[2]);
             Yaflog($stmt->errorInfo());
         }
@@ -506,7 +543,11 @@ class HaloPdo
     {
         return $this->_dbh->quote($str);
     }
-
+    /**
+     * 将数据还原成数组
+     * @param mixed $condition 条件
+     * @return array
+     * */
     public function getConditionPair($condition)
     {
         if (is_array($condition)) {

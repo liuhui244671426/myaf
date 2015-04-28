@@ -48,18 +48,6 @@ function haloMicroTime()
     return $sec * 1000 + intval($usec * 1000);
 }
 
-function haloDump($var)
-{
-    $config = HaloEnv::get('config');
-    if ($config['dump']) {
-        echo '<pre>';
-        $res = var_export($var, true);
-        var_dump(SecurityUtils::escape($res));
-        echo '</pre>';
-// 		echo '<pre>'. $var. '</pre>';
-    }
-}
-
 function getUrl()
 {
     $pathAndName = str_replace($_SERVER["DOCUMENT_ROOT"], '', $_SERVER["SCRIPT_FILENAME"]);
@@ -102,43 +90,6 @@ function rewrite()
     for ($i = 2; $i < $len; $i += 2) {
         $_GET [$uris [$i]] = $uris [$i + 1];
     }
-}
-
-// $key,$language,$code='',$desc=''
-function getDb($dbname)
-{
-    global $DBConfigs;
-
-    $dbconfig = $DBConfigs[$dbname];
-
-    if (!isset($_ENV[$dbname])) {
-        $_ENV[$dbname] = new HaloDb($dbconfig);
-        $_ENV[$dbname]->query('SET NAMES utf8');
-    }
-    return $_ENV[$dbname];
-}
-
-
-// function slashToCamelCase($slash)
-// {
-// 	$token = strtok($slash, '_');
-// 	$result = $token;
-// 	while(($token = strtok('_')) !== false)
-// 	{
-// 		$result .= ucfirst($token);
-// 	}
-// 	return $result;
-// }
-function dbencode($str, $size = 0)
-{
-    if ($size > 0) {
-        $str = mb_substr($str, 0, $size);
-    }
-    // 	checkDenyWords($str);
-    return mysql_real_escape_string($str);//直接处理了
-    /*$str = addslashes($str);
-     //$str = addslashes(trim(str_replace(array_keys($GLOBALS['emoji_maps']),$GLOBALS['emoji_maps'],$str)));
-    return $_ENV['db']->escape($str);*/
 }
 
 function checkEmail($mail)
@@ -504,9 +455,4 @@ function generateKey($length = 32)
         $key .= $chars[mt_rand(0, strlen($chars) - 1)];
     }
     return $key;
-}
-
-function passwordTooSimple($str)
-{
-    return false;
 }

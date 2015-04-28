@@ -2,8 +2,7 @@
 /**
  * Created by PhpStorm.
  * @User: liuhui
- * @Date: 15-1-16
- * @Time: 上午12:00
+ * @Date: 15-1-16 上午12:00
  * @Desc: 公共函数库
  */
 
@@ -235,6 +234,7 @@ function dump($var, $echo = true, $label = null, $strict = true)
 /**
  * 记录日志,路径/logs/年－月－日/时.log
  * @param mixed $var
+ *
  */
 function Yaflog($var)
 {
@@ -258,8 +258,13 @@ function Yaflog($var)
         }
 
         $logFile = sprintf('%s%s.log', $todayDir, $timeH);
-        $msg = sprintf('%s-%s-%s:%s %s%s', $timeHIS, '[debug]', $filename, $lineNum, var_export($var, true), PHP_EOL);
-        file_put_contents($logFile, $msg, FILE_APPEND);
+        if(is_writeable($logFile)){
+            $msg = sprintf('%s-%s-%s:%s %s%s', $timeHIS, '[debug]', $filename, $lineNum, var_export($var, true), PHP_EOL);
+            file_put_contents($logFile, $msg, FILE_APPEND);
+        } else {
+            $msg = 'log file: ' . $logFile . ' dis-writeable';
+            throw new LogicException($msg);
+        }
     }
 }
 
@@ -365,6 +370,7 @@ function getActions($class)
  * @param array $input 待查询数组
  * @param string $columnKey 需查询的列
  * @param string $indexKey 索引
+ * @return array
  */
 function i_array_column($input, $columnKey, $indexKey = null)
 {
@@ -444,6 +450,7 @@ function aesEncrypt($val, $key)
  * 框架的错误信息
  * @param int $code 错误码
  * @URL: http://yaf.laruence.com/manual/yaf.constant.html
+ * @return string
  * */
 function YafErrorCode($code){
     $errorDocker = array (

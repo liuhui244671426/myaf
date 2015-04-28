@@ -19,7 +19,7 @@ class ErrorController extends BaseController
         $msg2str = $exception->__toString();
         $code = $exception->getCode();
 
-        $errMsg = '<?php exit;?>' . date('m-d H:i:s', TODAY) . ' | code: ' . $code . ' | msg: ' . PHP_EOL . $msg2str . PHP_EOL;
+        $errMsg = '<?php exit;?>' . date('Y-m-d H:i:s', TODAY) . ' | code: ' . $code . ' | msg: ' . PHP_EOL . $msg2str . PHP_EOL;
         error_log($errMsg, 3, ROOT_PATH . '/logs/sysExceptionHandler.log');
 
         switch ($code) {
@@ -41,6 +41,6 @@ class ErrorController extends BaseController
             $this->_view->display('404.phtml', array('msg' => $msg, 'code' => $code));
         }
 
-        return false;
+        exit;
     }
 }

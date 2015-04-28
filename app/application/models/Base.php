@@ -1,14 +1,9 @@
 <?php
 
 /**
- * Created by PhpStorm.
- * User: liuhui
- * Date: 15-4-3
- * Time: 下午5:44
+ * @Desc: model base class
  */
 class BaseModel
 {
-    public function __construct()
-    {
-    }
+    public function __construct(){}
 }
