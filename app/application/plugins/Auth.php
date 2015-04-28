@@ -2,6 +2,7 @@
 
 /**
  * hook
+ * 调用顺序一次如下:
  * @hook routeStartup 在路由之前触发，这个是7个事件中, 最早的一个. 但是一些全局自定的工作, 还是应该放在Bootstrap中去完成
  * @hook routerShutdown 路由结束之后触发，此时路由一定正确完成, 否则这个事件不会触发
  * @hook dispatchLoopStartup 分发循环开始之前被触发

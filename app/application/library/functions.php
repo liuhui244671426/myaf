@@ -440,3 +440,33 @@ function aesEncrypt($val, $key)
     $val = str_pad($val, (16 * (floor(strlen($val) / 16) + 1)), chr(16 - (strlen($val) % 16)));
     return mcrypt_encrypt($enc, $key, $val, $mode, mcrypt_create_iv(mcrypt_get_iv_size($enc, $mode), MCRYPT_DEV_URANDOM));
 }
+/**
+ * 框架的错误信息
+ * @param int $code 错误码
+ * @URL: http://yaf.laruence.com/manual/yaf.constant.html
+ * */
+function YafErrorCode($code){
+    $errorDocker = array (
+        //表示启动失败
+        512 => 'YAF_ERR_STARTUP_FAILED',
+        //表示路由失败
+        513 => 'YAF_ERR_ROUTE_FAILED',
+        //表示分发失败
+        514 => 'YAF_ERR_DISPATCH_FAILED',
+        //表示找不到指定的模块
+        515 => 'YAF_ERR_NOTFOUND_MODULE',
+        //表示找不到指定的Controller
+        516 => 'YAF_ERR_NOTFOUND_CONTROLLER',
+        //表示找不到指定的Action
+        517 => 'YAF_ERR_NOTFOUND_ACTION',
+        //表示找不到指定的视图文件
+        518 => 'YAF_ERR_NOTFOUND_VIEW',
+        //表示调用失败
+        519 => 'YAF_ERR_CALL_FAILED',
+        //表示自动加载类失败
+        520 => 'YAF_ERR_AUTOLOAD_FAILED',
+        //表示关键逻辑的参数错误
+        521 => 'YAF_ERR_TYPE_ERROR',
+    );
+    return $errorDocker[$code];
+}

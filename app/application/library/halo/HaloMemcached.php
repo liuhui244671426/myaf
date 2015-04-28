@@ -25,6 +25,9 @@ class HaloMemcached
         throw new BadMethodCallException('BadMethodCallException, called HaloMemcache\'s method ' . $methodName . ' not exsits!');
     }
 
+    /**
+     * 构造函数
+     * */
     private function __construct($config)
     {
         if (!class_exists('Memcached')) {
@@ -41,12 +44,12 @@ class HaloMemcached
      * 把数据添加到缓存
      * @param string $key 缓存的key
      * @param string|array|int... $value 缓存的数据
-     * @param int $expire_time 缓存时间
+     * @param int $expireTime 缓存时间
      */
-    public function set($key, $value, $expire_time = 0)
+    public function mcdSet($key, $value, $expireTime = 0)
     {
-        if ($expire_time > 0) {
-            return $this->_mcd->set($key, $value, 0, $expire_time);
+        if ($expireTime > 0) {
+            return $this->_mcd->set($key, $value, 0, $expireTime);
         } else {
             return $this->_mcd->set($key, $value);
         }
@@ -56,7 +59,7 @@ class HaloMemcached
      * 从缓存读取数据
      * @param string|array|int... $key
      */
-    public function get($key)
+    public function mcdGet($key)
     {
         return $this->_mcd->get($key);
     }
@@ -65,10 +68,8 @@ class HaloMemcached
      * 从缓存删除数据
      * @param string|array|int... $key
      */
-    public function del($key)
+    public function mcdDel($key)
     {
         return $this->_mcd->delete($key);
     }
-
-
 }

@@ -2,8 +2,8 @@
 
 /**
  * Bootstrap类, 在这个类中, 所以以_init开头的方法
+ * 这些方法, 都接受一个参数:Yaf_Dispatcher $dispatcher
  * 都会被调用, 调用次序和申明次序相同
- *
  * @author  Laruence
  * @date    2011-05-13 15:24
  * @version $Id$

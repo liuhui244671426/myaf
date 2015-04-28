@@ -20,9 +20,9 @@ class Admin_MainModel extends BaseModel{
     }
 
     public function testMCD(){
-        $this->mcd->set('mem', 'asdsadb23132131231111111');
-        $val = $this->mcd->get('mem');
+        $this->mcd->mcdSet('mem', 'asdsadb23132131231111111');
+        $val = $this->mcd->mcdGet('mem');
         print_r($val);
-        $this->mcd->del('mem');
+        $this->mcd->mcdDel('mem');
     }
 }
