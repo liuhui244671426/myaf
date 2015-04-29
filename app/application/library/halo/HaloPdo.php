@@ -1,5 +1,23 @@
 <?php
-
+/**
+ * fetch_style
+ * @url: http://php.net/manual/zh/pdostatement.fetch.php
+ * PDO::FETCH_ASSOC：返回一个索引为结果集列名的数组
+   PDO::FETCH_BOTH（默认）：返回一个索引为结果集列名和以0开始的列号的数组
+   PDO::FETCH_BOUND：返回 TRUE ，并分配结果集中的列值给 PDOStatement::bindColumn() 方法绑定的 PHP 变量。
+   PDO::FETCH_CLASS：返回一个请求类的新实例，映射结果集中的列名到类中对应的属性名。如果 fetch_style 包含 PDO::FETCH_CLASSTYPE（例如：PDO::FETCH_CLASS | PDO::FETCH_CLASSTYPE），则类名由第一列的值决定
+   PDO::FETCH_INTO：更新一个被请求类已存在的实例，映射结果集中的列到类中命名的属性
+   PDO::FETCH_LAZY：结合使用 PDO::FETCH_BOTH 和 PDO::FETCH_OBJ，创建供用来访问的对象变量名
+   PDO::FETCH_NUM：返回一个索引为以0开始的结果集列号的数组
+   PDO::FETCH_OBJ：返回一个属性名对应结果集列名的匿名对象
+ *
+ * error_mode
+ * @url: http://php.net/manual/zh/pdo.error-handling.php
+ * PDO::ERRMODE_SILENT（0） ：默认 不提示任何错误
+ * PDO::ERRMODE_WARNING（1） ： 警告
+ * PDO::ERRMODE_EXCEPTION（2）：异常（推荐使用） 用try catch捕获，也可以手动抛出异常 new PDOException($message, $code, $previous)
+ *
+ * */
 class HaloPdo
 {
     protected static $_instance = null;
@@ -29,7 +47,7 @@ class HaloPdo
                     PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'utf8\'',
                     PDO::ATTR_PERSISTENT => false,
                     PDO::ATTR_EMULATE_PREPARES => true,
-                    PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 ));
         } catch (Exception $e) {
             Yaflog($e);
@@ -310,6 +328,7 @@ class HaloPdo
      * @param string $table 表名
      * @param string $fields 字段
      * @param array $valueData 带插入的数据
+     * @return bool
      * */
     public function batchInsertData($table, $fields, $valueData)
     {
@@ -457,7 +476,7 @@ class HaloPdo
         return $stmt->errorCode() == PDO::ERR_NONE;
     }
 
-    //Modify by Jet 传ids，可以清memcache
+
     public function delRowByCondition2($table, $condition)
     {
         list($condition, $values) = $this->getConditionPair($condition);
@@ -465,6 +484,18 @@ class HaloPdo
         return $this->query($sql, $values);
     }
 
+    /**
+     * 生成特定数据结构
+     * @param array $data 数组数据 array('name' => 'liuhui', 'vote' => 'y')
+     * @return array 生成如下结构体
+     * Array(
+           [0] => name=?,vote=?
+           [1] => Array(
+               [0] => liuhui
+               [1] => y
+           )
+       )
+     * */
     public function getConditionArray($data)
     {
         if (count($data) == 0)
@@ -484,7 +515,10 @@ class HaloPdo
     {
         return implode(',', array_pad(array(), $cnt, '?'));
     }
-
+    /**
+     * 清空表内容
+     * @param string $table 表名
+     * */
     public function truncateTable($table)
     {
         $sql = sprintf('TRUNCATE TABLE %s', $table);
@@ -499,8 +533,10 @@ class HaloPdo
      * */
     public function query($sql, $values = null)
     {
+        //预处理SQL
         $stmt = $this->_dbh->prepare($sql);
         $stmt->execute($values);
+        //有错误
         if ($stmt->errorCode() != PDO::ERR_NONE) {
             if (count($values))
                 $msg = sprintf('%s | (%s)', $sql, implode(',', $values));
@@ -521,8 +557,10 @@ class HaloPdo
     }
 
     /**
+     * 获取一行结果
      * @param string $sql
      * @param array $values
+     * @return mixed 结果集
      * */
     public function get_row($sql, $values = null)
     {
@@ -539,6 +577,11 @@ class HaloPdo
         return $this->query($sql, $values)->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * 转义用户输入的特殊字符
+     * @param string $str
+     * @return string
+     * */
     function escape($str)
     {
         return $this->_dbh->quote($str);

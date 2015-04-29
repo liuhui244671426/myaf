@@ -22,6 +22,8 @@ class MainController extends BaseController
         $db->testRedis();
 
         $db->testMCD();
+
+        dump(isMojiApp());
     }
     /**
      * 后台基本信息

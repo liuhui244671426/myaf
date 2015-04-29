@@ -258,11 +258,10 @@ function Yaflog($var)
         }
 
         $logFile = sprintf('%s%s.log', $todayDir, $timeH);
-        if(is_writeable($logFile)){
-            $msg = sprintf('%s-%s-%s:%s %s%s', $timeHIS, '[debug]', $filename, $lineNum, var_export($var, true), PHP_EOL);
-            file_put_contents($logFile, $msg, FILE_APPEND);
-        } else {
-            $msg = 'log file: ' . $logFile . ' dis-writeable';
+        $msg = sprintf('%s-%s-%s:%s %s%s', $timeHIS, '[debug]', $filename, $lineNum, var_export($var, true), PHP_EOL);
+        $isWrited = file_put_contents($logFile, $msg, FILE_APPEND);
+        if($isWrited === false){
+            $msg = 'log file: ' . $logFile . ' write-disable';
             throw new LogicException($msg);
         }
     }
@@ -476,4 +475,17 @@ function YafErrorCode($code){
         521 => 'YAF_ERR_TYPE_ERROR',
     );
     return $errorDocker[$code];
+}
+/**
+ * 是否是墨迹客户端的UA
+ * @return bool
+ * */
+function isMojiApp(){
+    $ua = $_SERVER['HTTP_USER_AGENT'];
+
+    if(preg_match('/mojia|mojii/i', $ua) > 0) {
+        return true;
+    } else {
+        return false;
+    }
 }
