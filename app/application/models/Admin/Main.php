@@ -8,8 +8,8 @@ class Admin_MainModel extends BaseModel{
     protected $redis;
     protected $mcd;
     public function __construct(){
-        $this->redis = DataCenter::getRedis('local');
-        $this->mcd = DataCenter::getMemcached('cms');
+        $this->redis = DataCenter::getFactory('db', 'local');
+        $this->mcd = DataCenter::getFactory('memcached', 'cms');
     }
 
     public function testRedis(){

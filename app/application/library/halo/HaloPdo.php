@@ -17,6 +17,8 @@
  * PDO::ERRMODE_WARNING（1） ： 警告
  * PDO::ERRMODE_EXCEPTION（2）：异常（推荐使用） 用try catch捕获，也可以手动抛出异常 new PDOException($message, $code, $previous)
  *
+ * 预处理语句与存储过程
+ * @url: http://php.net/manual/zh/pdo.prepared-statements.php
  * */
 class HaloPdo
 {
@@ -613,5 +615,9 @@ class HaloPdo
 
         $sql = implode(' AND ', $placeHolders);
         return array($sql, $values);
+    }
+
+    public function __destruct(){
+        $this->_dbh = null;
     }
 }
