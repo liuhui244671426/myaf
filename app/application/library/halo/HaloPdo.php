@@ -3,13 +3,13 @@
  * fetch_style
  * @url: http://php.net/manual/zh/pdostatement.fetch.php
  * PDO::FETCH_ASSOC：返回一个索引为结果集列名的数组
-   PDO::FETCH_BOTH（默认）：返回一个索引为结果集列名和以0开始的列号的数组
-   PDO::FETCH_BOUND：返回 TRUE ，并分配结果集中的列值给 PDOStatement::bindColumn() 方法绑定的 PHP 变量。
-   PDO::FETCH_CLASS：返回一个请求类的新实例，映射结果集中的列名到类中对应的属性名。如果 fetch_style 包含 PDO::FETCH_CLASSTYPE（例如：PDO::FETCH_CLASS | PDO::FETCH_CLASSTYPE），则类名由第一列的值决定
-   PDO::FETCH_INTO：更新一个被请求类已存在的实例，映射结果集中的列到类中命名的属性
-   PDO::FETCH_LAZY：结合使用 PDO::FETCH_BOTH 和 PDO::FETCH_OBJ，创建供用来访问的对象变量名
-   PDO::FETCH_NUM：返回一个索引为以0开始的结果集列号的数组
-   PDO::FETCH_OBJ：返回一个属性名对应结果集列名的匿名对象
+ * PDO::FETCH_BOTH（默认）：返回一个索引为结果集列名和以0开始的列号的数组
+ * PDO::FETCH_BOUND：返回 TRUE ，并分配结果集中的列值给 PDOStatement::bindColumn() 方法绑定的 PHP 变量。
+ * PDO::FETCH_CLASS：返回一个请求类的新实例，映射结果集中的列名到类中对应的属性名。如果 fetch_style 包含 PDO::FETCH_CLASSTYPE（例如：PDO::FETCH_CLASS | PDO::FETCH_CLASSTYPE），则类名由第一列的值决定
+ * PDO::FETCH_INTO：更新一个被请求类已存在的实例，映射结果集中的列到类中命名的属性
+ * PDO::FETCH_LAZY：结合使用 PDO::FETCH_BOTH 和 PDO::FETCH_OBJ，创建供用来访问的对象变量名
+ * PDO::FETCH_NUM：返回一个索引为以0开始的结果集列号的数组
+ * PDO::FETCH_OBJ：返回一个属性名对应结果集列名的匿名对象
  *
  * error_mode
  * @url: http://php.net/manual/zh/pdo.error-handling.php

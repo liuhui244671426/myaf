@@ -8,7 +8,7 @@ class Admin_MainModel extends BaseModel{
     protected $redis;
     protected $mcd;
     public function __construct(){
-        $this->redis = DataCenter::getFactory('db', 'local');
+        $this->redis = DataCenter::getFactory('redis', 'local');
         $this->mcd = DataCenter::getFactory('memcached', 'cms');
     }
 
@@ -20,9 +20,11 @@ class Admin_MainModel extends BaseModel{
     }
 
     public function testMCD(){
-        $this->mcd->mcdSet('mem', 'asdsadb23132131231111111');
-        $val = $this->mcd->mcdGet('mem');
+        $this->mcd->set('mem', 'asdsadb23132131231111111');
+
+        $val = $this->mcd->get('mem');
+        print_r($this->mcd->getStats());
         print_r($val);
-        $this->mcd->mcdDel('mem');
+        $this->mcd->del('mem');
     }
 }

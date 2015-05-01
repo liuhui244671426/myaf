@@ -8,3 +8,7 @@
 <?php exit;?>2015-04-21 16:47:56 | code: 2 | msg: Memcache::set(): No servers added to memcache connection | file: /private/var/www/myaf3/app/application/library/halo/HaloMemcache.php | line: 64
 <?php exit;?>2015-04-21 16:47:56 | code: 2 | msg: Memcache::get(): No servers added to memcache connection | file: /private/var/www/myaf3/app/application/library/halo/HaloMemcache.php | line: 74
 <?php exit;?>2015-04-21 16:47:56 | code: 2 | msg: Memcache::delete(): No servers added to memcache connection | file: /private/var/www/myaf3/app/application/library/halo/HaloMemcache.php | line: 83
+<?php exit;?>2015-05-01 13:44:57 | code: 8 | msg: Trying to get property of non-object          | file: /private/var/www/myaf3/app/application/library/DataCenter/DataCenter.php | line: 25
+<?php exit;?>2015-05-01 13:44:57 | code: 8 | msg: Trying to get property of non-object          | file: /private/var/www/myaf3/app/application/library/DataCenter/DataCenter.php | line: 25
+<?php exit;?>2015-05-01 13:45:21 | code: 8 | msg: Trying to get property of non-object          | file: /private/var/www/myaf3/app/application/library/DataCenter/DataCenter.php | line: 25
+<?php exit;?>2015-05-01 13:45:21 | code: 8 | msg: Trying to get property of non-object          | file: /private/var/www/myaf3/app/application/library/DataCenter/DataCenter.php | line: 25

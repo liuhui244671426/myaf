@@ -1,10 +1,11 @@
 <?php
-
+//todo test unit
 class HaloMemcached
 {
+    protected static $instance = null;
+    private $_mcd = null;
     protected $_type = 1;//1:普通连接 2:长链接
-    public $_mcd = null;
-    public static $instance = null;
+
 
     public static function getInstance($config){
         if(self::$instance === null){
@@ -22,7 +23,7 @@ class HaloMemcached
      * @thorw mixed BadMethodCallException
      */
     public function __call($methodName, $methodArguments){
-        throw new BadMethodCallException('BadMethodCallException, called HaloMemcache\'s method ' . $methodName . ' not exsits!');
+        throw new BadMethodCallException('BadMethodCallException, called HaloMemcached\'s method ' . $methodName . ' not exsits!');
     }
 
     /**
@@ -35,41 +36,96 @@ class HaloMemcached
         }
 
         $this->_mcd = new Memcached();
-        $this->_mcd->addServer($config['host'], $config['port']);
+        $isConnected = $this->_mcd->addServer($config['host'], $config['port']);
 
+        if($isConnected == false){
+            Yaflog($this->_mcd->getResultMessage());
+            exit;
+        }
         return $this->_mcd;
+    }
+    /**
+     * md5加密key值
+     * @param string $key
+     * @return string
+     * */
+    public function keyName($key){
+        return md5(strtolower($key));
+    }
+    /**
+     * 获取服务器状态
+     * @return Possible: "reset, malloc, maps, cachedump, slabs, items, sizes"
+     * */
+    public function getStats(){
+        return $this->_mcd->getStats();
+    }
+    /**
+     * 获取服务器版本
+     * @return int
+     * */
+    public function getVersion(){
+        return $this->_mcd->getVersion();
     }
 
     /**
+     * 清空记录
+     * */
+    public function flush(){
+        return $this->_mcd->flush();
+    }
+    /**
      * 把数据添加到缓存
      * @param string $key 缓存的key
-     * @param string|array|int... $value 缓存的数据
+     * @param string|array|int... $value 缓存的数据 array('key1' => 'value1','key2' => 'value2','key3' => 'value3')
      * @param int $expireTime 缓存时间
+     * @return bool
      */
-    public function mcdSet($key, $value, $expireTime = 0)
+    public function set($key, $value, $expireTime = null)
     {
-        if ($expireTime > 0) {
-            return $this->_mcd->set($key, $value, 0, $expireTime);
+        $expireTime = is_null($expireTime)?120:$expireTime;
+        if(is_array($value)){
+            return $this->_mcd->setMulti($value, $expireTime);
         } else {
-            return $this->_mcd->set($key, $value);
+            return $this->_mcd->set($key, $value, $expireTime);
         }
     }
 
     /**
      * 从缓存读取数据
      * @param string|array|int... $key
+     * @return array|false
      */
-    public function mcdGet($key)
+    public function get($key)
     {
-        return $this->_mcd->get($key);
+        if(is_array($key)){
+            return $this->_mcd->getMulti($key);
+        } else {
+            return $this->_mcd->get($key);
+        }
     }
 
     /**
      * 从缓存删除数据
      * @param string|array|int... $key
      */
-    public function mcdDel($key)
+    public function del($key)
     {
-        return $this->_mcd->delete($key);
+        if(is_array($key)){
+            return $this->_mcd->deleteMulti($key);
+        } else {
+            return $this->_mcd->delete($key);
+        }
+    }
+    /**
+     * 是否连接
+     * @return bool
+     * */
+    public function isConnected(){
+        foreach ($this->getStats() as $key => $server) {
+            if($server['pid'] == -1){
+                return false;
+            }
+            return true;
+        }
     }
 }
