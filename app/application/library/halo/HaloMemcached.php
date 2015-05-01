@@ -23,7 +23,7 @@ class HaloMemcached
      * @thorw mixed BadMethodCallException
      */
     public function __call($methodName, $methodArguments){
-        throw new BadMethodCallException('BadMethodCallException, called HaloMemcached\'s method ' . $methodName . ' not exsits!');
+        throw new BadMethodCallException('BadMethodCallException, called HaloMemcached\'s method ' . $methodName . ' not exsits!', -9995);
     }
 
     /**

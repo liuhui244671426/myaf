@@ -1,13 +1,10 @@
-<?php
+    <?php
 
-class HaloRedis
-{
-    //实例名
-    public $_REDIS = null;
-    //事物对象
-    private $_TRANSCATION = null;
-
+    class HaloRedis
+    {
     public static $_instance = null;
+    private $_redis = null;
+    private $_TRANSCATION = null;
 
     /**
      * 实例
@@ -45,21 +42,21 @@ class HaloRedis
             throw new Exception('Class Redis not exists');
         }
 
-        $this->_REDIS = new redis();
+        $this->_redis = new redis();
         $type = isset($config['type']) ? $config['type'] : 1;//1普通连接 2长连接
         if($type == 1){
-            $this->_REDIS->connect($config['host'], $config['port'], $config['timeout']);
+            $this->_redis->connect($config['host'], $config['port'], $config['timeout']);
         } elseif($type == 2){
-            $this->_REDIS->pconnect($config['host'], $config['port'], $config['timeout']);
+            $this->_redis->pconnect($config['host'], $config['port'], $config['timeout']);
         } else {
             throw new LogicException('LogicException, Redis connect type is ' . $type . ' and it\'s error', -9999);
         }
 
         if (isset($passwd)) {
-            $this->_REDIS->auth($passwd);
+            $this->_redis->auth($passwd);
         }
 
-        return $this->_REDIS;
+        return $this->_redis;
     }
 
     /**
@@ -70,7 +67,7 @@ class HaloRedis
     {
         $return = null;
 
-        $return = $this->_REDIS->ping();
+        $return = $this->_redis->ping();
 
         return 'PONG' ? true : false;
     }
@@ -82,7 +79,7 @@ class HaloRedis
      */
     public function setOption($option = array())
     {
-        return $this->_REDIS->setOption();
+        return $this->_redis->setOption();
     }
 
     /**
@@ -91,7 +88,7 @@ class HaloRedis
      */
     public function getOption($option = array())
     {
-        return $this->_REDIS->getOption();
+        return $this->_redis->getOption();
     }
 
     /**
@@ -109,17 +106,17 @@ class HaloRedis
         $return = null;
 
         if ($type) {
-            $return = $this->_REDIS->append($key, $value);
+            $return = $this->_redis->append($key, $value);
         } else {
             if ($old) {
-                $return = $this->_REDIS->getSet($key, $value);
+                $return = $this->_redis->getSet($key, $value);
             } else {
                 if ($repeat) {
-                    $return = $this->_REDIS->setnx($key, $value);
+                    $return = $this->_redis->setnx($key, $value);
                 } else {
                     if ($time && is_numeric($time)) $return =
-                        $this->_REDIS->setex($key, $time, $value);
-                    else $return = $this->_REDIS->set($key, $value);
+                        $this->_redis->setex($key, $time, $value);
+                    else $return = $this->_redis->set($key, $value);
                 }
             }
         }
@@ -139,12 +136,12 @@ class HaloRedis
         $return = null;
 
         if (is_array($key) && !empty($key)) {
-            $return = $this->_REDIS->getMultiple($key);
+            $return = $this->_redis->getMultiple($key);
         } else {
             if (isset($start) && isset($end)) $return =
-                $this->_REDIS->getRange($key, $start, $end);
+                $this->_redis->getRange($key, $start, $end);
             else
-                $return = $this->_REDIS->get($key);
+                $return = $this->_redis->get($key);
         }
 
         return $return;
@@ -159,7 +156,7 @@ class HaloRedis
     {
         $return = null;
 
-        $return = $this->_REDIS->delete($key);
+        $return = $this->_redis->delete($key);
 
         return $return;
     }
@@ -173,7 +170,7 @@ class HaloRedis
     {
         $return = null;
 
-        $return = $this->_REDIS->exists($key);
+        $return = $this->_redis->exists($key);
 
         return $return;
     }
@@ -181,7 +178,7 @@ class HaloRedis
     public function publish($channel, $msg)
     {
         $return = null;
-        $return = $this->_REDIS->publish($channel, $msg);
+        $return = $this->_redis->publish($channel, $msg);
         return $return;
     }
 
@@ -198,12 +195,12 @@ class HaloRedis
 
         switch ($type) {
             case 0:
-                if ($n == 1) $return = $this->_REDIS->decr($key);
-                else if ($n > 1) $return = $this->_REDIS->decrBy($key, $n);
+                if ($n == 1) $return = $this->_redis->decr($key);
+                else if ($n > 1) $return = $this->_redis->decrBy($key, $n);
                 break;
             case 1:
-                if ($n == 1) $return = $this->_REDIS->incr($key);
-                else if ($n > 1) $return = $this->_REDIS->incrBy($key, $n);
+                if ($n == 1) $return = $this->_redis->incr($key);
+                else if ($n > 1) $return = $this->_redis->incrBy($key, $n);
                 break;
             default:
                 $return = false;
@@ -221,7 +218,7 @@ class HaloRedis
     public function mset($data)
     {
         $return = null;
-        $return = $this->_REDIS->mset($data);
+        $return = $this->_redis->mset($data);
         return $return;
     }
 
@@ -233,7 +230,7 @@ class HaloRedis
     public function ttl($key)
     {
         $return = null;
-        $return = $this->_REDIS->ttl($key);
+        $return = $this->_redis->ttl($key);
         return $return;
     }
 
@@ -245,7 +242,7 @@ class HaloRedis
     public function persist($key)
     {
         $return = null;
-        $return = $this->_REDIS->persist($key);
+        $return = $this->_redis->persist($key);
         return $return;
     }
 
@@ -257,7 +254,7 @@ class HaloRedis
     public function strlen($key)
     {
         $return = null;
-        $return = $this->_REDIS->strlen($key);
+        $return = $this->_redis->strlen($key);
         return $return;
     }
 
@@ -277,15 +274,15 @@ class HaloRedis
         switch ($direction) {
             case 0:
                 if ($repeat)
-                    $return = $this->_REDIS->lPushx($list, $value);
+                    $return = $this->_redis->lPushx($list, $value);
                 else
-                    $return = $this->_REDIS->lPush($list, $value);
+                    $return = $this->_redis->lPush($list, $value);
                 break;
             case 1:
                 if ($repeat)
-                    $return = $this->_REDIS->rPushx($list, $value);
+                    $return = $this->_redis->rPushx($list, $value);
                 else
-                    $return = $this->_REDIS->rPush($list, $value);
+                    $return = $this->_redis->rPush($list, $value);
                 break;
             default:
                 $return = false;
@@ -310,15 +307,15 @@ class HaloRedis
         switch ($deriction) {
             case 0:
                 if ($timeout && $list2)
-                    $return = $this->_REDIS->blPop($list1, $list2, $timeout);
+                    $return = $this->_redis->blPop($list1, $list2, $timeout);
                 else
-                    $return = $this->_REDIS->lPop($list1);
+                    $return = $this->_redis->lPop($list1);
                 break;
             case 1:
                 if ($timeout && $list2)
-                    $return = $this->_REDIS->brPop($list1, $list2, $timeout);
+                    $return = $this->_redis->brPop($list1, $list2, $timeout);
                 else
-                    $return = $this->_REDIS->rPop($list1);
+                    $return = $this->_redis->rPop($list1);
                 break;
             default:
                 $return = false;
@@ -336,7 +333,7 @@ class HaloRedis
     {
         $return = null;
 
-        $return = $this->_REDIS->lSize($list);
+        $return = $this->_redis->lSize($list);
 
         return $return;
     }
@@ -351,7 +348,7 @@ class HaloRedis
     {
         $return = null;
 
-        $return = $this->_REDIS->lSet($list, $index, $value);
+        $return = $this->_redis->lSet($list, $index, $value);
 
         return $return;
     }
@@ -367,9 +364,9 @@ class HaloRedis
         $return = null;
 
         if ($end) {
-            $return = $this->_REDIS->lRange($list, $index, $end);
+            $return = $this->_redis->lRange($list, $index, $end);
         } else {
-            $return = $this->_REDIS->lGet($list, $index);
+            $return = $this->_redis->lGet($list, $index);
         }
 
         return $return;
@@ -385,7 +382,7 @@ class HaloRedis
     {
         $return = null;
 
-        $return = $this->_REDIS->lTrim($list, $start, $end);
+        $return = $this->_redis->lTrim($list, $start, $end);
 
         return $return;
     }
@@ -400,7 +397,7 @@ class HaloRedis
     {
         $return = null;
 
-        $return = $this->_REDIS->lRem($list, $value, $count);
+        $return = $this->_redis->lRem($list, $value, $count);
 
         return $return;
     }
@@ -412,7 +409,7 @@ class HaloRedis
     public function listLen($key)
     {
         $return = null;
-        $return = $this->_REDIS->lLen($key);
+        $return = $this->_redis->lLen($key);
         return $return;
     }
 
@@ -426,7 +423,7 @@ class HaloRedis
     public function leftPush($key, $value1, $value2 = null, $valueN = null)
     {
         $return = null;
-        $return = $this->_REDIS->lPush($key, $value1);
+        $return = $this->_redis->lPush($key, $value1);
         return $return;
     }
 
@@ -440,7 +437,7 @@ class HaloRedis
     public function rightPush($key, $value1, $value2 = null, $valueN = null)
     {
         $return = null;
-        $return = $this->_REDIS->rPush($key, $value1);
+        $return = $this->_redis->rPush($key, $value1);
         return $return;
     }
 
@@ -453,7 +450,7 @@ class HaloRedis
     public function leftRange($key, $start, $end)
     {
         $return = null;
-        $return = $this->_REDIS->lRange($key, $start, $end);
+        $return = $this->_redis->lRange($key, $start, $end);
         return $return;
     }
 
@@ -467,7 +464,7 @@ class HaloRedis
     public function leftInsert($key, $position, $pivot, $value)
     {
         $return = null;
-        $return = $this->_REDIS->lInsert($key, $position, $pivot, $value);
+        $return = $this->_redis->lInsert($key, $position, $pivot, $value);
         return $return;
     }
 
@@ -485,10 +482,10 @@ class HaloRedis
 
         switch ($location) {
             case 0:
-                $return = $this->_REDIS->lInsert($list, Redis::BEFORE, $value1, $value2);
+                $return = $this->_redis->lInsert($list, Redis::BEFORE, $value1, $value2);
                 break;
             case 1:
-                $return = $this->_REDIS->lInsert($list, Redis::AFTER, $value1, $value2);
+                $return = $this->_redis->lInsert($list, Redis::AFTER, $value1, $value2);
                 break;
             default:
                 $return = false;
@@ -507,13 +504,16 @@ class HaloRedis
     {
         $return = null;
 
-        $return = $this->_REDIS->rpoplpush($list1, $list2);
+        $return = $this->_redis->rpoplpush($list1, $list2);
 
         return $return;
     }
 
-    //+++-------------------------集合操作-------------------------+++//
-
+    /**
+     * ===================================================
+     * 集合操作
+     * ===================================================
+     * */
     /**
      * 将value写入set集合 如果value存在 不写入 返回false
      * 如果是有序集合则根据score值更新该元素的顺序
@@ -527,9 +527,9 @@ class HaloRedis
         $return = null;
 
         if ($stype && $score !== null) {
-            $return = $this->_REDIS->zAdd($set, $score, $value);
+            $return = $this->_redis->zAdd($set, $score, $value);
         } else {
-            $return = $this->_REDIS->sAdd($set, $value);
+            $return = $this->_redis->sAdd($set, $value);
         }
 
         return $return;
@@ -545,7 +545,7 @@ class HaloRedis
     public function setRem($key, $member1, $member2 = null, $memberN = null)
     {
         $return = null;
-        $return = $this->_REDIS->sRem($key, $member1, $member2 = null, $memberN = null);
+        $return = $this->_redis->sRem($key, $member1, $member2 = null, $memberN = null);
         return $return;
     }
 
@@ -561,10 +561,10 @@ class HaloRedis
         $return = null;
 
         if ($set2) {
-            $return = $this->_REDIS->sMove($set1, $set2, $value);
+            $return = $this->_redis->sMove($set1, $set2, $value);
         } else {
-            if ($stype) $return = $this->_REDIS->zRem($set1, $value);
-            else $return = $this->_REDIS->sRem($set1, $value);
+            if ($stype) $return = $this->_redis->zRem($set1, $value);
+            else $return = $this->_redis->sRem($set1, $value);
         }
 
         return $return;
@@ -579,7 +579,7 @@ class HaloRedis
     {
         $return = null;
 
-        $return = $this->_REDIS->sIsMember($set, $value);
+        $return = $this->_redis->sIsMember($set, $value);
 
         return $return;
     }
@@ -597,10 +597,10 @@ class HaloRedis
         $return = null;
 
         if ($stype) {
-            if ($start && $end) $return = $this->_REDIS->zCount($set, $start, $end);
-            else $return = $this->_REDIS->zSize($set);
+            if ($start && $end) $return = $this->_redis->zCount($set, $start, $end);
+            else $return = $this->_redis->zSize($set);
         } else {
-            $return = $this->_REDIS->sSize($set);
+            $return = $this->_redis->sSize($set);
         }
 
         return $return;
@@ -616,9 +616,9 @@ class HaloRedis
         $return = null;
 
         if ($isdel) {
-            $return = $this->_REDIS->sPop($set);
+            $return = $this->_redis->sPop($set);
         } else {
-            $return = $this->_REDIS->sRandMember($set);
+            $return = $this->_redis->sRandMember($set);
         }
 
         return $return;
@@ -638,10 +638,10 @@ class HaloRedis
 
         if (is_array($set) && !empty($set)) {
             if ($newset) {
-                if ($stype) $return = $this->_REDIS->zInter($newset, $set, $weight, $function);
-                else $return = $this->_REDIS->sInterStore($newset, $set);
+                if ($stype) $return = $this->_redis->zInter($newset, $set, $weight, $function);
+                else $return = $this->_redis->sInterStore($newset, $set);
             } else {
-                $return = $this->_REDIS->sInter($set);
+                $return = $this->_redis->sInter($set);
             }
         }
 
@@ -662,11 +662,11 @@ class HaloRedis
 
         if (is_array($set) && !empty($set)) {
             if ($newset) {
-                if ($stype) $return = $this->_REDIS->zUnion($newset, $set,
+                if ($stype) $return = $this->_redis->zUnion($newset, $set,
                     $weight, $function);
-                else $return = $this->_REDIS->sUnionStore($newset, $set);
+                else $return = $this->_redis->sUnionStore($newset, $set);
             } else {
-                $return = $this->_REDIS->sUnion($set);
+                $return = $this->_redis->sUnion($set);
             }
         }
 
@@ -684,9 +684,9 @@ class HaloRedis
 
         if (is_array($set) && !empty($set)) {
             if ($newset) {
-                $return = $this->_REDIS->sDiffStore($newset, $set);
+                $return = $this->_redis->sDiffStore($newset, $set);
             } else {
-                $return = $this->_REDIS->sDiff($set);
+                $return = $this->_redis->sDiff($set);
             }
         }
 
@@ -701,7 +701,7 @@ class HaloRedis
     {
         $return = null;
 
-        $return = $this->_REDIS->sMembers($set);
+        $return = $this->_redis->sMembers($set);
 
         return $return;
     }
@@ -725,13 +725,15 @@ class HaloRedis
 
         $option = array_merge($default_option, $option);
 
-        $return = $this->_REDIS->sort($set, $option);
+        $return = $this->_redis->sort($set, $option);
 
         return $return;
     }
-
-    //+++-------------------------有序集合操作-------------------------+++//
-
+    /**
+     * ===================================================
+     * 有序集合操作
+     * ===================================================
+     * */
     /**
      * ***只针对有序集合操作
      * 返回set中index从start到end的所有元素
@@ -746,9 +748,9 @@ class HaloRedis
         $return = null;
 
         if ($order) {
-            $return = $this->_REDIS->zRevRange($set, $start, $end, $score);
+            $return = $this->_redis->zRevRange($set, $start, $end, $score);
         } else {
-            $return = $this->_REDIS->zRange($set, $start, $end, $score);
+            $return = $this->_redis->zRange($set, $start, $end, $score);
         }
 
         return $return;
@@ -765,7 +767,7 @@ class HaloRedis
     {
         $return = null;
 
-        $return = $this->_REDIS->zRemRangeByScore($set, $start, $end);
+        $return = $this->_redis->zRemRangeByScore($set, $start, $end);
 
         return $return;
     }
@@ -784,18 +786,19 @@ class HaloRedis
         $return = null;
 
         if ($inc) {
-            $return = $this->_REDIS->zIncrBy($set, $inc, $value);
+            $return = $this->_redis->zIncrBy($set, $inc, $value);
         } else {
-            $return = $this->_REDIS->zScore($set, $value);
+            $return = $this->_redis->zScore($set, $value);
         }
 
         return $return;
     }
 
-
-
-    //+++-------------------------哈希操作-------------------------+++//
-
+    /**
+     * ===================================================
+     * 哈希操作
+     * ===================================================
+     * */
     /**
      * 将key->value写入hash表中
      * @param $hash string 哈希表名
@@ -806,7 +809,7 @@ class HaloRedis
         $return = null;
 
         if (is_array($data) && !empty($data)) {
-            $return = $this->_REDIS->hMset($hash, $data);
+            $return = $this->_redis->hMset($hash, $data);
         }
         return $return;
     }
@@ -816,7 +819,7 @@ class HaloRedis
     {
         $return = null;
         if (!empty($key)) {
-            $return = $this->_REDIS->hSet($key, $field, $value);
+            $return = $this->_redis->hSet($key, $field, $value);
         }
         return $return;
     }
@@ -833,19 +836,19 @@ class HaloRedis
 
         if ($key) {
             if (is_array($key) && !empty($key))
-                $return = $this->_REDIS->hMGet($hash, $key);
+                $return = $this->_redis->hMGet($hash, $key);
             else
-                $return = $this->_REDIS->hGet($hash, $key);
+                $return = $this->_redis->hGet($hash, $key);
         } else {
             switch ($type) {
                 case 0:
-                    $return = $this->_REDIS->hKeys($hash);
+                    $return = $this->_redis->hKeys($hash);
                     break;
                 case 1:
-                    $return = $this->_REDIS->hVals($hash);
+                    $return = $this->_redis->hVals($hash);
                     break;
                 case 2:
-                    $return = $this->_REDIS->hGetAll($hash);
+                    $return = $this->_redis->hGetAll($hash);
                     break;
                 default:
                     $return = false;
@@ -864,7 +867,7 @@ class HaloRedis
     {
         $return = null;
 
-        $return = $this->_REDIS->hLen($hash);
+        $return = $this->_redis->hLen($hash);
 
         return $return;
     }
@@ -878,7 +881,7 @@ class HaloRedis
     {
         $return = null;
 
-        $return = $this->_REDIS->hDel($hash, $key);
+        $return = $this->_redis->hDel($hash, $key);
 
         return $return;
     }
@@ -892,7 +895,7 @@ class HaloRedis
     {
         $return = null;
 
-        $return = $this->_REDIS->hExists($hash, $key);
+        $return = $this->_redis->hExists($hash, $key);
 
         return $return;
     }
@@ -907,11 +910,15 @@ class HaloRedis
     {
         $return = null;
 
-        $return = $this->_REDIS->hIncrBy($hash, $key, $inc);
+        $return = $this->_redis->hIncrBy($hash, $key, $inc);
 
         return $return;
     }
-
+    /**
+     * ===================================================
+     * 哈希操作
+     * ===================================================
+     * */
     //+++-------------------------其他操作-------------------------+++//
 
     /**
@@ -923,7 +930,7 @@ class HaloRedis
     {
         $return = null;
 
-        $return = $this->_REDIS->setTimeout($key, $time);
+        $return = $this->_redis->setTimeout($key, $time);
 
         return $return;
     }
@@ -936,7 +943,7 @@ class HaloRedis
     {
         $return = null;
 
-        $return = $this->_REDIS->keys($key);
+        $return = $this->_redis->keys($key);
 
         return $return;
     }
@@ -951,12 +958,12 @@ class HaloRedis
         $return = null;
 
         if ($type) {
-            $return = $this->_REDIS->bgsave();
+            $return = $this->_redis->bgsave();
         } else {
-            $return = $this->_REDIS->save();
+            $return = $this->_redis->save();
         }
         if ($time) {
-            $return = $this->_REDIS->lastSave();
+            $return = $this->_redis->lastSave();
         }
 
         return $return;
@@ -969,7 +976,7 @@ class HaloRedis
     {
         $return = null;
 
-        $return = $this->_REDIS->lastSave();
+        $return = $this->_redis->lastSave();
 
         return $return;
     }
@@ -981,7 +988,7 @@ class HaloRedis
     {
         $return = null;
 
-        $return = $this->_REDIS->info();
+        $return = $this->_redis->info();
 
         return $return;
     }
@@ -993,20 +1000,23 @@ class HaloRedis
     {
         $return = null;
 
-        $return = $this->_REDIS->dbSize();
+        $return = $this->_redis->dbSize();
 
         return $return;
     }
 
-    //+++-------------------------事务操作-------------------------+++//
-
+    /**
+     * ===================================================
+     * 事务
+     * ===================================================
+     * */
     /**
      * 开始进入事务操作
      * @param $return object 事务对象
      */
     public function tranStart()
     {
-        $this->_TRANSCATION = $this->_REDIS->multi();
+        $this->_TRANSCATION = $this->_redis->multi();
     }
 
     /**
@@ -1026,5 +1036,9 @@ class HaloRedis
     {
         return $this->_TRANSCATION->discard();
     }
-
-}
+    /**
+     * ===================================================
+     * 事务
+     * ===================================================
+     * */
+    }
