@@ -26,6 +26,13 @@ class LeftBuilder
                     <li><a href="/admin/member/getAllMembers"><i class="fa fa-caret-right"></i>投放中</a></li>
                 </ul>
             </li>
+
+            <li class="nav-parent"><a href=""><i class="fa fa-file-o"></i> <span>文章管理</span></a>
+                <ul class="children">
+                    <li><a href="/admin/article/list"><i class="fa fa-caret-right"></i>列表</a></li>
+                    <li><a href="/admin/article/add"><i class="fa fa-caret-right"></i>添加</a></li>
+                </ul>
+            </li>
         </ul>';
     }
 

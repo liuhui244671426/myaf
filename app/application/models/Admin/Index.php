@@ -12,7 +12,7 @@ class Admin_IndexModel extends BaseModel
 
     public function __construct()
     {
-        $this->_db = DataCenter::getDb('myaf');
+        $this->_db = DataCenter::getFactory('db', 'myaf');
     }
 
     /**
