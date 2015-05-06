@@ -83,32 +83,24 @@
 </section>
 
 
-<script src="/statics/bracket/js/jquery-1.11.1.min.js"></script>
-<script src="/statics/bracket/js/jquery-migrate-1.2.1.min.js"></script>
-<script src="/statics/bracket/js/bootstrap.min.js"></script>
-<script src="/statics/bracket/js/modernizr.min.js"></script>
-<script src="/statics/bracket/js/jquery.sparkline.min.js"></script>
-<script src="/statics/bracket/js/jquery.cookies.js"></script>
+<!--<script src="/statics/bracket/js/jquery-1.11.1.min.js"></script>-->
+<!--<script src="/statics/bracket/js/jquery-migrate-1.2.1.min.js"></script>-->
+<!--<script src="/statics/bracket/js/bootstrap.min.js"></script>-->
+<!--<script src="/statics/bracket/js/modernizr.min.js"></script>-->
+<!--<script src="/statics/bracket/js/jquery.sparkline.min.js"></script>-->
+<!--<script src="/statics/bracket/js/jquery.cookies.js"></script>-->
+<!---->
+<!--<script src="/statics/bracket/js/toggles.min.js"></script>-->
+<!--<script src="/statics/bracket/js/retina.min.js"></script>-->
+<!---->
+<!--<script src="/statics/bracket/js/custom.js"></script>-->
 
-<script src="/statics/bracket/js/toggles.min.js"></script>
-<script src="/statics/bracket/js/retina.min.js"></script>
-
-<script src="/statics/bracket/js/custom.js"></script>
+<script src="/statics/scripts/libs/seajs/sea.js"></script>
+<script src="/statics/scripts/libs/seajs/sea-config.js"></script>
 <script>
-    jQuery(document).ready(function () {
-
-        // Please do not use the code below
-        // This is for demo purposes only
-        var c = jQuery.cookie('change-skin');
-        if (c && c == 'greyjoy') {
-            jQuery('.btn-success').addClass('btn-orange').removeClass('btn-success');
-        } else if (c && c == 'dodgerblue') {
-            jQuery('.btn-success').addClass('btn-primary').removeClass('btn-success');
-        } else if (c && c == 'katniss') {
-            jQuery('.btn-success').addClass('btn-primary').removeClass('btn-success');
-        }
-    });
+    seajs.use('/statics/scripts/page/admin/login.js');
 </script>
+
 
 </body>
 </html>
