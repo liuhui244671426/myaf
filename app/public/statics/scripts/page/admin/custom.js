@@ -2,21 +2,7 @@
     "use strict";
 
     var jQuery = require('jquery');
-    require('jqueryUI');
-    require('jquerySparkline');
-    require('jqueryFlot');
-    require('jqueryFlotResize');
-    require('jqueryFlotSpline');
-    require('jqueryDatatables');
-    require('jqueryCookie');
-    require('jqueryMorris');
-    require('jqueryToggles');
-
-    require('bootstrap');
-
-    require('modernizr');
-    require('retina');
-
+    require.async(['jqueryUI', 'jqueryDatatables', 'jqueryCookie','jqueryMorris','jqueryToggles','bootstrap','modernizr','retina']);
 
     jQuery(window).load(function () {
         // Page Preloader
@@ -94,39 +80,6 @@
             scColor1 = '#fff';
         }
 
-
-        // Sparkline
-        jQuery('#sidebar-chart').sparkline([4, 3, 3, 1, 4, 3, 2, 2, 3, 10, 9, 6], {
-            type: 'bar',
-            height: '30px',
-            barColor: scColor1
-        });
-
-        jQuery('#sidebar-chart2').sparkline([1, 3, 4, 5, 4, 10, 8, 5, 7, 6, 9, 3], {
-            type: 'bar',
-            height: '30px',
-            barColor: '#D9534F'
-        });
-
-        jQuery('#sidebar-chart3').sparkline([5, 9, 3, 8, 4, 10, 8, 5, 7, 6, 9, 3], {
-            type: 'bar',
-            height: '30px',
-            barColor: '#1CAF9A'
-        });
-
-        jQuery('#sidebar-chart4').sparkline([4, 3, 3, 1, 4, 3, 2, 2, 3, 10, 9, 6], {
-            type: 'bar',
-            height: '30px',
-            barColor: scColor1
-        });
-
-        jQuery('#sidebar-chart5').sparkline([1, 3, 4, 5, 4, 10, 8, 5, 7, 6, 9, 3], {
-            type: 'bar',
-            height: '30px',
-            barColor: '#F0AD4E'
-        });
-
-
         // Minimize Button in Panels
         jQuery('.minimize').click(function () {
             var t = jQuery(this);
@@ -189,13 +142,9 @@
         reposition_searchform();
 
         jQuery(window).resize(function () {
-
             if (jQuery('body').css('position') == 'relative') {
-
                 jQuery('body').removeClass('leftpanel-collapsed chat-view');
-
             } else {
-
                 jQuery('body').removeClass('chat-relative-view');
                 jQuery('body').css({left: '', marginRight: ''});
             }
