@@ -19,4 +19,17 @@ class ArticleController extends BaseController{
     public function addAction(){
         $this->_view->display('Admin/article/add.phtml', array());
     }
+    /**
+     * 提交数据
+     */
+    public function postDataAction(){
+        $title = $this->getLegalParam('title', 'str');
+        $content = $this->getLegalParam('content', 'str');
+        //dump($this->_request->getPost('content'));
+        Yaflog(__METHOD__);
+        Yaflog($title);
+        Yaflog($content);
+        dump($title);
+        dump($content);
+    }
 }

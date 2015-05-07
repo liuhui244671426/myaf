@@ -16,11 +16,12 @@ class YafController extends Yaf_Controller_Abstract
      * @param string $legalType ('eid'|'id'|'time'|'int'|'str'|'trim_spec_str'|'enum'|'array'|'json'|'raw') 字段类型
      * @param array $legalList
      * @param mixed $default 字段默认值
-     * @return mixed
+     * @return mixed|false
      * */
     protected function getLegalParam($tag, $legalType, $legalList = array(), $default = null)
     {
         $param = $this->getRequest()->get($tag, $default);
+        dump($param);
         if ($param !== null) {
             switch ($legalType) {
                 case 'eid': //encrypted id

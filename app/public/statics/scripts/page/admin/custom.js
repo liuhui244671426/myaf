@@ -57,13 +57,6 @@
 
         adjustmainpanelheight();
 
-
-        // Tooltip
-        jQuery('.tooltips').tooltip({container: 'body'});
-
-        // Popover
-        jQuery('.popovers').popover();
-
         // Close Button in Panels
         jQuery('.panel .panel-close').click(function () {
             jQuery(this).closest('.panel').fadeOut(200);

@@ -38,6 +38,7 @@ seajs.config({
 
         //editor
         'kindeditor': 'libs/kindeditor/kindeditor.js',
+        'ckeditor': 'libs/ckeditor/ckeditor-seajs.js',
 
         //bootstrap
         'bootstrap': 'libs/jquery/seajs/bootstrap.min-seajs.js',
