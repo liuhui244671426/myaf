@@ -1,10 +1,11 @@
-/*!
+/**
  * jQuery Transit - CSS3 transitions and transformations
  * (c) 2011-2012 Rico Sta. Cruz <rico@ricostacruz.com>
  * MIT Licensed.
  *
  * http://ricostacruz.com/jquery.transit
  * http://github.com/rstacruz/jquery.transit
+ * @Desc: Super-smooth CSS3 transformations and transitions for jQuery
  * Created by huiliu on 14-10-14.
  * seajs
  */

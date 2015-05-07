@@ -2,28 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7f621a10-563d-4eac-9a0a-18129916fd1f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/bootstrap.min-seajs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.datatables.min-seajs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.categories.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.crosshair.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.pie.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.resize.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.spline.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.symbol.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.morris.min-seajs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.sparkline.min-seajs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.toggles.min-seajs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.ui-seajs.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/modernizr.min-seajs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/raphael.min-seajs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/retina.min-seajs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/underscore-seajs.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/jquery.cookies-seajs.js" afterPath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.cookies-seajs.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/application/views/phtmls/layouts/Admin.phtml" afterPath="$PROJECT_DIR$/app/application/views/phtmls/layouts/Admin.phtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/public/statics/scripts/utils/core.util.js" afterPath="$PROJECT_DIR$/app/public/statics/scripts/utils/core.util.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/public/statics/bracket/js/custom.js" afterPath="$PROJECT_DIR$/app/public/statics/bracket/js/custom.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/public/statics/scripts/page/admin/custom.js" afterPath="$PROJECT_DIR$/app/public/statics/scripts/page/admin/custom.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/jquery.gridly.js" afterPath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.gridly-seajs.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/jquery.transit.js" afterPath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.transit-seajs.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.categories.min.js" afterPath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.categories.min-seajs.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.crosshair.min.js" afterPath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.crosshair.min-seajs.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.min.js" afterPath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.min-seajs.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.pie.min.js" afterPath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.pie.min-seajs.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.resize.min.js" afterPath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.resize.min-seajs.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.spline.min.js" afterPath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.spline.min-seajs.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.symbol.min.js" afterPath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.symbol.min-seajs.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.ui-seajs.min.js" afterPath="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.ui.min-seajs.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/public/statics/scripts/libs/seajs/sea-config.js" afterPath="$PROJECT_DIR$/app/public/statics/scripts/libs/seajs/sea-config.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -59,24 +47,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jquery.ui-seajs.min.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.ui-seajs.min.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="71145">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="e#1070#7828#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="custom.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="custom.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/page/admin/custom.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5738636" vertical-offset="1606" max-vertical-offset="3795">
-              <caret line="170" column="25" selection-start-line="170" selection-start-column="25" selection-end-line="170" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1606" max-vertical-offset="3795">
+              <caret line="171" column="0" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
               <folding>
                 <element signature="e#795#1624#0" expanded="false" />
                 <element signature="e#1667#2001#0" expanded="false" />
@@ -88,11 +63,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sea-config.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="sea-config.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/seajs/sea-config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.692307" vertical-offset="57" max-vertical-offset="750">
-              <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.18141593" vertical-offset="57" max-vertical-offset="855">
+              <caret line="12" column="63" selection-start-line="12" selection-start-column="63" selection-end-line="12" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -104,28 +79,6 @@
             <state vertical-scroll-proportion="0.0" vertical-offset="301" max-vertical-offset="1470">
               <caret line="36" column="36" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="underscore-seajs.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/underscore-seajs.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="23295">
-              <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="raphael.min-seajs.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/raphael.min-seajs.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.1923075" vertical-offset="0" max-vertical-offset="41175">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -143,8 +96,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/application/modules/Admin/controllers/Main.php" />
-        <option value="$PROJECT_DIR$/app/public/index_dev.php" />
         <option value="$PROJECT_DIR$/config/db.ini" />
         <option value="$PROJECT_DIR$/app/application/library/DataCenter/DataCenter.bak.php" />
         <option value="$PROJECT_DIR$/app/application/models/Admin/Member.php" />
@@ -189,11 +140,13 @@
         <option value="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/modernizr.min-seajs.js" />
         <option value="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/retina.min-seajs.js" />
         <option value="$PROJECT_DIR$/app/public/statics/scripts/page/admin/custom.js" />
-        <option value="$PROJECT_DIR$/app/public/statics/scripts/libs/seajs/sea-config.js" />
         <option value="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/underscore.js" />
         <option value="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/underscore-seajs.js" />
         <option value="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/raphael.min-seajs.js" />
         <option value="$PROJECT_DIR$/app/public/statics/scripts/utils/core.util.js" />
+        <option value="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/jquery.transit.js" />
+        <option value="$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.gridly-seajs.js" />
+        <option value="$PROJECT_DIR$/app/public/statics/scripts/libs/seajs/sea-config.js" />
       </list>
     </option>
   </component>
@@ -441,6 +394,44 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="jquery" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myaf3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myaf3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="statics" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jquery" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="seajs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -738,7 +729,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1511" y="282" width="1591" height="824" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17983651" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -746,7 +737,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32786885" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959743" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22038217" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22038217" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -951,24 +942,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/jquery.transit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="12090">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/jquery.gridly.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.204052" vertical-offset="6360" max-vertical-offset="7170">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/application/views/phtmls/Admin/login.phtml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.833333" vertical-offset="820" max-vertical-offset="1680">
@@ -1060,7 +1033,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.crosshair.min.js">
+    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.crosshair.min-seajs.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.13215859" vertical-offset="0" max-vertical-offset="1440">
           <caret line="6" column="32" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="32" />
@@ -1070,7 +1043,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.min.js">
+    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.min-seajs.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="5.5583835" vertical-offset="27172" max-vertical-offset="31020">
           <caret line="2059" column="15" selection-start-line="2059" selection-start-column="15" selection-end-line="2059" selection-end-column="15" />
@@ -1092,17 +1065,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.symbol.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.052863438" vertical-offset="54" max-vertical-offset="840">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="7" selection-end-column="35" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.spline.min.js">
+    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.spline.min-seajs.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.85903084" vertical-offset="0" max-vertical-offset="1935">
           <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="40" selection-end-column="35" />
@@ -1110,23 +1073,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.resize.min.js">
+    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.resize.min-seajs.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2175">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="7" selection-end-column="35" />
           <folding>
             <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.categories.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="240">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="7" selection-end-column="35" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-            <element signature="e#234#4092#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1141,7 +1093,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.pie.min.js">
+    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.pie.min-seajs.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.13024601" vertical-offset="0" max-vertical-offset="7275">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="7" selection-end-column="35" />
@@ -1191,7 +1143,103 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.ui-seajs.min.js">
+    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/zepto/zepto.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="14445">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/zepto/zepto.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="26070">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/underscore-seajs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.04405286" vertical-offset="0" max-vertical-offset="23295">
+          <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/raphael.min-seajs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20300752" vertical-offset="0" max-vertical-offset="41175">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/utils/core.util.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="301" max-vertical-offset="1470">
+          <caret line="36" column="36" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.symbol.min-seajs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.021306818" vertical-offset="0" max-vertical-offset="765">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="7" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.gridly-seajs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.11278196" vertical-offset="0" max-vertical-offset="665">
+          <caret line="5" column="50" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="50" />
+          <folding>
+            <element signature="e#413#19440#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.transit-seajs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14914773" vertical-offset="0" max-vertical-offset="12105">
+          <caret line="7" column="10" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/page/admin/custom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1606" max-vertical-offset="3795">
+          <caret line="171" column="0" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
+          <folding>
+            <element signature="e#795#1624#0" expanded="false" />
+            <element signature="e#1667#2001#0" expanded="false" />
+            <element signature="e#2044#2264#0" expanded="false" />
+            <element signature="e#6937#9743#0" expanded="false" />
+            <element signature="e#11833#12848#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.flot.categories.min-seajs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.10653409" vertical-offset="0" max-vertical-offset="704">
+          <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+          <folding>
+            <element signature="e#234#4092#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/jquery.ui.min-seajs.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="71145">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1210,71 +1258,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/zepto/zepto.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="14445">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/zepto/zepto.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="26070">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/raphael.min-seajs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.1923075" vertical-offset="0" max-vertical-offset="41175">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/jquery/seajs/underscore-seajs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="23295">
-          <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/libs/seajs/sea-config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.692307" vertical-offset="57" max-vertical-offset="750">
-          <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.18141593" vertical-offset="57" max-vertical-offset="855">
+          <caret line="12" column="63" selection-start-line="12" selection-start-column="63" selection-end-line="12" selection-end-column="63" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/utils/core.util.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="301" max-vertical-offset="1470">
-          <caret line="36" column="36" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/public/statics/scripts/page/admin/custom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5738636" vertical-offset="1606" max-vertical-offset="3795">
-          <caret line="170" column="25" selection-start-line="170" selection-start-column="25" selection-end-line="170" selection-end-column="25" />
-          <folding>
-            <element signature="e#795#1624#0" expanded="false" />
-            <element signature="e#1667#2001#0" expanded="false" />
-            <element signature="e#2044#2264#0" expanded="false" />
-            <element signature="e#6937#9743#0" expanded="false" />
-            <element signature="e#11833#12848#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
