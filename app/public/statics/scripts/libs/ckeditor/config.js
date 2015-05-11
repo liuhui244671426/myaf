@@ -14,6 +14,7 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
 		{ name: 'links' },
 		{ name: 'insert' },
+        '/',
 		{ name: 'forms' },
 		{ name: 'tools' },
 		{ name: 'document',	   groups: [ 'mode', 'document', 'doctools' ] },
@@ -23,7 +24,6 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
 		{ name: 'styles' },
 		{ name: 'colors' },
-		{ name: 'about' }
 	];
 
 	// Remove some buttons provided by the standard plugins, which are
@@ -37,4 +37,7 @@ CKEDITOR.editorConfig = function( config ) {
 	config.removeDialogTabs = 'image:advanced;link:advanced';
     //
     config.contentsCss = '/statics/scripts/libs/ckeditor/contents.css';
+    config.defaultLanguage = 'zh';
+    //config.extraPlugins='dialog';
+    //config.pluginPath = '/statics/scripts/libs/ckeditor/plugins/'
 };

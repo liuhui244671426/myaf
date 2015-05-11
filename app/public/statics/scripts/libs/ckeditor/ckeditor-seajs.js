@@ -1584,6 +1584,7 @@ define(function(require, exports){
                     return RegExp("(?:^|\\s+)" + a + "(?=\\s|$)", "").test(this.getAttribute("class"))
                 },
                 append: function (a, d) {
+                    //console.log(a.$);
                     typeof a == "string" && (a = this.getDocument().createElement(a));
                     d ? this.$.insertBefore(a.$, this.$.firstChild) :
                         this.$.appendChild(a.$);
