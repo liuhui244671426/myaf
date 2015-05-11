@@ -7,4 +7,6 @@ define(function (require, exports) {
 
 
     CKEDITOR.replace('wysiwyg');
+
+
 });

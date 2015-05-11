@@ -29,8 +29,21 @@ class ArticleController extends BaseController{
         Yaflog(__METHOD__);
         Yaflog($title);
         Yaflog($content);
-        dump($title);
-        dump($content);
+        $data = array(
+            'title' => $title,
+            'content' => $content,
+            'create_time' => TODAY,
+            'update_time' => null,
+            'author' => 'admin',
+            'category_id' => 1
+        );
+        $db = DataCenter::getFactory('db', 'myaf');
+        $lastId = $db->insertTable('art_content', $data);
+        if($lastId >= 1){
+            echo echoJsonString(0, array('id' => $lastId));
+        } else {
+            echo echoJsonString(1, array('id' => $lastId));
+        }
     }
 
     /**

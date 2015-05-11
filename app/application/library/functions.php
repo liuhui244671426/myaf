@@ -289,27 +289,35 @@ function IP()
     $ip = (false !== ip2long($ip)) ? $ip : '0.0.0.0';
     return $ip;
 }
-
-function EchoJsonString(array $data)
+/**
+ * 输出格式化的JSON串
+ * @param int $code
+ * @param array $data
+ * @return string
+ * */
+function echoJsonString($code, array $data)
 {
     header('Content-Type:application/json;charset=utf8');
-    echo json_encode($data);
+    echo json_encode(array(
+        'code' => $code,
+        'msg' => jsonStringMsg($code),
+        'data' => $data
+    ));
     exit;
 }
-
-function formatData($code, $data = null, $dataType = 'json')
-{
-    header('Content-type: application/json;charset=utf-8');
-    if ($dataType == 'json') {
-        echo json_encode(array(
-            'code' => $code,
-            'msg' => $code,
-            'data' => $data
-        ));
-        return;
-    }
+/**
+ * JSON使用的信息
+ * @param int $code
+ * @return string
+ * */
+function jsonStringMsg($code){
+    $arr = array(
+        0 => 'Success',
+        1 => 'Failed',
+        2 => '您没有该操作权限'
+    );
+    return $arr[$code];
 }
-
 /**
  * error handler
  * @param integer $errno 错误代码
