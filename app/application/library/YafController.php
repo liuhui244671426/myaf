@@ -21,7 +21,6 @@ class YafController extends Yaf_Controller_Abstract
     protected function getLegalParam($tag, $legalType, $legalList = array(), $default = null)
     {
         $param = $this->getRequest()->get($tag, $default);
-        dump($param);
         if ($param !== null) {
             switch ($legalType) {
                 case 'eid': //encrypted id

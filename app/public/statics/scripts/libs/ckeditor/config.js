@@ -12,7 +12,7 @@ CKEDITOR.editorConfig = function( config ) {
 	config.toolbarGroups = [
 		{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
 		{ name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
-		{ name: 'links' },
+		{ name: 'links',       groups: [ 'image'] },
 		{ name: 'insert' },
         '/',
 		{ name: 'forms' },
@@ -38,6 +38,6 @@ CKEDITOR.editorConfig = function( config ) {
     //
     config.contentsCss = '/statics/scripts/libs/ckeditor/contents.css';
     config.defaultLanguage = 'zh';
-    //config.extraPlugins='dialog';
-    //config.pluginPath = '/statics/scripts/libs/ckeditor/plugins/'
+
+    config.filebrowserImageUploadUrl = '/admin/article/postUploadImage';
 };

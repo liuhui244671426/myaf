@@ -1,7 +1,7 @@
 ﻿/*
- Copyright (c) 2003-2015, CKSource - Frederico Knabben. All rights reserved.
- For licensing, see LICENSE.md or http://ckeditor.com/license
- */
+    Copyright (c) 2003-2015, CKSource - Frederico Knabben. All rights reserved.
+    For licensing, see LICENSE.md or http://ckeditor.com/license
+*/
 define(function(require, exports){
     (function () {
         if (window.CKEDITOR && window.CKEDITOR.dom)return;
@@ -4740,7 +4740,7 @@ define(function(require, exports){
                 }, this)
             }
         };
-        CKEDITOR.plugins = new CKEDITOR.resourceManager("plugins/", "plugin");
+        CKEDITOR.plugins = new CKEDITOR.resourceManager(CKEDITOR.basePath+"plugins/", "plugin");
         CKEDITOR.plugins.load = CKEDITOR.tools.override(CKEDITOR.plugins.load, function (a) {
             var f = {};
             return function (b, c, e) {

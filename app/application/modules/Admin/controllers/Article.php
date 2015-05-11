@@ -32,4 +32,30 @@ class ArticleController extends BaseController{
         dump($title);
         dump($content);
     }
+
+    /**
+     * 上传文件
+     * */
+    public function postUploadImageAction(){
+        $ckeFuncNum = is_int($this->getLegalParam('CKEditorFuncNum', 'int'));
+
+        $upload = new upload();
+        $upload->maxSize = 3145728;
+        $upload->allowExts = array('jpg', 'gif', 'png', 'jpeg');
+        $upload->savePath = $this->_config['image']['upload']['path'] . 'origin/';
+        if(!$upload->upload()){
+            echo 'error: ';
+            dump($upload->getErrorMsg());
+        } else {
+            Yaflog($upload->getUploadFileInfo());
+
+            $url = getDomain() . substr($upload->savePath, 1) . $upload->getUploadFileInfo()[0]['savename'];
+
+            echo '<script type="text/javascript">';
+            $msg = sprintf('window.parent.CKEDITOR.tools.callFunction(%s, \'%s\', \'\');', $ckeFuncNum, $url);
+            echo $msg;
+            echo '</script>';
+            return;
+        }
+    }
 }
