@@ -26,6 +26,7 @@ seajs.config({
         'jqueryMorris': 'libs/jquery/seajs/jquery.morris.min-seajs.js',//时间序列线图Morris
         'jqueryTransit': 'libs/jquery/seajs/jquery.transit-seajs.js',//动画
         'jqueryGridly': 'libs/jquery/seajs/jquery.gridly-seajs.js',//拖动
+        'jqueryGritter': 'libs/jquery/seajs/jquery.gritter-seajs.js',//提示
 
         //jQuery-plugin--
 
