@@ -149,16 +149,14 @@
     }
 
     /**
-     * 删除某个key值
-     * @param array $key key数组
-     * @return longint $return 删除成功的key的个数
+     * 删除某个/多个 key 值
+     * @param array $key key数组 array('key1', 'key2', 'key3')
+     * @return int $return 删除成功的key的个数
      */
-    public function delete($key = array())
+    public function delete(array $key = array())
     {
         $return = null;
-
         $return = $this->_redis->delete($key);
-
         return $return;
     }
 
@@ -170,9 +168,7 @@
     public function exists($key)
     {
         $return = null;
-
         $return = $this->_redis->exists($key);
-
         return $return;
     }
 
@@ -824,20 +820,26 @@
      * */
     /**
      * 将key->value写入hash表中
-     * @param $hash string 哈希表名
-     * @param $data array 要写入的数据 array('key'=>'value')
+     * @param $key string 哈希表名
+     * @param $data array 要写入的数据 array('key1'=>'value1', ...)
      */
-    public function hashSet($hash, $data)
+    public function hashSet($key, $data)
     {
         $return = null;
 
         if (is_array($data) && !empty($data)) {
-            $return = $this->_redis->hMset($hash, $data);
+            $return = $this->_redis->hMset($key, $data);
         }
         return $return;
     }
 
-
+    /**
+     * 设置一个hash的key值
+     * @param string $key
+     * @param string $field
+     * @param mixed
+     * @return int 1:插入 0:更新
+     * */
     public function hashHSet($key, $field, $value)
     {
         $return = null;
@@ -849,36 +851,35 @@
 
     /**
      * 获取hash表的数据
-     * @param $hash string 哈希表名
-     * @param $key mixed 表中要存储的key名 默认为null 返回所有key>value
-     * @param $type int 要获取的数据类型 0:返回所有key 1:返回所有value 2:返回所有key->value
+     * @param string $key 哈希表名
+     * @param array $fields 表中要存储的key名 默认为null 返回所有key>value
+     * @param int $type 要获取的数据类型 0:返回所有key 1:返回所有value 2:返回所有key->value
+     * @return mixed
      */
-    public function hashGet($hash, $key = array(), $type = 0)
+    public function hashGet($key, array $fields = array(), $type = 0)
     {
         $return = null;
-
-        if ($key) {
-            if (is_array($key) && !empty($key))
-                $return = $this->_redis->hMGet($hash, $key);
+        if ($fields) {
+            if (is_array($fields) && !empty($fields))
+                $return = $this->_redis->hMGet($key, $fields);
             else
-                $return = $this->_redis->hGet($hash, $key);
+                $return = $this->_redis->hGet($key, $fields);
         } else {
             switch ($type) {
                 case 0:
-                    $return = $this->_redis->hKeys($hash);
+                    $return = $this->_redis->hKeys($key);
                     break;
                 case 1:
-                    $return = $this->_redis->hVals($hash);
+                    $return = $this->_redis->hVals($key);
                     break;
                 case 2:
-                    $return = $this->_redis->hGetAll($hash);
+                    $return = $this->_redis->hGetAll($key);
                     break;
                 default:
                     $return = false;
                     break;
             }
         }
-
         return $return;
     }
 
@@ -911,18 +912,28 @@
 
     /**
      * 查询hash表中某个key是否存在
-     * @param $hash string 哈希表名
-     * @param $key mixed 表中存储的key名
+     * @param $key string 哈希表名
+     * @param $field mixed 表中存储的field名
+     * @return bool
      */
-    public function hashExists($hash, $key)
+    public function hashExists($key, $field)
     {
         $return = null;
-
-        $return = $this->_redis->hExists($hash, $key);
-
+        $return = $this->_redis->hExists($key, $field);
         return $return;
     }
-
+    /**
+     * 当字段不存在时赋值(原子操作)
+     * @param string $key
+     * @param string $field
+     * @param string $value
+     * @return bool
+     * */
+    public function hashSetnx($key, $field, $value){
+        $return = null;
+        $return = $this->hSetNx($key, $field, $value);
+        return $return;
+    }
     /**
      * 自增hash表中某个key的值
      * @param $hash string 哈希表名
