@@ -99,24 +99,25 @@
      * @param int $repeat 0:不判断重复 1:判断重复
      * @param float $time 过期时间(S)
      * @param int $old 1:返回旧的value 默认0
-     * @return bool $return true:成功 flase:失败
+     * @return bool true:成功 | flase:失败
      */
     public function set($key, $value, $type = 0, $repeat = 0, $time = 0, $old = 0)
     {
         $return = null;
 
-        if ($type) {
+        if ($type == 1) {//追加模式
             $return = $this->_redis->append($key, $value);
         } else {
-            if ($old) {
+            if ($old == 1) {
                 $return = $this->_redis->getSet($key, $value);
             } else {
-                if ($repeat) {
+                if ($repeat == 1) {
                     $return = $this->_redis->setnx($key, $value);
                 } else {
-                    if ($time && is_numeric($time)) $return =
-                        $this->_redis->setex($key, $time, $value);
-                    else $return = $this->_redis->set($key, $value);
+                    if ($time && is_numeric($time))
+                        $return = $this->_redis->setex($key, $time, $value);
+                    else
+                        $return = $this->_redis->set($key, $value);
                 }
             }
         }
@@ -183,24 +184,27 @@
     }
 
     /**
-     * key值自增或者自减
+     * key值自增或者自减,不支持float
      * @param string $key key名
      * @param int $type 0:自减 1:自增 默认为1
-     * @param int $n 自增步长 默认为1
+     * @param int $step 自增步长 默认为1
+     * @return mixed (false|int|null)
      */
-    public function deinc($key, $type = 1, $n = 1)
+    public function deinc($key, $type = 1, $step = 1)
     {
         $return = null;
-        $n = (int)$n;
+        $step = (int)$step;
 
         switch ($type) {
             case 0:
-                if ($n == 1) $return = $this->_redis->decr($key);
-                else if ($n > 1) $return = $this->_redis->decrBy($key, $n);
+                if ($step == 1) $return = $this->_redis->decr($key);
+                else if ($step > 1) $return = $this->_redis->decrBy($key, $step);
+                else $return = $this->_redis->decr($key);//$step==0
                 break;
             case 1:
-                if ($n == 1) $return = $this->_redis->incr($key);
-                else if ($n > 1) $return = $this->_redis->incrBy($key, $n);
+                if ($step == 1) $return = $this->_redis->incr($key);
+                else if ($step > 1) $return = $this->_redis->incrBy($key, $step);
+                else $return = $this->_redis->incr($key);//$step==0
                 break;
             default:
                 $return = false;
@@ -215,11 +219,28 @@
      * @param array $data key值数组 array('key0'=>'value0','key1'=>'value1')
      * @return bool
      */
-    public function mset($data)
+    public function mset(array $data)
     {
         $return = null;
-        $return = $this->_redis->mset($data);
-        return $return;
+        if(is_array($data)){
+            $return = $this->_redis->mset($data);
+            return $return;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * 同时获取多个key值
+     * @param array $keys array('key1', 'key2')
+     * @return mixed 索引数组
+     * */
+    public function mget(array $keys){
+        $return = null;
+        if(is_array($keys)){
+            $return = $this->_redis->mget($keys);
+            return $return;
+        }
     }
 
     /**
@@ -247,7 +268,7 @@
     }
 
     /**
-     * 获取某一key的value
+     * 获取某一key的长度
      * @param string $key key名
      * @return mixed
      */

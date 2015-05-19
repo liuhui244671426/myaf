@@ -8,15 +8,13 @@
  */
 class helloController extends BaseController
 {
-
-    public function phpAction()
-    {
-        echo 'ni hao PHP';
-    }
-
     public function helloAction()
     {
-        $db = new Hello\worldModel();
-        $db->hello();
+        $redis = DataCenter::getFactory('redis', 'local');
+        $isBool = $redis->mset(array('key1' => 'val1', 'key2' => 'val2', 'key3' => 'val3'));
+        dump($isBool);
+
+        $result = $redis->mget(array('key1', 'key2', 'key3'));
+        dump($result);
     }
 }

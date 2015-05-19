@@ -327,7 +327,7 @@ function response($code, $data, $format = 'json', $die = TRUE) {
             break;
 
         case 'jsonp':
-            $out = $_GET['jsoncallback'] .'('. json_encode($data) .')';
+            $out = $_GET['jsonpcallback'] .'('. json_encode($data) .')';
             break;
 
         case 'string':
