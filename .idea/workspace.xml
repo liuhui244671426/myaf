@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7f621a10-563d-4eac-9a0a-18129916fd1f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/application/library/halo/HaloRedis.php" afterPath="$PROJECT_DIR$/app/application/library/halo/HaloRedis.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/application/library/functions.php" afterPath="$PROJECT_DIR$/app/application/library/functions.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/application/modules/Hello/controllers/hello.php" afterPath="$PROJECT_DIR$/app/application/modules/Hello/controllers/hello.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="myaf3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,8 +41,8 @@
       <file leaf-file-name="HaloRedis.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/application/library/halo/HaloRedis.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.60670733" vertical-offset="3127" max-vertical-offset="16050">
-              <caret line="235" column="25" selection-start-line="235" selection-start-column="25" selection-end-line="235" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.88109756" vertical-offset="3067" max-vertical-offset="16080">
+              <caret line="243" column="25" selection-start-line="243" selection-start-column="25" selection-end-line="243" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -1130,8 +1127,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/application/library/halo/HaloRedis.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60670733" vertical-offset="3127" max-vertical-offset="16050">
-          <caret line="235" column="25" selection-start-line="235" selection-start-column="25" selection-end-line="235" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.88109756" vertical-offset="3067" max-vertical-offset="16080">
+          <caret line="243" column="25" selection-start-line="243" selection-start-column="25" selection-end-line="243" selection-end-column="25" />
           <folding />
         </state>
       </provider>

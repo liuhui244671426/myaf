@@ -240,6 +240,8 @@
         if(is_array($keys)){
             $return = $this->_redis->mget($keys);
             return $return;
+        } else {
+            return false;
         }
     }
 
