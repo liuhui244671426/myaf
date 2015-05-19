@@ -315,6 +315,7 @@ function echoJsonString($code, array $data)
  * @param boolean $die: die if set to true, default is true
  */
 function response($code, $data, $format = 'json', $die = TRUE) {
+
     switch($format){
         default:
         case 'json':
@@ -332,6 +333,7 @@ function response($code, $data, $format = 'json', $die = TRUE) {
         case 'string':
             break;
     }
+    header('Content-Type:application/json;charset=utf8');
     echo $out;
 
     if($die){
