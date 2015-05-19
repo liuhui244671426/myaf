@@ -291,6 +291,7 @@ function IP()
 }
 /**
  * 输出格式化的JSON串
+ * 后续版本将遗弃它
  * @param int $code
  * @param array $data
  * @return string
@@ -305,6 +306,39 @@ function echoJsonString($code, array $data)
     ));
     exit;
 }
+
+/**
+ * Response
+ * @param int $code
+ * @param string $format : json, xml, jsonp, string
+ * @param array $data:
+ * @param boolean $die: die if set to true, default is true
+ */
+function response($code, $data, $format = 'json', $die = TRUE) {
+    switch($format){
+        default:
+        case 'json':
+            $out = json_encode(array(
+                'code' => $code,
+                'msg' => jsonStringMsg($code),
+                'data' => $data
+            ));
+            break;
+
+        case 'jsonp':
+            $out = $_GET['jsoncallback'] .'('. json_encode($data) .')';
+            break;
+
+        case 'string':
+            break;
+    }
+    echo $out;
+
+    if($die){
+        die;
+    }
+}
+
 /**
  * JSON使用的信息
  * @param int $code
