@@ -1,7 +1,7 @@
-    <?php
+<?php
 
-    class HaloRedis
-    {
+class HaloRedis
+{
     public static $_instance = null;
     private $_redis = null;
     private $_TRANSCATION = null;
@@ -11,8 +11,9 @@
      * @param array $config
      * @return instance
      * */
-    public static function getInstance($config){
-        if(self::$_instance === null){
+    public static function getInstance($config)
+    {
+        if (self::$_instance === null) {
             self::$_instance = new self($config);
         }
         return self::$_instance;
@@ -21,20 +22,23 @@
     /**
      * 私有化克隆函数，防止外界克隆对象
      * */
-    private function __clone(){}
+    private function __clone()
+    {
+    }
 
     /**
      * 调用不存在的方法 throw BadMethodCallException
      * @thorw mixed BadMethodCallException
      */
-    public function __call($methodName, $methodArguments){
+    public function __call($methodName, $methodArguments)
+    {
         throw new BadMethodCallException('BadMethodCallException, called HaloRedis\'s method ' . $methodName . ' not exsits!');
     }
 
     /**
      * 私有化构造函数，防止外界实例化对象
      * @param array $config
-     * @return redis handle instance
+     * @return object redis handle instance
      */
     private function __construct($config)
     {
@@ -44,9 +48,9 @@
 
         $this->_redis = new redis();
         $type = isset($config['type']) ? $config['type'] : 1;//1普通连接 2长连接
-        if($type == 1){
+        if ($type == 1) {
             $this->_redis->connect($config['host'], $config['port'], $config['timeout']);
-        } elseif($type == 2){
+        } elseif ($type == 2) {
             $this->_redis->pconnect($config['host'], $config['port'], $config['timeout']);
         } else {
             throw new LogicException('LogicException, Redis connect type is ' . $type . ' and it\'s error', -9999);
@@ -127,7 +131,7 @@
 
     /**
      * 获取某个key值 如果指定了start end 则返回key值的start跟end之间的字符
-     * @param string/array $key 要获取的key或者key数组
+     * @param string /array $key 要获取的key或者key数组
      * @param int $start 字符串开始index
      * @param int $end 字符串结束index
      * @return mixed $return 如果key存在则返回key值 如果不存在返回false
@@ -218,7 +222,7 @@
     public function mset(array $data)
     {
         $return = null;
-        if(is_array($data)){
+        if (is_array($data)) {
             $return = $this->_redis->mset($data);
             return $return;
         } else {
@@ -231,9 +235,10 @@
      * @param array $keys array('key1', 'key2')
      * @return mixed 索引数组
      * */
-    public function mget(array $keys){
+    public function mget(array $keys)
+    {
         $return = null;
-        if(is_array($keys)){
+        if (is_array($keys)) {
             $return = $this->_redis->mget($keys);
             return $return;
         } else {
@@ -922,6 +927,7 @@
         $return = $this->_redis->hExists($key, $field);
         return $return;
     }
+
     /**
      * 当字段不存在时赋值(原子操作)
      * @param string $key
@@ -929,25 +935,28 @@
      * @param string $value
      * @return bool
      * */
-    public function hashSetnx($key, $field, $value){
+    public function hashSetnx($key, $field, $value)
+    {
         $return = null;
         $return = $this->hSetNx($key, $field, $value);
         return $return;
     }
+
     /**
      * 自增hash表中某个key的值
-     * @param $hash string 哈希表名
-     * @param $key mixed 表中存储的key名
-     * @param $inc int 要增加的值
+     * list没有hincr的命令
+     * @param string $key 哈希表名
+     * @param mixed $field 表中存储的key名
+     * @param int $step 要增加的值 默认:1
+     * @return int
      */
-    public function hashInc($hash, $key, $inc)
+    public function hashInc($key, $field, $step = 1)
     {
         $return = null;
-
-        $return = $this->_redis->hIncrBy($hash, $key, $inc);
-
+        $return = $this->_redis->hIncrBy($key, $field, $step);
         return $return;
     }
+
     /**
      * ===================================================
      * 哈希操作
@@ -1075,4 +1084,4 @@
      * 事务
      * ===================================================
      * */
-    }
+}

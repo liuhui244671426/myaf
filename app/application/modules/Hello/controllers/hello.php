@@ -23,14 +23,19 @@ class helloController extends BaseController
 
         $isSet = $redis->hashHSet('car', 'name', 'BMW');
         dump($isSet);
+
         $isSet = $redis->hashHSet('car', 'name', 'QQ');
         dump($isSet);
+
         $isSet = $redis->hashHSet('car', 'price', 2000);
         dump($isSet);
+
         $isGet = $redis->hashGet('car', array('name', 'price'));
         dump($isGet);
 
         $keys = $redis->hashGet('car', array(), 2);
         dump($keys);
+
+        //dump($redis->hDel('car', 'name', 'price'));//todo fix
     }
 }
