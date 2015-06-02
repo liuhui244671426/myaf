@@ -28,7 +28,7 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
     public function _initNamespaces()
     {
         //申明, 凡是以Zend,Local开头的类, 都是本地类
-        Yaf_Loader::getInstance()->registerLocalNameSpace(array("Zend", "Local"));
+        //Yaf_Loader::getInstance()->registerLocalNameSpace(array("Zend", "Local"));
     }
 
     /**

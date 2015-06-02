@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7f621a10-563d-4eac-9a0a-18129916fd1f" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/nginx.conf" afterPath="$PROJECT_DIR$/app/public/nginx.conf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/application/Bootstrap.php" afterPath="$PROJECT_DIR$/app/application/Bootstrap.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/application/library/initConfig.php" afterPath="$PROJECT_DIR$/app/application/library/initConfig.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/application/library/status.php" afterPath="$PROJECT_DIR$/app/application/library/status.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="myaf3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -43,11 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="initConfig.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="initConfig.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/application/library/initConfig.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.53975534" vertical-offset="322" max-vertical-offset="2115">
-              <caret line="45" column="5" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
+            <state vertical-scroll-proportion="-4.36" vertical-offset="322" max-vertical-offset="2115">
+              <caret line="36" column="17" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -63,11 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Bootstrap.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Bootstrap.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/application/Bootstrap.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.291667" vertical-offset="503" max-vertical-offset="1275">
-              <caret line="50" column="24" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.6617647" vertical-offset="0" max-vertical-offset="1275">
+              <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -164,9 +160,9 @@
         <option value="$PROJECT_DIR$/app/application/modules/Hello/controllers/hello.php" />
         <option value="$PROJECT_DIR$/app/application/library/functions.php" />
         <option value="$PROJECT_DIR$/logs/sysExceptionHandler.log" />
-        <option value="$PROJECT_DIR$/app/application/Bootstrap.php" />
         <option value="$PROJECT_DIR$/app/application/library/status.php" />
         <option value="$PROJECT_DIR$/app/application/library/initConfig.php" />
+        <option value="$PROJECT_DIR$/app/application/Bootstrap.php" />
       </list>
     </option>
   </component>
@@ -775,22 +771,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/application/Bootstrap.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.291667" vertical-offset="503" max-vertical-offset="1275">
-          <caret line="50" column="24" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/application/library/status.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.25" vertical-offset="0" max-vertical-offset="240">
-          <caret line="16" column="34" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/api.ini">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="704">
@@ -828,8 +808,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/application/library/initConfig.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53975534" vertical-offset="322" max-vertical-offset="2115">
-          <caret line="45" column="5" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
+        <state vertical-scroll-proportion="-4.36" vertical-offset="322" max-vertical-offset="2115">
+          <caret line="36" column="17" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/application/library/status.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.25" vertical-offset="0" max-vertical-offset="240">
+          <caret line="16" column="34" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/application/Bootstrap.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6617647" vertical-offset="0" max-vertical-offset="1275">
+          <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
           <folding />
         </state>
       </provider>
