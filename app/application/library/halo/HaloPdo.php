@@ -29,6 +29,7 @@ class HaloPdo
     /**
      * 实例
      * @param array $config
+     * @return mixed handle
      * */
     static public function getInstance($config){
         if(self::$_instance === null){
@@ -67,8 +68,9 @@ class HaloPdo
      * @thorw mixed BadMethodCallException
      */
     public function __call($methodName, $methodArguments){
-        throw new BadMethodCallException('BadMethodCallException, called HaloPdo\'s method ' . $methodName . ' not exsits!');
+        throw new BadMethodCallException('BadMethodCallException, called HaloPdo\'s method ' . $methodName . ' not found', EXC_CODE_HALO_PDO_METHOD_NOT_FOUND);
     }
+
     /**
      * 按条件生成SQL
      * */
@@ -170,7 +172,6 @@ class HaloPdo
      * 事务
      * ===================================================
      * */
-
 
     public function getVarByCondition($table, $condition, $varName)
     {

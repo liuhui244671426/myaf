@@ -4,12 +4,12 @@ class HaloRedis
 {
     public static $_instance = null;
     private $_redis = null;
-    private $_TRANSCATION = null;
+    private $_transcation = null;
 
     /**
      * 实例
      * @param array $config
-     * @return instance
+     * @return object instance
      * */
     public static function getInstance($config)
     {
@@ -22,28 +22,26 @@ class HaloRedis
     /**
      * 私有化克隆函数，防止外界克隆对象
      * */
-    private function __clone()
-    {
-    }
+    private function __clone(){}
 
     /**
      * 调用不存在的方法 throw BadMethodCallException
-     * @thorw mixed BadMethodCallException
+     * @return mixed thorw BadMethodCallException
      */
     public function __call($methodName, $methodArguments)
     {
-        throw new BadMethodCallException('BadMethodCallException, called HaloRedis\'s method ' . $methodName . ' not exsits!');
+        throw new BadMethodCallException('BadMethodCallException, called HaloRedis\'s method ' . $methodName . ' not found', EXC_CODE_HALO_REDIS_METHOD_NOT_FOUND);
     }
 
     /**
      * 私有化构造函数，防止外界实例化对象
      * @param array $config
-     * @return object redis handle instance
+     * @return mixed handle
      */
     private function __construct($config)
     {
         if (!class_exists('redis')) {
-            throw new Exception('Class Redis not exists');
+            throw new LogicException('Class Redis not found', EXC_CODE_HALO_REDIS_CLASS_NOT_FOUND);
         }
 
         $this->_redis = new redis();
@@ -53,7 +51,7 @@ class HaloRedis
         } elseif ($type == 2) {
             $this->_redis->pconnect($config['host'], $config['port'], $config['timeout']);
         } else {
-            throw new LogicException('LogicException, Redis connect type is ' . $type . ' and it\'s error', -9999);
+            throw new RangeException('Redis connect type is ' . $type . ' and it\'s error', EXC_CODE_HALO_REDIS_CONNECT_TYPE_OUT_RANGE);
         }
 
         if (isset($passwd)) {
@@ -1059,7 +1057,7 @@ class HaloRedis
      */
     public function tranStart()
     {
-        $this->_TRANSCATION = $this->_redis->multi();
+        $this->_transcation = $this->_redis->multi();
     }
 
     /**
@@ -1068,7 +1066,7 @@ class HaloRedis
      */
     public function tranCommit()
     {
-        return $this->_TRANSCATION->exec();
+        return $this->_transcation->exec();
     }
 
     /**
@@ -1077,7 +1075,7 @@ class HaloRedis
      */
     public function tranRollback()
     {
-        return $this->_TRANSCATION->discard();
+        return $this->_transcation->discard();
     }
     /**
      * ===================================================

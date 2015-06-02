@@ -13,7 +13,7 @@ abstract class DataCenter
      * 数据工厂
      * @param string $type 数据类型
      * @param string $name 数据连接名
-     * @return object/exception
+     * @return mixed handle|throw
      * */
     public static function getFactory($type, $name){
         if (isset(static::$connections[$type][$name])) {
@@ -25,14 +25,14 @@ abstract class DataCenter
         $config = $config->{$type}->{$name};
 
         if (empty($config)) {
-            throw new Exception(sprintf('config of %s %s is not found', $type, $name), -9999);
+            throw new LogicException(sprintf('extend config of %s->%s not found', $type, $name), EXC_CODE_EXTEND_CONFIG_NOT_FOUND);
         }
 
         $file = sprintf('%shalo/%s.php', LIBRARY_PATH, self::$HaloMap[$type]);
         if (file_exists($file)) {
             Yaf_Loader::import($file);
         } else {
-            throw new Exception( self::$HaloMap[$type] . '.php is not found', -9998);
+            throw new LogicException( self::$HaloMap[$type] . '.php not found', EXC_CODE_HALO_FILE_NOT_FOUND);
         }
 
         switch ($type){
@@ -49,7 +49,7 @@ abstract class DataCenter
                 $connectionType = HaloMemcache::getInstance(array('host' => $config['host'], 'port' => $config['port'], 'timeout' => $config['timeout']));
                 break;
             default:
-                throw new LogicException('this type is empty: ' . $type . ', but can try other type!', -9997);
+                throw new LogicException('this type: ' . $type . ' not found', EXC_CODE_HALO_TYPE_NOT_FOUND);
                 break;
         }
         return self::$connections[$type][$name] = $connectionType;
@@ -57,10 +57,10 @@ abstract class DataCenter
 
     /**
      * 调用不存在的方法 throw BadMethodCallException
-     * @thorw mixed BadMethodCallException
+     * @return thorw BadMethodCallException
      */
     public function __call($methodName, $methodArguments){
-        throw new BadMethodCallException('BadMethodCallException, called class DataCenter\'s method ' . $methodName . ' not exsits!', -9996);
+        throw new BadMethodCallException('BadMethodCallException, called class DataCenter\'s method ' . $methodName . ' not found', EXC_CODE_HALO_METHOD_NOT_FOUND);
     }
 }
 
