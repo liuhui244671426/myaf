@@ -8,7 +8,8 @@ initConfig::init();
 
 class initConfig
 {
-    static public $_config;
+    static private $_config;
+    static private $_extendConfig;
 
     /**
      * 初始化
@@ -19,14 +20,15 @@ class initConfig
             self::setConfig();
         }
         self::$_config = Yaf_Registry::get('config');
+        //先加载文件
         self::initLoad();
-
+        //注册惰性加载器
         spl_autoload_register(array(new self(), 'autoLoader'));
     }
 
     /**
      * 初始化进程时加载必要文件
-     */
+     * */
     static public function initLoad()
     {
         $libraryFiles = array(
@@ -38,7 +40,7 @@ class initConfig
                 Yaf_Loader::import($file);
             } else {
                 $msg = 'load library/' . $file . ' file is not exists';
-                throw new LogicException($msg);
+                throw new LogicException($msg, EXC_CODE_LIBRARY_NOT_FOUND);
             }
         }
     }
@@ -52,11 +54,11 @@ class initConfig
         if (strpos($class, 'Builder')) {
             $path = sprintf('%s/application/views/builders/%s.php', APPLICATION_PATH, $class);
 
-            if (!file_exists($path)) {
-                $msg = 'load builder file is not exists ' . $class;
-                throw new LogicException($msg);
-            } else {
+            if (file_exists($path)) {
                 Yaf_Loader::import($path);
+            } else {
+                $msg = 'load builder/' . $class . ' file is not exists';
+                throw new LogicException($msg, EXC_CODE_BUILDER_NOT_FOUND);
             }
         }
     }
@@ -93,6 +95,7 @@ class initConfig
     /**
      * 是否存在某项扩展配置
      * @param string $iniName (例如: twig)
+     * @return bool 存在(true)|不存在(false)
      * */
     static public function isSupportExtendConfig($iniName)
     {
@@ -115,13 +118,18 @@ class initConfig
      * */
     static public function getExtendConfigs()
     {
-        $config = Yaf_Registry::get('config');
-        $option = $config->extend->config;
-        if (!empty($option)) {
-            $optionArr = explode(',', $option);
-            return $optionArr;
+        if(empty(self::$_extendConfig)){
+            $config = Yaf_Registry::get('config');
+            $option = $config->extend->config;
+            if (!empty($option)) {
+                $optionArr = explode(',', $option);
+                self::$_extendConfig = $optionArr;
+                return $optionArr;
+            } else {
+                return false;
+            }
         } else {
-            return false;
+            return self::$_extendConfig;
         }
     }
 }

@@ -68,6 +68,12 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
         //$router->addRoute('Test', new Yaf_Route_Rewrite('/test/:id', array('controller' => 'Index', 'action' => 'Test')));
         //$router->addRoute('Test1', new Yaf_Route_Regex( '#^/test/([0-9]*)$#', array('controller' => 'Index', 'action' => 'Test'), array( 1 => 'id')) );
 
-        //print_r($router);
+        $router->addRoute('login',
+            new Yaf_Route_Rewrite('/login', array(
+                'module' => 'Admin',
+                'controller' => 'Index',
+                'actio' => 'login'
+            ))
+        );
     }
 }
