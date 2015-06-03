@@ -31,6 +31,7 @@ class MainController extends BaseController
      */
     protected function sysInfo()
     {
+        import(LIBRARY_PATH . 'netFunctions.php');
         $sys = array(
             'os' => PHP_OS,
             'runEnv' => $_SERVER['SERVER_SOFTWARE'],

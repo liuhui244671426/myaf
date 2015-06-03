@@ -7,86 +7,6 @@
  */
 
 /**
- * http状态
- * @param integer $code http代码(404)
- * @return string
- */
-function httpStatus($code)
-{
-    $_status = array(
-        // Informational 1xx
-        100 => 'Continue',
-        101 => 'Switching Protocols',
-        // Success 2xx
-        200 => 'OK',
-        201 => 'Created',
-        202 => 'Accepted',
-        203 => 'Non-Authoritative Information',
-        204 => 'No Content',
-        205 => 'Reset Content',
-        206 => 'Partial Content',
-        // Redirection 3xx
-        300 => 'Multiple Choices',
-        301 => 'Moved Permanently',
-        302 => 'Moved Temporarily ',  // 1.1
-        303 => 'See Other',
-        304 => 'Not Modified',
-        305 => 'Use Proxy',
-        // 306 is deprecated but reserved
-        307 => 'Temporary Redirect',
-        // Client Error 4xx
-        400 => 'Bad Request',
-        401 => 'Unauthorized',
-        402 => 'Payment Required',
-        403 => 'Forbidden',
-        404 => 'Not Found',
-        405 => 'Method Not Allowed',
-        406 => 'Not Acceptable',
-        407 => 'Proxy Authentication Required',
-        408 => 'Request Timeout',
-        409 => 'Conflict',
-        410 => 'Gone',
-        411 => 'Length Required',
-        412 => 'Precondition Failed',
-        413 => 'Request Entity Too Large',
-        414 => 'Request-URI Too Long',
-        415 => 'Unsupported Media Type',
-        416 => 'Requested Range Not Satisfiable',
-        417 => 'Expectation Failed',
-        // Server Error 5xx
-        500 => 'Internal Server Error',
-        501 => 'Not Implemented',
-        502 => 'Bad Gateway',
-        503 => 'Service Unavailable',
-        504 => 'Gateway Timeout',
-        505 => 'HTTP Version Not Supported',
-        509 => 'Bandwidth Limit Exceeded'
-    );
-    if (array_key_exists($code, $_status)) {
-        //return sprintf('Status: %s %s', $code, $_status[$code]);//确保FastCGI模式下正常
-        return sprintf('%s %s %s', $_SERVER['SERVER_PROTOCOL'], $code, $_status[$code]);
-    }
-}
-
-/**
- * 获取当前url
- * @return string
- */
-function getCurrentUri()
-{
-    return getDomain() . $_SERVER['REQUEST_URI'];
-}
-
-/**
- * 获取当前域名
- * @return string
- */
-function getDomain()
-{
-    return 'http://' . $_SERVER['HTTP_HOST'];
-}
-
-/**
  * 弱密码集合
  * @return array
  */
@@ -104,16 +24,6 @@ function weakPassword()
         48 => 'michael', 49 => 'football', 52 => 'xiaoming', 56 => 'qq123456', 57 => 'taobao',
         58 => 'root', 59 => 'wang1234',
     );
-}
-
-/**
- * 取得文件扩展
- * @param string $filename 文件名(例如：test.jpg)
- * @return string (jpg)
- */
-function fileext($filename)
-{
-    return strtolower(trim(substr(strrchr($filename, '.'), 1, 10)));
 }
 
 /**
@@ -143,6 +53,10 @@ function appString()
     $string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     return $string;
 }
+
+//-------------------------------------
+//debug 系列函数
+//-------------------------------------
 
 /**
  * 浏览器友好的变量输出
@@ -213,29 +127,14 @@ function Yaflog($var)
         }
     }
 }
+//-------------------------------------
+//debug 系列函数
+//-------------------------------------
 
-/**
- * 获取浏览器的ip地址
- * @return string
- */
-function IP()
-{
-    $ip = NULL;
-    if ($ip !== NULL) return $ip;
-    if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-        $arr = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
-        $pos = array_search('unknown', $arr);
-        if (false !== $pos) unset($arr[$pos]);
-        $ip = trim($arr[0]);
-    } elseif (isset($_SERVER['HTTP_CLIENT_IP'])) {
-        $ip = $_SERVER['HTTP_CLIENT_IP'];
-    } elseif (isset($_SERVER['REMOTE_ADDR'])) {
-        $ip = $_SERVER['REMOTE_ADDR'];
-    }
-    // IP地址合法验证
-    $ip = (false !== ip2long($ip)) ? $ip : '0.0.0.0';
-    return $ip;
-}
+
+//-------------------------------------
+//response 系列函数
+//-------------------------------------
 /**
  * 输出格式化的JSON串
  * 后续版本将遗弃它
@@ -301,6 +200,24 @@ function stringMsg($code){
     );
     return $arr[$code];
 }
+//-------------------------------------
+//response 系列函数
+//-------------------------------------
+
+
+/**
+ * 取得文件扩展
+ * @param string $filename 文件名(例如：test.jpg)
+ * @return string (jpg)
+ */
+function fileext($filename)
+{
+    return strtolower(trim(substr(strrchr($filename, '.'), 1, 10)));
+}
+
+//-------------------------------------
+//errorHandler 系列函数
+//-------------------------------------
 /**
  * error handler
  * @param integer $errno 错误代码
@@ -339,6 +256,9 @@ function sysShutdown()
         date('Y-m-d H:i:s', TODAY), $errno, str_pad($errstr, 45), $errfile, $errline);
     error_log($errMsg, 3, ROOT_PATH . '/logs/sysShutdown.log');
 }
+//-------------------------------------
+//errorHandler 系列函数
+//-------------------------------------
 
 function getActions($class)
 {
@@ -353,80 +273,6 @@ function getActions($class)
     }
     return $actions;
 }
-
-/**
- * 低版本array_column
- *
- * @param array $input 待查询数组
- * @param string $columnKey 需查询的列
- * @param string $indexKey 索引
- * @return array
- */
-function i_array_column($input, $columnKey, $indexKey = null)
-{
-    if (!function_exists('array_column')) {
-        $columnKeyIsNumber = (is_numeric($columnKey)) ? true : false;
-        $indexKeyIsNull = (is_null($indexKey)) ? true : false;
-        $indexKeyIsNumber = (is_numeric($indexKey)) ? true : false;
-        $result = array();
-        foreach ((array)$input as $key => $row) {
-            if ($columnKeyIsNumber) {
-                $tmp = array_slice($row, $columnKey, 1);
-                $tmp = (is_array($tmp) && !empty($tmp)) ? current($tmp) : null;
-            } else {
-                $tmp = isset($row[$columnKey]) ? $row[$columnKey] : null;
-            }
-            if (!$indexKeyIsNull) {
-                if ($indexKeyIsNumber) {
-                    $key = array_slice($row, $indexKey, 1);
-                    $key = (is_array($key) && !empty($key)) ? current($key) : null;
-                    $key = is_null($key) ? 0 : $key;
-                } else {
-                    $key = isset($row[$indexKey]) ? $row[$indexKey] : 0;
-                }
-            }
-            $result[$key] = $tmp;
-        }
-        return $result;
-    } else {
-        return array_column($input, $columnKey, $indexKey);
-    }
-}
-
-
-//-------------------------------------
-//crypt 系列函数
-//-------------------------------------
-/**
- * aes解密
- * @param string $val
- * @param string $key
- * @return string
- * */
-function aesDecrypt($val, $key)
-{
-    $mode = MCRYPT_MODE_ECB;
-    $enc = MCRYPT_RIJNDAEL_128;
-    return preg_replace("/[\\x00-\\x08\\x0b-\\x0c\\x0e-\\x1f]/", '', mcrypt_decrypt($enc, $key, $val, $mode, mcrypt_create_iv(mcrypt_get_iv_size($enc, $mode), MCRYPT_DEV_URANDOM)));
-    //return mcrypt_decrypt($enc, $key, $val, $mode, mcrypt_create_iv( mcrypt_get_iv_size($enc, $mode), MCRYPT_DEV_URANDOM));
-}
-
-/**
- * aes加密
- * @param string $val
- * @param string $key
- * @return string
- * */
-function aesEncrypt($val, $key)
-{
-    $mode = MCRYPT_MODE_ECB;
-    $enc = MCRYPT_RIJNDAEL_128;
-    $val = str_pad($val, (16 * (floor(strlen($val) / 16) + 1)), chr(16 - (strlen($val) % 16)));
-    return mcrypt_encrypt($enc, $key, $val, $mode, mcrypt_create_iv(mcrypt_get_iv_size($enc, $mode), MCRYPT_DEV_URANDOM));
-}
-//-------------------------------------
-//crypt 系列函数
-//-------------------------------------
 
 /**
  * 框架的错误信息
@@ -459,107 +305,3 @@ function YafErrorCode($code){
     );
     return $errorDocker[$code];
 }
-
-//-------------------------------------
-//is 系列函数
-//-------------------------------------
-/**
- * 是否是墨迹客户端的UA
- * @return bool
- * */
-function isMojiApp(){
-    $ua = $_SERVER['HTTP_USER_AGENT'];
-
-    if(preg_match('/mojia|mojii/i', $ua) > 0) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-/**
- * 时间是否过期
- * @param integer $time 获取到的时间
- * @param integer $offset 过期时间(秒)
- * @return bool
- */
-function isTimeExpire($time, $offset = '120')
-{
-    $sTime = TODAY - $offset;
-    $eTime = TODAY + $offset;
-    if ($time >= $sTime && $time <= $eTime) {
-        return true;
-    }
-    return false;
-}
-
-/**
- * 放弃使用正则校验
- * @param string $var 邮箱
- * @return bool
- */
-function isEmail($var)
-{
-    return (filter_var($var, FILTER_VALIDATE_EMAIL) !== false) ? true : false;
-}
-
-/**
- * 校验密码是否符合规则长度
- * @param string $password 密码
- * @return bool
- */
-function isPassword($password)
-{
-    $weakArray = weakPassword();
-    if (in_array($password, $weakArray)) {
-        return false;//弱密码
-    }
-
-    $strlen = strlen($password);
-    if ($strlen >= 6 && $strlen <= 20)
-        return true;
-
-    return false;
-}
-
-/**
- * 是否晚上
- * @return bool
- */
-function isNight()
-{
-    $h = date('H', TODAY);
-    if ($h >= 7 && $h < 19) {
-        return false;
-    }
-    return true;
-}
-
-/**
- * 是否夏天
- * @return bool
- */
-function isSummer()
-{
-    $month = date('m', TODAY);
-    if ($month >= 6 && $month <= 9) {
-        return true;
-    }
-    return false;
-}
-/**
- * 是否正确来源
- * */
-function isReferer($domain){
-
-}
-/**
- * 是否同源
- * */
-function isOrigin($domain){
-
-}
-
-//-------------------------------------
-//is 系列函数
-//-------------------------------------
