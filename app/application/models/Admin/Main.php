@@ -26,5 +26,6 @@ class Admin_MainModel extends BaseModel{
         print_r($this->mcd->getStats());
         print_r($val);
         $this->mcd->del('mem');
+
     }
 }
