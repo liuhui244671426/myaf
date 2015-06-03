@@ -21,9 +21,9 @@ class MainController extends BaseController
         $db = new Admin_MainModel();
         $db->testRedis();
 
-        $db->testMCD();
+        //$db->testMCD();
 
-        dump(isMojiApp());
+
     }
     /**
      * 后台基本信息

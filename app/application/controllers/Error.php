@@ -33,6 +33,7 @@ class ErrorController extends BaseController
                 $httpCode = 404;
                 break;
         }
+        import(LIBRARY_PATH . 'netFunctions.php');
         header(httpStatus($httpCode));
         $isSupportTwig = initConfig::isSupportExtendConfig('twig');
         if ($isSupportTwig) {
