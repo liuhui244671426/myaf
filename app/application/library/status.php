@@ -13,8 +13,8 @@ define('TWIG_CODE_LOAD_FILE_FAILED', 1);
 define('MSG_USER_INFO_EMPTY', '系统错误,无法获取正确用户信息!');
 
 //exception code
-define('EXC_CODE_LIBRARY_NOT_FOUND', -992);
-define('EXC_CODE_BUILDER_NOT_FOUND', -991);
+//define('EXC_CODE_LIBRARY_NOT_FOUND', -992);
+//define('EXC_CODE_BUILDER_NOT_FOUND', -991);
 define('EXC_CODE_EXTEND_CONFIG_NOT_FOUND', -9999);
 
 define('EXC_CODE_HALO_FILE_NOT_FOUND', -9998);

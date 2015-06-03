@@ -29,11 +29,12 @@ abstract class DataCenter
         }
 
         $file = sprintf('%shalo/%s.php', LIBRARY_PATH, self::$HaloMap[$type]);
-        if (file_exists($file)) {
+        /*if (file_exists($file)) {
             Yaf_Loader::import($file);
         } else {
             throw new LogicException( self::$HaloMap[$type] . '.php not found', EXC_CODE_HALO_FILE_NOT_FOUND);
-        }
+        }*/
+        import($file);
 
         switch ($type){
             case 'db':

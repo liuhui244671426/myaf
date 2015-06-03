@@ -26,8 +26,10 @@ class HaloXhprof
         if (HaloXhprof::isOpenXhpro()) {
             $xhprofData = xhprof_disable();
 
-            Yaf_Loader::import(sprintf('%s/xhprof/xhprof_lib.php', LIB_PATH));
-            Yaf_Loader::import(sprintf('%s/xhprof/xhprof_runs.php', LIB_PATH));
+            //Yaf_Loader::import(sprintf('%s/xhprof/xhprof_lib.php', LIB_PATH));
+            //Yaf_Loader::import(sprintf('%s/xhprof/xhprof_runs.php', LIB_PATH));
+            import(sprintf('%s/xhprof/xhprof_lib.php', LIB_PATH));
+            import(sprintf('%s/xhprof/xhprof_runs.php', LIB_PATH));
 
             $xhprofRuns = new XHProfRuns_Default();
             $run_id = $xhprofRuns->save_run($xhprofData, "xhprof");

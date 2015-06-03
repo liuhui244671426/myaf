@@ -18,8 +18,8 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
     {
         header('content-type:text/html;charset=utf-8');
         session_start();
-
-        Yaf_Loader::import('initConfig.php');
+        require APPLICATION_PATH . '/application/library/core.php';
+        import(APPLICATION_PATH . '/application/library/initConfig.php');
 
         set_error_handler('sysErrorHandler');
         //register_shutdown_function('sysShutdown');
