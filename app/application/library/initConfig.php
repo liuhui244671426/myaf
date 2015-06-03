@@ -32,7 +32,7 @@ class initConfig
     static public function initLoad()
     {
         $libraryFiles = array(
-            'constant', 'status', 'functions', 'YafController', 'DataCenter/DataCenter'
+            'constant', 'status', 'YafController', 'DataCenter/DataCenter'
         );
         foreach ($libraryFiles as $file) {
             $file = APPLICATION_PATH . '/application/library/' . $file . '.php';
