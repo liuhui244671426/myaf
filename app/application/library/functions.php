@@ -547,6 +547,19 @@ function isSummer()
     }
     return false;
 }
+/**
+ * 是否正确来源
+ * */
+function isReferer($domain){
+
+}
+/**
+ * 是否同源
+ * */
+function isOrigin($domain){
+
+}
+
 //-------------------------------------
 //is 系列函数
 //-------------------------------------
