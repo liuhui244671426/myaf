@@ -53,7 +53,6 @@ class HaloPdo
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 ));
         } catch (Exception $e) {
-            Yaflog($e);
             if ($this) $this->error = $e->getMessage();
         }
     }
@@ -117,8 +116,6 @@ class HaloPdo
 
     public function transactionRbn($call, $param)
     {
-        Yaflog($call);
-        Yaflog($param);
         $this->beginTransaction();
         $ret = false;
         try {
@@ -183,6 +180,13 @@ class HaloPdo
         return $this->get_var($sql, $values);
     }
 
+    /**
+     * 去重统计
+     * @param string $table 表名
+     * @param string $condition 条件
+     * @param string $countPara 统计字段
+     * @return int
+     * */
     public function getDistinctCountByCondition($table, $condition = '', $countPara = '')
     {
         list($condition, $values) = $this->getConditionPair($condition);
@@ -198,6 +202,12 @@ class HaloPdo
         return intval($this->get_var($sql, $values));
     }
 
+    /**
+     * 获取解释后的统计
+     * @param string $table 表名
+     * @param string $condition 条件
+     * @return
+     * */
     public function getExplainCountByCondition($table, $condition)
     {
         if (empty($condition)) {
@@ -210,26 +220,34 @@ class HaloPdo
     }
 
     /**
-     * 做count统计
+     * 获取count统计
      * @param string $table 表名
+     * @param string $condition 条件
+     * @return int
      * */
     public function getCountByCondition($table, $condition = '')
     {
         list($condition, $values) = $this->getConditionPair($condition);
-        if (empty($condition))
+        if (empty($condition)){
             $sql = sprintf('SELECT COUNT(*) FROM %s', $table);
-        else
+        } else {
             $sql = sprintf('SELECT COUNT(*) FROM %s WHERE %s', $table, $condition);
+        }
         return intval($this->get_var($sql, $values));
     }
-
+    /**
+     * 获取去重后的数据
+     * @param string $table 表名
+     * @param string $condition 条件
+     * @param string $countPara 去重字段
+     * */
     public function getDistinctByCondition($table, $condition, $distinct)
     {
         list($condition, $values) = $this->getConditionPair($condition);
         $sql = sprintf('SELECT DISTINCT %s FROM %s', $distinct, $table);
-        if (!empty($condition))
+        if (!empty($condition)){
             $sql .= ' WHERE ' . $condition;
-
+        }
         return $this->get_col($sql, $values);
     }
 
@@ -355,6 +373,21 @@ class HaloPdo
         return $this->query($query, $values);
     }
 
+    public function updateTable($table, $data, $condition)
+    {
+        list($condition, $conditionValues) = $this->getConditionPair($condition);
+        if (is_array($data)) {
+            list ($fields, $values) = $this->getConditionArray($data);
+            if (count($values) > 0) {
+                $sql = sprintf('UPDATE %s SET %s WHERE %s', $table, $fields, $condition);
+                if (count($conditionValues))
+                    $values = array_merge($values, $conditionValues);
+                return $this->query($sql, $values)->rowCount();
+            }
+        }
+        return false;
+    }
+
     public function updateFieldByIncrease($table, $field, $condition, $diff = 1)
     {
         list($where, $values) = $this->getConditionPair($condition);
@@ -366,7 +399,6 @@ class HaloPdo
         $sql = sprintf('UPDATE %s SET %s=%s+%d %s', $table, $field, $field, $diff, $where);
         $this->query($sql, $values);
     }
-
 
     public function updateFieldByIncrease2($table, $field, $data, $condition, $diff = 1)
     {
@@ -388,37 +420,9 @@ class HaloPdo
         return false;
     }
 
-    public function updateTable($table, $data, $condition)
-    {
-        list($condition, $conditionValues) = $this->getConditionPair($condition);
-        if (is_array($data)) {
-            list ($fields, $values) = $this->getConditionArray($data);
-            if (count($values) > 0) {
-                $sql = sprintf('UPDATE %s SET %s WHERE %s', $table, $fields, $condition);
-                if (count($conditionValues))
-                    $values = array_merge($values, $conditionValues);
-                return $this->query($sql, $values)->rowCount();
-            }
-        }
-        return false;
-    }
-
-
-    public function getConditionArray2($data)
-    {
-        if (count($data) == 0)
-            return array(null, null);
-
-        $fields = array();
-        $values = array();
-        foreach ($data as $k => $v) {
-            $fields[] = sprintf('%s=%s+?', $k, $k);
-            $values[] = $v;
-        }
-
-        return array(implode(',', $fields), $values);
-    }
-
+    /**
+     * 更新递增数据(多字段)
+     * */
     public function updateFieldsByIncrease($table, $data, $condition)
     {
         list($condition, $conditionValues) = $this->getConditionPair($condition);
@@ -434,6 +438,14 @@ class HaloPdo
         return false;
     }
 
+    /**
+     * 更新或添加记录
+     * @param string $table
+     * @param array $data
+     * @param string $condition
+     * @param string $idField
+     * @return
+     * */
     public function insertOrUpdateTable($table, $data, $condition, $idField = 'Fid')
     {
         $row = $this->getRowByCondition($table, $condition, $idField);
@@ -444,7 +456,10 @@ class HaloPdo
             return $this->insertTable($table, $data);
         }
     }
-
+    /**
+     * 不存在该记录则添加
+     * @return int
+     * */
     public function insertIfNotExist($table, $data, $condition, $keyField = 'Fid')
     {
         $rowId = 0;
@@ -457,7 +472,12 @@ class HaloPdo
 
         return $rowId;
     }
-
+    /**
+     * 替换表数据
+     * @param string $table
+     * @param array $data
+     * @return mixed false
+     * */
     public function replaceTable($table, $data)
     {
         if (is_array($data)) {
@@ -466,7 +486,6 @@ class HaloPdo
                 $sql = sprintf('REPLACE INTO %s SET %s', $table, $fields);
                 return $this->query($sql, $values);
             }
-
         }
         return false;
     }
@@ -513,13 +532,26 @@ class HaloPdo
 
         return array(implode(',', $fields), $values);
     }
+    public function getConditionArray2($data)
+    {
+        if (count($data) == 0)
+            return array(null, null);
 
+        $fields = array();
+        $values = array();
+        foreach ($data as $k => $v) {
+            $fields[] = sprintf('%s=%s+?', $k, $k);
+            $values[] = $v;
+        }
+
+        return array(implode(',', $fields), $values);
+    }
     public function getPlaceHolders($cnt)
     {
         return implode(',', array_pad(array(), $cnt, '?'));
     }
     /**
-     * 清空表内容
+     * 谨慎使用,清空表内容
      * @param string $table 表名
      * */
     public function truncateTable($table)
@@ -529,7 +561,7 @@ class HaloPdo
     }
 
     /**
-     * 执行一条预处理语句
+     * 执行一条预处理语句,有错误将记录在日志里面
      * @param string $sql exm:'select * from `adm_users` where `name`=? and `pass`=?'
      * @param array $values exm:array('admin', 'pass');
      * @return string 返回SQL语句
@@ -541,13 +573,14 @@ class HaloPdo
         $stmt->execute($values);
         //有错误
         if ($stmt->errorCode() != PDO::ERR_NONE) {
-            if (count($values))
+            if (count($values)){
                 $msg = sprintf('%s | (%s)', $sql, implode(',', $values));
-            else
+            } else {
                 $msg = $sql;
+            }
 
-            Yaflog($msg, __FILE__, __LINE__, ' ERROR-SQL');
             trigger_error($stmt->errorInfo()[2]);
+            Yaflog($msg, __FILE__, __LINE__, ' ERROR-SQL');
             Yaflog($stmt->errorInfo());
         }
 
@@ -569,12 +602,16 @@ class HaloPdo
     {
         return $this->query($sql, $values)->fetch(PDO::FETCH_ASSOC);
     }
-
+    /**
+     *
+     * */
     public function get_col($sql, $values = null, $offset = 0)
     {
         return $this->query($sql, $values)->fetchAll(PDO::FETCH_COLUMN, $offset);
     }
-
+    /**
+     *
+     * */
     public function get_results($sql, $values = null)
     {
         return $this->query($sql, $values)->fetchAll(PDO::FETCH_ASSOC);
@@ -604,7 +641,20 @@ class HaloPdo
             return array($condition, null);
         }
     }
-
+    /**
+     * 从Map格式还原成数组
+     * @param array $map array('id' => 12, 'city' => '北京')
+     * @return array
+     * Array
+        (
+            [0] => id=? AND city=?
+            [1] => Array
+            (
+                [0] => 12
+                [1] => 北京
+            )
+        )
+     * */
     protected function getConditionPairFromMap($map)
     {
         $placeHolders = array();
@@ -617,7 +667,9 @@ class HaloPdo
         $sql = implode(' AND ', $placeHolders);
         return array($sql, $values);
     }
-
+    /**
+     * 销毁
+     * */
     public function __destruct(){
         $this->_dbh = null;
     }
