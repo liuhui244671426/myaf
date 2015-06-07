@@ -75,8 +75,6 @@ class wx
             'button' => array($query, $aqi, $download)
         );
         echo json_encode($result);
-//
-
     }
 
 //<xml>

@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7f621a10-563d-4eac-9a0a-18129916fd1f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/application/library/wx.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/api.ini" afterPath="$PROJECT_DIR$/config/api.ini" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/application/library/netFunctions.php" afterPath="$PROJECT_DIR$/app/application/library/netFunctions.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/application/library/wx.php" afterPath="$PROJECT_DIR$/app/application/library/wx.php" />
     </list>
     <ignored path="myaf3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,8 +39,8 @@
       <file leaf-file-name="wx.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/application/library/wx.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.24193548" vertical-offset="0" max-vertical-offset="2430">
-              <caret line="11" column="34" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="34" />
+            <state vertical-scroll-proportion="-0.109970674" vertical-offset="1215" max-vertical-offset="2400">
+              <caret line="76" column="34" selection-start-line="76" selection-start-column="34" selection-end-line="76" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -141,8 +138,8 @@
         <option value="$PROJECT_DIR$/app/application/views/phtmls/index.html" />
         <option value="$PROJECT_DIR$/app/application/models/Admin/Main.php" />
         <option value="$PROJECT_DIR$/app/application/library/netFunctions.php" />
-        <option value="$PROJECT_DIR$/app/application/library/wx.php" />
         <option value="$PROJECT_DIR$/config/api.ini" />
+        <option value="$PROJECT_DIR$/app/application/library/wx.php" />
       </list>
     </option>
   </component>
@@ -810,8 +807,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/application/library/wx.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24193548" vertical-offset="0" max-vertical-offset="2430">
-          <caret line="11" column="34" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="34" />
+        <state vertical-scroll-proportion="-0.109970674" vertical-offset="1215" max-vertical-offset="2400">
+          <caret line="76" column="34" selection-start-line="76" selection-start-column="34" selection-end-line="76" selection-end-column="34" />
           <folding />
         </state>
       </provider>
