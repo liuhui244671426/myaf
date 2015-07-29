@@ -37,7 +37,7 @@ class AuthPlugin extends Yaf_Plugin_Abstract
             HaloLogger::INFO($isLogin);
             //缺少auth
             if (!$isLogin) {
-                //header('location:/admin/index/login');
+                header('location:/admin/index/login');
                 return false;
             }
 
