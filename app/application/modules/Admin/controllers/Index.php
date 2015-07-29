@@ -41,16 +41,16 @@ class IndexController extends BaseController
             $user = $this->getLegalParam('user', 'str');
             $pass = $this->getLegalParam('pass', 'str');
             $pass = md5($pass);
-            
+
             $db = new Admin_IndexModel();
             $uid = $db->checkUserPass($user, $pass);
             if (empty($uid)) {
                 $this->redirect('/admin/index/login');
                 exit;
             }
-            Yaflog('user: ' . $user);
-            Yaflog('pass: ' . $pass);
-            Yaflog('uis: ' . $uid);
+            HaloLogger::INFO('user: ' . $user);
+            HaloLogger::INFO('pass: ' . $pass);
+            HaloLogger::INFO('uid: ' . $uid);
 
             if ($uid >= 1) {
 

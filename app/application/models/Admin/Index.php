@@ -32,6 +32,7 @@ class Admin_IndexModel extends BaseModel
      * */
     public function insLoginLog($uid, $op)
     {
+        import('netFunctions.php');
         $data = array(
             'uid' => $uid,
             'time' => TODAY,
