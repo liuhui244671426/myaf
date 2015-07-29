@@ -2,7 +2,7 @@
  * Created by liuhui on 15-5-6.
  */
 define(function(require, exports){
-    var jQuery = require('jquery'), cookie = require('cookie');
+    var jQuery = require('jquery'), cookie = require('jqueryCookie');
 
     jQuery(document).ready(function () {
 
