@@ -10,15 +10,18 @@ defined('HALO_LOG_FATAL') || define('HALO_LOG_FATAL', 5);
 define('SERVER_NAME', 'WContact');
 
 
-class Logger
+class HaloLogger
 {
     private $_domain = '';
-    public static $log2Console = false;
+
     public static $PLATFORM = 0; //0 web 1 wap
     const  PLATFORM_WEB = 0;
     const  PLATFORM_WAP = 1;
     const  USER_TRACE_LOG_KEY = 'USER_TRACE_LOG_KEY';
     const  MC_TRCACE_LOG_KEY = 'MC_TRCACE_LOG_KEY';
+
+    public static $log2Console = false;
+    public static $logLevel = null;
 
     public function __construct($domain)
     {
@@ -34,25 +37,30 @@ class Logger
     /* class method */
     private static function write($level, &$domain, &$info, $file = '', $line = '', $output = 'file')
     {
-        $logLevel = HaloEnv::logLevel();
+        $logLevel = self::$logLevel;
+
         if ($level < $logLevel) {
             return;
         }
+
         $level_str_list = array('debug', 'warnning', 'info', 'tracker', 'error', 'fatal');
         $level_str = $level_str_list[$level];
 
-        if (strlen($file) > 0) {
-            $file = substr($file, strlen($_SERVER['DOCUMENT_ROOT']));
-        }
+        $debugInfo = debug_backtrace();
+        $lineNum = $debugInfo[1]['line'];
+        $filename = $debugInfo[1]['file'];
+
+        $file = (empty($file)) ? $filename: substr($file, strlen($_SERVER['DOCUMENT_ROOT']));
+        $line = (empty($line)) ? $lineNum : $line;
 
         $time = date('H:i:s');
-        $info = print_r($info, true);
-        $message = sprintf("%s - %s %s %s %s\r\n", $time, $level_str, $file, $line, ' ' . $info);
+        $info = var_export($info, true);
+        $message = sprintf("%s-[%s]-%s:%s  %s\r\n", $time, $level_str, $file, $line, $info);
 
         if ($output == 'mem') {
             $_REQUEST['MEM_LOG'][] = $message;
         } else {
-            $filepath = Logger::loggerFileName($domain);
+            $filepath = HaloLogger::loggerFileName($domain);
             @file_put_contents($filepath, $message, FILE_APPEND);
             if (self::$log2Console)
                 printf("%s", $message);
@@ -64,7 +72,7 @@ class Logger
         $date = date('Y-m-d');
         $hour = date('H');
         $filepath = $_SERVER['DOCUMENT_ROOT'] . '/../../logs/' . $_ENV['APP_NAME'] . '/' . $date . '/';
-        $path = ensureFilePath($filepath, true);
+        //$path = ensureFilePath($filepath, true);
         if (strlen($domain) > 0) {
             $filepath = sprintf('%s%s-%02d.%s', $filepath, $domain, $hour, $ext);
         } else {
@@ -78,13 +86,13 @@ class Logger
         $messages = $_REQUEST['MEM_LOG'];
         if ($messages != null) {
             $uri = $_SERVER['REQUEST_URI'];
-            $filepath = Logger::loggerFileName('mem-log');
+            $filepath = HaloLogger::loggerFileName('mem-log');
             $text = '============start ' . $uri . '============' . "\r\n" . implode($messages, '') . '============';
             file_put_contents($filepath, $text, FILE_APPEND);
             unset($_REQUEST['MEM_LOG']);
         }
-        Logger::traceMcEnd();
-        Logger::traceUserEnd();
+        HaloLogger::traceMcEnd();
+        HaloLogger::traceUserEnd();
     }
 
     public static function DEBUG($info, $file = '', $line = '', $domain = '', $output = 'file')
@@ -121,37 +129,37 @@ class Logger
     /* instance method */
     public function __DEBUG__($info, $file = '', $line = '', $output = 'file')
     {
-        Logger::write(HALO_LOG_DEBUG, $this->_domain, $info, $file, $line, $output);
+        HaloLogger::write(HALO_LOG_DEBUG, $this->_domain, $info, $file, $line, $output);
     }
 
     public function __INFO__($info, $file = '', $line = '', $output = 'file')
     {
-        Logger::write(HALO_LOG_INFO, $this->_domain, $info, $file, $line, $output);
+        HaloLogger::write(HALO_LOG_INFO, $this->_domain, $info, $file, $line, $output);
     }
 
     public function __WARNNING__($info, $file = '', $line = '', $output = 'file')
     {
-        Logger::write(HALO_LOG_WARNNING, $this->_domain, $info, $file, $line, $output);
+        HaloLogger::write(HALO_LOG_WARNNING, $this->_domain, $info, $file, $line, $output);
     }
 
     public function __ERROR__($info, $file = '', $line = '', $output = 'file')
     {
-        Logger::write(HALO_LOG_EEROR, $this->_domain, $info, $file, $line, $output);
+        HaloLogger::write(HALO_LOG_EEROR, $this->_domain, $info, $file, $line, $output);
     }
 
     public function __FATAL__($info, $file = '', $line = '', $output = 'file')
     {
-        Logger::write(HALO_LOG_FATAL, $this->_domain, $info, $file, $line, $output);
+        HaloLogger::write(HALO_LOG_FATAL, $this->_domain, $info, $file, $line, $output);
     }
 
     public function __TRACKER__($info, $file = '', $line = '', $output = 'file')
     {
-        Logger::write(HALO_LOG_TRACKER, $this->_domain, $info, $file, $line, $output);
+        HaloLogger::write(HALO_LOG_TRACKER, $this->_domain, $info, $file, $line, $output);
     }
 
     public static function LOG($domain)
     {
-        $log = new Logger($domain);
+        $log = new HaloLogger($domain);
         return $log;
     }
 
@@ -207,7 +215,7 @@ class Logger
                         }
 
                         if ($pagetime >= 3) {
-                            Logger::traceUser(0, 3001, 1, array('time' => $pagetime * 1000));
+                            HaloLogger::traceUser(0, 3001, 1, array('time' => $pagetime * 1000));
                         }
                     }
                 } elseif ($cmd == 'url') {
@@ -233,7 +241,7 @@ class Logger
 
                             $interval = $time - $_ENV['timedebug'][$cmd][$data]['start'];
                             if ($interval > 0.5) {
-                                Logger::traceUser(0, 3004, array('time' => $interval * 1000, 'sql' => $data));
+                                HaloLogger::traceUser(0, 3004, array('time' => $interval * 1000, 'sql' => $data));
                             }
                         } else {
                             $_ENV['timedebug'][$cmd][$data]['start'] = $time;
@@ -263,7 +271,7 @@ class Logger
         }
 
         if ($cmd == 'end')
-            Logger::flush();
+            HaloLogger::flush();
     }
 
     public static function isTraceUserEnabled()
@@ -321,7 +329,7 @@ class Logger
                 $reply = $requester->recv();
             }
         } catch (Exception $e) {
-            Logger::ERROR('Zmq Trace Log:[' . $e->getMessage() . ']', __FILE__, __LINE__, ERROR_LOG_FILE);
+            HaloLogger::ERROR('Zmq Trace Log:[' . $e->getMessage() . ']', __FILE__, __LINE__, ERROR_LOG_FILE);
         }
 
     }

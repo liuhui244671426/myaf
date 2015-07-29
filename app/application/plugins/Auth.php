@@ -24,20 +24,20 @@ class AuthPlugin extends Yaf_Plugin_Abstract
 
     public function dispatchLoopStartup(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
     {
-        Yaflog(__METHOD__);
-        Yaflog($request->module);
-        Yaflog($request->action);
+        HaloLogger::INFO(__METHOD__);
+        HaloLogger::INFO($request->module);
+        HaloLogger::INFO($request->action);
 
         if (strcasecmp($request->module, 'Admin') == 0 && strcasecmp($request->action, 'login') != 0) {
             $isLogin = ((empty($_SESSION['user']['uid'])) || (!isset($_SESSION['user']['uid'])) || ($_SESSION['user']['uid'] == null))
                 ? false : true;
-            Yaflog('$request: ');
-            Yaflog($request);
-            Yaflog('$isLogin: ');
-            Yaflog($isLogin);
+            HaloLogger::INFO('$request: ');
+            HaloLogger::INFO($request);
+            HaloLogger::INFO('$isLogin: ');
+            HaloLogger::INFO($isLogin);
             //缺少auth
             if (!$isLogin) {
-                header('location:/admin/index/login');
+                //header('location:/admin/index/login');
                 return false;
             }
 
