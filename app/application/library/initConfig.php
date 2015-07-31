@@ -32,7 +32,7 @@ class initConfig
     static public function initLoad()
     {
         $libraryFiles = array(
-            'constant', 'status', 'YafController', 'DataCenter/DataCenter', 'halo/HaloLogger'
+            'constant', 'status', 'YafController', 'halo/HaloFactory', 'halo/HaloLogger'
         );
         foreach ($libraryFiles as $file) {
             $file = APPLICATION_PATH . '/application/library/' . $file . '.php';

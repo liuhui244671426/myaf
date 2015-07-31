@@ -246,7 +246,7 @@ function sysErrorHandler($errno, $errstr, $errfile, $errline)
 
     $config = Yaf_Registry::get('config');
     if ($config['sysError']['catch']) {
-        $errMsg = sprintf('<?php exit;?>%s | code: %s | msg: %s | file: %s | line: %s' . PHP_EOL,
+        $errMsg = sprintf(PHP_EOL . '<?php exit;?>%s | code: %s | msg: %s | file: %s | line: %s' . PHP_EOL,
             date('Y-m-d H:i:s', TODAY), $errno, str_pad($errstr, 45), $errfile, $errline);
         error_log($errMsg, 3, ROOT_PATH . '/logs/sysErrorHandler.log');
     }

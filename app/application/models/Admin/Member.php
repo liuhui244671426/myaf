@@ -11,7 +11,7 @@ class Admin_MemberModel extends BaseModel
 
     public function __construct()
     {
-        $this->_db = DataCenter::getFactory('db', 'myaf');
+        $this->_db = HaloFactory::getFactory('db', 'myaf');
     }
 
     /**

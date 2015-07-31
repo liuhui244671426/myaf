@@ -3,7 +3,7 @@
 /**
  * @Desc: model base class
  */
-class BaseModel
+abstract class BaseModel
 {
     public function __construct(){}
 }
