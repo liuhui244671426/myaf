@@ -142,7 +142,7 @@ function Yaflog($var)
         $isWrited = file_put_contents($logFile, $msg, FILE_APPEND);
         if($isWrited === false){
             $msg = 'log file: ' . $logFile . ' write-disable';
-            throw new LogicException($msg);
+            throw new \LogicException($msg);
         }
     }
 }
@@ -159,51 +159,24 @@ function Yaflog($var)
  * 后续版本将遗弃它
  * @param int $code
  * @param array $data
+ * @param string $jsonp 跨域
  * @return string
  * */
-function echoJsonString($code, array $data)
+function echoJsonString($code, array $data, $jsonp = '')
 {
     header('Content-Type:application/json;charset=utf8');
-    echo json_encode(array(
+    $out = json_encode(array(
         'code' => $code,
         'msg' => stringMsg($code),
         'data' => $data
     ));
+    if(empty($jsonp)){
+        echo $out;
+    } else {
+        echo $jsonp . '(' . $out . ')';
+    }
+
     exit;
-}
-
-/**
- * Response
- * @param int $code
- * @param string $format : json, xml, jsonp, string
- * @param array $data:
- * @param boolean $die: die if set to true, default is true
- */
-function response($code, $data, $format = 'json', $die = TRUE)
-{
-    switch($format){
-        default:
-        case 'json':
-            $out = json_encode(array(
-                'code' => $code,
-                'msg' => stringMsg($code),
-                'data' => $data
-            ));
-            break;
-
-        case 'jsonp':
-            $out = $_GET['jsonpcallback'] .'('. json_encode($data) .')';
-            break;
-
-        case 'string':
-            break;
-    }
-    header('Content-Type:application/json;charset=utf8');
-    echo $out;
-
-    if($die){
-        die;
-    }
 }
 
 /**
