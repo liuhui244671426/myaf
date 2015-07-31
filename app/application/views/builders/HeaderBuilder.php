@@ -7,15 +7,13 @@
  */
 class HeaderBuilder
 {
-
     /**
      * 获取用户名或uid
      * @return array
      * */
     static public function getUserName()
     {
-        $user = $_SESSION['user'];
-        if (empty($user))
+        if (empty($_SESSION['user']))
             exit(MSG_USER_INFO_EMPTY);
         else
             return $_SESSION['user'];

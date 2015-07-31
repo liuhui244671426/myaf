@@ -12,7 +12,7 @@ class Admin_IndexModel extends BaseModel
 
     public function __construct()
     {
-        $this->_db = DataCenter::getFactory('db', 'myaf');
+        $this->_db = \Our\halo\HaloFactory::getFactory('db', 'myaf');
     }
 
     /**
@@ -32,7 +32,7 @@ class Admin_IndexModel extends BaseModel
      * */
     public function insLoginLog($uid, $op)
     {
-        import('netFunctions.php');
+        importFunc('netFunctions');
         $data = array(
             'uid' => $uid,
             'time' => TODAY,
