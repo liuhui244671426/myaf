@@ -36,12 +36,7 @@ class initConfig
         );
         foreach ($libraryFiles as $file) {
             $file = APPLICATION_PATH . '/application/library/' . $file . '.php';
-            /*if (file_exists($file)) {
-                Yaf_Loader::import($file);
-            } else {
-                $msg = 'load library/' . $file . ' file is not exists';
-                throw new LogicException($msg, EXC_CODE_LIBRARY_NOT_FOUND);
-            }*/
+
             import($file);
         }
     }
@@ -55,13 +50,7 @@ class initConfig
 
         if (strpos($class, 'Builder')) {
             $file = sprintf('%s/application/views/builders/%s.php', APPLICATION_PATH, $class);
-
-            /*if (file_exists($path)) {
-                Yaf_Loader::import($path);
-            } else {
-                $msg = 'load builder/' . $class . ' file is not exists';
-                throw new LogicException($msg, EXC_CODE_BUILDER_NOT_FOUND);
-            }*/
+            
             import($file);
         }
     }
@@ -122,7 +111,7 @@ class initConfig
     static public function getExtendConfigs()
     {
         if(empty(self::$_extendConfig)){
-            $config = \Yaf\Registry::get('config');
+            $config = YafRegistry('config');
             $option = $config->extend->config;
             if (!empty($option)) {
                 $optionArr = explode(',', $option);
