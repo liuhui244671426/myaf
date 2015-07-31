@@ -25,7 +25,7 @@ abstract class DataCenter
         $config = $config->{$type}->{$name};
 
         if (empty($config)) {
-            throw new LogicException(sprintf('extend config of %s->%s not found', $type, $name), EXC_CODE_EXTEND_CONFIG_NOT_FOUND);
+            throw new \LogicException(sprintf('extend config of %s->%s not found', $type, $name), EXC_CODE_EXTEND_CONFIG_NOT_FOUND);
         }
 
         $file = sprintf('%shalo/%s.php', LIBRARY_PATH, self::$HaloMap[$type]);
@@ -50,7 +50,7 @@ abstract class DataCenter
                 $connectionType = HaloMemcache::getInstance(array('host' => $config['host'], 'port' => $config['port'], 'timeout' => $config['timeout']));
                 break;
             default:
-                throw new LogicException('this type: ' . $type . ' not found', EXC_CODE_HALO_TYPE_NOT_FOUND);
+                throw new \LogicException('this type: ' . $type . ' not found', EXC_CODE_HALO_TYPE_NOT_FOUND);
                 break;
         }
         return self::$connections[$type][$name] = $connectionType;
@@ -61,7 +61,7 @@ abstract class DataCenter
      * @return thorw BadMethodCallException
      */
     public function __call($methodName, $methodArguments){
-        throw new BadMethodCallException('BadMethodCallException, called class DataCenter\'s method ' . $methodName . ' not found', EXC_CODE_HALO_METHOD_NOT_FOUND);
+        throw new \BadMethodCallException('BadMethodCallException, called class DataCenter\'s method ' . $methodName . ' not found', EXC_CODE_HALO_METHOD_NOT_FOUND);
     }
 }
 
