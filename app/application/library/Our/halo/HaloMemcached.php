@@ -1,4 +1,6 @@
 <?php
+namespace Our\halo;
+
 //todo test unit
 class HaloMemcached
 {
@@ -23,7 +25,7 @@ class HaloMemcached
      * @thorw mixed BadMethodCallException
      */
     public function __call($methodName, $methodArguments){
-        throw new BadMethodCallException('BadMethodCallException, called HaloMemcached\'s method ' . $methodName . ' not found', EXC_CODE_HALO_MEMCACHED_METHOD_NOT_FOUND);
+        throw new \BadMethodCallException('BadMethodCallException, called HaloMemcached\'s method ' . $methodName . ' not found', EXC_CODE_HALO_MEMCACHED_METHOD_NOT_FOUND);
     }
 
     /**
@@ -32,10 +34,10 @@ class HaloMemcached
     private function __construct($config)
     {
         if (!class_exists('Memcached')) {
-            throw new LogicException('Class Memcached not found', EXC_CODE_HALO_MEMCACHED_CLASS_NOT_FOUND);
+            throw new \LogicException('Class Memcached not found', EXC_CODE_HALO_MEMCACHED_CLASS_NOT_FOUND);
         }
 
-        $this->_mcd = new Memcached();
+        $this->_mcd = new \Memcached();
         $isConnected = $this->_mcd->addServer($config['host'], $config['port']);
 
         if($isConnected == false){

@@ -16,10 +16,10 @@ class initConfig
      * */
     static public function init()
     {
-        if (!Yaf_Registry::has('config')) {
+        if (!\Yaf\Registry::has('config')) {
             self::setConfig();
         }
-        self::$_config = Yaf_Registry::get('config');
+        self::$_config = \Yaf\Registry::get('config');
         //先加载文件
         self::initLoad();
         //注册惰性加载器
@@ -32,7 +32,7 @@ class initConfig
     static public function initLoad()
     {
         $libraryFiles = array(
-            'constant', 'status', 'YafController', 'halo/HaloFactory', 'halo/HaloLogger'
+            'constant', 'status', 'Our/Controller/YafController', 'Our/halo/HaloFactory', 'Our/halo/HaloLogger'
         );
         foreach ($libraryFiles as $file) {
             $file = APPLICATION_PATH . '/application/library/' . $file . '.php';
@@ -52,6 +52,7 @@ class initConfig
      * */
     public function autoLoader($class)
     {
+
         if (strpos($class, 'Builder')) {
             $file = sprintf('%s/application/views/builders/%s.php', APPLICATION_PATH, $class);
 
@@ -70,8 +71,8 @@ class initConfig
      */
     static public function setConfig()
     {
-        $appIni = new Yaf_Config_Ini(sprintf('%s/config/%s', ROOT_PATH, 'app.ini'), MODE);
-        Yaf_Registry::set('config', $appIni);
+        $appIni = new \Yaf\Config\Ini(sprintf('%s/config/%s', ROOT_PATH, 'app.ini'), MODE);
+        \Yaf\Registry::set('config', $appIni);
         self::setExtendConfig();
     }
 
@@ -87,8 +88,8 @@ class initConfig
                 $v = trim($v);
                 if (!empty($v))//非空
                 {
-                    $extendIni = new Yaf_Config_Ini(sprintf('%s/config/%s.ini', ROOT_PATH, $v), MODE);
-                    Yaf_Registry::set(sprintf('config_%s', $v), $extendIni);
+                    $extendIni = new \Yaf\Config\Ini(sprintf('%s/config/%s.ini', ROOT_PATH, $v), MODE);
+                    \Yaf\Registry::set(sprintf('config_%s', $v), $extendIni);
                 }
             }
         }
@@ -121,7 +122,7 @@ class initConfig
     static public function getExtendConfigs()
     {
         if(empty(self::$_extendConfig)){
-            $config = Yaf_Registry::get('config');
+            $config = \Yaf\Registry::get('config');
             $option = $config->extend->config;
             if (!empty($option)) {
                 $optionArr = explode(',', $option);

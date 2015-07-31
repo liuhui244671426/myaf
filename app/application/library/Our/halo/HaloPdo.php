@@ -20,6 +20,8 @@
  * 预处理语句与存储过程
  * @url: http://php.net/manual/zh/pdo.prepared-statements.php
  * */
+namespace Our\halo;
+
 class HaloPdo
 {
     protected static $_instance = null;
@@ -45,14 +47,14 @@ class HaloPdo
         $port = isset($config['port']) ? $config['port'] : 3306;
         $dsn = sprintf('mysql:host=%s;dbname=%s;port=%d', $config['host'], $config['dbname'], $port);
         try {
-            $this->_dbh = new PDO($dsn, $config['user'], $config['pass'],
+            $this->_dbh = new \PDO($dsn, $config['user'], $config['pass'],
                 array(
-                    PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'utf8\'',
-                    PDO::ATTR_PERSISTENT => false,
-                    PDO::ATTR_EMULATE_PREPARES => true,
-                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'utf8\'',
+                    \PDO::ATTR_PERSISTENT => false,
+                    \PDO::ATTR_EMULATE_PREPARES => true,
+                    \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
                 ));
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             if ($this) $this->error = $e->getMessage();
         }
     }
@@ -67,7 +69,7 @@ class HaloPdo
      * @thorw mixed BadMethodCallException
      */
     public function __call($methodName, $methodArguments){
-        throw new BadMethodCallException('BadMethodCallException, called HaloPdo\'s method ' . $methodName . ' not found', EXC_CODE_HALO_PDO_METHOD_NOT_FOUND);
+        throw new \BadMethodCallException('BadMethodCallException, called HaloPdo\'s method ' . $methodName . ' not found', EXC_CODE_HALO_PDO_METHOD_NOT_FOUND);
     }
 
     /**
@@ -101,7 +103,7 @@ class HaloPdo
         $ret = false;
         try {
             $ret = call_user_func($call);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             $this->rollBack();
         }
 
@@ -120,7 +122,7 @@ class HaloPdo
         $ret = false;
         try {
             $ret = call_user_func_array($call, $param);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             $this->rollBack();
         }
 
@@ -495,7 +497,7 @@ class HaloPdo
         list($condition, $values) = $this->getConditionPairFromMap($map);
         $sql = sprintf('DELETE FROM %s WHERE %s', $table, $condition);
         $stmt = $this->query($sql, $values);
-        return $stmt->errorCode() == PDO::ERR_NONE;
+        return $stmt->errorCode() == \PDO::ERR_NONE;
     }
 
 
@@ -572,7 +574,7 @@ class HaloPdo
         $stmt = $this->_dbh->prepare($sql);
         $stmt->execute($values);
         //有错误
-        if ($stmt->errorCode() != PDO::ERR_NONE) {
+        if ($stmt->errorCode() != \PDO::ERR_NONE) {
             if (count($values)){
                 $msg = sprintf('%s | (%s)', $sql, implode(',', $values));
             } else {
@@ -600,21 +602,21 @@ class HaloPdo
      * */
     public function get_row($sql, $values = null)
     {
-        return $this->query($sql, $values)->fetch(PDO::FETCH_ASSOC);
+        return $this->query($sql, $values)->fetch(\PDO::FETCH_ASSOC);
     }
     /**
      *
      * */
     public function get_col($sql, $values = null, $offset = 0)
     {
-        return $this->query($sql, $values)->fetchAll(PDO::FETCH_COLUMN, $offset);
+        return $this->query($sql, $values)->fetchAll(\PDO::FETCH_COLUMN, $offset);
     }
     /**
      *
      * */
     public function get_results($sql, $values = null)
     {
-        return $this->query($sql, $values)->fetchAll(PDO::FETCH_ASSOC);
+        return $this->query($sql, $values)->fetchAll(\PDO::FETCH_ASSOC);
     }
 
     /**

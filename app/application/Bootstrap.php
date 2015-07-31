@@ -8,19 +8,19 @@
  * @date    2011-05-13 15:24
  * @version $Id$
  */
-class Bootstrap extends Yaf_Bootstrap_Abstract
+class Bootstrap extends \Yaf\Bootstrap_Abstract
 {
 
     /**
      * 初始化init配置
      */
-    public function _initConfig(Yaf_Dispatcher $dispatcher)
+    public function _initConfig(\Yaf\Dispatcher $dispatcher)
     {
         header('content-type:text/html;charset=utf-8');
         session_start();
-        require APPLICATION_PATH . '/application/library/functions.php';
+        require APPLICATION_PATH . '/application/library/Our/functions/functions.php';
         import(APPLICATION_PATH . '/application/library/initConfig.php');
-        HaloLogger::$logLevel = 0;
+        \Our\halo\HaloLogger::$logLevel = 0;
 
         set_error_handler('sysErrorHandler');
         //register_shutdown_function('sysShutdown');
@@ -35,7 +35,7 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
     /**
      * 注册一个插件
      */
-    public function _initPlugin(Yaf_Dispatcher $dispatcher)
+    public function _initPlugin(\Yaf\Dispatcher $dispatcher)
     {
         $auth = new AuthPlugin();
         $dispatcher->registerPlugin($auth);
@@ -44,13 +44,13 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
     /**
      * 初始化模版
      */
-    public function _initView(Yaf_Dispatcher $dispatcher)
+    public function _initView(\Yaf\Dispatcher $dispatcher)
     {
-        Yaf_Dispatcher::getInstance()->autoRender(false);
+        \Yaf\Dispatcher::getInstance()->autoRender(false);
 
         $isLayout = true;
         if ($isLayout) {
-            $layout = new layout(PHTML_PATH);
+            $layout = new Our\layout(PHTML_PATH);
             $layout->setScriptPath(PHTML_PATH);
             $dispatcher->setView($layout);
         } else {
@@ -61,7 +61,7 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
     /**
      * 初始化路由器
      */
-    public function _initRouter(Yaf_Dispatcher $dispatcher)
+    public function _initRouter(\Yaf\Dispatcher $dispatcher)
     {
         //获取分发的路由实例
         $router = $dispatcher->getInstance()->getRouter();
@@ -70,7 +70,7 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
         //$router->addRoute('Test1', new Yaf_Route_Regex( '#^/test/([0-9]*)$#', array('controller' => 'Index', 'action' => 'Test'), array( 1 => 'id')) );
 
         $router->addRoute('login',
-            new Yaf_Route_Rewrite('/login', array(
+            new \Yaf\Route\Rewrite('/login', array(
                 'module' => 'Admin',
                 'controller' => 'Index',
                 'actio' => 'login'

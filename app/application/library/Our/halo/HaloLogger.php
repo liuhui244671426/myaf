@@ -1,4 +1,5 @@
 <?php
+namespace Our\halo;
 
 defined('HALO_LOG_DEBUG') || define('HALO_LOG_DEBUG', 0);
 defined('HALO_LOG_WARNNING') || define('HALO_LOG_WARNNING', 1);

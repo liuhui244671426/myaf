@@ -1,12 +1,7 @@
 <?php
 
-class MainController extends BaseController
+class MainController extends \Our\Controller\admin
 {
-    public function doInit()
-    {
-        $this->_view->setLayout('Admin');
-    }
-
     /**
      * 后台主页
      */
@@ -31,7 +26,8 @@ class MainController extends BaseController
      */
     protected function sysInfo()
     {
-        import(LIBRARY_PATH . 'netFunctions.php');
+
+        import(LIBRARY_PATH . 'Our/functions/netFunctions.php');
         $sys = array(
             'os' => PHP_OS,
             'runEnv' => $_SERVER['SERVER_SOFTWARE'],

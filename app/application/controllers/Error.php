@@ -5,16 +5,16 @@
  * @Create Time: 15-01-16 下午2:56
  * @Desc : 错误
  */
-class ErrorController extends BaseController
+
+class ErrorController extends \Our\Controller\YafController
 {
     /**
      * 异常捕获,并记录异常日志
      * @param mixed $exception 异常
-     * @return display 404
+     * @return string
      */
     public function errorAction($exception)
     {
-
         $msg = $exception->getMessage();
         $msg2str = $exception->__toString();
         $code = $exception->getCode();
@@ -33,7 +33,8 @@ class ErrorController extends BaseController
                 $httpCode = 404;
                 break;
         }
-        import(LIBRARY_PATH . 'netFunctions.php');
+        //import(LIBRARY_PATH . 'netFunctions.php');
+        import(LIBRARY_PATH . 'Our/functions/netFunctions.php');
         header(httpStatus($httpCode));
         $isSupportTwig = initConfig::isSupportExtendConfig('twig');
         if ($isSupportTwig) {

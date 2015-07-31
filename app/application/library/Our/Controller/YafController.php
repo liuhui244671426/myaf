@@ -7,9 +7,10 @@
  * @Time: 下午6:55
  * @Desc: BaseController->YafController->Yaf_Controller_Abstract
  */
-class YafController extends Yaf_Controller_Abstract
-{
+namespace Our\Controller;
 
+abstract class YafController extends \Yaf\Controller_Abstract
+{
     /**
      * 获取合法参数
      * @param string $tag 字段名

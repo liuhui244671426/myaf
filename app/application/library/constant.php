@@ -29,7 +29,7 @@ define('TODAY', time());
 //页码数量
 define('PAGE_LIMIT', 10);
 //AES key
-define('AES_MJ_KEY', 'MojiWeathre');
+define('AES_MJ_KEY', 'MojiWeather');
 
 
 /**

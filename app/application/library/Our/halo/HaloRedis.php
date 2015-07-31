@@ -1,4 +1,5 @@
 <?php
+namespace Our\halo;
 
 class HaloRedis
 {
@@ -30,7 +31,7 @@ class HaloRedis
      */
     public function __call($methodName, $methodArguments)
     {
-        throw new BadMethodCallException('BadMethodCallException, called HaloRedis\'s method ' . $methodName . ' not found', EXC_CODE_HALO_REDIS_METHOD_NOT_FOUND);
+        throw new \BadMethodCallException('BadMethodCallException, called HaloRedis\'s method ' . $methodName . ' not found', EXC_CODE_HALO_REDIS_METHOD_NOT_FOUND);
     }
 
     /**
@@ -41,17 +42,17 @@ class HaloRedis
     private function __construct($config)
     {
         if (!class_exists('redis')) {
-            throw new LogicException('Class Redis not found', EXC_CODE_HALO_REDIS_CLASS_NOT_FOUND);
+            throw new \LogicException('Class Redis not found', EXC_CODE_HALO_REDIS_CLASS_NOT_FOUND);
         }
 
-        $this->_redis = new redis();
+        $this->_redis = new \redis();
         $type = isset($config['type']) ? $config['type'] : 1;//1普通连接 2长连接
         if ($type == 1) {
             $this->_redis->connect($config['host'], $config['port'], $config['timeout']);
         } elseif ($type == 2) {
             $this->_redis->pconnect($config['host'], $config['port'], $config['timeout']);
         } else {
-            throw new RangeException('Redis connect type is ' . $type . ' and it\'s error', EXC_CODE_HALO_REDIS_CONNECT_TYPE_OUT_RANGE);
+            throw new \RangeException('Redis connect type is ' . $type . ' and it\'s error', EXC_CODE_HALO_REDIS_CONNECT_TYPE_OUT_RANGE);
         }
 
         if (isset($passwd)) {
@@ -504,10 +505,10 @@ class HaloRedis
 
         switch ($location) {
             case 0:
-                $return = $this->_redis->lInsert($list, Redis::BEFORE, $value1, $value2);
+                $return = $this->_redis->lInsert($list, \Redis::BEFORE, $value1, $value2);
                 break;
             case 1:
-                $return = $this->_redis->lInsert($list, Redis::AFTER, $value1, $value2);
+                $return = $this->_redis->lInsert($list, \Redis::AFTER, $value1, $value2);
                 break;
             default:
                 $return = false;

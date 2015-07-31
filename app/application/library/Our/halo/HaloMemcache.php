@@ -1,4 +1,5 @@
 <?php
+namespace Our\halo;
 
 class HaloMemcache
 {
@@ -20,16 +21,16 @@ class HaloMemcache
      * @thorw mixed BadMethodCallException
      */
     public function __call($methodName, $methodArguments){
-        throw new BadMethodCallException('BadMethodCallException, called HaloMemcache\'s method ' . $methodName . ' not exsits!');
+        throw new \BadMethodCallException('BadMethodCallException, called HaloMemcache\'s method ' . $methodName . ' not exsits!');
     }
 
     private function __construct($config)
     {
         if (!class_exists('Memcache')) {
-            throw new Exception('Class Memcache not exists');
+            throw new \Exception('Class Memcache not exists');
         }
 
-        $this->_mc = new Memcache();
+        $this->_mc = new \Memcache();
         $timeout = isset($config['timeout'])?$config['timeout'] : 2000;
 
         if ($this->_type == 1) {

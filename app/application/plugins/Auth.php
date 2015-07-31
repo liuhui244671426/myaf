@@ -11,30 +11,30 @@
  * @hook dispatchLoopShutdown 分发循环结束之后触发，此时表示所有的业务逻辑都已经运行完成, 但是响应还没有发送
  * @hook preResponse 响应(Yaf_Response)前被触发
  */
-class AuthPlugin extends Yaf_Plugin_Abstract
+class AuthPlugin extends \Yaf\Plugin_Abstract
 {
 
-    public function routeStartup(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
+    public function routeStartup(\Yaf\Request_Abstract $request, \Yaf\Response_Abstract $response)
     {
     }
 
-    public function routerShutdown(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
+    public function routerShutdown(\Yaf\Request_Abstract $request, \Yaf\Response_Abstract $response)
     {
     }
 
-    public function dispatchLoopStartup(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
+    public function dispatchLoopStartup(\Yaf\Request_Abstract $request, \Yaf\Response_Abstract $response)
     {
-        HaloLogger::INFO(__METHOD__);
-        HaloLogger::INFO($request->module);
-        HaloLogger::INFO($request->action);
+        \Our\halo\HaloLogger::INFO(__METHOD__);
+        \Our\halo\HaloLogger::INFO($request->module);
+        \Our\halo\HaloLogger::INFO($request->action);
 
         if (strcasecmp($request->module, 'Admin') == 0 && strcasecmp($request->action, 'login') != 0) {
             $isLogin = ((empty($_SESSION['user']['uid'])) || (!isset($_SESSION['user']['uid'])) || ($_SESSION['user']['uid'] == null))
                 ? false : true;
-            HaloLogger::INFO('$request: ');
-            HaloLogger::INFO($request);
-            HaloLogger::INFO('$isLogin: ');
-            HaloLogger::INFO($isLogin);
+            \Our\halo\HaloLogger::INFO('$request: ');
+            \Our\halo\HaloLogger::INFO($request);
+            \Our\halo\HaloLogger::INFO('$isLogin: ');
+            \Our\halo\HaloLogger::INFO($isLogin);
             //缺少auth
             if (!$isLogin) {
                 header('location:/admin/index/login');
@@ -44,19 +44,19 @@ class AuthPlugin extends Yaf_Plugin_Abstract
         }
     }
 
-    public function preDispatch(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
+    public function preDispatch(\Yaf\Request_Abstract $request, \Yaf\Response_Abstract $response)
     {
     }
 
-    public function postDispatch(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
+    public function postDispatch(\Yaf\Request_Abstract $request, \Yaf\Response_Abstract $response)
     {
     }
 
-    public function dispatchLoopShutdown(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
+    public function dispatchLoopShutdown(\Yaf\Request_Abstract $request, \Yaf\Response_Abstract $response)
     {
     }
 
-    public function preResponse(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)
+    public function preResponse(\Yaf\Request_Abstract $request, \Yaf\Response_Abstract $response)
     {
     }
 }

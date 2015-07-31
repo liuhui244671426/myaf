@@ -5,11 +5,12 @@
  * @User: liuhui
  * @Date: 15-4-11 下午11:56
  */
-class MemberController extends BaseController
+
+class MemberController extends \Our\Controller\admin
 {
     public function doInit()
     {
-        $this->_view->setLayout('Admin');
+        //$this->_view->setLayout('Admin');
     }
 
     /**

@@ -37,7 +37,9 @@
  * @author Andreas Kollaros <mail@dot.com>
  *
  */
-class layout implements Yaf_View_Interface
+namespace Our;
+
+class layout implements \Yaf\View_Interface
 {
     public $breadcrumb = array();
 
@@ -46,7 +48,7 @@ class layout implements Yaf_View_Interface
      *
      * Default engine is Yaf\View\Simple
      *
-     * @var Yaf\View\Simple
+     * @var \Yaf\View\Simple
      */
     public $engine;
     /**
@@ -101,11 +103,11 @@ class layout implements Yaf_View_Interface
     /**
      * Return the instance of a template engine.
      *
-     * @return Yaf\View\Simple
+     * @return \Yaf\View\Simple
      */
     protected function engine()
     {
-        $this->engine = $this->engine ?: new Yaf_View_Simple(
+        $this->engine = $this->engine ?: new \Yaf\View\Simple(
             $this->tpl_dir,
             $this->options
         );
@@ -183,7 +185,7 @@ class layout implements Yaf_View_Interface
      */
     public function getLayoutPath()
     {
-        $config = Yaf_Registry::get('config');
+        $config = \Yaf\Registry::get('config');
         $ext = empty($config->view->ext) ?
             'phtml' : $config->view->ext;
         return $this->layout_path . $this->layout . ".{$ext}";
@@ -298,7 +300,7 @@ class layout implements Yaf_View_Interface
         // Hack??
         // Get template vars from view via Reflection class and assign them to
         // layout view
-        $ref = new ReflectionClass($this->engine());
+        $ref = new \ReflectionClass($this->engine());
         $prop = $ref->getProperty('_tpl_vars');
         $prop->setAccessible(true);
         $view_vars = $prop->getValue($this->engine());

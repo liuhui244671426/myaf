@@ -9,11 +9,12 @@
  * 加载文件
  * @param string|array $files
  * */
+
 function import($path){
-    $isTrue = Yaf_Loader::import($path);
+    $isTrue = \Yaf\Loader::import($path);
     if(!$isTrue){
         $msg = 'load ' . $path . ' file return false';
-        throw new \LogicException($msg);
+        throw new \Yaf_Exception_LoadFailed($msg);
     }
 }
 
@@ -244,7 +245,7 @@ function sysErrorHandler($errno, $errstr, $errfile, $errline)
         return;
     }
 
-    $config = Yaf_Registry::get('config');
+    $config = \Yaf\Registry::get('config');
     if ($config['sysError']['catch']) {
         $errMsg = sprintf(PHP_EOL . '<?php exit;?>%s | code: %s | msg: %s | file: %s | line: %s' . PHP_EOL,
             date('Y-m-d H:i:s', TODAY), $errno, str_pad($errstr, 45), $errfile, $errline);
