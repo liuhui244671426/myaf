@@ -12,7 +12,7 @@
         public function init()
         {
             //初始化配置数据
-            $this->_appConfig = Yaf_Registry::get('config');
+            $this->_appConfig = YafRegistry('config');
 
             $this->doInit();
         }

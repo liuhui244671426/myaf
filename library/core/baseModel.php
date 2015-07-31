@@ -17,7 +17,7 @@ class baseModel
 
     static public function mysqlModel($flag)
     {
-        self::$_config = Yaf_Registry::get('config_db');
+        self::$_config = YafRegistry('config_db');
         //print_r(self::$_config['mysql'][$flag]);
 
         if(isset(static::$_connections['db'][$flag]))
@@ -51,7 +51,7 @@ class baseModel
 
     static public function memcacheModel($flag)
     {
-        self::$_config = Yaf_Registry::get('config_memcache');
+        self::$_config = YafRegistry('config_memcache');
 
         if(isset(static::$_connections['memcache'][$flag]))
         {

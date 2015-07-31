@@ -185,7 +185,7 @@ class layout implements \Yaf\View_Interface
      */
     public function getLayoutPath()
     {
-        $config = \Yaf\Registry::get('config');
+        $config = YafRegistry('config');
         $ext = empty($config->view->ext) ?
             'phtml' : $config->view->ext;
         return $this->layout_path . $this->layout . ".{$ext}";

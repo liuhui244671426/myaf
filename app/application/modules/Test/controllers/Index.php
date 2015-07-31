@@ -93,7 +93,7 @@ class IndexController extends BaseController
     public function spotAction()
     {
 
-        $mysqlCfg = Yaf_Registry::get('config_db');
+        $mysqlCfg = YafRegistry('config_db');
 
         $user = $mysqlCfg['mysql']['cms']['user'];
         $pass = $mysqlCfg['mysql']['cms']['pass'];

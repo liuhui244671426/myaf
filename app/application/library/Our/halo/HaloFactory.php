@@ -24,7 +24,7 @@ abstract class HaloFactory
         }
 
         $configKey = sprintf('config_%s', $type);
-        $config = \Yaf\Registry::get($configKey);
+        $config = YafRegistry($configKey);
         $config = $config->{$type}->{$name};
 
         if (empty($config)) {

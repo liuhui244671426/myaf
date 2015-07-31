@@ -16,10 +16,10 @@ class initConfig
      * */
     static public function init()
     {
-        if (!\Yaf\Registry::has('config')) {
+        if (!YafRegistryHas('config')) {
             self::setConfig();
         }
-        self::$_config = \Yaf\Registry::get('config');
+        self::$_config = YafRegistry('config');
         //先加载文件
         self::initLoad();
         //注册惰性加载器
@@ -89,7 +89,7 @@ class initConfig
                 if (!empty($v))//非空
                 {
                     $extendIni = new \Yaf\Config\Ini(sprintf('%s/config/%s.ini', ROOT_PATH, $v), MODE);
-                    \Yaf\Registry::set(sprintf('config_%s', $v), $extendIni);
+                    YafRegistry(sprintf('config_%s', $v), $extendIni);
                 }
             }
         }

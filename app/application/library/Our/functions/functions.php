@@ -111,7 +111,7 @@ function dump($var, $echo = true, $label = null, $strict = true)
  */
 function Yaflog($var)
 {
-    $config = Yaf_Registry::get('config');
+    $config = YafRegistry('config');
     $logLevel = $config['log']['level'];
     $logPath = $config['log']['path'];
     //是否开启debug模式
@@ -317,3 +317,26 @@ function YafErrorCode($code){
     );
     return $errorDocker[$code];
 }
+
+//-------------------------------------
+//\Yaf\Registry 系列函数
+//-------------------------------------
+function YafRegistry($name, $value = ''){
+    if(empty($value)){
+        return \Yaf\Registry::get($name);
+    } else {
+        \Yaf\Registry::set($name, $value);
+        return true;
+    }
+}
+
+function YafRegistryHas($name){
+    return \Yaf\Registry::has($name);
+}
+
+function YafRegistryDel($name){
+    return \Yaf\Registry::del($name);
+}
+//-------------------------------------
+//\Yaf\Registry 系列函数
+//-------------------------------------

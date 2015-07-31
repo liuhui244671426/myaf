@@ -4,7 +4,7 @@ class HaloXhprof
 {
     private static function isOpenXhpro()
     {
-        $config = Yaf_Registry::get('config');
+        $config = YafRegistry('config');
         return $config->xhprof->enable;
     }
 
