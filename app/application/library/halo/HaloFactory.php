@@ -60,7 +60,7 @@ abstract class HaloFactory
 
     /**
      * 调用不存在的方法 throw BadMethodCallException
-     * @return thorw BadMethodCallException
+     * @return BadMethodCallException
      */
     public function __call($methodName, $methodArguments){
         throw new \BadMethodCallException('BadMethodCallException, called class DataCenter\'s method ' . $methodName . ' not found', EXC_CODE_HALO_METHOD_NOT_FOUND);
