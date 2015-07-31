@@ -8,11 +8,6 @@
 
 class MemberController extends \Our\Controller\admin
 {
-    public function doInit()
-    {
-        //$this->_view->setLayout('Admin');
-    }
-
     /**
      * 获取所用会员的列表
      * */

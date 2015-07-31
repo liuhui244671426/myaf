@@ -36,26 +36,9 @@
             }
             return false;
         });
-
-        function closeVisibleSubMenu() {
-            jQuery('.leftpanel .nav-parent').each(function () {
-                var t = jQuery(this);
-                if (t.hasClass('nav-active')) {
-                    t.find('> ul').slideUp(200, function () {
-                        t.removeClass('nav-active');
-                    });
-                }
-            });
-        }
-
-        function adjustmainpanelheight() {
-            // Adjust mainpanel height
-            var docHeight = jQuery(document).height();
-            if (docHeight > jQuery('.mainpanel').height())
-                jQuery('.mainpanel').height(docHeight);
-        }
-
         adjustmainpanelheight();
+        reposition_topnav();
+        reposition_searchform();
 
         // Close Button in Panels
         jQuery('.panel .panel-close').click(function () {
@@ -131,8 +114,7 @@
 
         });
 
-        reposition_topnav();
-        reposition_searchform();
+
 
         jQuery(window).resize(function () {
             if (jQuery('body').css('position') == 'relative') {
@@ -147,6 +129,61 @@
         });
 
 
+
+        // Sticky Header
+        if (jQuery.cookie('sticky-header'))
+            jQuery('body').addClass('stickyheader');
+
+        // Sticky Left Panel
+        if (jQuery.cookie('sticky-leftpanel')) {
+            jQuery('body').addClass('stickyheader');
+            jQuery('.leftpanel').addClass('sticky-leftpanel');
+        }
+
+        // Left Panel Collapsed
+        if (jQuery.cookie('leftpanel-collapsed')) {
+            jQuery('body').addClass('leftpanel-collapsed');
+            jQuery('.menutoggle').addClass('menu-collapsed');
+        }
+
+        // Changing Skin
+        var c = jQuery.cookie('change-skin');
+        var cssSkin = 'css/style.' + c + '.css';
+        if (jQuery('body').css('direction') == 'rtl') {
+            cssSkin = '../css/style.' + c + '.css';
+            jQuery('html').addClass('rtl');
+        }
+        if (c) {
+            jQuery('head').append('<link id="skinswitch" rel="stylesheet" href="' + cssSkin + '" />');
+        }
+
+        // Changing Font
+        var fnt = jQuery.cookie('change-font');
+        if (fnt) {
+            jQuery('head').append('<link id="fontswitch" rel="stylesheet" href="css/font.' + fnt + '.css" />');
+        }
+
+        // Check if leftpanel is collapsed
+        if (jQuery('body').hasClass('leftpanel-collapsed'))
+            jQuery('.nav-bracket .children').css({display: ''});
+
+
+        // Handles form inside of dropdown
+        jQuery('.dropdown-menu').find('form').click(function (e) {
+            e.stopPropagation();
+        });
+
+
+        // This is not actually changing color of btn-primary
+        // This is like you are changing it to use btn-orange instead of btn-primary
+        // This is for demo purposes only
+        var c = jQuery.cookie('change-skin');
+        if (c && c == 'greyjoy') {
+            $('.btn-primary').removeClass('btn-primary').addClass('btn-orange');
+            $('.rdio-primary').addClass('rdio-default').removeClass('rdio-primary');
+            $('.text-primary').removeClass('text-primary').addClass('text-orange');
+        }
+
         /* This function will reposition search form to the left panel when viewed
          * in screens smaller than 767px and will return to top when viewed higher
          * than 767px
@@ -158,7 +195,6 @@
                 jQuery('.searchform').insertBefore('.header-right');
             }
         }
-
 
         /* This function allows top navigation menu to move to left navigation menu
          * when viewed in screens lower than 1024px and will move it back when viewed
@@ -223,59 +259,22 @@
             }
         }
 
-
-        // Sticky Header
-        if (jQuery.cookie('sticky-header'))
-            jQuery('body').addClass('stickyheader');
-
-        // Sticky Left Panel
-        if (jQuery.cookie('sticky-leftpanel')) {
-            jQuery('body').addClass('stickyheader');
-            jQuery('.leftpanel').addClass('sticky-leftpanel');
+        function closeVisibleSubMenu() {
+            jQuery('.leftpanel .nav-parent').each(function () {
+                var t = jQuery(this);
+                if (t.hasClass('nav-active')) {
+                    t.find('> ul').slideUp(200, function () {
+                        t.removeClass('nav-active');
+                    });
+                }
+            });
         }
 
-        // Left Panel Collapsed
-        if (jQuery.cookie('leftpanel-collapsed')) {
-            jQuery('body').addClass('leftpanel-collapsed');
-            jQuery('.menutoggle').addClass('menu-collapsed');
-        }
-
-        // Changing Skin
-        var c = jQuery.cookie('change-skin');
-        var cssSkin = 'css/style.' + c + '.css';
-        if (jQuery('body').css('direction') == 'rtl') {
-            cssSkin = '../css/style.' + c + '.css';
-            jQuery('html').addClass('rtl');
-        }
-        if (c) {
-            jQuery('head').append('<link id="skinswitch" rel="stylesheet" href="' + cssSkin + '" />');
-        }
-
-        // Changing Font
-        var fnt = jQuery.cookie('change-font');
-        if (fnt) {
-            jQuery('head').append('<link id="fontswitch" rel="stylesheet" href="css/font.' + fnt + '.css" />');
-        }
-
-        // Check if leftpanel is collapsed
-        if (jQuery('body').hasClass('leftpanel-collapsed'))
-            jQuery('.nav-bracket .children').css({display: ''});
-
-
-        // Handles form inside of dropdown
-        jQuery('.dropdown-menu').find('form').click(function (e) {
-            e.stopPropagation();
-        });
-
-
-        // This is not actually changing color of btn-primary
-        // This is like you are changing it to use btn-orange instead of btn-primary
-        // This is for demo purposes only
-        var c = jQuery.cookie('change-skin');
-        if (c && c == 'greyjoy') {
-            $('.btn-primary').removeClass('btn-primary').addClass('btn-orange');
-            $('.rdio-primary').addClass('rdio-default').removeClass('rdio-primary');
-            $('.text-primary').removeClass('text-primary').addClass('text-orange');
+        function adjustmainpanelheight() {
+            // Adjust mainpanel height
+            var docHeight = jQuery(document).height();
+            if (docHeight > jQuery('.mainpanel').height())
+                jQuery('.mainpanel').height(docHeight);
         }
 
     });
