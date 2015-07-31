@@ -7,7 +7,8 @@
  */
 /**
  * 加载文件
- * @param string|array $files
+ * @param string $path
+ * @return \Yaf_Exception_LoadFailed
  * */
 
 function import($path){
@@ -16,6 +17,12 @@ function import($path){
         $msg = 'load ' . $path . ' file return false';
         throw new \Yaf_Exception_LoadFailed($msg);
     }
+}
+/**
+ * 加载函数文件
+ * */
+function importFunc($file){
+    import(LIBRARY_PATH . 'Our/functions/' . $file . '.php');
 }
 
 /**
@@ -314,6 +321,28 @@ function YafErrorCode($code){
         520 => 'YAF_ERR_AUTOLOAD_FAILED',
         //表示关键逻辑的参数错误
         521 => 'YAF_ERR_TYPE_ERROR',
+    );
+    $errorDocker = array (
+        //表示启动失败
+        512 => 'YAF\ERR\STARTUP\FAILED',
+        //表示路由失败
+        513 => 'YAF\ERR\ROUTE\FAILED',
+        //表示分发失败
+        514 => 'YAF\ERR\DISPATCH\FAILED',
+        //表示找不到指定的模块
+        515 => 'YAF\ERR\NOTFOUND\MODULE',
+        //表示找不到指定的Controller
+        516 => 'YAF\ERR\NOTFOUND\CONTROLLER',
+        //表示找不到指定的Action
+        517 => 'YAF\ERR\NOTFOUND\ACTION',
+        //表示找不到指定的视图文件
+        518 => 'YAF\ERR\NOTFOUND\VIEW',
+        //表示调用失败
+        519 => 'YAF\ERR\CALL\FAILED',
+        //表示自动加载类失败
+        520 => 'YAF\ERR\AUTOLOAD\FAILED',
+        //表示关键逻辑的参数错误
+        521 => 'YAF\ERR\TYPE\ERROR',
     );
     return $errorDocker[$code];
 }

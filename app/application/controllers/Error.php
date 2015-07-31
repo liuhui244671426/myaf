@@ -23,18 +23,19 @@ class ErrorController extends \Our\Controller\YafController
         error_log($errMsg, 3, ROOT_PATH . '/logs/sysExceptionHandler.log');
 
         switch ($code) {
-            case YAF_ERR_NOTFOUND_MODULE:
-            case YAF_ERR_NOTFOUND_CONTROLLER:
-            case YAF_ERR_NOTFOUND_ACTION:
-            case YAF_ERR_NOTFOUND_VIEW:
+            case YAF\ERR\NOTFOUND\MODULE:
+            case YAF\ERR\NOTFOUND\CONTROLLER:
+            case YAF\ERR\NOTFOUND\ACTION:
+            case YAF\ERR\NOTFOUND\VIEW:
                 $httpCode = 404;
                 break;
             default:
                 $httpCode = 404;
                 break;
         }
-        //import(LIBRARY_PATH . 'netFunctions.php');
-        import(LIBRARY_PATH . 'Our/functions/netFunctions.php');
+
+        importFunc('netFunctions');
+
         header(httpStatus($httpCode));
         $isSupportTwig = initConfig::isSupportExtendConfig('twig');
         if ($isSupportTwig) {
