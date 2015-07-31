@@ -50,7 +50,7 @@ class initConfig
 
         if (strpos($class, 'Builder')) {
             $file = sprintf('%s/application/views/builders/%s.php', APPLICATION_PATH, $class);
-            
+
             import($file);
         }
     }

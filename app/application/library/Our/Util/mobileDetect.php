@@ -24,6 +24,7 @@
  */
 //    $md = new MobileDetectUtil();
 //    $md->isMobile();
+namespace Our\Util;
 
 class mobileDetectUtil
 {
