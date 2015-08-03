@@ -4,10 +4,8 @@
  * @User: liuhui
  * @Date: 15-5-5 下午3:58 
  */
-class ArticleController extends BaseController{
-    public function doInit(){
-        $this->_view->setLayout('Admin');
-    }
+
+class ArticleController extends \Our\Controller\admin{
 
     /**
      * 列表
@@ -25,10 +23,10 @@ class ArticleController extends BaseController{
     public function postDataAction(){
         $title = $this->getLegalParam('title', 'str');
         $content = $this->getLegalParam('content', 'str');
-        //dump($this->_request->getPost('content'));
-        Yaflog(__METHOD__);
-        Yaflog($title);
-        Yaflog($content);
+
+        \Our\halo\HaloLogger::INFO(__METHOD__);
+        \Our\halo\HaloLogger::INFO($title);
+        \Our\halo\HaloLogger::INFO($content);
         $data = array(
             'title' => $title,
             'content' => $content,
@@ -37,7 +35,7 @@ class ArticleController extends BaseController{
             'author' => 'admin',
             'category_id' => 1
         );
-        $db = DataCenter::getFactory('db', 'myaf');
+        $db = \Our\halo\HaloFactory::getFactory('db', 'myaf');
         $lastId = $db->insertTable('art_content', $data);
         if($lastId >= 1){
             echo echoJsonString(0, array('id' => $lastId));
@@ -50,18 +48,20 @@ class ArticleController extends BaseController{
      * 上传文件
      * */
     public function postUploadImageAction(){
-        $ckeFuncNum = is_int($this->getLegalParam('CKEditorFuncNum', 'int'));
+        $ckeFuncNum = $this->getLegalParam('CKEditorFuncNum', 'int');
 
-        $upload = new upload();
+        $upload = new \Our\Util\upload();
         $upload->maxSize = 3145728;
         $upload->allowExts = array('jpg', 'gif', 'png', 'jpeg');
-        $upload->savePath = $this->_config['image']['upload']['path'] . 'origin/';
+        $upload->savePath = YafRegistry('config')['image']['upload']['path'] . 'origin/';
+
         if(!$upload->upload()){
             echo 'error: ';
             dump($upload->getErrorMsg());
         } else {
-            Yaflog($upload->getUploadFileInfo());
+            \Our\halo\HaloLogger::DEBUG($upload->getUploadFileInfo());
 
+            importFunc('netFunctions');
             $url = getDomain() . substr($upload->savePath, 1) . $upload->getUploadFileInfo()[0]['savename'];
 
             echo '<script type="text/javascript">';

@@ -7,6 +7,8 @@
  * @error code:
  *
  */
+namespace Our\Util;
+
 class upload
 {
     // 上传文件的最大值
@@ -142,6 +144,7 @@ class upload
         // 获取上传的文件信息
         // 对$_FILES数组信息处理
         $files = $this->dealFiles($_FILES);
+        \Our\halo\HaloLogger::DEBUG($_FILES);
         foreach ($files as $key => $file) {
             //过滤无效的上传
             if (!empty($file['name'])) {
