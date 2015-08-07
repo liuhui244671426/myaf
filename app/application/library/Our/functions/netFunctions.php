@@ -95,7 +95,10 @@ function IP()
     if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
         $arr = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
         $pos = array_search('unknown', $arr);
-        if (false !== $pos) unset($arr[$pos]);
+        if (false !== $pos){
+            unset($arr[$pos]);
+        }
+
         $ip = trim($arr[0]);
     } elseif (isset($_SERVER['HTTP_CLIENT_IP'])) {
         $ip = $_SERVER['HTTP_CLIENT_IP'];
