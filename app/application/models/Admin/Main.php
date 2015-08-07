@@ -8,15 +8,15 @@ class Admin_MainModel extends BaseModel{
     protected $redis;
     protected $mcd;
     public function __construct(){
-        $this->redis = DataCenter::getFactory('redis', 'local');
-        $this->mcd = DataCenter::getFactory('memcached', 'cms');
+        $this->redis = \Our\halo\HaloFactory::getFactory('redis', 'local');
+        $this->mcd = \Our\halo\HaloFactory::getFactory('memcached', 'cms');
     }
 
     public function testRedis(){
         $this->redis->delete('hello');
         $this->redis->set('hello', 'world');
         $val = $this->redis->get('hello');
-        print_r($val);
+        return $val;
     }
 
     public function testMCD(){

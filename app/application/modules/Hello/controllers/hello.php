@@ -6,11 +6,11 @@
  * Date: 15-3-12
  * Time: 上午12:20
  */
-class helloController extends BaseController
+class helloController extends \Our\Controller\hello
 {
     public function helloAction()
     {
-        $redis = DataCenter::getFactory('redis', 'local');
+        $redis = \Our\halo\HaloFactory::getFactory('redis', 'local');
 
         $isBool = $redis->mset(array('key1' => 'val1', 'key2' => 'val2', 'key3' => 'val3'));
         dump($isBool);
@@ -37,5 +37,41 @@ class helloController extends BaseController
         dump($keys);
 
         //dump($redis->hDel('car', 'name', 'price'));//todo fix
+    }
+
+    public function testAction(){
+
+        $targets = array('memcached01', 'memcached02', 'memcached03',
+            'memcached04', 'memcached05', 'memcached06',
+            'memcached07', 'memcached08', 'memcached09',
+            'memcached10', 'memcached11', 'memcached12',
+            'memcached13', 'memcached14', 'memcached15'
+        );
+        //$targets = array('redis01', 'redis02');
+
+        $hash = new \Our\Util\Flexihash\Flexihash();
+        $hash->addTargets($targets);
+
+        $hashArr = array();
+        for($i = 0; $i < 1000; $i++){
+            $lookup = $hash->lookup($i);
+            array_push($hashArr, $lookup);
+        }
+
+        print_r($hashArr);
+        rsort($hashArr);
+        print_r(array_count_values($hashArr));
+
+        $manager = new \Our\Util\Canoma\Manager(new \Our\Util\Canoma\HashAdapter\Crc32(), 30);
+        $manager->addNodes($targets);
+
+        $md5HashArr = array();
+        for($i = 0; $i < 1000; $i++){
+            $lookup = $manager->getNodeForString($i);
+            array_push($md5HashArr, $lookup);
+        }
+
+        rsort($md5HashArr);
+        print_r(array_count_values($md5HashArr));
     }
 }

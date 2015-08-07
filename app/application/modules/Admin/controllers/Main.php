@@ -15,7 +15,8 @@ class MainController extends \Our\Controller\admin
     public function testAction(){
         $db = new Admin_MainModel();
         $db->testRedis();
-
+        $a = 'new string';
+        dump(debug_zval_dump($a));
         //$db->testMCD();
 
 
