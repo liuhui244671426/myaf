@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7f621a10-563d-4eac-9a0a-18129916fd1f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/application/Bootstrap.php" afterPath="$PROJECT_DIR$/app/application/Bootstrap.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/application/controllers/Error.php" afterPath="$PROJECT_DIR$/app/application/controllers/Error.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/application/plugins/Auth.php" afterPath="$PROJECT_DIR$/app/application/plugins/Auth.php" />
     </list>
     <ignored path="myaf3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -50,7 +49,7 @@
       <file leaf-file-name="Article.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/application/modules/Admin/controllers/Article.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.0" vertical-offset="0" max-vertical-offset="1185">
+            <state vertical-scroll-proportion="5.625" vertical-offset="375" max-vertical-offset="1185">
               <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
               <folding>
                 <element signature="e#6#68#0#PHP" expanded="true" />
@@ -59,30 +58,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HaloLogger.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/application/library/Our/Halo/HaloLogger.php">
+      <file leaf-file-name="Auth.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/application/plugins/Auth.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.2" vertical-offset="780" max-vertical-offset="5040">
-              <caret line="147" column="8" selection-start-line="147" selection-start-column="8" selection-end-line="147" selection-end-column="8" />
-              <folding>
-                <element signature="e#1165#2268#0#PHP" expanded="false" />
-                <element signature="e#2274#2772#0#PHP" expanded="false" />
-                <element signature="e#2778#3302#0#PHP" expanded="false" />
-                <element signature="e#3308#3487#0#PHP" expanded="false" />
-                <element signature="e#3493#3670#0#PHP" expanded="false" />
-                <element signature="e#3676#3861#0#PHP" expanded="false" />
-                <element signature="e#3867#4046#0#PHP" expanded="false" />
-                <element signature="e#4052#4231#0#PHP" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Error.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/application/controllers/Error.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3243243" vertical-offset="75" max-vertical-offset="735">
-              <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.6446125" vertical-offset="229" max-vertical-offset="1005">
+              <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -116,7 +96,6 @@
         <option value="$PROJECT_DIR$/logs/sysExceptionHandler.log" />
         <option value="$PROJECT_DIR$/app/application/library/framework/Yaf_Namespace/ERR.php" />
         <option value="$PROJECT_DIR$/app/application/models/Admin/Index.php" />
-        <option value="$PROJECT_DIR$/app/application/plugins/Auth.php" />
         <option value="$PROJECT_DIR$/app/application/modules/Admin/controllers/Index.php" />
         <option value="$PROJECT_DIR$/app/application/views/builders/TableBuilder.php" />
         <option value="$PROJECT_DIR$/app/public/statics/scripts/page/admin/custom.js" />
@@ -162,6 +141,7 @@
         <option value="$PROJECT_DIR$/app/application/controllers/Error.php" />
         <option value="$PROJECT_DIR$/app/application/library/Our/Halo/HaloLogger.php" />
         <option value="$PROJECT_DIR$/app/application/Bootstrap.php" />
+        <option value="$PROJECT_DIR$/app/application/plugins/Auth.php" />
       </list>
     </option>
   </component>
@@ -246,6 +226,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="logs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myaf3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myaf3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="logs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="2015-08-07" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -415,7 +417,7 @@
     <property name="FullScreen" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Sailfish" />
     <property name="LayoutCode.rearrangeEntriesPHP" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="fun&#9;FILE&#9;file:///private/var/www/myaf3/app/application/library/Our/functions/functions.php&#10;cust&#9;FILE&#9;file:///private/var/www/myaf3/app/public/statics/scripts/page/admin/custom.js&#10;custom&#9;FILE&#9;file:///private/var/www/myaf3/app/public/statics/bracket/js/custom.js&#10;Header&#9;null&#9;null&#10;halologg&#9;FILE&#9;file:///private/var/www/myaf3/app/application/library/Our/halo/HaloLogger.php&#10;init&#9;FILE&#9;file:///private/var/www/myaf3/app/application/library/initConfig.php&#10;Boot&#9;FILE&#9;file:///private/var/www/myaf3/app/application/Bootstrap.php&#10;func&#9;FILE&#9;file:///private/var/www/myaf3/app/application/library/functions.php&#10;style.def&#9;FILE&#9;file:///private/var/www/myaf3/app/public/statics/bracket/css/style.default.css" />
+    <property name="SearchEverywhereHistoryKey" value="auth&#9;null&#9;null&#10;fun&#9;FILE&#9;file:///private/var/www/myaf3/app/application/library/Our/functions/functions.php&#10;cust&#9;FILE&#9;file:///private/var/www/myaf3/app/public/statics/scripts/page/admin/custom.js&#10;custom&#9;FILE&#9;file:///private/var/www/myaf3/app/public/statics/bracket/js/custom.js&#10;Header&#9;null&#9;null&#10;halologg&#9;FILE&#9;file:///private/var/www/myaf3/app/application/library/Our/halo/HaloLogger.php&#10;init&#9;FILE&#9;file:///private/var/www/myaf3/app/application/library/initConfig.php&#10;Boot&#9;FILE&#9;file:///private/var/www/myaf3/app/application/Bootstrap.php&#10;func&#9;FILE&#9;file:///private/var/www/myaf3/app/application/library/functions.php&#10;style.def&#9;FILE&#9;file:///private/var/www/myaf3/app/public/statics/bracket/css/style.default.css" />
     <property name="LayoutCode.rearrangeEntriesJavaScript" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="LayoutCode.rearrangeEntries" value="false" />
@@ -897,38 +899,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/application/modules/Admin/controllers/Article.php">
+    <entry file="file://$PROJECT_DIR$/app/application/Bootstrap.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.0" vertical-offset="0" max-vertical-offset="1185">
-          <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
-          <folding>
-            <element signature="e#6#68#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/logs/2015-08-07/23.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="579">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="-8.75" vertical-offset="150" max-vertical-offset="1290">
+          <caret line="24" column="60" selection-start-line="24" selection-start-column="60" selection-end-line="24" selection-end-column="60" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/application/library/Our/Halo/HaloLogger.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.2" vertical-offset="780" max-vertical-offset="5040">
-          <caret line="147" column="8" selection-start-line="147" selection-start-column="8" selection-end-line="147" selection-end-column="8" />
-          <folding>
-            <element signature="e#1165#2268#0#PHP" expanded="false" />
-            <element signature="e#2274#2772#0#PHP" expanded="false" />
-            <element signature="e#2778#3302#0#PHP" expanded="false" />
-            <element signature="e#3308#3487#0#PHP" expanded="false" />
-            <element signature="e#3493#3670#0#PHP" expanded="false" />
-            <element signature="e#3676#3861#0#PHP" expanded="false" />
-            <element signature="e#3867#4046#0#PHP" expanded="false" />
-            <element signature="e#4052#4231#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -948,18 +923,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/application/Bootstrap.php">
+    <entry file="file://$PROJECT_DIR$/app/application/controllers/Error.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.75" vertical-offset="150" max-vertical-offset="1290">
-          <caret line="24" column="60" selection-start-line="24" selection-start-column="60" selection-end-line="24" selection-end-column="60" />
+        <state vertical-scroll-proportion="0.7837838" vertical-offset="75" max-vertical-offset="735">
+          <caret line="38" column="67" selection-start-line="38" selection-start-column="67" selection-end-line="38" selection-end-column="67" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/application/controllers/Error.php">
+    <entry file="file://$PROJECT_DIR$/app/application/library/Our/Halo/HaloLogger.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3243243" vertical-offset="75" max-vertical-offset="735">
-          <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.7088847" vertical-offset="765" max-vertical-offset="5040">
+          <caret line="147" column="8" selection-start-line="147" selection-start-column="8" selection-end-line="147" selection-end-column="8" />
+          <folding>
+            <element signature="e#1165#2268#0#PHP" expanded="false" />
+            <element signature="e#2274#2772#0#PHP" expanded="false" />
+            <element signature="e#2778#3302#0#PHP" expanded="false" />
+            <element signature="e#3308#3487#0#PHP" expanded="false" />
+            <element signature="e#3493#3670#0#PHP" expanded="false" />
+            <element signature="e#3676#3861#0#PHP" expanded="false" />
+            <element signature="e#3867#4046#0#PHP" expanded="false" />
+            <element signature="e#4052#4231#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/logs/2015-08-07/23.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4041451" vertical-offset="1401" max-vertical-offset="1980">
+          <caret line="109" column="67" selection-start-line="109" selection-start-column="63" selection-end-line="109" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/application/modules/Admin/controllers/Article.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="5.625" vertical-offset="375" max-vertical-offset="1185">
+          <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+          <folding>
+            <element signature="e#6#68#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/application/plugins/Auth.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6446125" vertical-offset="229" max-vertical-offset="1005">
+          <caret line="38" column="28" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
           <folding />
         </state>
       </provider>
