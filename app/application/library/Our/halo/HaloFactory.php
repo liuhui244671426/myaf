@@ -5,7 +5,7 @@
  * @Date: 15-7-31 上午10:46
  * @desc Data base provider
  */
-namespace Our\halo;
+namespace Our\Halo;
 
 abstract class HaloFactory
 {
@@ -36,16 +36,16 @@ abstract class HaloFactory
 
         switch ($type){
             case 'db':
-                $connectionType = \Our\halo\HaloPdo::getInstance(array('host' => $config->host, 'port' => $config->port, 'user' => $config->user, 'pass' => $config->pass, 'dbname' => $config->dbname));
+                $connectionType = \Our\Halo\HaloPdo::getInstance(array('host' => $config->host, 'port' => $config->port, 'user' => $config->user, 'pass' => $config->pass, 'dbname' => $config->dbname));
                 break;
             case 'redis':
-                $connectionType = \Our\halo\HaloRedis::getInstance(array('host' => $config->host, 'port' => $config->port, 'pass' => $config->pass, 'timeout' => $config->timeout));
+                $connectionType = \Our\Halo\HaloRedis::getInstance(array('host' => $config->host, 'port' => $config->port, 'pass' => $config->pass, 'timeout' => $config->timeout));
                 break;
             case 'memcached':
-                $connectionType = \Our\halo\HaloMemcached::getInstance(array('host' => $config['host'], 'port' => $config['port'], 'timeout' => $config['timeout']));
+                $connectionType = \Our\Halo\HaloMemcached::getInstance(array('host' => $config['host'], 'port' => $config['port'], 'timeout' => $config['timeout']));
                 break;
             case 'memcache':
-                $connectionType = \Our\halo\HaloMemcache::getInstance(array('host' => $config['host'], 'port' => $config['port'], 'timeout' => $config['timeout']));
+                $connectionType = \Our\Halo\HaloMemcache::getInstance(array('host' => $config['host'], 'port' => $config['port'], 'timeout' => $config['timeout']));
                 break;
             default:
                 throw new \LogicException('this type: ' . $type . ' not found', EXC_CODE_HALO_TYPE_NOT_FOUND);

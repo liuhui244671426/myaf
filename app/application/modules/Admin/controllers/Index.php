@@ -45,14 +45,14 @@ class IndexController extends \Our\Controller\YafController
                 $this->redirect('/admin/index/login');
                 exit;
             }
-            \Our\halo\HaloLogger::INFO('user: ' . $user);
-            \Our\halo\HaloLogger::INFO('pass: ' . $pass);
-            \Our\halo\HaloLogger::INFO('uid: ' . $uid);
+            \Our\Halo\HaloLogger::INFO('user: ' . $user);
+            \Our\Halo\HaloLogger::INFO('pass: ' . $pass);
+            \Our\Halo\HaloLogger::INFO('uid: ' . $uid);
 
             if ($uid >= 1) {
 
                 $isWrite = $db->insLoginLog($uid, 1);
-                \Our\halo\HaloLogger::INFO($isWrite);
+                \Our\Halo\HaloLogger::INFO($isWrite);
                 //---------
                 $_SESSION['user']['uid'] = $uid;
                 $_SESSION['user']['uname'] = $user;

@@ -24,9 +24,9 @@ class ArticleController extends \Our\Controller\admin{
         $title = $this->getLegalParam('title', 'str');
         $content = $this->getLegalParam('content', 'str');
 
-        \Our\halo\HaloLogger::INFO(__METHOD__);
-        \Our\halo\HaloLogger::INFO($title);
-        \Our\halo\HaloLogger::INFO($content);
+        \Our\Halo\HaloLogger::INFO(__METHOD__);
+        \Our\Halo\HaloLogger::INFO($title);
+        \Our\Halo\HaloLogger::INFO($content);
         $data = array(
             'title' => $title,
             'content' => $content,
@@ -35,7 +35,7 @@ class ArticleController extends \Our\Controller\admin{
             'author' => 'admin',
             'category_id' => 1
         );
-        $db = \Our\halo\HaloFactory::getFactory('db', 'myaf');
+        $db = \Our\Halo\HaloFactory::getFactory('db', 'myaf');
         $lastId = $db->insertTable('art_content', $data);
         if($lastId >= 1){
             echo echoJsonString(0, array('id' => $lastId));
@@ -59,7 +59,7 @@ class ArticleController extends \Our\Controller\admin{
             echo 'error: ';
             dump($upload->getErrorMsg());
         } else {
-            \Our\halo\HaloLogger::DEBUG($upload->getUploadFileInfo());
+            \Our\Halo\HaloLogger::DEBUG($upload->getUploadFileInfo());
 
             importFunc('netFunctions');
             $url = getDomain() . substr($upload->savePath, 1) . $upload->getUploadFileInfo()[0]['savename'];

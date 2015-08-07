@@ -24,17 +24,17 @@ class AuthPlugin extends \Yaf\Plugin_Abstract
 
     public function dispatchLoopStartup(\Yaf\Request_Abstract $request, \Yaf\Response_Abstract $response)
     {
-        \Our\halo\HaloLogger::INFO(__METHOD__);
-        \Our\halo\HaloLogger::INFO($request->module);
-        \Our\halo\HaloLogger::INFO($request->action);
+        \Our\Halo\HaloLogger::INFO(__METHOD__);
+        \Our\Halo\HaloLogger::INFO($request->module);
+        \Our\Halo\HaloLogger::INFO($request->action);
 
         if (strcasecmp($request->module, 'Admin') == 0 && strcasecmp($request->action, 'login') != 0) {
             $isLogin = ((empty($_SESSION['user']['uid'])) || (!isset($_SESSION['user']['uid'])) || ($_SESSION['user']['uid'] == null))
                 ? false : true;
-            \Our\halo\HaloLogger::INFO('$request: ');
-            \Our\halo\HaloLogger::INFO($request);
-            \Our\halo\HaloLogger::INFO('$isLogin: ');
-            \Our\halo\HaloLogger::INFO($isLogin);
+            \Our\Halo\HaloLogger::INFO('$request: ');
+            \Our\Halo\HaloLogger::INFO($request);
+            \Our\Halo\HaloLogger::INFO('$isLogin: ');
+            \Our\Halo\HaloLogger::INFO($isLogin);
             //缺少auth
             if (!$isLogin) {
                 //header('location:/admin/index/login');

@@ -20,7 +20,7 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract
         session_start();
         require APPLICATION_PATH . '/application/library/Our/functions/functions.php';
         import(APPLICATION_PATH . '/application/library/initConfig.php');
-        \Our\halo\HaloLogger::$logLevel = 0;
+        \Our\Halo\HaloLogger::$logLevel = 0;
 
         set_error_handler('sysErrorHandler');
         //register_shutdown_function('sysShutdown');

@@ -1,5 +1,5 @@
 <?php
-namespace Our\halo;
+namespace Our\Halo;
 
 //todo test unit
 class HaloMemcached

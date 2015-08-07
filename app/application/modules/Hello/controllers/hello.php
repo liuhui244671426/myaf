@@ -10,7 +10,7 @@ class helloController extends \Our\Controller\hello
 {
     public function helloAction()
     {
-        $redis = \Our\halo\HaloFactory::getFactory('redis', 'local');
+        $redis = \Our\Halo\HaloFactory::getFactory('redis', 'local');
 
         $isBool = $redis->mset(array('key1' => 'val1', 'key2' => 'val2', 'key3' => 'val3'));
         dump($isBool);
@@ -48,19 +48,6 @@ class helloController extends \Our\Controller\hello
             'memcached13', 'memcached14', 'memcached15'
         );
         //$targets = array('redis01', 'redis02');
-
-        $hash = new \Our\Util\Flexihash\Flexihash();
-        $hash->addTargets($targets);
-
-        $hashArr = array();
-        for($i = 0; $i < 1000; $i++){
-            $lookup = $hash->lookup($i);
-            array_push($hashArr, $lookup);
-        }
-
-        print_r($hashArr);
-        rsort($hashArr);
-        print_r(array_count_values($hashArr));
 
         $manager = new \Our\Util\Canoma\Manager(new \Our\Util\Canoma\HashAdapter\Crc32(), 30);
         $manager->addNodes($targets);

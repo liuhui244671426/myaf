@@ -7,6 +7,6 @@
 class Admin_ArticleModel extends BaseModel{
     protected $_db;
     public function __construct(){
-        $this->_db = DataCenter::getFactory('db', 'cms');
+        $this->_db = \Our\Halo\HaloFactory::getFactory('db', 'cms');
     }
 }

@@ -1,5 +1,5 @@
 <?php
-namespace Our\halo;
+namespace Our\Halo;
 
 class HaloRedis
 {

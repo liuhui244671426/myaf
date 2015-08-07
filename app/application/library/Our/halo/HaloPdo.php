@@ -20,7 +20,7 @@
  * 预处理语句与存储过程
  * @url: http://php.net/manual/zh/pdo.prepared-statements.php
  * */
-namespace Our\halo;
+namespace Our\Halo;
 
 class HaloPdo
 {
