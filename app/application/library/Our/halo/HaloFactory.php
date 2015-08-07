@@ -48,7 +48,7 @@ abstract class HaloFactory
                 $connectionType = \Our\Halo\HaloMemcache::getInstance(array('host' => $config['host'], 'port' => $config['port'], 'timeout' => $config['timeout']));
                 break;
             default:
-                throw new \LogicException('this type: ' . $type . ' not found', EXC_CODE_HALO_TYPE_NOT_FOUND);
+                throw new \LogicException('Halo type: ' . $type . ' is not found', EXC_CODE_HALO_TYPE_NOT_FOUND);
                 break;
         }
         return self::$connections[$type][$name] = $connectionType;
