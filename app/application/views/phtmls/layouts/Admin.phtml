@@ -82,7 +82,8 @@
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                 <img src="/statics/bracket/images/photos/loggeduser.png" alt=""/>
                                 <?php
-                                echo HeaderBuilder::getUserName()['uname'];
+                                    echo empty($_SESSION['user'])?
+                                        '' : $_SESSION['user']['uname'];
                                 ?>
                                 <span class="caret"></span>
                             </button>

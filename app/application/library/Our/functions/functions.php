@@ -229,7 +229,7 @@ function sysErrorHandler($errno, $errstr, $errfile, $errline)
     if ($config['sysError']['catch']) {
         $errMsg = sprintf(PHP_EOL . '<?php exit;?>%s | code: %s | msg: %s | file: %s | line: %s' . PHP_EOL,
             date('Y-m-d H:i:s', TODAY), $errno, str_pad($errstr, 45), $errfile, $errline);
-        error_log($errMsg, 3, ROOT_PATH . '/logs/sysErrorHandler.log');
+        error_log($errMsg, 3, ROOT_PATH . '/data/logs/sysErrorHandler.log');
     }
 }
 
