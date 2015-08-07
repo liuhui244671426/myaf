@@ -21,7 +21,7 @@ class wx
 
     public function __construct()
     {
-        import(APPLICATION_PATH . '/application/library/netFunctions.php');
+        importFunc('netFunctions');
     }
 
     /**
@@ -46,7 +46,6 @@ class wx
 
         $url = sprintf($this->_UrlToken, http_build_query($params));
         $result = json_decode(getByUrl($url), true);
-        //todo to storage access_token
         return $result['access_token'];
     }
 
