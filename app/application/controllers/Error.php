@@ -19,8 +19,7 @@ class ErrorController extends \Our\Controller\YafController
         $msg2str = $exception->__toString();
         $code = $exception->getCode();
 
-        $errMsg = PHP_EOL . '<?php exit;?>' . date('Y-m-d H:i:s', TODAY) . ' | code: ' . $code . ' | msg: ' . PHP_EOL . $msg2str . PHP_EOL;
-        error_log($errMsg, 3, ROOT_PATH . '/data/logs/sysExceptionHandler.log');
+        \Our\Halo\HaloLogger::sysException($code, $msg2str);
 
         switch ($code) {
             case YAF\ERR\NOTFOUND\MODULE:

@@ -22,7 +22,7 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract
         import(APPLICATION_PATH . '/application/library/initConfig.php');
         \Our\Halo\HaloLogger::$logLevel = 0;
 
-        set_error_handler('sysErrorHandler');
+        set_error_handler('\Our\Halo\HaloLogger::sysError');
         //register_shutdown_function('sysShutdown');
     }
 

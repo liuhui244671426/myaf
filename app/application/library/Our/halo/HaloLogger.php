@@ -7,6 +7,9 @@ defined('HALO_LOG_INFO') || define('HALO_LOG_INFO', 2);
 defined('HALO_LOG_TRACKER') || define('HALO_LOG_TRACKER', 3);
 defined('HALO_LOG_EEROR') || define('HALO_LOG_EEROR', 4);
 defined('HALO_LOG_FATAL') || define('HALO_LOG_FATAL', 5);
+defined('HALO_LOG_SYS_ERROR') || define('HALO_LOG_SYS_ERROR', 6);
+defined('HALO_LOG_SYS_EXCEPTION') || define('HALO_LOG_SYS_EXCEPTION', 7);
+
 
 define('SERVER_NAME', 'WContact');
 
@@ -123,41 +126,31 @@ class HaloLogger
         self::write(HALO_LOG_FATAL, $domain, $info, $file, $line, $output);
     }
 
+    public static function sysError($errno, $errstr, $errfile, $errline){
+        if (!(error_reporting() & $errno)) {
+            // This error code is not included in error_reporting
+            return;
+        }
+
+        $config = \Yaf\Registry::get('config');
+        if ($config['sysError']['catch']) {
+            $errMsg = sprintf('<?php exit;?>%s | code: %s | msg: %s | file: %s | line: %s' . PHP_EOL . PHP_EOL,
+                date('Y-m-d H:i:s', TODAY), $errno, str_pad($errstr, 45), $errfile, $errline);
+            error_log($errMsg, 3, ROOT_PATH . '/data/logs/sysErrorHandler.log');
+        }
+    }
+    /**
+     * ErrorAction
+     * */
+    public static function sysException($code, $msg2str){
+        $errMsg = sprintf('<?php exit;?>%s | code: %s | msg: %s' . PHP_EOL . PHP_EOL,
+            date('Y-m-d H:i:s', TODAY), $code, $msg2str);
+        error_log($errMsg, 3, ROOT_PATH . '/data/logs/sysExceptionHandler.log');
+    }
+
     public static function TRACKER($info, $file = '', $line = '', $domain = '', $output = 'file')
     {
         self::write(HALO_LOG_TRACKER, $domain, $info, $file, $line, $output);
-    }
-
-
-    /* instance method */
-    public function __DEBUG__($info, $file = '', $line = '', $output = 'file')
-    {
-        HaloLogger::write(HALO_LOG_DEBUG, $this->_domain, $info, $file, $line, $output);
-    }
-
-    public function __INFO__($info, $file = '', $line = '', $output = 'file')
-    {
-        HaloLogger::write(HALO_LOG_INFO, $this->_domain, $info, $file, $line, $output);
-    }
-
-    public function __WARNNING__($info, $file = '', $line = '', $output = 'file')
-    {
-        HaloLogger::write(HALO_LOG_WARNNING, $this->_domain, $info, $file, $line, $output);
-    }
-
-    public function __ERROR__($info, $file = '', $line = '', $output = 'file')
-    {
-        HaloLogger::write(HALO_LOG_EEROR, $this->_domain, $info, $file, $line, $output);
-    }
-
-    public function __FATAL__($info, $file = '', $line = '', $output = 'file')
-    {
-        HaloLogger::write(HALO_LOG_FATAL, $this->_domain, $info, $file, $line, $output);
-    }
-
-    public function __TRACKER__($info, $file = '', $line = '', $output = 'file')
-    {
-        HaloLogger::write(HALO_LOG_TRACKER, $this->_domain, $info, $file, $line, $output);
     }
 
     public static function LOG($domain)
