@@ -132,7 +132,7 @@ class layout implements \Yaf\View_Interface
             $this->layout_path = $path . "layouts/";
             return true;
         }
-        throw new Exception("Invalid path: {$path}");
+        throw new \Exception("Invalid path: {$path}");
     }
 
     /**
