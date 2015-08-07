@@ -69,11 +69,11 @@ class IP
     private static function init()
     {
         if (self::$fp === NULL) {
-            self::$ip = new ipUtil();
+            self::$ip = new \Our\Util\IP();
 
-            self::$fp = fopen(sprintf('%s/%s', ROOT_PATH, 'ipdb.dat'), 'rb');
+            self::$fp = fopen(sprintf('%s/data/%s', ROOT_PATH, 'ipdb.dat'), 'rb');
             if (self::$fp === FALSE) {
-                throw new Exception('Invalid ipdb.dat file!');
+                throw new \Exception('Invalid ipdb.dat file!');
             }
 
             self::$offset = unpack('Nlen', fread(self::$fp, 4));

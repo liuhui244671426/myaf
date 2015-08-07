@@ -340,7 +340,9 @@ class HaloPdo
         if (count($values)) {
             $sql = sprintf('INSERT INTO %s SET %s', $table, $fields);
             $this->query($sql, $values);
-            Yaflog($sql . '插入语句');
+            //write log
+            \Our\Halo\HaloLogger::INFO('插入语句 '.$sql);
+
             return intval($this->_dbh->lastInsertId());
         }
 
@@ -582,8 +584,9 @@ class HaloPdo
             }
 
             trigger_error($stmt->errorInfo()[2]);
-            Yaflog($msg, __FILE__, __LINE__, ' ERROR-SQL');
-            Yaflog($stmt->errorInfo());
+            //write log
+            \Our\Halo\HaloLogger::ERROR($msg, __FILE__, __LINE__, ' ERROR-SQL');
+            \Our\Halo\HaloLogger::ERROR($stmt->errorInfo());
         }
 
         return $stmt;
