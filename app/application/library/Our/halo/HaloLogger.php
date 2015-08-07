@@ -39,7 +39,6 @@ class HaloLogger
     private static function write($level, &$domain, &$info, $file = '', $line = '', $output = 'file')
     {
         $logLevel = self::$logLevel;
-
         if ($level < $logLevel) {
             return;
         }
@@ -62,7 +61,8 @@ class HaloLogger
             $_REQUEST['MEM_LOG'][] = $message;
         } else {
             $filepath = HaloLogger::loggerFileName($domain);
-            @file_put_contents($filepath, $message, FILE_APPEND);
+            $is = @file_put_contents($filepath, $message, FILE_APPEND);
+
             if (self::$log2Console)
                 printf("%s", $message);
         }
@@ -72,8 +72,10 @@ class HaloLogger
     {
         $date = date('Y-m-d');
         $hour = date('H');
-        $filepath = $_SERVER['DOCUMENT_ROOT'] . '/../../logs/' . $date . '/';
-        //$path = ensureFilePath($filepath, true);
+
+        $filepath = ROOT_PATH . '/data/logs/'.$date.'/';
+
+        $path = \Our\Halo\HaloMethod::ensureFilePath($filepath, true);
         if (strlen($domain) > 0) {
             $filepath = sprintf('%s%s-%02d.%s', $filepath, $domain, $hour, $ext);
         } else {
