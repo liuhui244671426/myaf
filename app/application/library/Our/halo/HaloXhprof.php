@@ -1,4 +1,5 @@
 <?php
+namespace Our\Halo;
 
 class HaloXhprof
 {
@@ -31,10 +32,10 @@ class HaloXhprof
             import(sprintf('%s/xhprof/xhprof_lib.php', LIB_PATH));
             import(sprintf('%s/xhprof/xhprof_runs.php', LIB_PATH));
 
-            $xhprofRuns = new XHProfRuns_Default();
+            $xhprofRuns = new \XHProfRuns_Default();
             $run_id = $xhprofRuns->save_run($xhprofData, "xhprof");
             if ($target) {
-                $config = Yaf_Registry::get('config');
+                $config = YafRegistry('config');
                 echo '<a href="http://' . $config->xhprof->host . '/index.php?run=' . $run_id . '&source=xhprof" target="_blank">统计信息</a>';
             }
         }

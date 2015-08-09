@@ -125,7 +125,7 @@ class HaloMethod{
 
     public static function arraySearchCol($array, $colName, $key)
     {
-        $colArray = arrayCol($array, $colName);
+        $colArray = self::arrayCol($array, $colName);
         $pos = array_search($key, $colArray);
         return $pos;
     }
@@ -223,7 +223,7 @@ class HaloMethod{
     {
         if (!isset($input))
             return $input;
-        if (!is_array($input) || isAssocArray($input)) {
+        if (!is_array($input) || self::isAssocArray($input)) {
             $val = $input;
             $input = array();
             $input[] = $val;
@@ -382,17 +382,17 @@ class HaloMethod{
     public static function unsetUrlParam($url, $key)
     {
         $urlObj = parse_url($url);
-        $params = convertQuery($urlObj['query']);
-        $url = connectQuery($urlObj['path'], $params);
+        $params = self::convertQuery($urlObj['query']);
+        $url = self::connectQuery($urlObj['path'], $params);
         return $url;
     }
 
     public static function resetUrlParam($url, $param)
     {
         $urlObj = parse_url($url);
-        $params = convertQuery($urlObj['query']);
-        $params = halo_array_merge($params, (array)$param);
-        $url = connectQuery($urlObj['path'], $params);
+        $params = self::convertQuery($urlObj['query']);
+        $params = self::halo_array_merge($params, (array)$param);
+        $url = self::connectQuery($urlObj['path'], $params);
         return $url;
     }
 
@@ -416,15 +416,15 @@ class HaloMethod{
 
     public static function getClientIp($checkProxy = true)
     {
-        if ($checkProxy && ($ip = getFromServer('HTTP_CLIENT_IP')) != null) {
+        if ($checkProxy && ($ip = self::getFromServer('HTTP_CLIENT_IP')) != null) {
             return $ip;
         }
 
-        if ($checkProxy && ($ip = getFromServer('HTTP_X_FORWARDED_FOR')) != null) {
+        if ($checkProxy && ($ip = self::getFromServer('HTTP_X_FORWARDED_FOR')) != null) {
             return $ip;
         }
 
-        return getFromServer('REMOTE_ADDR');
+        return self::getFromServer('REMOTE_ADDR');
     }
 
     public static function haloDie()
