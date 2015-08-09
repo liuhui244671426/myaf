@@ -26,8 +26,9 @@ class HaloPdo
 {
     protected static $_instance = null;
     private $_dbh;
-    protected $transLevel = 0;
-    public $error;
+    private $_error;
+    protected $_transLevel = 0;
+
     /**
      * 实例
      * @param array $config
@@ -55,7 +56,7 @@ class HaloPdo
                     \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
                 ));
         } catch (\Exception $e) {
-            if ($this) $this->error = $e->getMessage();
+            if ($this) $this->_error = $e->getMessage();
         }
     }
 
@@ -137,33 +138,33 @@ class HaloPdo
 
     public function beginTransaction()
     {
-        if (!$this->transactionNestable() || $this->transLevel == 0) {
+        if (!$this->transactionNestable() || $this->_transLevel == 0) {
             $this->_dbh->beginTransaction();
         } else {
-            $this->_dbh->exec(sprintf('SAVEPOINT LEVEL%d', $this->transLevel));
+            $this->_dbh->exec(sprintf('SAVEPOINT LEVEL%d', $this->_transLevel));
         }
 
-        $this->transLevel++;
+        $this->_transLevel++;
     }
 
     public function commit()
     {
-        $this->transLevel--;
-        if (!$this->transactionNestable() || $this->transLevel == 0) {
+        $this->_transLevel--;
+        if (!$this->transactionNestable() || $this->_transLevel == 0) {
             $this->_dbh->commit();
         } else {
-            $this->_dbh->exec(sprintf("RELEASE SAVEPOINT LEVEL%d", $this->transLevel));
+            $this->_dbh->exec(sprintf("RELEASE SAVEPOINT LEVEL%d", $this->_transLevel));
         }
     }
 
     public function rollBack()
     {
-        $this->transLevel--;
+        $this->_transLevel--;
 
-        if (!$this->transactionNestable() || $this->transLevel == 0) {
+        if (!$this->transactionNestable() || $this->_transLevel == 0) {
             $this->_dbh->rollBack();
         } else {
-            $this->_dbh->exec(sprintf("ROLLBACK TO SAVEPOINT LEVEL%d", $this->transLevel));
+            $this->_dbh->exec(sprintf("ROLLBACK TO SAVEPOINT LEVEL%d", $this->_transLevel));
         }
     }
     /**
@@ -208,7 +209,7 @@ class HaloPdo
      * 获取解释后的统计
      * @param string $table 表名
      * @param string $condition 条件
-     * @return
+     * @return array
      * */
     public function getExplainCountByCondition($table, $condition)
     {
@@ -241,7 +242,7 @@ class HaloPdo
      * 获取去重后的数据
      * @param string $table 表名
      * @param string $condition 条件
-     * @param string $countPara 去重字段
+     * @param string $distinct 去重字段
      * */
     public function getDistinctByCondition($table, $condition, $distinct)
     {
