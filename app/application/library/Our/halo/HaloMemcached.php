@@ -41,7 +41,7 @@ class HaloMemcached
         $isConnected = $this->_mcd->addServer($config['host'], $config['port']);
 
         if($isConnected == false){
-            Yaflog($this->_mcd->getResultMessage());
+            \Our\Halo\HaloLogger::INFO($this->_mcd->getResultMessage());
             exit;
         }
         return $this->_mcd;
@@ -108,7 +108,8 @@ class HaloMemcached
 
     /**
      * 从缓存删除数据
-     * @param string|array|int... $key
+     * @param mixed(string|array|int) $key
+     * @return mixed
      */
     public function del($key)
     {
