@@ -2,7 +2,7 @@
 /**
  * https://github.com/Dynom/Canoma
  *
- *
+ * 一致hash
  * */
 namespace Our\Util\Canoma;
 
