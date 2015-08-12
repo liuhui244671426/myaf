@@ -61,7 +61,7 @@ class initConfig
     static public function setConfig()
     {
         $appIni = new \Yaf\Config\Ini(sprintf('%s/config/%s', ROOT_PATH, 'app.ini'), MODE);
-        \Yaf\Registry::set('config', $appIni);
+        YafRegistry('config', $appIni);
         self::setExtendConfig();
     }
 
