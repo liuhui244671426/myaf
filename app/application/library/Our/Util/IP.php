@@ -78,7 +78,7 @@ class IP
 
             self::$offset = unpack('Nlen', fread(self::$fp, 4));
             if (self::$offset['len'] < 4) {
-                throw new Exception('Invalid ipdb.dat file!');
+                throw new \Exception('Invalid ipdb.dat file!');
             }
 
             self::$index = fread(self::$fp, self::$offset['len'] - 4);
