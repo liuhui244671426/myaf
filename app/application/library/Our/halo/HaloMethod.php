@@ -430,7 +430,7 @@ class HaloMethod{
     public static function haloDie()
     {
         HaloXhprof::disable(false);
-        Logger::flush();
+        \Our\Halo\HaloLogger::flush();
         die();
     }
 
