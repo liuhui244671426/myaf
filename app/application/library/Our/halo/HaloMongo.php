@@ -1,14 +1,7 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Yaxiang He
- * Date: 14-1-17
- * Time: 上午9:50
- */
-/**
  * file_name HaloMongo.php
  * @desc mongo
- * @company mojichina.com
  *
  */
 

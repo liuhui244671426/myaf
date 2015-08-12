@@ -1,11 +1,4 @@
 <?php
-/**
- * WContactLog
- * @author frank.xu
- * @date Dec 27, 2012 5:04:43 PM
- * @copyright  Copyright (c) 2012 Youlu
- * @version    1.0.0
- */
 
 defined('ERROR_LOG_FILE') || define('ERROR_LOG_FILE', 'error');
 
