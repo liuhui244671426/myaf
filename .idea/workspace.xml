@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7f621a10-563d-4eac-9a0a-18129916fd1f" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/application/library/Our/memSession.php" afterPath="$PROJECT_DIR$/app/application/library/Our/SessionHandler.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/application/Bootstrap.php" afterPath="$PROJECT_DIR$/app/application/Bootstrap.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/application/modules/Hello/controllers/hello.php" afterPath="$PROJECT_DIR$/app/application/modules/Hello/controllers/hello.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/memcached.ini" afterPath="$PROJECT_DIR$/config/memcached.ini" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/public/index.php" afterPath="$PROJECT_DIR$/app/public/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/public/index_dev.php" afterPath="$PROJECT_DIR$/app/public/index_dev.php" />
     </list>
     <ignored path="myaf3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,9 +31,33 @@
       <file leaf-file-name="Bootstrap.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/application/Bootstrap.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.58295965" vertical-offset="0" max-vertical-offset="1470">
-              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.39473686" vertical-offset="0" max-vertical-offset="1440">
+              <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/public/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="795">
+              <caret line="5" column="47" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
+              <folding>
+                <element signature="e#6#41#0#PHP" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index_dev.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/public/index_dev.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="795">
+              <caret line="5" column="47" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
+              <folding>
+                <element signature="e#6#41#0#PHP" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -126,8 +148,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/application/library/Our/Util/Canoma/HashAdapter/Salsa20.php" />
-        <option value="$PROJECT_DIR$/app/application/library/Our/Util/Canoma/HashAdapter/Md5.php" />
         <option value="$PROJECT_DIR$/app/application/library/Our/Util/Canoma/HashAdapter/Crc32.php" />
         <option value="$PROJECT_DIR$/app/application/library/Our/Util/Canoma/HashAdapter/Adler32.php" />
         <option value="$PROJECT_DIR$/config/app.ini" />
@@ -175,8 +195,10 @@
         <option value="$PROJECT_DIR$/config/memcache.ini" />
         <option value="$PROJECT_DIR$/config/memcached.ini" />
         <option value="$PROJECT_DIR$/app/application/modules/Hello/controllers/hello.php" />
-        <option value="$PROJECT_DIR$/app/application/Bootstrap.php" />
         <option value="$PROJECT_DIR$/app/application/library/Our/SessionHandler.php" />
+        <option value="$PROJECT_DIR$/app/application/Bootstrap.php" />
+        <option value="$PROJECT_DIR$/app/public/index.php" />
+        <option value="$PROJECT_DIR$/app/public/index_dev.php" />
       </list>
     </option>
   </component>
@@ -241,21 +263,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myaf3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="myaf3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -496,13 +508,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/application/views/phtmls/layouts/Admin.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16216215" vertical-offset="1185" max-vertical-offset="2310">
-          <caret line="85" column="72" selection-start-line="85" selection-start-column="72" selection-end-line="85" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/application/modules/Admin/controllers/Member.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="345">
@@ -741,13 +746,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/public/index_dev.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43436295" vertical-offset="0" max-vertical-offset="1036">
-          <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/public/info.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1060">
@@ -859,10 +857,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/public/index_dev.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="795">
+          <caret line="5" column="47" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
+          <folding>
+            <element signature="e#6#41#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="795">
+          <caret line="5" column="47" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
+          <folding>
+            <element signature="e#6#41#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/application/Bootstrap.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58295965" vertical-offset="0" max-vertical-offset="1470">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.39473686" vertical-offset="0" max-vertical-offset="1440">
+          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
           <folding />
         </state>
       </provider>

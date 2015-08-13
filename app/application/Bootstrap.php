@@ -16,8 +16,6 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract
      */
     public function _initConfig(\Yaf\Dispatcher $dispatcher)
     {
-        header('content-type:text/html;charset=utf-8');
-
         require APPLICATION_PATH . '/application/library/Our/functions/functions.php';
         import(APPLICATION_PATH . '/application/library/initConfig.php');
         \Our\Halo\HaloLogger::$logLevel = 0;

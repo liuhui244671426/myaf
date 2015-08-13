@@ -3,7 +3,7 @@
  * Yaf 入口文件
  * @author : 刘辉
  */
-
+header('content-type:text/html;charset=utf-8');
 define('MODE', 'dev');//运行环境
 define('INAPP', true);
 date_default_timezone_set('PRC');
