@@ -61,4 +61,10 @@ class helloController extends \Our\Controller\hello
         rsort($md5HashArr);
         print_r(array_count_values($md5HashArr));
     }
+
+    public function testSessionAction(){
+        unset($_SESSION['aaa']);
+
+        $_SESSION['bbb'] = 'hellosssss222222world';
+    }
 }
