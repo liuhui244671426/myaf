@@ -8,11 +8,11 @@
 namespace Our;
 
 class SessionHandler extends \SessionHandler{
-    private static $lifetime = null;
+    private static $_lifetime = null;
     private static $_handler = null;
 
     public function __construct(){
-        self::$lifetime = ini_get("session.gc_maxlifetime");
+        self::$_lifetime = ini_get("session.gc_maxlifetime");
         self::$_handler = \Our\Halo\HaloFactory::getFactory('memcached', 'session');
 
         \Our\Halo\HaloLogger::INFO(__CLASS__.__METHOD__);
@@ -27,17 +27,17 @@ class SessionHandler extends \SessionHandler{
     }
 
     public function read($session_id){
-        return self::$_handler->get(self::session_key($session_id));
+        return self::$_handler->get(self::sessionKey($session_id));
     }
 
     public function write($session_id,$data){
-        self::$_handler->set(self::session_key($session_id), $data, self::$lifetime);
+        self::$_handler->set(self::sessionKey($session_id), $data, self::$_lifetime);
 
         return true;
     }
 
     public function destroy($session_id){
-        self::$_handler->del(self::session_key($session_id));
+        self::$_handler->del(self::sessionKey($session_id));
         return true;
     }
 
@@ -45,7 +45,7 @@ class SessionHandler extends \SessionHandler{
         return true;
     }
 
-    public function session_key($session_id){
+    protected function sessionKey($session_id){
         return 'session_'.$session_id;
     }
 }
