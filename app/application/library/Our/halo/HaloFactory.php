@@ -31,7 +31,7 @@ abstract class HaloFactory
             throw new \LogicException(sprintf('extend config of %s->%s not found', $type, $name), EXC_CODE_EXTEND_CONFIG_NOT_FOUND);
         }
 
-        $file = sprintf('%sOur/halo/%s.php', LIBRARY_PATH, self::$HaloMap[$type]);
+        $file = sprintf('%sOur/Halo/%s.php', LIBRARY_PATH, self::$HaloMap[$type]);
         import($file);
 
         switch ($type){

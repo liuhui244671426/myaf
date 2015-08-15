@@ -19,7 +19,7 @@ class IndexController extends \Our\Controller\YafController
      */
     public function loginAction()
     {
-
+        \Our\Halo\HaloLogger::DEBUG('caca');
         $this->_view->display('Admin/login.phtml', array());
     }
 

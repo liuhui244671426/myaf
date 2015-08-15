@@ -16,6 +16,7 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract
      */
     public function _initConfig(\Yaf\Dispatcher $dispatcher)
     {
+
         require APPLICATION_PATH . '/application/library/Our/functions/functions.php';
         import(APPLICATION_PATH . '/application/library/initConfig.php');
         \Our\Halo\HaloLogger::$logLevel = 0;
@@ -23,7 +24,7 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract
         set_error_handler('\Our\Halo\HaloLogger::sysError');
         //register_shutdown_function('sysShutdown');
 
-        $session = new \Our\SessionHandler();
+        /*$session = new \Our\SessionHandler();
         session_set_save_handler(
             array($session, 'open'),
             array($session, 'close'),
@@ -32,7 +33,7 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract
             array($session, 'destroy'),
             array($session, 'gc')
         );
-        session_start();
+        session_start();*/
 
     }
 
@@ -86,5 +87,7 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract
                 'actio' => 'login'
             ))
         );
+
+
     }
 }
