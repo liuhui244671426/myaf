@@ -4,7 +4,7 @@
  * @author : 刘辉
  */
 header('content-type:text/html;charset=utf-8');
-define('MODE', 'dev');//运行环境
+define('MODE', 'production');//运行环境
 define('INAPP', true);
 date_default_timezone_set('PRC');
 
@@ -37,7 +37,7 @@ if (XHPROF) {
 $app = new \Yaf\Application(APPLICATION_PATH . "/application/configs/application.ini", 'production');
 
 $app->bootstrap()->run();
-exit('index.php end');
+
 //------xhprof--------//
 if (XHPROF) {
     //结束，然后写入文件，注意目录
