@@ -325,7 +325,7 @@ function YafErrorCode($code){
 //-------------------------------------
 function YafRegistry($name, $value = ''){
     if(empty($value)){
-        if(\Yaf\Registry::has($name)){
+        if(YafRegistryHas($name)){
             return \Yaf\Registry::get($name);
         } else {
             throw new \LogicException('YafRegistery::get ' . $name . ' is empty!');
