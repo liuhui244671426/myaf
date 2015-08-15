@@ -22,9 +22,11 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract
         \Our\Halo\HaloLogger::$logLevel = 0;
 
         set_error_handler('\Our\Halo\HaloLogger::sysError');
+        set_exception_handler('\Our\Halo\HaloLogger::sysException');
+
         //register_shutdown_function('sysShutdown');
 
-        /*$session = new \Our\SessionHandler();
+        $session = new \Our\SessionHandler();
         session_set_save_handler(
             array($session, 'open'),
             array($session, 'close'),
@@ -33,7 +35,7 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract
             array($session, 'destroy'),
             array($session, 'gc')
         );
-        session_start();*/
+        session_start();
 
     }
 

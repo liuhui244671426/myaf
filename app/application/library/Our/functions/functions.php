@@ -325,10 +325,10 @@ function YafErrorCode($code){
 //-------------------------------------
 function YafRegistry($name, $value = ''){
     if(empty($value)){
-        if(YafRegistryHas($name)){
+        if(YafRegistryHas($name) === true){
             return \Yaf\Registry::get($name);
         } else {
-            throw new \LogicException('YafRegistery::get ' . $name . ' is empty!');
+            return false;
         }
 
     } else {

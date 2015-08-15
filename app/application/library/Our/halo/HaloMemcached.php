@@ -38,10 +38,10 @@ class HaloMemcached
         }
 
         $this->_mcd = new \Memcached();
-        $isConnected = $this->_mcd->addServer($config['host'], $config['port']);
+        $this->_mcd->addServer($config['host'], $config['port']);
 
-        if($isConnected == false){
-            \Our\Halo\HaloLogger::INFO($this->_mcd->getResultMessage());
+        if($this->getStats()['pid'] == -1){
+            \Our\Halo\HaloLogger::ERROR($this->_mcd->getResultMessage());
             exit;
         }
         return $this->_mcd;
