@@ -55,8 +55,8 @@ class HaloRedis
             throw new \RangeException('Redis connect type is ' . $type . ' and it\'s error', EXC_CODE_HALO_REDIS_CONNECT_TYPE_OUT_RANGE);
         }
 
-        if (isset($passwd)) {
-            $this->_redis->auth($passwd);
+        if (isset($config['pass'])) {
+            $this->_redis->auth($config['pass']);
         }
 
         return $this->_redis;
