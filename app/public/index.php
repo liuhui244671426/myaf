@@ -34,7 +34,8 @@ if (XHPROF) {
     //xhprof_enable();
 }
 
-$app = new Yaf_Application(APPLICATION_PATH . "/application/configs/application.ini", 'production');
+$app = new \Yaf\Application(APPLICATION_PATH . "/application/configs/application.ini", 'production');
+
 $app->bootstrap()->run();
 
 //------xhprof--------//

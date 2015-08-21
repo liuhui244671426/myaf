@@ -19,7 +19,6 @@ class IndexController extends \Our\Controller\YafController
      */
     public function loginAction()
     {
-
         $this->_view->display('Admin/login.phtml', array());
     }
 

@@ -325,7 +325,12 @@ function YafErrorCode($code){
 //-------------------------------------
 function YafRegistry($name, $value = ''){
     if(empty($value)){
-        return \Yaf\Registry::get($name);
+        if(YafRegistryHas($name) === true){
+            return \Yaf\Registry::get($name);
+        } else {
+            return false;
+        }
+
     } else {
         \Yaf\Registry::set($name, $value);
         return true;

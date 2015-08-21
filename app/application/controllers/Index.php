@@ -5,7 +5,7 @@
  * @Create Time: 14-8-18 下午7:01
  * @Desc :
  */
-class IndexController extends BaseController
+class IndexController extends \Our\Controller\YafController
 {
     public function doInit()
     {
@@ -14,6 +14,6 @@ class IndexController extends BaseController
     public function IndexAction()
     {
         //默认跳到官网去
-        $this->redirect('http://www.moji.com');
+        //$this->redirect('http://www.moji.com');
     }
 }

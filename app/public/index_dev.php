@@ -9,7 +9,7 @@ define('INAPP', true);
 date_default_timezone_set('PRC');
 
 if (MODE == 'dev' || MODE == 'test') {
-    error_reporting(E_ALL);
+    error_reporting(E_ALL & E_NOTICE & E_PARSE);
     define('XHPROF', true);//开启xhprof
 } else {
     error_reporting(0);
@@ -31,20 +31,21 @@ if (!extension_loaded('yaf')) {
 
 //------xhprof--------//
 if (XHPROF) {
-    xhprof_enable();
+    //xhprof_enable();
 }
 
 $app = new \Yaf\Application(APPLICATION_PATH . "/application/configs/application.ini", 'production');
+
 $app->bootstrap()->run();
 
 //------xhprof--------//
 if (XHPROF) {
     //结束，然后写入文件，注意目录
-    $xhprof_data = xhprof_disable();
-    $XHPROF_ROOT = sprintf('%s%s', LIBRARY_PATH, '/xhprof');
-    include_once $XHPROF_ROOT . "/xhprof_lib/utils/xhprof_lib.php";
-    include_once $XHPROF_ROOT . "/xhprof_lib/utils/xhprof_runs.php";
-    $xhprof_runs = new XHProfRuns_Default();
-    $run_id = $xhprof_runs->save_run($xhprof_data, "myaf3_me");
-    //echo "<a href='http://localhost/myaf3/app/application/library/xhprof/xhprof_html/index.php?run=$run_id&source=xhprof_foo'>分析</a>";
+    //$xhprof_data = xhprof_disable();
+    //$XHPROF_ROOT = sprintf('%s%s', ROOT_PATH, '/library/xhprof');
+    //include_once $XHPROF_ROOT . "/xhprof_lib/utils/xhprof_lib.php";
+    //include_once $XHPROF_ROOT . "/xhprof_lib/utils/xhprof_runs.php";
+    //$xhprof_runs = new XHProfRuns_Default();
+    //$run_id = $xhprof_runs->save_run($xhprof_data, "xhprof_foo");
+    //echo "<a href='http://localhost/myaf/library/xhprof/xhprof_html/?run=$run_id&source=xhprof_foo'>分析</a>";
 }
