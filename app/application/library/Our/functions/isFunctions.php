@@ -1,6 +1,7 @@
 <?php
 /**
  * @Desc: is series functions
+ * 返回值只有Bool
  * @User: liuhui
  * @Date: 15-6-3 下午9:20 
  */
@@ -51,13 +52,13 @@ function isEmail($var)
 /**
  * 校验密码是否符合规则长度
  * @param string $password 密码
- * @return bool
+ * @return bool false(弱密码)|true(合格)
  */
 function isPassword($password)
 {
     $weakArray = weakPassword();
-    if (in_array($password, $weakArray)) {
-        return false;//弱密码
+    if (in_array($password, $weakArray, true)) {
+        return false;
     }
 
     $strlen = strlen($password);
@@ -94,15 +95,23 @@ function isSummer()
 }
 /**
  * 是否正确来源
+ * todo 完善
+ * @param array $urls 待检查的url地址
  * */
-function isReferer($domain){
-
+function isReferer(array $urls){
+    $referer = $_SERVER['HTTP_REFERER'];
 }
 /**
- * 是否同源
+ * POST是否同源
+ * todo test
+ * @param string $domain 正确域名
  * */
 function isOrigin($domain){
-
+    $origin = $_SERVER['HTTP_ORIGIN'];
+    importFunc('netFunctions');
+    return (stripos($origin, getDomain()) === false)?
+        false:
+        true;
 }
 
 //-------------------------------------
