@@ -354,11 +354,7 @@ class HaloRedis
      */
     public function listSize($list)
     {
-        $return = null;
-
-        $return = $this->_redis->lSize($list);
-
-        return $return;
+        return $this->_redis->lSize($list);
     }
 
     /**
@@ -369,11 +365,7 @@ class HaloRedis
      */
     public function listSet($list, $index = 0, $value = null)
     {
-        $return = null;
-
-        $return = $this->_redis->lSet($list, $index, $value);
-
-        return $return;
+        return $this->_redis->lSet($list, $index, $value);
     }
 
     /**
@@ -403,11 +395,7 @@ class HaloRedis
      */
     public function listTrim($list, $start = 0, $end = -1)
     {
-        $return = null;
-
-        $return = $this->_redis->lTrim($list, $start, $end);
-
-        return $return;
+        return $this->_redis->lTrim($list, $start, $end);
     }
 
     /**
@@ -418,11 +406,7 @@ class HaloRedis
      */
     public function listRemove($list, $value, $count = 0)
     {
-        $return = null;
-
-        $return = $this->_redis->lRem($list, $value, $count);
-
-        return $return;
+        return $this->_redis->lRem($list, $value, $count);
     }
 
     /**
@@ -431,9 +415,7 @@ class HaloRedis
      */
     public function listLen($key)
     {
-        $return = null;
-        $return = $this->_redis->lLen($key);
-        return $return;
+        return $this->_redis->lLen($key);
     }
 
     /**
@@ -685,9 +667,10 @@ class HaloRedis
 
         if (is_array($set) && !empty($set)) {
             if ($newset) {
-                if ($stype) $return = $this->_redis->zUnion($newset, $set,
-                    $weight, $function);
-                else $return = $this->_redis->sUnionStore($newset, $set);
+                if ($stype)
+                    $return = $this->_redis->zUnion($newset, $set, $weight, $function);
+                else
+                    $return = $this->_redis->sUnionStore($newset, $set);
             } else {
                 $return = $this->_redis->sUnion($set);
             }
