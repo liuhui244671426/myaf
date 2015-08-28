@@ -30,8 +30,14 @@
 > 2.文件在public/statics/
 
 >##后台##
->1.命名空间的yaf搭建框架原型
+>1.命名空间的yaf搭建框架原型,UTF8编码
 
->2.支持特点:mysqlPDO主从,redis主从,hash一致memcached等功能
+>2.支持特点:PDO,redis,memcached等功能,memcache不建议使用
 
+>3.程序纪录日志使用\Our\HaloLogger 类
 
+>4.后台模版渲染使用layout布局
+
+>5.session 默认纪录到Memcached中
+
+>6.
