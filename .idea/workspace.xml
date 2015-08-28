@@ -2,7 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7f621a10-563d-4eac-9a0a-18129916fd1f" name="Default" comment="">
+<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/application/library/Our/functions/isFunctions.php" afterPath="$PROJECT_DIR$/app/application/library/Our/functions/isFunctions.php" />
+=======
+<<<<<<< HEAD
+=======
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/application/Bootstrap.php" afterPath="$PROJECT_DIR$/app/application/Bootstrap.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/application/modules/Admin/controllers/Index.php" afterPath="$PROJECT_DIR$/app/application/modules/Admin/controllers/Index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/app.ini" afterPath="$PROJECT_DIR$/config/app.ini" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/application/library/Our/functions/functions.php" afterPath="$PROJECT_DIR$/app/application/library/Our/functions/functions.php" />
+>>>>>>> e00549f660314c626e704ebbb87385103840972d
+>>>>>>> 75cc4a3fa65bd5be08443b37081a86af7c091b03
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="myaf3.iws" />
@@ -28,14 +38,60 @@
       <file leaf-file-name="isFunctions.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/application/library/Our/functions/isFunctions.php">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state vertical-scroll-proportion="0.06401138">
               <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+=======
+<<<<<<< HEAD
+            <state vertical-scroll-proportion="0.0" vertical-offset="375" max-vertical-offset="1440">
+              <caret line="25" column="38" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
+=======
+            <state vertical-scroll-proportion="-15.0">
+              <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
+>>>>>>> e00549f660314c626e704ebbb87385103840972d
+>>>>>>> 75cc4a3fa65bd5be08443b37081a86af7c091b03
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="functions.php" pinned="false" current-in-tab="false">
+=======
+<<<<<<< HEAD
+      <file leaf-file-name="SessionHandler.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/application/library/Our/SessionHandler.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6260997" vertical-offset="113" max-vertical-offset="840">
+              <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+=======
+      <file leaf-file-name="SessionHandler.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/application/library/Our/SessionHandler.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.375">
+              <caret line="15" column="55" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
+>>>>>>> e00549f660314c626e704ebbb87385103840972d
+              <folding>
+                <element signature="e#6#90#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
+=======
+      <file leaf-file-name="HaloFactory.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/application/library/Our/Halo/HaloFactory.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.916667">
+              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="functions.php" pinned="false" current-in-tab="true">
+>>>>>>> 75cc4a3fa65bd5be08443b37081a86af7c091b03
         <entry file="file://$PROJECT_DIR$/app/application/library/Our/functions/functions.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-10.083333">
@@ -57,6 +113,7 @@
           </provider>
         </entry>
       </file>
+>>>>>>> e00549f660314c626e704ebbb87385103840972d
     </leaf>
   </component>
   <component name="FindManager">
@@ -79,9 +136,56 @@
         <option value="$PROJECT_DIR$/app/application/library/Our/functions/functions.php" />
         <option value="$PROJECT_DIR$/config/app.ini" />
         <option value="$PROJECT_DIR$/app/application/library/Our/Halo/HaloFactory.php" />
+<<<<<<< HEAD
+        <option value="$PROJECT_DIR$/app/application/library/Our/layout.php" />
+        <option value="$PROJECT_DIR$/app/application/library/Our/wx.php" />
+        <option value="$PROJECT_DIR$/app/application/library/status.php" />
+        <option value="$PROJECT_DIR$/app/application/views/builders/HeaderBuilder.php" />
+        <option value="$PROJECT_DIR$/app/application/views/phtmls/layouts/Admin.phtml" />
+        <option value="$PROJECT_DIR$/app/application/modules/Admin/controllers/Article.php" />
+        <option value="$PROJECT_DIR$/app/application/controllers/Error.php" />
+        <option value="$PROJECT_DIR$/app/application/library/Our/Halo/HaloLogger.php" />
+        <option value="$PROJECT_DIR$/app/application/plugins/Auth.php" />
+        <option value="$PROJECT_DIR$/app/application/library/Our/Halo/HaloMemcached.php" />
+        <option value="$PROJECT_DIR$/app/application/library/Our/Halo/HaloXhprof.php" />
+        <option value="$PROJECT_DIR$/app/application/library/Our/Halo/HaloPdo.php" />
+        <option value="$PROJECT_DIR$/app/application/library/Our/image.php" />
+        <option value="$PROJECT_DIR$/app/application/library/Our/Util/Canoma/Factory.php" />
+        <option value="$PROJECT_DIR$/app/application/library/Our/Util/image.php" />
+        <option value="$PROJECT_DIR$/app/application/library/Our/Util/Lunar.php" />
+        <option value="$PROJECT_DIR$/app/application/library/Our/functions/functions.php" />
+        <option value="$PROJECT_DIR$/app/application/library/Our/Util/validate.php" />
+        <option value="$PROJECT_DIR$/app/application/library/Our/functions/dirFunctions.php" />
+        <option value="$PROJECT_DIR$/app/application/library/Our/Util/Alchemy/Zippy/Zippy.php" />
+        <option value="$PROJECT_DIR$/app/application/library/Our/Util/Alchemy/Zippy/Adapter/AbstractAdapter.php" />
+        <option value="$PROJECT_DIR$/app/application/library/Our/Util/Alchemy/Zippy/Adapter/BSDTar/TarBSDTarAdapter.php" />
+        <option value="$PROJECT_DIR$/app/application/library/Our/Util/Alchemy/Zippy/Adapter/BSDTar/TarBz2BSDTarAdapter.php" />
+        <option value="$PROJECT_DIR$/app/application/library/Our/Util/Alchemy/Zippy/Adapter/BSDTar/TarGzBSDTarAdapter.php" />
+        <option value="$PROJECT_DIR$/app/application/library/Our/Util/Alchemy/Zippy/Adapter/GNUTar/TarBz2GNUTarAdapter.php" />
+        <option value="$PROJECT_DIR$/app/application/library/Our/Util/Alchemy/Zippy/Adapter/GNUTar/TarGNUTarAdapter.php" />
+        <option value="$PROJECT_DIR$/app/application/library/Alchemy/Zippy/Zippy.php" />
+        <option value="$PROJECT_DIR$/app/application/library/initConfig.php" />
+        <option value="$PROJECT_DIR$/app/application/library/Our/Halo/HaloMethod.php" />
+        <option value="$PROJECT_DIR$/app/application/library/Our/Halo/HaloMongo.php" />
+        <option value="$PROJECT_DIR$/app/application/library/Our/Halo/HaloKVClient.php" />
+        <option value="$PROJECT_DIR$/app/application/library/Our/Util/IP.php" />
+        <option value="$PROJECT_DIR$/app/application/library/Our/memSession.php" />
+        <option value="$PROJECT_DIR$/app/application/library/Our/Session.php" />
+        <option value="$PROJECT_DIR$/config/memcache.ini" />
+        <option value="$PROJECT_DIR$/config/memcached.ini" />
+        <option value="$PROJECT_DIR$/app/application/modules/Hello/controllers/hello.php" />
+        <option value="$PROJECT_DIR$/app/application/Bootstrap.php" />
+        <option value="$PROJECT_DIR$/app/public/index.php" />
+        <option value="$PROJECT_DIR$/app/public/index_dev.php" />
+        <option value="$PROJECT_DIR$/app/application/library/Our/SessionHandler.php" />
+=======
         <option value="$PROJECT_DIR$/app/application/Bootstrap.php" />
         <option value="$PROJECT_DIR$/app/application/library/Our/Halo/HaloMemcached.php" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/app/application/library/Our/functions/isFunctions.php" />
+=======
+>>>>>>> e00549f660314c626e704ebbb87385103840972d
+>>>>>>> 75cc4a3fa65bd5be08443b37081a86af7c091b03
       </list>
     </option>
   </component>
@@ -94,9 +198,21 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
+<<<<<<< HEAD
     <option name="x" value="103" />
     <option name="y" value="40" />
     <option name="width" value="1337" />
+=======
+<<<<<<< HEAD
+    <option name="x" value="2061" />
+    <option name="y" value="598" />
+    <option name="width" value="1440" />
+=======
+    <option name="x" value="47" />
+    <option name="y" value="254" />
+    <option name="width" value="1397" />
+>>>>>>> e00549f660314c626e704ebbb87385103840972d
+>>>>>>> 75cc4a3fa65bd5be08443b37081a86af7c091b03
     <option name="height" value="824" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -126,7 +242,10 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+<<<<<<< HEAD
       <pane id="Scratches" />
+=======
+>>>>>>> 75cc4a3fa65bd5be08443b37081a86af7c091b03
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -158,6 +277,20 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+<<<<<<< HEAD
+=======
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+<<<<<<< HEAD
+              <option name="myItemId" value="plugins" />
+=======
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+>>>>>>> 75cc4a3fa65bd5be08443b37081a86af7c091b03
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -176,6 +309,22 @@
               <option name="myItemId" value="application" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+<<<<<<< HEAD
+=======
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+>>>>>>> e00549f660314c626e704ebbb87385103840972d
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+>>>>>>> 75cc4a3fa65bd5be08443b37081a86af7c091b03
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -257,6 +406,14 @@
           </PATH>
         </subPane>
       </pane>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+      <pane id="Scratches" />
+      <pane id="Scope" />
+>>>>>>> e00549f660314c626e704ebbb87385103840972d
+>>>>>>> 75cc4a3fa65bd5be08443b37081a86af7c091b03
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -301,12 +458,15 @@
       <BehatRunner />
       <method />
     </configuration>
+<<<<<<< HEAD
+=======
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
       <method />
     </configuration>
     <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
+>>>>>>> e00549f660314c626e704ebbb87385103840972d
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
@@ -316,6 +476,13 @@
       <envs />
       <method />
     </configuration>
+<<<<<<< HEAD
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
+    <list size="0" />
+=======
+>>>>>>> e00549f660314c626e704ebbb87385103840972d
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnConfiguration">
@@ -351,7 +518,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="103" y="40" width="1337" height="824" extended-state="0" />
+=======
+<<<<<<< HEAD
+    <frame x="2061" y="598" width="1440" height="824" extended-state="0" />
+=======
+    <frame x="47" y="254" width="1397" height="824" extended-state="0" />
+>>>>>>> e00549f660314c626e704ebbb87385103840972d
+>>>>>>> 75cc4a3fa65bd5be08443b37081a86af7c091b03
     <editor active="true" />
     <layout>
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -366,13 +541,17 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17983651" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32288828" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
+=======
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3218543" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+>>>>>>> e00549f660314c626e704ebbb87385103840972d
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3289256" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -417,7 +596,46 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/app/application/modules/Admin/controllers/Article.php">
+=======
+    <entry file="file://$PROJECT_DIR$/app/application/library/Our/Util/validate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9166667">
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/application/library/constant.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/application/library/status.php">
+>>>>>>> e00549f660314c626e704ebbb87385103840972d
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3619691">
+          <caret line="31" column="32" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/app/application/library/Our/Util/image.php">
+=======
+    <entry file="file://$PROJECT_DIR$/app/application/library/Our/Halo/HaloMongo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="5" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> 75cc4a3fa65bd5be08443b37081a86af7c091b03
     <entry file="file://$PROJECT_DIR$/app/application/library/Our/Halo/HaloRedis.php">
+>>>>>>> e00549f660314c626e704ebbb87385103840972d
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -571,6 +789,9 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/app/application/library/Our/functions/aesFunctions.php">
+=======
     <entry file="file://$PROJECT_DIR$/app/public/conf/.htaccess">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -593,6 +814,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/db.ini">
+>>>>>>> e00549f660314c626e704ebbb87385103840972d
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -650,6 +872,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/public/info.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state vertical-scroll-proportion="4.479472" vertical-offset="5615" max-vertical-offset="11625">
+          <caret line="580" column="27" selection-start-line="580" selection-start-column="27" selection-end-line="580" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/logs/2015-08-13/15.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="706">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
@@ -659,27 +892,70 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.20632738">
           <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+<<<<<<< HEAD
+=======
+          <folding />
+>>>>>>> e00549f660314c626e704ebbb87385103840972d
+>>>>>>> 75cc4a3fa65bd5be08443b37081a86af7c091b03
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/public/index.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state vertical-scroll-proportion="-1.25" vertical-offset="0" max-vertical-offset="795">
+          <caret line="5" column="47" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
+=======
         <state vertical-scroll-proportion="0.017069701">
           <caret line="1" column="3" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
+<<<<<<< HEAD
+=======
+          <folding>
+            <element signature="e#6#41#0#PHP" expanded="false" />
+          </folding>
+>>>>>>> e00549f660314c626e704ebbb87385103840972d
+>>>>>>> 75cc4a3fa65bd5be08443b37081a86af7c091b03
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/public/index_dev.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state vertical-scroll-proportion="-0.16084976" vertical-offset="136" max-vertical-offset="795">
+          <caret line="5" column="47" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
+=======
         <state vertical-scroll-proportion="0.85348505">
           <caret line="43" column="38" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="38" />
+<<<<<<< HEAD
+=======
+          <folding>
+            <element signature="e#6#41#0#PHP" expanded="false" />
+          </folding>
+>>>>>>> e00549f660314c626e704ebbb87385103840972d
+>>>>>>> 75cc4a3fa65bd5be08443b37081a86af7c091b03
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/application/configs/application.ini">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state vertical-scroll-proportion="0.16997167" vertical-offset="0" max-vertical-offset="706">
+          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/memcached.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2549575" vertical-offset="0" max-vertical-offset="706">
+          <caret line="12" column="33" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
+=======
         <state vertical-scroll-proportion="0.37138927">
           <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+<<<<<<< HEAD
+=======
+          <folding />
+>>>>>>> e00549f660314c626e704ebbb87385103840972d
+>>>>>>> 75cc4a3fa65bd5be08443b37081a86af7c091b03
         </state>
       </provider>
     </entry>
@@ -692,6 +968,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data/logs/sysExceptionHandler.log">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="0.85557085">
           <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
         </state>
@@ -701,6 +978,29 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.74068767">
           <caret line="336" column="9" selection-start-line="336" selection-start-column="9" selection-end-line="336" selection-end-column="9" />
+=======
+<<<<<<< HEAD
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="706">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/application/modules/Hello/controllers/hello.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3739003" vertical-offset="0" max-vertical-offset="682">
+          <caret line="67" column="51" selection-start-line="67" selection-start-column="51" selection-end-line="67" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/application/library/Our/Halo/HaloFactory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5515695" vertical-offset="246" max-vertical-offset="1005">
+          <caret line="46" column="28" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
+=======
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+>>>>>>> 75cc4a3fa65bd5be08443b37081a86af7c091b03
         </state>
       </provider>
       <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
@@ -711,13 +1011,84 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33854908">
           <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+<<<<<<< HEAD
+=======
+>>>>>>> e00549f660314c626e704ebbb87385103840972d
+          <folding />
+>>>>>>> 75cc4a3fa65bd5be08443b37081a86af7c091b03
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/application/library/Our/Halo/HaloMemcached.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="0.36273116">
           <caret line="37" column="9" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
+=======
+<<<<<<< HEAD
+        <state vertical-scroll-proportion="2.5336323" vertical-offset="0" max-vertical-offset="2085">
+          <caret line="113" column="23" selection-start-line="113" selection-start-column="20" selection-end-line="113" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/application/library/Our/Controller/hello.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="682">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/application/library/Our/Controller/admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19794722" vertical-offset="0" max-vertical-offset="682">
+          <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/application/controllers/Error.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6378299" vertical-offset="0" max-vertical-offset="735">
+          <caret line="33" column="9" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/application/models/Base.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="706">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/application/models/Admin/Article.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17595308" vertical-offset="0" max-vertical-offset="682">
+          <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/application/library/Our/Controller/YafController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12107623" vertical-offset="9" max-vertical-offset="4005">
+          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/application/plugins/Auth.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2639296" vertical-offset="0" max-vertical-offset="1005">
+          <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/SessionHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.771261" vertical-offset="1358" max-vertical-offset="3060">
+          <caret line="10" column="10" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
+=======
+        <state vertical-scroll-proportion="-15.0">
+          <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
+          <folding />
+>>>>>>> 75cc4a3fa65bd5be08443b37081a86af7c091b03
         </state>
       </provider>
     </entry>
@@ -751,6 +1122,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/application/Bootstrap.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="0.25604552">
           <caret line="24" column="68" selection-start-line="24" selection-start-column="68" selection-end-line="24" selection-end-column="68" />
         </state>
@@ -763,11 +1135,18 @@
           <folding>
             <element signature="n#httpStatus#0;n#!!top" expanded="false" />
           </folding>
+=======
+        <state vertical-scroll-proportion="-10.625">
+          <caret line="37" column="9" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
+>>>>>>> e00549f660314c626e704ebbb87385103840972d
+          <folding />
+>>>>>>> 75cc4a3fa65bd5be08443b37081a86af7c091b03
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/application/library/Our/functions/functions.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="-10.083333">
           <caret line="31" column="9" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
           <folding />
@@ -778,7 +1157,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.06401138">
           <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+=======
+<<<<<<< HEAD
+        <state vertical-scroll-proportion="0.0" vertical-offset="375" max-vertical-offset="1440">
+          <caret line="25" column="38" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
+=======
+        <state vertical-scroll-proportion="0.52204835">
+          <caret line="330" column="25" selection-start-line="330" selection-start-column="25" selection-end-line="330" selection-end-column="25" />
+>>>>>>> e00549f660314c626e704ebbb87385103840972d
+>>>>>>> 75cc4a3fa65bd5be08443b37081a86af7c091b03
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/application/library/Our/SessionHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6260997" vertical-offset="113" max-vertical-offset="840">
+          <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+          <folding>
+            <element signature="e#6#90#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
