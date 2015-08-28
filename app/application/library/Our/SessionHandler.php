@@ -46,6 +46,8 @@ class SessionHandler extends \SessionHandler{
     }
 
     protected function sessionKey($session_id){
-        return 'session_'.$session_id;
+        $key = 'session_'.$session_id;
+        \Our\Halo\HaloLogger::INFO('sessionKey: '.$key);
+        return $key;
     }
 }
