@@ -1,9 +1,8 @@
 <?php
 /**
- * @Desc: origin file name DataCenter.php
  * @User: liuhui
  * @Date: 15-7-31 上午10:46
- * @desc Data base provider
+ * @Desc: Data base provider 工厂模式
  */
 namespace Our\Halo;
 

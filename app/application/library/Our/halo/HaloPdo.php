@@ -1,5 +1,6 @@
 <?php
 /**
+ * PDO操作库
  * fetch_style
  * @url: http://php.net/manual/zh/pdostatement.fetch.php
  * PDO::FETCH_ASSOC：返回一个索引为结果集列名的数组
@@ -42,6 +43,7 @@ class HaloPdo
     }
     /**
      * 私有化构造函数，防止外界实例化对象
+     * @param array $config 配置项
      * */
     private function __construct($config)
     {
@@ -173,6 +175,13 @@ class HaloPdo
      * ===================================================
      * */
 
+    /**
+     * 获取制定字段值
+     * @param string $table
+     * @param string $condition
+     * @param string $varName
+     * @return string
+     * */
     public function getVarByCondition($table, $condition, $varName)
     {
         list($condition, $values) = $this->getConditionPair($condition);
@@ -449,7 +458,7 @@ class HaloPdo
      * @param array $data
      * @param string $condition
      * @param string $idField
-     * @return
+     * @return mixed
      * */
     public function insertOrUpdateTable($table, $data, $condition, $idField = 'Fid')
     {
