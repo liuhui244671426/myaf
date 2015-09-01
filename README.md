@@ -41,3 +41,7 @@
 >5.session 默认纪录到Memcached中
 
 >6.
+
+>##API Test unit##
+>1. cd Tests
+>2. phpunit --bootstrap ./bootstrap.php application/library/Our/Test/PHPUnit/ControllerTestCase.php
