@@ -7,7 +7,7 @@ class ActionController extends \Our\Controller\test
     public function init() {
         //Yaf_dispatcher::getInstance()->disableView();
     }
-    // 输出需要的JSON信息
+    //输出需要的JSON信息
     private function __responseJson($code = 0, $data = FALSE) {
         $response = json_encode(array(
             'code' => $code,
@@ -16,7 +16,7 @@ class ActionController extends \Our\Controller\test
         $this->getResponse()->setBody($response);
     }
 
-    // JSON Action
+    //JSON Action
     public function jsonAction($uid=0) {
         if ( $uid < 1 )
             return $this->__responseJson(-1);
