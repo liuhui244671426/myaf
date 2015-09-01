@@ -5,7 +5,7 @@
  * @Date: 15/8/30
  * @Time: 21:22
  * @Desc: 测试单元基类
- *  命令行模式需要开启yaf命名空间,怎么开，自己体会吧
+ *  命令行模式需要开启yaf命名空间
  *  例如:
  *  cd Tests
  *  phpunit --bootstrap ./bootstrap.php application/library/Our/Test/PHPUnit/ControllerTestCase.php
