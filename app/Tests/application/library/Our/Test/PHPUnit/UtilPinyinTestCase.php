@@ -7,7 +7,7 @@
  * @Desc: test \Our\Util\Pinyin.php
  */
 namespace Our\Test\PHPUnit;
-require_once APPLICATION_PATH . '/tests/application/library/Our/Test/PHPUnit/TestCase.php';
+//require_once APPLICATION_PATH . '/tests/application/library/Our/Test/PHPUnit/TestCase.php';
 
 class UtilPinyinTestCase extends \Our\Test\PHPUnit\TestCase
 {

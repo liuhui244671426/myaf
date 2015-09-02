@@ -18,5 +18,7 @@ if (phpversion() >= "5.3") {
 }
 
 define('APPLICATION_PATH', realpath(PUBLIC_PATH . '/../')); //app dir
-
 define('ROOT_PATH', realpath(APPLICATION_PATH . '/../')); //root dir
+
+//just do it
+require_once APPLICATION_PATH . '/tests/application/library/Our/Test/PHPUnit/TestCase.php';
