@@ -8,7 +8,7 @@ class ControllerTestCase extends \Our\Test\PHPUnit\TestCase
 {
 
     //测试 JsonAction UID存在
-    public function testJsonUidAction() {
+    public function test_JsonUidAction() {
         $response = $this->requestActionAndParseBody('Test', 'Action', 'json', array('uid' => 1));
         $data     = json_decode($response, TRUE);
 
@@ -21,7 +21,7 @@ class ControllerTestCase extends \Our\Test\PHPUnit\TestCase
     }
 
     //测试 JsonAction UID不存在，UID不存在返回的code应该是-1
-    public function testJsonUidNotFoundAction() {
+    public function test_JsonUidNotFoundAction() {
         $response = $this->requestActionAndParseBody('Test', 'Action', 'Json', array('uid' => 1));
 
         $data     = json_decode($response, TRUE);
@@ -30,7 +30,7 @@ class ControllerTestCase extends \Our\Test\PHPUnit\TestCase
         $this->assertEquals('0', $data['code']);
     }
 
-    public function testIndexIndexIndexAction(){
+    public function test_IndexIndexIndexAction(){
         $response = $this->requestActionAndParseBody('index', 'index', 'index', array());
 
         $this->assertEmpty($response);

@@ -47,16 +47,18 @@ function weakPassword()
 
 /**
  * 随机字符串
+ *
  * @param integer $len 字符长度(default=4)
+ * @param integer $type 随即串的类型
  * @return string
  */
-function randString($len = 4)
+function randString($len = 4, $type = 1)
 {
-    $string = appString();
+    $string = appString($type);
     $stringLen = strlen($string) - 1;
     $newString = '';
     for ($i = 1; $i <= $len; $i++) {
-        $pos = rand(0, $stringLen);
+        $pos = mt_rand(0, $stringLen);
         $newString .= $string[$pos];
     }
 
@@ -65,11 +67,23 @@ function randString($len = 4)
 
 /**
  * 有效字符
+ *
+ * @param integer $type
  * @return string
  */
-function appString()
+function appString($type)
 {
-    $string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    switch($type){
+        case 1:
+            $string = '0123456789';
+            break;
+        case 2:
+            $string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+            break;
+        default:
+            $string = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+            break;
+    }
     return $string;
 }
 
@@ -114,7 +128,7 @@ function dump($var, $echo = true, $label = null, $strict = true)
 /**
  * 记录日志,路径/logs/年－月－日/时.log
  * @param mixed $var
- *
+ * todo 已废弃
  */
 function Yaflog($var)
 {
@@ -207,6 +221,21 @@ function fileext($filename)
     return strtolower(trim(substr(strrchr($filename, '.'), 1, 10)));
 }
 
+/**
+ * 获取文件扩展名
+ *
+ * @param string $file
+ *
+ * @return mixed|string
+ */
+function getFileExtension($file)
+{
+    if (is_uploaded_file($file)) {
+        return "unknown";
+    }
+
+    return pathinfo($file, PATHINFO_EXTENSION);
+}
 //-------------------------------------
 //errorHandler 系列函数
 //-------------------------------------
@@ -346,4 +375,103 @@ function YafRegistryDel($name){
 }
 //-------------------------------------
 //\Yaf\Registry 系列函数
+//-------------------------------------
+
+
+//-------------------------------------
+//XSS 系列函数
+//-------------------------------------
+/**
+ * XSS
+ *
+ * @param $str
+ *
+ * @return mixed
+ */
+function removeXSS($str)
+{
+    $str = str_replace('<!--  -->', '', $str);
+    $str = preg_replace('~/\*[ ]+\*/~i', '', $str);
+    $str = preg_replace('/\\\0{0,4}4[0-9a-f]/is', '', $str);
+    $str = preg_replace('/\\\0{0,4}5[0-9a]/is', '', $str);
+    $str = preg_replace('/\\\0{0,4}6[0-9a-f]/is', '', $str);
+    $str = preg_replace('/\\\0{0,4}7[0-9a]/is', '', $str);
+    $str = preg_replace('/&#x0{0,8}[0-9a-f]{2};/is', '', $str);
+    $str = preg_replace('/&#0{0,8}[0-9]{2,3};/is', '', $str);
+    $str = preg_replace('/&#0{0,8}[0-9]{2,3};/is', '', $str);
+
+    $str = htmlspecialchars($str);
+    //$str = preg_replace('/&lt;/i', '<', $str);
+    //$str = preg_replace('/&gt;/i', '>', $str);
+
+    // 非成对标签
+    $lone_tags = array("img", "param", "br", "hr");
+    foreach ($lone_tags as $key => $val) {
+        $val = preg_quote($val);
+        $str = preg_replace('/&lt;' . $val . '(.*)(\/?)&gt;/isU', '<' . $val . "\\1\\2>", $str);
+        $str = self::transCase($str);
+        $str = preg_replace_callback('/<' . $val . '(.+?)>/i', create_function('$temp', 'return str_replace("&quot;","\"",$temp[0]);'), $str);
+    }
+    $str = preg_replace('/&amp;/i', '&', $str);
+
+    // 成对标签
+    $double_tags = array("table", "tr", "td", "font", "a", "object", "embed", "p", "strong", "em", "u", "ol", "ul", "li", "div", "tbody", "span", "blockquote", "pre", "b", "font");
+    foreach ($double_tags as $key => $val) {
+        $val = preg_quote($val);
+        $str = preg_replace('/&lt;' . $val . '(.*)&gt;/isU', '<' . $val . "\\1>", $str);
+        $str = self::transCase($str);
+        $str = preg_replace_callback('/<' . $val . '(.+?)>/i', create_function('$temp', 'return str_replace("&quot;","\"",$temp[0]);'), $str);
+        $str = preg_replace('/&lt;\/' . $val . '&gt;/is', '</' . $val . ">", $str);
+    }
+    // 清理js
+    $tags = Array(
+        'javascript', 'vbscript', 'expression', 'applet',
+        'meta', 'xml', 'behaviour', 'blink', 'link',
+        'style', 'script', 'embed', 'object', 'iframe',
+        'frame', 'frameset', 'ilayer', 'layer', 'bgsound',
+        'title', 'base', 'font'
+    );
+
+    foreach ($tags as $tag) {
+        $tag = preg_quote($tag);
+        $str = preg_replace('/' . $tag . '\(.*\)/isU', '\\1', $str);
+        $str = preg_replace('/' . $tag . '\s*:/isU', $tag . '\:', $str);
+    }
+
+    $str = preg_replace('/[\s]+on[\w]+[\s]*=/is', '', $str);
+
+    return $str;
+}
+
+/**
+ * 移除HTML中的危险代码，如iframe和script
+ * @param $string $content
+ * @param $string $allow
+ * @return string
+ */
+function remove_xss($content, $allow = '')
+{
+    $danger = 'javascript,vbscript,expression,applet,meta,xml,blink,link,style,script,embed,object,iframe,frame,frameset,ilayer,layer,bgsound,title,base';
+    $event = 'onabort|onactivate|onafterprint|onafterupdate|onbeforeactivate|onbeforecopy|onbeforecut|onbeforedeactivate|onbeforeeditfocus|' .
+        'onbeforepaste|onbeforeprint|onbeforeunload|onbeforeupdate|onblur|onbounce|oncellchange|onchange|onclick|oncontextmenu|oncontrolselect|' .
+        'oncopy|oncut|ondataavailable|ondatasetchanged|ondatasetcomplete|ondblclick|ondeactivate|ondrag|ondragend|ondragenter|ondragleave|' .
+        'ondragover|ondragstart|ondrop|onerror|onerrorupdate|onfilterchange|onfinish|onfocus|onfocusin|onfocusout|onhelp|onkeydown|onkeypress|' .
+        'onkeyup|onlayoutcomplete|onload|onlosecapture|onmousedown|onmouseenter|onmouseleave|onmousemove|onmouseout|onmouseover|onmouseup|' .
+        'onmousewheel|onmove|onmoveend|onmovestart|onpaste|onpropertychange|onreadystatechange|onreset|onresize|onresizeend|onresizestart|' .
+        'onrowenter|onrowexit|onrowsdelete|onrowsinserted|onscroll|onselect|onselectionchange|onselectstart|onstart|onstop|onsubmit|onunload';
+
+    if (!empty($allow)) {
+        $allows = explode(',', $allow);
+        $danger = str_replace($allow, '', $danger);
+    }
+    $danger = str_replace(',', '|', $danger);
+    //替换所有危险标签
+    $content = preg_replace("/<\s*($danger)[^>]*>[^<]*(<\s*\/\s*\\1\s*>)?/is", '', $content);
+    //替换所有危险的JS事件
+    $content = preg_replace("/<([^>]*)($event)\s*\=([^>]*)>/is", "<\\1 \\3>", $content);
+    return $content;
+}
+
+//-------------------------------------
+//XSS 系列函数
 //-------------------------------------

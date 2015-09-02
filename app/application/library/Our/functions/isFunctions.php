@@ -114,6 +114,66 @@ function isOrigin($domain){
         true;
 }
 
+/**
+ * 判断是否爬虫，范围略大
+ *
+ * @return bool
+ */
+function isSpider()
+{
+    if (isset($_SERVER['HTTP_USER_AGENT'])) {
+        $ua = strtolower($_SERVER['HTTP_USER_AGENT']);
+        $spiders = array('spider', 'bot');
+        foreach ($spiders as $spider) {
+            if (strpos($ua, $spider) !== false) {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
+/**
+ * 判断是否命令行执行
+ *
+ * @return bool
+ */
+function isCli()
+{
+    if (isset($_SERVER['SHELL']) && !isset($_SERVER['HTTP_HOST'])) {
+        return true;
+    }
+
+    return false;
+}
+
+/**
+ * 判断是否64位架构
+ *
+ * @return bool
+ */
+function isX86_64arch()
+{
+    return (PHP_INT_MAX == '9223372036854775807');
+}
+
+/**
+ * 判断是否为提交操作
+ *
+ * @param string $submit
+ *
+ * @return bool
+ */
+function isSubmit($submit)
+{
+    return (isset($_POST[$submit]) ||
+        isset($_POST[$submit . '_x']) ||
+        isset($_POST[$submit . '_y']) ||
+        isset($_GET[$submit]) ||
+        isset($_GET[$submit . '_x']) ||
+        isset($_GET[$submit . '_y']));
+}
 //-------------------------------------
 //is 系列函数
 //-------------------------------------
