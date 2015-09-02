@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * @User: liuhui
  * @Date: 15-1-16 上午12:00
- * @Desc: 公共函数库
+ * @Desc: 公共函数库,程序启动就会加载
  */
 /**
  * 加载文件

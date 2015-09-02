@@ -61,5 +61,3 @@ abstract class HaloFactory
         throw new \BadMethodCallException('BadMethodCallException, called class DataCenter\'s method ' . $methodName . ' not found', EXC_CODE_HALO_METHOD_NOT_FOUND);
     }
 }
-
-
