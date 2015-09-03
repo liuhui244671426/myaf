@@ -7,58 +7,10 @@ namespace Our\Util;
 class Tools
 {
 
-    const FLAG_NUMERIC = 1;
-    const FLAG_NO_NUMERIC = 2;
-    const FLAG_ALPHANUMERIC = 3;
-
-    /**
-     * 生成随机密码
-     *
-     * @param integer $length Desired length (optional)
-     * @param string $flag Output type (NUMERIC, ALPHANUMERIC, NO_NUMERIC)
-     *
-     * @return string Password
-     */
-    public static function passwdGen($length = 8, $flag = self::FLAG_NO_NUMERIC)
-    {
-        switch ($flag) {
-            case self::FLAG_NUMERIC:
-                $str = '0123456789';
-                break;
-            case self::FLAG_NO_NUMERIC:
-                $str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                break;
-            case self::FLAG_ALPHANUMERIC:
-            default:
-                $str = 'abcdefghijkmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                break;
-        }
-
-        for ($i = 0, $passwd = ''; $i < $length; $i++)
-            $passwd .= Tools::substr($str, mt_rand(0, Tools::strlen($str) - 1), 1);
-
-        return $passwd;
-    }
-
-    public static function filter($string, $force = 1, $allow = '')
-    {
-        if ($force) {
-            if (is_array($string)) {
-                foreach ($string as $key => $val) {
-                    $string[$key] = self::filter($val, $force, $allow);
-                }
-            } else {
-                $string = self::remove_xss($string, $allow);
-                $string = addslashes($string);
-            }
-        }
-        return $string;
-    }
-
     /**
      * 图片转为base64
      * @param $url
-     * @return base64code
+     * @return string base64code
      */
     public static function picconvert($url)
     {
@@ -625,16 +577,6 @@ class Tools
     }
 
     /**
-     * 获取精准的时间
-     *
-     * @return int
-     */
-    public static function getExactTime()
-    {
-        return microtime(true);
-    }
-
-    /**
      * 转换成小写字符，支持中文
      *
      * @param $str
@@ -886,30 +828,29 @@ class Tools
     /**
      * 获取内存限制
      *
-     * @return int
+     * @return string 100M/2048k
      */
     public static function getMemoryLimit()
     {
-        $memory_limit = @ini_get('memory_limit');
-
-        return Tools::getOctets($memory_limit);
+        return @ini_get('memory_limit');
     }
     /**
      * 单位转换
+     * @return string $value 100M
      * @return int
      * */
-    public static function getOctets($option)
+    public static function getOctets($value)
     {
-        if (preg_match('/[0-9]+k/i', $option))
-            return 1024 * (int)$option;
+        if (preg_match('/[0-9]+k/i', $value))
+            return 1024 * (int)$value;
 
-        if (preg_match('/[0-9]+m/i', $option))
-            return 1024 * 1024 * (int)$option;
+        if (preg_match('/[0-9]+m/i', $value))
+            return 1024 * 1024 * (int)$value;
 
-        if (preg_match('/[0-9]+g/i', $option))
-            return 1024 * 1024 * 1024 * (int)$option;
+        if (preg_match('/[0-9]+g/i', $value))
+            return 1024 * 1024 * 1024 * (int)$value;
 
-        return $option;
+        return $value;
     }
 
     /**
@@ -1291,7 +1232,6 @@ class Tools
     }
 
 
-
     public static function transCase($str)
     {
         $str = preg_replace('/(e|ｅ|Ｅ)(x|ｘ|Ｘ)(p|ｐ|Ｐ)(r|ｒ|Ｒ)(e|ｅ|Ｅ)(s|ｓ|Ｓ)(s|ｓ|Ｓ)(i|ｉ|Ｉ)(o|ｏ|Ｏ)(n|ｎ|Ｎ)/is', 'expression', $str);
@@ -1306,7 +1246,7 @@ class Tools
      * @param null $header
      *
      * @return mixed
-     * @throws Exception
+     * @throws \Exception
      */
     public static function curl($url, $method = 'GET', $postFields = null, $header = null)
     {
@@ -1362,7 +1302,7 @@ class Tools
         }
         $response = curl_exec($ch);
         if (curl_errno($ch)) {
-            throw new Exception(curl_error($ch), 0);
+            throw new \Exception(curl_error($ch), 0);
         }
         curl_close($ch);
 
@@ -1432,7 +1372,9 @@ class Tools
             }
         }
     }
-
+    /**
+     * 计算两个时间戳之间的间距
+     * */
     public static function tmspan($timestamp, $current_time = 0)
     {
         if (!$current_time) $current_time = time();

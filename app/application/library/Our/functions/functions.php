@@ -7,6 +7,7 @@
  */
 /**
  * 加载文件
+ *
  * @param string $path
  * @return \Yaf_Exception_LoadFailed
  * */
@@ -17,6 +18,7 @@ function import($path){
         $msg = 'load ' . $path . ' file return false';
         throw new \Yaf_Exception_LoadFailed($msg);
     }
+    return true;
 }
 /**
  * 加载函数文件
@@ -381,6 +383,30 @@ function YafRegistryDel($name){
 //-------------------------------------
 //XSS 系列函数
 //-------------------------------------
+
+/**
+ * 输入安全过滤
+ *
+ * @param string $string
+ * @param int $force
+ * @param string $allow click,mouseover,
+ * @return string
+ * */
+function filter($string, $force = 1, $allow = '')
+{
+    if ($force) {
+        if (is_array($string)) {
+            foreach ($string as $key => $val) {
+                $string[$key] = filter($val, $force, $allow);
+            }
+        } else {
+            $string = remove_xss($string, $allow);
+            $string = addslashes($string);
+        }
+    }
+    return $string;
+}
+
 /**
  * XSS
  *

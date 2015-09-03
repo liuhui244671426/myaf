@@ -17,4 +17,16 @@ class FunctionsTestCase extends \Our\Test\PHPUnit\TestCase
         $this->assertInternalType('string', $str);
         $this->assertRegExp('/^\d{8}$/', $str);
     }
+
+    public function test_getMemoryLimitAction(){
+        $mem = \Our\Util\Tools::getMemoryLimit();
+
+        $this->assertInternalType('string', $mem);
+        $this->assertRegExp('/^\d+(m)$/i',$mem);
+
+        $int = \Our\Util\Tools::getOctets($mem);
+        //var_dump($int);
+        $this->assertInternalType('int', $int);
+
+    }
 }
