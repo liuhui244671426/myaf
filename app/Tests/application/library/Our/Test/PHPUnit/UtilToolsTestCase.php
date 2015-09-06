@@ -7,7 +7,7 @@
  * @Desc: test \Our\Util\Tools.php
  */
 namespace Our\Test\PHPUnit;
-//require_once APPLICATION_PATH . '/tests/application/library/Our/Test/PHPUnit/TestCase.php';
+
 
 class UtilToolsTestCase extends \Our\Test\PHPUnit\TestCase
 {

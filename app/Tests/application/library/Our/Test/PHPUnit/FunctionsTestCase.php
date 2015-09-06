@@ -7,7 +7,7 @@
  * @Desc: test unit functions\functions.php
  */
 namespace Our\Test\PHPUnit;
-//require_once APPLICATION_PATH . '/tests/application/library/Our/Test/PHPUnit/TestCase.php';
+
 
 class FunctionsTestCase extends \Our\Test\PHPUnit\TestCase
 {
