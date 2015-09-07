@@ -12,7 +12,8 @@
  * @return \Yaf_Exception_LoadFailed
  * */
 
-function import($path){
+function import($path)
+{
     $isTrue = \Yaf\Loader::import($path);
     if(!$isTrue){
         $msg = 'load ' . $path . ' file return false';
@@ -23,7 +24,8 @@ function import($path){
 /**
  * 加载函数文件
  * */
-function importFunc($file){
+function importFunc($file)
+{
     import(LIBRARY_PATH . 'Our/functions/' . $file . '.php');
 }
 
@@ -200,7 +202,8 @@ function echoJsonString($code, array $data, $jsonp = '')
  * @param int $code
  * @return string
  * */
-function stringMsg($code){
+function stringMsg($code)
+{
     $arr = array(
         0 => 'Success',
         1 => 'Failed',
@@ -303,7 +306,8 @@ function getActions($class)
  * @URL: http://yaf.laruence.com/manual/yaf.constant.html
  * @return string
  * */
-function YafErrorCode($code){
+function YafErrorCode($code)
+{
     $errorDocker = array (
         //表示启动失败
         512 => 'YAF_ERR_STARTUP_FAILED',

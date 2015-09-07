@@ -13,7 +13,8 @@
  * 是否是墨迹客户端的UA
  * @return bool
  * */
-function isMojiApp(){
+function isMojiApp()
+{
     $ua = $_SERVER['HTTP_USER_AGENT'];
 
     if(preg_match('/mojia|mojii/i', $ua) > 0) {
@@ -98,7 +99,8 @@ function isSummer()
  * todo 完善
  * @param array $urls 待检查的url地址
  * */
-function isReferer(array $urls){
+function isReferer(array $urls)
+{
     $referer = $_SERVER['HTTP_REFERER'];
 }
 /**
@@ -106,7 +108,8 @@ function isReferer(array $urls){
  * todo test
  * @param string $domain 正确域名
  * */
-function isOrigin($domain){
+function isOrigin($domain)
+{
     $origin = $_SERVER['HTTP_ORIGIN'];
     importFunc('netFunctions');
     return (stripos($origin, getDomain()) === false)?
