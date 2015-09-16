@@ -24,7 +24,7 @@ class ControllerTestCase extends \Our\Test\PHPUnit\TestCase
     public function test_JsonUidNotFoundAction() {
         $response = $this->requestActionAndParseBody('Test', 'Action', 'Json', array('uid' => 1));
 
-        $data     = json_decode($response, TRUE);
+        $data   = json_decode($response, TRUE);
 
         $this->assertInternalType('array', $data);
         $this->assertEquals('0', $data['code']);
