@@ -266,7 +266,7 @@ class HaloPdo
     /**
      * 通过条件查找一行数据
      * @param string $table 表名
-     * @param mixed $condition 条件
+     * @param mixed $condition 条件 array('`id`=1', null)|'`id`=1'
      * @param string $fields 字段
      * @return array
      * */
