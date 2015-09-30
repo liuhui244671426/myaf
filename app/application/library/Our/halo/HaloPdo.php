@@ -525,12 +525,12 @@ class HaloPdo
      * @param array $data 数组数据 array('name' => 'liuhui', 'vote' => 'y')
      * @return array 生成如下结构体
      * Array(
-           [0] => name=?,vote=?
-           [1] => Array(
-               [0] => liuhui
-               [1] => y
-           )
-       )
+     *      [0] => name=?,vote=?
+     *      [1] => Array(
+     *          [0] => liuhui
+     *          [1] => y
+     *      )
+     *  )
      * */
     public function getConditionArray($data)
     {
@@ -661,14 +661,14 @@ class HaloPdo
      * @param array $map array('id' => 12, 'city' => '北京')
      * @return array
      * Array
-        (
-            [0] => id=? AND city=?
-            [1] => Array
-            (
-                [0] => 12
-                [1] => 北京
-            )
-        )
+     *   (
+     *       [0] => id=? AND city=?
+     *       [1] => Array
+     *       (
+     *           [0] => 12
+     *           [1] => 北京
+     *       )
+     *   )
      * */
     protected function getConditionPairFromMap($map)
     {
