@@ -42,3 +42,91 @@ function i_array_column($input, $columnKey, $indexKey = null)
         return array_column($input, $columnKey, $indexKey);
     }
 }
+
+function arrayUnique($array)
+{
+    if (version_compare(phpversion(), '5.2.9', '<'))
+        return array_unique($array);
+    else
+        return array_unique($array, SORT_REGULAR);
+}
+
+function arrayUnique2d($array, $keepkeys = true)
+{
+    $output = array();
+    if (!empty($array) && is_array($array)) {
+        $stArr = array_keys($array);
+        $ndArr = array_keys(end($array));
+
+        $tmp = array();
+        foreach ($array as $i) {
+            $i = join("¤", $i);
+            $tmp[] = $i;
+        }
+
+        $tmp = array_unique($tmp);
+
+        foreach ($tmp as $k => $v) {
+            if ($keepkeys)
+                $k = $stArr[$k];
+            if ($keepkeys) {
+                $tmpArr = explode("¤", $v);
+                foreach ($tmpArr as $ndk => $ndv) {
+                    $output[$k][$ndArr[$ndk]] = $ndv;
+                }
+            } else {
+                $output[$k] = explode("¤", $v);
+            }
+        }
+    }
+
+    return $output;
+}
+
+/**
+ * 遍历数组
+ *
+ * @param      $array
+ * @param      $function
+ * @param bool $keys
+ */
+function walkArray(&$array, $function, $keys = false)
+{
+    foreach ($array as $key => $value) {
+        if (is_array($value)) {
+            self::walkArray($array[$key], $function, $keys);
+        } elseif (is_string($value)) {
+            $array[$key] = $function($value);
+        }
+
+        if ($keys && is_string($key)) {
+            $newkey = $function($key);
+            if ($newkey != $key) {
+                $array[$newkey] = $array[$key];
+                unset($array[$key]);
+            }
+        }
+    }
+}
+
+/**
+ * 从array中取出指定字段
+ *
+ * @param $array
+ * @param $key
+ *
+ * @return array|null
+ */
+function simpleArray($array, $key)
+{
+    if (!empty($array) && is_array($array)) {
+        $result = array();
+        foreach ($array as $k => $item) {
+            $result[$k] = $item[$key];
+        }
+
+        return $result;
+    }
+
+    return null;
+}

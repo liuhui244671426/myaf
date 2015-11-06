@@ -12,7 +12,7 @@ class Tools
      * @param $url
      * @return string base64code
      */
-    public static function picconvert($url)
+    public static function imgConvertBase64($url)
     {
         $file = $_SERVER["DOCUMENT_ROOT"] . $url;
         $type = getimagesize($file);//取得图片的大小，类型等
@@ -139,24 +139,7 @@ class Tools
         return $_SERVER['SERVER_NAME'];
     }
 
-    /**
-     * 获取用户IP地址
-     *
-     * @return mixed
-     */
-    public static function getRemoteAddr()
-    {
-        if (isset($_SERVER['HTTP_X_FORWARDED_FOR']) && $_SERVER['HTTP_X_FORWARDED_FOR'] && (!isset($_SERVER['REMOTE_ADDR']) || preg_match('/^127\..*/i', trim($_SERVER['REMOTE_ADDR'])) || preg_match('/^172\.16.*/i', trim($_SERVER['REMOTE_ADDR'])) || preg_match('/^192\.168\.*/i', trim($_SERVER['REMOTE_ADDR'])) || preg_match('/^10\..*/i', trim($_SERVER['REMOTE_ADDR'])))) {
-            if (strpos($_SERVER['HTTP_X_FORWARDED_FOR'], ',')) {
-                $ips = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
 
-                return $ips[0];
-            } else
-                return $_SERVER['HTTP_X_FORWARDED_FOR'];
-        }
-
-        return $_SERVER['REMOTE_ADDR'];
-    }
 
     /**
      * 获取用户来源地址
@@ -853,27 +836,7 @@ class Tools
         return $value;
     }
 
-    /**
-     * 从array中取出指定字段
-     *
-     * @param $array
-     * @param $key
-     *
-     * @return array|null
-     */
-    public static function simpleArray($array, $key)
-    {
-        if (!empty($array) && is_array($array)) {
-            $result = array();
-            foreach ($array as $k => $item) {
-                $result[$k] = $item[$key];
-            }
 
-            return $result;
-        }
-
-        return null;
-    }
 
     public static function object2array(&$object)
     {
@@ -995,45 +958,6 @@ class Tools
         return round((pow($viewcount, 0.8) / pow(($timegap + 24), 1.2)), 3) * 1000;
     }
 
-    /**
-     * 优化的file_get_contents操作，超时关闭
-     *
-     * @param      $url
-     * @param bool $use_include_path
-     * @param null $stream_context
-     * @param int $curl_timeout
-     *
-     * @return bool|mixed|string
-     */
-    public static function file_get_contents($url, $use_include_path = false, $stream_context = null, $curl_timeout = 8)
-    {
-        if ($stream_context == null && preg_match('/^https?:\/\//', $url))
-            $stream_context = @stream_context_create(array('http' => array('timeout' => $curl_timeout)));
-        if (in_array(ini_get('allow_url_fopen'), array('On', 'on', '1')) || !preg_match('/^https?:\/\//', $url))
-            return @file_get_contents($url, $use_include_path, $stream_context);
-        elseif (function_exists('curl_init')) {
-            $curl = curl_init();
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($curl, CURLOPT_URL, $url);
-            curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 5);
-            curl_setopt($curl, CURLOPT_TIMEOUT, $curl_timeout);
-            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
-            $opts = stream_context_get_options($stream_context);
-            if (isset($opts['http']['method']) && Tools::strtolower($opts['http']['method']) == 'post') {
-                curl_setopt($curl, CURLOPT_POST, true);
-                if (isset($opts['http']['content'])) {
-                    parse_str($opts['http']['content'], $datas);
-                    curl_setopt($curl, CURLOPT_POSTFIELDS, $datas);
-                }
-            }
-            $content = curl_exec($curl);
-            curl_close($curl);
-
-            return $content;
-        } else
-            return false;
-    }
-
     public static function ZipTest($from_file)
     {
         $zip = new PclZip($from_file);
@@ -1104,32 +1028,6 @@ class Tools
     }
 
     /**
-     * 遍历数组
-     *
-     * @param      $array
-     * @param      $function
-     * @param bool $keys
-     */
-    public static function walkArray(&$array, $function, $keys = false)
-    {
-        foreach ($array as $key => $value) {
-            if (is_array($value)) {
-                self::walkArray($array[$key], $function, $keys);
-            } elseif (is_string($value)) {
-                $array[$key] = $function($value);
-            }
-
-            if ($keys && is_string($key)) {
-                $newkey = $function($key);
-                if ($newkey != $key) {
-                    $array[$newkey] = $array[$key];
-                    unset($array[$key]);
-                }
-            }
-        }
-    }
-
-    /**
      * 遍历路径
      *
      * @param        $path
@@ -1167,46 +1065,6 @@ class Tools
         return $filtered_files;
     }
 
-    public static function arrayUnique($array)
-    {
-        if (version_compare(phpversion(), '5.2.9', '<'))
-            return array_unique($array);
-        else
-            return array_unique($array, SORT_REGULAR);
-    }
-
-    public static function arrayUnique2d($array, $keepkeys = true)
-    {
-        $output = array();
-        if (!empty($array) && is_array($array)) {
-            $stArr = array_keys($array);
-            $ndArr = array_keys(end($array));
-
-            $tmp = array();
-            foreach ($array as $i) {
-                $i = join("¤", $i);
-                $tmp[] = $i;
-            }
-
-            $tmp = array_unique($tmp);
-
-            foreach ($tmp as $k => $v) {
-                if ($keepkeys)
-                    $k = $stArr[$k];
-                if ($keepkeys) {
-                    $tmpArr = explode("¤", $v);
-                    foreach ($tmpArr as $ndk => $ndv) {
-                        $output[$k][$ndArr[$ndk]] = $ndv;
-                    }
-                } else {
-                    $output[$k] = explode("¤", $v);
-                }
-            }
-        }
-
-        return $output;
-    }
-
     public static function sys_get_temp_dir()
     {
         if (function_exists('sys_get_temp_dir')) {
@@ -1237,76 +1095,6 @@ class Tools
         $str = preg_replace('/(e|ｅ|Ｅ)(x|ｘ|Ｘ)(p|ｐ|Ｐ)(r|ｒ|Ｒ)(e|ｅ|Ｅ)(s|ｓ|Ｓ)(s|ｓ|Ｓ)(i|ｉ|Ｉ)(o|ｏ|Ｏ)(n|ｎ|Ｎ)/is', 'expression', $str);
 
         Return $str;
-    }
-
-    /**
-     * @param        $url
-     * @param string $method
-     * @param null $postFields
-     * @param null $header
-     *
-     * @return mixed
-     * @throws \Exception
-     */
-    public static function curl($url, $method = 'GET', $postFields = null, $header = null)
-    {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_0);
-        curl_setopt($ch, CURLOPT_FAILONERROR, false);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
-
-        if (strlen($url) > 5 && strtolower(substr($url, 0, 5)) == "https") {
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-        }
-
-        switch ($method) {
-            case 'POST':
-                curl_setopt($ch, CURLOPT_POST, true);
-                if (!empty($postFields)) {
-                    if (is_array($postFields) || is_object($postFields)) {
-                        if (is_object($postFields))
-                            $postFields = Tools::object2array($postFields);
-                        $postBodyString = "";
-                        $postMultipart = false;
-                        foreach ($postFields as $k => $v) {
-                            if ("@" != substr($v, 0, 1)) { //判断是不是文件上传
-                                $postBodyString .= "$k=" . urlencode($v) . "&";
-                            } else { //文件上传用multipart/form-data，否则用www-form-urlencoded
-                                $postMultipart = true;
-                            }
-                        }
-                        unset($k, $v);
-                        if ($postMultipart) {
-                            curl_setopt($ch, CURLOPT_POSTFIELDS, $postFields);
-                        } else {
-                            curl_setopt($ch, CURLOPT_POSTFIELDS, substr($postBodyString, 0, -1));
-                        }
-                    } else {
-                        curl_setopt($ch, CURLOPT_POSTFIELDS, $postFields);
-                    }
-
-                }
-                break;
-            default:
-                if (!empty($postFields) && is_array($postFields))
-                    $url .= (strpos($url, '?') === false ? '?' : '&') . http_build_query($postFields);
-                break;
-        }
-        curl_setopt($ch, CURLOPT_URL, $url);
-
-        if (!empty($header) && is_array($header)) {
-            curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
-        }
-        $response = curl_exec($ch);
-        if (curl_errno($ch)) {
-            throw new \Exception(curl_error($ch), 0);
-        }
-        curl_close($ch);
-
-        return $response;
     }
 
     /**
@@ -1372,25 +1160,7 @@ class Tools
             }
         }
     }
-    /**
-     * 计算两个时间戳之间的间距
-     * */
-    public static function tmspan($timestamp, $current_time = 0)
-    {
-        if (!$current_time) $current_time = time();
-        $span = $current_time - $timestamp;
-        if ($span < 60) {
-            return "刚刚";
-        } else if ($span < 3600) {
-            return intval($span / 60) . "分钟前";
-        } else if ($span < 24 * 3600) {
-            return intval($span / 3600) . "小时前";
-        } else if ($span < (7 * 24 * 3600)) {
-            return intval($span / (24 * 3600)) . "天前";
-        } else {
-            return date('Y-m-d', $timestamp);
-        }
-    }
+
 
 }
 

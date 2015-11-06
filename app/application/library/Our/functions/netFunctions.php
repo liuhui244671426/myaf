@@ -118,3 +118,133 @@ function getByUrl($url)
     curl_setopt( $curl, CURLOPT_FOLLOWLOCATION,1);
     return curl_exec($curl);
 }
+
+
+/**
+ * @param        $url
+ * @param string $method
+ * @param null $postFields
+ * @param null $header
+ *
+ * @return mixed
+ * @throws \Exception
+ */
+function curl($url, $method = 'GET', $postFields = null, $header = null)
+{
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_0);
+    curl_setopt($ch, CURLOPT_FAILONERROR, false);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+
+    if (strlen($url) > 5 && strtolower(substr($url, 0, 5)) == "https") {
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+    }
+
+    switch ($method) {
+        case 'POST':
+            curl_setopt($ch, CURLOPT_POST, true);
+            if (!empty($postFields)) {
+                if (is_array($postFields) || is_object($postFields)) {
+                    if (is_object($postFields))
+                        $postFields = Tools::object2array($postFields);
+                    $postBodyString = "";
+                    $postMultipart = false;
+                    foreach ($postFields as $k => $v) {
+                        if ("@" != substr($v, 0, 1)) { //判断是不是文件上传
+                            $postBodyString .= "$k=" . urlencode($v) . "&";
+                        } else { //文件上传用multipart/form-data，否则用www-form-urlencoded
+                            $postMultipart = true;
+                        }
+                    }
+                    unset($k, $v);
+                    if ($postMultipart) {
+                        curl_setopt($ch, CURLOPT_POSTFIELDS, $postFields);
+                    } else {
+                        curl_setopt($ch, CURLOPT_POSTFIELDS, substr($postBodyString, 0, -1));
+                    }
+                } else {
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, $postFields);
+                }
+
+            }
+            break;
+        default:
+            if (!empty($postFields) && is_array($postFields))
+                $url .= (strpos($url, '?') === false ? '?' : '&') . http_build_query($postFields);
+            break;
+    }
+    curl_setopt($ch, CURLOPT_URL, $url);
+
+    if (!empty($header) && is_array($header)) {
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+    }
+    $response = curl_exec($ch);
+    if (curl_errno($ch)) {
+        throw new \Exception(curl_error($ch), 0);
+    }
+    curl_close($ch);
+
+    return $response;
+}
+
+
+/**
+ * 优化的file_get_contents操作，超时关闭
+ *
+ * @param      $url
+ * @param bool $use_include_path
+ * @param null $stream_context
+ * @param int $curl_timeout
+ *
+ * @return bool|mixed|string
+ */
+function file_get_contents($url, $use_include_path = false, $stream_context = null, $curl_timeout = 8)
+{
+    if ($stream_context == null && preg_match('/^https?:\/\//', $url))
+        $stream_context = @stream_context_create(array('http' => array('timeout' => $curl_timeout)));
+    if (in_array(ini_get('allow_url_fopen'), array('On', 'on', '1')) || !preg_match('/^https?:\/\//', $url))
+        return @file_get_contents($url, $use_include_path, $stream_context);
+    elseif (function_exists('curl_init')) {
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 5);
+        curl_setopt($curl, CURLOPT_TIMEOUT, $curl_timeout);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+        $opts = stream_context_get_options($stream_context);
+        if (isset($opts['http']['method']) && Tools::strtolower($opts['http']['method']) == 'post') {
+            curl_setopt($curl, CURLOPT_POST, true);
+            if (isset($opts['http']['content'])) {
+                parse_str($opts['http']['content'], $datas);
+                curl_setopt($curl, CURLOPT_POSTFIELDS, $datas);
+            }
+        }
+        $content = curl_exec($curl);
+        curl_close($curl);
+
+        return $content;
+    } else
+        return false;
+}
+
+/**
+ * 获取用户IP地址
+ *
+ * @return mixed
+ */
+function getRemoteAddr()
+{
+    if (isset($_SERVER['HTTP_X_FORWARDED_FOR']) && $_SERVER['HTTP_X_FORWARDED_FOR'] && (!isset($_SERVER['REMOTE_ADDR']) || preg_match('/^127\..*/i', trim($_SERVER['REMOTE_ADDR'])) || preg_match('/^172\.16.*/i', trim($_SERVER['REMOTE_ADDR'])) || preg_match('/^192\.168\.*/i', trim($_SERVER['REMOTE_ADDR'])) || preg_match('/^10\..*/i', trim($_SERVER['REMOTE_ADDR'])))) {
+        if (strpos($_SERVER['HTTP_X_FORWARDED_FOR'], ',')) {
+            $ips = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+
+            return $ips[0];
+        } else
+            return $_SERVER['HTTP_X_FORWARDED_FOR'];
+    }
+
+    return $_SERVER['REMOTE_ADDR'];
+}
