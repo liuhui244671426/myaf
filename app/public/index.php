@@ -34,9 +34,13 @@ if (XHPROF) {
     //xhprof_enable();
 }
 
-$app = new \Yaf\Application(APPLICATION_PATH . "/application/configs/application.ini", 'production');
-
-$app->bootstrap()->run();
+if(ini_get('yaf.use_namespace') != true){
+    echo '框架需要命名空间支持';
+    exit;
+} else {
+    $app = new \Yaf\Application(APPLICATION_PATH . "/application/configs/application.ini", 'production');
+    $app->bootstrap()->run();
+}
 
 //------xhprof--------//
 if (XHPROF) {
