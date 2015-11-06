@@ -34,7 +34,9 @@
  * @license   http://opensource.org/licenses/gpl-license.php GNU Public License
  * @copyright Colin Verot
  */
-class upload {
+namespace Our\Util\Upload;
+
+class Uploader {
 
 
     /**
@@ -43,7 +45,7 @@ class upload {
      * @access public
      * @var string
      */
-    var $version;
+    public $version;
 
     /**
      * Uploaded file name
@@ -51,7 +53,7 @@ class upload {
      * @access public
      * @var string
      */
-    var $file_src_name;
+    public $file_src_name;
 
     /**
      * Uploaded file name body (i.e. without extension)
@@ -59,7 +61,7 @@ class upload {
      * @access public
      * @var string
      */
-    var $file_src_name_body;
+    public $file_src_name_body;
 
     /**
      * Uploaded file name extension
@@ -75,159 +77,159 @@ class upload {
      * @access public
      * @var string
      */
-    var $file_src_mime;
+    public $file_src_mime;
 
     /**
      * Uploaded file size, in bytes
      *
      * @access public
-     * @var double
+     * @public double
      */
-    var $file_src_size;
+    public $file_src_size;
 
     /**
      * Holds eventual PHP error code from $_FILES
      *
      * @access public
-     * @var string
+     * @public string
      */
-    var $file_src_error;
+    public $file_src_error;
 
     /**
      * Uloaded file name, including server path
      *
      * @access public
-     * @var string
+     * @public string
      */
-    var $file_src_pathname;
+    public $file_src_pathname;
 
     /**
      * Uloaded file name temporary copy
      *
      * @access private
-     * @var string
+     * @public string
      */
-    var $file_src_temp;
+    public $file_src_temp;
 
     /**
      * Destination file name
      *
      * @access public
-     * @var string
+     * @public string
      */
-    var $file_dst_path;
+    public $file_dst_path;
 
     /**
      * Destination file name
      *
      * @access public
-     * @var string
+     * @public string
      */
-    var $file_dst_name;
+    public $file_dst_name;
 
     /**
      * Destination file name body (i.e. without extension)
      *
      * @access public
-     * @var string
+     * @public string
      */
-    var $file_dst_name_body;
+    public $file_dst_name_body;
 
     /**
      * Destination file extension
      *
      * @access public
-     * @var string
+     * @public string
      */
-    var $file_dst_name_ext;
+    public $file_dst_name_ext;
 
     /**
      * Destination file name, including path
      *
      * @access public
-     * @var string
+     * @public string
      */
-    var $file_dst_pathname;
+    public $file_dst_pathname;
 
     /**
      * Source image width
      *
      * @access public
-     * @var integer
+     * @public integer
      */
-    var $image_src_x;
+    public $image_src_x;
 
     /**
      * Source image height
      *
      * @access public
-     * @var integer
+     * @public integer
      */
-    var $image_src_y;
+    public $image_src_y;
 
     /**
      * Source image color depth
      *
      * @access public
-     * @var integer
+     * @public integer
      */
-    var $image_src_bits;
+    public $image_src_bits;
 
     /**
      * Number of pixels
      *
      * @access public
-     * @var long
+     * @public long
      */
-    var $image_src_pixels;
+    public $image_src_pixels;
 
     /**
      * Type of image (png, gif, jpg or bmp)
      *
      * @access public
-     * @var string
+     * @public string
      */
-    var $image_src_type;
+    public $image_src_type;
 
     /**
      * Destination image width
      *
      * @access public
-     * @var integer
+     * @public integer
      */
-    var $image_dst_x;
+    public $image_dst_x;
 
     /**
      * Destination image height
      *
      * @access public
-     * @var integer
+     * @public integer
      */
-    var $image_dst_y;
+    public $image_dst_y;
 
     /**
      * Destination image type (png, gif, jpg or bmp)
      *
      * @access public
-     * @var integer
+     * @public integer
      */
-    var $image_dst_type;
+    public $image_dst_type;
 
     /**
      * Supported image formats
      *
      * @access private
-     * @var array
+     * @public array
      */
-    var $image_supported;
+    public $image_supported;
 
     /**
      * Flag to determine if the source file is an image
      *
      * @access public
-     * @var boolean
+     * @public boolean
      */
-    var $file_is_image;
+    public $file_is_image;
 
     /**
      * Flag set after instanciating the class
@@ -235,9 +237,9 @@ class upload {
      * Indicates if the file has been uploaded properly
      *
      * @access public
-     * @var bool
+     * @public bool
      */
-    var $uploaded;
+    public $uploaded;
 
     /**
      * Flag stopping PHP upload checks
@@ -250,9 +252,9 @@ class upload {
      * Warning: for uploads, this flag MUST be set to false for security reason
      *
      * @access public
-     * @var bool
+     * @public bool
      */
-    var $no_upload_check;
+    public $no_upload_check;
 
     /**
      * Flag set after calling a process
@@ -260,69 +262,69 @@ class upload {
      * Indicates if the processing, and copy of the resulting file went OK
      *
      * @access public
-     * @var bool
+     * @public bool
      */
-    var $processed;
+    public $processed;
 
     /**
      * Holds eventual error message in plain english
      *
      * @access public
-     * @var string
+     * @public string
      */
-    var $error;
+    public $error;
 
     /**
      * Holds an HTML formatted log
      *
      * @access public
-     * @var string
+     * @public string
      */
-    var $log;
+    public $log;
 
 
-    // overiddable processing variables
+    // overiddable processing publiciables
 
 
     /**
-     * Set this variable to replace the name body (i.e. without extension)
+     * Set this publiciable to replace the name body (i.e. without extension)
      *
      * @access public
-     * @var string
+     * @public string
      */
-    var $file_new_name_body;
+    public $file_new_name_body;
 
     /**
-     * Set this variable to append a string to the file name body
+     * Set this publiciable to append a string to the file name body
      *
      * @access public
-     * @var string
+     * @public string
      */
-    var $file_name_body_add;
+    public $file_name_body_add;
 
     /**
-     * Set this variable to prepend a string to the file name body
+     * Set this publiciable to prepend a string to the file name body
      *
      * @access public
-     * @var string
+     * @public string
      */
-    var $file_name_body_pre;
+    public $file_name_body_pre;
 
     /**
-     * Set this variable to change the file extension
+     * Set this publiciable to change the file extension
      *
      * @access public
-     * @var string
+     * @public string
      */
-    var $file_new_name_ext;
+    public $file_new_name_ext;
 
     /**
-     * Set this variable to format the filename (spaces changed to _)
+     * Set this publiciable to format the filename (spaces changed to _)
      *
      * @access public
-     * @var boolean
+     * @public boolean
      */
-    var $file_safe_name;
+    public $file_safe_name;
 
     /**
      * Forces an extension if the source file doesn't have one
@@ -331,19 +333,19 @@ class upload {
      * Otherwise, a .txt extension will be chosen
      *
      * @access public
-     * @var boolean
+     * @public boolean
      */
-    var $file_force_extension;
+    public $file_force_extension;
 
     /**
-     * Set this variable to false if you don't want to check the MIME against the allowed list
+     * Set this publiciable to false if you don't want to check the MIME against the allowed list
      *
-     * This variable is set to true by default for security reason
+     * This publiciable is set to true by default for security reason
      *
      * @access public
-     * @var boolean
+     * @public boolean
      */
-    var $mime_check;
+    public $mime_check;
 
     /**
      * Set this variable to false in the init() function if you don't want to check the MIME
@@ -360,7 +362,7 @@ class upload {
      * @access public
      * @var boolean
      */
-    var $mime_fileinfo;
+    public $mime_fileinfo;
 
     /**
      * Set this variable to false in the init() function if you don't want to check the MIME
@@ -371,7 +373,7 @@ class upload {
      * @access public
      * @var boolean
      */
-    var $mime_file;
+    public $mime_file;
 
     /**
      * Set this variable to false in the init() function if you don't want to check the MIME
@@ -385,7 +387,7 @@ class upload {
      * @access public
      * @var boolean
      */
-    var $mime_magic;
+    public $mime_magic;
 
     /**
      * Set this variable to false in the init() function if you don't want to check the MIME
@@ -399,7 +401,7 @@ class upload {
      * @access public
      * @var boolean
      */
-    var $mime_getimagesize;
+    public $mime_getimagesize;
 
     /**
      * Set this variable to false if you don't want to turn dangerous scripts into simple text files
@@ -407,7 +409,7 @@ class upload {
      * @access public
      * @var boolean
      */
-    var $no_script;
+    public $no_script;
 
     /**
      * Set this variable to true to allow automatic renaming of the file
@@ -424,7 +426,7 @@ class upload {
      * @access public
      * @var bool
      */
-    var $file_auto_rename;
+    public $file_auto_rename;
 
     /**
      * Set this variable to true to allow automatic creation of the destination
@@ -435,7 +437,7 @@ class upload {
      * @access public
      * @var bool
      */
-    var $dir_auto_create;
+    public $dir_auto_create;
 
     /**
      * Set this variable to true to allow automatic chmod of the destination
@@ -446,7 +448,7 @@ class upload {
      * @access public
      * @var bool
      */
-    var $dir_auto_chmod;
+    public $dir_auto_chmod;
 
     /**
      * Set this variable to the default chmod you want the class to use
@@ -457,7 +459,7 @@ class upload {
      * @access public
      * @var bool
      */
-    var $dir_chmod;
+    public $dir_chmod;
 
     /**
      * Set this variable tu true to allow overwriting of an existing file
@@ -467,7 +469,7 @@ class upload {
      * @access public
      * @var bool
      */
-    var $file_overwrite;
+    public $file_overwrite;
 
     /**
      * Set this variable to change the maximum size in bytes for an uploaded file
@@ -480,7 +482,7 @@ class upload {
      * @access public
      * @var double
      */
-    var $file_max_size;
+    public $file_max_size;
 
     /**
      * Set this variable to true to resize the file if it is an image
@@ -492,7 +494,7 @@ class upload {
      * @access public
      * @var bool
      */
-    var $image_resize;
+    public $image_resize;
 
     /**
      * Set this variable to convert the file if it is an image
@@ -505,7 +507,7 @@ class upload {
      * @access public
      * @var string
      */
-    var $image_convert;
+    public $image_convert;
 
     /**
      * Set this variable to the wanted (or maximum/minimum) width for the processed image, in pixels
@@ -515,7 +517,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_x;
+    public $image_x;
 
     /**
      * Set this variable to the wanted (or maximum/minimum) height for the processed image, in pixels
@@ -525,7 +527,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_y;
+    public $image_y;
 
     /**
      * Set this variable to keep the original size ratio to fit within {@link image_x} x {@link image_y}
@@ -535,7 +537,7 @@ class upload {
      * @access public
      * @var bool
      */
-    var $image_ratio;
+    public $image_ratio;
 
     /**
      * Set this variable to keep the original size ratio to fit within {@link image_x} x {@link image_y}
@@ -551,7 +553,7 @@ class upload {
      * @access public
      * @var mixed
      */
-    var $image_ratio_crop;
+    public $image_ratio_crop;
 
     /**
      * Set this variable to keep the original size ratio to fit within {@link image_x} x {@link image_y}
@@ -568,7 +570,7 @@ class upload {
      * @access public
      * @var mixed
      */
-    var $image_ratio_fill;
+    public $image_ratio_fill;
 
     /**
      * Set this variable to a number of pixels so that {@link image_x} and {@link image_y} are the best match possible
@@ -581,7 +583,7 @@ class upload {
      * @access public
      * @var mixed
      */
-    var $image_ratio_pixels;
+    public $image_ratio_pixels;
 
     /**
      * Set this variable to keep the original size ratio to fit within {@link image_x} x {@link image_y},
@@ -592,7 +594,7 @@ class upload {
      * @access public
      * @var bool
      */
-    var $image_ratio_no_zoom_in;
+    public $image_ratio_no_zoom_in;
 
     /**
      * Set this variable to keep the original size ratio to fit within {@link image_x} x {@link image_y},
@@ -603,7 +605,7 @@ class upload {
      * @access public
      * @var bool
      */
-    var $image_ratio_no_zoom_out;
+    public $image_ratio_no_zoom_out;
 
     /**
      * Set this variable to calculate {@link image_x} automatically , using {@link image_y} and conserving ratio
@@ -613,7 +615,7 @@ class upload {
      * @access public
      * @var bool
      */
-    var $image_ratio_x;
+    public $image_ratio_x;
 
     /**
      * Set this variable to calculate {@link image_y} automatically , using {@link image_x} and conserving ratio
@@ -623,7 +625,7 @@ class upload {
      * @access public
      * @var bool
      */
-    var $image_ratio_y;
+    public $image_ratio_y;
 
     /**
      * Set this variable to set a maximum image width, above which the upload will be invalid
@@ -633,7 +635,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_max_width;
+    public $image_max_width;
 
     /**
      * Set this variable to set a maximum image height, above which the upload will be invalid
@@ -643,7 +645,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_max_height;
+    public $image_max_height;
 
     /**
      * Set this variable to set a maximum number of pixels for an image, above which the upload will be invalid
@@ -653,7 +655,7 @@ class upload {
      * @access public
      * @var long
      */
-    var $image_max_pixels;
+    public $image_max_pixels;
 
     /**
      * Set this variable to set a maximum image aspect ratio, above which the upload will be invalid
@@ -665,7 +667,7 @@ class upload {
      * @access public
      * @var float
      */
-    var $image_max_ratio;
+    public $image_max_ratio;
 
     /**
      * Set this variable to set a minimum image width, below which the upload will be invalid
@@ -675,7 +677,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_min_width;
+    public $image_min_width;
 
     /**
      * Set this variable to set a minimum image height, below which the upload will be invalid
@@ -685,7 +687,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_min_height;
+    public $image_min_height;
 
     /**
      * Set this variable to set a minimum number of pixels for an image, below which the upload will be invalid
@@ -695,7 +697,7 @@ class upload {
      * @access public
      * @var long
      */
-    var $image_min_pixels;
+    public $image_min_pixels;
 
     /**
      * Set this variable to set a minimum image aspect ratio, below which the upload will be invalid
@@ -707,7 +709,7 @@ class upload {
      * @access public
      * @var float
      */
-    var $image_min_ratio;
+    public $image_min_ratio;
 
     /**
      * Compression level for PNG images
@@ -719,7 +721,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $png_compression;
+    public $png_compression;
 
     /**
      * Quality of JPEG created/converted destination image
@@ -729,7 +731,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $jpeg_quality;
+    public $jpeg_quality;
 
     /**
      * Determines the quality of the JPG image to fit a desired file size
@@ -745,7 +747,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $jpeg_size;
+    public $jpeg_size;
 
     /**
      * Turns the interlace bit on
@@ -755,7 +757,7 @@ class upload {
      * @access public
      * @var boolean
      */
-    var $image_interlace;
+    public $image_interlace;
 
     /**
      * Preserve transparency when resizing or converting an image (deprecated)
@@ -766,7 +768,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $preserve_transparency;
+    public $preserve_transparency;
 
     /**
      * Flag set to true when the image is transparent
@@ -776,7 +778,7 @@ class upload {
      * @access public
      * @var boolean
      */
-    var $image_is_transparent;
+    public $image_is_transparent;
 
     /**
      * Transparent color in a palette
@@ -786,7 +788,7 @@ class upload {
      * @access public
      * @var boolean
      */
-    var $image_transparent_color;
+    public $image_transparent_color;
 
     /**
      * Background color, used to paint transparent areas with
@@ -801,7 +803,7 @@ class upload {
      * @access public
      * @var string
      */
-    var $image_background_color;
+    public $image_background_color;
 
     /**
      * Default color for non alpha-transparent images
@@ -817,7 +819,7 @@ class upload {
      * @access public
      * @var boolean
      */
-    var $image_default_color;
+    public $image_default_color;
 
     /**
      * Flag set to true when the image is not true color
@@ -825,7 +827,7 @@ class upload {
      * @access public
      * @var boolean
      */
-    var $image_is_palette;
+    public $image_is_palette;
 
     /**
      * Corrects the image brightness
@@ -837,7 +839,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_brightness;
+    public $image_brightness;
 
     /**
      * Corrects the image contrast
@@ -849,7 +851,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_contrast;
+    public $image_contrast;
 
     /**
      * Changes the image opacity
@@ -861,7 +863,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_opacity;
+    public $image_opacity;
 
     /**
      * Applies threshold filter
@@ -873,7 +875,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_threshold;
+    public $image_threshold;
 
     /**
      * Applies a tint on the image
@@ -885,7 +887,7 @@ class upload {
      * @access public
      * @var string;
      */
-    var $image_tint_color;
+    public $image_tint_color;
 
     /**
      * Applies a colored overlay on the image
@@ -899,7 +901,7 @@ class upload {
      * @access public
      * @var string;
      */
-    var $image_overlay_color;
+    public $image_overlay_color;
 
     /**
      * Sets the opacity for the colored overlay
@@ -913,7 +915,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_overlay_opacity;
+    public $image_overlay_opacity;
 
     /**
      * Soon to be deprecated old form of {@link image_overlay_opacity}
@@ -921,7 +923,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_overlay_percent;
+    public $image_overlay_percent;
 
     /**
      * Inverts the color of an image
@@ -931,7 +933,7 @@ class upload {
      * @access public
      * @var boolean;
      */
-    var $image_negative;
+    public $image_negative;
 
     /**
      * Turns the image into greyscale
@@ -941,7 +943,7 @@ class upload {
      * @access public
      * @var boolean;
      */
-    var $image_greyscale;
+    public $image_greyscale;
 
     /**
      * Pixelate an image
@@ -953,7 +955,7 @@ class upload {
      * @access public
      * @var integer;
      */
-    var $image_pixelate;
+    public $image_pixelate;
 
     /**
      * Applies an unsharp mask, with alpha transparency support
@@ -965,7 +967,7 @@ class upload {
      * @access public
      * @var boolean;
      */
-    var $image_unsharp;
+    public $image_unsharp;
 
     /**
      * Sets the unsharp mask amount
@@ -979,7 +981,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_unsharp_amount;
+    public $image_unsharp_amount;
 
     /**
      * Sets the unsharp mask radius
@@ -996,7 +998,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_unsharp_radius;
+    public $image_unsharp_radius;
 
     /**
      * Sets the unsharp mask threshold
@@ -1010,7 +1012,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_unsharp_threshold;
+    public $image_unsharp_threshold;
 
     /**
      * Adds a text label on the image
@@ -1036,7 +1038,7 @@ class upload {
      * @access public
      * @var string;
      */
-    var $image_text;
+    public $image_text;
 
     /**
      * Sets the text direction for the text label
@@ -1048,7 +1050,7 @@ class upload {
      * @access public
      * @var string;
      */
-    var $image_text_direction;
+    public $image_text_direction;
 
     /**
      * Sets the text color for the text label
@@ -1060,7 +1062,7 @@ class upload {
      * @access public
      * @var string;
      */
-    var $image_text_color;
+    public $image_text_color;
 
     /**
      * Sets the text opacity in the text label
@@ -1072,7 +1074,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_text_opacity;
+    public $image_text_opacity;
 
     /**
      * Soon to be deprecated old form of {@link image_text_opacity}
@@ -1080,7 +1082,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_text_percent;
+    public $image_text_percent;
 
     /**
      * Sets the text background color for the text label
@@ -1092,7 +1094,7 @@ class upload {
      * @access public
      * @var string;
      */
-    var $image_text_background;
+    public $image_text_background;
 
     /**
      * Sets the text background opacity in the text label
@@ -1104,7 +1106,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_text_background_opacity;
+    public $image_text_background_opacity;
 
     /**
      * Soon to be deprecated old form of {@link image_text_background_opacity}
@@ -1112,7 +1114,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_text_background_percent;
+    public $image_text_background_percent;
 
     /**
      * Sets the text font in the text label
@@ -1125,7 +1127,7 @@ class upload {
      * @access public
      * @var mixed;
      */
-    var $image_text_font;
+    public $image_text_font;
 
     /**
      * Sets the text label position within the image
@@ -1146,7 +1148,7 @@ class upload {
      * @access public
      * @var string;
      */
-    var $image_text_position;
+    public $image_text_position;
 
     /**
      * Sets the text label absolute X position within the image
@@ -1159,7 +1161,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_text_x;
+    public $image_text_x;
 
     /**
      * Sets the text label absolute Y position within the image
@@ -1172,7 +1174,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_text_y;
+    public $image_text_y;
 
     /**
      * Sets the text label padding
@@ -1186,7 +1188,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_text_padding;
+    public $image_text_padding;
 
     /**
      * Sets the text label horizontal padding
@@ -1200,7 +1202,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_text_padding_x;
+    public $image_text_padding_x;
 
     /**
      * Sets the text label vertical padding
@@ -1214,7 +1216,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_text_padding_y;
+    public $image_text_padding_y;
 
     /**
      * Sets the text alignment
@@ -1228,7 +1230,7 @@ class upload {
      * @access public
      * @var string;
      */
-    var $image_text_alignment;
+    public $image_text_alignment;
 
     /**
      * Sets the text line spacing
@@ -1242,7 +1244,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_text_line_spacing;
+    public $image_text_line_spacing;
 
     /**
      * Sets the height of the reflection
@@ -1255,7 +1257,7 @@ class upload {
      * @access public
      * @var mixed;
      */
-    var $image_reflection_height;
+    public $image_reflection_height;
 
     /**
      * Sets the space between the source image and its relection
@@ -1269,7 +1271,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_reflection_space;
+    public $image_reflection_space;
 
     /**
      * Sets the color of the reflection background (deprecated)
@@ -1285,7 +1287,7 @@ class upload {
      * @access public
      * @var string;
      */
-    var $image_reflection_color;
+    public $image_reflection_color;
 
     /**
      * Sets the initial opacity of the reflection
@@ -1300,7 +1302,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_reflection_opacity;
+    public $image_reflection_opacity;
 
     /**
      * Flips the image vertically or horizontally
@@ -1312,7 +1314,7 @@ class upload {
      * @access public
      * @var string;
      */
-    var $image_flip;
+    public $image_flip;
 
     /**
      * Rotates the image by increments of 45 degrees
@@ -1324,7 +1326,7 @@ class upload {
      * @access public
      * @var string;
      */
-    var $image_rotate;
+    public $image_rotate;
 
     /**
      * Crops an image
@@ -1354,7 +1356,7 @@ class upload {
      * @access public
      * @var string OR array;
      */
-    var $image_crop;
+    public $image_crop;
 
     /**
      * Crops an image, before an eventual resizing
@@ -1366,7 +1368,7 @@ class upload {
      * @access public
      * @var string OR array;
      */
-    var $image_precrop;
+    public $image_precrop;
 
     /**
      * Adds a bevel border on the image
@@ -1380,7 +1382,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_bevel;
+    public $image_bevel;
 
     /**
      * Top and left bevel color
@@ -1393,7 +1395,7 @@ class upload {
      * @access public
      * @var string;
      */
-    var $image_bevel_color1;
+    public $image_bevel_color1;
 
     /**
      * Right and bottom bevel color
@@ -1406,7 +1408,7 @@ class upload {
      * @access public
      * @var string;
      */
-    var $image_bevel_color2;
+    public $image_bevel_color2;
 
     /**
      * Adds a single-color border on the outer of the image
@@ -1426,7 +1428,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_border;
+    public $image_border;
 
     /**
      * Border color
@@ -1439,7 +1441,7 @@ class upload {
      * @access public
      * @var string;
      */
-    var $image_border_color;
+    public $image_border_color;
 
     /**
      * Sets the opacity for the borders
@@ -1453,7 +1455,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_border_opacity;
+    public $image_border_opacity;
 
     /**
      * Adds a fading-to-transparent border on the image
@@ -1472,7 +1474,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_border_transparent;
+    public $image_border_transparent;
 
     /**
      * Adds a multi-color frame on the outer of the image
@@ -1490,7 +1492,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_frame;
+    public $image_frame;
 
     /**
      * Sets the colors used to draw a frame
@@ -1513,7 +1515,7 @@ class upload {
      * @access public
      * @var string OR array;
      */
-    var $image_frame_colors;
+    public $image_frame_colors;
 
     /**
      * Sets the opacity for the frame
@@ -1527,7 +1529,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_frame_opacity;
+    public $image_frame_opacity;
 
     /**
      * Adds a watermark on the image
@@ -1541,7 +1543,7 @@ class upload {
      * @access public
      * @var string;
      */
-    var $image_watermark;
+    public $image_watermark;
 
     /**
      * Sets the watermarkposition within the image
@@ -1559,7 +1561,7 @@ class upload {
      * @access public
      * @var string;
      */
-    var $image_watermark_position;
+    public $image_watermark_position;
 
     /**
      * Sets the watermark absolute X position within the image
@@ -1572,7 +1574,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_watermark_x;
+    public $image_watermark_x;
 
     /**
      * Sets the twatermark absolute Y position within the image
@@ -1585,7 +1587,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_watermark_y;
+    public $image_watermark_y;
 
     /**
      * Prevents the watermark to be resized up if it is smaller than the image
@@ -1603,7 +1605,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_watermark_no_zoom_in;
+    public $image_watermark_no_zoom_in;
 
     /**
      * Prevents the watermark to be resized down if it is bigger than the image
@@ -1621,7 +1623,7 @@ class upload {
      * @access public
      * @var integer
      */
-    var $image_watermark_no_zoom_out;
+    public $image_watermark_no_zoom_out;
 
     /**
      * List of MIME types per extension
@@ -1629,7 +1631,7 @@ class upload {
      * @access private
      * @var array
      */
-    var $mime_types;
+    public $mime_types;
 
     /**
      * Allowed MIME types
@@ -1642,7 +1644,7 @@ class upload {
      * @access public
      * @var array OR string
      */
-    var $allowed;
+    public $allowed;
 
     /**
      * Forbidden MIME types
@@ -1656,7 +1658,7 @@ class upload {
      * @access public
      * @var array OR string
      */
-    var $forbidden;
+    public $forbidden;
 
     /**
      * Array of translated error messages
@@ -1667,7 +1669,7 @@ class upload {
      * @access public
      * @var array
      */
-    var $translation;
+    public $translation;
 
     /**
      * Language selected for the translations
@@ -1677,7 +1679,7 @@ class upload {
      * @access public
      * @var array
      */
-    var $lang;
+    public $lang;
 
     /**
      * Init or re-init all the processing variables to their default values
@@ -1686,7 +1688,7 @@ class upload {
      *
      * @access private
      */
-    function init() {
+    private function init() {
 
         // overiddable variables
         $this->file_new_name_body       = null;     // replace the name body
@@ -2009,7 +2011,7 @@ class upload {
      *    or   string $file Local filename
      * @param  string $lang Optional language code
      */
-    function upload($file, $lang = 'en_GB') {
+    public function __construct($file, $lang = 'zh_CN') {
 
         $this->version            = '0.33dev';
 
@@ -2049,66 +2051,11 @@ class upload {
         $info                     = null;
         $mime_from_browser        = null;
 
-        // sets default language
-        $this->translation        = array();
-        $this->translation['file_error']                  = 'File error. Please try again.';
-        $this->translation['local_file_missing']          = 'Local file doesn\'t exist.';
-        $this->translation['local_file_not_readable']     = 'Local file is not readable.';
-        $this->translation['uploaded_too_big_ini']        = 'File upload error (the uploaded file exceeds the upload_max_filesize directive in php.ini).';
-        $this->translation['uploaded_too_big_html']       = 'File upload error (the uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the html form).';
-        $this->translation['uploaded_partial']            = 'File upload error (the uploaded file was only partially uploaded).';
-        $this->translation['uploaded_missing']            = 'File upload error (no file was uploaded).';
-        $this->translation['uploaded_no_tmp_dir']         = 'File upload error (missing a temporary folder).';
-        $this->translation['uploaded_cant_write']         = 'File upload error (failed to write file to disk).';
-        $this->translation['uploaded_err_extension']      = 'File upload error (file upload stopped by extension).';
-        $this->translation['uploaded_unknown']            = 'File upload error (unknown error code).';
-        $this->translation['try_again']                   = 'File upload error. Please try again.';
-        $this->translation['file_too_big']                = 'File too big.';
-        $this->translation['no_mime']                     = 'MIME type can\'t be detected.';
-        $this->translation['incorrect_file']              = 'Incorrect type of file.';
-        $this->translation['image_too_wide']              = 'Image too wide.';
-        $this->translation['image_too_narrow']            = 'Image too narrow.';
-        $this->translation['image_too_high']              = 'Image too tall.';
-        $this->translation['image_too_short']             = 'Image too short.';
-        $this->translation['ratio_too_high']              = 'Image ratio too high (image too wide).';
-        $this->translation['ratio_too_low']               = 'Image ratio too low (image too high).';
-        $this->translation['too_many_pixels']             = 'Image has too many pixels.';
-        $this->translation['not_enough_pixels']           = 'Image has not enough pixels.';
-        $this->translation['file_not_uploaded']           = 'File not uploaded. Can\'t carry on a process.';
-        $this->translation['already_exists']              = '%s already exists. Please change the file name.';
-        $this->translation['temp_file_missing']           = 'No correct temp source file. Can\'t carry on a process.';
-        $this->translation['source_missing']              = 'No correct uploaded source file. Can\'t carry on a process.';
-        $this->translation['destination_dir']             = 'Destination directory can\'t be created. Can\'t carry on a process.';
-        $this->translation['destination_dir_missing']     = 'Destination directory doesn\'t exist. Can\'t carry on a process.';
-        $this->translation['destination_path_not_dir']    = 'Destination path is not a directory. Can\'t carry on a process.';
-        $this->translation['destination_dir_write']       = 'Destination directory can\'t be made writeable. Can\'t carry on a process.';
-        $this->translation['destination_path_write']      = 'Destination path is not a writeable. Can\'t carry on a process.';
-        $this->translation['temp_file']                   = 'Can\'t create the temporary file. Can\'t carry on a process.';
-        $this->translation['source_not_readable']         = 'Source file is not readable. Can\'t carry on a process.';
-        $this->translation['no_create_support']           = 'No create from %s support.';
-        $this->translation['create_error']                = 'Error in creating %s image from source.';
-        $this->translation['source_invalid']              = 'Can\'t read image source. Not an image?.';
-        $this->translation['gd_missing']                  = 'GD doesn\'t seem to be present.';
-        $this->translation['watermark_no_create_support'] = 'No create from %s support, can\'t read watermark.';
-        $this->translation['watermark_create_error']      = 'No %s read support, can\'t create watermark.';
-        $this->translation['watermark_invalid']           = 'Unknown image format, can\'t read watermark.';
-        $this->translation['file_create']                 = 'No %s create support.';
-        $this->translation['no_conversion_type']          = 'No conversion type defined.';
-        $this->translation['copy_failed']                 = 'Error copying file on the server. copy() failed.';
-        $this->translation['reading_failed']              = 'Error reading the file.';
+
 
         // determines the language
         $this->lang               = $lang;
-        if ($this->lang != 'en_GB' && file_exists(dirname(__FILE__).'/lang') && file_exists(dirname(__FILE__).'/lang/class.upload.' . $lang . '.php')) {
-            $translation = null;
-            include(dirname(__FILE__).'/lang/class.upload.' . $lang . '.php');
-            if (is_array($translation)) {
-                $this->translation = array_merge($this->translation, $translation);
-            } else {
-                $this->lang = 'en_GB';
-            }
-        }
-
+        $this->translation = $this->lang_en();
 
         // determines the supported MIME types, and matching image format
         $this->image_supported = array();
@@ -2530,7 +2477,7 @@ class upload {
      * @param  boolean  $full Optional flag to get precise version
      * @return float GD version
      */
-    function gdversion($full = false) {
+    public function gdversion($full = false) {
         static $gd_version = null;
         static $gd_full_version = null;
         if ($gd_version === null) {
@@ -2568,7 +2515,7 @@ class upload {
      * @param  integer $mode Optional permissions
      * @return boolean Success
      */
-    function rmkdir($path, $mode = 0777) {
+    public function rmkdir($path, $mode = 0777) {
         return is_dir($path) || ( $this->rmkdir(dirname($path), $mode) && $this->_mkdir($path, $mode) );
     }
 
@@ -2580,7 +2527,7 @@ class upload {
      * @param  integer $mode Optional permissions
      * @return boolean Success
      */
-    function _mkdir($path, $mode = 0777) {
+    public function _mkdir($path, $mode = 0777) {
         $old = umask(0);
         $res = @mkdir($path, $mode);
         umask($old);
@@ -2595,7 +2542,7 @@ class upload {
      * @param  array   $tokens Optional token values
      * @return string Translated string
      */
-    function translate($str, $tokens = array()) {
+    public function translate($str, $tokens = array()) {
         if (array_key_exists($str, $this->translation)) $str = $this->translation[$str];
         if (is_array($tokens) && sizeof($tokens) > 0)   $str = vsprintf($str, $tokens);
         return $str;
@@ -2607,7 +2554,7 @@ class upload {
      * @access private
      * @return string Temp directory string
      */
-    function temp_dir() {
+    public function temp_dir() {
         $dir = '';
         if (function_exists('sys_get_temp_dir')) $dir = sys_get_temp_dir();
         if (!$dir && $tmp=getenv('TMP'))    $dir = $tmp;
@@ -2633,7 +2580,7 @@ class upload {
      * @param  string  $color  Color string
      * @return array RGB colors
      */
-    function getcolors($color) {
+    public function getcolors($color) {
         $color = str_replace('#', '', $color);
         if (strlen($color) == 3) $color = str_repeat(substr($color, 0, 1), 2) . str_repeat(substr($color, 1, 1), 2) . str_repeat(substr($color, 2, 1), 2);
         $r = sscanf($color, "%2x%2x%2x");
@@ -2650,7 +2597,7 @@ class upload {
      * @param  string  $size  Size in bytes, or shorthand byte options
      * @return integer Size in bytes
      */
-    function getsize($size) {
+    public function getsize($size) {
         $last = strtolower($size{strlen($size)-1});
         switch($last) {
             case 'g':
@@ -2674,7 +2621,7 @@ class upload {
      * @param  boolean $negative Allow negative offsets to be returned
      * @return array Array of four offsets (TRBL)
      */
-    function getoffsets($offsets, $x, $y, $round = true, $negative = true) {
+    public function getoffsets($offsets, $x, $y, $round = true, $negative = true) {
         if (!is_array($offsets)) $offsets = explode(' ', $offsets);
         if (sizeof($offsets) == 4) {
              $ct = $offsets[0]; $cr = $offsets[1]; $cb = $offsets[2]; $cl = $offsets[3];
@@ -2717,7 +2664,7 @@ class upload {
      * @param  boolean  $trsp Optional flag to set the background to be transparent
      * @return resource Container image
      */
-    function imagecreatenew($x, $y, $fill = true, $trsp = false) {
+    public function imagecreatenew($x, $y, $fill = true, $trsp = false) {
         if ($x < 1) $x = 1; if ($y < 1) $y = 1;
         if ($this->gdversion() >= 2 && !$this->image_is_palette) {
             // create a true color image
@@ -2754,7 +2701,7 @@ class upload {
      * @param  resource $dst_im Destination image
      * @return resource Destination image
      */
-    function imagetransfer($src_im, $dst_im) {
+    public function imagetransfer($src_im, $dst_im) {
         if (is_resource($dst_im)) imagedestroy($dst_im);
         $dst_im = & $src_im;
         return $dst_im;
@@ -2777,7 +2724,7 @@ class upload {
      * @param  int      $pct     Optional percentage of the overlay, between 0 and 100 (default: 100)
      * @return resource Destination image
      */
-    function imagecopymergealpha(&$dst_im, &$src_im, $dst_x, $dst_y, $src_x, $src_y, $src_w, $src_h, $pct = 0) {
+    public function imagecopymergealpha(&$dst_im, &$src_im, $dst_x, $dst_y, $src_x, $src_y, $src_w, $src_h, $pct = 0) {
         $dst_x = (int) $dst_x;
         $dst_y = (int) $dst_y;
         $src_x = (int) $src_x;
@@ -2853,7 +2800,7 @@ class upload {
      * @param  string $server_path Optional path location of the uploaded file, with an ending slash
      * @return string Optional content of the image
      */
-    function process($server_path = null) {
+    public function process($server_path = null) {
         $this->error        = '';
         $this->processed    = true;
         $return_mode        = false;
@@ -4602,7 +4549,7 @@ class upload {
      *
      * @access public
      */
-    function clean() {
+    public function clean() {
         $this->log .= '<b>cleanup</b><br />';
         $this->log .= '- delete temp file '  . $this->file_src_pathname . '<br />';
         @unlink($this->file_src_pathname);
@@ -4616,7 +4563,7 @@ class upload {
      *
      * @access public
      */
-    function imagecreatefrombmp($filename) {
+    public function imagecreatefrombmp($filename) {
         if (! $f1 = fopen($filename,"rb")) return false;
 
         $file = unpack("vfile_type/Vfile_size/Vreserved/Vbitmap_offset", fread($f1,14));
@@ -4691,7 +4638,7 @@ class upload {
      *
      * @access public
      */
-    function imagebmp(&$im, $filename = "") {
+    public function imagebmp(&$im, $filename = "") {
 
         if (!$im) return false;
         $w = imagesx($im);
@@ -4735,6 +4682,109 @@ class upload {
         }
         return true;
     }
+    /**
+     * 语言包
+     * */
+    public function lang_en(){
+        // sets default language
+        $translation        = array();
+        $translation['file_error']                  = 'File error. Please try again.';
+        $translation['local_file_missing']          = 'Local file doesn\'t exist.';
+        $translation['local_file_not_readable']     = 'Local file is not readable.';
+        $translation['uploaded_too_big_ini']        = 'File upload error (the uploaded file exceeds the upload_max_filesize directive in php.ini).';
+        $translation['uploaded_too_big_html']       = 'File upload error (the uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the html form).';
+        $translation['uploaded_partial']            = 'File upload error (the uploaded file was only partially uploaded).';
+        $translation['uploaded_missing']            = 'File upload error (no file was uploaded).';
+        $translation['uploaded_no_tmp_dir']         = 'File upload error (missing a temporary folder).';
+        $translation['uploaded_cant_write']         = 'File upload error (failed to write file to disk).';
+        $translation['uploaded_err_extension']      = 'File upload error (file upload stopped by extension).';
+        $translation['uploaded_unknown']            = 'File upload error (unknown error code).';
+        $translation['try_again']                   = 'File upload error. Please try again.';
+        $translation['file_too_big']                = 'File too big.';
+        $translation['no_mime']                     = 'MIME type can\'t be detected.';
+        $translation['incorrect_file']              = 'Incorrect type of file.';
+        $translation['image_too_wide']              = 'Image too wide.';
+        $translation['image_too_narrow']            = 'Image too narrow.';
+        $translation['image_too_high']              = 'Image too tall.';
+        $translation['image_too_short']             = 'Image too short.';
+        $translation['ratio_too_high']              = 'Image ratio too high (image too wide).';
+        $translation['ratio_too_low']               = 'Image ratio too low (image too high).';
+        $translation['too_many_pixels']             = 'Image has too many pixels.';
+        $translation['not_enough_pixels']           = 'Image has not enough pixels.';
+        $translation['file_not_uploaded']           = 'File not uploaded. Can\'t carry on a process.';
+        $translation['already_exists']              = '%s already exists. Please change the file name.';
+        $translation['temp_file_missing']           = 'No correct temp source file. Can\'t carry on a process.';
+        $translation['source_missing']              = 'No correct uploaded source file. Can\'t carry on a process.';
+        $translation['destination_dir']             = 'Destination directory can\'t be created. Can\'t carry on a process.';
+        $translation['destination_dir_missing']     = 'Destination directory doesn\'t exist. Can\'t carry on a process.';
+        $translation['destination_path_not_dir']    = 'Destination path is not a directory. Can\'t carry on a process.';
+        $translation['destination_dir_write']       = 'Destination directory can\'t be made writeable. Can\'t carry on a process.';
+        $translation['destination_path_write']      = 'Destination path is not a writeable. Can\'t carry on a process.';
+        $translation['temp_file']                   = 'Can\'t create the temporary file. Can\'t carry on a process.';
+        $translation['source_not_readable']         = 'Source file is not readable. Can\'t carry on a process.';
+        $translation['no_create_support']           = 'No create from %s support.';
+        $translation['create_error']                = 'Error in creating %s image from source.';
+        $translation['source_invalid']              = 'Can\'t read image source. Not an image?.';
+        $translation['gd_missing']                  = 'GD doesn\'t seem to be present.';
+        $translation['watermark_no_create_support'] = 'No create from %s support, can\'t read watermark.';
+        $translation['watermark_create_error']      = 'No %s read support, can\'t create watermark.';
+        $translation['watermark_invalid']           = 'Unknown image format, can\'t read watermark.';
+        $translation['file_create']                 = 'No %s create support.';
+        $translation['no_conversion_type']          = 'No conversion type defined.';
+        $translation['copy_failed']                 = 'Error copying file on the server. copy() failed.';
+        $translation['reading_failed']              = 'Error reading the file.';
+        return $translation;
+    }
+    /**
+     * 语言包
+     * */
+    public function lang_zh_CN(){
+        $translation = array();
+        $translation['file_error']                  = '文件错误，请重试。';
+        $translation['local_file_missing']          = '本地文件不存在。';
+        $translation['local_file_not_readable']     = '本地文件不可读。';
+        $translation['uploaded_too_big_ini']        = '文件上件出错 (上传的文件大小超过了php.ini中upload_max_filesize设置的大小)。';
+        $translation['uploaded_too_big_html']       = '文件上件出错 (上传的文件大小超过了HTML 表单设置的大小)。';
+        $translation['uploaded_partial']            = '文件上件出错 (上传的文件部分丢失)。';
+        $translation['uploaded_missing']            = '文件上件出错 (上传文件丢失)。';
+        $translation['uploaded_unknown']            = '文件上件出错 (未知错误).';
+        $translation['try_again']                   = '文件上件出错。 请重试。';
+        $translation['file_too_big']                = '文件太大。';
+        $translation['no_mime']                     = '未知文件类型。';
+        $translation['incorrect_file']              = '不正确的文件格式。';
+        $translation['image_too_wide']              = '图片宽度太大。';
+        $translation['image_too_narrow']            = '图片宽度太小。';
+        $translation['image_too_high']              = '图片高度太大。';
+        $translation['image_too_short']             = '图片高度太小。';
+        $translation['ratio_too_high']              = '图片宽/高比率太高(图片宽度太大)。';
+        $translation['ratio_too_low']               = '图片宽/高比率太低(图片高度太大).';
+        $translation['too_many_pixels']             = '图片位数太高。';
+        $translation['not_enough_pixels']           = '图片位数不够';
+        $translation['file_not_uploaded']           = '文件未上传，不能进行处理。';
+        $translation['already_exists']              = '%s 已经存在，请更换文件名。';
+        $translation['temp_file_missing']           = '处理的(临时)源文件不正确，不能进行处理。';
+        $translation['source_missing']              = '已上传的文件丢失，不能进行处理。';
+        $translation['destination_dir']             = '目标文件目录不能被创建，不能进行处理。';
+        $translation['destination_dir_missing']     = '目标文件目录不存在，不能进行处理。';
+        $translation['destination_path_not_dir']    = '目录路径不是一个有效的目录，不能进行处理。';
+        $translation['destination_dir_write']       = '不能让目标文件目录设置为可写的，不能进行处理。';
+        $translation['destination_path_write']      = '目录路径是不可以写的，不能进行处理。';
+        $translation['temp_file']                   = '不能创建临时文件，不能进行处理。';
+        $translation['source_not_readable']         = '源文件不可以读，不能进行处理。';
+        $translation['no_create_support']           = '%s 不支持创建';
+        $translation['create_error']                = '从源文件创建 %s 图片过程中出错。';
+        $translation['source_invalid']              = '无法读取原始图片，确认是不是正确的图片文件？';
+        $translation['gd_missing']                  = 'GD 好像不可以使用。';
+        $translation['watermark_no_create_support'] = '%s 创建不支持, 不能读取水印文件。';
+        $translation['watermark_create_error']      = '%s 不支持读, 不能创建水印。';
+        $translation['watermark_invalid']           = '未知文件格式, 无法读取水印文件。';
+        $translation['file_create']                 = '%s 不支持创建。';
+        $translation['no_conversion_type']          = '未定义转换类型';
+        $translation['copy_failed']                 = '在服务器上复制文件时出错。 copy() 操作失败.';
+        $translation['reading_failed']              = '读取过程中出错。';
+        return $translation;
+    }
+
 }
 
-?>
+

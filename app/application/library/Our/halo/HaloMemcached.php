@@ -114,7 +114,7 @@ Memcached::RES_PAYLOAD_FAILURE - -1001
  * */
 namespace Our\Halo;
 
-//todo test unit
+//todo 1.testunit 2.addServers
 class HaloMemcached
 {
     protected static $instance = null;
