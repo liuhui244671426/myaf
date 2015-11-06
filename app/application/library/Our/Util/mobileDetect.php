@@ -26,7 +26,7 @@
 //    $md->isMobile();
 namespace Our\Util;
 
-class mobileDetectUtil
+class MobileDetectUtil
 {
     /**
      * Mobile detection type.
