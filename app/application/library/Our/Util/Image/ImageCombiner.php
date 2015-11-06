@@ -1,6 +1,9 @@
 <?php
+/**
+ * 图像合成
+ * */
 //todo test PHPunit
-namespace Our\Util;
+namespace Our\Util\Image;
 
 class ImageCombiner
 {
@@ -34,12 +37,12 @@ class ImageCombiner
                 list($src_width, $src_height, $type) = @getimagesize($tmp);
                 if ($src_width && $src_height && $type && in_array($type, array(IMAGETYPE_BMP, IMAGETYPE_JPEG, IMAGETYPE_PNG, IMAGETYPE_GIF))) {
                     $image = array('width' => $src_width, 'height' => $src_height, 'type' => $type, 'image' => $tmp);
-                    $this->src_infos[$key] = $image;
+                    $this->src_infos[ $key ] = $image;
                 } else {
-                    unset($this->srcs[$key]);
+                    unset($this->srcs[ $key ]);
                 }
             } else {
-                unset($this->srcs[$key]);
+                unset($this->srcs[ $key ]);
             }
         }
     }

@@ -1,6 +1,6 @@
 <?php
 //todo test PHPunit
-namespace Our\Util;
+namespace Our\Util\Image;
 
 class ImageManager
 {
@@ -56,7 +56,7 @@ class ImageManager
     {
         $infos = @getimagesize($image);
 
-        $memory_limit = Tools::getMemoryLimit();
+        $memory_limit = \Our\Util\Tools::getMemoryLimit();
         if (function_exists('memory_get_usage') && (int)$memory_limit != -1) {
             $current_memory = memory_get_usage();
             $channel = isset($infos['channels']) ? ($infos['channels'] / 8) : 1;
@@ -81,7 +81,7 @@ class ImageManager
         if (strpos($filename, '.') !== false) {
             $name_explode = explode('.', $filename);
             if (count($name_explode) >= 2) {
-                $current_extension = strtolower($name_explode[count($name_explode) - 1]);
+                $current_extension = strtolower($name_explode[ count($name_explode) - 1 ]);
                 if (!in_array($current_extension, $authorized_extensions))
                     return false;
             } else
@@ -152,8 +152,8 @@ class ImageManager
         // Source information
         $src_info = getimagesize($src_file);
         $src = array(
-            'width' => $src_info[0],
-            'height' => $src_info[1],
+            'width'     => $src_info[0],
+            'height'    => $src_info[1],
             'ressource' => ImageManager::create($src_info[2], $src_file),
         );
 
@@ -504,9 +504,9 @@ class ImageManager
     public static function getMimeTypeByExtension($file_name)
     {
         $types = array(
-            'image/gif' => array('gif'),
+            'image/gif'  => array('gif'),
             'image/jpeg' => array('jpg', 'jpeg'),
-            'image/png' => array('png')
+            'image/png'  => array('png'),
         );
         $extension = substr($file_name, strrpos($file_name, '.') + 1);
 
@@ -534,7 +534,7 @@ class ImageManager
     {
         $name_explode = explode('.', $filename);
         if (count($name_explode) >= 2) {
-            return strtolower($name_explode[count($name_explode) - 1]);
+            return strtolower($name_explode[ count($name_explode) - 1 ]);
         } else
             return false;
     }
