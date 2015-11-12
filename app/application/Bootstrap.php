@@ -25,9 +25,8 @@ class Bootstrap extends \Yaf\Bootstrap_Abstract
         set_exception_handler('\Our\Halo\HaloLogger::sysException');
 
         //register_shutdown_function('sysShutdown');
-
-        $session = new \Our\SessionHandler();
-        session_set_save_handler(
+        $session = new \Our\mcSessionHandler();
+        $isTrue = session_set_save_handler(
             array($session, 'open'),
             array($session, 'close'),
             array($session, 'read'),

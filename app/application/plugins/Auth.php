@@ -24,12 +24,12 @@ class AuthPlugin extends \Yaf\Plugin_Abstract
 
     public function dispatchLoopStartup(\Yaf\Request_Abstract $request, \Yaf\Response_Abstract $response)
     {
-        \Our\Halo\HaloLogger::INFO($request->module);
-        \Our\Halo\HaloLogger::INFO($request->action);
-        //$module = strtolower($this->module);
-        //$action = strtolower($this->action);
+        $module = strtolower($this->module);
+        $action = strtolower($this->action);
 
-        if (strcasecmp($request->module, 'Admin') == 0 && strcasecmp($request->action, 'login') != 0) {
+        if (($module == 'admin') &&
+            ($action == 'login')) {
+
             $isLogin = ((empty($_SESSION['user']['uid'])) ||
                 (!isset($_SESSION['user']['uid'])) || ($_SESSION['user']['uid'] == null))
                 ? false : true;
@@ -37,6 +37,7 @@ class AuthPlugin extends \Yaf\Plugin_Abstract
             //缺少auth
             if (!$isLogin) {
                 \Our\Halo\HaloLogger::INFO(__METHOD__ . ' login failed');
+                \Our\Halo\HaloLogger::INFO($_SESSION);
                 header('location:/admin/index/login');
                 return false;
             }

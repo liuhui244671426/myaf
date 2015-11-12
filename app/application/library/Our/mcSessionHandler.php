@@ -7,7 +7,7 @@
  */
 namespace Our;
 
-class SessionHandler extends \SessionHandler{
+class mcSessionHandler extends \SessionHandler{
     private static $_lifetime = null;
     private static $_handler = null;
 
@@ -27,18 +27,34 @@ class SessionHandler extends \SessionHandler{
     }
 
     public function read($session_id){
-        return self::$_handler->get(self::sessionKey($session_id));
+        try{
+            return self::$_handler->get(self::sessionKey($session_id));
+        } catch(\Exception $e){
+            \Our\Halo\HaloLogger::FATAL($e->getMessage());
+        }
+
     }
 
     public function write($session_id,$data){
-        self::$_handler->set(self::sessionKey($session_id), $data, self::$_lifetime);
+        try{
+            if(empty($data)){
+                \Our\Halo\HaloLogger::INFO('mcSessionHandler write empty data');
+            }
 
-        return true;
+            return self::$_handler->set(self::sessionKey($session_id), $data, self::$_lifetime);
+        } catch(\Exception $e){
+            \Our\Halo\HaloLogger::FATAL($e->getMessage());
+        }
+
     }
 
     public function destroy($session_id){
-        self::$_handler->del(self::sessionKey($session_id));
-        return true;
+        try{
+            return self::$_handler->del(self::sessionKey($session_id));
+        } catch(\Exception $e){
+            \Our\Halo\HaloLogger::FATAL($e->getMessage());
+        }
+
     }
 
     public function gc($lifetime){

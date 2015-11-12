@@ -35,10 +35,11 @@ class Admin_IndexModel extends BaseModel
         importFunc('netFunctions');
         $data = array(
             'uid' => $uid,
-            'time' => TODAY,
+            'time' => date('Y-m-d H:i:s', TODAY),
             'ip' => ip2long(IP()),
             'op' => $op
         );
-        $this->_db->insertTable('adm_login_log', $data);
+
+        $result = $this->_db->insertTable('adm_login_log', $data);
     }
 }

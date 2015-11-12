@@ -8,7 +8,6 @@ class MainController extends \Our\Controller\admin
     public function mainAction()
     {
         $info = $this->sysInfo();
-
         $this->_view->display('Admin/main.phtml', $info);
     }
 
@@ -18,17 +17,16 @@ class MainController extends \Our\Controller\admin
         $a = 'new string';
         dump(debug_zval_dump($a));
         //$db->testMCD();
-
-
     }
+
     /**
      * 后台基本信息
      * @return array
      */
     protected function sysInfo()
     {
+        importFunc('netFunctions');
 
-        import(LIBRARY_PATH . 'Our/functions/netFunctions.php');
         $sys = array(
             'os' => PHP_OS,
             'runEnv' => $_SERVER['SERVER_SOFTWARE'],

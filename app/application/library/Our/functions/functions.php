@@ -16,7 +16,7 @@ function import($path)
 {
     $isTrue = \Yaf\Loader::import($path);
     if(!$isTrue){
-        $msg = 'load ' . $path . ' file return false';
+        $msg = 'try import [' . $path . '] failed';
         throw new \Yaf_Exception_LoadFailed($msg);
     }
     return true;
@@ -35,7 +35,7 @@ function importFunc($file)
  */
 function weakPassword()
 {
-    return $weakArray = array(
+    return array(
         0 => '000000', 1 => '111111', 2 => '11111111', 3 => '112233', 4 => '123123',
         5 => '123321', 6 => '123456', 7 => '12345678', 8 => '654321', 9 => '666666',
         10 => '888888', 11 => 'abcdef', 12 => 'abcabc', 13 => 'abc123', 14 => 'a1b2c3',

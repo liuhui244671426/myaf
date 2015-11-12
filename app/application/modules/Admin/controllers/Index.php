@@ -19,7 +19,20 @@ class IndexController extends \Our\Controller\YafController
      */
     public function loginAction()
     {
-        $this->_view->display('Admin/login.phtml', array());
+        try{
+            if($this->_request->isGet()){
+                $this->_view->display('Admin/login.phtml', array());
+            } else {
+                $user = $this->getLegalParam('user', 'str');
+                $pass = $this->getLegalParam('pass', 'str');
+
+                $this->auth($user, $pass);
+            }
+
+        } catch(\Exception $e){
+            \Our\Halo\HaloLogger::FATAL($e->getMessage());
+        }
+
     }
 
     /**
@@ -30,37 +43,34 @@ class IndexController extends \Our\Controller\YafController
      *
      * @return redirect
      */
-    public function authAction()
+    private function auth($user, $pass)
     {
-        if ($this->_request->isPost()) {
+        $pass = md5($pass);
 
-            $user = $this->getLegalParam('user', 'str');
-            $pass = $this->getLegalParam('pass', 'str');
-            $pass = md5($pass);
+        $db = new Admin_IndexModel();
+        $uid = $db->checkUserPass($user, $pass);
 
-            $db = new Admin_IndexModel();
-            $uid = $db->checkUserPass($user, $pass);
-            if (empty($uid)) {
-                $this->redirect('/admin/index/login');
-                exit;
-            }
-            \Our\Halo\HaloLogger::INFO('user: ' . $user);
-            \Our\Halo\HaloLogger::INFO('pass: ' . $pass);
-            \Our\Halo\HaloLogger::INFO('uid: ' . $uid);
-
-            if ($uid >= 1) {
-
-                $isWrite = $db->insLoginLog($uid, 1);
-                \Our\Halo\HaloLogger::INFO($isWrite);
-                //---------
-                $_SESSION['user']['uid'] = $uid;
-                $_SESSION['user']['uname'] = $user;
-                //---------
-                $this->redirect('/admin/main/main');
-            } else {
-                $this->redirect('/admin/index/login');
-            }
+        if (empty($uid)) {
+            $this->redirect('/admin/index/login');
+            exit;
         }
+        \Our\Halo\HaloLogger::INFO('user: ' . $user);
+        \Our\Halo\HaloLogger::INFO('pass: ' . $pass);
+        \Our\Halo\HaloLogger::INFO('uid: ' . $uid);
+
+        if ($uid >= 1) {
+
+            $isWrite = $db->insLoginLog($uid, 1);
+            \Our\Halo\HaloLogger::INFO($isWrite);
+            //---------
+            $_SESSION['user']['uid'] = $uid;
+            $_SESSION['user']['uname'] = $user;
+            //---------
+            $this->redirect('/admin/main/main');
+        } else {
+            $this->redirect('/admin/index/login');
+        }
+
     }
 
     /**

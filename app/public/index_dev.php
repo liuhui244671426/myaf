@@ -10,6 +10,7 @@ date_default_timezone_set('PRC');
 
 if (MODE == 'dev' || MODE == 'test') {
     error_reporting(E_ALL & E_NOTICE & E_PARSE);
+    ini_set("display_errors", true);
     define('XHPROF', true);//开启xhprof
 } else {
     error_reporting(0);

@@ -201,7 +201,7 @@ function curl($url, $method = 'GET', $postFields = null, $header = null)
  *
  * @return bool|mixed|string
  */
-function file_get_contents($url, $use_include_path = false, $stream_context = null, $curl_timeout = 8)
+function optimized_file_get_contents($url, $use_include_path = false, $stream_context = null, $curl_timeout = 8)
 {
     if ($stream_context == null && preg_match('/^https?:\/\//', $url))
         $stream_context = @stream_context_create(array('http' => array('timeout' => $curl_timeout)));
