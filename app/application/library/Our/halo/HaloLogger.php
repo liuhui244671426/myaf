@@ -127,9 +127,10 @@ class HaloLogger
     }
 
     public static function sysError($errno, $errstr, $errfile, $errline){
+        //fix trigger_error 无法记录日志的BUG
         if (!(error_reporting() & $errno)) {
             // This error code is not included in error_reporting
-            return;
+            //return;
         }
 
         $config = \Yaf\Registry::get('config');

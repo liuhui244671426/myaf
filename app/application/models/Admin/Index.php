@@ -36,7 +36,7 @@ class Admin_IndexModel extends BaseModel
         $data = array(
             'uid' => $uid,
             'time' => date('Y-m-d H:i:s', TODAY),
-            'ip' => ip2long(IP()),
+            'ip' => IP(),
             'op' => $op
         );
 
