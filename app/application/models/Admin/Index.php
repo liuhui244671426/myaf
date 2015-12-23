@@ -12,7 +12,7 @@ class Admin_IndexModel extends BaseModel
 
     public function __construct()
     {
-        $this->_db = \Our\Halo\HaloFactory::getFactory('db', 'myaf');
+        $this->_db = \Our\Halo\HaloFactory::getFactory('db', 'user_center');
     }
 
     /**

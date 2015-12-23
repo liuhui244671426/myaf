@@ -25,10 +25,8 @@ class IndexController extends \Our\Controller\YafController
             } else {
                 $user = $this->getLegalParam('user', 'str');
                 $pass = $this->getLegalParam('pass', 'str');
-
                 $this->auth($user, $pass);
             }
-
         } catch(\Exception $e){
             \Our\Halo\HaloLogger::FATAL($e->getMessage());
         }
@@ -49,7 +47,6 @@ class IndexController extends \Our\Controller\YafController
 
         $db = new Admin_IndexModel();
         $uid = $db->checkUserPass($user, $pass);
-
         if (empty($uid)) {
             $this->redirect('/admin/index/login');
             exit;

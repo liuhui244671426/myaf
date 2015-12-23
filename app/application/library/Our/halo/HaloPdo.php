@@ -59,8 +59,9 @@ class HaloPdo
                 ));
         } catch (\Exception $e) {
             //未连接DB 时触发错误
-            trigger_error($e->getMessage());
-            if ($this) $this->_error = $e->getMessage();
+            trigger_error($e->getTraceAsString());
+            dump($e->getMessage());
+            //if ($this) $this->_error = $e->getMessage();
         }
     }
 
